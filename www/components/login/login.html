@@ -1,33 +1,47 @@
-<!--<div class="bar bar-header" style="background-color:#0A4077">-->
-  <!--&lt;!&ndash;<button class="button button-icon icon ion-arrow-left-c" style="color: white;" ng-click="backToDashboard()"></button>&ndash;&gt;-->
-  <!--<div class="h1 title light"> Sign-in </div>-->
-<!--</div>-->
- <ion-content>
-    <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="loginData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="loginData.password">
-        </label>
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">Log in</button>
-        </label>
+<style type="text/css">
+    input[type="checkbox"]{
+        width: 18px; /*Desired width*/
+        height: 18px; /*Desired height*/
+    }
+    .inline-field input,
+    .inline-field label {
+        display: inline-block;
+        margin-bottom: 0; /* I added this after I posted my reply */
+        vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
+    }
+</style>
+<ion-content scroll="false" >
+  <div style="height: 100%;width:100%;background: url(../../assets/img/background_img.png) no-repeat;background-size: 100% 100%">
+      <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+      <div style="text-align: center;width: inherit;height: auto;padding-top:25px" >
+          <img src="../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
+          <h3 style="color: white;font-weight: bold;margin-top:0">bluenumber</h3>
       </div>
-    </form>
-  </ion-content>
+      <div class="row">
+          <div class="col" style="margin-top:70px;text-align: center">
+              <input type="text" placeholder="Email/Mobile" style="width: 80%;background: rgba(97,137,197,.7);border-radius: 5px;padding: 0 5px 0 6px;font-size: 15px;color: white;display: inline;height: 40px"/>
+          <!--</div>-->
+          <!--<div class="col">-->
+              <input type="text" placeholder="Password" style="width: 80%;background: rgba(97,137,197,.7);border-radius: 5px;padding: 0 5px 0 6px;font-size: 15px;color: white;margin-top: 10px;display: inline;height: 40px"/>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col" style="color:white">
 
-<!--<ion-modal-view>-->
-  <!--<ion-header-bar>-->
-    <!--<h1 class="title">Login</h1>-->
-    <!--<div class="buttons">-->
-      <!--<button class="button button-clear" ng-click="closeLogin()">Close</button>-->
-    <!--</div>-->
-  <!--</ion-header-bar>-->
-  <!--<ion-content>-->
-    <!-- -->
-  <!--</ion-content>-->
-<!--</ion-modal-view>-->
+              <div class="inline-field">
+                  <input type="checkbox" style="height:20px;width:20px;margin-left:35px;"  id="checkbox">
+                  <label for="checkbox">&nbsp;Remember me</label>
+              </div>
+              <!--<input type="checkbox" style="margin-left:35px;font-size: 15px;color: white;display: inline;"><span>&nbsp;Remember me</span>-->
+          </div>
+      </div>
+      <div class="row" >
+          <div class="col col-center" style="text-align: center">
+              <div class="button" style="width:80%;font-size:x-large;color:#0c60ee">
+                  LogIn
+              </div>
+          </div>
+      </div>
+
+    </div>
+  </ion-content>
