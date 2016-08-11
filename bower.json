@@ -1,12 +1,34 @@
 {
-  "name": "angular-translate",
-  "description": "A translation module for AngularJS",
-  "version": "2.11.1",
-  "main": "./angular-translate.js",
-  "ignore": [],
-  "author": "Pascal Precht",
-  "license": "MIT",
+  "name": "BlueNumber",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.3.1"
+  },
   "dependencies": {
-    "angular": ">=1.2.26 <1.6"
+    "angular-translate": "~2.11.1"
+  },
+  "resolutions": {
+    "angular": ">=1.4.x"
+  },
+  "install": {
+    "base": "www/lib",
+    "path": {
+      "scss": "{name}/scss",
+      "css": "{name}/css",
+      "js": "{name}/js",
+      "eot": "{name}/fonts",
+      "otf": "{name}/fonts",
+      "ttf": "{name}/fonts",
+      "woff": "{name}/fonts",
+      "woff2": "{name}/fonts",
+      "svg": "{name}/fonts"
+    },
+    "sources": {
+      "ionic": [
+        "bower_components/ionic/js/ionic.bundle.js",
+        "bower_components/ionic/scss/**",
+        "bower_components/ionic/fonts/**"
+      ]
+    }
   }
 }
