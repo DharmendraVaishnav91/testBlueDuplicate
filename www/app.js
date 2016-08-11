@@ -33,13 +33,23 @@ app.run(function($ionicPlatform) {
       })
       .state('home', {
           url: '/home',
-          templateUrl: 'components/login/home.html',
+          templateUrl: 'components/login/views/home.html',
           controller:'HomeCtrl'
       })
       .state('login', {
           url: '/login',
-          templateUrl: 'components/login/login.html',
+          templateUrl: 'components/login/views/login.html',
           controller:'LoginCtrl'
+      })
+      .state('regCreateAccount', {
+          url: '/regCreateAccount',
+          templateUrl: 'components/login/views/regCreateAccount.html',
+          controller:'RegCreateAccountCtrl'
+      })
+      .state('regCreateProfile', {
+          url: '/regCreateProfile',
+          templateUrl: 'components/login/views/regCreateProfile.html',
+          controller:'RegCreateProfileCtrl'
       })
      .state('app.dashboard', {
         url: '/dashboard',

@@ -7,7 +7,7 @@ app.controller('HomeCtrl', function($scope,$state) {
     $scope.loginData = {};
 
     $scope.openRegistration= function () {
-        $state.go('registration');
+        $state.go('regCreateAccount');
     };
     $scope.openLogin = function() {
 

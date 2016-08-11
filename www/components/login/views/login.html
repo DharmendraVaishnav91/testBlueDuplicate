@@ -11,18 +11,18 @@
     }
 </style>
 <ion-content scroll="false" >
-  <div style="height: 100%;width:100%;background: url(../../assets/img/background_img.png) no-repeat;background-size: 100% 100%">
+  <div class="blueno-bg">
       <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-      <div style="text-align: center;width: inherit;height: auto;padding-top:25px" >
-          <img src="../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
+      <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
+          <img src="../../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
           <h3 style="color: white;font-weight: bold;margin-top:0">bluenumber</h3>
       </div>
       <div class="row">
-          <div class="col" style="margin-top:70px;text-align: center">
-              <input type="text" placeholder="Email/Mobile" style="width: 80%;background: rgba(97,137,197,.7);border-radius: 5px;padding: 0 5px 0 6px;font-size: 15px;color: white;display: inline;height: 40px"/>
+          <div class="col center" style="margin-top:70px;">
+              <input type="text" class="input-txt" placeholder="Email/Mobile" />
           <!--</div>-->
           <!--<div class="col">-->
-              <input type="text" placeholder="Password" style="width: 80%;background: rgba(97,137,197,.7);border-radius: 5px;padding: 0 5px 0 6px;font-size: 15px;color: white;margin-top: 10px;display: inline;height: 40px"/>
+              <input type="password" placeholder="Password" class="input-txt" style="margin-top: 10px;" />
           </div>
       </div>
       <div class="row">
@@ -35,13 +35,18 @@
               <!--<input type="checkbox" style="margin-left:35px;font-size: 15px;color: white;display: inline;"><span>&nbsp;Remember me</span>-->
           </div>
       </div>
-      <div class="row" >
-          <div class="col col-center" style="text-align: center">
+      <div class="row" style="margin-top:20px">
+          <div class="col col-center center" >
               <div class="button" style="width:80%;font-size:x-large;color:#0c60ee">
                   LogIn
               </div>
           </div>
       </div>
 
+      <div class="row" style="margin-top: 150px;">
+          <div class="col col-center center" >
+              <a style="font-size:larger;color: white;text-decoration: underline" ng-click="openRegistration()">Sign up for a bluenumber</a>
+          </div>
+      </div>
     </div>
   </ion-content>

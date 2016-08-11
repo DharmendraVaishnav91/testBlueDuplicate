@@ -13,4 +13,7 @@ app.controller('LoginCtrl', function($scope,$state) {
         // code if using a login system
        $state.go('app.dashboard');
     };
+    $scope.openRegistration= function () {
+        $state.go('regCreateAccount');
+    }
 });
