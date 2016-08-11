@@ -15,7 +15,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal) {
 
     };
     $scope.loginData = {};
-
+     $scope.gender='';
 
     $ionicModal.fromTemplateUrl('components/login/views/regCreateProfile.html', {
         scope: $scope,
@@ -88,7 +88,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal) {
                 $scope.addGroup.show();
                 break;
             case openModalType.inviteFamily:
-                $scope.inviteFamily();
+                $scope.inviteFamily.show();
                 break;
             default:
         }
@@ -130,5 +130,14 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal) {
     };
     $scope.goToWork= function () {
         $scope.openModal(openModalType.addWork);
+    };
+    $scope.goToThing= function(){
+       $scope.openModal(openModalType.addThing);
+    };
+    $scope.goToGroup=function(){
+        $scope.openModal(openModalType.addGroup);
+    };
+    $scope.goToInviteFamily=function(){
+        $scope.openModal(openModalType.inviteFamily);
     }
 });
