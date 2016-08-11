@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in menuController.js
-var app=angular.module('app', ['ionic', 'app.menu']) ;
+var app=angular.module('app', ['ionic', 'app.menu','pascalprecht.translate']) ;
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,7 +22,14 @@ app.run(function($ionicPlatform) {
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$translateProvider) {
+        $translateProvider.translations('en', {
+            TITLE: 'Hello'
+        });
+        $translateProvider.translations('de', {
+            TITLE: 'Hallo'
+        });
+        $translateProvider.preferredLanguage('en');
   $stateProvider
 
       .state('app', {

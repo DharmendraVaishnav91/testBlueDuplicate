@@ -1,4 +1,11 @@
-\<ion-modal-view  >
+<style>
+    .sel-white{
+        color:white
+    }
+
+
+</style>
+<ion-modal-view  >
     <div class="blueno-bg" style="position: absolute">
         <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
         <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
@@ -10,9 +17,10 @@
             <div class="col center" style="margin-top:40px;">
                 <input type="text" class="input-txt" placeholder="First/Given Name" />
                 <input type="text" placeholder="Last/Given Name" class="input-txt" style="margin-top: 10px;" />
-                <select style="margin-top: 10px;" placeholder="Gender">
-                    <option >Male</option>
-                    <option >Female</option>
+                <select style="margin-top: 10px;" ng-class="{'sel-white':gender!=''}" ng-model="gender">
+                    <option value="" disabled selected >Gender</option>
+                    <option value="male" >Male</option>
+                    <option value="female">Female</option>
                 </select>
             </div>
         </div>
