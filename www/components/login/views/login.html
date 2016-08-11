@@ -1,0 +1,52 @@
+<style type="text/css">
+    input[type="checkbox"]{
+        width: 18px; /*Desired width*/
+        height: 18px; /*Desired height*/
+    }
+    .inline-field input,
+    .inline-field label {
+        display: inline-block;
+        margin-bottom: 0; /* I added this after I posted my reply */
+        vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
+    }
+</style>
+<ion-content scroll="false" >
+  <div class="blueno-bg">
+      <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+      <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
+          <img src="../../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
+          <h3 style="color: white;font-weight: bold;margin-top:0">bluenumber</h3>
+      </div>
+      <div class="row">
+          <div class="col center" style="margin-top:70px;">
+              <input type="text" class="input-txt" placeholder="Email/Mobile" />
+          <!--</div>-->
+          <!--<div class="col">-->
+              <input type="password" placeholder="Password" class="input-txt" style="margin-top: 10px;" />
+          </div>
+      </div>
+      <div class="row">
+          <div class="col" style="color:white">
+
+              <div class="inline-field">
+                  <input type="checkbox" style="height:20px;width:20px;margin-left:35px;"  id="checkbox">
+                  <label for="checkbox">&nbsp;Remember me</label>
+              </div>
+              <!--<input type="checkbox" style="margin-left:35px;font-size: 15px;color: white;display: inline;"><span>&nbsp;Remember me</span>-->
+          </div>
+      </div>
+      <div class="row" style="margin-top:20px">
+          <div class="col col-center center" >
+              <div class="button" style="width:80%;font-size:x-large;color:#0c60ee">
+                  LogIn
+              </div>
+          </div>
+      </div>
+
+      <div class="row" style="margin-top: 150px;">
+          <div class="col col-center center" >
+              <a style="font-size:larger;color: white;text-decoration: underline" ng-click="openRegistration()">Sign up for a bluenumber</a>
+          </div>
+      </div>
+    </div>
+  </ion-content>

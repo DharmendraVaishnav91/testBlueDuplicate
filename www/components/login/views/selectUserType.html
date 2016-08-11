@@ -1,0 +1,48 @@
+<style type="text/css">
+    input[type="radio"]{
+        width: 18px; /*Desired width*/
+        height: 18px; /*Desired height*/
+    }
+    .inline-field input,
+    .inline-field label {
+        margin-top:10px;
+        display: inline-block;
+        margin-bottom: 0; /* I added this after I posted my reply */
+        vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
+    }
+</style>
+<ion-modal-view  >
+    <div class="blueno-bg" style="position: absolute">
+        <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+        <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
+            <img src="../../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
+            <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
+            <h3 style="color: #ffffff;">Select User Type</h3>
+        </div>
+        <div class="row">
+            <div class="col" style="padding-left: 118px;color: white;">
+                <div class="inline-field">
+                    <input type="radio" id="fisher" name="userType" value="fisher">
+                    <label for="fisher" style="font-size: 20px">&nbsp;Fisher</label> <br>
+                    <input type="radio" name="userType" id="farmer" value="farmer">
+                    <label for="farmer" style="font-size: 20px">&nbsp;Farmer</label> <br>
+                    <input type="radio" name="userType" id="factoryFarmer" value="factory worker">
+                    <label for="factoryFarmer" style="font-size: 20px">&nbsp;Factory Worker</label><br>
+                    <input type="radio" name="userType" id="none" value="other">
+                    <label for="none" style="font-size: 20px">&nbsp;None of Above</label><br>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row" style="margin-top:20px">
+            <div class="col col-center center" >
+                <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToAddHome()" >
+                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ion-modal-view>

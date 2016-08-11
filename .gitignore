@@ -1,0 +1,22 @@
+# Created by .ignore support plugin (hsz.mobi)
+node_modules/
+platforms/
+bower_components/
+plugins/
+/.idea
+RealeaseApk/
+outputs
+hooks/
+# Ignore compiled css
+
+www/assets/css/ionic.app.css
+www/assets/css/ionic.app.min.css
+
+# Ignore sass cache files
+www/assets/.sass-cache/
+
+# Ignore keystore files
+tpoHUB.apk
+
+# Ignore lib files as managed by bower
+www/lib/*
