@@ -8,24 +8,58 @@
                 <i class="ion-person-stalker"></i>&nbsp;Add Group
             </h3>
         </div>
-        <div class="row">
-            <div class="col center" style="margin-top:40px;">
-                <select style="margin-top: 10px;">
-                    <option value="" disabled selected>Group Type</option>
-                </select>
-                <select style="margin-top: 10px;">
-                    <option value="" disabled selected>Sub Type</option>
-                </select>
-                <input type="text" placeholder="Name" class="input-txt" style="margin-top: 10px;" />
-            </div>
-        </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col col-center center" >
-                <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToInviteFamily()" >
-                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+        <form name="addGroupForm">
+            <div class="row">
+                <div class="col center" >
+                    <select style="margin-top: 10px;width: 80%" ng-required="true">
+                        <input type="text" ng-model="data.groupName" placeholder="Name" class="input-txt" style="margin-top: 10px;" />
+                    </select>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col center" style="margin-top:40px;">
+                    <select style="margin-top: 10px;" ng-required="true" ng-model="data.groupTYpe">
+                        <option value="" disabled selected>Group Type</option>
+                        <option value="Company, Cooperative">Company, Cooperative</option>
+                        <option value="Government Organization">Government Organization</option>
+                        <option value="Standards Organization">Standards Organization</option>
+                        <option value="Research Organization">Research Organization</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center">
+                    <select style="margin-top: 10px;width: 80%" ng-required="true" ng-model="data.groupSubType">
+                        <option value="" disabled selected>Sub Type</option>
+                        <option value="Sector" >Sector</option>
+                        <option value="Department or ministry" >Department or ministry</option>
+                        <option value="Cause or issue" >Cause or issue</option>
+                        <option value="Commodity or raw material" >Commodity or raw material</option>
+                        <option value="By research interest" >By research interest</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center">
+                    <select style="margin-top: 10px;width: 80%" ng-required="true" ng-model="data.groupRelationship">
+                        <option value="" disabled selected>Relationship</option>
+                        <option value="Owner" >Owner</option>
+                        <option value="Employee" >Employee</option>
+                        <option value="Buyer" >Buyer</option>
+                        <option value="Selle" >Selle</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="row" style="margin-top:20px">
+                <div class="col col-center center" >
+                    <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToInviteFamily()" >
+                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="row" style="">
             <div class="col col-center center" >
                 <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>

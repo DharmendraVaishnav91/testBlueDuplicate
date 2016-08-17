@@ -8,21 +8,37 @@
                 <i class="ion-home"></i>&nbsp;Add Home
             </h3>
         </div>
-        <div class="row">
-            <div class="col center" style="margin-top:40px;">
-                <input type="text" class="input-txt" placeholder="Address" />
-                <input type="text" placeholder="City/Town" class="input-txt" style="margin-top: 10px;" />
-                <input type="text" placeholder="State/Province" class="input-txt" style="margin-top: 10px;" />
-                <input type="text" placeholder="Country" class="input-txt" style="margin-top: 10px;" />
+        <form name="addressForm">
+            <div class="row">
+                <div class="col center" >
+                    <input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="loginData.home.address"/>
+                 </div>
             </div>
-        </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col col-center center" >
-                <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToWork()" >
-                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+            <div class="row">
+                <div class="col center" >
+                    <input type="text" ng-required="true" placeholder="City/Town" ng-model="loginData.home.city" class="input-txt" style="margin-top: 10px;" />
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col center" >
+                    <select style="width: 80%" ng-model="data.state" ng-required="true"  ng-options="obj.SubdivisionName for obj in subDivList track by obj.SubdivisionID">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center" >
+                    <input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" style="margin-top: 10px;" />
+                </div>
+            </div>
 
+                    <!--<input type="text" ng-required="true" placeholder="State/Province" class="input-txt" style="margin-top: 10px;" />-->
+            <div class="row" style="margin-top:20px">
+                <div class="col col-center center" >
+                    <button type="submit" ng-disabled="addressForm.$invalid" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToWork()" >
+                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </ion-modal-view>

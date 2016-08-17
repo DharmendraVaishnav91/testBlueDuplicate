@@ -8,34 +8,81 @@
                 <i class="ion-monitor"></i>&nbsp;Add Work
             </h3>
         </div>
-        <div class="row">
-            <div class="col center" style="margin-top:40px;">
-                <select style="margin-top: 10px;" placeholder="Gender">
-                    <option >Male</option>
-                    <option >Female</option>
-                </select>
-                <select style="margin-top: 10px;" placeholder="Gender">
-                    <option >Male</option>
-                    <option >Female</option>
-                </select>
-                <select style="margin-top: 10px;" placeholder="Gender">
-                    <option >Male</option>
-                    <option >Female</option>
-                </select>
-
-                <input type="text" placeholder="Location" class="input-txt" style="margin-top: 10px;" />
-            </div>
-        </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col col-center center" >
-                <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToThing()" >
-                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+        <form name="addWorkForm">
+            <div class="row">
+                <div class="col center" >
+                    <select ng-model="data.type" style="width: 80%;" ng-change="workTypeChange()">
+                        <option value="" disabled selected >Work Place Type</option>
+                        <option value="Residence">Residence</option>
+                        <option value="Office">Office</option>
+                        <option value="Farm (non-residential)">Farm (non-residential)</option>
+                        <option value="Farm (residential)" >Farm (residential)</option>
+                        <option value="Farm (other)">Farm (other)</option>
+                        <option value="Inventory/Transportation Site">Inventory/Transportation Site</option>
+                        <option value="Dock">Dock</option>
+                        <option value="Fishery">Fishery</option>
+                        <option value="Processing Facility">Processing Facility</option>
+                        <option value="Other/Not Specified">Other/Not Specified</option>
+                    </select>
                 </div>
             </div>
-        </div>
-        <div class="row" style="">
-            <div class="col col-center center" >
-                <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToThing()">Skip</a>
+            <div class="row" ng-if="enableCrop">
+                <div class="col center" >
+                    <select style="width: 80%;" ng-model="data.crop" ng-required="true"  ng-options="obj.H3Description for obj in productList track by obj.H3Code">
+                    </select>
+                </div>
+            </div>
+            <div class="row" ng-if="enableCrop">
+                <div class="col center" >
+                  <input type="text" class="input-txt" placeholder="hectare" ng-model="work.hectare" ng-required="true" name="hectares" style="width: 80%"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center" >
+                    <select style="width: 80%;" ng-model="data.relationship">
+                        <option value="" disabled selected >Relationship</option>
+                        <option value="Worker">Worker</option>
+                        <option value="Owner">Owner</option>
+                        <option value="Lessor">Lessor</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col center" >
+                    <input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="work.address"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center" >
+                    <input type="text" ng-required="true" placeholder="City/Town" ng-model="work.city" class="input-txt"  />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center" >
+                    <select style="width: 80%" ng-model="data.workState" ng-required="true"  ng-options="obj.SubdivisionName for obj in subDivList track by obj.SubdivisionID">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center" >
+                    <select style="width: 80%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList track by obj.CountryPhoneCode">
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col col-center center" >
+                    <button type="submit" ng-disabled="addWorkForm.$invalid" class="button lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToThing()" >
+                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                    </button>
+                    <!--<a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToThing()">Skip</a>-->
+                </div>
+            </div>
+        </form>
+        <div class="row no-padding" >
+            <div class="col col-center center no-padding" >
+                <span style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToThing()">Skip</span>
             </div>
         </div>
 
