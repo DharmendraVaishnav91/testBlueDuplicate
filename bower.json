@@ -23,6 +23,11 @@
       "woff2": "{name}/fonts",
       "svg": "{name}/fonts"
     },
+    "ignore": [
+      "angular",
+      "angular-animate",
+      "angular-ui-router"
+    ],
     "sources": {
       "ionic": [
         "bower_components/ionic/js/ionic.bundle.js",

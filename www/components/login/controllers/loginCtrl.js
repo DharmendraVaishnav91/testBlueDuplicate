@@ -1,11 +1,13 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('LoginCtrl', function($scope,$state,$translate) {
+app.controller('LoginCtrl', function($scope,$state,$translate,loginService) {
 
     // Form data for the login modal
     $scope.loginData = {};
     $translate.use('de');
+
+
     $scope.doLogin = function() {
         console.log('Doing login', $scope.loginData);
 

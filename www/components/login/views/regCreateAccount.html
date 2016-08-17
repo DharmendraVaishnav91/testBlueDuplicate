@@ -12,13 +12,17 @@
     select {
         display: inline-block;
         height: 40px !important;
-        width: 80% !important;
+
         outline: none;
-        color: darkgray;
+        color: white;
         border:none;
         border-radius: 4px;
         background: rgba(97,137,197,.7);
         font-size: 15px !important;
+    }
+    option{
+        background: white;
+        color:black;
     }
 </style>
 <ion-content scroll="false" >
@@ -29,19 +33,29 @@
             <h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>
             <h3 style="color: #ffffff;"> Create an Account</h3>
         </div>
-        <div class="row">
-            <div class="col center" style="margin-top:40px;">
-                <input type="number" class="input-txt" placeholder="Mobile" />
-                <input type="password" placeholder="Password" class="input-txt" style="margin-top: 10px;" />
+        <form name="credentialForm">
+            <div class="row">
+                <div class="col col-25 no-padding" style="text-align: right;padding-right: 1px !important;">
+                    <select style="width: 57%;"  ng-model="data.selectedCountry" ng-required="true"  ng-options="obj.CountryCode for obj in countryCodeList track by obj.CountryPhoneCode">
+                    </select>
+                </div>
+                <div class="col no-padding" style="width:100%;text-align:left;padding-left: 4px !important;">
+                    <input ng-model="loginData.user.mobile" type="number" ng-required="true" class="input-txt" placeholder="Mobile" style="width: 84% !important;" />
+                </div>
+
             </div>
-        </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col col-center center" >
-                <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToProfileCreation()">
-                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+            <div class="row">
+                <div class="col" style="text-align: center">
+                    <input type="password" ng-model="loginData.user.password" ng-required="true" placeholder="Password" class="input-txt" style="margin-top: 10px;" />
                 </div>
             </div>
-        </div>
-
+            <div class="row" style="margin-top:20px">
+                <div class="col col-center center" >
+                    <button class="button  lgt-blue-btn" type="submit" ng-disabled="credentialForm.$invalid" style="height: 40px;width:130px;" ng-click="goToProfileCreation()">
+                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </ion-content>

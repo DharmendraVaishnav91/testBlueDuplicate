@@ -8,23 +8,44 @@
                 <i class="ion-folder"></i>&nbsp;Add Thing
             </h3>
         </div>
-        <div class="row">
-            <div class="col center" style="margin-top:40px;">
-                <select style="margin-top: 10px;">
-                    <option value="" disabled selected>Equipment Type</option>
-                </select>
-                <select style="margin-top: 10px;">
-                    <option value="" disabled selected>Where</option>
-                </select>
-            </div>
-        </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col col-center center" >
-                <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToGroup()" >
-                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+        <form name="addThingForm">
+            <div class="row">
+                <div class="col center" style="margin-top:40px;">
+                    <select style="margin-top: 10px;width: 80%" ng-model="data.equipType" ng-required="true">
+                        <option value="" disabled selected>Equipment Type</option>
+                        <option value="Farm or pasture land">Farm or pasture land</option>
+                        <option value="Fishing boat">Fishing boat</option>
+                        <option value="Fishery">Fishery</option>
+                        <option value="Equipment (agriculture)">Equipment (agriculture)</option>
+                        <option value="Equipment (fishing)">Equipment (fishing)</option>
+                        <option value="Consumer Product">Consumer Product</option>
+                    </select>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col center">
+                    <select style="margin-top: 10px;width: 80%" ng-model="data.equipRelationship" ng-required="true">
+                        <option value="" disabled selected >Relationship</option>
+                        <option value="Worker">Worker</option>
+                        <option value="Owner">Owner</option>
+                        <option value="Lessor">Lessor</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col center">
+                    <select style="width: 80%" ng-model="data.equipWhere" ng-required="true"  ng-options="obj.name for obj in workLocations">
+                    </select>
+                </div>
+            </div>
+            <div class="row" style="margin-top:20px">
+                <div class="col col-center center" >
+                    <button class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToGroup()" >
+                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
         <div class="row" style="">
             <div class="col col-center center" >
                 <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>

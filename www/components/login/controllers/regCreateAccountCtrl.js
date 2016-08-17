@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal) {
+app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService) {
 
     // Form data for the login modal
     var openModalType={
@@ -14,8 +14,48 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal) {
         inviteFamily:7
 
     };
-    $scope.loginData = {};
-     $scope.gender='';
+    $scope.loginData={
+        user:{},
+        profile:{},
+        user_type:'',
+        home:{}
+    };
+    $scope.enableCrop=false;
+    $scope.data={};
+    $scope.countryCodeList=[];
+    $scope.work={};
+    $scope.workLocations=[];
+    loginService.fetchCountryCode().then(function(response){
+       $scope.countryCodeList=response;
+    }).catch(function(error){
+        console.log(error);
+    });
+    var updatedImage='';
+    $scope.updateImageSrc = null;
+
+    var onSuccess = function(position) {
+        $scope.position=position;
+        console.log('Latitude: '          + position.coords.latitude          + '\n' +
+            'Longitude: '         + position.coords.longitude         + '\n' +
+            'Altitude: '          + position.coords.altitude          + '\n' +
+            'Accuracy: '          + position.coords.accuracy          + '\n' +
+            'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+            'Heading: '           + position.coords.heading           + '\n' +
+            'Speed: '             + position.coords.speed             + '\n' +
+            'Timestamp: '         + position.timestamp                + '\n');
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        console.log('code: '    + error.code    + '\n' +
+            'message: ' + error.message + '\n');
+    }
+
+    var posOptions = {timeout: 1000, enableHighAccuracy: false};
+    navigator.geolocation
+        .getCurrentPosition(onSuccess,onError,posOptions);
+
 
     $ionicModal.fromTemplateUrl('components/login/views/regCreateProfile.html', {
         scope: $scope,
@@ -119,25 +159,153 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal) {
             default:
         }
     };
+    $scope.workTypeChange =function(){
+      if($scope.data.type.indexOf('Farm')>-1){
+         $scope.enableCrop=true;
+      }else{
+          $scope.enableCrop=false;
+      }
+    };
+    var fetchStates= function (countryCode) {
+      loginService.fetchStates(countryCode).then(function (response) {
+           $scope.subDivList=response;
+      }).catch(function(error){
+
+      })
+    };
+    var createUser = function(){
+        loginService.createUser($scope.loginData).then(function(response){
+            $scope.userId=response;
+            $scope.openModal(openModalType.addWork);
+        }).catch(function(error){
+            console.log(error);
+        });
+    };
+    var fetchCropList = function(){
+        loginService.fetchProductsList().then(function(response){
+            $scope.productList=response;
+        }).catch(function(error){
+           console.log(error);
+        });
+    };
+    var saveWorkData =function(workData){
+        loginService.saveWorkData(workData).then(function(response){
+            $scope.openModal(openModalType.addThing);
+        }).catch(function(error){
+           console.log(error);
+        });
+
+    };
+    var saveThingsData=function(thingsData){
+        loginService.saveThingsData(thingsData).then(function(response){
+            $scope.openModal(openModalType.addGroup);
+        }).catch(function(error){
+            console.log(error);
+        });
+    };
+
     $scope.goToProfileCreation = function() {
+        $scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
+        console.log($scope.data);
         $scope.openModal(openModalType.createProfile);
     };
     $scope.goToSelectUserType = function () {
+        console.log($scope.data);
+        $scope.loginData.profile.gender=$scope.data.gender;
+        console.log($scope.loginData);
         $scope.openModal(openModalType.selectUserType);
     };
+
     $scope.goToAddHome=function(){
+        fetchStates($scope.loginData.user.country_code) ;
+        console.log($scope.loginData);
         $scope.openModal(openModalType.addHome);
     };
+
     $scope.goToWork= function () {
-        $scope.openModal(openModalType.addWork);
+        //$scope.loginData.home={
+        //    subdivision_code:$scope.data.state.SubdivisionCode,
+        //    country_code:$scope.loginData.user.country_code,
+        //    latitude:$scope.position.coords.latitude,
+        //    longitude: $scope.position.coords.longitude,
+        //    name:'Home'
+        //};
+        $scope.loginData.home.subdivision_code=$scope.data.state.SubdivisionCode;
+        $scope.loginData.home.country_code=$scope.loginData.user.country_code;
+        $scope.loginData.home.latitude= $scope.position.coords.latitude;
+        $scope.loginData.home.longitude= $scope.position.coords.longitude;
+        $scope.loginData.home.name='Home';
+        console.log($scope.loginData);
+        createUser();
+        fetchCropList();
+        //$scope.openModal(openModalType.addWork);
+
     };
+
     $scope.goToThing= function(){
-       $scope.openModal(openModalType.addThing);
+        console.log($scope.data);
+        var works=[];
+        var location1={
+            name:"Work1",
+            latitude:$scope.position.coords.latitude,
+            longitude:$scope.position.coords.longitude,
+            address:$scope.work.address,
+            city:$scope.work.city,
+            subdivision_code:$scope.data.workState.SubdivisionCode,
+            country_code:$scope.data.workCountry.CountryCode
+
+        };
+        var work={
+           type:$scope.data.type,
+            crop:$scope.data.crop.H3Code,
+            relationship:$scope.data.relationship,
+            hectare:$scope.work.hectare,
+            location:location1
+        };
+        works.push(work);
+        var workData={
+            user_id:$scope.userId.user_id,
+            works:works
+        };
+        console.log("work data");
+        console.log(workData);
+        $scope.workLocations.push(location1);
+        saveWorkData(workData);
+       //$scope.openModal(openModalType.addThing);
     };
+
     $scope.goToGroup=function(){
-        $scope.openModal(openModalType.addGroup);
+        console.log($scope.data);
+        var things=[];
+        var thing1={
+            equipment_type:$scope.data.equipType,
+            relationship:$scope.data.equipRelationship,
+            location:$scope.data.equipWhere
+        };
+        things.push(thing1);
+        var thingsData={
+             user_id:$scope.userId.user_id,
+             things:things
+        };
+        saveThingsData(thingsData);
+        //$scope.openModal(openModalType.addGroup);
     };
+
     $scope.goToInviteFamily=function(){
+
+        console.log($scope.data);
         $scope.openModal(openModalType.inviteFamily);
+    };
+
+    $scope.changeImage= function(){
+        utilityService.getImage().then(function(src) {
+            updatedImage = src;
+            console.log(updatedImage);
+            var rad = Math.floor(Math.random() * 10000 + 10);
+            $scope.updateImageSrc = updatedImage + "?rd=" + rad;
+        },function(err) {
+            console.log(JSON.stringify(err));
+        })
     }
+
 });
