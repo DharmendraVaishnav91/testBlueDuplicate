@@ -62,6 +62,16 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         console.log(req);
         return utilityService.makeHTTPRequest(req,deferred);
     };
+    self.saveGroupsData =function(groupsData){
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.signUpStep4,
+            data:groupsData,
+            method:HttpRequestType.POST
+        };
+        console.log(req);
+        return utilityService.makeHTTPRequest(req,deferred);
+    };
 
     return self;
 });

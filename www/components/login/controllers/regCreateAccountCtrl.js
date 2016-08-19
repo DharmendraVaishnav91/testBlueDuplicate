@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService) {
+app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService,$rootScope) {
 
     // Form data for the login modal
     var openModalType={
@@ -11,7 +11,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         addWork:4,
         addThing:5,
         addGroup:6,
-        inviteFamily:7
+        inviteFamily:7 ,
+        signUpSuccess:8
 
     };
     $scope.loginData={
@@ -20,6 +21,9 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         user_type:'',
         home:{}
     };
+    $scope.position=null;
+    $scope.addPicIcon="assets/img/icon_addProfile.png";
+    $rootScope.bgUrl="assets/img/logo_small.png";
     $scope.enableCrop=false;
     $scope.data={};
     $scope.countryCodeList=[];
@@ -104,7 +108,12 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     }).then(function (modal) {
         $scope.inviteFamily= modal;
     });
-
+    $ionicModal.fromTemplateUrl('components/login/views/accntCreateSuccess.html', {
+        scope: $scope,
+        animation: 'slide-in-right'
+    }).then(function (modal) {
+        $scope.signUpSuccess= modal;
+    });
     $scope.openModal = function (modalType) {
 
 
@@ -129,6 +138,9 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
                 break;
             case openModalType.inviteFamily:
                 $scope.inviteFamily.show();
+                break;
+            case openModalType.signUpSuccess:
+                $scope.signUpSuccess.show();
                 break;
             default:
         }
@@ -156,6 +168,9 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
             case openModalType.inviteFamily:
                 $scope.inviteFamily.hide();
                 break;
+            case openModalType.signUpSuccess:
+                $scope.signUpSuccess.hide();
+                break;
             default:
         }
     };
@@ -166,16 +181,23 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
           $scope.enableCrop=false;
       }
     };
+
+    $scope.changeSubdivision=function(selectedCountry){
+     var selectedCountry=selectedCountry.CountryCode;
+        fetchStates(selectedCountry);
+    };
+
     var fetchStates= function (countryCode) {
       loginService.fetchStates(countryCode).then(function (response) {
            $scope.subDivList=response;
       }).catch(function(error){
-
+          console.log(error);
       })
     };
     var createUser = function(){
         loginService.createUser($scope.loginData).then(function(response){
             $scope.userId=response;
+            $scope.data.workCountry=angular.copy($scope.data.homeCountry);
             $scope.openModal(openModalType.addWork);
         }).catch(function(error){
             console.log(error);
@@ -203,7 +225,13 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
             console.log(error);
         });
     };
-
+    var saveGroupData=function(groupsData){
+        loginService.saveGroupsData(groupsData).then(function(response){
+           $scope.openModal(openModalType.signUpSuccess);
+        }).catch(function(error){
+            console.log(error);
+        });
+    };
     $scope.goToProfileCreation = function() {
         $scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
         console.log($scope.data);
@@ -217,6 +245,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
 
     $scope.goToAddHome=function(){
+        $scope.data.homeCountry=$scope.data.selectedCountry;
         fetchStates($scope.loginData.user.country_code) ;
         console.log($scope.loginData);
         $scope.openModal(openModalType.addHome);
@@ -230,12 +259,17 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         //    longitude: $scope.position.coords.longitude,
         //    name:'Home'
         //};
-        $scope.loginData.home.subdivision_code=$scope.data.state.SubdivisionCode;
-        $scope.loginData.home.country_code=$scope.loginData.user.country_code;
-        $scope.loginData.home.latitude= $scope.position.coords.latitude;
-        $scope.loginData.home.longitude= $scope.position.coords.longitude;
+        if ($scope.data.state != undefined && $scope.data.state != null) {
+            $scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
+        } else {
+            $scope.loginData.home.subdivision_code = "";
+        }
+        $scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+        $scope.loginData.home.latitude= $scope.position?$scope.position.coords.latitude:'';
+        $scope.loginData.home.longitude= $scope.position?$scope.position.coords.longitude:'';
         $scope.loginData.home.name='Home';
         console.log($scope.loginData);
+
         createUser();
         fetchCropList();
         //$scope.openModal(openModalType.addWork);
@@ -247,21 +281,28 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         var works=[];
         var location1={
             name:"Work1",
-            latitude:$scope.position.coords.latitude,
-            longitude:$scope.position.coords.longitude,
+            latitude:$scope.position?$scope.position.coords.latitude:'',
+            longitude:$scope.position?$scope.position.coords.longitude:'',
             address:$scope.work.address,
             city:$scope.work.city,
-            subdivision_code:$scope.data.workState.SubdivisionCode,
+            subdivision_code:$scope.data.workState?$scope.data.workState.SubdivisionCode:'',
             country_code:$scope.data.workCountry.CountryCode
 
         };
         var work={
-           type:$scope.data.type,
-            crop:$scope.data.crop.H3Code,
+            type:$scope.data.type,
             relationship:$scope.data.relationship,
-            hectare:$scope.work.hectare,
             location:location1
         };
+        if($scope.enableCrop){
+            work.crop=$scope.data.crop.H3Code;
+            work.hectare=$scope.work.hectare?$scope.work.hectare:0;
+        }else{
+            work.crop="";
+            work.hectare="";
+        }
+
+
         works.push(work);
         var workData={
             user_id:$scope.userId.user_id,
@@ -275,13 +316,30 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
 
     $scope.goToGroup=function(){
-        console.log($scope.data);
         var things=[];
         var thing1={
             equipment_type:$scope.data.equipType,
-            relationship:$scope.data.equipRelationship,
-            location:$scope.data.equipWhere
+            relationship:$scope.data.equipRelationship
+            //location:$scope.data.equipWhere
         };
+
+        //Equipment have location other than existing one
+        if($scope.data.equipWhere=='OtherThingLocation') {
+            thing1.location={
+                name:"Thing1",
+                latitude:$scope.position?$scope.position.coords.latitude:'',
+                longitude:$scope.position?$scope.position.coords.longitude:'',
+                address:$scope.data.otherThingAddress,
+                city:$scope.work.otherThingCity,
+                subdivision_code:$scope.data.otherThingState?$scope.data.otherThingState.SubdivisionCode:'',
+                country_code:$scope.data.otherThingCountry.CountryCode
+
+            };
+
+        }else{
+           thing1.location=JSON.parse($scope.data.equipWhere);
+        }
+
         things.push(thing1);
         var thingsData={
              user_id:$scope.userId.user_id,
@@ -292,9 +350,23 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
 
     $scope.goToInviteFamily=function(){
+        var groups=[];
+        var group1={
+            type:$scope.data.groupType,
+            sub_type:$scope.data.groupSubType,
+            relationship:$scope.data.groupRelationship,
+            name:$scope.data.groupName,
+            location:$scope.data.groupLocation
+        };
+        groups.push(group1);
+        var groupsData={
+            user_id:$scope.userId.user_id,
+            groups:groups
+        };
 
-        console.log($scope.data);
-        $scope.openModal(openModalType.inviteFamily);
+        saveGroupData(groupsData);
+        console.log(groupsData);
+        //$scope.openModal(openModalType.inviteFamily);
     };
 
     $scope.changeImage= function(){
@@ -306,6 +378,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         },function(err) {
             console.log(JSON.stringify(err));
         })
+    };
+    $scope.goToHome =function(){
+        $state.go('home');
     }
-
 });

@@ -5,33 +5,33 @@
 
 </style>
 <ion-modal-view  >
-    <div class="blueno-bg" style="position: absolute">
-        <form name="basicInfoForm">
-        <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-        <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-            <img src="../../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
-            <h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>
-            <h3 style="color: #ffffff;"> Create an Profile</h3>
-        </div>
-        <div class="row">
-            <div class="col center" >
-                <img src="../../../assets/img/icon_addProfile.png" style="height: 90px;width: 90px;" ng-click="changeImage()"/>
-                <input ng-model="loginData.profile.given_name" type="text" ng-required="true" class="input-txt" placeholder="First/Given Name" />
-                <input ng-model="loginData.profile.family_name" ng-required="true" type="text" placeholder="Last/Given Name" class="input-txt" style="margin-top: 10px;" />
-                    <select style="margin-top: 10px;width: 80%" ng-class="{'sel-white':gender!=''}" ng-model="data.gender" ng-required="true">
-                        <option value="" disabled selected >Gender</option>
-                        <option value="male" >Male</option>
-                        <option value="female">Female</option>
-                    </select>
+    <ion-content has-bouncing="true" class="blueno-bg">
+            <form name="basicInfoForm">
+            <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+            <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
+                <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
+                <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
+                <h3 style="color: #ffffff;"> Create an Profile</h3>
             </div>
-        </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col col-center center" >
-                <button  ng-disabled="basicInfoForm.$invalid" type="submit" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToSelectUserType()" >
-                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
-                </button>
+            <div class="row">
+                <div class="col center" >
+                    <img ng-src="{{addPicIcon}}" style="height: 90px;width: 90px;" ng-click="changeImage()"/>
+                    <input ng-model="loginData.profile.given_name" type="text" ng-required="true" class="input-txt" placeholder="First/Given Name" />
+                    <input ng-model="loginData.profile.family_name" ng-required="true" type="text" placeholder="Last/Given Name" class="input-txt" style="margin-top: 10px;" />
+                        <select style="margin-top: 10px;width: 80%" ng-class="{'sel-white':gender!=''}" ng-model="data.gender" ng-required="true">
+                            <option value="" disabled selected >Gender</option>
+                            <option value="male" >Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                </div>
             </div>
-        </div>
-       </form>
-    </div>
+            <div class="row" style="margin-top:20px">
+                <div class="col col-center center" >
+                    <button  ng-disabled="basicInfoForm.$invalid" type="submit" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToSelectUserType()" >
+                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                    </button>
+                </div>
+            </div>
+           </form>
+    </ion-content>
 </ion-modal-view>

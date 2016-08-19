@@ -1,47 +1,47 @@
 <style type="text/css">
     input[type="radio"]{
-        width: 18px; /*Desired width*/
-        height: 18px; /*Desired height*/
+        width: 18px;
+        height: 18px;
     }
     .inline-field input,
     .inline-field label {
         margin-top:10px;
         display: inline-block;
-        margin-bottom: 0; /* I added this after I posted my reply */
-        vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
+        margin-bottom: 0;
+        vertical-align: middle;
     }
 </style>
 <ion-modal-view  >
-    <div class="blueno-bg" style="position: absolute">
-        <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-        <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-            <img src="../../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
-            <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
-            <h3 style="color: #ffffff;">Select User Type</h3>
-        </div>
-        <form name="selectUserTypeForm">
-        <div class="row">
-            <div class="col" style="padding-left: 118px;color: white;">
-                <div class="inline-field">
-                    <input ng-model="loginData.user_type" ng-required="true" type="radio" id="fisher" name="userType" value="Fisher">
-                    <label for="fisher" style="font-size: 20px">&nbsp;Fisher</label> <br>
-                    <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="farmer" value="Farmer">
-                    <label ng-required="true" for="farmer" style="font-size: 20px">&nbsp;Farmer</label> <br>
-                    <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="factoryFarmer" value="Factory Worker">
-                    <label   ng-required="true" for="factoryFarmer" style="font-size: 20px">&nbsp;Factory Worker</label><br>
-                    <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="none" value="other">
-                    <label ng-required="true" for="none" style="font-size: 20px" checked="checked">&nbsp;None of Above</label><br>
+    <ion-content has-bouncing="true"  class="blueno-bg">
+            <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+            <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
+                <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
+                <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
+                <h3 style="color: #ffffff;">Select User Type</h3>
+            </div>
+            <form name="selectUserTypeForm">
+            <div class="row">
+                <div class="col" style="padding-left: 118px;color: white;">
+                    <div class="inline-field">
+                        <input ng-model="loginData.user_type" ng-required="true" type="radio" id="fisher" name="userType" value="Fisher">
+                        <label for="fisher" style="font-size: 20px">&nbsp;Fisher</label> <br>
+                        <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="farmer" value="Farmer">
+                        <label ng-required="true" for="farmer" style="font-size: 20px">&nbsp;Farmer</label> <br>
+                        <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="factoryFarmer" value="Factory Worker">
+                        <label   ng-required="true" for="factoryFarmer" style="font-size: 20px">&nbsp;Factory Worker</label><br>
+                        <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="none" value="other">
+                        <label ng-required="true" for="none" style="font-size: 20px" checked="checked">&nbsp;Other</label><br>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row" style="margin-top:20px">
-            <div class="col col-center center" >
-                <button type="submit" ng-disabled="selectUserTypeForm.$invalid" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToAddHome()" >
-                    <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
-                </button>
+            <div class="row" style="margin-top:20px">
+                <div class="col col-center center" >
+                    <button type="submit" ng-disabled="selectUserTypeForm.$invalid" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToAddHome()" >
+                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-        </form>
-    </div>
+            </form>
+    </ion-content>
 </ion-modal-view>

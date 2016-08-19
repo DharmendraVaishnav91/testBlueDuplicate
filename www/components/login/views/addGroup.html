@@ -1,8 +1,8 @@
 <ion-modal-view  >
-    <div class="blueno-bg" style="position: absolute">
+    <ion-content has-bouncing="true" class="blueno-bg">
         <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
         <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-            <img src="../../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
+            <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
             <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
             <h3 style="color: #ffffff;">
                 <i class="ion-person-stalker"></i>&nbsp;Add Group
@@ -11,14 +11,12 @@
         <form name="addGroupForm">
             <div class="row">
                 <div class="col center" >
-                    <select style="margin-top: 10px;width: 80%" ng-required="true">
-                        <input type="text" ng-model="data.groupName" placeholder="Name" class="input-txt" style="margin-top: 10px;" />
-                    </select>
+                    <input type="text" ng-required="true" ng-model="data.groupName" placeholder="Name" class="input-txt" style="margin-top: 10px;width:80%" />
                 </div>
             </div>
             <div class="row">
-                <div class="col center" style="margin-top:40px;">
-                    <select style="margin-top: 10px;" ng-required="true" ng-model="data.groupTYpe">
+                <div class="col center">
+                    <select style="width: 80%" ng-required="true" ng-model="data.groupType">
                         <option value="" disabled selected>Group Type</option>
                         <option value="Company, Cooperative">Company, Cooperative</option>
                         <option value="Government Organization">Government Organization</option>
@@ -29,7 +27,7 @@
             </div>
             <div class="row">
                 <div class="col center">
-                    <select style="margin-top: 10px;width: 80%" ng-required="true" ng-model="data.groupSubType">
+                    <select style="width: 80%" ng-required="true" ng-model="data.groupSubType">
                         <option value="" disabled selected>Sub Type</option>
                         <option value="Sector" >Sector</option>
                         <option value="Department or ministry" >Department or ministry</option>
@@ -41,7 +39,7 @@
             </div>
             <div class="row">
                 <div class="col center">
-                    <select style="margin-top: 10px;width: 80%" ng-required="true" ng-model="data.groupRelationship">
+                    <select style="width: 80%" ng-required="true" ng-model="data.groupRelationship">
                         <option value="" disabled selected>Relationship</option>
                         <option value="Owner" >Owner</option>
                         <option value="Employee" >Employee</option>
@@ -50,8 +48,12 @@
                     </select>
                 </div>
             </div>
-
-
+            <div class="row">
+                <div class="col center">
+                    <select style="width: 80%" ng-model="data.groupLocation" ng-required="true"  ng-options="obj.name for obj in workLocations">
+                    </select>
+                </div>
+            </div>
             <div class="row" style="margin-top:20px">
                 <div class="col col-center center" >
                     <div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToInviteFamily()" >
@@ -65,6 +67,5 @@
                 <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>
             </div>
         </div>
-
-    </div>
+    </ion-content>
 </ion-modal-view>

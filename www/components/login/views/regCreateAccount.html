@@ -12,7 +12,6 @@
     select {
         display: inline-block;
         height: 40px !important;
-
         outline: none;
         color: white;
         border:none;
@@ -25,11 +24,10 @@
         color:black;
     }
 </style>
-<ion-content scroll="false" >
-    <div class="blueno-bg">
+<ion-content scroll="true" class="blueno-bg">
         <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
         <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-            <img src="../../../assets/img/logo_big.png" style="height: 90px;width: 90px;"/>
+            <img ng-src="{{bgUrl}}" style="height: 80px;width: 80px;"/>
             <h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>
             <h3 style="color: #ffffff;"> Create an Account</h3>
         </div>
@@ -57,5 +55,4 @@
                 </div>
             </div>
         </form>
-    </div>
 </ion-content>
