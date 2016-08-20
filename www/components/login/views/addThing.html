@@ -9,10 +9,10 @@
             </div>
             <form name="addThingForm">
                 <div class="row">
-                    <div class="col center" style="margin-top:40px;">
+                    <div class="col center" style=";">
                         <select style="margin-top: 10px;width: 80%" ng-model="data.equipType" ng-required="true">
                             <option value="" disabled selected>Equipment Type</option>
-                            <option value="Farm or pasture land">Farm or pasture land</option>
+                            <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                             <option value="Fishing boat">Fishing boat</option>
                             <option value="Fishery">Fishery</option>
                             <option value="Equipment (agriculture)">Equipment (agriculture)</option>
@@ -40,33 +40,35 @@
                     </div>
                 </div>
                 <!--Show address for manual entry in the case of other-->
-                <div  ng-if="data.equipWhere=='OtherThingLocation'">
-                    <div class="row">
-                        <div class="col center" >
-                            <input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="data.otherThingAddress"/>
+                <div  ng-if="data.equipWhere=='OtherThingLocation'" class="row no-padding">
+                    <div class="col col-center center no-padding" >
+                        <div class="row">
+                            <div class="col center" >
+                                <input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="data.otherThingAddress"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col center" >
-                            <input type="text" ng-required="true" placeholder="City/Town" ng-model="data.otherThingCity" class="input-txt"  />
+                        <div class="row">
+                            <div class="col center" >
+                                <input type="text" ng-required="true" placeholder="City/Town" ng-model="data.otherThingCity" class="input-txt"  />
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col center" >
-                            <!--<input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" />-->
-                            <select style="width: 80%" ng-model="data.homeCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList track by obj.CountryPhoneCode" ng-change="changeSubdivision(data.homeCountry)">
-                            </select>
+                        <div class="row">
+                            <div class="col center" >
+                                <!--<input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" />-->
+                                <select style="width: 80%" ng-model="data.otherThingCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList track by obj.CountryPhoneCode" ng-change="changeSubdivision(data.otherThingCountry)">
+                                </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col center" >
-                            <select style="width: 80%" ng-model="data.state" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList track by obj.SubdivisionID">
-                            </select>
+                        <div class="row">
+                            <div class="col center" >
+                                <select style="width: 80%" ng-model="data.otherThingState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList track by obj.SubdivisionID">
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top:20px">
+                <div class="row" style="margin-top:10px">
                     <div class="col col-center center" >
                         <button class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToGroup()" >
                             <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>

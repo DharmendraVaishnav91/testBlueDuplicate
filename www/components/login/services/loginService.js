@@ -10,9 +10,7 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var deferred = $q.defer();
         var req={
             url:HttpRoutes.fetchCountryCode,
-            method:HttpRequestType.GET,
-            dataType:'jsonp',
-            crossDomain:true
+            method:HttpRequestType.GET
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };

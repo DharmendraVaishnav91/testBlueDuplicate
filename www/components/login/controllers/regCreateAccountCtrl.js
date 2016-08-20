@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService,$rootScope) {
+app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService,$rootScope,$cordovaToast) {
 
     // Form data for the login modal
     var openModalType={
@@ -212,24 +212,36 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
     var saveWorkData =function(workData){
         loginService.saveWorkData(workData).then(function(response){
+            console.log("Work added successfully.");
+            //$cordovaToast.showShortBottom("Work added successfully.");
             $scope.openModal(openModalType.addThing);
         }).catch(function(error){
            console.log(error);
+            //Remove this after demo
+            //$scope.openModal(openModalType.addThing);
         });
 
     };
     var saveThingsData=function(thingsData){
         loginService.saveThingsData(thingsData).then(function(response){
             $scope.openModal(openModalType.addGroup);
+            console.log("Equipment added successfully.");
+            //$cordovaToast.showShortBottom("Equipment added successfully.");
         }).catch(function(error){
             console.log(error);
+            //Remove this after demo
+            //$scope.openModal(openModalType.addGroup);
         });
     };
     var saveGroupData=function(groupsData){
         loginService.saveGroupsData(groupsData).then(function(response){
-           $scope.openModal(openModalType.signUpSuccess);
+            $scope.openModal(openModalType.signUpSuccess);
+            console.log("Group added successfully.");
+            //$cordovaToast.showShortBottom("Group added successfully.")
         }).catch(function(error){
             console.log(error);
+            //Remove this after demo
+           // $scope.openModal(openModalType.signUpSuccess);
         });
     };
     $scope.goToProfileCreation = function() {
@@ -252,13 +264,6 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
 
     $scope.goToWork= function () {
-        //$scope.loginData.home={
-        //    subdivision_code:$scope.data.state.SubdivisionCode,
-        //    country_code:$scope.loginData.user.country_code,
-        //    latitude:$scope.position.coords.latitude,
-        //    longitude: $scope.position.coords.longitude,
-        //    name:'Home'
-        //};
         if ($scope.data.state != undefined && $scope.data.state != null) {
             $scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
         } else {
@@ -301,11 +306,9 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
             work.crop="";
             work.hectare="";
         }
-
-
         works.push(work);
         var workData={
-            user_id:$scope.userId.user_id,
+            auth_token:$scope.userId.auth_token,
             works:works
         };
         console.log("work data");
@@ -330,7 +333,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
                 latitude:$scope.position?$scope.position.coords.latitude:'',
                 longitude:$scope.position?$scope.position.coords.longitude:'',
                 address:$scope.data.otherThingAddress,
-                city:$scope.work.otherThingCity,
+                city:$scope.data.otherThingCity,
                 subdivision_code:$scope.data.otherThingState?$scope.data.otherThingState.SubdivisionCode:'',
                 country_code:$scope.data.otherThingCountry.CountryCode
 
@@ -342,7 +345,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
 
         things.push(thing1);
         var thingsData={
-             user_id:$scope.userId.user_id,
+            auth_token:$scope.userId.auth_token,
              things:things
         };
         saveThingsData(thingsData);
@@ -355,12 +358,28 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
             type:$scope.data.groupType,
             sub_type:$scope.data.groupSubType,
             relationship:$scope.data.groupRelationship,
-            name:$scope.data.groupName,
-            location:$scope.data.groupLocation
+            name:$scope.data.groupName
+            //location:$scope.data.groupLocation
         };
+        //Equipment have location other than existing one
+        if($scope.data.groupLocation=='OtherGroupLocation') {
+            group1.location={
+                name:"Group1",
+                latitude:$scope.position?$scope.position.coords.latitude:'',
+                longitude:$scope.position?$scope.position.coords.longitude:'',
+                address:$scope.data.otherGroupAddress,
+                city:$scope.data.otherGroupCity,
+                subdivision_code:$scope.data.otherGroupState?$scope.data.otherGroupState.SubdivisionCode:'',
+                country_code:$scope.data.otherGroupCountry.CountryCode
+
+            };
+
+        }else{
+            group1.location=JSON.parse($scope.data.groupLocation);
+        }
         groups.push(group1);
         var groupsData={
-            user_id:$scope.userId.user_id,
+            auth_token:$scope.userId.auth_token,
             groups:groups
         };
 
@@ -378,6 +397,13 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         },function(err) {
             console.log(JSON.stringify(err));
         })
+    };
+
+    $scope.skipToThing = function () {
+        $scope.openModal(openModalType.addThing);
+    };
+    $scope.skipToGroup = function () {
+        $scope.openModal(openModalType.addGroup);
     };
     $scope.goToHome =function(){
         $state.go('home');

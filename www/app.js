@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in menuController.js
-var app=angular.module('app', ['ionic', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events']) ;
+var app=angular.module('app', ['ionic', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova']) ;
 
 app.run(function($ionicPlatform,EventService) {
   $ionicPlatform.ready(function() {

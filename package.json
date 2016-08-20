@@ -27,7 +27,11 @@
     "cordova-plugin-file",
     "cordova-plugin-compat",
     "cordova-plugin-camera",
-    "cordova-plugin-geolocation"
+    "cordova-plugin-geolocation",
+    {
+      "locator": "https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git",
+      "id": "cordova-plugin-x-toast"
+    }
   ],
   "cordovaPlatforms": [
     "ios",
@@ -36,6 +40,11 @@
       "version": "",
       "locator": "ios"
     },
-    "android"
+    "android",
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    }
   ]
 }
