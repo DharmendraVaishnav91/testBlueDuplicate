@@ -73,14 +73,14 @@
                     <div class="row">
                         <div class="col center" >
                             <!--<input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" />-->
-                            <select style="width: 80%" ng-model="data.otherGroupCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList track by obj.CountryPhoneCode" ng-change="changeSubdivision(data.otherGroupCountry)">
+                            <select style="width: 80%" ng-model="data.otherGroupCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.otherGroupCountry)">
                             </select>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col center" >
-                            <select style="width: 80%" ng-model="data.otherGroupState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList track by obj.SubdivisionID">
+                            <select style="width: 80%" ng-model="data.otherGroupState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">
                             </select>
                         </div>
                     </div>
@@ -94,10 +94,10 @@
                 </div>
             </div>
         </form>
-        <div class="row" style="">
-            <div class="col col-center center" >
-                <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>
-            </div>
-        </div>
+        <!--<div class="row" style="">-->
+            <!--<div class="col col-center center" >-->
+                <!--<a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>-->
+            <!--</div>-->
+        <!--</div>-->
     </ion-content>
 </ion-modal-view>

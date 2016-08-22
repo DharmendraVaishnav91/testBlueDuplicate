@@ -257,8 +257,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
 
     $scope.goToAddHome=function(){
-        $scope.data.homeCountry=$scope.data.selectedCountry;
-        fetchStates($scope.loginData.user.country_code) ;
+        $scope.data.homeCountry=angular.copy($scope.data.selectedCountry);
+        fetchStates($scope.data.homeCountry.CountryCode);
         console.log($scope.loginData);
         $scope.openModal(openModalType.addHome);
     };
@@ -406,6 +406,17 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         $scope.openModal(openModalType.addGroup);
     };
     $scope.goToHome =function(){
+
+         $scope.closeModal(openModalType.createProfile) ;
+         $scope.closeModal(openModalType.addHome) ;
+         $scope.closeModal(openModalType.addWork) ;
+         $scope.closeModal(openModalType.addThing) ;
+         $scope.closeModal(openModalType.addGroup) ;
+         $scope.closeModal(openModalType.inviteFamily) ;
+         $scope.closeModal(openModalType.signUpSuccess) ;
+         $scope.closeModal(openModalType.selectUserType) ;
+
+
         $state.go('home');
     }
 });

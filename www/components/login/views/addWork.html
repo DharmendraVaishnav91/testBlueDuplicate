@@ -60,13 +60,13 @@
                 </div>
                 <div class="row">
                     <div class="col center" >
-                        <select style="width: 80%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList track by obj.CountryPhoneCode" ng-change="changeSubdivision(data.workCountry)">
+                        <select style="width: 80%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.workCountry)">
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col center" >
-                        <select style="width: 80%" ng-model="data.workState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList track by obj.SubdivisionID">
+                        <select style="width: 80%" ng-model="data.workState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">
                         </select>
                     </div>
                 </div>
