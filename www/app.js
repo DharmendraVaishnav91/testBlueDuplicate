@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in menuController.js
-var app=angular.module('app', ['ionic', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova']) ;
+var app=angular.module('app', ['ionic', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting']) ;
 
 app.run(function($ionicPlatform,EventService) {
   $ionicPlatform.ready(function() {
@@ -24,15 +24,16 @@ app.run(function($ionicPlatform,EventService) {
 })
 
 .config(function($stateProvider, $urlRouterProvider,$translateProvider,$httpProvider) {
-        $translateProvider.translations('en', {
-            TITLE: 'Hello'
-        });
-        $translateProvider.translations('de', {
-            TITLE: 'Hallo'
-        });
-        $translateProvider.preferredLanguage('en');
-  $stateProvider
 
+
+    $translateProvider.translations('en', {
+        TITLE: 'Hello'
+    });
+    $translateProvider.translations('de', {
+        TITLE: 'Hallo'
+    });
+    $translateProvider.preferredLanguage('en');
+    $stateProvider
       .state('app', {
         url: '/app',
        abstract: true,
@@ -62,12 +63,28 @@ app.run(function($ionicPlatform,EventService) {
      .state('app.dashboard', {
         url: '/dashboard',
         views: {
-            'menuContent': {
+            'mainContent': {
                 templateUrl: 'components/dashboard/dashboard.html',
                 controller: 'DashboardCtrl'
             }
         }
-    });
+    }).state('app.setting', {
+          url: '/setting',
+          views: {
+              'mainContent': {
+                  templateUrl: 'components/setting/views/userSettings.html',
+                  controller: 'UserSettingCtrl'
+              }
+          }
+      }).state('app.workPlaces', {
+          url: '/setting/workPlaces',
+          views: {
+              'mainContent': {
+                  templateUrl: 'components/setting/views/workPlaces.html',
+                  controller: 'WorkPlacesCtrl'
+              }
+          }
+      });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('home');
     $httpProvider.interceptors.push(function ($rootScope, $q) {

@@ -11,11 +11,21 @@ appUtilityServices.factory('utilityService',function($http,$ionicPopup,$q,$rootS
     utilityService.makeHTTPRequest=function(req,deferred){
 
         $http(req).then(function(response){
+            console.log("Response Data");
+            console.log(response);
             deferred.resolve(response.data);
         }).catch(function(error) {
             deferred.reject(error);
         });
         return deferred.promise;
+    };
+    utilityService.fetchLanguageStrings=function(langName){
+        var deferred = $q.defer();
+        var req={
+            url:'assets/locale/'+langName+".json",
+            method:HttpRequestType.GET
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
     };
     utilityService.getImage = function(cameraOptions) {
         var deferred = $q.defer();

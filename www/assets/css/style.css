@@ -2,6 +2,22 @@
 h1{
     color:blue;
 }
+.list .item.custom-item{
+    background: transparent;
+    color: white;
+}
+.list .item p.white-p{
+    color:white;
+}
+.bold{
+    font-weight: bold !important;
+}
+.bg-transparent{
+    background: transparent !important;
+}
+.no-border{
+    border:none;
+}
 .no-padding{
     padding: 0 !important;
 }
@@ -11,6 +27,24 @@ h1{
 .center{
     text-align: center;
 }
+.blue-bg{
+    background-color: #4E5C6E !important;
+}
+.title{
+    color:white !important;
+}
+.bar-header{
+    border-color: grey !important;
+}
+.edit-input-txt{
+    font-size: 18px !important;
+    background-color: rgba(97,137,197,.7) !important;;
+    border-radius: 4px !important;;
+    color: white !important;;
+    padding: 0 10px 0 10px !important;;
+    height: 40px !important;
+}
+
 .input-txt{
     display: inline !important;
     height: 40px !important;
@@ -23,6 +57,12 @@ h1{
 }
 .blueno-bg{
     height: 100%;
+    width:100%;
+    background: url(../img/background_img.png) no-repeat;
+    background-size: 100% 100%
+
+}
+.blueno-bg-full{
     width:100%;
     background: url(../img/background_img.png) no-repeat;
     background-size: 100% 100%

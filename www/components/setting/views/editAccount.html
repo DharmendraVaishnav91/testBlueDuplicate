@@ -1,0 +1,100 @@
+<ion-modal-view  >
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
+        <button ng-click="hideEditAccount()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
+        <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
+}" >Edit account </h1>
+    </ion-header-bar>
+    <ion-content  style="background-color:#4E5C6E " >
+
+        <div class="row">
+            <div class="col col-25" >
+                <img src="assets/img/blank-avatar.png" style=" height: 80px;width: 80px;border-radius: 38px;">
+            </div>
+            <div class="col col-center" >
+                <button class="button button-positive button-outline">
+                    Change Photo
+                </button>
+            </div>
+        </div>
+        <form name="editAccountForm">
+
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">First Name
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                <input class="edit-input-txt" name="firstName" ng-required="true"  style="font-size:18px;" type="text"  placeholder=""/>
+            </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">Last Name
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                <input class="edit-input-txt" name="lastName" ng-required="true"  style="font-size:18px;" type="text"  placeholder=""/>
+            </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">Gender</span>
+            <select style="width: 100%"  ng-required="true">
+                <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">Select Country</span>
+                <select style="width: 100%"   ng-required="true" >
+                </select>
+            </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">Mobile
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                <input class="edit-input-txt" name="mobile" ng-required="true"  style="font-size:18px;" type="number"  placeholder=""/>
+            </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">Email
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                <input class="edit-input-txt" name="email" ng-required="true"  style="font-size:18px;" type="email"  placeholder=""/>
+            </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">Bluenumber
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                <input class="edit-input-txt" name="bluenumber" ng-required="true"  style="font-size:18px;" type="number"  placeholder=""/>
+            </label>
+
+        </form>
+    </ion-content>
+    <ion-footer-bar class="text-center bar-stable blue-bg" >
+        <div  class="button-bar">
+            <button type="submit" class="button button-clear button-balanced" ng-click="">
+                <i class="fa fa-hdd-o"></i> Save
+            </button>
+            <button  type="button" class="button button-clear button-assertive" ng-click="hideEditAccount()">
+                <i class="fa fa-times"></i> Cancel
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-modal-view >
+<style type="text/css">
+    .list .item{
+        background: transparent;
+        color: white;
+    }
+    .list .item p{
+        color:white;
+    }
+    select {
+        display: block;
+        height: 40px !important;
+        outline: none;
+        color: white;
+        border:none;
+        border-radius: 4px;
+        background: rgba(97,137,197,.7);
+        font-size: 15px !important;
+    }
+
+</style>

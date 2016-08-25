@@ -7,7 +7,10 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService) {
     $scope.loginData = {};
     $translate.use('de');
 
-
+    $scope.doLogin= function () {
+        console.log("Doing login") ;
+        $state.go('app.dashboard');
+    };
     $scope.doLogin = function() {
         console.log('Doing login', $scope.loginData);
 
@@ -15,6 +18,7 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService) {
         // code if using a login system
        $state.go('app.dashboard');
     };
+
     $scope.openRegistration= function () {
         $state.go('regCreateAccount');
     }

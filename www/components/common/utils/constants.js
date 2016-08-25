@@ -8,6 +8,13 @@ var HttpRequestType = {
     PUT: 'PUT',
     DELETE: 'DELETE'
 };
+var languages={
+     ENGLISH:"en",
+     VIETNAMESE:"vi",
+     JAPANESE:"jp",
+     BURMESE:"br",
+     THAI:"th"
+};
 var HttpRoutes = {
     fetchCountryCode:  apiUrl + '/gpr/country_list/',
     signUpStep1:apiUrl+'/gpr/v2/signup_user/',
