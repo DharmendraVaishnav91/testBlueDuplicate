@@ -5,24 +5,24 @@
                 <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
                 <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
-                    <i class="ion-monitor"></i>&nbsp;Add Work
+                    <i class="ion-monitor"></i>&nbsp;{{'ADD_WORK' | translate }}
                 </h3>
             </div>
             <form name="addWorkForm">
                 <div class="row">
                     <div class="col center" >
                         <select ng-model="data.type" style="width: 80%;" ng-change="workTypeChange()">
-                            <option value="" disabled selected >Work Place Type</option>
-                            <option value="Residence">Residence</option>
-                            <option value="Office">Office</option>
-                            <option value="Farm (non-residential)">Farm (non-residential)</option>
-                            <option value="Farm (residential)" >Farm (residential)</option>
-                            <option value="Farm (other)">Farm (other)</option>
-                            <option value="Inventory/Transportation Site">Inventory/Transportation Site</option>
-                            <option value="Dock">Dock</option>
-                            <option value="Fishery">Fishery</option>
-                            <option value="Processing Facility">Processing Facility</option>
-                            <option value="Other/Not Specified">Other/Not Specified</option>
+                            <option value="" disabled selected >{{'WORK_PLACE_TYPE' | translate }}</option>
+                            <option value="Residence">{{'RESIDENCE' | translate }}</option>
+                            <option value="Office">{{'OFFICE' | translate }}</option>
+                            <option value="Farm (non-residential)">{{'FARM_NON_RESIDENT' | translate }}</option>
+                            <option value="Farm (residential)" >{{'FARM_RESIDENT' | translate }}</option>
+                            <option value="Farm (other)">{{'FARM_OTHER' | translate }}</option>
+                            <option value="Inventory/Transportation Site">{{'INVENTORY' | translate }}</option>
+                            <option value="Dock">{{'DOCK' | translate }}</option>
+                            <option value="Fishery">{{'FISHERY' | translate }}</option>
+                            <option value="Processing Facility">{{'PROCESSING_FACILITY' | translate }}</option>
+                            <option value="Other/Not Specified">{{'OTHER' | translate }}</option>
                         </select>
                     </div>
                 </div>
@@ -40,10 +40,10 @@
                 <div class="row">
                     <div class="col center" >
                         <select style="width: 80%;" ng-model="data.relationship">
-                            <option value="" disabled selected >Relationship</option>
-                            <option value="Worker">Worker</option>
-                            <option value="Owner">Owner</option>
-                            <option value="Lessor">Lessor</option>
+                            <option value="" disabled selected >{{'RELATIONSHIP' | translate }}</option>
+                            <option value="Worker">{{'WORKER' | translate }}</option>
+                            <option value="Owner">{{'OWNER' | translate }}</option>
+                            <option value="Lessor">{{'LESSOR' | translate }}</option>
                         </select>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             </form>
             <div class="row no-padding" >
                 <div class="col col-center center no-padding" >
-                    <span style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToThing()">Skip</span>
+                    <span style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToThing()">{{'SKIP' | translate }}</span>
                 </div>
             </div>
     </ion-content>
