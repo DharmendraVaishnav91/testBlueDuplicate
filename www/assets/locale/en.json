@@ -158,5 +158,16 @@
 
 
   "CAMERA":"Camera",
-  "GALLERY":"Gallery"
+  "GALLERY":"Gallery",
+
+  "HELLO_WELCOME":"Hello, Welcome to blue number",
+  "THANKS_FOR_SIGNING_UP":"Thanks for signing up!.",
+  "GO_TO_LOGIN":"Go to Login",
+  "HELLO_USER":"Hello User",
+  "SELECT_COUNTRY":"Select Country",
+  "USER_NAME":"User Name",
+  "HOME":"Home",
+  "FARM1":"Farm1",
+  "RICE":"Rice",
+  "ADDRESS_1":"Address 1"
 }

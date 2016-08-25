@@ -4,37 +4,37 @@
                 <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
                 <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
-                    <i class="ion-folder"></i>&nbsp;Add Thing
+                    <i class="ion-folder"></i>&nbsp;{{'ADD_THING' | translate }}
                 </h3>
             </div>
             <form name="addThingForm">
                 <div class="row">
                     <div class="col center" style=";">
                         <select style="margin-top: 10px;width: 80%" ng-model="data.equipType" ng-required="true">
-                            <option value="" disabled selected>Equipment Type</option>
+                            <option value="" disabled selected>{{'EQUIPMENT_TYPE' | translate }}</option>
                             <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
-                            <option value="Fishing boat">Fishing boat</option>
-                            <option value="Fishery">Fishery</option>
-                            <option value="Equipment (agriculture)">Equipment (agriculture)</option>
-                            <option value="Equipment (fishing)">Equipment (fishing)</option>
-                            <option value="Consumer Product">Consumer Product</option>
+                            <option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>
+                            <option value="Fishery">{{'FISHERY' | translate }}</option>
+                            <option value="Equipment (agriculture)">{{'EQUIPMENT_AGRICULTURE' | translate }}</option>
+                            <option value="Equipment (fishing)">{{'EQUIPMENT_FISHING' | translate }}</option>
+                            <option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col center">
                         <select style="width: 80%" ng-model="data.equipRelationship" ng-required="true">
-                            <option value="" disabled selected >Relationship</option>
-                            <option value="Worker">Worker</option>
-                            <option value="Owner">Owner</option>
-                            <option value="Lessor">Lessor</option>
+                            <option value="" disabled selected >{{'RELATIONSHIP' | translate }}</option>
+                            <option value="Worker">{{'WORKER' | translate }}</option>
+                            <option value="Owner">{{'OWNER' | translate }}</option>
+                            <option value="Lessor">{{'LESSOR' | translate }}</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col center">
                         <select style="width: 80%" ng-model="data.equipWhere" ng-required="true" >
-                            <option value="OtherThingLocation">Other</option>
+                            <option value="OtherThingLocation">{{'OTHER' | translate }}</option>
                             <option ng-repeat="obj in workLocations" value="{{obj}}">{{obj.name}}</option>
                         </select>
                     </div>
@@ -78,7 +78,7 @@
             </form>
             <div class="row" style="">
                 <div class="col col-center center" >
-                    <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>
+                    <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">{{'SKIP' | translate }}</a>
                 </div>
             </div>
     </ion-content>

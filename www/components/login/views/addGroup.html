@@ -5,7 +5,7 @@
             <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
             <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
             <h3 style="color: #ffffff;">
-                <i class="ion-person-stalker"></i>&nbsp;Add Group
+                <i class="ion-person-stalker"></i>&nbsp;{{'ADD_GROUP' | translate }}
             </h3>
         </div>
         <form name="addGroupForm">
@@ -17,41 +17,41 @@
             <div class="row">
                 <div class="col center">
                     <select style="width: 80%" ng-required="true" ng-model="data.groupType">
-                        <option value="" disabled selected>Group Type</option>
-                        <option value="Company, Cooperative">Company, Cooperative</option>
-                        <option value="Government Organization">Government Organization</option>
-                        <option value="Standards Organization">Standards Organization</option>
-                        <option value="Research Organization">Research Organization</option>
+                        <option value="" disabled selected>{{'GROUP_TYPE' | translate }}</option>
+                        <option value="Company, Cooperative">{{'COMPANY_COOPERATIVE' | translate }}</option>
+                        <option value="Government Organization">{{'GOVT_ORG' | translate }}</option>
+                        <option value="Standards Organization">{{'STND_ORG' | translate }}</option>
+                        <option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col center">
                     <select style="width: 80%" ng-required="true" ng-model="data.groupSubType">
-                        <option value="" disabled selected>Sub Type</option>
-                        <option value="Sector" >Sector</option>
-                        <option value="Department or ministry" >Department or ministry</option>
-                        <option value="Cause or issue" >Cause or issue</option>
-                        <option value="Commodity or raw material" >Commodity or raw material</option>
-                        <option value="By research interest" >By research interest</option>
+                        <option value="" disabled selected>{{'SUB_TYPE' | translate }}</option>
+                        <option value="Sector" >{{'SECTOR' | translate }}</option>
+                        <option value="Department or ministry" >{{'DEPT_OF_MIN' | translate }}</option>
+                        <option value="Cause or issue" >{{'CAUSE_OR_ISSUE' | translate }}</option>
+                        <option value="Commodity or raw material" >{{'COMMODITY_RAW_MATERIAL' | translate }}</option>
+                        <option value="By research interest" >{{'BY_RESEARCH_INTEREST' | translate }}</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col center">
                     <select style="width: 80%" ng-required="true" ng-model="data.groupRelationship">
-                        <option value="" disabled selected>Relationship</option>
-                        <option value="Owner" >Owner</option>
-                        <option value="Employee" >Employee</option>
-                        <option value="Buyer" >Buyer</option>
-                        <option value="Selle" >Selle</option>
+                        <option value="" disabled selected>{{'RELATIONSHIP' | translate }}</option>
+                        <option value="Owner" >{{'OWNER' | translate }}</option>
+                        <option value="Employee" >{{'EMPLOYEE' | translate }}</option>
+                        <option value="Buyer" >{{'BUYER' | translate }}</option>
+                        <option value="Selle" >{{'SELLER' | translate }}</option>
                     </select>
                 </div>
             </div>
             <div class="row">
                 <div class="col center">
                     <select style="width: 80%" ng-model="data.groupLocation" ng-required="true" >
-                        <option value="OtherGroupLocation">Other</option>
+                        <option value="OtherGroupLocation">{{'OTHER' | translate }}</option>
                         <option ng-repeat="obj in workLocations" value="{{obj}}">{{obj.name}}</option>
                     </select>
                 </div>

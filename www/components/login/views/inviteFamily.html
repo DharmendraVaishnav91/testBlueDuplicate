@@ -6,14 +6,14 @@
                 <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
                 <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
-                    <i class="ion-person-stalker"></i>&nbsp;Invite Family
+                    <i class="ion-person-stalker"></i>&nbsp;{{'INVITE_FAMILY' | translate }}
                 </h3>
             </div>
             <div class="row">
                 <div class="col center" style="margin-top:40px;">
                     <input type="number" placeholder="Type a Mobile Number" class="input-txt" style="margin-top: 10px;" />
                     <select style="margin-top: 10px;">
-                        <option value="" disabled selected>Relationship</option>
+                        <option value="" disabled selected>{{'RELATIONSHIP' | translate }}</option>
                     </select>
 
 
@@ -28,7 +28,7 @@
             </div>
             <div class="row" style="">
                 <div class="col col-center center" >
-                    <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>
+                    <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">{{'SKIP' | translate }}</a>
                 </div>
             </div>
     </ion-content>

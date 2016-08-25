@@ -17,20 +17,20 @@
         <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
             <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
             <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
-            <h3 style="color: #ffffff;">Select User Type</h3>
+            <h3 style="color: #ffffff;">{{'SELECT_USER_TYPE' | translate }}</h3>
         </div>
         <form name="selectUserTypeForm">
             <div class="row">
                 <div class="col" style="padding-left: 118px;color: white;">
                     <div class="inline-field">
                         <input ng-model="loginData.user_type" ng-required="true" type="radio" id="fisher" name="userType" value="Fisher">
-                        <label for="fisher" style="font-size: 20px">&nbsp;Fisher</label> <br>
+                        <label for="fisher" style="font-size: 20px">&nbsp;{{'FISHER' | translate }}</label> <br>
                         <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="farmer" value="Farmer">
-                        <label ng-required="true" for="farmer" style="font-size: 20px">&nbsp;Farmer</label> <br>
+                        <label ng-required="true" for="farmer" style="font-size: 20px">&nbsp;{{'FARMER' | translate }}</label> <br>
                         <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="factoryFarmer" value="Factory Worker">
-                        <label   ng-required="true" for="factoryFarmer" style="font-size: 20px">&nbsp;Factory Worker</label><br>
+                        <label   ng-required="true" for="factoryFarmer" style="font-size: 20px">&nbsp;{{'FACTORY_WORKER' | translate }}</label><br>
                         <input  ng-model="loginData.user_type" ng-required="true" type="radio" name="userType" id="none" value="other">
-                        <label ng-required="true" for="none" style="font-size: 20px" checked="checked">&nbsp;Other</label><br>
+                        <label ng-required="true" for="none" style="font-size: 20px" checked="checked">&nbsp;{{'OTHER' | translate }}</label><br>
 
                     </div>
                 </div>
