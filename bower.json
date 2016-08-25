@@ -6,7 +6,8 @@
     "ngCordova": "^0.1.27-alpha"
   },
   "dependencies": {
-    "angular-translate": "~2.11.1"
+    "angular-translate": "~2.11.1",
+    "angular-translate-loader-static-files": "^2.11.1"
   },
   "resolutions": {
     "angular": ">=1.4.x"
