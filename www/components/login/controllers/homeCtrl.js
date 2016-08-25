@@ -5,10 +5,17 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService) {
 
     // Form data for the login modal
     $scope.loginData = {};
-    var languageData=utilityService.fetchLanguageStrings(languages.ENGLISH);
+    var languageData={};
+    //var selectedLanguage=languages.ENGLISH;
+    //utilityService.fetchLanguageStrings(selectedLanguage).then(function(response){
+    //    languageData=response.value;
+    //    console.log("Language JSON data");
+    //    console.log(languageData);
+    //    $translateProvider.translations(selectedLanguage,languageData);
+    //    $translateProvider.preferredLanguage(selectedLanguage);
+    //});
 
-    console.log("Language JSON data");
-    console.log(languageData);
+
     $rootScope.bgUrl="assets/img/logo_small.png";
     $rootScope.bgLargeUrl="assets/img/logo_big.png";
     $scope.openRegistration= function () {

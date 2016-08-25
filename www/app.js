@@ -1,12 +1,6 @@
-// Ionic Starter App
+var app=angular.module('app', ['ionic','ngSanitize', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting']) ;
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in menuController.js
-var app=angular.module('app', ['ionic', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting']) ;
-
-app.run(function($ionicPlatform,EventService) {
+app.run(function($ionicPlatform,EventService,$http) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -25,14 +19,25 @@ app.run(function($ionicPlatform,EventService) {
 
 .config(function($stateProvider, $urlRouterProvider,$translateProvider,$httpProvider) {
 
-
-    $translateProvider.translations('en', {
-        TITLE: 'Hello'
-    });
-    $translateProvider.translations('de', {
-        TITLE: 'Hallo'
-    });
-    $translateProvider.preferredLanguage('en');
+        //angular.forEach(languages,function(curLang){
+        //    var req={
+        //        url:'assets/locale/'+curLang+".json",
+        //        method:HttpRequestType.GET
+        //    };
+        //    $http(req).then(function(response){
+        //        console.log("response config data");
+        //        console.log(response);
+        //        //$translateProvider.translations(curLang,response);
+        //        //$translateProvider.preferredLanguage(selectedLanguage);
+        //    }).catch(function(error) {
+        //    });
+        //});
+        $translateProvider.useStaticFilesLoader({
+            prefix: 'assets/locale/locale-',
+            suffix: '.json'
+        });
+        $translateProvider.useSanitizeValueStrategy('escape');
+        $translateProvider.preferredLanguage('en');
     $stateProvider
       .state('app', {
         url: '/app',
