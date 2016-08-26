@@ -18,26 +18,13 @@ app.run(function($ionicPlatform,EventService,$http) {
 })
 
 .config(function($stateProvider, $urlRouterProvider,$translateProvider,$httpProvider) {
-
-        //angular.forEach(languages,function(curLang){
-        //    var req={
-        //        url:'assets/locale/'+curLang+".json",
-        //        method:HttpRequestType.GET
-        //    };
-        //    $http(req).then(function(response){
-        //        console.log("response config data");
-        //        console.log(response);
-        //        //$translateProvider.translations(curLang,response);
-        //        //$translateProvider.preferredLanguage(selectedLanguage);
-        //    }).catch(function(error) {
-        //    });
-        //});
         $translateProvider.useStaticFilesLoader({
             prefix: 'assets/locale/locale-',
             suffix: '.json'
         });
         $translateProvider.useSanitizeValueStrategy('escape');
         $translateProvider.preferredLanguage('en');
+
     $stateProvider
       .state('app', {
         url: '/app',
@@ -89,7 +76,31 @@ app.run(function($ionicPlatform,EventService,$http) {
                   controller: 'WorkPlacesCtrl'
               }
           }
-      });
+      }).state('app.workEquipments', {
+            url: '/setting/workEquipments',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/setting/views/workEquipments.html',
+                    controller: 'WorkEquipmentsCtrl'
+                }
+            }
+        }).state('app.manageFamily', {
+            url: '/setting/manageFamily',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/setting/views/manageFamily.html',
+                    controller: 'ManageFamilyCtrl'
+                }
+            }
+        }).state('app.manageGroups', {
+            url: '/setting/manageGroups',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/setting/views/manageGroups.html',
+                    controller: 'ManageGroupsCtrl'
+                }
+            }
+        });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('home');
     $httpProvider.interceptors.push(function ($rootScope, $q) {

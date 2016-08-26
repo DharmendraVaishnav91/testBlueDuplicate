@@ -11,14 +11,21 @@ userSetting.controller('UserSettingCtrl', function($scope,$state,$ionicModal) {
     }).then(function (modal) {
         $scope.editAccountModal= modal;
     });
+
     $scope.goToEditAccount= function(){
        $scope.editAccountModal.show();
     };
+
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
     };
+
     $scope.goToWorkPlaces=function(){
       $state.go('app.workPlaces');
+    };
+
+    $scope.goToThings=function(){
+        $state.go('app.workEquipments');
     };
 
 });

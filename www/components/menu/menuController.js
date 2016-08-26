@@ -10,5 +10,8 @@ angular.module('app.menu', [])
         $scope.openSetting=function(){
             $state.go('app.setting');
         };
+        $scope.goToInvite= function(){
+
+        };
     });
 
