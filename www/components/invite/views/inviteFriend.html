@@ -1,0 +1,45 @@
+<style type="text/css">
+    input[type="checkbox"]{
+        width: 18px;
+        height: 18px;
+    }
+    .inline-field input,
+    .inline-field label {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+    select {
+        display: inline-block;
+        height: 40px !important;
+        outline: none;
+        color: white;
+        border:none;
+        border-radius: 4px;
+        background: rgba(97,137,197,.7);
+        font-size: 15px !important;
+    }
+    option{
+        background: white;
+        color:black;
+    }
+</style>
+<ion-view  view-title="Invite A Friend" >
+    <ion-content scroll="false" style="background-color:#4E5C6E " >
+        <div >
+            <div class=" no-padding bg-transparent">
+                <div class="row">
+                    <div class="col "  style="text-align: center">
+                    <select style="width: 80%"  ng-model="data.selectedCountry" ng-required="true"  ng-options="obj.CountryName+'('+obj.CountryCode+')' for obj in countryCodeList">
+                    </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col center" style="margin-top:10px;">
+                      <input type="number" class="input-txt" placeholder="Mobile" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
