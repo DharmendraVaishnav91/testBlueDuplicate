@@ -108,6 +108,14 @@ app.run(function($ionicPlatform,EventService) {
                     controller: 'InviteFriendCtrl'
                 }
             }
+        }).state('app.aboutInfo', {
+            url: '/menu/aboutInfo',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/menu/views/aboutInfo.html',
+                    controller: 'AboutInfoCtrl'
+                }
+            }
         }).state('app.manageGroups', {
             url: '/setting/manageGroups',
             views: {
