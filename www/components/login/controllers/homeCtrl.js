@@ -1,9 +1,11 @@
 /**
  * Created by dharmendra on 9/8/16.
  */
-app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService) {
+app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window) {
 
     // Form data for the login modal
+    $rootScope.deviceHeight = $window.innerHeight;
+    $rootScope.deviceWidth = $window.innerWidth;
     $scope.loginData = {};
     var languageData={};
     //var selectedLanguage=languages.ENGLISH;

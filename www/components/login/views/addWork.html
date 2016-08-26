@@ -1,89 +1,140 @@
 <ion-modal-view  >
-    <ion-content has-bouncing="true" class="blueno-bg">
+    <ion-content has-bouncing="true" class="blueno-bg has-footer" >
             <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-            <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-                <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
+            <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
+                <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
                 <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
                     <i class="ion-monitor"></i>&nbsp;{{'ADD_WORK' | translate }}
                 </h3>
             </div>
             <form name="addWorkForm">
-                <div class="row">
-                    <div class="col center" >
-                        <select ng-model="data.type" style="width: 80%;" ng-change="workTypeChange()">
-                            <option value="" disabled selected >{{'WORK_PLACE_TYPE' | translate }}</option>
-                            <option value="Residence">{{'RESIDENCE' | translate }}</option>
-                            <option value="Office">{{'OFFICE' | translate }}</option>
-                            <option value="Farm (non-residential)">{{'FARM_NON_RESIDENT' | translate }}</option>
-                            <option value="Farm (residential)" >{{'FARM_RESIDENT' | translate }}</option>
-                            <option value="Farm (other)">{{'FARM_OTHER' | translate }}</option>
-                            <option value="Inventory/Transportation Site">{{'INVENTORY' | translate }}</option>
-                            <option value="Dock">{{'DOCK' | translate }}</option>
-                            <option value="Fishery">{{'FISHERY' | translate }}</option>
-                            <option value="Processing Facility">{{'PROCESSING_FACILITY' | translate }}</option>
-                            <option value="Other/Not Specified">{{'OTHER' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row" ng-if="enableCrop">
-                    <div class="col center" >
-                        <select style="width: 80%;" ng-model="data.crop" ng-required="true"  ng-options="obj.H3Description for obj in productList track by obj.H3Code">
-                        </select>
-                    </div>
-                </div>
-                <div class="row" ng-if="enableCrop">
-                    <div class="col center" >
-                      <input type="text" class="input-txt" placeholder="hectare" ng-model="work.hectare" ng-required="true" name="hectares" style="width: 80%"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col center" >
-                        <select style="width: 80%;" ng-model="data.relationship">
-                            <option value="" disabled selected >{{'RELATIONSHIP' | translate }}</option>
-                            <option value="Worker">{{'WORKER' | translate }}</option>
-                            <option value="Owner">{{'OWNER' | translate }}</option>
-                            <option value="Lessor">{{'LESSOR' | translate }}</option>
-                        </select>
-                    </div>
-                </div>
+                <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
+    overflow: scroll;
+    width: 100%;
+    padding: 0;">
+                <!--Work place type-->
+                <label class="item item-input item-stacked-label no-border lebel-padding">
+                    <span class="input-label label-text "  style="color:white">{{'WORK_PLACE_TYPE' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
 
-                <div class="row">
-                    <div class="col center" >
-                        <input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="work.address"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col center" >
-                        <input type="text" ng-required="true" placeholder="City/Town" ng-model="work.city" class="input-txt"  />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col center" >
-                        <select style="width: 80%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.workCountry)">
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col center" >
-                        <select style="width: 80%" ng-model="data.workState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">
-                        </select>
-                    </div>
-                </div>
+                    <select ng-model="data.type" style="width: 100%;" ng-change="workTypeChange()">
+                        <option value="" disabled selected >{{'WORK_PLACE_TYPE' | translate }}</option>
+                        <option value="Residence">{{'RESIDENCE' | translate }}</option>
+                        <option value="Office">{{'OFFICE' | translate }}</option>
+                        <option value="Farm (non-residential)">{{'FARM_NON_RESIDENT' | translate }}</option>
+                        <option value="Farm (residential)" >{{'FARM_RESIDENT' | translate }}</option>
+                        <option value="Farm (other)">{{'FARM_OTHER' | translate }}</option>
+                        <option value="Inventory/Transportation Site">{{'INVENTORY' | translate }}</option>
+                        <option value="Dock">{{'DOCK' | translate }}</option>
+                        <option value="Fishery">{{'FISHERY' | translate }}</option>
+                        <option value="Processing Facility">{{'PROCESSING_FACILITY' | translate }}</option>
+                        <option value="Other/Not Specified">{{'OTHER' | translate }}</option>
+                    </select>
+                </label>
 
 
-                <div class="row">
-                    <div class="col col-center center" >
-                        <button type="submit" ng-disabled="addWorkForm.$invalid" class="button lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToThing()" >
-                            <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
-                        </button>
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="enableCrop">
+                    <span class="input-label label-text "  style="color:white">{{'CROP' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                        <select style="width: 100%;" ng-model="data.crop" ng-required="true"  ng-options="obj.H3Description for obj in productList track by obj.H3Code">
+                        </select>
+                </label>
+
+                <!--Hectare-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="enableCrop">
+                    <span class="input-label label-text "  style="color:white">{{'HECTARE' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <input type="text" class="edit-input-txt" placeholder="hectare" ng-model="work.hectare" ng-required="true" name="hectares" />
+
+                </label>
+
+                <!--Relationship-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                    <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <select style="width: 100%;" ng-model="data.relationship">
+                        <option value="Worker">{{'WORKER' | translate }}</option>
+                        <option value="Owner">{{'OWNER' | translate }}</option>
+                        <option value="Lessor">{{'LESSOR' | translate }}</option>
+                    </select>
+                </label>
+
+                <!--Address-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                    <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <input type="text" ng-required="true" class="edit-input-txt" placeholder="Address" ng-model="work.address"/>
+                </label>
+
+                <!--CIty-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                    <span class="input-label label-text "  style="color:white">{{'City' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <input type="text" ng-required="true" placeholder="City/Town" ng-model="work.city" class="edit-input-txt"  />
+                </label>
+
+                <!--Country-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                    <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <select style="width: 100%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.workCountry)">
+                    </select>
+                </label>
+                <!--State-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                    <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <select style="width: 100%" ng-model="data.workState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">
+                    </select>
+
+                </label>
+
+
+                <!--<div class="row">-->
+                    <!--<div class="col col-center center" >-->
+                        <!--<button type="submit" ng-disabled="addWorkForm.$invalid" class="button lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToThing()" >-->
+                            <!--<i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</div>-->
                     </div>
-                </div>
             </form>
-            <div class="row no-padding" >
-                <div class="col col-center center no-padding" >
-                    <span style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToThing()">{{'SKIP' | translate }}</span>
-                </div>
-            </div>
+            <!--<div class="row no-padding" >-->
+                <!--<div class="col col-center center no-padding" >-->
+                    <!--<span style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToThing()">{{'SKIP' | translate }}</span>-->
+                <!--</div>-->
+            <!--</div>-->
+
     </ion-content>
+    <ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
+        <div  class="button-bar">
+
+            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToThing()" style="font-size: 20px;">
+                {{'Skip' | translate }} &nbsp;
+            </button>
+            <button ng-disabled="addWorkForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToWork()" style="font-size: 20px;">
+                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            </button>
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
+            <!--<{{'Next' | translate }} <i class="ion-arrow-right-b"></i>-->
+            <!--</button>-->
+        </div>
+    </ion-footer-bar>
+
 </ion-modal-view>

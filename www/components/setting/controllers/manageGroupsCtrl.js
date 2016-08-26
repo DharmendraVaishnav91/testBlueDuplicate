@@ -4,12 +4,15 @@
 userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal) {
 
 
-    $ionicModal.fromTemplateUrl('components/setting/views/editAccount.html', {
+    $ionicModal.fromTemplateUrl('components/login/views/addGroup.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {
-        $scope.editAccountModal= modal;
+        $scope.editGroup= modal;
     });
+    $scope.showEditGroup= function () {
+      $scope.editGroup.show();
+    };
     $scope.goToEditAccount= function(){
         $scope.editAccountModal.show();
     };

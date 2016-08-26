@@ -4,12 +4,16 @@
 userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal) {
 
 
-    $ionicModal.fromTemplateUrl('components/setting/views/editAccount.html', {
+    $ionicModal.fromTemplateUrl('components/login/views/addWork.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {
-        $scope.editAccountModal= modal;
+        $scope.editWork= modal;
     });
+
+    $scope.showEditWork= function(){
+      $scope.editWork.show();
+    };
     $scope.goToEditAccount= function(){
         $scope.editAccountModal.show();
     };

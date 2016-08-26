@@ -27,5 +27,10 @@ userSetting.controller('UserSettingCtrl', function($scope,$state,$ionicModal) {
     $scope.goToThings=function(){
         $state.go('app.workEquipments');
     };
-
+    $scope.goToManageFamily=function(){
+        $state.go('app.manageFamily');
+    };
+    $scope.goToManageGroup=function(){
+        $state.go('app.manageGroups');
+    };
 });

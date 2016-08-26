@@ -1,14 +1,8 @@
-<style>
-    .sel-white{
-        color:white
-    }
-
-</style>
 <ion-modal-view  >
     <ion-content has-bouncing="true" class="blueno-bg">
-            <form name="basicInfoForm">
+
             <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-            <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
+            <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
                 <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
                 <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;"> {{'CREATE_AN_PROFILE' | translate }}</h3>
@@ -16,22 +10,60 @@
             <div class="row">
                 <div class="col center" >
                     <img ng-src="{{addPicIcon}}" style="height: 90px;width: 90px;" ng-click="changeImage()"/>
-                    <input ng-model="loginData.profile.given_name" type="text" ng-required="true" class="input-txt" placeholder="First/Given Name" />
-                    <input ng-model="loginData.profile.family_name" ng-required="true" type="text" placeholder="Last/Given Name" class="input-txt" style="margin-top: 10px;" />
-                        <select style="margin-top: 10px;width: 80%" ng-class="{'sel-white':gender!=''}" ng-model="data.gender" ng-required="true">
-                            <option value="" disabled selected >{{'GENDER' | translate }}</option>
-                            <option value="male" >{{'MALE' | translate }}</option>
-                            <option value="female">{{'FEMALE' | translate }}</option>
-                        </select>
+                    <!--<input ng-model="loginData.profile.given_name" type="text" ng-required="true" class="input-txt" placeholder="First/Given Name" />-->
+                    <!--<input ng-model="loginData.profile.family_name" ng-required="true" type="text" placeholder="Last/Given Name" class="input-txt" style="margin-top: 10px;" />-->
+                        <!--<select style="margin-top: 10px;width: 80%" ng-class="{'sel-white':gender!=''}" ng-model="data.gender" ng-required="true">-->
+                            <!--<option value="" disabled selected >{{'GENDER' | translate }}</option>-->
+                            <!--<option value="male" >{{'MALE' | translate }}</option>-->
+                            <!--<option value="female">{{'FEMALE' | translate }}</option>-->
+                        <!--</select>-->
                 </div>
             </div>
-            <div class="row" style="margin-top:20px">
-                <div class="col col-center center" >
-                    <button  ng-disabled="basicInfoForm.$invalid" type="submit" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToSelectUserType()" >
-                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
-                    </button>
-                </div>
-            </div>
+        <form name="basicInfoForm">
+                <div class="list" ng-style="{'height':(deviceHeight-210)+'px'}" style="
+    overflow: scroll;
+    width: 100%;
+    padding: 0;">
+            <label class="item item-input item-stacked-label no-border lebel-padding">
+                <span class="input-label label-text "  style="color:white">{{'FIRST_NAME' | translate }}
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                    <input class="edit-input-txt" ng-model="loginData.profile.given_name" name="text" ng-required="true"  type="text"/>
+            </label>
+
+                <label class="item item-input item-stacked-label no-border lebel-padding">
+                <span class="input-label label-text "  style="color:white">{{'LAST_NAME' | translate }}
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                    <input ng-model="loginData.profile.family_name" ng-required="true" type="text" class="edit-input-txt"  />
+                </label>
+
+                <label class="item item-input item-stacked-label no-border lebel-padding" style="padding-right:16px;">
+                    <span class="input-label label-text "  style="color:white">{{'GENDER' | translate }}</span>
+                    <select style="width: 100%"  ng-model="data.gender" ng-required="true">
+                        <option value="male" >{{'MALE' | translate }}</option>
+                        <option value="female">{{'FEMALE' | translate }}</option>
+                    </select>
+                </label>
+
+            <!--<div class="row" style="margin-top:20px">-->
+                <!--<div class="col col-center center" >-->
+                    <!--<button  ng-disabled="basicInfoForm.$invalid" type="submit" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToSelectUserType()" >-->
+                        <!--<i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+                    </div>
            </form>
     </ion-content>
+    <ion-footer-bar ng-disabled="basicInfoForm.$invalid" class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
+        <div  class="button-bar">
+            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToSelectUserType()" style="font-size: 20px;">
+                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            </button>
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
+            <!--<{{'Next' | translate }} <i class="ion-arrow-right-b"></i>-->
+            <!--</button>-->
+        </div>
+    </ion-footer-bar>
 </ion-modal-view>

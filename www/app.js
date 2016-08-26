@@ -1,6 +1,6 @@
 var app=angular.module('app', ['ionic','ngSanitize', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting']) ;
 
-app.run(function($ionicPlatform,EventService,$http) {
+app.run(function($ionicPlatform,EventService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

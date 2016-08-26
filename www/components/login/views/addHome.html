@@ -1,48 +1,100 @@
 <ion-modal-view  >
     <ion-content has-bouncing="true"  class="blueno-bg">
             <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-            <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-                <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
+            <div class="center" style="width: inherit;height: auto;padding-top:15px" >
+                <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
                 <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
                     <i class="ion-home"></i>&nbsp; {{'ADD_HOME' | translate }}
                 </h3>
             </div>
             <form name="addressForm">
-                <div class="row">
-                    <div class="col center" >
-                        <input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="loginData.home.address"/>
-                     </div>
-                </div>
-                <div class="row">
-                    <div class="col center" >
-                        <input type="text" ng-required="true" placeholder="City/Town" ng-model="loginData.home.city" class="input-txt"  />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col center" >
-                        <!--<input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" />-->
-                        <select style="width: 80%" ng-model="data.homeCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.homeCountry)">
-                        </select>
-                    </div>
-                </div>
+                <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
+    overflow: scroll;
+    width: 100%;
+    padding: 0;">
+                <!--Address-->
 
-                <div class="row">
-                    <div class="col center" >
-                        <select style="width: 80%" ng-model="data.state" ng-required="true"  ng-options="obj.SubdivisionName for obj in subDivList">
-                        </select>
-                    </div>
-                </div>
+                <!--<div class="row">-->
+                    <!--<div class="col center" >-->
+                        <!--<input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="loginData.home.address"/>-->
+                     <!--</div>-->
+                <!--</div>-->
+                <label class="item item-input item-stacked-label no-border lebel-padding">
+                <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                    <!--<input type="text" ng-required="true" class="edit-input-txt"  ng-model="loginData.user.mobile" />-->
+                <input class="edit-input-txt" ng-model="loginData.home.address" name="fistName" ng-required="true"  type="text"/>
+                </label>
+
+                <!--City-->
+                <!--<div class="row">-->
+                    <!--<div class="col center" >-->
+                        <!--<input type="text" ng-required="true" placeholder="City/Town" ng-model="loginData.home.city" class="input-txt"  />-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding">
+                    <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                        <!--<input type="text" ng-required="true" class="edit-input-txt"  ng-model="loginData.user.mobile" />-->
+                        <input class="edit-input-txt" ng-model="loginData.home.city" name="text" ng-required="true"  type="text"/>
+                </label>
+
+                <label class="item item-input item-stacked-label no-border lebel-padding">
+                    <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <!--<input type="text" ng-required="true" class="edit-input-txt"  ng-model="loginData.user.mobile" />-->
+                    <select style="width: 100%" ng-model="data.homeCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.homeCountry)">
+                    </select>
+                </label>
+
+                <!--<div class="row">-->
+                    <!--<div class="col center" >-->
+                        <!--&lt;!&ndash;<input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" />&ndash;&gt;-->
+                        <!--<select style="width: 80%" ng-model="data.homeCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.homeCountry)">-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <label class="item item-input item-stacked-label no-border lebel-padding">
+                    <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    </span>
+                    <!--<input type="text" ng-required="true" class="edit-input-txt"  ng-model="loginData.user.mobile" />-->
+                    <select style="width: 100%" ng-model="data.state" ng-required="true"  ng-options="obj.SubdivisionName for obj in subDivList"></select>
+                </label>
+
+                <!--<div class="row">-->
+                    <!--<div class="col center" >-->
+                        <!--<select style="width: 80%" ng-model="data.state" ng-required="true"  ng-options="obj.SubdivisionName for obj in subDivList">-->
+                        <!--</select>-->
+                    <!--</div>-->
+                <!--</div>-->
 
 
                         <!--<input type="text" ng-required="true" placeholder="State/Province" class="input-txt" style="margin-top: 10px;" />-->
-                <div class="row" style="margin-top:20px">
-                    <div class="col col-center center" >
-                        <button type="submit" ng-disabled="addressForm.$invalid" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToWork()" >
-                            <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
-                        </button>
+                <!--<div class="row" style="margin-top:20px">-->
+                    <!--<div class="col col-center center" >-->
+                        <!--<button type="submit" ng-disabled="addressForm.$invalid" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToWork()" >-->
+                            <!--<i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</div>-->
                     </div>
-                </div>
             </form>
     </ion-content>
+    <ion-footer-bar ng-disabled="addressForm.$invalid" class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
+        <div  class="button-bar">
+            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToWork()" style="font-size: 20px;">
+                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            </button>
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
+            <!--<{{'Next' | translate }} <i class="ion-arrow-right-b"></i>-->
+            <!--</button>-->
+        </div>
+    </ion-footer-bar>
 </ion-modal-view>

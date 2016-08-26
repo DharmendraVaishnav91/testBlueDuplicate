@@ -14,14 +14,18 @@
 <ion-modal-view  >
     <ion-content has-bouncing="true"  class="blueno-bg">
         <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-        <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-            <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
+        <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
+            <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
             <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
             <h3 style="color: #ffffff;">{{'SELECT_USER_TYPE' | translate }}</h3>
         </div>
         <form name="selectUserTypeForm">
+            <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
+    overflow: scroll;
+    width: 100%;
+    padding: 0;">
             <div class="row">
-                <div class="col" style="padding-left: 118px;color: white;">
+                <div class="col" style="padding-left: 110px;color: white;">
                     <div class="inline-field">
                         <input ng-model="loginData.user_type" ng-required="true" type="radio" id="fisher" name="userType" value="Fisher">
                         <label for="fisher" style="font-size: 20px">&nbsp;{{'FISHER' | translate }}</label> <br>
@@ -35,13 +39,24 @@
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top:20px">
-                <div class="col col-center center" >
-                    <button type="submit" ng-disabled="selectUserTypeForm.$invalid" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToAddHome()" >
-                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
-                    </button>
+            <!--<div class="row" style="margin-top:20px">-->
+                <!--<div class="col col-center center" >-->
+                    <!--<button type="submit" ng-disabled="selectUserTypeForm.$invalid" class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToAddHome()" >-->
+                        <!--<i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
                 </div>
-            </div>
         </form>
     </ion-content>
+    <ion-footer-bar ng-disabled="selectUserTypeForm.$invalid" class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
+        <div  class="button-bar">
+            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToAddHome()" style="font-size: 20px;">
+                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            </button>
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
+            <!--<{{'Next' | translate }} <i class="ion-arrow-right-b"></i>-->
+            <!--</button>-->
+        </div>
+    </ion-footer-bar>
 </ion-modal-view>
