@@ -1,4 +1,4 @@
-var app=angular.module('app', ['ionic','ngSanitize', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting']) ;
+var app=angular.module('app', ['ionic','ngSanitize', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting','leaflet-directive']) ;
 
 app.run(function($ionicPlatform,EventService) {
   $ionicPlatform.ready(function() {
