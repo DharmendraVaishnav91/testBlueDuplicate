@@ -29,7 +29,7 @@ app.run(function($ionicPlatform,EventService,$http) {
       .state('app', {
         url: '/app',
        abstract: true,
-       templateUrl: 'components/menu/menu.html',
+       templateUrl: 'components/menu/views/menu.html',
        controller: 'MenuCtrl'
       })
       .state('home', {

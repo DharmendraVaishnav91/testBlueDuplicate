@@ -13,5 +13,9 @@ angular.module('app.menu', [])
         $scope.goToInvite= function(){
             $state.go('app.invite');
         };
+        $scope.showAbout= function(){
+           // $state.go('app.invite');
+        };
+
     });
 
