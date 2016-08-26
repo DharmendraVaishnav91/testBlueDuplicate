@@ -11,7 +11,7 @@ angular.module('app.menu', [])
             $state.go('app.setting');
         };
         $scope.goToInvite= function(){
-
+            $state.go('app.invite');
         };
     });
 

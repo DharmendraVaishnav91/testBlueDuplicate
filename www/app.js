@@ -92,6 +92,22 @@ app.run(function($ionicPlatform,EventService,$http) {
                     controller: 'ManageFamilyCtrl'
                 }
             }
+        }).state('app.invite', {
+            url: '/invite/invite',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/invite/views/invite.html',
+                    controller: 'InviteCtrl'
+                }
+            }
+        }).state('app.inviteFriend', {
+            url: '/invite/inviteFriend',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/invite/views/inviteFriend.html',
+                    controller: 'InviteFriendCtrl'
+                }
+            }
         }).state('app.manageGroups', {
             url: '/setting/manageGroups',
             views: {
