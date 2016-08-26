@@ -14,7 +14,7 @@ angular.module('app.menu', [])
             $state.go('app.invite');
         };
         $scope.showAbout= function(){
-           // $state.go('app.invite');
+            $state.go('app.aboutInfo');
         };
 
     });
