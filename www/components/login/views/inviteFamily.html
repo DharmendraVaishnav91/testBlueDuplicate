@@ -1,35 +1,62 @@
+
 <ion-modal-view  >
-    <ion-content has-bouncing="true" class="blueno-bg>
-        <
-            <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-            <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
-                <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
+    <ion-content has-bouncing="false" class="blueno-bg">
+        
+            <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
+                <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
                 <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
-                    <i class="ion-person-stalker"></i>&nbsp;{{'INVITE_FAMILY' | translate }}
+                    &nbsp;{{'INVITE_FAMILY' | translate }}
+                    
                 </h3>
+
             </div>
-            <div class="row">
-                <div class="col center" style="margin-top:40px;">
-                    <input type="number" placeholder="Type a Mobile Number" class="input-txt" style="margin-top: 10px;" />
-                    <select style="margin-top: 10px;">
-                        <option value="" disabled selected>{{'RELATIONSHIP' | translate }}</option>
-                    </select>
-
-
+            <form name="addWorkForm">
+                <div class="row">
+                      <div class="col center" style="margin-top:70px;">
+                          <input type="text" class="input-txt" placeholder="{{'TYPE_IN_NAME_OR_NUMBER' | translate }}" />
+                        </div>
                 </div>
-            </div>
-            <div class="row" style="margin-top:20px">
-                <div class="col col-center center" >
-                    <div class="button  lgt-blue-btn" style="height: 40px;width:130px;"  >
-                        <i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>
+                <div class="row">
+                      <div class="col" style="margin-top:70px;">
+                        <label class="item item-input item-stacked-label no-border lebel-padding" style="padding-right:16px;">
+                            <span class="input-label label-text "  style="color:white"><i class="ion-network"></i>{{'RELATIONSHIP' | translate }}</span>
+                            <select style="width: 100%;" ng-model="data.relationship">
+                                <option value="Worker">{{'MOTHER' | translate }}</option>
+                                <option value="Owner">{{'FATHER' | translate }}</option>
+                                <option value="Uncle">{{'UNCLE' | translate }}</option>
+                                <option value="Aunt">{{'AUNT' | translate }}</option>
+                                <option value="Nephew">{{'NEPHEW' | translate }}</option>
+                                <option value="Cousin">{{'COUSIN' | translate }}</option>
+                                <option value="Wife">{{'WIFE' | translate }}</option>
+                                <option value="Husband">{{'HUSBAND' | translate }}</option>
+                            </select>
+                        </label>
+                        </div>
+                </div>
+                <div class="row">
+                      <div class="col center">
+                         <span class="input-label label-text "  style="color:white; min-width: 350px; ">{{'INVITE_FROM_CONTACT' | translate }}</span>
+                        </div>
+                </div>
+                <div class="row" style="margin-top: 40px;">
+                    <div class="col center" >
+                        <button type="submit" ng-disabled="addWorkForm.$invalid" class="button lgt-blue-btn" style="height: 30px; border-radius: 10px;" ng-click="goToThing()" >
+                            <i class=" ion-gear-b" style="font-size: 25px;line-height:47px"><span style="font-size: 20px; ">{{'OPEN_SETTINGS' | translate }}</span></i>
+                        </button>
                     </div>
                 </div>
-            </div>
-            <div class="row" style="">
-                <div class="col col-center center" >
-                    <a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">{{'SKIP' | translate }}</a>
-                </div>
-            </div>
+                 </div>
+            </form> 
     </ion-content>
-</ion-modal-view>
+</ion-modal-view><!-- 
+<select style="width: 100%;" ng-model="data.relationship">
+                        <option value="Worker">{{'MOTHER' | translate }}</option>
+                        <option value="Owner">{{'FATHER' | translate }}</option>
+                        <option value="Uncle">{{'UNCLE' | translate }}</option>
+                        <option value="Aunt">{{'AUNT' | translate }}</option>
+                        <option value="Nephew">{{'NEPHEW' | translate }}</option>
+                        <option value="Cousin">{{'COUSIN' | translate }}</option>
+                        <option value="Wife">{{'WIFE' | translate }}</option>
+                        <option value="Husband">{{'HUSBAND' | translate }}</option>
+                    </select> -->
