@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 9/8/16.
  */
-app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window) {
+app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage) {
 
     // Form data for the login modal
     $rootScope.deviceHeight = $window.innerHeight;
@@ -20,6 +20,18 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
 
     $rootScope.bgUrl="assets/img/logo_small.png";
     $rootScope.bgLargeUrl="assets/img/logo_big.png";
+
+    var validateUser=function(){
+        //$localStorage[STORAGE.LOGIN_KEY]=null;;
+        var user=loginService.validateLogin();
+        console.log("User details");
+        console.log(user);
+        if(user!=null){
+            $rootScope.user=user;
+            $state.go('app.dashboard');
+        }
+    };
+    validateUser();
     $scope.openRegistration= function () {
         $state.go('regCreateAccount');
     };

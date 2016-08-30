@@ -9,6 +9,8 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="*.ionic.io"/>
+    <access origin="*.openstreetmap.org"/>
     <preference name="webviewbounce" value="false" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="UIWebViewBounce" value="false" />

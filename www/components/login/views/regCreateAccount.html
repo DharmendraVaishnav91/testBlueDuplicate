@@ -26,7 +26,18 @@
                 <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" ng-model="loginData.user.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="number"  placeholder=""/>
+
+                <div class="row no-padding">
+                     <!--<div class="col col-25 no-padding center" >-->
+                         <!--&lt;!&ndash;{{data.selectedCountry.CountryPhoneCode}}&ndash;&gt;-->
+                         <!--<input class="edit-input-txt"  name="countrycode" ng-required="true"  style="font-size:18px;padding: 0px !Important;text-align: center;" type="number"  ng-disabled="true" ng-value="data.selectedCountry.CountryPhoneCode"/>-->
+                     <!--</div>-->
+
+                    <div class="col no-padding" >
+                        <input class="edit-input-txt" ng-model="loginData.user.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="number"  placeholder=""/>
+                    </div>
+                </div>
+
             </label>
             <!--<div class="row">-->
                 <!--<div class="col " style="text-align: center">-->

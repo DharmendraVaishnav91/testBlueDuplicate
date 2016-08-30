@@ -15,6 +15,7 @@
   "BLUENUMBER":"Bluenumber",
   "BLUENUMBER_SMALL":"bluenumber",
   "EMAIL":"Email",
+  "USERNAME":"Email/Mobile",
   "MOBILE":"Mobile",
   "PASSWORD":"Password",
   "FORGOT_PASSWORD":"Forgot Password",
@@ -162,7 +163,7 @@
 
   "CAMERA":"Camera",
   "GALLERY":"Gallery",
-
+  "DASHBOARD":"Dashboard",
   "HELLO_WELCOME":"Hello, Welcome to blue number",
   "THANKS_FOR_SIGNING_UP":"Thanks for signing up!.",
   "GO_TO_LOGIN":"Go to Login",

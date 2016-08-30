@@ -196,7 +196,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
     var createUser = function(){
         loginService.createUser($scope.loginData).then(function(response){
-            $scope.userId=response;
+            //$scope.userId=response;
+            $rootScope.auth_token=response.auth_token;
             $scope.data.workCountry=angular.copy($scope.data.homeCountry);
             $scope.openModal(openModalType.addWork);
         }).catch(function(error){
@@ -210,10 +211,18 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
            console.log(error);
         });
     };
+    var fetchLocation= function () {
+      loginService.fetchAllLocation().then(function(response){
+         $scope.myLocations=response;
+      }).catch(function(error){
+         console.log(error);
+      });
+    };
     var saveWorkData =function(workData){
         loginService.saveWorkData(workData).then(function(response){
             console.log("Work added successfully.");
             //$cordovaToast.showShortBottom("Work added successfully.");
+            fetchLocation();
             $scope.openModal(openModalType.addThing);
         }).catch(function(error){
            console.log(error);
@@ -252,6 +261,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     $scope.goToSelectUserType = function () {
         console.log($scope.data);
         $scope.loginData.profile.gender=$scope.data.gender;
+        $scope.loginData.profile.image=updatedImage;
         console.log($scope.loginData);
         $scope.openModal(openModalType.selectUserType);
     };
@@ -277,6 +287,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
 
         createUser();
         fetchCropList();
+
         //$scope.openModal(openModalType.addWork);
 
     };
@@ -308,13 +319,13 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         }
         works.push(work);
         var workData={
-            auth_token:$scope.userId.auth_token,
             works:works
         };
         console.log("work data");
         console.log(workData);
         $scope.workLocations.push(location1);
         saveWorkData(workData);
+
        //$scope.openModal(openModalType.addThing);
     };
 
@@ -340,12 +351,14 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
             };
 
         }else{
-           thing1.location=JSON.parse($scope.data.equipWhere);
-        }
+           //thing1.location=JSON.parse($scope.data.equipWhere);
+           thing1.location={
+               name:(JSON.parse($scope.data.equipWhere)).LocationID
+           }
+        } ;
 
         things.push(thing1);
         var thingsData={
-            auth_token:$scope.userId.auth_token,
              things:things
         };
         saveThingsData(thingsData);
@@ -379,7 +392,6 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         }
         groups.push(group1);
         var groupsData={
-            auth_token:$scope.userId.auth_token,
             groups:groups
         };
 
@@ -390,10 +402,12 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
 
     $scope.changeImage= function(){
         utilityService.getImage().then(function(src) {
-            updatedImage = src;
-            console.log(updatedImage);
-            var rad = Math.floor(Math.random() * 10000 + 10);
-            $scope.updateImageSrc = updatedImage + "?rd=" + rad;
+            updatedImage = "data:image/jpeg;base64," +src;
+            //console.log(updatedImage);
+            //var rad = Math.floor(Math.random() * 10000 + 10);
+            //$scope.updateImageSrc = updatedImage + "?rd=" + rad;
+            //console.log("Image source");
+            //console.log(updatedImage);
         },function(err) {
             console.log(JSON.stringify(err));
         })
@@ -418,5 +432,5 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
 
 
         $state.go('home');
-    }
+    } ;
 });
