@@ -3,7 +3,7 @@ angular.module('app.menu', [])
     .controller('MenuCtrl', function($scope,$state,loginService,$localStorage,$rootScope) {
 
         var removeUser= function () {
-            $localStorage[STORAGE.LOGIN_KEY]=null;;
+            $localStorage[STORAGE.LOGIN_KEY]=null;
         };
         // Open the login modal
         $scope.logout = function(){

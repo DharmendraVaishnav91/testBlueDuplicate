@@ -21,6 +21,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         user_type:'',
         home:{}
     };
+    $scope.isFromSetting=false;
     $scope.position=null;
     $scope.addPicIcon="assets/img/icon_addProfile.png";
     $rootScope.bgUrl="assets/img/logo_small.png";
@@ -234,6 +235,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     var saveThingsData=function(thingsData){
         loginService.saveThingsData(thingsData).then(function(response){
             $scope.openModal(openModalType.addGroup);
+            fetchLocation();
             console.log("Equipment added successfully.");
             //$cordovaToast.showShortBottom("Equipment added successfully.");
         }).catch(function(error){
@@ -244,6 +246,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     };
     var saveGroupData=function(groupsData){
         loginService.saveGroupsData(groupsData).then(function(response){
+
             $scope.openModal(openModalType.signUpSuccess);
             console.log("Group added successfully.");
             //$cordovaToast.showShortBottom("Group added successfully.")
@@ -355,7 +358,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
            thing1.location={
                name:(JSON.parse($scope.data.equipWhere)).LocationID
            }
-        } ;
+        }
 
         things.push(thing1);
         var thingsData={
@@ -388,7 +391,10 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
             };
 
         }else{
-            group1.location=JSON.parse($scope.data.groupLocation);
+            //group1.location=JSON.parse($scope.data.groupLocation);
+            group1.location={
+                name:(JSON.parse($scope.data.groupLocation)).LocationID
+            }
         }
         groups.push(group1);
         var groupsData={

@@ -80,7 +80,8 @@
   "CONSUMER_PRODUCT":"Consumer Product",
   "EQUIPMENT":"Work Equipment",
 
-
+   "MY_GROUP":"My Groups",
+  "OTHER_GROUP":"Other Groups",
   "ADD_GROUP":"Add Group",
   "WHAT_GROUP":"What companies, organisations or groups relates to your work?",
   "GROUP_TYPE":"Group Type",
@@ -160,11 +161,11 @@
   "NAME":"Name",
   "BLUENUMBER_ORG":"bluenumber.org" ,
 
-
+  "CREATE":"Create",
   "CAMERA":"Camera",
   "GALLERY":"Gallery",
   "DASHBOARD":"Dashboard",
-  "HELLO_WELCOME":"Hello, Welcome to blue number",
+  "HELLO_WELCOME":"Hello, Welcome to Bluenumber",
   "THANKS_FOR_SIGNING_UP":"Thanks for signing up!.",
   "GO_TO_LOGIN":"Go to Login",
   "HELLO_USER":"Hello User",

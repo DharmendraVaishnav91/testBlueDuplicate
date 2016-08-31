@@ -4,12 +4,12 @@
         </button>
     </ion-nav-buttons>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
-    <ion-content class="blueno-bg" scroll="true" >
+    <ion-content class="blueno-bg-full has-footer has-header" scroll="true"  has-footer="true">
 
         <div class="row">
             <div class="col center" >
                  <img src="assets/img/blank-avatar.png" style=" height: 80px;width: 80px;border-radius: 38px;">
-                <p style="color:white;font-size: large;"> {{'USER_NAME' | translate }}</p>
+                <p style="color:white;font-size: large;"> {{user.bluenumber }}</p>
                 <a style=" text-decoration: underline;font-size: larger" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT' | translate }}</a>
             </div>
         </div>
@@ -122,7 +122,7 @@
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >
         <div  class="button-bar">
-            <button type="button" class="button button-clear button-balanced" ng-click="">
+            <button type="button" class="button button-clear button-balanced" ng-click="logout()">
                 <i class=""></i> {{'SIGN_OUT' | translate }}
             </button>
         </div>

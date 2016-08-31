@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; media-src *; img-src *; script-src * 'unsafe-inline' 'unsafe-eval'">-->
@@ -25,10 +24,14 @@
     <!-- your app's js -->
     <script src="components/common/utils/constants.js"></script>
 
-    <link href="assets/leaflet/leaflet.css"
-          rel="stylesheet">
-    <script src="assets/leaflet/leaflet.js"></script>
-    <script src="assets/js/angular-leaflet-directive.min.js"></script>
+    <script src="lib/leaflet/js/leaflet-src.js"></script>
+
+    <script src="lib/angular-simple-logger/js/angular-simple-logger.js"></script>
+    <script src="lib/leaflet.markercluster/js/leaflet.markercluster-src.js"></script>
+    <script src="lib/ui-leaflet/js/ui-leaflet.js"></script>
+    <link href="lib/leaflet/css/leaflet.css"  rel="stylesheet">
+    <link href="lib/leaflet.markercluster/css/MarkerCluster.css"  rel="stylesheet">
+    <link href="lib/leaflet.markercluster/css/MarkerCluster.Default.css"  rel="stylesheet">
     <script src="app.js"></script>
 
     <script src="components/menu/controllers/menuController.js"></script>
@@ -39,7 +42,8 @@
     <script src="components/login/controllers/loginCtrl.js"></script>
     <script src="components/login/controllers/regCreateAccountCtrl.js"></script>
     <script src="components/login/services/loginService.js"></script>
-    <script src="components/dashboard/dashboardCtrl.js"></script>
+    <script src="components/dashboard/controllers/dashboardCtrl.js"></script>
+    <script src="components/dashboard/services/dashboardServices.js"></script>
 
     <!--Setting component-->
     <script src="components/setting/controllers/userSettingCtrl.js"></script>

@@ -15,6 +15,7 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
 
         loginService.doLogin($scope.loginData).then(function (user){
             $rootScope.user=user;
+            $rootScope.auth_token=user.auth_token;
             saveUser(user);
             $state.go('app.dashboard');
         }).catch(function (error) {

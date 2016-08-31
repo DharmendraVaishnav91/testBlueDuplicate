@@ -28,6 +28,8 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
         console.log(user);
         if(user!=null){
             $rootScope.user=user;
+            console.log("Auth token="+user.auth_token)       ;
+            $rootScope.auth_token=user.auth_token ;
             $state.go('app.dashboard');
         }
     };
