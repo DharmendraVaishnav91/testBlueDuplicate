@@ -1,17 +1,17 @@
-<ion-modal-view  >
+<ion-modal-view >
     <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
         <button ng-click="hideEditAccount()" style="color:white" class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
         </button>
         <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >{{'EDIT_ACCOUNT' | translate }}</h1>
+}" >{{'EDIT_ACCOUNT_SMALL' | translate }}</h1>
     </ion-header-bar>
-    <ion-content  style="background-color:#4E5C6E " >
+    <ion-content  style=" " class="has-header has-footer blueno-bg-full" >
 
         <div class="row">
             <div class="col col-25" >
-                <img src="assets/img/blank-avatar.png" style=" height: 80px;width: 80px;border-radius: 38px;">
+                <img ng-src="{{userPersonalInfo.image}}" style=" height: 80px;width: 80px;border-radius: 38px;">
             </div>
             <div class="col col-center" >
                 <button class="button button-positive button-outline">
@@ -22,55 +22,81 @@
         <form name="editAccountForm">
 
             <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'FIRST_NAME' | translate }}
+                <span class="input-label label-text "  style="color:white">{{'GIVEN_NAME_PRIMARY' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   />
+            </label>
+
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">{{'GIVEN_NAME_OTHER' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" name="firstName" ng-required="true"  style="font-size:18px;" type="text"  placeholder=""/>
+                <input class="edit-input-txt" name="firstName"   style="font-size:18px;" type="text"  ng-model="person.givenname2"/>
+            </label>
+
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">{{'FAMILY_NAME_PRIMARY' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input class="edit-input-txt" name="lastName" ng-required="true"  style="font-size:18px;" type="text"  ng-model="person.familyname1"/>
             </label>
             <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'LAST_NAME' | translate }}
+                <span class="input-label label-text "  style="color:white">{{'FAMILY_NAME_OTHER' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" name="lastName" ng-required="true"  style="font-size:18px;" type="text"  placeholder=""/>
+                <input class="edit-input-txt" name="lastName" style="font-size:18px;" type="text"  ng-model="person.familyname2"/>
             </label>
+
             <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'GENDER' | translate }}</span>
-            <select style="width: 100%"  ng-required="true">
+                <span class="input-label label-text "  style="color:white">{{'GENDER' | translate }}
+                 <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+            <select style="width: 100%"  ng-required="true" ng-model="person.gender">
                 <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                 <option value="Male">{{'MALE' | translate }}</option>
                 <option value="Female">{{'FEMALE' | translate }}</option>
             </select>
             </label>
+
             <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'SELECT_COUNTRY' | translate }}</span>
-                <select style="width: 100%"   ng-required="true" >
-                </select>
-            </label>
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
+                <span class="input-label label-text "  style="color:white">{{'OCCUPATION' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" name="mobile" ng-required="true"  style="font-size:18px;" type="number"  placeholder=""/>
+                <input class="edit-input-txt" type="text" name="occupation"   style="font-size:18px;"   ng-model="person.occupation"/>
             </label>
             <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'EMAIL' | translate }}
+                <span class="input-label label-text "  style="color:white">{{'STREET_ADDRESS_ONE' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" name="email" ng-required="true"  style="font-size:18px;" type="email"  placeholder=""/>
+                <input class="edit-input-txt" type="text" name="occupation"   style="font-size:18px;"   ng-model="person.streetaddressone"/>
             </label>
             <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'BLUENUMBER' | translate }}
+                <span class="input-label label-text "  style="color:white">{{'TOWN_VILLAGE_CITY_DEPT' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" name="bluenumber" ng-required="true"  style="font-size:18px;" type="number"  placeholder=""/>
+                <input class="edit-input-txt" type="text" name="occupation"   style="font-size:18px;"   ng-model="person.settlement"/>
             </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input class="edit-input-txt" type="text" name="occupation" ng-required="true"  style="font-size:18px;"   ng-model="person.latitude"/>
+            </label>
+            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input class="edit-input-txt" type="text" name="occupation" ng-required="true"  style="font-size:18px;"   ng-model="person.longitude"/>
+            </label>
+
 
         </form>
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >
         <div  class="button-bar">
-            <button type="submit" class="button button-clear button-balanced" ng-click="">
-                <i class="fa fa-hdd-o"></i> {{'SAVE' | translate }}
+            <button type="submit" class="button button-clear button-balanced" ng-click="updateProfile()">
+                <i class="fa fa-hdd-o"></i> {{'UPDATE_ACTOR' | translate }}
             </button>
             <button  type="button" class="button button-clear button-assertive" ng-click="hideEditAccount()">
                 <i class="fa fa-times"></i> {{'CANCEL' | translate }}
@@ -78,23 +104,4 @@
         </div>
     </ion-footer-bar>
 </ion-modal-view >
-<style type="text/css">
-    .list .item{
-        background: transparent;
-        color: white;
-    }
-    .list .item p{
-        color:white;
-    }
-    select {
-        display: block;
-        height: 40px !important;
-        outline: none;
-        color: white;
-        border:none;
-        border-radius: 4px;
-        background: rgba(97,137,197,.7);
-        font-size: 15px !important;
-    }
 
-</style>

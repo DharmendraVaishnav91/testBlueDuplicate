@@ -4,11 +4,11 @@
         </button>
     </ion-nav-buttons>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
-    <ion-content class="blueno-bg-full has-footer has-header" scroll="true"  has-footer="true">
+    <ion-content class="blueno-bg-full  has-header" scroll="true"  >
 
         <div class="row">
             <div class="col center" >
-                 <img src="assets/img/blank-avatar.png" style=" height: 80px;width: 80px;border-radius: 38px;">
+                 <img ng-src="{{userInfo.image}}" style=" height: 80px;width: 80px;border-radius: 38px;">
                 <p style="color:white;font-size: large;"> {{user.bluenumber }}</p>
                 <a style=" text-decoration: underline;font-size: larger" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT' | translate }}</a>
             </div>
@@ -47,7 +47,7 @@
                             {{'WORK' | translate }}
                             <p class="white-p">{{'ADD_WORK_PLACE' | translate }}</p>
                         </div>
-                        <div class="col col-10" ng-click="goToWorkPlaces()">
+                        <div class="col col-10" ng-click="">
                             <button class="button button-small button-clear " style="color:white">
                                 <i class="ion-ios-arrow-right" style="font-size: 30px"></i>
                             </button>
@@ -120,11 +120,11 @@
         </div>
 
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" >
-        <div  class="button-bar">
-            <button type="button" class="button button-clear button-balanced" ng-click="logout()">
-                <i class=""></i> {{'SIGN_OUT' | translate }}
-            </button>
-        </div>
-    </ion-footer-bar>
+    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
+        <!--<div  class="button-bar">-->
+            <!--<button type="button" class="button button-clear button-balanced" ng-click="logout()">-->
+                <!--<i class=""></i> {{'SIGN_OUT' | translate }}-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
 </ion-view>

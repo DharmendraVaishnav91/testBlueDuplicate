@@ -68,16 +68,243 @@
 
         </div>
 
+         <!--Member list and invitations-->
+        <div class=" card no-padding" ng-if="curSelGroupFullDetail.members.length!=0">
+            <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
+                <div class="row no-padding" >
+                    <div class="col  col-center no-padding" style="color:cornflowerblue">
+                        Member
+                    </div>
+                    <div class="col col-33 col-right no-padding right">
+                        <button class="button button-positive button-small" style="font-size: 18px;">
+                            Invite
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item no-padding" ng-repeat="admin in curSelGroupFullDetail.members">
+                    <div class="row ">
+                        <div class="col col-33">
+                            <div >
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Name</span>
+                            </div>
+
+                        </div>
+                        <div class="col ">
+                            <div class="" style="white-space: normal;font-weight: bold;">
+                                {{admin.GivenNamePrimary+" "+admin.FamilyNamePrimary}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col col-33">
+                            <div >
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Gender</span>
+                            </div>
+
+                        </div>
+                        <div class="col ">
+                            <div class="" style="white-space: normal;font-weight: bold;">
+                                {{admin.Gender}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col col-33">
+                            <div >
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Role</span>
+                            </div>
+
+                        </div>
+                        <div class="col ">
+                            <div class="" style="white-space: normal;font-weight: bold;">
+                                Admin
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col col-33">
+                            <div >
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Nationality</span>
+                            </div>
+
+                        </div>
+                        <div class="col ">
+                            <div class="" style="white-space: normal;font-weight: bold;">
+                                {{admin.NationalID}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col col-33">
+                            <div >
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Occupation</span>
+                            </div>
+
+                        </div>
+                        <div class="col ">
+                            <div class="" style="white-space: normal;font-weight: bold;">
+                                {{admin.Occupation}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+        <div class=" card no-padding">
+            <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
+                <div class="row no-padding" >
+                    <div class="col  col-center no-padding" style="color:cornflowerblue">
+                        Member
+                    </div>
+                    <div class="col col-33 col-right no-padding right">
+                        <button class="button button-positive button-small" style="font-size: 18px;" ng-click="sendGroupInvitations()">
+                            Invite
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item no-padding" ng-repeat="admin in curSelGroupFullDetail.admins">
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Name</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            {{admin.GivenNamePrimary+" "+admin.FamilyNamePrimary}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Gender</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            {{admin.Gender}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Role</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            Admin
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Nationality</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            {{admin.NationalID}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Occupation</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            {{admin.Occupation}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class=" card no-padding" ng-if="curSelGroupFullDetail.invitations.length!=0">
+            <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
+                <div class="row no-padding" >
+                    <div class="col  col-center no-padding" style="color:cornflowerblue">
+                        Invitations
+                    </div>
+                </div>
+            </div>
+
+            <div class="item no-padding" ng-repeat="invite in curSelGroupFullDetail.invitations">
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Name</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            {{invite.user_firstname+" "+invite.user_firstname}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Mobile</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            {{invite.user_phone}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Status</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="" style="white-space: normal;font-weight: bold;">
+                            {{invite.status}}
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="row ">-->
+                    <!--<div class="col col-33">-->
+                        <!--<div >-->
+                            <!--<span class='label-text' style="color:gray">&nbsp;&nbsp;Invited On</span>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                    <!--<div class="col ">-->
+                        <!--<div class="" style="white-space: normal;font-weight: bold;">-->
+                            <!--{{admin.NationalID}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+            </div>
+
+
+        </div>
     </ion-content>
-    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
-        <!--<div  class="button-bar">-->
-            <!--<button type="submit" class="button button-clear button-balanced" ng-click="">-->
-                <!--<i class="fa fa-hdd-o"></i> {{'SAVE' | translate }}-->
-            <!--</button>-->
-            <!--<button  type="button" class="button button-clear button-assertive" ng-click="hideEditAccount()">-->
-                <!--<i class="fa fa-times"></i> {{'CANCEL' | translate }}-->
-            <!--</button>-->
-        <!--</div>-->
-    <!--</ion-footer-bar>-->
+
 </ion-modal-view >
 

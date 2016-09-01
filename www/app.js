@@ -1,6 +1,6 @@
 var app=angular.module('app', ['ionic','ngSanitize', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting','base64','ngStorage','ui-leaflet']) ;
 
-app.run(function($ionicPlatform,EventService) {
+app.run(function($ionicPlatform,EventService,utilityService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -14,6 +14,8 @@ app.run(function($ionicPlatform,EventService) {
       StatusBar.styleDefault();
     }
       EventService.register();
+      utilityService.countryList();
+
   });
 })
 
@@ -54,6 +56,7 @@ app.run(function($ionicPlatform,EventService) {
       })
      .state('app.dashboard', {
         url: '/dashboard',
+            cache:true,
         views: {
             'mainContent': {
                 templateUrl: 'components/dashboard/views/dashboard.html',
@@ -100,7 +103,17 @@ app.run(function($ionicPlatform,EventService) {
                     controller: 'InviteCtrl'
                 }
             }
-        }).state('app.inviteFriend', {
+        })
+        .state('app.bulkInvite', {
+            url: '/bulkInvite',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/invite/views/bulkInvite.html',
+                    controller: 'BulkInviteCtrl'
+                }
+            }
+        })
+        .state('app.inviteFriend', {
             url: '/invite/inviteFriend',
             views: {
                 'mainContent': {

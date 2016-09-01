@@ -1,24 +1,14 @@
 <ion-modal-view  >
     <ion-content has-bouncing="true" class="blueno-bg">
+        <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
+              <h3 style="color: #ffffff;"> {{'CREATE_AN_PROFILE' | translate }}</h3>
+        </div>
+        <div class="row">
+            <div class="col center" >
+                <img ng-src="{{updateImageSrc?updateImageSrc:addPicIcon}}" style="height: 90px;width: 90px;" ng-click="changeImage()"/>
 
-            <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-            <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
-                <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
-                <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
-                <h3 style="color: #ffffff;"> {{'CREATE_AN_PROFILE' | translate }}</h3>
             </div>
-            <div class="row">
-                <div class="col center" >
-                    <img ng-src="{{addPicIcon}}" style="height: 90px;width: 90px;" ng-click="changeImage()"/>
-                    <!--<input ng-model="loginData.profile.given_name" type="text" ng-required="true" class="input-txt" placeholder="First/Given Name" />-->
-                    <!--<input ng-model="loginData.profile.family_name" ng-required="true" type="text" placeholder="Last/Given Name" class="input-txt" style="margin-top: 10px;" />-->
-                        <!--<select style="margin-top: 10px;width: 80%" ng-class="{'sel-white':gender!=''}" ng-model="data.gender" ng-required="true">-->
-                            <!--<option value="" disabled selected >{{'GENDER' | translate }}</option>-->
-                            <!--<option value="male" >{{'MALE' | translate }}</option>-->
-                            <!--<option value="female">{{'FEMALE' | translate }}</option>-->
-                        <!--</select>-->
-                </div>
-            </div>
+        </div>
         <form name="basicInfoForm">
                 <div class="list" ng-style="{'height':(deviceHeight-210)+'px'}" style="
     overflow: scroll;

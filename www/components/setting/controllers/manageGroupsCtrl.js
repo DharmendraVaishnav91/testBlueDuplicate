@@ -1,38 +1,13 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,userSettingService,loginService) {
+userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,userSettingService,loginService,utilityService,$cordovaToast) {
 
     $scope.isFromSetting=true;
     $scope.data={};
-    var onSuccess = function(position) {
-        $scope.position=position;
-        console.log('Latitude: '          + position.coords.latitude          + '\n' +
-            'Longitude: '         + position.coords.longitude         + '\n' +
-            'Altitude: '          + position.coords.altitude          + '\n' +
-            'Accuracy: '          + position.coords.accuracy          + '\n' +
-            'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-            'Heading: '           + position.coords.heading           + '\n' +
-            'Speed: '             + position.coords.speed             + '\n' +
-            'Timestamp: '         + position.timestamp                + '\n');
-    };
+     $scope.invite={};
+    $scope.countryCodeList=utilityService.countryList();
 
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        console.log('code: '    + error.code    + '\n' +
-            'message: ' + error.message + '\n');
-    }
-
-    var posOptions = {timeout: 1000, enableHighAccuracy: false};
-    navigator.geolocation
-        .getCurrentPosition(onSuccess,onError,posOptions);
-
-    loginService.fetchCountryCode().then(function(response){
-        $scope.countryCodeList=response;
-    }).catch(function(error){
-        console.log(error);
-    });
     $ionicModal.fromTemplateUrl('components/login/views/addGroup.html', {
         scope: $scope,
         animation: 'slide-in-right'
@@ -45,8 +20,14 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
     }).then(function (modal) {
         $scope.groupDetail= modal;
     });
+    $ionicModal.fromTemplateUrl('components/setting/views/inviteInGroup.html', {
+        scope: $scope,
+        animation: 'slide-in-right'
+    }).then(function (modal) {
+        $scope.inviteInGroupModal= modal;
+    });
 
-    $scope.fetchGroups= function () {
+    var fetchGroups= function () {
       userSettingService.fetchAllGroups().then(function (response) {
           console.log("User all groups");
           console.log(response);
@@ -55,7 +36,7 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
           console.log(error);
       })
     };
-    $scope.fetchGroups();
+    fetchGroups();
 
     var fetchGroupInfo= function (businessRelId) {
        userSettingService.fetchGroupInfo(businessRelId).then(function (response) {
@@ -70,7 +51,11 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
         var businessRelId=group.business_relationships[0].BusinessRelationshipID;
         fetchGroupInfo(businessRelId);
         $scope.curSelGroup=group;
+        console.log("Current selected group");
+        console.log($scope.curSelGroup);
+
         $scope.groupDetail.show();
+
     };
     $scope.hideGroupDetails = function () {
         $scope.groupDetail.hide();
@@ -83,20 +68,20 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
     };
     var saveGroupData=function(groupsData){
         loginService.saveGroupsData(groupsData).then(function(response){
-            $scope.fetchGroups();
+            fetchGroups();
             $scope.hideGroupAddModal();
             console.log("Group added successfully.");
-            //$cordovaToast.showShortBottom("Group added successfully.")
+            $cordovaToast.showShortBottom("Group added successfully.")
         }).catch(function(error){
             console.log(error);
             //Remove this after demo
+            $cordovaToast.showShortBottom("Something Went wrong while creating group.");
             // $scope.openModal(openModalType.signUpSuccess);
         });
     };
 
     $scope.changeSubdivision=function(selectedCountry){
-        var selectedCountry=selectedCountry.CountryCode;
-        fetchStates(selectedCountry);
+        fetchStates(selectedCountry.CountryCode);
     };
 
     var fetchStates= function (countryCode) {
@@ -119,8 +104,8 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
         if($scope.data.groupLocation=='OtherGroupLocation') {
             group1.location={
                 name:"Other",
-                latitude:$scope.position?$scope.position.coords.latitude:'',
-                longitude:$scope.position?$scope.position.coords.longitude:'',
+                latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
+                longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
                 address:$scope.data.otherGroupAddress,
                 city:$scope.data.otherGroupCity,
                 subdivision_code:$scope.data.otherGroupState?$scope.data.otherGroupState.SubdivisionCode:'',
@@ -140,4 +125,27 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
         console.log(groupsData);
         //$scope.openModal(openModalType.inviteFamily);
     };
+    $scope.sendGroupInvitations= function () {
+        $scope.inviteInGroupModal.show();
+    };
+    $scope.hideInviteModal = function () {
+        $scope.inviteInGroupModal.hide();
+    } ;
+    $scope.sendInviteInGroup = function () {
+        var invitations=[];
+        invitations.push($scope.invite);
+        var inviteData={
+            groupID:$scope.curSelGroup.ActorID,
+            invitations:invitations
+        };
+       userSettingService.sendInviteInGroup(inviteData).then(function (response) {
+          console.log("Response of invite in group ");
+          console.log(response);
+           $scope.showGroupInfo($scope.curSelGroup);
+           $cordovaToast.showLongBottom("Invitation sent successfully.");
+           $scope.hideInviteModal();
+       }).catch(function (error) {
+            console.log(error);
+       });
+    }
 });

@@ -30,6 +30,15 @@ h1{
 .center{
     text-align: center;
 }
+.left{
+    text-align: left;
+}
+.right{
+    text-align: right;
+}
+.wrap-content{
+    white-space: normal;
+}
 .blue-bg{
     background-color: #4E5C6E !important;
 }

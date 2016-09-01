@@ -11,19 +11,17 @@
     }
 </style>
 <ion-content scroll="true" class="blueno-bg">
-      <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+
       <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
           <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
-          <h3 style="color: white;font-weight: bold;margin-top:0">bluenumber</h3>
-          <!--Internationalisation testing-->
-          <!--<h6>{{'TITLE' | translate}}</h6>-->
+          <h3 style="color: white;font-weight: bold;margin-top:0">{{'BLUENUMBER_SMALL'| translate}}</h3>
+
       </div>
     <form name="loginForm">
     <label class="item item-input item-stacked-label no-border lebel-padding">
         <span class="input-label label-text "  style="color:white">{{'USERNAME' | translate }}
             <!--<span class="assertive " style="font-size: inherit">* </span>-->
         </span>
-        <!--<input type="text" ng-required="true" class="edit-input-txt"  ng-model="loginData.user.mobile" />-->
 
         <input type="text" class="edit-input-txt" ng-required="true" name="username" ng-model="loginData.username" placeholder="Email/Mobile" />
     </label>
@@ -31,20 +29,9 @@
         <span class="input-label label-text "  style="color:white">{{'PASSWORD' | translate }}
             <!--<span class="assertive " style="font-size: inherit">* </span>-->
         </span>
-        <!--<input type="text" ng-required="true" class="edit-input-txt"  ng-model="loginData.user.mobile" />-->
+
          <input type="password"  ng-model="loginData.password" ng-required="true" name="password" class="edit-input-txt"  />
     </label>
-
-    <!--<div class="row">-->
-        <!--<div class="col" style="color:white">-->
-
-            <!--<div class="inline-field">-->
-                <!--<input type="checkbox" style="height:20px;width:20px;margin-left:35px;"  id="checkbox">-->
-                <!--<label for="checkbox">&nbsp;{{'REMEMBER_ME' | translate }}</label>-->
-            <!--</div>-->
-              <!--&lt;!&ndash;<input type="checkbox" style="margin-left:35px;font-size: 15px;color: white;display: inline;"><span>&nbsp;Remember me</span>&ndash;&gt;-->
-          <!--</div>-->
-    <!--</div>-->
         <div class="row" style="margin-top:20px">
             <div class="col col-center center" >
                 <button type="submit" ng-disabled="loginForm.$invalid" class="button" style="width:80%;font-size:x-large;color:#0c60ee" ng-click="doLogin()">
@@ -53,7 +40,7 @@
             </div>
         </div>
     </form>
-      <div class="row" style="margin-top: 150px;">
+      <div class="row" style="margin-top: 10px;">
           <div class="col col-center center" >
               <a style="font-size:larger;color: white;text-decoration: underline" ng-click="openRegistration()">{{'SIGN_UP_FOR_BN' | translate }}</a>
           </div>

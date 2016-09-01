@@ -1,0 +1,174 @@
+<ion-modal-view  >
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
+        <button ng-click="hideThingsDetails()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
+        <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
+}" >Equipment Detail</h1>
+    </ion-header-bar>
+    <ion-content   style="background-color:#4E5C6E "  >
+
+
+        <div class=" card no-padding" >
+            <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
+                <div class="row no-padding" >
+                    <div class="col  col-center no-padding" style="color:cornflowerblue">
+                        {{'REGISTERED_ASSET' | translate}}
+                    </div>
+                    <!--<div class="col col-33 col-right no-padding right">-->
+                        <!--<button class="button button-positive button-small" style="font-size: 18px;">-->
+                            <!--Invite-->
+                        <!--</button>-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+            <div class="item no-padding" ng-repeat="curThing in curSelThingFullDetail.asset_details" >
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Name</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold" >
+                            {{curThing.asset_name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Type</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold">
+                            {{curThing.type}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Asset Relationship</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold">
+                            {{curThing.asset_relationship}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content ' style="color:gray">Asset Bluenumber</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold">
+                            {{curSelThingFullDetail.bluenumberid}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Location Name</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold">
+                            {{curThing.location.location_name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Location Type</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold">
+                            {{curThing.location.locationtype}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Latitude</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold" >
+                            {{curThing.location.latitude}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Longitude</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold">
+                            {{curThing.location.longitude}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">Country</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold" >
+                            {{curThing.location.country_code}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col col-33">
+                        <div >
+                            <span class='label-text wrap-content' style="color:gray">State</span>
+                        </div>
+
+                    </div>
+                    <div class="col ">
+                        <div class="wrap-content bold" >
+                            {{curThing.location.subdivision_code}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </ion-content>
+    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
+    <!--<div  class="button-bar">-->
+    <!--<button type="submit" class="button button-clear button-balanced" ng-click="">-->
+    <!--<i class="fa fa-hdd-o"></i> {{'SAVE' | translate }}-->
+    <!--</button>-->
+    <!--<button  type="button" class="button button-clear button-assertive" ng-click="hideEditAccount()">-->
+    <!--<i class="fa fa-times"></i> {{'CANCEL' | translate }}-->
+    <!--</button>-->
+    <!--</div>-->
+    <!--</ion-footer-bar>-->
+</ion-modal-view >
+

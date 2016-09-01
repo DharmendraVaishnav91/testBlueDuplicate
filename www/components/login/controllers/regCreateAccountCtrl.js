@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService,$rootScope,$cordovaToast) {
+app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
 
     // Form data for the login modal
     var openModalType={
@@ -21,46 +21,33 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         user_type:'',
         home:{}
     };
-    $scope.isFromSetting=false;
-    $scope.position=null;
-    $scope.addPicIcon="assets/img/icon_addProfile.png";
+    var updatedImage='';
     $rootScope.bgUrl="assets/img/logo_small.png";
+
+
+    $scope.updateImageSrc = null;
+    $scope.isFromSetting=false;
+    $rootScope.position=null;
+    $scope.addPicIcon="assets/img/icon_addProfile.png";
     $scope.enableCrop=false;
     $scope.data={};
     $scope.countryCodeList=[];
     $scope.work={};
     $scope.workLocations=[];
-    loginService.fetchCountryCode().then(function(response){
-       $scope.countryCodeList=response;
-    }).catch(function(error){
-        console.log(error);
+    $scope.countryCodeList=utilityService.countryList();
+    console.log("country code list");
+    console.log($scope.countryCodeList);
+    //loginService.fetchCountryCode().then(function(response){
+    //   =response;
+    //}).catch(function(error){
+    //    console.log(error);
+    //});
+
+    utilityService.getPosition().then(function (position) {
+        $rootScope.position=position;
+        console.log("position in scope");
+        console.log($rootScope.position);
     });
-    var updatedImage='';
-    $scope.updateImageSrc = null;
-
-    var onSuccess = function(position) {
-        $scope.position=position;
-        console.log('Latitude: '          + position.coords.latitude          + '\n' +
-            'Longitude: '         + position.coords.longitude         + '\n' +
-            'Altitude: '          + position.coords.altitude          + '\n' +
-            'Accuracy: '          + position.coords.accuracy          + '\n' +
-            'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-            'Heading: '           + position.coords.heading           + '\n' +
-            'Speed: '             + position.coords.speed             + '\n' +
-            'Timestamp: '         + position.timestamp                + '\n');
-    };
-
-    // onError Callback receives a PositionError object
-    //
-    function onError(error) {
-        console.log('code: '    + error.code    + '\n' +
-            'message: ' + error.message + '\n');
-    }
-
-    var posOptions = {timeout: 1000, enableHighAccuracy: false};
-    navigator.geolocation
-        .getCurrentPosition(onSuccess,onError,posOptions);
-
 
     $ionicModal.fromTemplateUrl('components/login/views/regCreateProfile.html', {
         scope: $scope,
@@ -115,9 +102,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     }).then(function (modal) {
         $scope.signUpSuccess= modal;
     });
+
     $scope.openModal = function (modalType) {
-
-
         switch (modalType) {
             case openModalType.createProfile:
                     $scope.regCreateProfileModal.show();
@@ -176,16 +162,11 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         }
     };
     $scope.workTypeChange =function(){
-      if($scope.data.type.indexOf('Farm')>-1){
-         $scope.enableCrop=true;
-      }else{
-          $scope.enableCrop=false;
-      }
+        $scope.enableCrop=$scope.data.type.indexOf('Farm')>-1;
     };
 
     $scope.changeSubdivision=function(selectedCountry){
-     var selectedCountry=selectedCountry.CountryCode;
-        fetchStates(selectedCountry);
+        fetchStates(selectedCountry.CountryCode);
     };
 
     var fetchStates= function (countryCode) {
@@ -283,16 +264,14 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
             $scope.loginData.home.subdivision_code = "";
         }
         $scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
-        $scope.loginData.home.latitude= $scope.position?$scope.position.coords.latitude:'';
-        $scope.loginData.home.longitude= $scope.position?$scope.position.coords.longitude:'';
+        $scope.loginData.home.latitude= $rootScope.position?$rootScope.position.coords.latitude:'';
+        $scope.loginData.home.longitude= $rootScope.position?$rootScope.position.coords.longitude:'';
         $scope.loginData.home.name='Home';
         console.log($scope.loginData);
 
         createUser();
         fetchCropList();
-
         //$scope.openModal(openModalType.addWork);
-
     };
 
     $scope.goToThing= function(){
@@ -300,8 +279,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         var works=[];
         var location1={
             name:"Work1",
-            latitude:$scope.position?$scope.position.coords.latitude:'',
-            longitude:$scope.position?$scope.position.coords.longitude:'',
+            latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
+            longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
             address:$scope.work.address,
             city:$scope.work.city,
             subdivision_code:$scope.data.workState?$scope.data.workState.SubdivisionCode:'',
@@ -344,8 +323,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         if($scope.data.equipWhere=='OtherThingLocation') {
             thing1.location={
                 name:"Thing1",
-                latitude:$scope.position?$scope.position.coords.latitude:'',
-                longitude:$scope.position?$scope.position.coords.longitude:'',
+                latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
+                longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
                 address:$scope.data.otherThingAddress,
                 city:$scope.data.otherThingCity,
                 subdivision_code:$scope.data.otherThingState?$scope.data.otherThingState.SubdivisionCode:'',
@@ -381,8 +360,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
         if($scope.data.groupLocation=='OtherGroupLocation') {
             group1.location={
                 name:"Group1",
-                latitude:$scope.position?$scope.position.coords.latitude:'',
-                longitude:$scope.position?$scope.position.coords.longitude:'',
+                latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
+                longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
                 address:$scope.data.otherGroupAddress,
                 city:$scope.data.otherGroupCity,
                 subdivision_code:$scope.data.otherGroupState?$scope.data.otherGroupState.SubdivisionCode:'',
@@ -409,6 +388,17 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     $scope.changeImage= function(){
         utilityService.getImage().then(function(src) {
             updatedImage = "data:image/jpeg;base64," +src;
+            window.resolveLocalFileSystemURL(src, function(fileEntry) {
+
+                //If this doesn't work
+                $scope.updateImageSrc = fileEntry.nativeURL;
+                console.log($scope.updateImageSrc);
+
+                //Try this
+                //var image = document.getElementById('myImage');
+                //image.src = fileEntry.nativeURL;
+            });
+
             //console.log(updatedImage);
             //var rad = Math.floor(Math.random() * 10000 + 10);
             //$scope.updateImageSrc = updatedImage + "?rd=" + rad;

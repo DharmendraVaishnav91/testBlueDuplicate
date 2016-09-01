@@ -4,9 +4,53 @@
 
 var appUtilityServices = angular.module("app.utility.services", []);
 
-appUtilityServices.factory('utilityService',function($http,$ionicPopup,$q,$rootScope,$cordovaCamera) {
+appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicPopup,$q,$rootScope,$cordovaCamera,$cordovaGeolocation) {
 
     var utilityService = {};
+    utilityService.sendAppInviteToFriend = function (inviteData) {
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.inviteFriend,
+            method:HttpRequestType.POST,
+            data:inviteData,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
+    };
+    utilityService.countryList= function () {
+        if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
+            var deferred = $q.defer();
+            var req={
+                url:HttpRoutes.fetchCountryCode,
+                method:HttpRequestType.GET
+            };
+            utilityService.makeHTTPRequest(req,deferred).then(function (countryList) {
+                $localStorage[STORAGE.COUNTRIES]=countryList;
+                return  $localStorage[STORAGE.COUNTRIES];
+            });
+
+        }else{
+            return $localStorage[STORAGE.COUNTRIES];
+        }
+
+    };
+
+    utilityService.getPosition= function () {
+        var posOptions = {timeout: 10000, enableHighAccuracy: false};
+        var coordinates = null;
+        var deferred= $q.defer();
+        $cordovaGeolocation.getCurrentPosition(posOptions)
+            .then(function (position) {
+                coordinates=position;
+                deferred.resolve(coordinates);
+            }, function(err) {
+                console.log("Unable to fetch location "+err);
+                deferred.resolve(null);
+            });
+        return deferred.promise;
+    };
 
     utilityService.makeHTTPRequest=function(req,deferred){
 

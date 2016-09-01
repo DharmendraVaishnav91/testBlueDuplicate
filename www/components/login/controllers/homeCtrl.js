@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 9/8/16.
  */
-app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage) {
+app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage,userSettingService) {
 
     // Form data for the login modal
     $rootScope.deviceHeight = $window.innerHeight;
@@ -30,6 +30,11 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
             $rootScope.user=user;
             console.log("Auth token="+user.auth_token)       ;
             $rootScope.auth_token=user.auth_token ;
+            userSettingService.fetchUserInfo($rootScope.user.ActorID).then(function(response){
+                console.log("User personal details");
+                console.log(response);
+                $rootScope.userInfo=response;
+            });
             $state.go('app.dashboard');
         }
     };

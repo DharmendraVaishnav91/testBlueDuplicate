@@ -12,8 +12,8 @@
     </ion-side-menu-content>
     <ion-side-menu side="left">
         <div class="item item-avatar" style="background-color: #4E5C6E;">
-                <img  src="assets/img/blank-avatar.png">
-                <h2 class="title light">{{'HELLO_USER' | translate }}</h2>
+                <img  ng-src="{{userInfo.image}}" style="">
+                <h2 class="title light">{{user.username }}</h2>
         </div>
         <!--<ion-header-bar class="bar-stable">-->
           <!-- -->

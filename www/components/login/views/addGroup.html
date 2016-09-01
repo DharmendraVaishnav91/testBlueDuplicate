@@ -10,8 +10,7 @@
     <ion-content has-bouncing="true" class="blueno-bg" ng-class="{'has-header':isFromSetting}">
         <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
         <div class="center" style=";width: inherit;height: auto;padding-top:15px"  ng-if="!isFromSetting">
-            <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
-            <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
+
             <h3 style="color: #ffffff;">
                 <i class="ion-person-stalker"></i>&nbsp;{{'ADD_GROUP' | translate }}
             </h3>
@@ -21,12 +20,7 @@
     overflow: scroll;
     width: 100%;
     padding: 0;">
-            <!--Group Name-->
-            <!--<div class="row">-->
-                <!--<div class="col center" >-->
-                    <!--<input type="text" ng-required="true" ng-model="data.groupName" placeholder="Name" class="input-txt" style="margin-top: 10px;width:80%" />-->
-                <!--</div>-->
-            <!--</div>-->
+
             <label class="item item-input item-stacked-label no-border lebel-padding" >
                     <span class="input-label label-text "  style="color:white">{{'NAME' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
@@ -34,18 +28,7 @@
                 <input type="text" ng-required="true" ng-model="data.groupName" placeholder="Name" class="edit-input-txt"  />
             </label>
 
-            <!--Group Type-->
-            <!--<div class="row">-->
-                <!--<div class="col center">-->
-                    <!--<select style="width: 80%" ng-required="true" ng-model="data.groupType">-->
-                        <!--<option value="" disabled selected>{{'GROUP_TYPE' | translate }}</option>-->
-                        <!--<option value="Company, Cooperative">{{'COMPANY_COOPERATIVE' | translate }}</option>-->
-                        <!--<option value="Government Organization">{{'GOVT_ORG' | translate }}</option>-->
-                        <!--<option value="Standards Organization">{{'STND_ORG' | translate }}</option>-->
-                        <!--<option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>-->
-                    <!--</select>-->
-                <!--</div>-->
-            <!--</div>-->
+
             <label class="item item-input item-stacked-label no-border lebel-padding" >
                     <span class="input-label label-text "  style="color:white">{{'GROUP_TYPE' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
@@ -59,19 +42,7 @@
             </label>
 
 
-            <!--Group Sub Type-->
-            <!--<div class="row">-->
-                <!--<div class="col center">-->
-                    <!--<select style="width: 80%" ng-required="true" ng-model="data.groupSubType">-->
-                        <!--<option value="" disabled selected>{{'SUB_TYPE' | translate }}</option>-->
-                        <!--<option value="Sector" >{{'SECTOR' | translate }}</option>-->
-                        <!--<option value="Department or ministry" >{{'DEPT_OF_MIN' | translate }}</option>-->
-                        <!--<option value="Cause or issue" >{{'CAUSE_OR_ISSUE' | translate }}</option>-->
-                        <!--<option value="Commodity or raw material" >{{'COMMODITY_RAW_MATERIAL' | translate }}</option>-->
-                        <!--<option value="By research interest" >{{'BY_RESEARCH_INTEREST' | translate }}</option>-->
-                    <!--</select>-->
-                <!--</div>-->
-            <!--</div>-->
+
             <label class="item item-input item-stacked-label no-border lebel-padding" >
                     <span class="input-label label-text "  style="color:white">{{'SUB_TYPE' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
@@ -85,24 +56,12 @@
                 </select>
             </label>
 
-            <!--Group Relationship-->
-            <!--<div class="row">-->
-                <!--<div class="col center">-->
-                    <!--<select style="width: 80%" ng-required="true" ng-model="data.groupRelationship">-->
-                        <!--<option value="" disabled selected>{{'RELATIONSHIP' | translate }}</option>-->
-                        <!--<option value="Owner" >{{'OWNER' | translate }}</option>-->
-                        <!--<option value="Employee" >{{'EMPLOYEE' | translate }}</option>-->
-                        <!--<option value="Buyer" >{{'BUYER' | translate }}</option>-->
-                        <!--<option value="Selle" >{{'SELLER' | translate }}</option>-->
-                    <!--</select>-->
-                <!--</div>-->
-            <!--</div>-->
+
             <label class="item item-input item-stacked-label no-border lebel-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
                 <select style="width: 100%" ng-required="true" ng-model="data.groupRelationship">
-                    <option value="" disabled selected>{{'RELATIONSHIP' | translate }}</option>
                     <option value="Owner" >{{'OWNER' | translate }}</option>
                     <option value="Employee" >{{'EMPLOYEE' | translate }}</option>
                     <option value="Buyer" >{{'BUYER' | translate }}</option>
@@ -110,15 +69,7 @@
                 </select>
             </label>
 
-            <!--Group Location-->
-            <!--<div class="row">-->
-                <!--<div class="col center">-->
-                    <!--<select style="width: 80%" ng-model="data.groupLocation" ng-required="true" >-->
-                        <!--<option value="OtherGroupLocation">{{'OTHER' | translate }}</option>-->
-                        <!--<option ng-repeat="obj in workLocations" value="{{obj}}">{{obj.name}}</option>-->
-                    <!--</select>-->
-                <!--</div>-->
-            <!--</div>-->
+
             <label class="item item-input item-stacked-label no-border lebel-padding" >
                 <span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->

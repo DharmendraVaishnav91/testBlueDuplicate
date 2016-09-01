@@ -2,7 +2,7 @@
  * Created by dharmendra on 23/8/16.
  */
 var userSetting = angular.module('app.userSetting',[]);
-userSetting.controller('UserSettingCtrl', function($scope,$state,$ionicModal,$localStorage) {
+userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ionicModal,$localStorage,utilityService,userSettingService) {
 
     $scope.isFromSetting=true;
     $ionicModal.fromTemplateUrl('components/setting/views/editAccount.html', {
@@ -12,18 +12,37 @@ userSetting.controller('UserSettingCtrl', function($scope,$state,$ionicModal,$lo
         $scope.editAccountModal= modal;
 
     });
-
+    if($rootScope.position==null||$rootScope.position==undefined){
+        utilityService.getPosition().then(function (position) {
+            $rootScope.position=position;
+            console.log("position in scope");
+            console.log($rootScope.position);
+        });
+    }
 
     $scope.goToEditAccount= function(){
-       $scope.editAccountModal.show();
+        userSettingService.fetchUserInfo($rootScope.user.ActorID).then(function(response){
+            console.log("User personal details");
+            console.log(response);
+            $scope.userPersonalInfo=response;
+            $scope.person= angular.copy($scope.userPersonalInfo.person);
+            $scope.editAccountModal.show();
+        });
     };
-
+    $scope.updateProfile = function () {
+        userSettingService.updateUserInfo($scope.person).then(function(response){
+            console.log("User personal details updated successfully");
+            console.log(response);
+            $scope.person= angular.copy($scope.userPersonalInfo.person);
+            $scope.editAccountModal.hide();
+        });
+    };
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
     };
 
     $scope.goToWorkPlaces=function(){
-      $state.go('app.workPlaces');
+        $state.go('app.workPlaces');
     };
 
     $scope.goToThings=function(){
