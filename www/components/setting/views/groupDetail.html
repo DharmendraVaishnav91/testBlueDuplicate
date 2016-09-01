@@ -1,0 +1,83 @@
+<ion-modal-view  >
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
+        <button ng-click="hideGroupDetails()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
+        <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
+}" >{{curSelGroup.OrganizationName}}    </h1>
+        </ion-header-bar>
+    <ion-content   style="background-color:#4E5C6E "  >
+
+        <div class=" card no-padding">
+            <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
+                <div class="row no-padding" >
+                    <div class="col  col-center no-padding" style="color:cornflowerblue">
+                        Detail
+                    </div>
+                </div>
+            </div>
+            <div class="item no-padding">
+                <div class="row ">
+                    <div class="col">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Group Name</span>
+                        </div>
+                        <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold;">
+                            {{curSelGroup.OrganizationName}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item no-padding">
+                <div class="row ">
+                    <div class="col">
+                        <div >
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Group Type</span>
+                        </div>
+                        <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold" >
+                            {{curSelGroup.OrganizationType}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item no-padding">
+                <div class="row">
+                    <div class="col">
+                        <span class="label-text" style="color:gray">&nbsp;&nbsp;Group Sub Type</span>
+
+                        <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold">
+                            {{curSelGroup.Sector}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item no-padding">
+                <div class="row">
+                    <div class="col">
+                        <span class="label-text" style="color:gray">&nbsp;&nbsp;Group Employee</span>
+
+                        <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold">
+                            {{curSelGroup.NumberEmployees}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </ion-content>
+    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
+        <!--<div  class="button-bar">-->
+            <!--<button type="submit" class="button button-clear button-balanced" ng-click="">-->
+                <!--<i class="fa fa-hdd-o"></i> {{'SAVE' | translate }}-->
+            <!--</button>-->
+            <!--<button  type="button" class="button button-clear button-assertive" ng-click="hideEditAccount()">-->
+                <!--<i class="fa fa-times"></i> {{'CANCEL' | translate }}-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
+</ion-modal-view >
+

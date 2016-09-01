@@ -75,7 +75,7 @@
                     </span>
                     <select style="width: 100%" ng-model="data.equipWhere" ng-required="true" >
                         <option value="OtherThingLocation">{{'OTHER' | translate }}</option>
-                        <option ng-repeat="obj in workLocations" value="{{obj}}">{{obj.name}}</option>
+                        <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationName}}</option>
                     </select>
                 </label>
 
@@ -111,49 +111,9 @@
 
 
 
-                <!--Show address for manual entry in the case of other-->
-                <!--<div  ng-if="data.equipWhere=='OtherThingLocation'" class="row no-padding">-->
-                    <!--<div class="col col-center center no-padding" >-->
-                        <!--<div class="row">-->
-                            <!--<div class="col center" >-->
-                                <!--<input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="data.otherThingAddress"/>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="row">-->
-                            <!--<div class="col center" >-->
-                                <!--<input type="text" ng-required="true" placeholder="City/Town" ng-model="data.otherThingCity" class="input-txt"  />-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--<div class="row">-->
-                            <!--<div class="col center" >-->
-                                <!--&lt;!&ndash;<input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" />&ndash;&gt;-->
-                                <!--<select style="width: 80%" ng-model="data.otherThingCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.otherThingCountry)">-->
-                                <!--</select>-->
-                            <!--</div>-->
-                        <!--</div>-->
-
-                        <!--<div class="row">-->
-                            <!--<div class="col center" >-->
-                                <!--<select style="width: 80%" ng-model="data.otherThingState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">-->
-                                <!--</select>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div class="row" style="margin-top:10px">-->
-                    <!--<div class="col col-center center" >-->
-                        <!--<button class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToGroup()" >-->
-                            <!--<i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>-->
-                        <!--</button>-->
-                    <!--</div>-->
-                <!--</div>-->
                     </div>
             </form>
-            <!--<div class="row" style="">-->
-                <!--<div class="col col-center center" >-->
-                    <!--<a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">{{'SKIP' | translate }}</a>-->
-                <!--</div>-->
-            <!--</div>-->
+
     </ion-content>
     <ion-footer-bar ng-disabled="addThingForm.$invalid" class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
         <div  class="button-bar">

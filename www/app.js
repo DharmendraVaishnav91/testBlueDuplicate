@@ -1,4 +1,4 @@
-var app=angular.module('app', ['ionic','ngSanitize', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting','leaflet-directive','base64']) ;
+var app=angular.module('app', ['ionic','ngSanitize', 'app.menu','app.utility.services','pascalprecht.translate','login.service','app.common.events','ngCordova','app.userSetting','base64','ngStorage','ui-leaflet']) ;
 
 app.run(function($ionicPlatform,EventService) {
   $ionicPlatform.ready(function() {
@@ -56,7 +56,7 @@ app.run(function($ionicPlatform,EventService) {
         url: '/dashboard',
         views: {
             'mainContent': {
-                templateUrl: 'components/dashboard/dashboard.html',
+                templateUrl: 'components/dashboard/views/dashboard.html',
                 controller: 'DashboardCtrl'
             }
         }

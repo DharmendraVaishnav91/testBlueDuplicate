@@ -1,7 +1,15 @@
 <ion-modal-view  >
-    <ion-content has-bouncing="true" class="blueno-bg">
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
+        <button ng-click="hideGroupAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
+        <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
+}" >Add Group</h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" class="blueno-bg" ng-class="{'has-header':isFromSetting}">
         <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-        <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
+        <div class="center" style=";width: inherit;height: auto;padding-top:15px"  ng-if="!isFromSetting">
             <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
             <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
             <h3 style="color: #ffffff;">
@@ -117,7 +125,7 @@
                 </span>
                 <select style="width: 100%" ng-model="data.groupLocation" ng-required="true" >
                     <option value="OtherGroupLocation">{{'OTHER' | translate }}</option>
-                    <option ng-repeat="obj in workLocations" value="{{obj}}">{{obj.name}}</option>
+                    <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationName}}</option>
                 </select>
             </label>
 
@@ -152,63 +160,20 @@
                 </select>
             </label>
 
-            <!--Manual location for group-->
-            <!--<div  ng-if="data.groupLocation=='OtherGroupLocation'" class="row no-padding">-->
-                <!--<div class="col col-center center no-padding" >-->
-                    <!--Address-->
-                    <!--<div class="row">-->
-                        <!--<div class="col center" >-->
-                            <!--<input type="text" ng-required="true" class="input-txt" placeholder="Address" ng-model="data.otherGroupAddress"/>-->
-                        <!--</div>-->
-                    <!--</div>-->
 
-                    <!--City-->
-                    <!--<div class="row">-->
-                        <!--<div class="col center" >-->
-                            <!--<input type="text" ng-required="true" placeholder="City/Town" ng-model="data.otherGroupCity" class="input-txt"  />-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--Country-->
-                    <!--<div class="row">-->
-                        <!--<div class="col center" >-->
-                            <!--&lt;!&ndash;<input type="text" ng-required="true" ng-model="data.selectedCountry.CountryName" placeholder="Country" class="input-txt" />&ndash;&gt;-->
-                            <!--<select style="width: 80%" ng-model="data.otherGroupCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.otherGroupCountry)">-->
-                            <!--</select>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--State-->
-                    <!--<div class="row">-->
-                        <!--<div class="col center" >-->
-                            <!--<select style="width: 80%" ng-model="data.otherGroupState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">-->
-                            <!--</select>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row" style="margin-top:20px">-->
-                <!--<div class="col col-center center" >-->
-                    <!--<div class="button  lgt-blue-btn" style="height: 40px;width:130px;" ng-click="goToInviteFamily()" >-->
-                        <!--<i class=" ion-arrow-right-b" style="font-size: 25px;line-height:47px"></i>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-                <!--</div>-->
                 </div>
         </form>
-        <!--<div class="row" style="">-->
-            <!--<div class="col col-center center" >-->
-                <!--<a style="font-size:larger;color: white;text-decoration: underline" ng-click="skipToGroup()">Skip</a>-->
-            <!--</div>-->
-        <!--</div>-->
+
     </ion-content>
     <ion-footer-bar ng-disabled="addGroupForm.$invalid" class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
         <div  class="button-bar">
             <!--<button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToGroup()" style="font-size: 20px;">-->
                 <!--{{'Skip' | translate }} &nbsp;-->
             <!--</button>-->
-            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToInviteFamily()" style="font-size: 20px;">
+            <button ng-if="isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="createAndUpdateGroup()" style="font-size: 20px;">
+                {{'CREATE' | translate }}
+            </button>
+            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToInviteFamily()" style="font-size: 20px;">
                 {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
             <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->

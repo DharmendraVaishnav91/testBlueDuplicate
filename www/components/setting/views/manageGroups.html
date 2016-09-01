@@ -1,30 +1,66 @@
-<ion-view  view-title="Work Places" >
+<ion-view  view-title="Groups" >
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content scroll="true" class="blueno-bg">
-        <div class="list">
-            <div class="item no-padding bg-transparent ">
-                <div class="row" style="color:white;font-weight: bold;">
-                    <div class="col col-25" >
-                        <span style="font-weight: bold;">{{'NAME' | translate }}</span>
-                    </div>
-                    <div class="col col-33" >
-                        {{'TYPE' | translate }}
-                    </div>
-                    <div class="col">
-                        {{'ADDRESS_GPS' | translate }}
+        <div class="list card" style="background:transparent;">
+            <div class="item item-divider dark-gray-border "  style=" background:transparent">
+                <div class="row no-padding" >
+                    <div class="col  col-center no-padding" style="color:cornflowerblue;color: cornflowerblue;font-size: large;font-weight: bold;">
+                      {{'MY_GROUP' | translate}}
                     </div>
                 </div>
             </div>
-            <div class="item no-padding bg-transparent" ng-click="showEditGroup();">
+            <div class="item no-padding  dark-gray-border " style="background-color: rgba(178, 178, 178,.4) !important;">
+                <div class="row" style="color:white;font-weight: bold;">
+                    <div class="col col-33" >
+                        <span style="font-weight: bold;">{{'NAME' | translate }}</span>
+                    </div>
+                    <div class="col " >
+                        {{'TYPE' | translate }}
+                    </div>
+                </div>
+            </div>
+            <div class="item no-padding dark-gray-border bg-transparent" ng-click="showGroupInfo(group);" ng-repeat="group in groups.admin">
                 <div class="row" style="color:white;">
-                    <div class="col col-25 col-center" >
-                        <span style="font-weight: bold;">{{'FARM1' | translate }}</span>
+                    <div class="col col-33 col-center">
+                        <span >{{group.OrganizationName}}</span>
                     </div>
-                    <div class="col col-33 col-center" >
-                        {{'RICE' | translate }}
+                    <div class="col  col-center" style="overflow: hidden;text-overflow: ellipsis;" >
+                        {{group.OrganizationType}}
                     </div>
-                    <div class="col col-center">
-                        {{'ADDRESS_1' | translate }}
+                    <div class="col col-10 col-center">
+                        <button class="button button-small button-clear " style="color:white">
+                            <i class="ion-ios-arrow-right" style="font-size: 20px;font-weight: bold"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list card" style="background:transparent;"  ng-if="groups.member.length!=0">
+            <div class="item item-divider dark-gray-border "  style=" background:transparent">
+                <div class="row no-padding" >
+                    <div class="col  col-center no-padding" style="color:cornflowerblue;color: cornflowerblue;font-size: large;font-weight: bold;">
+                        {{'OTHER_GROUP' | translate}}
+                    </div>
+                </div>
+            </div>
+            <div class="item no-padding  dark-gray-border " style="background-color: rgba(178, 178, 178,.4) !important;">
+                <div class="row" style="color:white;font-weight: bold;">
+                    <div class="col col-33" >
+                        <span style="font-weight: bold;">{{'NAME' | translate }}</span>
+                    </div>
+                    <div class="col " >
+                        {{'TYPE' | translate }}
+                    </div>
+                </div>
+            </div>
+            <div class="item no-padding dark-gray-border bg-transparent" ng-click="showGroupInfo(group);" ng-repeat="group in groups.member">
+                <div class="row" style="color:white;">
+                    <div class="col col-33 col-center">
+                        <span >{{group.OrganizationName}}</span>
+                    </div>
+                    <div class="col  col-center" style="overflow: hidden;text-overflow: ellipsis;" >
+                        {{group.OrganizationType}}
                     </div>
                     <div class="col col-10 col-center">
                         <button class="button button-small button-clear " style="color:white">
@@ -37,7 +73,7 @@
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >
         <div  class="button-bar">
-            <button type="button" class="button button-clear button-light bold" ng-click="">
+            <button type="button" class="button button-clear button-light bold" ng-click="addNewGroup()">
                 <i class="ion-plus-round"></i>{{'ADD_MORE' | translate }}
             </button>
         </div>

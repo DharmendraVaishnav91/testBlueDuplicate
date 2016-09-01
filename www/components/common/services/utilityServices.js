@@ -4,7 +4,7 @@
 
 var appUtilityServices = angular.module("app.utility.services", []);
 
-appUtilityServices.factory('utilityService',function($http,$ionicPopup,$q,$rootScope) {
+appUtilityServices.factory('utilityService',function($http,$ionicPopup,$q,$rootScope,$cordovaCamera) {
 
     var utilityService = {};
 
@@ -39,14 +39,26 @@ appUtilityServices.factory('utilityService',function($http,$ionicPopup,$q,$rootS
             ]
         });
 
+        //var options = {
+        //    quality: 50,
+        //    destinationType: Camera.DestinationType.DATA_URL,
+        //    sourceType: Camera.PictureSourceType.CAMERA,
+        //    allowEdit: true,
+        //    encodingType: Camera.EncodingType.JPEG,
+        //    targetWidth: 100,
+        //    targetHeight: 100,
+        //    popoverOptions: CameraPopoverOptions,
+        //    saveToPhotoAlbum: false,
+        //    correctOrientation:true
+        //};
         var options = cameraOptions || {
                 quality: 100,
-                destinationType: Camera.DestinationType.NATIVE_URI,
+                destinationType: Camera.DestinationType.DATA_URL,
                 sourceType: Camera.PictureSourceType.CAMERA,
                 allowEdit: true,
                 encodingType: Camera.EncodingType.JPEG,
-                saveToPhotoAlbum: true,
-                mediaType:Camera.MediaType.PICTURE
+                saveToPhotoAlbum: false,
+                correctOrientation:true
             };
 
         function getPic() {

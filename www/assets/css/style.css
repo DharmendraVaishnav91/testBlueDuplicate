@@ -12,6 +12,9 @@ h1{
 .bold{
     font-weight: bold !important;
 }
+.dark-gray-border{
+    border-color:gray !important;
+}
 .bg-transparent{
     background: transparent !important;
 }
