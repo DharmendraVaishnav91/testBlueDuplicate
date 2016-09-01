@@ -1,30 +1,16 @@
 <ion-view  view-title="Invite" >
-    <ion-content scroll="false" style="background-color:#4E5C6E " >
-        <div class="list">
-            <div class="item no-padding bg-transparent">
-                <div class="row" style="color:white;">
-                    <div class="col col-center" >
-                        {{'BULK_INVITE' | translate }}
-                    </div>
-                    <div class="col col-10 col-center">
-                        <button class="button button-small button-clear " style="color:white">
-                            <i class="ion-ios-arrow-right" style="font-size: 20px;font-weight: bold"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="item no-padding bg-transparent">
-                <div class="row" style="color:white;">
-                    <div class="col col-center">
+    <ion-content scroll="false"  class="blueno-bg" >
+        <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll; width: 100%; padding: 0;">
+            <label class="item item-icon-right item-stacked-label lebel-padding" style="color:white;">
+                    <i class="icon ion-ios-arrow-right">
+                        </i>
+                     {{'BULK_INVITE' | translate }}
+                        
+            </label>
+            <label class="item item-icon-right item-stacked-label lebel-padding"  style="color:white;" ng-click="goToInviteFriend()">
+                    <i class="icon ion-ios-arrow-right"></i>
                         {{'INVITE_FRIEND' | translate }}
-                    </div>
-                    <div class="col col-10 col-center">
-                        <button class="button button-small button-clear " ng-click="goToInviteFriend()" style="color:white">
-                            <i class="ion-ios-arrow-right" style="font-size: 20px;font-weight: bold"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            </label>
         </div>
     </ion-content>
 </ion-view>
