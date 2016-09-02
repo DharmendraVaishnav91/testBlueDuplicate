@@ -34,6 +34,12 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
                 console.log("User personal details");
                 console.log(response);
                 $rootScope.userInfo=response;
+                if($rootScope.userInfo.image=="user.png"){
+                    $rootScope.profileUrl="assets/img/blank-avatar.png";
+                }else{
+                    $rootScope.profileUrl=$rootScope.userInfo.image;
+                }
+
             });
             $state.go('app.dashboard');
         }

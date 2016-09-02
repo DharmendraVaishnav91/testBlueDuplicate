@@ -37,11 +37,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
     $scope.countryCodeList=utilityService.countryList();
     console.log("country code list");
     console.log($scope.countryCodeList);
-    //loginService.fetchCountryCode().then(function(response){
-    //   =response;
-    //}).catch(function(error){
-    //    console.log(error);
-    //});
+    
     $scope.showPopup = function(position) {
       $scope.data = {};
 
@@ -84,7 +80,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
         });
     }
     utilityService.getPosition().then(function (position) {
-         $rootScope.position=position;
+        $rootScope.position=position;
         console.log("position in scope");
         console.log($rootScope.position);
     });

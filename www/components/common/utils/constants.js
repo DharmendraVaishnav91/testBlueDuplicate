@@ -39,6 +39,7 @@ var HttpRoutes = {
     visitorBluenumber:apiUrl+"/gpr/visitor_bluenumber/",
     inviteInGroup:apiUrl+"/gpr/v1/groups/invite" ,
     inviteFriend:apiUrl+"/gpr/v1/invite_friend",
+    bulkInvite:apiUrl+"/gpr/v1/invite_friends",
     invitedFamilyMembers:apiUrl+"/gpr/v1/invited_family_members"
 
 
