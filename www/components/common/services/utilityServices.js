@@ -46,6 +46,7 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
                 coordinates=position;
                 deferred.resolve(coordinates);
             }, function(err) {
+                
                 console.log("Unable to fetch location "+err);
                 deferred.resolve(null);
             });

@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
+app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionicPopup,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
 
     // Form data for the login modal
     var openModalType={
@@ -42,9 +42,49 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     //}).catch(function(error){
     //    console.log(error);
     //});
+    $scope.showPopup = function(position) {
+      $scope.data = {};
 
+      // An elaborate, custom popup
+      var myPopup = $ionicPopup.show({
+        title: 'Location Access',
+        subTitle: 'To Know About Your Work Location',
+        scope: $scope,
+        buttons: [
+          { 
+            text: 'Cancel',
+            onTap: function(){
+                $state.go('home');
+            }
+          },
+          {
+            text: '<b>Go Settings</b>',
+            type: 'button-positive',
+            onTap: function(e) {
+                if(typeof cordova.plugins.settings.openSetting != undefined){
+                    cordova.plugins.settings.open(function(){
+                            console.log("opened settings")
+                        },
+                        function(){
+                            console.log("failed to open settings")
+                        });
+                }
+            }
+          }
+        ]
+      });
+    };
+    if (window.cordova) {
+        cordova.plugins.diagnostic.isLocationEnabled(function(enabled) {
+            if(enabled == false){
+                $scope.showPopup();
+            }
+        }, function(error) {
+            alert("Error in getting location: " + error);
+        });
+    }
     utilityService.getPosition().then(function (position) {
-        $rootScope.position=position;
+         $rootScope.position=position;
         console.log("position in scope");
         console.log($rootScope.position);
     });
