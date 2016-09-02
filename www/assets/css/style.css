@@ -2,6 +2,9 @@
 h1{
     color:blue;
 }
+div.leaflet-right{
+    display: none;
+}
 .list .item.custom-item{
     background: transparent;
     color: white;

@@ -19,6 +19,19 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
+    utilityService.sendBulkInviteToFriend = function (inviteData) {
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.bulkInvite,
+            method:HttpRequestType.POST,
+            data:inviteData,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
+    };
+
     utilityService.countryList= function () {
         if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
             var deferred = $q.defer();

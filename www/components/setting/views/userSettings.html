@@ -8,8 +8,8 @@
 
         <div class="row">
             <div class="col center" >
-                 <img ng-src="{{userInfo.image}}" style=" height: 80px;width: 80px;border-radius: 38px;">
-                <p style="color:white;font-size: large;"> {{user.bluenumber }}</p>
+                 <img ng-src="{{profileUrl}}" style=" height: 80px;width: 80px;border-radius: 38px;">
+                <p style="color:white;font-size: large;"> {{::user.bluenumber }}</p>
                 <a style=" text-decoration: underline;font-size: larger" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT' | translate }}</a>
             </div>
         </div>

@@ -1,34 +1,23 @@
 <ion-view  view-title="{{'INVITE_FRIEND' | translate}}" >
-    <ion-content scroll="false" class="blueno-bg-full" >
+    <ion-content overflow-scroll="true" class="blueno-bg-full" >
 
-        <form name="inviteFriendForm">
-            <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
-    overflow: scroll;
-    width: 100%;
-    padding: 0;">
-
-                <label class="item item-input item-stacked-label no-border lebel-padding">
-                    <span class="input-label label-text "  style="color:white">{{'FRIEND_COUNTRY' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                    <select style="width: 100%" ng-model="friend.friendCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" >
-                    </select>
-                </label>
-
-                <label class="item item-input item-stacked-label no-border lebel-padding">
-                    <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-
-                    <input class="edit-input-txt" ng-model="friend.friendMobile" name="mobile" ng-required="true"  type="number"/>
-                </label>
-
+        <div  class= "no-border no-padding list" ng-show="true">
+            <div class="card  " style="margin:2px !important;" ng-repeat="contact in phoneContacts  | orderBy:'name' ">
+                <div class="item item-divider">
+                    {{::contact.name}}
+                </div>
+                <div class="item item-text-wrap item-checkbox" ng-repeat="number in ::contact.phoneNumbers | unique: 'value'" >
+                    {{ ::number.value }}
+                    <label class="checkbox">
+                        <input style="height:25px;width: 25px;" type="checkbox" ng-checked="isSelected(number.value)" ng-click="updateSelection($event, number.value)">
+                    </label>
+                </div>
             </div>
-        </form>
+        </div>
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >
         <div  class="button-bar">
-            <button type="submit" ng-disabled="inviteFriendForm.$invalid" class="button button-clear button-balanced" style="font-size: 20px;font-weight: bold" ng-click="inviteFriend()">
+            <button type="submit" ng-disabled="selectedNumber.length<1" class="button button-clear button-balanced" style="font-size: 20px;font-weight: bold" ng-click="sentInvites()">
                 {{'INVITE' | translate }}
             </button>
         </div>

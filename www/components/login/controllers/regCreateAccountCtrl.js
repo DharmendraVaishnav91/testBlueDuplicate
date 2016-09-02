@@ -37,11 +37,6 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,utilit
     $scope.countryCodeList=utilityService.countryList();
     console.log("country code list");
     console.log($scope.countryCodeList);
-    //loginService.fetchCountryCode().then(function(response){
-    //   =response;
-    //}).catch(function(error){
-    //    console.log(error);
-    //});
 
     utilityService.getPosition().then(function (position) {
         $rootScope.position=position;

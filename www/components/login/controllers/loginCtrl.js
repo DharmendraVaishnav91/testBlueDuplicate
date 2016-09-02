@@ -20,6 +20,11 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
                 console.log("User personal details");
                 console.log(response);
                 $rootScope.userInfo=response;
+                if($rootScope.userInfo.image=="user.png"){
+                    $rootScope.profileUrl="assets/img/blank-avatar.png";
+                }else{
+                    $rootScope.profileUrl=$rootScope.userInfo.image;
+                }
             });
             saveUser(user);
             $state.go('app.dashboard');

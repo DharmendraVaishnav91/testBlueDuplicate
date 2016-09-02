@@ -34,7 +34,7 @@ app.controller('DashboardCtrl', function($scope, $ionicModal, $timeout,leafletDa
             scrollWheelZoom: true,
             worldCopyJump: true
         }  ,
-        layers: {
+        layers:{
             baselayers: {
                 mapbox_light: {
                     name: 'Mapbox Light',
