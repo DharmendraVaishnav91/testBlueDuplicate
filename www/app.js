@@ -56,7 +56,7 @@ app.run(function($ionicPlatform,EventService,utilityService) {
       })
      .state('app.dashboard', {
         url: '/dashboard',
-            cache:true,
+            cache:false,
         views: {
             'mainContent': {
                 templateUrl: 'components/dashboard/views/dashboard.html',
