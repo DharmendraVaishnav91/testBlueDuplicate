@@ -1,13 +1,20 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,userSettingService,loginService,utilityService,$cordovaToast) {
+userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$ionicModal,userSettingService,loginService,utilityService,$cordovaToast) {
 
     $scope.isFromSetting=true;
     $scope.data={};
      $scope.invite={};
     $scope.countryCodeList=utilityService.countryList();
 
+    var fetchLocation= function () {
+        loginService.fetchAllLocation().then(function(response){
+            $scope.myLocations=response;
+        }).catch(function(error){
+            console.log(error);
+        });
+    };
     $ionicModal.fromTemplateUrl('components/login/views/addGroup.html', {
         scope: $scope,
         animation: 'slide-in-right'
@@ -64,6 +71,7 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
         $scope.editGroup.hide();
     };
     $scope.addNewGroup = function () {
+        fetchLocation();
         $scope.editGroup.show();
     };
     var saveGroupData=function(groupsData){
@@ -114,7 +122,10 @@ userSetting.controller('ManageGroupsCtrl', function($scope,$state,$ionicModal,us
             };
 
         }else{
-            group1.location=JSON.parse($scope.data.groupLocation);
+            group1.location={
+                name:(JSON.parse($scope.data.groupLocation)).LocationID
+            } ;
+           //group1.location=JSON.parse($scope.data.groupLocation);
         }
         groups.push(group1);
         var groupsData={

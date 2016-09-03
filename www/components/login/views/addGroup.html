@@ -34,12 +34,16 @@
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
                 <select style="width: 100%" ng-required="true" ng-model="data.groupType">
-                    <option value="Company, Cooperative">{{'COMPANY_COOPERATIVE' | translate }}</option>
+                    <option value="Company">{{'COMPANY' | translate }}</option>
+                    <option value="Cooperative">{{'COOPERATIVE' | translate }}</option>
+                    <option value="Cooperative">{{'NON_GOVT_ORG' | translate }}</option>
+                    <option value="Cooperative">{{'NON_PROFIT_ORG' | translate }}</option>
                     <option value="Government Organization">{{'GOVT_ORG' | translate }}</option>
                     <option value="Standards Organization">{{'STND_ORG' | translate }}</option>
                     <option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>
                 </select>
             </label>
+
 
 
 
@@ -75,8 +79,8 @@
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <select style="width: 100%" ng-model="data.groupLocation" ng-required="true" >
+                    <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>
                     <option value="OtherGroupLocation">{{'OTHER' | translate }}</option>
-                    <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationName}}</option>
                 </select>
             </label>
 

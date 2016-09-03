@@ -43,8 +43,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
 
       // An elaborate, custom popup
       var myPopup = $ionicPopup.show({
-        title: 'Location Access',
-        subTitle: 'To Know About Your Work Location',
+        title: 'Warning',
+        subTitle: 'Location must be enabled to continue, please go to setting to enable this.',
         scope: $scope,
         buttons: [
           { 
@@ -70,15 +70,19 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
         ]
       });
     };
-    if (window.cordova) {
-        cordova.plugins.diagnostic.isLocationEnabled(function(enabled) {
-            if(enabled == false){
-                $scope.showPopup();
-            }
-        }, function(error) {
-            alert("Error in getting location: " + error);
-        });
-    }
+    var isLocationEnabled= function () {
+        if (window.cordova) {
+            cordova.plugins.diagnostic.isLocationEnabled(function(enabled) {
+                if(enabled == false){
+                    $scope.showPopup();
+                }
+            }, function(error) {
+                alert("Error in getting location: " + error);
+            });
+        }
+    };
+    isLocationEnabled();
+
     utilityService.getPosition().then(function (position) {
         $rootScope.position=position;
         console.log("position in scope");
@@ -330,10 +334,10 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
         };
         if($scope.enableCrop){
             work.crop=$scope.data.crop.H3Code;
-            work.hectare=$scope.work.hectare?$scope.work.hectare:0;
+            work.hectares=$scope.work.hectare?$scope.work.hectare:0;
         }else{
             work.crop="";
-            work.hectare="";
+            work.hectares="";
         }
         works.push(work);
         var workData={
@@ -395,7 +399,7 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
         //Equipment have location other than existing one
         if($scope.data.groupLocation=='OtherGroupLocation') {
             group1.location={
-                name:"Group1",
+                name:"Other",
                 latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
                 longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
                 address:$scope.data.otherGroupAddress,

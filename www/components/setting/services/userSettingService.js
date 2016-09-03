@@ -42,11 +42,11 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
-    self.fetchAllLocations= function () {
+    self.fetchAllLocations= function (actorID) {
 
         var deferred = $q.defer();
         var req={
-            url:HttpRoutes.fetchAllLocations,
+            url:HttpRoutes.fetchWorkPlaces+actorID,
             method:HttpRequestType.GET,
             headers: {
                 'Authorization': 'Token '+ $rootScope.auth_token

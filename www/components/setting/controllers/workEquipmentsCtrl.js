@@ -13,7 +13,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
             console.log(error);
         });
     };
-    fetchLocation();
+
     $ionicModal.fromTemplateUrl('components/login/views/addThing.html', {
         scope: $scope,
         animation: 'slide-in-right'
@@ -62,6 +62,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
         $scope.addThingModal.hide();
     };
     $scope.addNewThing = function () {
+        fetchLocation();
         $scope.addThingModal.show();
     };
 
@@ -75,7 +76,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
          //Equipment have location other than existing one
          if($scope.data.equipWhere=='OtherThingLocation') {
              thing1.location={
-                 name:"Thing1",
+                 name:$scope.data.assetName,
                  latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
                  longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
                  address:$scope.data.otherThingAddress,

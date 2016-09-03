@@ -37,6 +37,10 @@
     {
       "locator": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git",
       "id": "cordova-plugin-inappbrowser"
+    },
+    {
+      "locator": "https://github.com/selahssea/Cordova-open-native-settings.git",
+      "id": "com.phonegap.plugins.nativesettingsopener"
     }
   ],
   "cordovaPlatforms": [

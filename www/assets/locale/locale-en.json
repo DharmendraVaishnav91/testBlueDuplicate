@@ -90,10 +90,15 @@
   "ADD_GROUP":"Add Group",
   "WHAT_GROUP":"What companies, organisations or groups relates to your work?",
   "GROUP_TYPE":"Group Type",
-  "COMPANY_COOPERATIVE":"Company, Cooperative",
+
+  "COMPANY":"Company",
+  "COOPERATIVE":"Cooperative",
   "GOVT_ORG":"Government Organization",
+  "NON_GOVT_ORG":"Non Government Organization",
   "STND_ORG":"Standards Organization",
   "RESEARCH_ORG":"Research Organization",
+  "NON_PROFIT_ORG":"Non-Profit Organization",
+
   "SUB_TYPE":"Sub Type",
   "SECTOR":"Sector",
   "DEPT_OF_MIN":"Department or ministry",
@@ -142,6 +147,8 @@
   "UPDATE_ACTOR":"Update Actor",
 
   "ADD_WORK_PLACE":"Add Work Place",
+  "WORK_NAME":"Work Name",
+  "WORK_TYPE":"Work Type",
   "WORK":"Work",
   "ADD_WORK_EQUIPMENT":"Add Work Equipment",
   "PROFILE":"Profile",
@@ -165,7 +172,10 @@
   "TYPE_EMAIL_TO_SEND_INSTRUCTION":"Type Email to Send Instructions",
   "SEND_TEXT_TO_DOWNLOAD_APP":"Send a text to download the Bluenumber app on any mobile phone. It's easy.",
   "ABOUT":"About",
-  "RATE_US_MSG":"Rate us in the Apple Store",
+  "RATE_US_MSG":"Rate us in the",
+  "APP_STORE":"Apple Store",
+  "PLAY_STORE":"Play Store",
+
   "WORK_EQUIPMENT":"WORK EQUIPMENT",
   "WORK_GROUP":"WORK GROUPS",
   "MEMBER":"MEMBER",

@@ -5,7 +5,7 @@
             <span class="back-text"></span>
         </button>
         <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >Invite Family</h1>
+}" >{{'ADD_THING' | translate }}</h1>
     </ion-header-bar>
     <form name="addThingForm">
     <ion-content has-bouncing="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
@@ -58,10 +58,25 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <select style="width: 100%" ng-model="data.equipWhere" ng-required="true" >
+
+                        <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>
                         <option value="OtherThingLocation">{{'OTHER' | translate }}</option>
-                        <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationName}}</option>
                     </select>
                 </label>
+
+                <label class="item item-input item-stacked-label no-border lebel-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
+                        <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+                            <span class="assertive " style="font-size: inherit">* </span>
+                        </span>
+                    <select style="width: 100%" ng-model="data.otherThingLocationType" ng-required="true">
+                        <option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>
+                        <option value="Fishery">{{'FISHERY' | translate }}</option>
+                        <option value="Equipment (agriculture)">{{'EQUIPMENT_AGRICULTURE' | translate }}</option>
+                        <option value="Equipment (fishing)">{{'EQUIPMENT_FISHING' | translate }}</option>
+                        <option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>
+                    </select>
+                </label>
+
 
                 <label class="item item-input item-stacked-label no-border lebel-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
                     <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
