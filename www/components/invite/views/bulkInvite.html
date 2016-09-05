@@ -1,11 +1,11 @@
 <ion-view  view-title="{{'INVITE_FRIEND' | translate}}" >
-    <div class="bar bar-subheader">
-
-    </div>
+    <div class="bar bar-subheader blue-bg" style="height: 50px;">
+  <input class="blue-bg" style="width:100%; height: 40px; border-width: 0px; margin:0px 0px 10px 0px;" placeholder="{{'TYPE_IN_NAME_OR_NUMBER' | translate }}" type="input" ng-model="search">
+</div>
     <ion-content overflow-scroll="true" class="blueno-bg-full" >
 
         <div  class= "no-border no-padding list" ng-show="true">
-            <div class="card  " style="margin:2px !important;" ng-repeat="contact in phoneContacts  | orderBy:'name' ">
+            <div class="card  " style="margin:2px !important;" ng-repeat="contact in phoneContacts  | orderBy:'name' | filter: search ">
                 <div class="item item-divider">
                     {{::contact.name}}
                 </div>

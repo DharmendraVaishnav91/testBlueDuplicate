@@ -13,7 +13,7 @@
             <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
                 <div class="row no-padding" >
                     <div class="col  col-center no-padding" style="color:cornflowerblue">
-                        Detail
+                        {{'DETAIL' | translate }}
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="row ">
                     <div class="col">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Group Name</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'GROUP_NAME' | translate }}</span>
                         </div>
                         <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold;">
                             {{curSelGroup.OrganizationName}}
@@ -33,7 +33,7 @@
                 <div class="row ">
                     <div class="col">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Group Type</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'GROUP_TYPE' | translate }}</span>
                         </div>
                         <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold" >
                             {{curSelGroup.OrganizationType}}
@@ -45,7 +45,7 @@
             <div class="item no-padding">
                 <div class="row">
                     <div class="col">
-                        <span class="label-text" style="color:gray">&nbsp;&nbsp;Group Sub Type</span>
+                        <span class="label-text" style="color:gray">&nbsp;&nbsp;{{'GROUP_SUB_TYPE' | translate }}</span>
 
                         <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold">
                             {{curSelGroup.Sector}}
@@ -56,7 +56,7 @@
             <div class="item no-padding">
                 <div class="row">
                     <div class="col">
-                        <span class="label-text" style="color:gray">&nbsp;&nbsp;Group Employee</span>
+                        <span class="label-text" style="color:gray">&nbsp;&nbsp;{{'Group_Employee' | translate }}</span>
 
                         <div class="" style="margin-top:5px;margin-left:9px;white-space: normal;font-weight: bold">
                             {{curSelGroup.NumberEmployees}}
@@ -73,11 +73,11 @@
             <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
                 <div class="row no-padding" >
                     <div class="col  col-center no-padding" style="color:cornflowerblue">
-                        Member
+                        {{'MEMBER' | translate }}
                     </div>
                     <div class="col col-33 col-right no-padding right">
                         <button class="button button-positive button-small" style="font-size: 18px;">
-                            Invite
+                             {{'INVITE' | translate }}
                         </button>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                     <div class="row ">
                         <div class="col col-33">
                             <div >
-                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Name</span>
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'NAME' | translate }}</span>
                             </div>
 
                         </div>
@@ -100,7 +100,7 @@
                     <div class="row ">
                         <div class="col col-33">
                             <div >
-                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Gender</span>
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'GENDER' | translate }}</span>
                             </div>
 
                         </div>
@@ -113,20 +113,20 @@
                     <div class="row ">
                         <div class="col col-33">
                             <div >
-                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Role</span>
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'ROLE' | translate }}</span>
                             </div>
 
                         </div>
                         <div class="col ">
                             <div class="" style="white-space: normal;font-weight: bold;">
-                                Admin
+                               {{'ADMIN' | translate }}
                             </div>
                         </div>
                     </div>
                     <div class="row ">
                         <div class="col col-33">
                             <div >
-                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Nationality</span>
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'NATIONALITY' | translate }}</span>
                             </div>
 
                         </div>
@@ -139,7 +139,7 @@
                     <div class="row ">
                         <div class="col col-33">
                             <div >
-                                <span class='label-text' style="color:gray">&nbsp;&nbsp;Occupation</span>
+                                <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'OCCUPATION' | translate }}</span>
                             </div>
 
                         </div>
@@ -157,11 +157,11 @@
             <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
                 <div class="row no-padding" >
                     <div class="col  col-center no-padding" style="color:cornflowerblue">
-                        Member
+                        {{'MEMBER' | translate }}
                     </div>
                     <div class="col col-33 col-right no-padding right">
                         <button class="button button-positive button-small" style="font-size: 18px;" ng-click="sendGroupInvitations()">
-                            Invite
+                            {{'INVITE' | translate }}
                         </button>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
                 <div class="row ">
                     <div class="col col-33">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Name</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'NAME' | translate }}</span>
                         </div>
 
                     </div>
@@ -203,14 +203,14 @@
                     </div>
                     <div class="col ">
                         <div class="" style="white-space: normal;font-weight: bold;">
-                            Admin
+                            {{'ADMIN' | translate }}
                         </div>
                     </div>
                 </div>
                 <div class="row ">
                     <div class="col col-33">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Nationality</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'NATIONALITY' | translate }}</span>
                         </div>
 
                     </div>
@@ -223,7 +223,7 @@
                 <div class="row ">
                     <div class="col col-33">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Occupation</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'OCCUPATION' | translate }}</span>
                         </div>
 
                     </div>
@@ -241,7 +241,7 @@
             <div class="item item-divider"  style="border-bottom: 3px solid #387ef5;">
                 <div class="row no-padding" >
                     <div class="col  col-center no-padding" style="color:cornflowerblue">
-                        Invitations
+                        {{'INVITATION' | translate }}
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@
                 <div class="row ">
                     <div class="col col-33">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Name</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'NAME' | translate }}</span>
                         </div>
 
                     </div>
@@ -263,7 +263,7 @@
                 <div class="row ">
                     <div class="col col-33">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Mobile</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'MOBILE' | translate }}</span>
                         </div>
 
                     </div>
@@ -276,7 +276,7 @@
                 <div class="row ">
                     <div class="col col-33">
                         <div >
-                            <span class='label-text' style="color:gray">&nbsp;&nbsp;Status</span>
+                            <span class='label-text' style="color:gray">&nbsp;&nbsp;{{'STATUS' | translate }}</span>
                         </div>
 
                     </div>

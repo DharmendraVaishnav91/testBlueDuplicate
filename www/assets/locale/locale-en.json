@@ -208,5 +208,18 @@
   "HOME":"Home",
   "FARM1":"Farm1",
   "RICE":"Rice",
-  "ADDRESS_1":"Address 1"
+  "ADDRESS_1":"Address 1",
+  "DETAIL" : "Detail",
+  "GROUP_NAME" : "Group Name",
+  "GROUP_SUB_TYPE" : "Group Sub Type",
+  "GROUP_EMPLOYEE" : "Group Employee",
+  "NATIONALITY" : "Nationality",
+  "ADMIN" : "Admin",
+  "INVITATION" : "Invitation",
+  "GROUP_INVITE" : "Group Invite",
+  "EQUIPMENT_DETAILS" : "Equipment Details",
+  "ASSET_RELATIONSHIP" : "Asset Relationship",
+  "ASSET_BLUENUMBER" : "Asset Bluenumber",
+  "LOCATION_NAME" : "Location Name",
+  "LOCATION_TYPE" : "Location Type"
 }
