@@ -6,6 +6,7 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
     $scope.selectedNumber=[];
     $scope.phoneContacts = [];
     $scope.countryCodeList=utilityService.countryList();
+    $scope.contactFind = true;
     var userPhone=$rootScope.user.bluenumber.split("-")[1];
     var indexOfPhone=$rootScope.user.username.indexOf(userPhone);
     console.log(userPhone);
@@ -33,6 +34,9 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
                 }
             }
             $ionicLoading.hide();
+            if($scope.phoneContacts.length == 0){
+                $scope.contactFind = false;
+            }
         }
         function onError(contactError) {
             $ionicLoading.hide();

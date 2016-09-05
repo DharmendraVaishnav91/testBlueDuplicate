@@ -1,4 +1,4 @@
-app.controller('AboutInfoCtrl', function($scope,$state) {
+app.controller('AboutInfoCtrl', function($scope,$state,$ionicModal) {
     //var isIOS = ionic.Platform.isIOS();
     $scope.isAndroid = ionic.Platform.isAndroid();
 app.controller('AboutInfoCtrl', function($scope,$state,$ionicModal) {
