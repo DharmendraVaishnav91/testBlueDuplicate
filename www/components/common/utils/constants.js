@@ -45,7 +45,7 @@ var HttpRoutes = {
     inviteFriend:apiUrl+"/gpr/v1/invite_friend",
     bulkInvite:apiUrl+"/gpr/v1/invite_friends",
     invitedFamilyMembers:apiUrl+"/gpr/v1/invited_family_members",
-    fetchWorkPlaces:apiUrl+"/gpr/v1/assets/user_assets/"
+    fetchWorkPlaces:apiUrl+"/gpr/v1/assets/work_places"
 
 
 };

@@ -14,8 +14,8 @@ app.controller('DashboardCtrl', function($scope, $ionicModal, $timeout,leafletDa
                  //    marker:
                  markers["marker"+val]= {
                      layer:"india",
-                     lng: key.coordinates[0],
-                     lat: key.coordinates[1],
+                     lng: parseInt(key.coordinates[0]),
+                     lat: parseInt(key.coordinates[1]),
                      focus: false,
                      draggable: false
                     }
