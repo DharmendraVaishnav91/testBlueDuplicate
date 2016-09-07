@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionicPopup,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
+app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$ionicPopup,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
 
     // Form data for the login modal
     var openModalType={
@@ -24,7 +24,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
     var updatedImage='';
     $rootScope.bgUrl="assets/img/logo_small.png";
 
-
+    $scope.isLocationOn=false;
+    var isLocationEnabled=null;
     $scope.updateImageSrc = null;
     $scope.isFromSetting=false;
     $rootScope.position=null;
@@ -35,34 +36,35 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
     $scope.work={};
     $scope.workLocations=[];
     $scope.countryCodeList=utilityService.countryList();
-    console.log("country code list");
-    console.log($scope.countryCodeList);
-    
+    var myPopup=null;
+    var isPopupOpen=false,success,failure;
     $scope.showPopup = function(position) {
       $scope.data = {};
 
       // An elaborate, custom popup
-      var myPopup = $ionicPopup.show({
+      myPopup = $ionicPopup.show({
         title: 'Warning',
-        subTitle: 'Location must be enabled to continue, please go to setting to enable this.',
+        template: '<span style="font-size: 18px;">Location must be enabled to continue, please go to setting to enable this.</span>',
         scope: $scope,
+          cssClass:'custom-title',
         buttons: [
           { 
             text: 'Cancel',
             onTap: function(){
-                $state.go('home');
+                ionic.Platform.exitApp();
             }
           },
           {
-            text: '<b>Go Settings</b>',
+            text: '<b>Share Location</b>',
             type: 'button-positive',
             onTap: function(e) {
+                isPopupOpen=false ;
                 if(typeof cordova.plugins.settings.openSetting != undefined){
                     cordova.plugins.settings.open(function(){
-                            console.log("opened settings")
+                            console.log("opened settings")  ;
+
                         },
                         function(){
-                            console.log("failed to open settings")
                         });
                 }
             }
@@ -70,24 +72,53 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
         ]
       });
     };
-    var isLocationEnabled= function () {
-        if (window.cordova) {
-            cordova.plugins.diagnostic.isLocationEnabled(function(enabled) {
-                if(enabled == false){
-                    $scope.showPopup();
-                }
-            }, function(error) {
-                alert("Error in getting location: " + error);
-            });
+    isLocationEnabled= function () {
+        //var deferred=$q.defer();
+        if(!$scope.isLocationOn) {
+            if (window.cordova) {
+                cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
+                    if (enabled == false) {
+                        $scope.isLocationOn = false;
+                        $scope.showPopup();
+                        /// deferred.reject();
+                    } else {
+                        $scope.isLocationOn = true;
+                        utilityService.getPosition().then(function (position) {
+                            $rootScope.position = position;
+                            console.log("position in scope");
+                            console.log($rootScope.position);
+                        });
+                        //deferred.resolve();
+                    }
+                }, function (error) {
+                    alert("Error in getting location: " + error);
+                });
+            }
         }
+        //return deferred.promise;
     };
-    isLocationEnabled();
+    success= function (response) {
+
+    };
+    failure= function (error) {
+        if(!isPopupOpen){
+            isLocationEnabled().then(success).catch(failure);
+            if(!$scope.isLocationOn){
+                $scope.showPopup();
+                isPopupOpen=true;
+            }
+        }
+
+    };
+   // $timeout(isLocationEnabled,200);
+
 
     utilityService.getPosition().then(function (position) {
         $rootScope.position=position;
         console.log("position in scope");
         console.log($rootScope.position);
     });
+
 
     $ionicModal.fromTemplateUrl('components/login/views/regCreateProfile.html', {
         scope: $scope,
@@ -205,8 +236,8 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
         $scope.enableCrop=$scope.data.type.indexOf('Farm')>-1;
     };
 
-    $scope.changeSubdivision=function(selectedCountry){
-        fetchStates(selectedCountry.CountryCode);
+    $scope.changeSubdivision=function(countryCode){
+        fetchStates(countryCode);
     };
 
     var fetchStates= function (countryCode) {
@@ -221,9 +252,22 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
             //$scope.userId=response;
             $rootScope.auth_token=response.auth_token;
             $scope.data.workCountry=angular.copy($scope.data.homeCountry);
+            $cordovaToast.showLongBottom("User created successfully");
+            $scope.closeModal(openModalType.addHome);
             $scope.openModal(openModalType.addWork);
         }).catch(function(error){
-            console.log(error);
+            var errorMessage="";
+            if(error.error_status){
+                errorMessage=error.country_code!=null?error.country_code.error:"";
+                errorMessage+=error.home_location!=null?error.home_location.error:"";
+                errorMessage+=error.user!=null?error.user.error:"";
+            }else{
+                errorMessage="Something went wrong on server. Please try after some time."
+            }
+            if(errorMessage!=""){
+                $cordovaToast.showLongBottom(errorMessage);
+                console.log(errorMessage);
+            }
         });
     };
     var fetchCropList = function(){
@@ -245,9 +289,13 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
             console.log("Work added successfully.");
             //$cordovaToast.showShortBottom("Work added successfully.");
             fetchLocation();
+            $cordovaToast.showLongBottom("Work data saved successfully");
+            $scope.closeModal(openModalType.addWork);
             $scope.openModal(openModalType.addThing);
+
         }).catch(function(error){
            console.log(error);
+            $cordovaToast.showLongBottom("Something went wrong. Please try again");
             //Remove this after demo
             //$scope.openModal(openModalType.addThing);
         });
@@ -255,55 +303,100 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
     };
     var saveThingsData=function(thingsData){
         loginService.saveThingsData(thingsData).then(function(response){
+            $scope.closeModal(openModalType.addThing);
             $scope.openModal(openModalType.addGroup);
             fetchLocation();
             console.log("Equipment added successfully.");
-            //$cordovaToast.showShortBottom("Equipment added successfully.");
+            $cordovaToast.showShortBottom("Equipment added successfully.");
         }).catch(function(error){
             console.log(error);
+            $cordovaToast.showLongBottom("Something went wrong. Please try again");
             //Remove this after demo
             //$scope.openModal(openModalType.addGroup);
         });
     };
     var saveGroupData=function(groupsData){
         loginService.saveGroupsData(groupsData).then(function(response){
-
-            $scope.openModal(openModalType.signUpSuccess);
             console.log("Group added successfully.");
-            //$cordovaToast.showShortBottom("Group added successfully.")
+            $cordovaToast.showShortBottom("Group added successfully.") ;
+            $scope.closeModal(openModalType.addGroup);
+            $scope.openModal(openModalType.signUpSuccess);
         }).catch(function(error){
             console.log(error);
+            $cordovaToast.showLongBottom("Something went wrong. Please try again");
             //Remove this after demo
            // $scope.openModal(openModalType.signUpSuccess);
         });
     };
     $scope.goToProfileCreation = function() {
-        $scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
-        console.log($scope.data);
-        $scope.openModal(openModalType.createProfile);
+        $scope.openModal(openModalType.addWork);
+        //$scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
+        //$scope.loginData.user.country_phone_code=$scope.data.selectedCountry.CountryPhoneCode;
+        //$scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
+        //loginService.checkUserNameAvailability($scope.loginData).then(function (response) {
+        //    console.log("Username available");
+        //    $scope.openModal(openModalType.createProfile);
+        //}).catch(function (error) {
+        //    console.log(error.error);
+        //    $cordovaToast.showLongBottom(error.error);
+        //    console.log("Username already taken. Try another.")
+        //});
+
     };
     $scope.goToSelectUserType = function () {
         console.log($scope.data);
         $scope.loginData.profile.gender=$scope.data.gender;
         $scope.loginData.profile.image=updatedImage;
         console.log($scope.loginData);
+        $scope.closeModal(openModalType.createProfile);
         $scope.openModal(openModalType.selectUserType);
+
     };
 
     $scope.goToAddHome=function(){
-        $scope.data.homeCountry=angular.copy($scope.data.selectedCountry);
-        fetchStates($scope.data.homeCountry.CountryCode);
+       // $scope.data.homeCountry=angular.copy($scope.data.selectedCountry);
+        //fetchStates($scope.data.homeCountry.CountryCode);
         console.log($scope.loginData);
-        $scope.openModal(openModalType.addHome);
+
+        utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
+               console.log(addr);
+            $scope.userCountry={
+                CountryName:addr.country!=null?addr.country:"",
+                CountryCode:addr.country_code!=null?addr.country_code:"",
+                CountryPhoneCode:""
+            };
+            $scope.userState={
+                SubdivisionID:"",
+                SubdivisionCode:addr.province_code!=null?addr.province_code:"",
+                SubdivisionName:addr.state!=null?addr.state:"" ,
+                CountryCode:$scope.userCountry.CountryCode,
+                CountryName:$scope.userCountry.CountryName
+            };
+            console.log("User state");
+            console.log($scope.userState);
+            $scope.loginData.home.address=angular.copy(addr.street_number!=null?addr.street_number:"");
+            $scope.loginData.home.address+=angular.copy(addr.street_address!=null?addr.street_address:"");
+            $scope.loginData.home.city=angular.copy(addr.sub_state!=null?addr.sub_state:"");
+            $scope.changeSubdivision($scope.userCountry.CountryCode);
+            $scope.closeModal(openModalType.selectUserType);
+            $scope.openModal(openModalType.addHome);
+            $scope.data.homeCountry=angular.copy($scope.userCountry.CountryCode);
+            $scope.data.state=angular.copy($scope.userState.SubdivisionCode);
+        }).catch(function (error) {
+             console.log(error);
+        });
+
     };
 
     $scope.goToWork= function () {
         if ($scope.data.state != undefined && $scope.data.state != null) {
-            $scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
+            //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
+            $scope.loginData.home.subdivision_code = $scope.data.state;
         } else {
             $scope.loginData.home.subdivision_code = "";
         }
-        $scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+        //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+        $scope.loginData.home.country_code=$scope.data.homeCountry;
         $scope.loginData.home.latitude= $rootScope.position?$rootScope.position.coords.latitude:'';
         $scope.loginData.home.longitude= $rootScope.position?$rootScope.position.coords.longitude:'';
         $scope.loginData.home.name='Home';
@@ -427,17 +520,20 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
 
     $scope.changeImage= function(){
         utilityService.getImage().then(function(src) {
-            updatedImage = "data:image/jpeg;base64," +src;
-            window.resolveLocalFileSystemURL(src, function(fileEntry) {
-
-                //If this doesn't work
-                $scope.updateImageSrc = fileEntry.nativeURL;
-                console.log($scope.updateImageSrc);
-
-                //Try this
-                //var image = document.getElementById('myImage');
-                //image.src = fileEntry.nativeURL;
-            });
+          updatedImage = "data:image/png;base64," +src;
+           // updatedImage =src;
+            //var rad = Math.floor(Math.random() * 10000 + 10);
+            $scope.updateImageSrc = updatedImage;
+            //window.resolveLocalFileSystemURL(src, function(fileEntry) {
+            //
+            //    //If this doesn't work
+            //    $scope.updateImageSrc = fileEntry.nativeURL;
+            //    console.log($scope.updateImageSrc);
+            //
+            //    //Try this
+            //    //var image = document.getElementById('myImage');
+            //    //image.src = fileEntry.nativeURL;
+            //});
 
             //console.log(updatedImage);
             //var rad = Math.floor(Math.random() * 10000 + 10);
@@ -447,6 +543,9 @@ app.controller('RegCreateAccountCtrl', function($scope,$state,$ionicModal,$ionic
         },function(err) {
             console.log(JSON.stringify(err));
         })
+    };
+    $scope.skipToSuccess = function () {
+        $scope.openModal(openModalType.signUpSuccess);
     };
 
     $scope.skipToThing = function () {

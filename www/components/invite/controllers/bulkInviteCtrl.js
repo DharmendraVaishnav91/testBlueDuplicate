@@ -44,7 +44,7 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
 
         $cordovaContacts.find(options).then(onSuccess, onError);
     };
-    $scope.getAllContacts();
+   $scope.getAllContacts();
     $scope.updateSelection = function($event, phoneNumber) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');

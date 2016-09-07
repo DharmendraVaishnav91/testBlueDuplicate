@@ -8,27 +8,24 @@
 }" >{{'ADD_WORK_PLACE' | translate }}</h1>
     </ion-header-bar>
     <form name="addWorkForm">
-    <ion-content has-bouncing="true" class="blueno-bg has-footer" >
-            <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+    <ion-content scroll="true" class="blueno-bg has-footer" ng-class="{'has-header':isFromSetting}">
             <div class="center" style=";width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting" >
-                <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
-                <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
                     <i class="ion-monitor"></i>&nbsp;{{'ADD_WORK' | translate }}
                 </h3>
             </div>
 
-                <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
+        <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
     overflow: scroll;
     width: 100%;
     padding: 0;">
                 <!--Work place type-->
-                <label class="item item-input item-stacked-label no-border lebel-padding">
+                <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text "  style="color:white">{{'WORK_PLACE_TYPE' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
 
-                    <select ng-model="data.type" style="width: 100%;" ng-change="workTypeChange()">
+                    <select ng-model="data.type" style="width: 100%;" ng-change="workTypeChange()" ng-required="true">
                         <option value="" disabled selected >{{'WORK_PLACE_TYPE' | translate }}</option>
                         <option value="Residence">{{'RESIDENCE' | translate }}</option>
                         <option value="Office">{{'OFFICE' | translate }}</option>
@@ -45,7 +42,7 @@
 
 
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="enableCrop">
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
                     <span class="input-label label-text "  style="color:white">{{'CROP' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
@@ -55,7 +52,7 @@
 
                 <!--Hectare-->
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="enableCrop">
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
                     <span class="input-label label-text "  style="color:white">{{'HECTARE' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
@@ -65,11 +62,11 @@
 
                 <!--Relationship-->
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%;" ng-model="data.relationship">
+                    <select style="width: 100%;" ng-model="data.relationship"  ng-required="true">
                         <option value="Worker">{{'WORKER' | translate }}</option>
                         <option value="Owner">{{'OWNER' | translate }}</option>
                         <option value="Lessor">{{'LESSOR' | translate }}</option>
@@ -78,43 +75,42 @@
 
                 <!--Address-->
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input type="text" ng-required="true" class="edit-input-txt"  ng-model="work.address"/>
                 </label>
 
                 <!--CIty-->
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'City' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
-                    <input type="text" ng-required="true"  ng-model="work.city" class="edit-input-txt"  />
+                    <input type="text"   ng-model="work.city" class="edit-input-txt"  />
                 </label>
 
                 <!--Country-->
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <select style="width: 100%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.workCountry)">
                     </select>
                 </label>
                 <!--State-->
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}}</span>
                     </span>
                     <select style="width: 100%" ng-model="data.workState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">
                     </select>
 
                 </label>
-                    </div>
-
+        </div>
 
     </ion-content>
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >

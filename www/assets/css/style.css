@@ -51,6 +51,9 @@ div.leaflet-right{
 .bar-header{
     border-color: grey !important;
 }
+.popup-title{
+    font-size:large;
+}
 .edit-input-txt{
     font-size: 18px !important;
     background-color: rgba(97,137,197,.7) !important;;
@@ -61,7 +64,7 @@ div.leaflet-right{
 }
 
 .input-txt{
-    display: inline !important;         ''
+    display: inline !important;
     height: 40px !important;
     width: 80% !important;
     background: rgba(97,137,197,.7);
@@ -113,7 +116,7 @@ option{
     background: white;
     color:black;
 }
-.lebel-padding{
+.label-padding {
     padding-right:12% !important;
     padding-left:12% !important;
 }

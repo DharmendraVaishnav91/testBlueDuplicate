@@ -31,7 +31,22 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
-
+    utilityService.fetchAddressFromCoords = function (coords) {
+       var coordData={
+           latitude:coords.latitude,
+           longitude:coords.longitude
+       } ;
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.fetchAddressFromCoordinates,
+            method:HttpRequestType.POST,
+            data:coordData,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
+    } ;
     utilityService.countryList= function () {
         if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
             var deferred = $q.defer();
@@ -73,7 +88,7 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             console.log(response);
             deferred.resolve(response.data);
         }).catch(function(error) {
-            deferred.reject(error);
+            deferred.reject(error.data);
         });
         return deferred.promise;
     };
@@ -97,27 +112,27 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             ]
         });
 
-        //var options = {
-        //    quality: 50,
-        //    destinationType: Camera.DestinationType.DATA_URL,
-        //    sourceType: Camera.PictureSourceType.CAMERA,
-        //    allowEdit: true,
-        //    encodingType: Camera.EncodingType.JPEG,
-        //    targetWidth: 100,
-        //    targetHeight: 100,
-        //    popoverOptions: CameraPopoverOptions,
-        //    saveToPhotoAlbum: false,
-        //    correctOrientation:true
-        //};
-        var options = cameraOptions || {
-                quality: 100,
-                destinationType: Camera.DestinationType.DATA_URL,
-                sourceType: Camera.PictureSourceType.CAMERA,
-                allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG,
-                saveToPhotoAlbum: false,
-                correctOrientation:true
-            };
+        var options = {
+            quality: 100,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false,
+            correctOrientation:true
+        };
+        //var options = cameraOptions || {
+        //        quality: 100,
+        //        destinationType: Camera.DestinationType.DATA_URL,
+        //        sourceType: Camera.PictureSourceType.CAMERA,
+        //        allowEdit: true,
+        //        encodingType: Camera.EncodingType.JPEG,
+        //        saveToPhotoAlbum: false,
+        //        correctOrientation:true
+        //    };
 
         function getPic() {
             ionic.Platform.ready(function() {

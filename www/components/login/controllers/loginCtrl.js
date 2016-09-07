@@ -11,8 +11,7 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
     };
 
     $scope.doLogin= function () {
-        console.log("Doing login") ;
-
+        console.log("Doing login");
         loginService.doLogin($scope.loginData).then(function (user){
             $rootScope.user=user;
             $rootScope.auth_token=user.auth_token;
@@ -20,8 +19,8 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
                 console.log("User personal details");
                 console.log(response);
                 $rootScope.userInfo=response;
-                if($rootScope.userInfo.image=="user.png"){
-                    $rootScope.profileUrl="assets/img/blank-avatar.png";
+                if($rootScope.userInfo.image==DEFAULT_PROFILE_PATH){
+                    $rootScope.profileUrl=DEFAULT_AVATAR_PATH;
                 }else{
                     $rootScope.profileUrl=$rootScope.userInfo.image;
                 }
@@ -29,8 +28,8 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
             saveUser(user);
             $state.go('app.dashboard');
         }).catch(function (error) {
-            console.log(error.data.errors);
-            var errorMessage=error.data.errors?error.data.errors:"Invalid Credentials";
+            console.log(error.errors);
+            var errorMessage=error.errors?error.errors:"Invalid Credentials";
             $cordovaToast.showLongBottom(errorMessage)
         });
        // $state.go('app.dashboard');

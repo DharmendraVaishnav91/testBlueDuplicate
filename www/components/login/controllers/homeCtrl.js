@@ -1,28 +1,28 @@
 /**
  * Created by dharmendra on 9/8/16.
  */
-app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage,userSettingService) {
+app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage,userSettingService,$timeout) {
 
     // Form data for the login modal
     $rootScope.deviceHeight = $window.innerHeight;
     $rootScope.deviceWidth = $window.innerWidth;
     $scope.loginData = {};
     var languageData={};
-    //var selectedLanguage=languages.ENGLISH;
-    //utilityService.fetchLanguageStrings(selectedLanguage).then(function(response){
-    //    languageData=response.value;
-    //    console.log("Language JSON data");
-    //    console.log(languageData);
-    //    $translateProvider.translations(selectedLanguage,languageData);
-    //    $translateProvider.preferredLanguage(selectedLanguage);
-    //});
-
 
     $rootScope.bgUrl="assets/img/logo_small.png";
     $rootScope.bgLargeUrl="assets/img/logo_big.png";
-
+    var checkCordovaPlugin= function () {
+        if (window.cordova&& window.cordova.plugins&&window.cordova.plugins.diagnostics) {
+            cordova.plugins.diagnostics.isCameraAuthorized(function(authorized){
+                console.log("App is " + (authorized ? "authorized" : "denied") + " access to the camera");
+            }, function(error){
+                console.error("The following error occurred: "+error);
+            });
+        }
+    };
+     $timeout(checkCordovaPlugin,500);
     var validateUser=function(){
-        //$localStorage[STORAGE.LOGIN_KEY]=null;;
+       // $localStorage[STORAGE.LOGIN_KEY]=null;
         var user=loginService.validateLogin();
         console.log("User details");
         console.log(user);
@@ -34,8 +34,8 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
                 console.log("User personal details");
                 console.log(response);
                 $rootScope.userInfo=response;
-                if($rootScope.userInfo.image=="user.png"){
-                    $rootScope.profileUrl="assets/img/blank-avatar.png";
+                if($rootScope.userInfo.image==DEFAULT_PROFILE_PATH){
+                    $rootScope.profileUrl=DEFAULT_AVATAR_PATH;
                 }else{
                     $rootScope.profileUrl=$rootScope.userInfo.image;
                 }

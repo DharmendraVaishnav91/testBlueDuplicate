@@ -12,25 +12,23 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         $scope.editWork= modal;
     });
 
-    var fetchAllLocations= function () {
-        userSetting.fetchAllLocations($rootScope.user.actorID).then(function (response) {
-            console.log("User locations");
-            console.log(response);
-            $scope.userLocations=response;
-        }).catch(function (error) {
-            console.log(error);
-        })
-    };
-    fetchAllLocations();
-    $scope.showEditWork= function(){
-      $scope.editWork.show();
-    };
+    //var fetchAllLocations= function () {
+    //    userSetting.fetchAllLocations($rootScope.user.actorID).then(function (response) {
+    //        console.log("User locations");
+    //        console.log(response);
+    //        $scope.userLocations=response;
+    //    }).catch(function (error) {
+    //        console.log(error);
+    //    })
+    //};
+   // fetchAllLocations();
+   // $scope.showEditWork= function(){
+   //   $scope.editWork.show();
+   // };
      $scope.addWork = function () {
-
+         $scope.editWork.show();
      } ;
-    $scope.goToEditAccount= function(){
-        $scope.editAccountModal.show();
-    };
+
     $scope.hideWorkAddModal= function () {
         $scope.editWork.hide();
     } ;

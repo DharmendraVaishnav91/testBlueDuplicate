@@ -1,35 +1,29 @@
-<ion-modal-view  >
+<ion-modal-view >
     <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
         <button ng-click="hideGroupAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
         </button>
-        <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >Add Group</h1>
+        <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0 !important;
+}" >{{'ADD_GROUP' | translate }}</h1>
     </ion-header-bar>
-    <ion-content has-bouncing="true" class="blueno-bg" ng-class="{'has-header':isFromSetting}">
-        <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+    <form name="addGroupForm">
+    <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px"  ng-if="!isFromSetting">
-
             <h3 style="color: #ffffff;">
                 <i class="ion-person-stalker"></i>&nbsp;{{'ADD_GROUP' | translate }}
             </h3>
         </div>
-        <form name="addGroupForm">
-            <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
-    overflow: scroll;
-    width: 100%;
-    padding: 0;">
 
-            <label class="item item-input item-stacked-label no-border lebel-padding" >
+        <div ng-cloak class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
+
+            <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'NAME' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="text" ng-required="true" ng-model="data.groupName" placeholder="{{'NAME' | translate }}" class="edit-input-txt"  />
+                <input type="text" ng-required="true" name="groupName" ng-model="data.groupName"  class="edit-input-txt"  />
             </label>
-
-
-            <label class="item item-input item-stacked-label no-border lebel-padding" >
+            <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'GROUP_TYPE' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
@@ -43,13 +37,8 @@
                     <option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>
                 </select>
             </label>
-
-
-
-
-            <label class="item item-input item-stacked-label no-border lebel-padding" >
+            <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'SUB_TYPE' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
                 <select style="width: 100%" ng-required="true" ng-model="data.groupSubType">
                     <option value="Sector" >{{'SECTOR' | translate }}</option>
@@ -61,7 +50,7 @@
             </label>
 
 
-            <label class="item item-input item-stacked-label no-border lebel-padding" >
+            <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
@@ -74,7 +63,7 @@
             </label>
 
 
-            <label class="item item-input item-stacked-label no-border lebel-padding" >
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
@@ -85,21 +74,21 @@
             </label>
 
 
-            <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
                 <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input type="text" ng-required="true" class="edit-input-txt"  ng-model="data.otherGroupAddress"/>
             </label>
 
-            <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
                 <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <<input type="text" ng-required="true"  ng-model="data.otherGroupCity" class="edit-input-txt"  />
+                <input type="text" ng-required="true"  ng-model="data.otherGroupCity" class="edit-input-txt"  />
             </label>
 
-            <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
@@ -107,7 +96,7 @@
                 </select>
             </label>
 
-            <label class="item item-input item-stacked-label no-border lebel-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
@@ -115,25 +104,23 @@
                 </select>
             </label>
 
+            </div>
 
-                </div>
-        </form>
 
     </ion-content>
-    <ion-footer-bar ng-disabled="addGroupForm.$invalid" class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
+    <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0 !important;" >
         <div  class="button-bar">
-            <!--<button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToGroup()" style="font-size: 20px;">-->
-                <!--{{'Skip' | translate }} &nbsp;-->
-            <!--</button>-->
-            <button ng-if="isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="createAndUpdateGroup()" style="font-size: 20px;">
+            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">
+                {{'Skip' | translate }} &nbsp;
+            </button>
+            <button ng-if="isFromSetting" ng-disabled="addGroupForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="createAndUpdateGroup()" style="font-size: 20px;">
                 {{'CREATE' | translate }}
             </button>
-            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToInviteFamily()" style="font-size: 20px;">
+            <button ng-if="!isFromSetting" ng-disabled="addGroupForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToInviteFamily()" style="font-size: 20px;">
                 {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
-            <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
-            <!--<{{'Next' | translate }} <i class="ion-arrow-right-b"></i>-->
-            <!--</button>-->
+
         </div>
     </ion-footer-bar>
+    </form>
 </ion-modal-view>

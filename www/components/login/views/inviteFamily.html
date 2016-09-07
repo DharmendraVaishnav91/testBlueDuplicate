@@ -8,7 +8,7 @@
 }" >Invite Family</h1>
     </ion-header-bar>
     <form name="inviteFamilyForm">
-    <ion-content has-bouncing="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
+    <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px"  ng-if="!isFromSetting">
 
             <h3 style="color: #ffffff;">
@@ -21,20 +21,20 @@
     width: 100%;
     padding: 0;">
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'FULL_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input type="text" name="name" ng-required="true" ng-model="family.name" class="edit-input-txt"  />
                 </label>
 
-                <label class="item item-input item-stacked-label no-border lebel-padding"  >
+                <label class="item item-input item-stacked-label no-border label-padding"  >
                 <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                     <input type="number" name="mobile" ng-required="true" class="edit-input-txt"  ng-model="family.mobile"/>
                 </label>
-                <label class="item item-input item-stacked-label no-border lebel-padding"  >
+                <label class="item item-input item-stacked-label no-border label-padding"  >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                     </span>

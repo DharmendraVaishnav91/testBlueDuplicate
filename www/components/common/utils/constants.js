@@ -19,9 +19,13 @@ var STORAGE={
     LOGIN_KEY:"login-key",
     COUNTRIES:"countries"
 };
+var DEFAULT_PROFILE_PATH="/assets/user.png"  ;
+var DEFAULT_AVATAR_PATH="assets/img/blank-avatar.png";
 var HttpRoutes = {
     login:apiUrl+"/gpr/v1/sessions/",
+    checkUserName:apiUrl+"/gpr/v2/user_check?username=",
     fetchUserDetail:apiUrl+"/gpr/v1/people/",
+    fetchAddressFromCoordinates:apiUrl+"/gpr/v1/process_coordinates/",
     fetchCountryCode:  apiUrl + '/gpr/country_list/',
     signUpStep1:apiUrl+'/gpr/v2/signup_user/',
     signUpStep2:apiUrl+'/gpr/v2/signup_works/',

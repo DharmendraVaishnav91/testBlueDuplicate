@@ -8,10 +8,8 @@
 }" >{{'ADD_THING' | translate }}</h1>
     </ion-header-bar>
     <form name="addThingForm">
-    <ion-content has-bouncing="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
+    <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
             <div class="center" style="width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting">
-                <!--<img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>-->
-                <!--<h4 style="color: white;font-weight: bold;margin-top:0">bluenumber</h4>-->
                 <h3 style="color: #ffffff;">
                     <i class="ion-folder"></i>&nbsp;{{'ADD_THING' | translate }}
                 </h3>
@@ -20,13 +18,13 @@
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
 
-            <label class="item item-input item-stacked-label no-border lebel-padding"  >
+            <label class="item item-input item-stacked-label no-border label-padding"  >
                     <span class="input-label label-text "  style="color:white">{{'ASSET_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                 <input type="text" ng-required="true" name="assetName" class="edit-input-txt" ng-model="data.assetName"/>
             </label>
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'EQUIPMENT_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
@@ -41,7 +39,7 @@
                 </label>
 
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
@@ -53,7 +51,7 @@
                 </label>
 
 
-                <label class="item item-input item-stacked-label no-border lebel-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
@@ -64,35 +62,24 @@
                     </select>
                 </label>
 
-                <label class="item item-input item-stacked-label no-border lebel-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
-                        <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
-                            <span class="assertive " style="font-size: inherit">* </span>
-                        </span>
-                    <select style="width: 100%" ng-model="data.otherThingLocationType" ng-required="true">
-                        <option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>
-                        <option value="Fishery">{{'FISHERY' | translate }}</option>
-                        <option value="Equipment (agriculture)">{{'EQUIPMENT_AGRICULTURE' | translate }}</option>
-                        <option value="Equipment (fishing)">{{'EQUIPMENT_FISHING' | translate }}</option>
-                        <option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>
-                    </select>
-                </label>
 
 
-                <label class="item item-input item-stacked-label no-border lebel-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
+
+                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
                     <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input type="text" ng-required="true" class="edit-input-txt" ng-model="data.otherThingAddress"/>
                 </label>
 
-                <label class="item item-input item-stacked-label no-border lebel-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
+                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
                     <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input type="text" ng-required="true" ng-model="data.otherThingCity" class="edit-input-txt"  />
                 </label>
 
-                <label class="item item-input item-stacked-label no-border lebel-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
+                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
                     <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
@@ -100,7 +87,7 @@
                     </select>
                 </label>
 
-                <label class="item item-input item-stacked-label no-border lebel-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
+                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="data.equipWhere=='OtherThingLocation'">
                     <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>

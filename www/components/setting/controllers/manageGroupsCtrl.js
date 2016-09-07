@@ -136,6 +136,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
         console.log(groupsData);
         //$scope.openModal(openModalType.inviteFamily);
     };
+
     $scope.sendGroupInvitations= function () {
         $scope.inviteInGroupModal.show();
     };

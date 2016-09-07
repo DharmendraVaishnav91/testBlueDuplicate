@@ -56,6 +56,17 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
+    self.checkUserNameAvailability= function (userData) {
+        var username=userData.user.country_phone_code+""+userData.user.mobile;
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.checkUserName+""+username,
+            method:HttpRequestType.GET
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
+
+    } ;
+
     self.createUser=function(userData){
         var deferred = $q.defer();
         var req={
