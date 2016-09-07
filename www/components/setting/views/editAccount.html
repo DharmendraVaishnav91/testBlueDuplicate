@@ -7,48 +7,50 @@
         <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
 }" >{{'EDIT_ACCOUNT_SMALL' | translate }}</h1>
     </ion-header-bar>
+    <form name="editAccountForm">
     <ion-content  style=" " class="has-header has-footer blueno-bg-full" >
 
         <div class="row">
-            <div class="col col-25" >
+            <div class="col center " >
                 <img ng-src="{{userPersonalInfo.image}}" style=" height: 80px;width: 80px;border-radius: 38px;">
+                <!--<button class="button button-positive button-outline">-->
+                    <!--{{'CHANGE_PHOTO' | translate }}-->
+                <!--</button>-->
             </div>
-            <div class="col col-center" >
-                <button class="button button-positive button-outline">
-                    {{'CHANGE_PHOTO' | translate }}
-                </button>
-            </div>
+            <!--<div class="col col-center" >-->
+              <!-- -->
+            <!--</div>-->
         </div>
-        <form name="editAccountForm">
+           <div class="list" style="width:100%;overflow: scroll;padding:0px" >
 
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'GIVEN_NAME_PRIMARY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   />
             </label>
 
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'GIVEN_NAME_OTHER' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input class="edit-input-txt" name="firstName"   style="font-size:18px;" type="text"  ng-model="person.givenname2"/>
             </label>
 
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'FAMILY_NAME_PRIMARY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" name="lastName" ng-required="true"  style="font-size:18px;" type="text"  ng-model="person.familyname1"/>
             </label>
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'FAMILY_NAME_OTHER' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input class="edit-input-txt" name="lastName" style="font-size:18px;" type="text"  ng-model="person.familyname2"/>
             </label>
 
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'GENDER' | translate }}
                  <span class="assertive " style="font-size: inherit">* </span>
                 </span>
@@ -59,49 +61,54 @@
             </select>
             </label>
 
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'OCCUPATION' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input class="edit-input-txt" type="text" name="occupation"   style="font-size:18px;"   ng-model="person.occupation"/>
             </label>
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'STREET_ADDRESS_ONE' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input class="edit-input-txt" type="text" name="occupation"   style="font-size:18px;"   ng-model="person.streetaddressone"/>
             </label>
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'TOWN_VILLAGE_CITY_DEPT' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input class="edit-input-txt" type="text" name="occupation"   style="font-size:18px;"   ng-model="person.settlement"/>
             </label>
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" type="text" name="occupation" ng-required="true"  style="font-size:18px;"   ng-model="person.latitude"/>
             </label>
-            <label class="item item-input item-stacked-label no-border" style="padding-right:16px;">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" type="text" name="occupation" ng-required="true"  style="font-size:18px;"   ng-model="person.longitude"/>
             </label>
 
+           </div>
 
-        </form>
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" >
+    <ion-footer-bar class="text-center bar-stable blue-bg"  >
         <div  class="button-bar">
-            <button type="submit" class="button button-clear button-balanced" ng-click="updateProfile()">
-                <i class="fa fa-hdd-o"></i> {{'UPDATE_ACTOR' | translate }}
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="addNewGroup()">-->
+                <!--<i class="ion-plus-round"></i>{{'ADD_MORE' | translate }}-->
+            <!--</button>-->
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="hideEditAccount()">
+                 {{'CANCEL' | translate }}
             </button>
-            <button  type="button" class="button button-clear button-assertive" ng-click="hideEditAccount()">
-                <i class="fa fa-times"></i> {{'CANCEL' | translate }}
+            &nbsp;
+            <button type="submit" ng-disabled="editAccountForm.$invalid" class="button  button-light button-clear bold" ng-click="updateProfile()">
+                 {{'SAVE' | translate }}
             </button>
         </div>
     </ion-footer-bar>
+    </form>
 </ion-modal-view >
 

@@ -1,4 +1,4 @@
-<ion-modal-view  >
+<ion-modal-view  style="z-index:8">
     <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
         <button ng-click="hideWorkAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
@@ -97,7 +97,7 @@
                     <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.workCountry)">
+                    <select style="width: 100%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.workCountry.CountryCode)">
                     </select>
                 </label>
                 <!--State-->

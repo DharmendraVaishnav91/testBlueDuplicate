@@ -63,6 +63,17 @@ div.leaflet-right{
     height: 40px !important;
 }
 
+input[type="radio"]{
+    width: 18px;
+    height: 18px;
+}
+.inline-field input,
+.inline-field label {
+    margin-top:10px;
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
 .input-txt{
     display: inline !important;
     height: 40px !important;

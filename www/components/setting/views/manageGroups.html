@@ -22,9 +22,9 @@
             <div class="item no-padding dark-gray-border bg-transparent" ng-click="showGroupInfo(group);" ng-repeat="group in ::groups.admin"  ng-if="groups.admin.length!=0">
                 <div class="row" style="color:white;">
                     <div class="col col-33 col-center">
-                        <span >{{group.OrganizationName}}</span>
+                        <span class="wrap-content">{{group.OrganizationName}}</span>
                     </div>
-                    <div class="col  col-center" style="overflow: hidden;text-overflow: ellipsis;" >
+                    <div class="col  col-center wrap-content" style="overflow: hidden;text-overflow: ellipsis;" >
                         {{group.OrganizationType}}
                     </div>
                     <div class="col col-10 col-center">
@@ -57,9 +57,9 @@
             <div class="item no-padding dark-gray-border bg-transparent" ng-click="showGroupInfo(group);" ng-repeat="group in groups.member">
                 <div class="row" style="color:white;">
                     <div class="col col-33 col-center">
-                        <span >{{group.OrganizationName}}</span>
+                        <span class="wrap-content">{{group.OrganizationName}}</span>
                     </div>
-                    <div class="col  col-center" style="overflow: hidden;text-overflow: ellipsis;" >
+                    <div class="col  col-center wrap-content" style="overflow: hidden;text-overflow: ellipsis;" >
                         {{group.OrganizationType}}
                     </div>
                     <div class="col col-10 col-center">

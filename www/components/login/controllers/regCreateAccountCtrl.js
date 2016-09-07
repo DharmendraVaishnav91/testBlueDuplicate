@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$ionicPopup,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
+app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionicModal,$ionicPopup,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
 
     // Form data for the login modal
     var openModalType={
@@ -37,10 +37,11 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
     $scope.workLocations=[];
     $scope.countryCodeList=utilityService.countryList();
     var myPopup=null;
-    var isPopupOpen=false,success,failure;
+    var isPopupOpen=false;
+    $scope.isLocationShared=false;
     $scope.showPopup = function(position) {
       $scope.data = {};
-
+        isPopupOpen=true;
       // An elaborate, custom popup
       myPopup = $ionicPopup.show({
         title: 'Warning',
@@ -55,16 +56,17 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
             }
           },
           {
-            text: '<b>Share Location</b>',
+            text: '<b>Go to settings</b>',
             type: 'button-positive',
             onTap: function(e) {
-                isPopupOpen=false ;
+                isPopupOpen=false;
                 if(typeof cordova.plugins.settings.openSetting != undefined){
                     cordova.plugins.settings.open(function(){
                             console.log("opened settings")  ;
 
                         },
                         function(){
+
                         });
                 }
             }
@@ -74,43 +76,47 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
     };
     isLocationEnabled= function () {
         //var deferred=$q.defer();
-        if(!$scope.isLocationOn) {
-            if (window.cordova) {
-                cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
-                    if (enabled == false) {
-                        $scope.isLocationOn = false;
-                        $scope.showPopup();
-                        /// deferred.reject();
-                    } else {
-                        $scope.isLocationOn = true;
-                        utilityService.getPosition().then(function (position) {
-                            $rootScope.position = position;
-                            console.log("position in scope");
-                            console.log($rootScope.position);
-                        });
-                        //deferred.resolve();
-                    }
-                }, function (error) {
-                    alert("Error in getting location: " + error);
-                });
-            }
+        if (window.cordova) {
+            cordova.plugins.diagnostic.isLocationEnabled(function (enabled) {
+                if (enabled == false) {
+                    $scope.isLocationOn = false;
+                    $scope.showPopup();
+                    /// deferred.reject();
+                } else {
+                    $scope.isLocationOn = true;
+                    utilityService.getPosition().then(function (position) {
+                        $rootScope.position = position;
+                        console.log("position in scope");
+                        console.log($rootScope.position);
+                    });
+                    //deferred.resolve();
+                }
+            }, function (error) {
+                alert("Error in getting location: " + error);
+            });
         }
+        return $scope.isLocationOn;
         //return deferred.promise;
     };
-    success= function (response) {
+    $scope.showConfirm = function() {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Confirm share',
+            template: 'Are you sure you want to share your location?'
+        });
 
-    };
-    failure= function (error) {
-        if(!isPopupOpen){
-            isLocationEnabled().then(success).catch(failure);
-            if(!$scope.isLocationOn){
-                $scope.showPopup();
-                isPopupOpen=true;
+        confirmPopup.then(function(res) {
+            if(res) {
+                $scope.isLocationShared=true;
+                isLocationEnabled();
+                console.log('You are sure');
+            } else {
+                $scope.isLocationShared=false;
+                console.log('Location must be shared to continue with registration.');
+                $cordovaToast.showLongBottom("Location must be shared to continue with registration.")
             }
-        }
-
+        });
     };
-   // $timeout(isLocationEnabled,200);
+    isLocationEnabled();
 
 
     utilityService.getPosition().then(function (position) {
@@ -253,7 +259,7 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
             $rootScope.auth_token=response.auth_token;
             $scope.data.workCountry=angular.copy($scope.data.homeCountry);
             $cordovaToast.showLongBottom("User created successfully");
-            $scope.closeModal(openModalType.addHome);
+            //$scope.closeModal(openModalType.addHome);
             $scope.openModal(openModalType.addWork);
         }).catch(function(error){
             var errorMessage="";
@@ -290,7 +296,7 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
             //$cordovaToast.showShortBottom("Work added successfully.");
             fetchLocation();
             $cordovaToast.showLongBottom("Work data saved successfully");
-            $scope.closeModal(openModalType.addWork);
+            //$scope.closeModal(openModalType.addWork);
             $scope.openModal(openModalType.addThing);
 
         }).catch(function(error){
@@ -303,7 +309,7 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
     };
     var saveThingsData=function(thingsData){
         loginService.saveThingsData(thingsData).then(function(response){
-            $scope.closeModal(openModalType.addThing);
+           // $scope.closeModal(openModalType.addThing);
             $scope.openModal(openModalType.addGroup);
             fetchLocation();
             console.log("Equipment added successfully.");
@@ -319,7 +325,7 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
         loginService.saveGroupsData(groupsData).then(function(response){
             console.log("Group added successfully.");
             $cordovaToast.showShortBottom("Group added successfully.") ;
-            $scope.closeModal(openModalType.addGroup);
+           // $scope.closeModal(openModalType.addGroup);
             $scope.openModal(openModalType.signUpSuccess);
         }).catch(function(error){
             console.log(error);
@@ -328,19 +334,29 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
            // $scope.openModal(openModalType.signUpSuccess);
         });
     };
+    $scope.shareLocation = function () {
+        $scope.showConfirm();
+    };
     $scope.goToProfileCreation = function() {
-        $scope.openModal(openModalType.addWork);
-        //$scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
-        //$scope.loginData.user.country_phone_code=$scope.data.selectedCountry.CountryPhoneCode;
-        //$scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
-        //loginService.checkUserNameAvailability($scope.loginData).then(function (response) {
-        //    console.log("Username available");
-        //    $scope.openModal(openModalType.createProfile);
-        //}).catch(function (error) {
-        //    console.log(error.error);
-        //    $cordovaToast.showLongBottom(error.error);
-        //    console.log("Username already taken. Try another.")
-        //});
+        if($scope.isLocationShared){
+             if(isLocationEnabled()){
+                 // $scope.openModal(openModalType.addWork);
+                 $scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
+                 $scope.loginData.user.country_phone_code=$scope.data.selectedCountry.CountryPhoneCode;
+                 $scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
+                 loginService.checkUserNameAvailability($scope.loginData).then(function (response) {
+                     console.log("Username available");
+                     $scope.openModal(openModalType.createProfile);
+                 }).catch(function (error) {
+                     console.log(error.error);
+                     $cordovaToast.showLongBottom(error.error);
+                     console.log("Username already taken. Try another.")
+                 });
+             }
+        }else{
+            $cordovaToast.showLongBottom("Location must be shared to continue with registration");
+        }
+
 
     };
     $scope.goToSelectUserType = function () {
@@ -354,10 +370,7 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
     };
 
     $scope.goToAddHome=function(){
-       // $scope.data.homeCountry=angular.copy($scope.data.selectedCountry);
-        //fetchStates($scope.data.homeCountry.CountryCode);
         console.log($scope.loginData);
-
         utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
                console.log(addr);
             $scope.userCountry={
@@ -447,6 +460,7 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
     $scope.goToGroup=function(){
         var things=[];
         var thing1={
+            asset_name: $scope.data.assetName,
             equipment_type:$scope.data.equipType,
             relationship:$scope.data.equipRelationship
             //location:$scope.data.equipWhere
@@ -520,38 +534,26 @@ app.controller('RegCreateAccountCtrl', function($q,$scope,$state,$ionicModal,$io
 
     $scope.changeImage= function(){
         utilityService.getImage().then(function(src) {
-          updatedImage = "data:image/png;base64," +src;
-           // updatedImage =src;
-            //var rad = Math.floor(Math.random() * 10000 + 10);
+            updatedImage = "data:image/png;base64," +src;
             $scope.updateImageSrc = updatedImage;
-            //window.resolveLocalFileSystemURL(src, function(fileEntry) {
-            //
-            //    //If this doesn't work
-            //    $scope.updateImageSrc = fileEntry.nativeURL;
-            //    console.log($scope.updateImageSrc);
-            //
-            //    //Try this
-            //    //var image = document.getElementById('myImage');
-            //    //image.src = fileEntry.nativeURL;
-            //});
 
-            //console.log(updatedImage);
-            //var rad = Math.floor(Math.random() * 10000 + 10);
-            //$scope.updateImageSrc = updatedImage + "?rd=" + rad;
-            //console.log("Image source");
-            //console.log(updatedImage);
         },function(err) {
             console.log(JSON.stringify(err));
         })
     };
     $scope.skipToSuccess = function () {
+       // $scope.closeModal(openModalType.addGroup) ;
         $scope.openModal(openModalType.signUpSuccess);
     };
 
     $scope.skipToThing = function () {
+        fetchLocation();
+       // $scope.closeModal(openModalType.addWork) ;
         $scope.openModal(openModalType.addThing);
     };
     $scope.skipToGroup = function () {
+        fetchLocation();
+        //$scope.closeModal(openModalType.addThing) ;
         $scope.openModal(openModalType.addGroup);
     };
     $scope.goToHome =function(){
