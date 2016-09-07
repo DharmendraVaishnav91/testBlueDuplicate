@@ -2,9 +2,9 @@
     <div class="bar bar-subheader blue-bg no-padding" >
   <input class="blue-bg" style="width:100%;border:none;color:white;" placeholder="{{'TYPE_IN_NAME_OR_NUMBER' | translate }}" type="input" ng-model="search">
 </div>
-    <ion-content overflow-scroll="true" class="blueno-bg-full has-subheader has-header"  >
+    <ion-content overflow-scroll="true" class="blueno-bg-full" ng-class="{'has-subheader':contactFind == true}" >
 
-        <div  class= "no-border no-padding list" ng-show="true">
+        <div  class= "no-border no-padding list" ng-show="contactFind == true">
             <div class="card  " style="margin:2px !important;" ng-repeat="contact in phoneContacts  | orderBy:'name' | filter: search ">
                 <div class="item item-divider">
                     {{::contact.name}}
@@ -16,6 +16,17 @@
                     </label>
                 </div>
             </div>
+        </div>
+        <div class= "row" ng-show="true" style="width : 100%; height: 80%;" ng-if="contactFind == false">
+            <div class="col col-center text-center">
+                <div>
+                <i class="ion-android-contacts" style="font-size: 100px; color: #f0f0f0;"></i>
+                </div>
+                <div style="font-size: 20px; color: #f0f0f0;">
+                There is no contact in your contact list
+                </div>
+            </div>
+            
         </div>
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >

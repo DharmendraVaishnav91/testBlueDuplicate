@@ -1,7 +1,7 @@
 <ion-view  view-title="Invited Family Members" >
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content scroll="true" class="blueno-bg">
-        <div class="item card no-padding" ng-repeat="invitedMember in invitedMemebers">
+        <div class="item card no-padding" ng-repeat="invitedMember in invitedMemebers" ng-if="invitedFind">
             <div class="row ">
                 <div class="col col-33">
                     <div >
@@ -54,7 +54,17 @@
                 </div>
             </div>
         </div>
-
+         <div class= "row" ng-show="true" style="width : 100%; height: 80%;" ng-if="invitedFind == false">
+            <div class="col col-center text-center">
+                <div>
+                <i class="icon ion-ios-body" style="font-size: 100px; color: #f0f0f0;"></i>
+                </div>
+                <div style="font-size: 20px; color: #f0f0f0;">
+                {{'NO_INVITED_MEMBERS' | translate }}
+                </div>
+            </div>
+            
+        </div>
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >
         <div  class="button-bar">

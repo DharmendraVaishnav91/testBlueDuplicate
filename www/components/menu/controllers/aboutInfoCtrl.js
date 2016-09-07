@@ -1,6 +1,7 @@
 app.controller('AboutInfoCtrl', function($scope,$state,$ionicModal) {
-    // Open the login modal
+    //var isIOS = ionic.Platform.isIOS();
     $scope.isAndroid = ionic.Platform.isAndroid();
+    // Open the login modal
     var openModalType={
         terms:1
     };
@@ -28,4 +29,8 @@ app.controller('AboutInfoCtrl', function($scope,$state,$ionicModal) {
         $scope.openModal(openModalType.terms);
     };
 
-});
+
+    // Open the login modal
+        
+
+    });

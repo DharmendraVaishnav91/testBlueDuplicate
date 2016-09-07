@@ -6,6 +6,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     $scope.isFromSetting=true;
     $scope.data={};
      $scope.invite={};
+    $scope.groupAdminFind = true;
+    $scope.groupMemberFind =true;
     $scope.countryCodeList=utilityService.countryList();
 
     var fetchLocation= function () {
@@ -39,6 +41,12 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
           console.log("User all groups");
           console.log(response);
           $scope.groups=response;
+          if($scope.groups.admin.lenght==0){
+            $scope.groupAdminFind = false;
+          }
+          if($scope.groups.member.lenght == 0){
+            $scope.groupMemberFind = false;
+          }
       }).catch(function (error) {
           console.log(error);
       })
