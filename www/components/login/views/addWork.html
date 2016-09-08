@@ -119,7 +119,7 @@
             <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToThing()" style="font-size: 20px;">
                 {{'Skip' | translate }} &nbsp;
             </button>
-            <button ng-if="isFromSetting"  ng-disabled="addWorkForm.$invalid" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="addWork()" style="font-size: 20px;">
+            <button ng-if="isFromSetting"  ng-disabled="addWorkForm.$invalid" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="saveWork()" style="font-size: 20px;">
                 {{'SUBMIT' | translate }}
             </button>
             <button ng-if="!isFromSetting" ng-disabled="addWorkForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToThing()" style="font-size: 20px;">
