@@ -6,7 +6,6 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
 
     $scope.isFromSetting=true;
     $scope.data={};
-    $scope.thingFind = true;
     var fetchLocation= function () {
         loginService.fetchAllLocation().then(function(response){
             $scope.myLocations=response;
@@ -35,9 +34,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
             console.log("User all groups");
             console.log(response);
             $scope.things=response;
-            if($scope.things.length == 0){
-                $scope.thingFind = false;
-            }
+            $scope.thingFind =$scope.things.length != 0;
         }).catch(function (error) {
             console.log(error);
         })

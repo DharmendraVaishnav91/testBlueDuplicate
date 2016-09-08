@@ -1,7 +1,7 @@
 <ion-view  view-title="Groups" >
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content scroll="true" class="blueno-bg">
-        <div class="list card" style="background:transparent;" ng-if = "groupAdminFind && groups.admin.length!=0">
+        <div class="list card" style="background:transparent;" ng-if = "groupAdminFind && groups.admin.length > 0">
             <div class="item item-divider dark-gray-border "  style=" background:transparent">
                 <div class="row no-padding" >
                     <div class="col  col-center no-padding" style="color:cornflowerblue;color: cornflowerblue;font-size: large;font-weight: bold;">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item no-padding dark-gray-border bg-transparent" ng-click="showGroupInfo(group);" ng-repeat="group in ::groups.admin"  ng-if="groups.admin.length!=0">
+            <div class="item no-padding dark-gray-border bg-transparent" ng-click="showGroupInfo(group);" ng-repeat="group in groups.admin"  ng-if="groups.admin.length!=0">
                 <div class="row" style="color:white;">
                     <div class="col col-33 col-center">
                         <span class="wrap-content">{{group.OrganizationName}}</span>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div class="list card" style="background:transparent;"  ng-if="groups.member.length!=0 && groupMemberFind">
+        <div class="list card" style="background:transparent;"  ng-if="groups.member.length > 0 && groupMemberFind">
             <div class="item item-divider dark-gray-border "  style=" background:transparent">
                 <div class="row no-padding" >
                     <div class="col  col-center no-padding" style="color:cornflowerblue;color: cornflowerblue;font-size: large;font-weight: bold;">
@@ -70,12 +70,12 @@
                 </div>
             </div>
         </div>
-         <div class= "row" ng-show="true" style="width : 100%; height: 80%;" ng-if="groupInvitedFind == false && groupMemberFind == false">
+         <div class= "row no-data-alert" ng-if="groupAdminFind == false && groupMemberFind == false">
             <div class="col col-center text-center">
-                <div>
-                <i class="icon ion-briefcase" style="font-size: 100px; color: #f0f0f0;"></i>
+                <div class="no-data-icon">
+                <i class="icon ion-briefcase"></i>
                 </div>
-                <div style="font-size: 20px; color: #f0f0f0;">
+                <div class="no-data-text">
                 {{'NO_GROUP_FIND' | translate}}
                 </div>
             </div>

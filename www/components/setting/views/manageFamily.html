@@ -7,7 +7,6 @@
                     <div >
                         <span class='label-text' style="color:gray">{{'FULL_NAME' | translate}}</span>
                     </div>
-
                 </div>
                 <div class="col ">
                     <div class="" style="white-space: normal;font-weight: bold;">
@@ -15,6 +14,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row ">
                 <div class="col col-33">
                     <div >
@@ -27,6 +27,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row ">
                 <div class="col col-33">
                     <div >
@@ -40,6 +41,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row ">
                 <div class="col col-33">
                     <div >
@@ -54,16 +56,16 @@
                 </div>
             </div>
         </div>
-         <div class= "row" ng-show="true" style="width : 100%; height: 80%;" ng-if="invitedFind == false">
+
+        <div class= "row no-data-alert";" ng-if="!invitedFind">
             <div class="col col-center text-center">
-                <div>
-                <i class="icon ion-ios-body" style="font-size: 100px; color: #f0f0f0;"></i>
+                <div class="no-data-icon">
+                <i class="icon ion-ios-body"></i>
                 </div>
-                <div style="font-size: 20px; color: #f0f0f0;">
+                <div class="no-data-text">
                 {{'NO_INVITED_MEMBERS' | translate }}
                 </div>
-            </div>
-            
+            </div> 
         </div>
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >

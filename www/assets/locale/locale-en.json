@@ -225,5 +225,6 @@
   "THERE_IS_NO_THING" : "There is no things in equipments",
   "NO_INVITED_MEMBERS" : "There no-body invited from you",
   "NO_GROUP_FIND" : "No group of your and also you are not a member of other group",
-  "NO_CONTACT_LIST" : "There is no contact in your contact list"
+  "NO_CONTACT_LIST" : "There is no contact in your contact list",
+  "NO_WORK_PLACE" : "No work place in your account find"
 }
