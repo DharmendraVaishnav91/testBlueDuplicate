@@ -5,6 +5,7 @@ var userSetting = angular.module('app.userSetting',[]);
 userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ionicModal,$localStorage,utilityService,userSettingService) {
 
     $scope.isFromSetting=true;
+    var updatedImage='';
     $ionicModal.fromTemplateUrl('components/setting/views/editAccount.html', {
         scope: $scope,
         animation: 'slide-in-right'
@@ -29,11 +30,26 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
             $scope.editAccountModal.show();
         });
     };
+    $scope.changeImage= function(){
+        utilityService.getImage().then(function(src) {
+            updatedImage = "data:image/png;base64," +src;
+            $scope.updateImageSrc = updatedImage;
+
+        },function(err) {
+            console.log(JSON.stringify(err));
+        })
+    };
     $scope.updateProfile = function () {
+        if(updatedImage!=''){
+            $scope.person.image=updatedImage;
+        }
         userSettingService.updateUserInfo($scope.person).then(function(response){
             console.log("User personal details updated successfully");
             console.log(response);
             $scope.person= angular.copy($scope.userPersonalInfo.person);
+            if(response.image!=null){
+                $rootScope.profileUrl=response.image;
+            }
             $scope.editAccountModal.hide();
         });
     };

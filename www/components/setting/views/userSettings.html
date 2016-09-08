@@ -6,16 +6,17 @@
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content class="blueno-bg-full  has-header" scroll="true"  >
 
-        <div class="row">
+        <div class="row no-padding">
             <div class="col center" >
                  <img ng-src="{{profileUrl}}" style=" height: 80px;width: 80px;border-radius: 38px;">
                 <p style="color:white;font-size: large;"> {{::user.bluenumber }}</p>
-                <a style=" text-decoration: underline;font-size: larger" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT' | translate }}</a>
+                <a style=" text-decoration: underline;
+                font-size: larger;color: rgba(255,255,255,.7)" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT' | translate }}</a>
             </div>
         </div>
         <div class="list">
             <div class="card" style="background:transparent;">
-                <div class="item item-divider custom-item" style="padding: 6px !important;border-bottom: none;background:darkgray;color: white;font-weight: bold;">
+                <div class="item item-divider custom-item custom-item-header" >
                     {{'PLACES' | translate }}
                 </div>
                 <div class="item custom-item" style="border:none;padding:0">
@@ -56,7 +57,7 @@
                 </div>
             </div>
             <div class="card" style="background:transparent;">
-                <div class="item item-divider custom-item" style="padding: 6px !important;border-bottom: none;background:darkgray;color: white;font-weight: bold;">
+                <div class="item item-divider custom-item custom-item-header" >
                     {{'THINGS' | translate }}
                 </div>
                 <div class="item custom-item " style="border:none;padding:0" ng-click="goToThings()">
@@ -77,7 +78,7 @@
                 </div>
             </div>
             <div class="card" style="background:transparent;">
-                <div class="item item-divider custom-item" style="padding: 6px !important;border-bottom: none;background:darkgray;color: white;font-weight: bold;">
+                <div class="item item-divider custom-item custom-item-header" >
                     {{'PROFILE' | translate }}
                 </div>
                 <div class="item custom-item" style="border:none;padding:0" ng-click="goToManageFamily()">
@@ -96,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item custom-item no-padding no-margin" style="border:none;height: 2px;padding-right: 8px !important;padding-left:45px !important;">
+                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:45px !important;">
                 <div class="" style="border:none;background-color: gray;height: inherit;">
                 </div>
             </div>

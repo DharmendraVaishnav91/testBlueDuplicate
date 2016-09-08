@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 24/8/16.
  */
-userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,userSettingService,utilityService,loginService,$rootScope) {
+userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,userSettingService,utilityService,loginService,$rootScope,$cordovaToast) {
 
     $scope.isFromSetting=true;
 
@@ -12,24 +12,12 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         $scope.editWork= modal;
     });
 
-    var fetchAllLocations= function () {
-        userSetting.fetchAllLocations($rootScope.user.actorID).then(function (response) {
-            console.log("User locations");
-            console.log(response);
-            $scope.userLocations=response;
-        }).catch(function (error) {
-            console.log(error);
-        })
-    };
-    fetchAllLocations();
-   // $scope.showEditWork= function(){
-   //   $scope.editWork.show();
-   // };
-   $scope.countryCodeList=[];
-   $scope.data={};
-   $scope.work={};
-   $scope.invitedMember={};
-   $scope.isWorkPlace=true;
+
+    $scope.countryCodeList=[];
+    $scope.data={};
+    $scope.work={};
+    $scope.invitedMember={};
+    $scope.isWorkPlace=true;
     $scope.countryCodeList=utilityService.countryList();
      $scope.addWork = function () {
          $scope.editWork.show();
@@ -40,7 +28,7 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
     } ;
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
-    }
+    };
     $scope.changeSubdivision=function(countryCode){
         fetchStates(countryCode);
     };
@@ -52,45 +40,32 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
           console.log(error);
       })
     };
-    
 
-
-
-
-    $scope.fetchLocationPlace= function () {
+    var fetchLocationPlace= function () {
       userSettingService.fetchAllLocations().then(function(response){
-         $scope.myLocations=response;
          console.log(response);
          $scope.userLocations=response;
-         if($scope.userLocations.lenght == 0){
-            $scope.isWorkPlace=false;
-         }
+          $scope.isWorkPlace= $scope.userLocations.length != 0;
       }).catch(function(error){
          console.log(error);
       });
     };
-    $scope.fetchLocationPlace();
-    
 
+   fetchLocationPlace();
 
-    var fetchLocation= function () {
-      loginService.fetchAllLocation().then(function(response){
-         $scope.myLocations=response;
-      }).catch(function(error){
-         console.log(error);
-      });
-    };
     var saveWorkData =function(workData){
         loginService.saveWorkData(workData).then(function(response){
-            console.log("Work added successfully.");
+
             //$cordovaToast.showShortBottom("Work added successfully.");
-            fetchLocation();
-            $cordovaToast.showLongBottom("Work data saved successfully");
+            fetchLocationPlace();
+            $scope.hideWorkAddModal();
+            console.log("Work added successfully.");
+            //$cordovaToast.showLongBottom("Work data saved successfully");
 
 
         }).catch(function(error){
            console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
+            //$cordovaToast.showLongBottom("Something went wrong. Please try again");
             //Remove this after demo
             //$scope.openModal(openModalType.addThing);
         });
@@ -128,9 +103,9 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         console.log("work data");
         console.log(workData);
        // $scope.workLocations.push(location1);
-        $scope.fetchLocationPlace();
+        //$scope.fetchLocationPlace();
         saveWorkData(workData);
-        $scope.hideWorkAddModal();
+
         
        //$scope.openModal(openModalType.addThing);
     };

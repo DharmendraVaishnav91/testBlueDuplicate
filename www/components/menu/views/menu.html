@@ -11,14 +11,15 @@
         <ion-nav-view name="mainContent"></ion-nav-view>
     </ion-side-menu-content>
     <ion-side-menu side="left">
-        <div class="item item-avatar" style="background-color: #4E5C6E;">
-                <img  ng-src="{{profileUrl}}" style="">
-                <h2 class="title light">{{::user.username }}</h2>
+        <div class="item item-avatar" style="background-color: #4E5C6E;height:81px;">
+                <img  ng-src="{{profileUrl}}" style="max-width:50px;max-height: 50px">
+                <h2 class="title light" style="font-size: larger;font-weight: bold">{{userInfo.person.givenname1+" "+userInfo.person.familyname1}}</h2>
+                <p style="padding-left:5px;color: rgba(126, 192, 238, 1);font-size: 15px;">{{::userInfo.person.actor_bluenumber }}</p>
         </div>
         <!--<ion-header-bar class="bar-stable">-->
           <!-- -->
         <!--</ion-header-bar>-->
-        <ion-content style="background-color: #4E5C6E;top:67px">
+        <ion-content style="background-color: #4E5C6E;top:80px">
             <ion-list>
                 <ion-item menu-close ng-click="openDashboard()" style="padding:6px;background-color: transparent;color:white">
                     <div class="row no-padding no-margin">

@@ -35,9 +35,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
             console.log("User all groups");
             console.log(response);
             $scope.things=response;
-            if($scope.things.length == 0){
-                $scope.thingFind = false;
-            }
+            $scope.thingFind=$scope.things.length != 0
         }).catch(function (error) {
             console.log(error);
         })
