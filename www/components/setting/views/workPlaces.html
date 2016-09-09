@@ -28,13 +28,13 @@
                 </div>
             </div>
         </div>
-        <div class= "row no-data-alert"   ng-if="!isWorkPlace">
+        <div class= "row no-data-alert" ng-if="isWorkPlace == false">
             <div class="col col-center text-center">
                 <div class="no-data-icon">
-                    <i class="icon ion-briefcase" ></i>
+                <i class="icon ion-briefcase"></i>
                 </div>
                 <div class="no-data-text">
-                    {{'NO_INVITED_MEMBERS' | translate }}
+                {{'NO_WORK_PLACE' | translate }}
                 </div>
             </div>
             
