@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionicModal,$ionicPopup,utilityService,loginService,$rootScope,$cordovaToast,$localStorage) {
+app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionicModal,$ionicPopup,utilityService,loginService,$rootScope,$cordovaToast) {
 
     // Form data for the login modal
     var openModalType={
@@ -19,8 +19,11 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
         user:{},
         profile:{},
         user_type:'',
-        home:{}
+        registration_location:{}
     };
+    $scope.home={
+
+    } ;
     var updatedImage='';
     $rootScope.bgUrl="assets/img/logo_small.png";
 
@@ -253,14 +256,18 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
           console.log(error);
       })
     };
-    var createUser = function(){
-        loginService.createUser($scope.loginData).then(function(response){
+    var createUser = function(userData){
+        console.log("User data before creation");
+        console.log(userData);
+
+        loginService.createUser(userData).then(function(response){
             //$scope.userId=response;
             $rootScope.auth_token=response.auth_token;
-            $scope.data.workCountry=angular.copy($scope.data.homeCountry);
-            $cordovaToast.showLongBottom("User created successfully");
-            //$scope.closeModal(openModalType.addHome);
-            $scope.openModal(openModalType.addWork);
+            $scope.closeModal(openModalType.selectUserType);
+            $scope.openModal(openModalType.addHome);
+            console.log("Registered successfully with your current location.");
+            $cordovaToast.showLongBottom("Registered successfully with your current location.");
+
         }).catch(function(error){
             var errorMessage="";
             if(error.error_status){
@@ -372,7 +379,7 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
     $scope.goToAddHome=function(){
         console.log($scope.loginData);
         utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
-               console.log(addr);
+
             $scope.userCountry={
                 CountryName:addr.country!=null?addr.country:"",
                 CountryCode:addr.country_code!=null?addr.country_code:"",
@@ -387,36 +394,77 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
             };
             console.log("User state");
             console.log($scope.userState);
-            $scope.loginData.home.address=angular.copy(addr.street_number!=null?addr.street_number:"");
-            $scope.loginData.home.address+=angular.copy(addr.street_address!=null?addr.street_address:"");
-            $scope.loginData.home.city=angular.copy(addr.sub_state!=null?addr.sub_state:"");
+
+              var addressFromCoordinates= angular.copy(addr.street_number!=null?addr.street_number:"");
+                addressFromCoordinates+=angular.copy(addr.street_address!=null?addr.street_address:"");
+            //Prepare data for creating user
+
+            $scope.loginData.registration_location.subdivision_code = $scope.userState.SubdivisionCode;
+
+            //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+            $scope.loginData.registration_location.address=addressFromCoordinates;
+            $scope.loginData.registration_location.country_code=$scope.userCountry.CountryCode;
+            $scope.loginData.registration_location.latitude= $rootScope.position?$rootScope.position.coords.latitude:'';
+            $scope.loginData.registration_location.longitude= $rootScope.position?$rootScope.position.coords.longitude:'';
+            //$scope.loginData.registration_location.name='Home';
+
+            createUser(angular.copy($scope.loginData));
+
+            $scope.home.address=addressFromCoordinates;
+            $scope.home.city=angular.copy(addr.sub_state!=null?addr.sub_state:"");
             $scope.changeSubdivision($scope.userCountry.CountryCode);
-            $scope.closeModal(openModalType.selectUserType);
-            $scope.openModal(openModalType.addHome);
-            $scope.data.homeCountry=angular.copy($scope.userCountry.CountryCode);
+
             $scope.data.state=angular.copy($scope.userState.SubdivisionCode);
+            $scope.data.homeCountry=angular.copy($scope.userCountry.CountryCode);
         }).catch(function (error) {
              console.log(error);
         });
 
     };
-
+    $scope.skipToWork= function () {
+        $scope.openModal(openModalType.addWork);
+        fetchCropList();
+    } ;
     $scope.goToWork= function () {
         if ($scope.data.state != undefined && $scope.data.state != null) {
             //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
-            $scope.loginData.home.subdivision_code = $scope.data.state;
+            $scope.home.subdivision_code = $scope.data.state;
         } else {
-            $scope.loginData.home.subdivision_code = "";
+            $scope.home.subdivision_code = "";
         }
         //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
-        $scope.loginData.home.country_code=$scope.data.homeCountry;
-        $scope.loginData.home.latitude= $rootScope.position?$rootScope.position.coords.latitude:'';
-        $scope.loginData.home.longitude= $rootScope.position?$rootScope.position.coords.longitude:'';
-        $scope.loginData.home.name='Home';
-        console.log($scope.loginData);
+        $scope.home.country_code=$scope.data.homeCountry;
+        $scope.home.latitude= $rootScope.position?$rootScope.position.coords.latitude:'';
+        $scope.home.longitude= $rootScope.position?$rootScope.position.coords.longitude:'';
+        $scope.home.name='Home';
+        console.log("Add home data");
+        console.log($scope.home);
 
-        createUser();
-        fetchCropList();
+
+        loginService.saveUserHome($scope.home).then(function(response){
+            //$scope.userId=response;
+
+            $scope.openModal(openModalType.addWork);
+            fetchCropList();
+            console.log("User created successfully");
+            $cordovaToast.showLongBottom("User created successfully");
+
+        }).catch(function(error){
+            var errorMessage="";
+            if(error.error_status){
+                errorMessage=error.country_code!=null?error.country_code.error:"";
+                errorMessage+=error.home_location!=null?error.home_location.error:"";
+                errorMessage+=error.user!=null?error.user.error:"";
+            }else{
+                errorMessage="Something went wrong on server. Please try after some time."
+            }
+            if(errorMessage!=""){
+                $cordovaToast.showLongBottom(errorMessage);
+                console.log(errorMessage);
+            }
+        });
+       // createUser();
+
         //$scope.openModal(openModalType.addWork);
     };
 

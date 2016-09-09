@@ -52,6 +52,7 @@ app.run(function($ionicPlatform,EventService,utilityService) {
       })
       .state('regCreateProfile', {
           url: '/regCreateProfile',
+            params:{accountData:{}},
           templateUrl: 'components/login/views/regCreateProfile.html',
           controller:'RegCreateProfileCtrl'
       })

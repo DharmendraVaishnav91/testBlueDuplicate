@@ -5,7 +5,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
 
 
     $scope.isFromSetting=true;
-    $scope.invitedFind=true;
+    $scope.invitedFind=false;
     $scope.family={};
     $ionicModal.fromTemplateUrl('components/login/views/inviteFamily.html', {
         scope: $scope,
@@ -18,9 +18,10 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
             console.log("User all invited members");
             console.log(response);
             $scope.invitedMemebers=response;
-            if($scope.invitedMemebers.length == 0){
-                invitedFind = false;
-            }
+            $scope.invitedFind=$scope.invitedMemebers.length != 0
+            //if($scope.invitedMemebers.length == 0){
+            //    invitedFind = false;
+            //}
         }).catch(function (error) {
             console.log(error);
         })

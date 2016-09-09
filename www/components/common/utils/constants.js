@@ -33,6 +33,7 @@ var HttpRoutes = {
     signUpStep4:apiUrl+'/gpr/v2/signup_groups',
     signUpStep5:apiUrl+'/gpr/v2/signup_works/',
     signUpFamily:apiUrl+"/gpr/v2/signup_family",
+    signUpHome:apiUrl+"/gpr/v2/signup_home/",
 
     fetchSubDivisionList:apiUrl+'/gpr/national_subdivisions/',
     fetchProductList:apiUrl+'/gpr/product_list',

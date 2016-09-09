@@ -16,14 +16,14 @@
                 <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="loginData.home.address" name="address" ng-required="true"  type="text"/>
+                <input class="edit-input-txt" ng-model="home.address" name="address" ng-required="true"  type="text"/>
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" ng-model="loginData.home.city" name="city"   type="text"/>
+                <input class="edit-input-txt" ng-model="home.city" name="city"   type="text"/>
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding">
@@ -55,6 +55,9 @@
     </ion-content>
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
         <div  class="button-bar">
+            <button  class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToWork()" style="font-size: 20px;">
+                {{'Skip' | translate }} &nbsp;
+            </button>
             <button ng-disabled="addressForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToWork()" style="font-size: 20px;">
                 {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>

@@ -17,7 +17,7 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
             $scope.userLocations=response;
             console.log("User locations");
             console.log(response);
-            
+
         }).catch(function (error) {
             console.log(error);
         })
@@ -65,15 +65,15 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
          console.log(error);
       });
     };
-
+    fetchLocation();
     var saveWorkData =function(workData){
         loginService.saveWorkData(workData).then(function(response){
 
             //$cordovaToast.showShortBottom("Work added successfully.");
-            fetchLocationPlace();
+            fetchAllLocations();
             $scope.hideWorkAddModal();
             console.log("Work added successfully.");
-            //$cordovaToast.showLongBottom("Work data saved successfully");
+            $cordovaToast.showLongBottom("Work data saved successfully");
 
 
         }).catch(function(error){
