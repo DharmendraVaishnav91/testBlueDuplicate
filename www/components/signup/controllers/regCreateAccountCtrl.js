@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,signUpService, loginService,$rootScope,$cordovaToast) {
+app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,signUpService,$rootScope,$cordovaToast) {
 
     $scope.loginData={
         user:{},

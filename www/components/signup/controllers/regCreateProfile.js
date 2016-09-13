@@ -1,4 +1,4 @@
-app.controller('RegCreateProfileCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,loginService,$rootScope,$cordovaToast) {
+app.controller('RegCreateProfileCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,$rootScope,$cordovaToast) {
   console.log($stateParams.accountData);
   $scope.isFromSetting=false;
   $scope.data={};
