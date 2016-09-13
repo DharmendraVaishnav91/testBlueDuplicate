@@ -107,6 +107,9 @@
   "COMMODITY_RAW_MATERIAL":"Commodity or raw material",
   "BY_RESEARCH_INTEREST":"By research interest",
   "LOCATION":"Location",
+  "LOCATION_WHERE":"Location/Where",
+  "MY_CURRENT_LOCATION":"My Current Location",
+  "ENTER_ADDRESS":"Enter Address",
 
   "INVITE_FAMILY":"Invite Family",
   "TYPE_IN_NAME_OR_NUMBER":"Type in a name or mobile number",
@@ -223,6 +226,8 @@
   "ASSET_BLUENUMBER" : "Asset Bluenumber",
   "LOCATION_NAME" : "Location Name",
   "LOCATION_TYPE" : "Location Type",
+
+  "OPTIONAL":"Optional",
   "THERE_IS_NO_THING" : "No things available to show",
   "NO_INVITED_MEMBERS" : "No pending invitations",
   "NO_GROUP_FIND" : "No groups available associated to you",

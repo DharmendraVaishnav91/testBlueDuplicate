@@ -16,6 +16,7 @@ app.controller('DashboardCtrl', function($scope, $ionicModal, $timeout,leafletDa
                      layer:"india",
                      lng: parseInt(key.coordinates[0]),
                      lat: parseInt(key.coordinates[1]),
+                     message:key.gender+" "+key.crops,
                      focus: false,
                      draggable: false
                     }
