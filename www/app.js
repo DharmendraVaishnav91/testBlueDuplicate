@@ -47,14 +47,55 @@ app.run(function($ionicPlatform,EventService,utilityService) {
       })
       .state('regCreateAccount', {
           url: '/regCreateAccount',
-          templateUrl: 'components/login/views/regCreateAccount.html',
+          templateUrl: 'components/signup/views/regCreateAccount.html',
           controller:'RegCreateAccountCtrl'
       })
       .state('regCreateProfile', {
           url: '/regCreateProfile',
             params:{accountData:{}},
-          templateUrl: 'components/login/views/regCreateProfile.html',
+          templateUrl: 'components/signup/views/regCreateProfile.html',
           controller:'RegCreateProfileCtrl'
+      })
+      .state('selectUserType', {
+          url: '/selectUserType',
+            params:{profileData:{}},
+          templateUrl: 'components/signup/views/selectUserType.html',
+          controller:'selectUserTypeCtrl'
+      })
+      .state('addHome', {
+          url: '/addHome',
+            params:{homeData:{},homeAddress:{}},
+          templateUrl: 'components/signup/views/addHome.html',
+          controller:'addHomeCtrl'
+      })
+      .state('addWork', {
+          url: '/addWork',
+            params:{workData:{}},
+          templateUrl: 'components/signup/views/addWork.html',
+          controller:'addWorkCtrl'
+      })
+      .state('addThing', {
+          url: '/addThing',
+            params:{thingData:{}},
+          templateUrl: 'components/signup/views/addThing.html',
+          controller:'addThingCtrl'
+      })
+      .state('addGroup', {
+          url: '/addGroup',
+            params:{groupData:{}},
+          templateUrl: 'components/signup/views/addGroup.html',
+          controller:'addGroupCtrl'
+      })
+      .state('inviteFamily', {
+          url: '/inviteFamily',
+            params:{inviteFamilyData:{}},
+          templateUrl: 'components/signup/views/inviteFamily.html',
+          controller:'inviteFamilyCtrl'
+      })
+      .state('accntCreateSuccess', {
+          url: '/accntCreateSuccess',
+          templateUrl: 'components/signup/views/accntCreateSuccess.html',
+          controller:'accntCreateSuccessCtrl'
       })
      .state('app.dashboard', {
         url: '/dashboard',
