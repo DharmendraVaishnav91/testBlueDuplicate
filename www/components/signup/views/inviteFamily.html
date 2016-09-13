@@ -60,7 +60,7 @@
             <button ng-if="isFromSetting" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="sendInviteToFamily()" style="font-size: 20px;">
                 {{'Invite' | translate }}
             </button>
-            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToInviteFamily()" style="font-size: 20px;">
+            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">
                 {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
             <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
