@@ -18,13 +18,13 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         console.log(error);
     })
   };
-  fetchStates($scope.data.homeCountry)
+  fetchStates($scope.data.homeCountry);
   $scope.changeSubdivision=function(countryCode){
         fetchStates(countryCode);
   };
   var saveThingsData=function(thingsData){
       signUpService.saveThingsData(thingsData).then(function(response){
-          $state.go('addGroup',{groupData: $scope.data})
+          $state.go('addGroup',{groupData: $scope.data});
           console.log("Equipment added successfully.");
           $cordovaToast.showShortBottom("Equipment added successfully.");
       }).catch(function(error){

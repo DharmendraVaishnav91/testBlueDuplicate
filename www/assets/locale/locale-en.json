@@ -64,6 +64,21 @@
   "DOCK":"Dock",
   "FISHERY":"Fishery",
   "PROCESSING_FACILITY":"Processing Facility",
+  "LAND_AGGR_COL_TRANS":"Land (aggregation, collection, transport site)",
+  "LAND_FACT_MFG":"Land (factory, manufacturing site)",
+  "LAND_FARM_FOREST":"Land (farm, forest)",
+  "LAND_MINE_QUARRY":"Land (mine, quarry)",
+  "LAND_OTHER":"Other (please leave a comment)",
+  "WATER_FISHERY":"Water (fishery)",
+  "WATER_PORT":"Water (port, dock)",
+
+
+
+
+
+
+
+
   "RELATIONSHIP":"Relationship",
   "WORKER":"Worker",
   "OWNER":"Owner",

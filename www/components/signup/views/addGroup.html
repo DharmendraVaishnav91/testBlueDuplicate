@@ -12,6 +12,7 @@
         <div class="center" style=";width: inherit;height: auto;padding-top:15px"  ng-if="!isFromSetting">
             <h3 style="color: #ffffff;">
                 <i class="ion-person-stalker"></i>&nbsp;{{'ADD_GROUP' | translate }}
+                <span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>
             </h3>
         </div>
 
@@ -69,6 +70,7 @@
                 </span>
                 <select style="width: 100%" ng-model="data.groupLocation" ng-required="true" >
                     <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>
+
                     <option value="OtherGroupLocation">{{'OTHER' | translate }}</option>
                 </select>
             </label>

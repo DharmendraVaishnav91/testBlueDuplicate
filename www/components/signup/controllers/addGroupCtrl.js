@@ -25,7 +25,7 @@ app.controller('addGroupCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
   var saveGroupData=function(groupsData){
       signUpService.saveGroupsData(groupsData).then(function(response){
           console.log("Group added successfully.");
-          $state.go('inviteFamily',{inviteFamilyData: $scope.data})
+          $state.go('accntCreateSuccess');
           $cordovaToast.showShortBottom("Group added successfully.") ;
       }).catch(function(error){
           console.log(error);
@@ -34,7 +34,7 @@ app.controller('addGroupCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
   };
 
   $scope.skipToInviteFamily=function(){
-    $state.go('inviteFamily',{inviteFamilyData: $scope.data})
+    $state.go('accntCreateSuccess') ;
   };
 
   $scope.goToInviteFamily=function(){

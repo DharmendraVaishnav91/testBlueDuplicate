@@ -15,59 +15,57 @@
                 <span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <select name="location-where" style="width: 100%" ng-model="locationWay" ng-required="true"  ng-change="updateLocationFields()">
+                <select name="location-where" style="width: 100%" ng-model="locationWay" ng-required="true"  ng-change="updateLocationFields(locationWay)">
                    <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
                    <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
                 </select>
             </label>
 
 
-            <label class="item item-input item-stacked-label no-border label-padding">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" ng-model="home.address" name="address" ng-required="true"  type="text"/>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input class="edit-input-txt" ng-model="home.city" name="city"   type="text"/>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <!--<select style="width: 100%" ng-model="data.homeCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.homeCountry)">-->
-
 
                     <select style="width: 100%" ng-model="data.homeCountry" ng-required="true"  ng-change="changeSubdivision(data.homeCountry)">
                     <option
-                            ng-selected="obj.CountryCode == userCountry.CountryCode"
+                            ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
                 <select style="width: 100%" ng-model="data.state" >
                     <option
-                            ng-selected="obj.SubdivisionName == userState.SubdivisionName"
+                            ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
                 </select>
             </label>
-            <label class="item item-input item-stacked-label no-border label-padding">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
                 <input class="edit-input-txt" ng-model="home.latitude" name="latitude"   type="number"/>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>

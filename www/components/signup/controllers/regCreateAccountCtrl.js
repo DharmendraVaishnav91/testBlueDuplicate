@@ -32,7 +32,7 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
     $scope.workLocations=[];
     $scope.countryCodeList=utilityService.countryList();
     $scope.isLocationShared=false;
-
+    $rootScope.addressDataFromCoordinate={};
     $scope.showPopup = function(position) {
         $scope.data = {};
         isPopupOpen=true;
@@ -105,20 +105,21 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
                 if(isLocationEnabled()){
                     utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
 
-                        $scope.userCountry={
+
+                        $rootScope.addressDataFromCoordinate.userCountry={
                             CountryName:addr.country!=null?addr.country:"",
                             CountryCode:addr.country_code!=null?addr.country_code:"",
                             CountryPhoneCode:addr.country_phone_code!=null?addr.country_phone_code:""
                         };
-                        $scope.userState={
+                        $rootScope.addressDataFromCoordinate.userState={
                             SubdivisionID:"",
                             SubdivisionCode:addr.province_code!=null?addr.province_code:"",
                             SubdivisionName:addr.state!=null?addr.state:"" ,
-                            CountryCode:$scope.userCountry.CountryCode,
-                            CountryName:$scope.userCountry.CountryName
+                            CountryCode:$rootScope.addressDataFromCoordinate.userCountry.CountryCode,
+                            CountryName:$rootScope.addressDataFromCoordinate.userCountry.CountryName
                         };
 
-                        $scope.data.selectedCountry=$scope.userCountry.CountryPhoneCode;
+                        $scope.data.selectedCountry=$rootScope.addressDataFromCoordinate.userCountry.CountryPhoneCode;
                     }).catch(function (error) {
                         console.log(error);
                     });
@@ -141,14 +142,6 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
         console.log($rootScope.position);
     });
 
-
-  
-   
-    
-    $scope.workTypeChange =function(){
-        $scope.enableCrop=$scope.data.type.indexOf('Farm')>-1;
-    };
-
     $scope.changeSubdivision=function(countryCode){
         fetchStates(countryCode);
     };
@@ -160,105 +153,22 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
           console.log(error);
       })
     };
-    var createUser = function(userData){
-        console.log("User data before creation");
-        console.log(userData);
 
-        loginService.createUser(userData).then(function(response){
-            //$scope.userId=response;
-            $rootScope.auth_token=response.auth_token;
-            $scope.closeModal(openModalType.selectUserType);
-            $scope.openModal(openModalType.addHome);
-            console.log("Registered successfully with your current location.");
-            $cordovaToast.showLongBottom("Registered successfully with your current location.");
 
-        }).catch(function(error){
-            var errorMessage="";
-            if(error.error_status){
-                errorMessage=error.country_code!=null?error.country_code.error:"";
-                errorMessage+=error.home_location!=null?error.home_location.error:"";
-                errorMessage+=error.user!=null?error.user.error:"";
-            }else{
-                errorMessage="Something went wrong on server. Please try after some time."
-            }
-            if(errorMessage!=""){
-                $cordovaToast.showLongBottom(errorMessage);
-                console.log(errorMessage);
-            }
-        });
-    };
-    var fetchCropList = function(){
-        loginService.fetchProductsList().then(function(response){
-            $scope.productList=response;
-        }).catch(function(error){
-           console.log(error);
-        });
-    };
-    var fetchLocation= function () {
-      loginService.fetchAllLocation().then(function(response){
-         $scope.myLocations=response;
-      }).catch(function(error){
-         console.log(error);
-      });
-    };
-    var saveWorkData =function(workData){
-        loginService.saveWorkData(workData).then(function(response){
-            console.log("Work added successfully.");
-            //$cordovaToast.showShortBottom("Work added successfully.");
-            fetchLocation();
-            $cordovaToast.showLongBottom("Work data saved successfully");
-            //$scope.closeModal(openModalType.addWork);
-            $scope.openModal(openModalType.addThing);
-
-        }).catch(function(error){
-           console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
-            //Remove this after demo
-            //$scope.openModal(openModalType.addThing);
-        });
-
-    };
-    var saveThingsData=function(thingsData){
-        loginService.saveThingsData(thingsData).then(function(response){
-           // $scope.closeModal(openModalType.addThing);
-            $scope.openModal(openModalType.addGroup);
-            fetchLocation();
-            console.log("Equipment added successfully.");
-            $cordovaToast.showShortBottom("Equipment added successfully.");
-        }).catch(function(error){
-            console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
-            //Remove this after demo
-            //$scope.openModal(openModalType.addGroup);
-        });
-    };
-    var saveGroupData=function(groupsData){
-        loginService.saveGroupsData(groupsData).then(function(response){
-            console.log("Group added successfully.");
-            $cordovaToast.showShortBottom("Group added successfully.") ;
-           // $scope.closeModal(openModalType.addGroup);
-            $scope.openModal(openModalType.signUpSuccess);
-        }).catch(function(error){
-            console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
-            //Remove this after demo
-           // $scope.openModal(openModalType.signUpSuccess);
-        });
-    };
     $scope.shareLocation = function () {
         $scope.showConfirm();
     };
 
     $scope.goToProfileCreation = function() {
         if($scope.isLocationShared){
-             if(isLocationEnabled()){
+            // if(isLocationEnabled()){
                  // $scope.openModal(openModalType.addWork);
                  $scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
-                 $scope.loginData.user.country_phone_code=$scope.data.selectedCountry.CountryPhoneCode;
-                 $scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
-                 loginService.checkUserNameAvailability($scope.loginData).then(function (response) {
+                 $scope.loginData.user.country_phone_code=$scope.data.selectedCountry;
+                 //$scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
+                 signUpService.checkUserNameAvailability($scope.loginData).then(function (response) {
                      console.log("Username available");
-                     $cordovaToast.showLongBottom("Username available");
+                    // $cordovaToast.showLongBottom("Username available");
                      $state.go('regCreateProfile',{accountData: $scope.loginData})
 
                  }).catch(function (error) {

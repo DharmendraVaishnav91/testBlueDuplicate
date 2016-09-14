@@ -40,7 +40,7 @@ app.controller('addWorkCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
       signUpService.saveWorkData(workData).then(function(response){
           console.log("Work added successfully.");
           $cordovaToast.showShortBottom("Work added successfully.");
-          $cordovaToast.showLongBottom("Work data saved successfully");
+         // $cordovaToast.showLongBottom("Work data saved successfully");
           //$scope.closeModal(openModalType.addWork);
           $state.go('addThing',{thingData: $scope.data});
 
@@ -55,18 +55,40 @@ app.controller('addWorkCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
   $scope.skipToThing = function () {
       $state.go('addThing',{thingData: $scope.data});
   };
+    //Change address fields according user choice
+    $scope.updateLocationFields = function (locationWay) {
+        $scope.enableAddressFields=true;
+        if (locationWay == "current") {
+            $scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+            $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+            $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
+            $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            $scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+            $scope.data.workState = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            $scope.data.workCountry = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        } else {
+            $scope.work.address = "";
+            $scope.work.city = "";
+            //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+            $scope.work.latitude = "";
+            $scope.work.longitude = "";
+            $scope.data.workState = "";
+            $scope.data.workCountry = "";
+        }
+    };
   $scope.goToThing= function(){
       console.log($scope.data);
       var works=[];
       var location1={
-          name:"Work1",
-          latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
-          longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
+          name:"Work 1",
+          latitude:$scope.work.address.latitude,
+          longitude:$scope.work.address.longitude,
           address:$scope.work.address,
           city:$scope.work.city,
-          subdivision_code:$scope.data.workState?$scope.data.workState.SubdivisionCode:'',
-          country_code:$scope.data.workCountry.CountryCode
+          subdivision_code: $scope.data.workState? $scope.data.workState:'',
+          country_code:$scope.data.workCountry
 
       };
       var work={
@@ -74,13 +96,13 @@ app.controller('addWorkCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
           relationship:$scope.data.relationship,
           location:location1
       };
-      if($scope.enableCrop){
-          work.crop=$scope.data.crop.H3Code;
-          work.hectares=$scope.work.hectare?$scope.work.hectare:0;
-      }else{
-          work.crop="";
-          work.hectares="";
-      }
+      //if($scope.enableCrop){
+      //    work.crop=$scope.data.crop.H3Code;
+      //    work.hectares=$scope.work.hectare?$scope.work.hectare:0;
+      //}else{
+      //    work.crop="";
+      //    work.hectares="";
+      //}
       works.push(work);
       var workData={
           works:works
