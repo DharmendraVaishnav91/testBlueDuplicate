@@ -2,6 +2,7 @@ app.controller('addGroupCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
   console.log($stateParams.groupData);
   $scope.data=$stateParams.groupData;
   $scope.isFromSetting=false;
+  $scope.location={};
   $scope.countryCodeList=utilityService.countryList();
   var fetchLocation= function () {
     signUpService.fetchAllLocation().then(function(response){
@@ -23,6 +24,7 @@ app.controller('addGroupCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         fetchStates(countryCode);
   };
   var saveGroupData=function(groupsData){
+    console.log(groupsData);
       signUpService.saveGroupsData(groupsData).then(function(response){
           console.log("Group added successfully.");
           $state.go('accntCreateSuccess');
@@ -33,6 +35,38 @@ app.controller('addGroupCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
       });
   };
 
+  $scope.updateLocationFields = function (locationWay) {
+      if (locationWay == "current") {
+        $scope.enableAddressFields=true;
+        $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+          $scope.location={
+            name:"Current",
+            latitude:angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
+            longitude:angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
+            address:angular.copy($rootScope.addressDataFromCoordinate.address),
+            city:angular.copy($rootScope.addressDataFromCoordinate.city),
+            subdivision_code:angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode),
+            country_code:angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode)
+          }
+      } else if (locationWay != "manual") {
+        $scope.enableAddressFields=false;
+        $scope.location={
+            name:(JSON.parse($scope.data.groupLocation)).LocationID
+          };
+      } else {
+        $scope.enableAddressFields=true;
+        $scope.location={
+          name:"Other",
+          latitude:"",
+          longitude:"",
+          address:"",
+          city:"",
+          subdivision_code:"",
+          country_code:""
+        }
+      }
+  };
+
   $scope.skipToInviteFamily=function(){
     $state.go('accntCreateSuccess') ;
   };
@@ -41,30 +75,11 @@ app.controller('addGroupCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
       var groups=[];
       var group1={
           type:$scope.data.groupType,
-          sub_type:$scope.data.groupSubType,
           relationship:$scope.data.groupRelationship,
           name:$scope.data.groupName
           //location:$scope.data.groupLocation
       };
-      //Equipment have location other than existing one
-      if($scope.data.groupLocation=='OtherGroupLocation') {
-          group1.location={
-              name:"Other",
-              latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
-              longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
-              address:$scope.data.otherGroupAddress,
-              city:$scope.data.otherGroupCity,
-              subdivision_code:$scope.data.otherGroupState?$scope.data.otherGroupState.SubdivisionCode:'',
-              country_code:$scope.data.otherGroupCountry.CountryCode
-
-          };
-
-      }else{
-          //group1.location=JSON.parse($scope.data.groupLocation);
-          group1.location={
-              name:(JSON.parse($scope.data.groupLocation)).LocationID
-          }
-      }
+      group1.location=$scope.location;
       groups.push(group1);
       var groupsData={
           groups:groups
