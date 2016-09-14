@@ -5,7 +5,7 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
 
     $scope.isFromSetting=true;
 
-    $ionicModal.fromTemplateUrl('components/login/views/addWork.html', {
+    $ionicModal.fromTemplateUrl('components/login/views/addWorkModal.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {

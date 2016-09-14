@@ -15,7 +15,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
         });
     };
 
-    $ionicModal.fromTemplateUrl('components/login/views/addThing.html', {
+    $ionicModal.fromTemplateUrl('components/login/views/addThingModal.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {

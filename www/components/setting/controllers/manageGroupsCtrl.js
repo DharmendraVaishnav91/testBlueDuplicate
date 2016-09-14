@@ -17,7 +17,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
             console.log(error);
         });
     };
-    $ionicModal.fromTemplateUrl('components/login/views/addGroup.html', {
+    $ionicModal.fromTemplateUrl('components/login/views/addGroupModal.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {
