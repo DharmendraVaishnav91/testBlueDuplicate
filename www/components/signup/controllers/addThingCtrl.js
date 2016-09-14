@@ -101,7 +101,7 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         }
         if($scope.thing.equipType=='Agricultural & forest machinery (tractors)'){
             thing1.crop=$scope.thing.crop.H3Code;
-            thing1.hectare=$scope.thing.hectare;
+            thing1.hectares=$scope.thing.hectare;
         }
         if($scope.thing.where=="manual"||$scope.thing.where=="current") {
             thing1.location={
