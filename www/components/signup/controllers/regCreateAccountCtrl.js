@@ -129,7 +129,7 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
             } else {
                 $scope.isLocationShared=false;
                 console.log('Location must be shared to continue with registration.');
-                $cordovaToast.showLongBottom("Location must be shared to continue with registration.")
+                //$cordovaToast.showLongBottom("Location must be shared to continue with registration.")
             }
         });
     };
@@ -173,12 +173,12 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
 
                  }).catch(function (error) {
                      console.log(error.error);
-                     $cordovaToast.showLongBottom(error.error);
+                    // $cordovaToast.showLongBottom(error.error);
                      console.log("Username already taken. Try another.")
                  });
              //}
         }else{
-            $cordovaToast.showLongBottom("Location must be shared to continue with registration");
+            //$cordovaToast.showLongBottom("Location must be shared to continue with registration");
         }
 
 

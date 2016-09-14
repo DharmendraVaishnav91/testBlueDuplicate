@@ -92,6 +92,18 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
         console.log(req);
         return utilityService.makeHTTPRequest(req,deferred);
     };
+    self.fetchThingsType = function () {
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.thingTypes,
+            method:HttpRequestType.GET,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        console.log(req);
+        return utilityService.makeHTTPRequest(req,deferred);
+    };
     self.saveThingsData =function(thingsData){
         var deferred = $q.defer();
         var req={

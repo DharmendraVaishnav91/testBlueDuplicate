@@ -89,6 +89,10 @@
   "CROP":"Crop",
   "HECTARE":"Hectare",
 
+  "THING_ID":"Thing ID",
+  "THING_ID_TYPE":"Thing Id Type",
+  "THING_HAS_ID":"My thing has an ID",
+  "THING_NOT_HAVE_ID":"My thing doesn't have an ID / I don't know if my thing has an ID",
   "MY_THING":"My Things",
   "OTHER_THING":"Other Things",
   "ADD_THING":"Add Thing",
