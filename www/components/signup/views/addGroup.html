@@ -29,27 +29,16 @@
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
                 <select style="width: 100%" ng-required="true" ng-model="data.groupType">
-                    <option value="Company">{{'COMPANY' | translate }}</option>
-                    <option value="Cooperative">{{'COOPERATIVE' | translate }}</option>
-                    <option value="Cooperative">{{'NON_GOVT_ORG' | translate }}</option>
-                    <option value="Cooperative">{{'NON_PROFIT_ORG' | translate }}</option>
-                    <option value="Government Organization">{{'GOVT_ORG' | translate }}</option>
-                    <option value="Standards Organization">{{'STND_ORG' | translate }}</option>
-                    <option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>
+                    <option ng-repeat="obj in groupsType" value="{{obj.name}}">{{obj.name}}</option>
+                    <!--<option value="Company">{{'COMPANY' | translate }}</option>-->
+                    <!--<option value="Cooperative">{{'COOPERATIVE' | translate }}</option>-->
+                    <!--<option value="Cooperative">{{'NON_GOVT_ORG' | translate }}</option>-->
+                    <!--<option value="Cooperative">{{'NON_PROFIT_ORG' | translate }}</option>-->
+                    <!--<option value="Government Organization">{{'GOVT_ORG' | translate }}</option>-->
+                    <!--<option value="Standards Organization">{{'STND_ORG' | translate }}</option>-->
+                    <!--<option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>-->
                 </select>
             </label>
-            <!-- <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'SUB_TYPE' | translate }}
-                    </span>
-                <select style="width: 100%" ng-required="true" ng-model="data.groupSubType">
-                    <option value="Sector" >{{'SECTOR' | translate }}</option>
-                    <option value="Department or ministry" >{{'DEPT_OF_MIN' | translate }}</option>
-                    <option value="Cause or issue" >{{'CAUSE_OR_ISSUE' | translate }}</option>
-                    <option value="Commodity or raw material" >{{'COMMODITY_RAW_MATERIAL' | translate }}</option>
-                    <option value="By research interest" >{{'BY_RESEARCH_INTEREST' | translate }}</option>
-                </select>
-            </label>
- -->
 
             <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}

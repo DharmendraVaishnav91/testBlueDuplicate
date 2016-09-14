@@ -117,6 +117,19 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
         console.log(req);
         return utilityService.makeHTTPRequest(req,deferred);
     };
+
+    self.fetchGroupsType = function () {
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.groupTypes,
+            method:HttpRequestType.GET,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        console.log(req);
+        return utilityService.makeHTTPRequest(req,deferred);
+    };
     self.saveGroupsData =function(groupsData){
         var deferred = $q.defer();
         var req={

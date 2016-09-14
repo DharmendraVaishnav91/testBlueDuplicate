@@ -48,7 +48,8 @@ var HttpRoutes = {
     invitedFamilyMembers:apiUrl+"/gpr/v1/invited_family_members",
     fetchWorkPlaces:apiUrl+"/gpr/v1/assets/work_places",
 
-    thingTypes:apiUrl+"/gpr/v2/thing_types"
+    thingTypes:apiUrl+"/gpr/v2/thing_types" ,
+    groupTypes:apiUrl+"/gpr/v2/group_types"
 
 };
 
