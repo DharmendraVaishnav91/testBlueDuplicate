@@ -22,7 +22,7 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     };
      $timeout(checkCordovaPlugin,500);
     var validateUser=function(){
-        $localStorage[STORAGE.LOGIN_KEY]=null;
+        //$localStorage[STORAGE.LOGIN_KEY]=null;
         var user=loginService.validateLogin();
         console.log("User details");
         console.log(user);

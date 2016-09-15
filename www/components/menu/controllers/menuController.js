@@ -11,6 +11,8 @@ angular.module('app.menu', [])
                 removeUser();
                 $state.go('login');
             }).catch(function(error){
+                removeUser();
+                $state.go('login');
                 console.log(error);
             });
         };
