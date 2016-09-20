@@ -14,14 +14,16 @@
             <span class="input-label label-text "  style="color:white">{{'FIRST_NAME' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-                <input class="edit-input-txt" ng-model="loginData.profile.given_name" name="text" ng-required="true"  type="text"/>
+                <input class="edit-input-txt" ng-model="loginData.profile.given_name" name="firstName" ng-required="true" ng-maxlength="50" type="text"/>
+                <span class="validation-font wrap-content" ng-show="basicInfoForm.firstName.$error.maxlength">{{'FIRST_NAME_MAX_LENGTH'| translate}}</span>
         </label>
 
             <label class="item item-input item-stacked-label no-border label-padding">
             <span class="input-label label-text "  style="color:white">{{'LAST_NAME' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-                <input ng-model="loginData.profile.family_name" ng-required="true" type="text" class="edit-input-txt"  />
+                <input ng-model="loginData.profile.family_name" name="lastName" ng-required="true" type="text" class="edit-input-txt"  ng-maxlength="50" />
+                <span class="validation-font wrap-content" ng-show="basicInfoForm.lastName.$error.maxlength">{{'LAST_NAME_MAX_LENGTH'| translate}}</span>
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">

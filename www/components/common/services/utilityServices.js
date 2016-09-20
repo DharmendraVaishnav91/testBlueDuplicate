@@ -64,6 +64,24 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         }
 
     };
+    utilityService.getCountryList= function () {
+        var deferred = $q.defer();
+        if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
+
+            var req={
+                url:HttpRoutes.fetchCountryCode,
+                method:HttpRequestType.GET
+            };
+            utilityService.makeHTTPRequest(req,deferred).then(function (countryList) {
+                $localStorage[STORAGE.COUNTRIES]=countryList;
+                deferred.resolve($localStorage[STORAGE.COUNTRIES]);
+            });
+
+        }else{
+             deferred.resolve($localStorage[STORAGE.COUNTRIES]);
+        }
+        return deferred.promise;
+    };
 
     utilityService.getPosition= function () {
         var posOptions = {timeout: 10000, enableHighAccuracy: false};

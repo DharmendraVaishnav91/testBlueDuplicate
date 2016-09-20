@@ -87,11 +87,11 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
             fetchGroups();
             $scope.hideGroupAddModal();
             console.log("Group added successfully.");
-            $cordovaToast.showShortBottom("Group added successfully.")
+            //$cordovaToast.showShortBottom("Group added successfully.")
         }).catch(function(error){
             console.log(error);
             //Remove this after demo
-            $cordovaToast.showShortBottom("Something Went wrong while creating group.");
+           // $cordovaToast.showShortBottom("Something Went wrong while creating group.");
             // $scope.openModal(openModalType.signUpSuccess);
         });
     };
@@ -162,7 +162,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
           console.log("Response of invite in group ");
           console.log(response);
            $scope.showGroupInfo($scope.curSelGroup);
-           $cordovaToast.showLongBottom("Invitation sent successfully.");
+           //$cordovaToast.showLongBottom("Invitation sent successfully.");
            $scope.hideInviteModal();
        }).catch(function (error) {
             console.log(error);

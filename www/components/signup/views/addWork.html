@@ -25,13 +25,7 @@
                     </span>
 
             <select ng-model="data.type" style="width: 100%;" ng-required="true">
-                <option value="Land (aggregation, collection, transport site)">{{'LAND_AGGR_COL_TRANS' | translate }}</option>
-                <option value="Land (factory, manufacturing site)">{{'LAND_FACT_MFG' | translate }}</option>
-                <option value="Land (farm, forest)">{{'LAND_FARM_FOREST' | translate }}</option>
-                <option value="Land (mine, quarry)" >{{'LAND_MINE_QUARRY' | translate }}</option>
-                <option value="Other (please leave a comment)">{{'LAND_OTHER' | translate }}</option>
-                <option value="Water (fishery)">{{'WATER_FISHERY' | translate }}</option>
-                <option value="Water (port, dock)">{{'WATER_PORT' | translate }}</option>
+                 <option value="{{type.name}}" ng-repeat="type in workTypes">{{type.name}}</option>
             </select>
         </label>
 

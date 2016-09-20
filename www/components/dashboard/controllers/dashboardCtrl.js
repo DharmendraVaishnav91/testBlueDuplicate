@@ -1,17 +1,17 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('DashboardCtrl', function($scope, $ionicModal, $timeout,leafletData,$http,dashboardService) {
+app.controller('DashboardCtrl', function($scope, $ionicModal, $timeout,leafletData,$http,dashboardService,utilityService) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
     var markers={
 
     };
+
+
      var loadMap= function () {
          dashboardService.fetchMarkers().then(function (response) {
              angular.forEach(response, function (key, val) {
-                 //var marker= {
-                 //    marker:
                  markers["marker"+val]= {
                      layer:"india",
                      lng: parseInt(key.coordinates[0]),

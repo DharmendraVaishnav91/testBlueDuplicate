@@ -15,6 +15,10 @@ var languages={
      BURMESE:"br",
      THAI:"th"
 };
+var INVITATION={
+    ACCEPT:"Accept",
+    REJECT:"Reject"
+};
 var STORAGE={
     LOGIN_KEY:"login-key",
     COUNTRIES:"countries"
@@ -42,13 +46,19 @@ var HttpRoutes = {
     fetchAllThings:apiUrl+"/gpr/v2/things",
     fetchAssetDetail:apiUrl+"/gpr/v1/assets",
     visitorBluenumber:apiUrl+"/gpr/visitor_bluenumber/",
+
     inviteInGroup:apiUrl+"/gpr/v1/groups/invite" ,
     inviteFriend:apiUrl+"/gpr/v1/invite_friend",
     bulkInvite:apiUrl+"/gpr/v1/invite_friends",
     invitedFamilyMembers:apiUrl+"/gpr/v1/invited_family_members",
-    fetchWorkPlaces:apiUrl+"/gpr/v1/assets/work_places",
+    groupPendingInvitations:apiUrl+"/gpr/v1/groups/group_invites",
+    acceptGroupInvitation:apiUrl+"/gpr/v1/groups/accept_invitation/",
+    rejectGroupInvitation:apiUrl+"/gpr/v1/groups/reject_invitation/",
 
-    thingTypes:apiUrl+"/gpr/v2/thing_types" ,
+
+    fetchWorkPlaces:apiUrl+"/gpr/v1/assets/work_places",
+    workTypes:apiUrl+"/gpr/v2/work_types",
+    thingTypes:apiUrl+"/gpr/v2/thing_types",
     groupTypes:apiUrl+"/gpr/v2/group_types"
 
 };

@@ -62,7 +62,7 @@ $rootScope,$cordovaToast) {
 
         signUpService.saveUserHome($scope.home).then(function (response) {
             console.log("User created successfully");
-            $cordovaToast.showLongBottom("Home added to your locations successfully");
+            //$cordovaToast.showLongBottom("Home added to your locations successfully");
             $state.go('addWork', {workData: $scope.data})
 
         }).catch(function (error) {
@@ -75,7 +75,7 @@ $rootScope,$cordovaToast) {
                 errorMessage = "Something went wrong on server. Please try after some time."
             }
             if (errorMessage != "") {
-                $cordovaToast.showLongBottom(errorMessage);
+                //$cordovaToast.showLongBottom(errorMessage);
                 console.log(errorMessage);
             }
         });

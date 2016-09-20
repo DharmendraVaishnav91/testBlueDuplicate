@@ -11,7 +11,7 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
           //$scope.userId=response;
           $rootScope.auth_token=response.auth_token;
           console.log("Registered successfully with your current location.");
-          $cordovaToast.showLongBottom("Registered successfully with your current location.");
+          //$cordovaToast.showLongBottom("Registered successfully with your current location.");
           $state.go('addHome',{homeData:$scope.data,homeAddress:$scope.home})
 
       }).catch(function(error){
@@ -24,7 +24,7 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
               errorMessage="Something went wrong on server. Please try after some time."
           }
           if(errorMessage!=""){
-              $cordovaToast.showLongBottom(errorMessage);
+              //$cordovaToast.showLongBottom(errorMessage);
               console.log(errorMessage);
           }
       });

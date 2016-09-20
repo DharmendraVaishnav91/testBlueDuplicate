@@ -6,6 +6,16 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     $scope.work = {};
     $scope.workLocations = [];
     $scope.countryCodeList = utilityService.countryList();
+    var fetchWorkTypes= function () {
+        signUpService.fetchWorkTypes().then(function (response) {
+            console.log("Work types are :");
+            console.log(response);
+            $scope.workTypes=response;
+        }).catch(function (error) {
+           console.log(error);
+        });
+    };
+    fetchWorkTypes();
     var fetchLocation = function () {
         signUpService.fetchAllLocation().then(function (response) {
             $scope.myLocations = response;
@@ -30,14 +40,14 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     var saveWorkData = function (workData) {
         signUpService.saveWorkData(workData).then(function (response) {
             console.log("Work added successfully.");
-            $cordovaToast.showShortBottom("Work added successfully.");
+            //$cordovaToast.showShortBottom("Work added successfully.");
             // $cordovaToast.showLongBottom("Work data saved successfully");
             //$scope.closeModal(openModalType.addWork);
             $state.go('addThing', {thingData: $scope.data});
 
         }).catch(function (error) {
             console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
+            //$cordovaToast.showLongBottom("Something went wrong. Please try again");
             //Remove this after demo
             //$scope.openModal(openModalType.addThing);
         });
@@ -102,8 +112,6 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         };
         console.log("work data");
         console.log(workData);
-        //$scope.workLocations.push(location1);
         saveWorkData(workData);
-        console.log(workData);
     };
 });

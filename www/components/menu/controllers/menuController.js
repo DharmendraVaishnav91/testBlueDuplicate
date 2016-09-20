@@ -16,6 +16,9 @@ angular.module('app.menu', [])
                 console.log(error);
             });
         };
+        $scope.goToInvitations = function () {
+            $state.go('app.invitations');
+        };
         $scope.openDashboard= function () {
             $state.go('app.dashboard');
         };

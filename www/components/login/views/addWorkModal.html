@@ -22,44 +22,19 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
 
-                    <select ng-model="data.type" style="width: 100%;" ng-change="workTypeChange()" ng-required="true">
-                        <option value="Land (aggregation, collection, transport site)">{{'LAND_AGGR_COL_TRANS' | translate }}</option>
-                        <option value="Land (factory, manufacturing site)">{{'LAND_FACT_MFG' | translate }}</option>
-                        <option value="Land (farm, forest)">{{'LAND_FARM_FOREST' | translate }}</option>
-                        <option value="Land (mine, quarry)" >{{'LAND_MINE_QUARRY' | translate }}</option>
-                        <option value="Other (please leave a comment)">{{'LAND_OTHER' | translate }}</option>
-                        <option value="Water (fishery)">{{'WATER_FISHERY' | translate }}</option>
-                        <option value="Water (port, dock)">{{'WATER_PORT' | translate }}</option>
+                    <select ng-model="work.type" style="width: 100%;" ng-change="workTypeChange()" ng-required="true">
+                        <option value="{{type.name}}" ng-repeat="type in workTypes">{{type.name}}</option>
                     </select>
                 </label>
 
 
 
-                <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">-->
-                    <!--<span class="input-label label-text "  style="color:white">{{'CROP' | translate }}-->
-                        <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
-                    <!--</span>-->
-                        <!--<select style="width: 100%;" ng-model="data.crop" ng-required="true"  ng-options="obj.H3Description for obj in productList track by obj.H3Code">-->
-                        <!--</select>-->
-                <!--</label>-->
-
-                <!--&lt;!&ndash;Hectare&ndash;&gt;-->
-
-                <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">-->
-                    <!--<span class="input-label label-text "  style="color:white">{{'HECTARE' | translate }}-->
-                        <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
-                    <!--</span>-->
-                    <!--<input type="number" class="edit-input-txt"  ng-model="work.hectare" ng-required="true" name="hectares" />-->
-
-                <!--</label>-->
-
-                <!--Relationship-->
 
                 <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%;" ng-model="data.relationship"  ng-required="true">
+                    <select style="width: 100%;" ng-model="work.relationship"  ng-required="true">
                         <option value="Worker">{{'WORKER' | translate }}</option>
                         <option value="Owner">{{'OWNER' | translate }}</option>
                         <option value="Lessor">{{'LESSOR' | translate }}</option>
@@ -72,7 +47,11 @@
                     <span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
-                    <select name="location-where" style="width: 100%" ng-model="locationWay" ng-required="true"  ng-change="updateLocationFields(locationWay)">
+
+                    <select name="location-where" style="width: 100%" ng-model="work.where" ng-required="true"  ng-change="updateLocationFields(work.where)">
+                        <option ng-repeat="obj in myLocations" value="{{obj}}">
+                            {{obj.LocationType+"("+obj.LocationName+")"}}
+                        </option>
                         <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
                         <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
                     </select>
@@ -96,43 +75,23 @@
 
                 <!--Country-->
 
-
-
-                <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
-                    <!--<span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}-->
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                    <!--</span>-->
-                    <!--<select style="width: 100%" ng-model="data.workCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.workCountry.CountryCode)">-->
-                    <!--</select>-->
-                <!--</label>-->
-
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
 
-                <select style="width: 100%" ng-model="data.workCountry" ng-required="true"  ng-change="changeSubdivision(data.workCountry)">
+                <select style="width: 100%" ng-model="work.country" ng-required="true"  ng-change="changeSubdivision(data.workCountry)">
                     <option
                             ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select>
             </label>
                 <!--State-->
-
-                <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields" >-->
-                    <!--<span class="input-label label-text "  style="color:white">{{'STATE' | translate }}-->
-                        <!--<span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}}</span>-->
-                    <!--</span>-->
-                    <!--<select style="width: 100%" ng-model="data.workState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">-->
-                    <!--</select>-->
-
-                <!--</label>-->
-
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
-                <select style="width: 100%" ng-model="data.workState" >
+                <select style="width: 100%" ng-model="work.state" >
                     <option
                             ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>

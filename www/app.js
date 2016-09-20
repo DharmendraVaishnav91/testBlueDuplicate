@@ -9,6 +9,21 @@ app.run(function($ionicPlatform,EventService,utilityService) {
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
+      //var permissions = window.plugins.permissions;
+      ////do we already have permissions
+      //permissions.hasPermission(function(status){
+      //    if(!status.hasPermission) {
+      //        //if not, warn in console
+      //        var errorCallback = function() {
+      //            console.warn('Camera permission is not turned on');
+      //        };
+      //        //make request for permissions
+      //        permissions.requestPermission(function(status) {
+      //            //do we still not have permissions? user denied. Do something here
+      //            if( !status.hasPermission ) userdenied();
+      //        }, function(){}, permissions.CAMERA);
+      //    }
+      //}, function(){}, permissions.CAMERA);
 
     if (window.StatusBar) {
       // org.apache.cordova.status bar required
@@ -144,6 +159,15 @@ app.run(function($ionicPlatform,EventService,utilityService) {
                 'mainContent': {
                     templateUrl: 'components/invite/views/invite.html',
                     controller: 'InviteCtrl'
+                }
+            }
+        })
+        .state('app.invitations', {
+            url: '/invitations',
+            views: {
+                'mainContent': {
+                    templateUrl: 'components/invite/views/groupInvitations.html',
+                    controller: 'GroupInvitationsCtrl'
                 }
             }
         })

@@ -1,0 +1,89 @@
+<ion-view  view-title="{{'GROUP_INVITE' | translate}}" >
+    <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
+    <ion-content scroll="true" class="blueno-bg">
+        <div class="item card no-padding" ng-repeat="invitation in invitations" >
+            <div class="row ">
+                <div class="col col-33">
+                    <div >
+                        <span class='label-text' style="color:gray">{{'GROUP_NAME' | translate}}</span>
+                    </div>
+                </div>
+                <div class="col ">
+                    <div class="wrap-content" style="">
+                        {{invitation.organization.OrganizationName}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col col-33">
+                    <div >
+                        <span class='label-text' style="color:gray">{{'GROUP_TYPE' | translate}}</span>
+                    </div>
+                </div>
+                <div class="col ">
+                    <div class=" wrap-content" >
+                        {{invitation.organization.OrganizationType}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col col-33">
+                    <div >
+                        <span class='label-text' style="color:gray">{{'INVITED_BY' | translate}}</span>
+                    </div>
+
+                </div>
+                <div class="col ">
+                    <div class="wrap-content" >
+                        {{invitation.inviter.username}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col col-33">
+                    <div >
+                        <span class='label-text' style="color:gray">{{'INVITED_ON' | translate}}</span>
+                    </div>
+
+                </div>
+                <div class="col ">
+                    <div class="wrap-content" >
+                        {{invitation.created_at | date:'M/d/yy h:mm a'}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col right ">
+                    <div class="button button-outline button-balanced" style="min-height: 34px !important;line-height: 34px;" ng-click="acceptOrRejectInvitation('Accept',invitation.id)">
+                        {{'ACCEPT' | translate}}
+                    </div>
+                    <div class="button button-outline button-assertive" style="min-height: 34px !important;line-height: 34px;" ng-click="acceptOrRejectInvitation('Reject',invitation.id)">
+                        {{'REJECT' | translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class= "row no-data-alert" ng-if="!areInvitationsAvailable">
+        <div class="col col-center text-center">
+            <div class="no-data-icon">
+                <i class="icon ion-ios-body"></i>
+            </div>
+            <div class="no-data-text">
+                {{'NO_INVITED_MEMBERS' | translate }}
+            </div>
+        </div>
+        </div>
+    </ion-content>
+    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
+        <!--<div  class="button-bar">-->
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="showInviteFamilyModal();">-->
+                <!--<i class="ion-plus-round"></i>&nbsp;{{'INVITE_MORE' | translate }}-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
+</ion-view>
+

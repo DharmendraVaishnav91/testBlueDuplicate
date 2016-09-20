@@ -88,6 +88,7 @@
   "SELLER":"Seller",
   "CROP":"Crop",
   "HECTARE":"Hectares",
+  "INVITATIONS":"Invitations",
 
   "THING_ID":"Thing ID",
   "THING_ID_TYPE":"Thing Id Type",
@@ -188,8 +189,13 @@
   "STATUS":"STATUS",
   "STATUS_SMALL":"Status",
   "BULK_INVITE":"Bulk Invite",
+  "GROUP_INVITE":"Group Invites",
   "INVITE_FRIEND":"Invite a Friend",
   "INVITE_MORE":"Invite More",
+  "INVITED_BY":"Invited By",
+  "INVITED_ON":"Invited On",
+  "ACCEPT":"Accept",
+  "REJECT":"Reject",
   "FRIEND_MOB_WITH_COUNTRY_CODE":"Friend Mobile No. With Country Code",
   "FRIEND_COUNTRY":"Friend Country",
   "TYPE_EMAIL_TO_SEND_INSTRUCTION":"Type Email to Send Instructions",
@@ -239,7 +245,6 @@
   "NATIONALITY" : "Nationality",
   "ADMIN" : "Admin",
   "INVITATION" : "Invitation",
-  "GROUP_INVITE" : "Group Invite",
   "EQUIPMENT_DETAILS" : "Equipment Details",
   "ASSET_RELATIONSHIP" : "Asset Relationship",
   "ASSET_BLUENUMBER" : "Asset Bluenumber",
@@ -251,5 +256,11 @@
   "NO_INVITED_MEMBERS" : "No pending invitations",
   "NO_GROUP_FIND" : "No groups available associated to you",
   "NO_CONTACT_LIST" : "No contacts available having phone number",
-  "NO_WORK_PLACE" : "No work place added yet. Add by tapping add more button below."
+  "NO_WORK_PLACE" : "No work place added yet. Add by tapping add more button below.",
+
+
+  "INVALID_MOBILE":"Invalid mobile number",
+  "PASSWORD_MIN_LENGTH":"Password should be minimum of eight characters long",
+  "FIRST_NAME_MAX_LENGTH":"First name should not be greater than 50 characters",
+  "LAST_NAME_MAX_LENGTH":"Last name should not be greater than 50 characters"
 }

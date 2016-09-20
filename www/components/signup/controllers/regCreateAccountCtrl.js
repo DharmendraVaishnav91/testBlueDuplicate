@@ -30,7 +30,13 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
     $scope.countryCodeList=[];
     $scope.work={};
     $scope.workLocations=[];
-    $scope.countryCodeList=utilityService.countryList();
+
+    utilityService.getCountryList().then(function(response){
+        $scope.countryCodeList=response;
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
     $scope.isLocationShared=false;
     $rootScope.addressDataFromCoordinate={};
     $scope.showPopup = function(position) {
@@ -129,7 +135,7 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
             } else {
                 $scope.isLocationShared=false;
                 console.log('Location must be shared to continue with registration.');
-                $cordovaToast.showLongBottom("Location must be shared to continue with registration.")
+                //$cordovaToast.showLongBottom("Location must be shared to continue with registration.")
             }
         });
     };
@@ -161,24 +167,24 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
 
     $scope.goToProfileCreation = function() {
         if($scope.isLocationShared){
-            if(isLocationEnabled()){
+           // if(isLocationEnabled()){
                  // $scope.openModal(openModalType.addWork);
                  $scope.loginData.user.country_code=$scope.data.selectedCountry.CountryCode;
                  $scope.loginData.user.country_phone_code=$scope.data.selectedCountry;
                  //$scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
                  signUpService.checkUserNameAvailability($scope.loginData).then(function (response) {
                      console.log("Username available");
-                    $cordovaToast.showLongBottom("Username available");
+                    //$cordovaToast.showLongBottom("Username available");
                      $state.go('regCreateProfile',{accountData: $scope.loginData})
 
                  }).catch(function (error) {
                      console.log(error.error);
-                    $cordovaToast.showLongBottom(error.error);
+                    //$cordovaToast.showLongBottom(error.error);
                      console.log("Username already taken. Try another.")
                  });
-             }
+             //}
         }else{
-            $cordovaToast.showLongBottom("Location must be shared to continue with registration");
+            //$cordovaToast.showLongBottom("Location must be shared to continue with registration");
         }
 
 

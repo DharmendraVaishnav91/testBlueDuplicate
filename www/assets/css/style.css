@@ -46,6 +46,9 @@ div.leaflet-right{
 .right{
     text-align: right;
 }
+.validation-font{
+    color:#ffa366 ;
+}
 .wrap-content{
     white-space: normal;
 }

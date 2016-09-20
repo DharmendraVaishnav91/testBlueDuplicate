@@ -3,9 +3,7 @@
         <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
             <h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>
         </div>
-
-
-            <div class="list" ng-style="{'height':(deviceHeight-110)+'px'}" style="
+        <div class="list" ng-style="{'height':(deviceHeight-110)+'px'}" style="
     overflow: scroll;
     width: 100%;
     padding: 0;">
@@ -28,7 +26,8 @@
 
                 <div class="row no-padding">
                     <div class="col no-padding" >
-                        <input class="edit-input-txt" ng-model="loginData.user.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="number"  placeholder=""/>
+                        <input class="edit-input-txt" ng-model="loginData.user.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="number"  ng-minlength="10" ng-maxlength="10"/>
+                        <span class="assertive validation-font wrap-content" ng-show="credentialForm.mobile.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>
                     </div>
                 </div>
 
@@ -39,7 +38,8 @@
                 <span class="input-label label-text "  style="color:white">{{'PASSWORD' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="loginData.user.password" name="mobile" ng-required="true"  style="font-size:18px;" type="password"  placeholder=""/>
+                <input class="edit-input-txt" ng-model="loginData.user.password" name="password" ng-required="true"  style="font-size:18px;" type="password"  ng-minlength="8"/>
+                <span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>
             </label>
 
                <div class="row ">

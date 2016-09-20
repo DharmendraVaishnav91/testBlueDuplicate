@@ -59,6 +59,18 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
         console.log(req);
         return utilityService.makeHTTPRequest(req,deferred);
     };
+
+    self.fetchWorkTypes = function () {
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.workTypes,
+            method:HttpRequestType.GET ,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
+    } ;
     self.fetchAllLocation = function () {
         var deferred = $q.defer();
         var req={

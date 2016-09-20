@@ -103,13 +103,13 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
                console.log("Asset create success.");
                console.log(response);
              fetchThings();
-             $cordovaToast.showLongBottom("Asset created successfully.");
+             //$cordovaToast.showLongBottom("Asset created successfully.");
              $scope.hideThingAddModal();
 
 
          }).catch(function (error) {
             console.log(error);
-             $cordovaToast.showLongBottom("Something went wrong, please try after some time.");
+             //$cordovaToast.showLongBottom("Something went wrong, please try after some time.");
          })
      } ;
     $scope.changeSubdivision=function(selectedCountry){

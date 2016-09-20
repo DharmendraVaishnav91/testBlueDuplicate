@@ -24,13 +24,14 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
                 }else{
                     $rootScope.profileUrl=$rootScope.userInfo.image;
                 }
+
             });
             saveUser(user);
             $state.go('app.dashboard');
         }).catch(function (error) {
             console.log(error.errors);
             var errorMessage=error.errors?error.errors:"Invalid Credentials";
-            $cordovaToast.showLongBottom(errorMessage)
+            //$cordovaToast.showLongBottom(errorMessage)
         });
        // $state.go('app.dashboard');
     };
