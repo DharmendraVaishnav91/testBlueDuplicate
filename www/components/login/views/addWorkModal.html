@@ -1,5 +1,5 @@
 <ion-modal-view  style="z-index:8">
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" >
         <button ng-click="hideWorkAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
@@ -8,13 +8,7 @@
 }" >{{'ADD_WORK_PLACE' | translate }}</h1>
     </ion-header-bar>
     <form name="addWorkForm">
-    <ion-content scroll="true" class="blueno-bg has-footer" ng-class="{'has-header':isFromSetting}">
-            <div class="center" style=";width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting" >
-                <h3 style="color: #ffffff;">
-                    <i class="ion-monitor"></i>&nbsp;{{'ADD_WORK' | translate }}
-                </h3>
-            </div>
-
+    <ion-content scroll="true" class="blueno-bg-full has-footer has-header" >
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style=" overflow: scroll;width: 100%;padding: 0;">
                 <!--Work place type-->
                 <label class="item item-input item-stacked-label no-border label-padding">
@@ -26,10 +20,6 @@
                         <option value="{{type.name}}" ng-repeat="type in workTypes">{{type.name}}</option>
                     </select>
                 </label>
-
-
-
-
                 <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>

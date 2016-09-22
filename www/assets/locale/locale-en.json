@@ -16,7 +16,10 @@
   "BLUENUMBER":"Bluenumber",
   "BLUENUMBER_SMALL":"bluenumber",
   "EMAIL":"Email",
-  "USERNAME":"Email/Mobile",
+  "USERNAME":"Username",
+  "CONFIRMATION_CODE":"Confirmation Code",
+  "REQUEST_OTP":"Request OTP",
+  "CONFIRM":"Confirm",
   "MOBILE":"Mobile",
   "PASSWORD":"Password",
   "FORGOT_PASSWORD":"Forgot Password",
@@ -259,7 +262,7 @@
   "NO_WORK_PLACE" : "No work place added yet. Add by tapping add more button below.",
 
 
-  "INVALID_MOBILE":"Invalid mobile number",
+  "INVALID_MOBILE":"Number should be of 10 digits",
   "PASSWORD_MIN_LENGTH":"Password should be minimum of eight characters long",
   "FIRST_NAME_MAX_LENGTH":"First name should not be greater than 50 characters",
   "LAST_NAME_MAX_LENGTH":"Last name should not be greater than 50 characters"

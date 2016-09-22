@@ -8,7 +8,30 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
 
     var self = this;
 
-
+    self.requestOTP=function(postData){
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.requestOTP,
+            method:HttpRequestType.POST,
+            data:postData,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
+    };
+    self.confirmOTP=function(postData){
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.confirmOTP,
+            method:HttpRequestType.POST,
+            data:postData,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
+        };
+        return utilityService.makeHTTPRequest(req,deferred);
+    };
     self.fetchCountryCode=function(){
         var deferred = $q.defer();
         var req={

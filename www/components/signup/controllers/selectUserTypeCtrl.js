@@ -11,18 +11,24 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
           //$scope.userId=response;
           $rootScope.auth_token=response.auth_token;
           console.log("Registered successfully with your current location.");
+              var requestData = {
+                  country_phone_code: $rootScope.userMobDetail.country_phone_code,
+                  username: $rootScope.userMobDetail.mobile
+              };
+              signUpService.requestOTP(requestData).then(function (response) {
+                  console.log("OTP requested successfully");
+                  console.log(response);
+                  $state.go('addHome',{homeData:$scope.data,homeAddress:$scope.home})
+                  //  $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
+              }).catch(function (error) {
+                  console.log(error);
+              }) ;
           //$cordovaToast.showLongBottom("Registered successfully with your current location.");
-          $state.go('addHome',{homeData:$scope.data,homeAddress:$scope.home})
+
 
       }).catch(function(error){
           var errorMessage="";
-          if(error.error_status){
-              errorMessage=error.country_code!=null?error.country_code.error:"";
-              errorMessage+=error.home_location!=null?error.home_location.error:"";
-              errorMessage+=error.user!=null?error.user.error:"";
-          }else{
-              errorMessage="Something went wrong on server. Please try after some time."
-          }
+              errorMessage="Something went wrong on server. Please try after some time.";
           if(errorMessage!=""){
               //$cordovaToast.showLongBottom(errorMessage);
               console.log(errorMessage);

@@ -1,13 +1,11 @@
-<ion-modal-view  style="z-index:7">
-    <form name="addressForm">
-    <ion-content scroll="true" class="blueno-bg">
+<form name="addressForm">
+    <ion-content scroll="true" class="blueno-bg has-footer">
         <div class="center" style="width: inherit;height: auto;padding-top:15px" >
             <h3 style="color: #ffffff;">
                 <i class="ion-home"></i>&nbsp; {{'ADD_HOME' | translate }}
                 <span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>
             </h3>
         </div>
-
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
             <!--Newly added field which make user to enter manual address-->
@@ -73,7 +71,6 @@
             </label>
 
         </div>
-
     </ion-content>
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
         <div  class="button-bar">
@@ -86,5 +83,4 @@
 
         </div>
     </ion-footer-bar>
-    </form>
-</ion-modal-view>
+</form>

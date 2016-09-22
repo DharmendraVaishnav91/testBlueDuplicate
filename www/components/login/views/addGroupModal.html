@@ -1,5 +1,5 @@
 <ion-modal-view style="z-index:100">
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" >
         <button ng-click="hideGroupAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
@@ -8,53 +8,29 @@
 }" >{{'ADD_GROUP' | translate }}</h1>
     </ion-header-bar>
     <form name="addGroupForm">
-    <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
-        <div class="center" style=";width: inherit;height: auto;padding-top:15px"  ng-if="!isFromSetting">
-            <h3 style="color: #ffffff;">
-                <i class="ion-person-stalker"></i>&nbsp;{{'ADD_GROUP' | translate }}
-            </h3>
-        </div>
-
+    <ion-content scroll="true" class="has-header blueno-bg-full has-footer">
         <div ng-cloak class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
             <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="text" ng-required="true" name="groupName" ng-model="data.groupName"  class="edit-input-txt"  />
+                <input type="text" ng-required="true" name="groupName" ng-model="group.name"  class="edit-input-txt"  />
             </label>
             <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'GROUP_TYPE' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <select style="width: 100%" ng-required="true" ng-model="data.groupType">
-                    <option value="Company">{{'COMPANY' | translate }}</option>
-                    <option value="Cooperative">{{'COOPERATIVE' | translate }}</option>
-                    <option value="Cooperative">{{'NON_GOVT_ORG' | translate }}</option>
-                    <option value="Cooperative">{{'NON_PROFIT_ORG' | translate }}</option>
-                    <option value="Government Organization">{{'GOVT_ORG' | translate }}</option>
-                    <option value="Standards Organization">{{'STND_ORG' | translate }}</option>
-                    <option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>
+                <select style="width: 100%" ng-required="true" ng-model="group.type" name="groupType">
+                    <option ng-repeat="obj in groupsType" value="{{obj.name}}">{{obj.name}}</option>
                 </select>
             </label>
-            <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'SUB_TYPE' | translate }}
-                    </span>
-                <select style="width: 100%" ng-required="true" ng-model="data.groupSubType">
-                    <option value="Sector" >{{'SECTOR' | translate }}</option>
-                    <option value="Department or ministry" >{{'DEPT_OF_MIN' | translate }}</option>
-                    <option value="Cause or issue" >{{'CAUSE_OR_ISSUE' | translate }}</option>
-                    <option value="Commodity or raw material" >{{'COMMODITY_RAW_MATERIAL' | translate }}</option>
-                    <option value="By research interest" >{{'BY_RESEARCH_INTEREST' | translate }}</option>
-                </select>
-            </label>
-
 
             <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <select style="width: 100%" ng-required="true" ng-model="data.groupRelationship">
+                <select style="width: 100%" ng-required="true" ng-model="group.relationship" name="relationship">
                     <option value="Owner" >{{'OWNER' | translate }}</option>
                     <option value="Employee" >{{'EMPLOYEE' | translate }}</option>
                     <option value="Buyer" >{{'BUYER' | translate }}</option>
@@ -65,43 +41,64 @@
 
             <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select style="width: 100%" ng-model="data.groupLocation" ng-required="true" >
+                <select style="width: 100%" ng-model="group.location" ng-required="true" ng-change="updateLocationFields(group.location)" name="location">
                     <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>
-                    <option value="OtherGroupLocation">{{'OTHER' | translate }}</option>
+                    <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
+                    <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
                 </select>
             </label>
 
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input type="text" ng-required="true" class="edit-input-txt"  ng-model="data.otherGroupAddress"/>
+                <input type="text" ng-required="true" class="edit-input-txt"  ng-model="group.address" name="address"/>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields" >
                 <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input type="text" ng-required="true"  ng-model="data.otherGroupCity" class="edit-input-txt"  />
+                <input type="text"   ng-model="group.city" class="edit-input-txt" name="city" />
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields" >
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select style="width: 100%" ng-model="data.otherGroupCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(data.otherGroupCountry.CountryCode)">
+                <select style="width: 100%" ng-model="group.country" ng-required="true"  ng-change="changeSubdivision(group.country)" name="country">
+                    <option
+                            ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
+                            ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="data.groupLocation=='OtherGroupLocation'" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields" >
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select style="width: 100%" ng-model="data.otherGroupState" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">
+                <select style="width: 100%" ng-model="group.state" ng-required="subDivList.length!=0?true:false"  name="state">
+                    <option
+                            ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
+                            ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
                 </select>
+
+            </label>
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                <span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input class="edit-input-txt" ng-model="group.latitude" name="latitude"   type="number"/>
+            </label>
+
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                <span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input class="edit-input-txt" ng-model="group.longitude" name="longitude"   type="number"/>
             </label>
 
             </div>
@@ -110,16 +107,9 @@
     </ion-content>
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0 !important;" >
         <div  class="button-bar">
-            <button class="button no-border lgt-blue-btn button-small" type="submit" ng-if="!isFromSetting"  ng-click="skipToSuccess()" style="font-size: 20px;">
-                {{'Skip' | translate }} &nbsp;
-            </button>
-            <button ng-if="isFromSetting" ng-disabled="addGroupForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="createAndUpdateGroup()" style="font-size: 20px;">
+            <button  ng-disabled="addGroupForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="createAndUpdateGroup()" style="font-size: 20px;">
                 {{'CREATE' | translate }}
             </button>
-            <button ng-if="!isFromSetting" ng-disabled="addGroupForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToInviteFamily()" style="font-size: 20px;">
-                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
-            </button>
-
         </div>
     </ion-footer-bar>
     </form>

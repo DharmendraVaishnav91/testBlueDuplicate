@@ -1,7 +1,9 @@
 <ion-view  view-title="Invited Family Members" >
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
-    <ion-content scroll="true" class="blueno-bg">
-        <div class="item card no-padding" ng-repeat="invitedMember in invitedMemebers" ng-if="invitedFind">
+    <ion-content scroll="true" class="blueno-bg has-footer">
+        <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
+
+        <div class="item card no-padding"  ng-repeat="invitedMember in invitedMemebers" ng-if="invitedFind">
             <div class="row ">
                 <div class="col col-33">
                     <div >
@@ -57,7 +59,7 @@
             </div>
         </div>
 
-        <div class= "row no-data-alert";" ng-if="!invitedFind">
+        <div class= "row no-data-alert" ng-if="!invitedFind">
             <div class="col col-center text-center">
                 <div class="no-data-icon">
                 <i class="icon ion-ios-body"></i>
@@ -66,6 +68,7 @@
                 {{'NO_INVITED_MEMBERS' | translate }}
                 </div>
             </div> 
+        </div>
         </div>
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" >

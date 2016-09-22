@@ -1,11 +1,10 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$ionicModal,userSettingService,loginService,utilityService,$cordovaToast) {
+userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$ionicModal,userSettingService,loginService,utilityService,$cordovaToast,signUpService) {
 
-    $scope.isFromSetting=true;
-    $scope.data={};
-     $scope.invite={};
+    $scope.group={};
+    $scope.invite={};
     $scope.groupAdminFind = false;
     $scope.groupMemberFind =false;
     $scope.countryCodeList=utilityService.countryList();
@@ -80,7 +79,33 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     };
     $scope.addNewGroup = function () {
         fetchLocation();
+
         $scope.editGroup.show();
+    };
+    //Change address fields according user choice
+    $scope.updateLocationFields = function (locationWay) {
+        $scope.enableAddressFields = true;
+        if (locationWay == "current") {
+            $scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+            $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+            $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+            $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            $scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+            $scope.work.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            $scope.work.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        } else if(locationWay == "manual") {
+            $scope.work.address ="";
+            $scope.work.city = "";
+            //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+            $scope.work.latitude = "";
+            $scope.work.longitude = "";
+            $scope.work.state = "";
+            $scope.work.country = "";
+        } else{
+            $scope.enableAddressFields=false;
+        }
     };
     var saveGroupData=function(groupsData){
         loginService.saveGroupsData(groupsData).then(function(response){
@@ -95,7 +120,15 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
             // $scope.openModal(openModalType.signUpSuccess);
         });
     };
+    var fetchGroupsType = function () {
+        signUpService.fetchGroupsType().then(function (response) {
+            $scope.groupsType=response;
+        }).catch(function (error) {
 
+        });
+    };
+
+    fetchGroupsType();
     $scope.changeSubdivision=function(selectedCountry){
         fetchStates(selectedCountry.CountryCode);
     };
@@ -110,30 +143,26 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     $scope.createAndUpdateGroup=function(){
         var groups=[];
         var group1={
-            type:$scope.data.groupType,
-            sub_type:$scope.data.groupSubType,
-            relationship:$scope.data.groupRelationship,
-            name:$scope.data.groupName
+            type:$scope.group.type,
+            relationship:$scope.group.relationship,
+            name:$scope.group.name
             //location:$scope.data.groupLocation
         };
         //Equipment have location other than existing one
-        if($scope.data.groupLocation=='OtherGroupLocation') {
+        if($scope.group.location=='manual'||$scope.group.location=='current') {
             group1.location={
-                name:"Other",
-                latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
-                longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
-                address:$scope.data.otherGroupAddress,
-                city:$scope.data.otherGroupCity,
-                subdivision_code:$scope.data.otherGroupState?$scope.data.otherGroupState.SubdivisionCode:'',
-                country_code:$scope.data.otherGroupCountry.CountryCode
-
+                name:$scope.group.location=="manual"?"Enter Address":"My Current Location",
+                latitude:$scope.group.latitude,
+                longitude:$scope.group.longitude,
+                address:$scope.group.address,
+                city:$scope.group.city,
+                subdivision_code:$scope.group.state?$scope.group.state:'',
+                country_code:$scope.group.country
             };
-
         }else{
             group1.location={
-                name:(JSON.parse($scope.data.groupLocation)).LocationID
+                name:(JSON.parse($scope.group.location)).LocationID
             } ;
-           //group1.location=JSON.parse($scope.data.groupLocation);
         }
         groups.push(group1);
         var groupsData={
@@ -142,7 +171,6 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
 
         saveGroupData(groupsData);
         console.log(groupsData);
-        //$scope.openModal(openModalType.inviteFamily);
     };
 
     $scope.sendGroupInvitations= function () {

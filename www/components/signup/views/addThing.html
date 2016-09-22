@@ -1,16 +1,6 @@
-<ion-modal-view style="z-index:9">
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
-        <button ng-click="hideThingAddModal()" style="color:white"
-                class="button back-button buttons  button-clear header-item">
-            <i class="icon ion-android-arrow-back"></i>
-            <span class="back-text"></span>
-        </button>
-        <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}">{{'ADD_THING' | translate }}</h1>
-    </ion-header-bar>
-    <form name="addThingForm">
-        <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
-            <div class="center" style="width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting">
+ <form name="addThingForm">
+        <ion-content scroll="true" class="blueno-bg-full has-footer">
+            <div class="center" style="width: inherit;height: auto;padding-top:15px">
                 <h3 style="color: #ffffff;">
                     <i class="ion-folder"></i>&nbsp;{{'ADD_THING' | translate }}
                     <span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>
@@ -20,14 +10,6 @@
             <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}"
                  style="overflow: scroll;width: 100%;padding: 0;">
 
-
-                <!--<label class="item item-input item-stacked-label no-border label-padding">-->
-                    <!--<span class="input-label label-text " style="color:white">{{'ASSET_NAME' | translate }}-->
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                    <!--</span>-->
-                    <!--<input type="text" ng-required="true" name="assetName" class="edit-input-txt"-->
-                           <!--ng-model="thing.assetName"/>-->
-                <!--</label>-->
                 <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text " style="color:white">{{'EQUIPMENT_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
@@ -35,11 +17,6 @@
                     <select style="width: 100%" ng-model="thing.equipType" ng-required="true" ng-change="workTypeChange()">
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                         <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
-                        <!--<option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>-->
-                        <!--<option value="Fishery">{{'FISHERY' | translate }}</option>-->
-                        <!--<option value="Equipment (agriculture)">{{'EQUIPMENT_AGRICULTURE' | translate }}</option>-->
-                        <!--<option value="Equipment (fishing)">{{'EQUIPMENT_FISHING' | translate }}</option>-->
-                        <!--<option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>-->
                     </select>
                 </label>
                 <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
@@ -109,10 +86,7 @@
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
                     <input type="text" class="edit-input-txt"  ng-model="thing.thingId" ng-required="true" name="thingId" />
-
                 </label>
-
-
                 <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text " style="color:white">{{'LOCATION' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
@@ -155,11 +129,7 @@
                         <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                                 ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                     </select>
-                    <!--<select style="width: 100%" ng-model="thing.country" ng-required="true"-->
-                            <!--ng-options="obj.CountryName for obj in countryCodeList"-->
-                            <!--ng-change="changeSubdivision(thing.country)">-->
 
-                    <!--</select>-->
                 </label>
 
                 <label class="item item-input item-stacked-label no-border label-padding"
@@ -191,16 +161,16 @@
         </ion-content>
         <ion-footer-bar class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;">
             <div class="button-bar">
-                <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"
+                <button  class="button no-border lgt-blue-btn button-small" type="submit"
                         ng-click="skipToGroup()" style="font-size: 20px;">
                     {{'Skip' | translate }} &nbsp;
                 </button>
-                <button ng-if="isFromSetting" ng-disabled="addThingForm.$invalid"
-                        ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small"
-                        type="submit" ng-click="createThing()" style="font-size: 20px;">
-                    {{'SUBMIT' | translate }}
-                </button>
-                <button ng-if="!isFromSetting" ng-disabled="addThingForm.$invalid"
+                <!--<button ng-if="isFromSetting" ng-disabled="addThingForm.$invalid"-->
+                        <!--ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small"-->
+                        <!--type="submit" ng-click="createThing()" style="font-size: 20px;">-->
+                    <!--{{'SUBMIT' | translate }}-->
+                <!--</button>-->
+                <button  ng-disabled="addThingForm.$invalid"
                         class="button no-border lgt-blue-btn button-small" type="submit" ng-click="goToGroup()"
                         style="font-size: 20px;">
                     {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
@@ -208,5 +178,4 @@
 
             </div>
         </ion-footer-bar>
-    </form>
-</ion-modal-view>
+ </form>

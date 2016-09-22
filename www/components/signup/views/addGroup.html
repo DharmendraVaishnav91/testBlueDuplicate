@@ -1,13 +1,4 @@
-<ion-modal-view style="z-index:100">
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
-        <button ng-click="hideGroupAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
-            <i class="icon ion-android-arrow-back"></i>
-            <span class="back-text"></span>
-        </button>
-        <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0 !important;
-}" >{{'ADD_GROUP' | translate }}</h1>
-    </ion-header-bar>
-    <form name="addGroupForm">
+<form name="addGroupForm">
     <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px"  ng-if="!isFromSetting">
             <h3 style="color: #ffffff;">
@@ -30,13 +21,6 @@
                     </span>
                 <select style="width: 100%" ng-required="true" ng-model="data.groupType">
                     <option ng-repeat="obj in groupsType" value="{{obj.name}}">{{obj.name}}</option>
-                    <!--<option value="Company">{{'COMPANY' | translate }}</option>-->
-                    <!--<option value="Cooperative">{{'COOPERATIVE' | translate }}</option>-->
-                    <!--<option value="Cooperative">{{'NON_GOVT_ORG' | translate }}</option>-->
-                    <!--<option value="Cooperative">{{'NON_PROFIT_ORG' | translate }}</option>-->
-                    <!--<option value="Government Organization">{{'GOVT_ORG' | translate }}</option>-->
-                    <!--<option value="Standards Organization">{{'STND_ORG' | translate }}</option>-->
-                    <!--<option value="Research Organization">{{'RESEARCH_ORG' | translate }}</option>-->
                 </select>
             </label>
 
@@ -84,7 +68,7 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
 
-                    <select style="width: 100%" ng-model="location.country_code" ng-required="true"  ng-change="changeSubdivision(data.homeCountry)">
+                    <select style="width: 100%" ng-model="location.country_code" ng-required="true"  ng-change="changeSubdivision(location.country_code)">
                     <option
                             ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
@@ -116,8 +100,6 @@
             </label>
 
         </div>
-
-
     </ion-content>
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0 !important;" >
         <div  class="button-bar">
@@ -133,5 +115,5 @@
 
         </div>
     </ion-footer-bar>
-    </form>
-</ion-modal-view>
+</form>
+

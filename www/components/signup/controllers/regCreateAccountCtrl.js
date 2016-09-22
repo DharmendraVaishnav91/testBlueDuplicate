@@ -175,6 +175,8 @@ app.controller('RegCreateAccountCtrl', function($timeout,$q,$scope,$state,$ionic
                  signUpService.checkUserNameAvailability($scope.loginData).then(function (response) {
                      console.log("Username available");
                     //$cordovaToast.showLongBottom("Username available");
+                     console.log($scope.loginData.user) ;
+                     $rootScope.userMobDetail=angular.copy($scope.loginData.user);
                      $state.go('regCreateProfile',{accountData: $scope.loginData})
 
                  }).catch(function (error) {

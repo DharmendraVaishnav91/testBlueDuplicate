@@ -119,25 +119,7 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
                 name: (JSON.parse($scope.thing.where)).LocationID
             }
         }
-        ////Equipment have location other than existing one
-        //if ($scope.thing.equipWhere == 'OtherThingLocation') {
-        //    thing1.location = {
-        //        name: "Thing1",
-        //        latitude: $rootScope.position ? $rootScope.position.coords.latitude : '',
-        //        longitude: $rootScope.position ? $rootScope.position.coords.longitude : '',
-        //        address: $scope.data.otherThingAddress,
-        //        city: $scope.data.otherThingCity,
-        //        subdivision_code: $scope.data.otherThingState ? $scope.data.otherThingState.SubdivisionCode : '',
-        //        country_code: $scope.data.otherThingCountry.CountryCode
-        //
-        //    };
-        //
-        //} else {
-        //    //thing1.location=JSON.parse($scope.data.equipWhere);
-        //    thing1.location = {
-        //        name: (JSON.parse($scope.data.equipWhere)).LocationID
-        //    }
-        //}
+
 
         things.push(thing1);
         var thingsData = {
