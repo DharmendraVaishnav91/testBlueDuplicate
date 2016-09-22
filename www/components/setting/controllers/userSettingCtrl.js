@@ -14,6 +14,40 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
 
     });
     $scope.home=null;
+    $rootScope.addressDataFromCoordinate={};
+    var fetchCurrentLocation= function () {
+        utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
+
+            $rootScope.addressDataFromCoordinate.userCountry={
+                CountryName:addr.country!=null?addr.country:"",
+                CountryCode:addr.country_code!=null?addr.country_code:"",
+                CountryPhoneCode:""
+            };
+            $rootScope.addressDataFromCoordinate.userState={
+                SubdivisionID:"",
+                SubdivisionCode:addr.province_code!=null?addr.province_code:"",
+                SubdivisionName:addr.state!=null?addr.state:"" ,
+                CountryCode:$rootScope.addressDataFromCoordinate.userCountry.CountryCode,
+                CountryName:$rootScope.addressDataFromCoordinate.userCountry.CountryName
+            };
+            console.log("User state");
+            console.log($rootScope.addressDataFromCoordinate.userCountry);
+            $rootScope.addressDataFromCoordinate.city=angular.copy(addr.sub_state!=null?addr.sub_state:"");
+            $rootScope.addressDataFromCoordinate.address= angular.copy(addr.street_number!=null?addr.street_number:"");
+            $rootScope.addressDataFromCoordinate.address+=angular.copy(addr.street_address!=null?addr.street_address:"");
+            //Prepare data for creating user
+
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
+    utilityService.getPosition().then(function (position) {
+        $rootScope.position=position;
+        console.log("position in scope");
+        console.log($rootScope.position);
+        fetchCurrentLocation();
+    });
     var fetchLocation = function () {
         signUpService.fetchAllLocation().then(function (response) {
           //  $scope.myLocations = response;

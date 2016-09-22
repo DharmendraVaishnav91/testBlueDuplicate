@@ -64,9 +64,9 @@
 
                 <label class="item item-input item-stacked-label no-border label-padding" ng-if="thing.haveThingId=='have'">
                     <span class="input-label label-text " style="color:white">{{'THING_ID_TYPE' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
-                    <select style="width: 100%" ng-model="thing.thingIdType" ng-required="true">
+                    <select style="width: 100%" ng-model="thing.thingIdType" >
                         <option value="Universal Product Code (UPC), also called GTIN-12 and UPC-A">Universal Product Code (UPC), also called GTIN-12 and UPC-A</option>
                         <option value="European Article Number (EAN), also called GTIN-13">European Article Number (EAN), also called GTIN-13</option>
                         <option value="Japanese Article Number (JAN), also called GTIN-13">Japanese Article Number (JAN), also called GTIN-13</option>
@@ -85,7 +85,7 @@
                     <span class="input-label label-text "  style="color:white">{{'THING_ID' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
-                    <input type="text" class="edit-input-txt"  ng-model="thing.thingId" ng-required="true" name="thingId" />
+                    <input type="text" class="edit-input-txt"  ng-model="thing.thingId" name="thingId" />
                 </label>
                 <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text " style="color:white">{{'LOCATION' | translate }}

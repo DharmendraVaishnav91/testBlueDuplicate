@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,userSettingService,loginService,utilityService,$rootScope,$cordovaToast) {
+userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,userSettingService,loginService,utilityService,$rootScope,$cordovaToast,signUpService) {
 
 
     $scope.isFromSetting=true;
@@ -14,7 +14,15 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
             console.log(error);
         });
     };
+    var fetchThingsType = function () {
+        signUpService.fetchThingsType().then(function (response) {
+            $scope.thingsType=response;
+        }).catch(function (error) {
 
+        });
+    };
+
+    fetchThingsType();
     $ionicModal.fromTemplateUrl('components/login/views/addThingModal.html', {
         scope: $scope,
         animation: 'slide-in-right'

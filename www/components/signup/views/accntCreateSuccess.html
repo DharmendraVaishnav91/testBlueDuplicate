@@ -9,57 +9,57 @@
         </div>
         <div class="row">
            <div class="col center">
-               <button class="button button-small" style="font-size:x-large;color:#0c60ee" ng-click="goToHome()">
-                   {{'GO_TO_LOGIN' | translate }}
+               <button class="button button-small" style="font-size:larger;color:#0c60ee" ng-click="goToVerifyAccount()">
+                   {{'CONFIRM_YOUR_ACCOUNT' | translate }}
                </button>
            </div>
         </div>
-        <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
-            <select style="width: 100%"  ng-model="confirm.country" ng-required="true"  >
-                <option ng-selected="data.selectedCountry==null" ></option>
-                <option
-                        ng-selected="(obj.CountryCode == userCountry.CountryCode)"
-                        ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}</option>
+        <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
+                <!--<span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}-->
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                <!--</span>-->
+            <!--<select style="width: 100%"  ng-model="confirm.country" ng-required="true"  >-->
                 <!--<option ng-selected="data.selectedCountry==null" ></option>-->
-                <!--<option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}</option>-->
-            </select>
-        </label>
+                <!--<option-->
+                        <!--ng-selected="(obj.CountryCode == userCountry.CountryCode)"-->
+                        <!--ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}</option>-->
+                <!--&lt;!&ndash;<option ng-selected="data.selectedCountry==null" ></option>&ndash;&gt;-->
+                <!--&lt;!&ndash;<option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}</option>&ndash;&gt;-->
+            <!--</select>-->
+        <!--</label>-->
 
-        <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
+        <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+                <!--<span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}-->
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                <!--</span>-->
 
-            <div class="row no-padding">
-                <div class="col no-padding" >
-                    <input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="text" />
-                    <!--<span class="assertive validation-font wrap-content" ng-show="confirmAccountForm.username.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>-->
-                </div>
-            </div>
+            <!--<div class="row no-padding">-->
+                <!--<div class="col no-padding" >-->
+                    <!--<input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="text" />-->
+                    <!--&lt;!&ndash;<span class="assertive validation-font wrap-content" ng-show="confirmAccountForm.username.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
 
-        </label>
+        <!--</label>-->
 
-        <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text "  style="color:white">{{'CONFIRMATION_CODE' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
-            <input class="edit-input-txt" ng-model="confirm.code" name="code"   style="font-size:18px;" type="text" />
+        <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+                <!--<span class="input-label label-text "  style="color:white">{{'CONFIRMATION_CODE' | translate }}-->
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                <!--</span>-->
+            <!--<input class="edit-input-txt" ng-model="confirm.code" name="code"   style="font-size:18px;" type="text" />-->
 
-        </label>
+        <!--</label>-->
 
     </ion-content>
-    <ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
-        <div  class="button-bar">
-            <button ng-disabled="confirmAccountForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="requestOTP()" style="font-size: 20px;">
-                {{'REQUEST_OTP' | translate }}
-            </button>
-            <button ng-disabled="confirmAccountForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="confirmOTP()" style="font-size: 20px;">
-                {{'CONFIRM' | translate }}
-            </button>
-        </div>
-    </ion-footer-bar>
+    <!--<ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >-->
+        <!--<div  class="button-bar">-->
+            <!--<button ng-disabled="confirmAccountForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="requestOTP()" style="font-size: 20px;">-->
+                <!--{{'REQUEST_OTP' | translate }}-->
+            <!--</button>-->
+            <!--<button ng-disabled="confirmAccountForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="confirmOTP()" style="font-size: 20px;">-->
+                <!--{{'CONFIRM' | translate }}-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
     </form>
 </ion-modal-view>

@@ -86,23 +86,23 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     $scope.updateLocationFields = function (locationWay) {
         $scope.enableAddressFields = true;
         if (locationWay == "current") {
-            $scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
-            $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+            $scope.group.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+            $scope.group.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-            $scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-            $scope.work.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
-            $scope.work.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+            $scope.group.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            $scope.group.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+            $scope.group.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            $scope.group.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         } else if(locationWay == "manual") {
-            $scope.work.address ="";
-            $scope.work.city = "";
+            $scope.group.address ="";
+            $scope.group.city = "";
             //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.work.latitude = "";
-            $scope.work.longitude = "";
-            $scope.work.state = "";
-            $scope.work.country = "";
+            $scope.group.latitude = "";
+            $scope.group.longitude = "";
+            $scope.group.state = "";
+            $scope.group.country = "";
         } else{
             $scope.enableAddressFields=false;
         }
@@ -130,7 +130,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
 
     fetchGroupsType();
     $scope.changeSubdivision=function(selectedCountry){
-        fetchStates(selectedCountry.CountryCode);
+        fetchStates(selectedCountry);
     };
 
     var fetchStates= function (countryCode) {

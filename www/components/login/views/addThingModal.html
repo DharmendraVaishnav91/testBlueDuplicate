@@ -28,13 +28,14 @@
                     <span class="input-label label-text "  style="color:white">{{'EQUIPMENT_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%" ng-model="data.equipType" ng-required="true">
+                    <select style="width: 100%" ng-model="data.equipType" ng-required="true"  ng-change="workTypeChange()">
+                        <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
-                        <option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>
-                        <option value="Fishery">{{'FISHERY' | translate }}</option>
-                        <option value="Equipment (agriculture)">{{'EQUIPMENT_AGRICULTURE' | translate }}</option>
-                        <option value="Equipment (fishing)">{{'EQUIPMENT_FISHING' | translate }}</option>
-                        <option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>
+                        <!--<option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>-->
+                        <!--<option value="Fishery">{{'FISHERY' | translate }}</option>-->
+                        <!--<option value="Equipment (agriculture)">{{'EQUIPMENT_AGRICULTURE' | translate }}</option>-->
+                        <!--<option value="Equipment (fishing)">{{'EQUIPMENT_FISHING' | translate }}</option>-->
+                        <!--<option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>-->
                     </select>
                 </label>
 

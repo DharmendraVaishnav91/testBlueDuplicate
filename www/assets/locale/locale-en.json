@@ -19,6 +19,8 @@
   "USERNAME":"Username",
   "CONFIRMATION_CODE":"Confirmation Code",
   "REQUEST_OTP":"Request OTP",
+  "CONFIRM_OTP":"Confirm OTP",
+  "CONFIRM_YOUR_ACCOUNT":"Confirm your account",
   "CONFIRM":"Confirm",
   "MOBILE":"Mobile",
   "PASSWORD":"Password",
