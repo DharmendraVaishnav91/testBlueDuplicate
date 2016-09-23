@@ -4,6 +4,7 @@
 app.controller('DashboardCtrl', function($scope, $ionicModal, $timeout,leafletData,$http,dashboardService,utilityService) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
+    $scope.showFilter=false;
     var markers={
 
     };
@@ -56,4 +57,7 @@ app.controller('DashboardCtrl', function($scope, $ionicModal, $timeout,leafletDa
         }
 
     });
+    $scope.showFilters= function () {
+        $scope.showFilter=!$scope.showFilter;
+    }
 });

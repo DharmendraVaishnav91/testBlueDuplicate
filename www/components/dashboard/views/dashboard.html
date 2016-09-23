@@ -1,8 +1,23 @@
 
-<ion-view view-title="{{'BLUENUMBER' |translate}}">
 
+<ion-view view-title="{{'BLUENUMBER' |translate}}">
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-icon" ng-click="showFilters()">
+            <i class="fa fa-filter" style="font-size: 25px;color:white"></i>
+        </button>
+
+    </ion-nav-buttons>
     <ion-content>
         <leaflet id='map' center="center" defaults="defaults" markers="markers" ng-style="{'height':(deviceHeight-48)+'px'}" width="100%" layers="layers"  ></leaflet>
+        <div class="row " ng-if="showFilter" style="position: absolute;bottom:0">
+            <div class="col">
+                <select style="width: 100%" ng-model="thing.equipRelationship" ng-required="true">
+                    <option value="" disabled selected>Gender</option>
+                    <option value="Male">{{'MALE' | translate }}</option>
+                    <option value="Female">{{'FEMALE' | translate }}</option>
+                </select>
+            </div>
+        </div>
         <!--<div id="map" ng-style="{'height':(deviceHeight-96)+'px'}" width="100%"></div>-->
     </ion-content>
 </ion-view>

@@ -40,14 +40,14 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     var saveWorkData = function (workData) {
         signUpService.saveWorkData(workData).then(function (response) {
             console.log("Work added successfully.");
-            //$cordovaToast.showShortBottom("Work added successfully.");
-            // $cordovaToast.showLongBottom("Work data saved successfully");
+            $cordovaToast.showShortBottom("Work added successfully.");
+            $cordovaToast.showLongBottom("Work data saved successfully");
             //$scope.closeModal(openModalType.addWork);
             $state.go('addThing', {thingData: $scope.data});
 
         }).catch(function (error) {
             console.log(error);
-            //$cordovaToast.showLongBottom("Something went wrong. Please try again");
+            $cordovaToast.showLongBottom("Something went wrong. Please try again");
             //Remove this after demo
             //$scope.openModal(openModalType.addThing);
         });

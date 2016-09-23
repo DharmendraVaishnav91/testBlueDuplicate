@@ -54,6 +54,8 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
             angular.forEach(response, function (location) {
                if(location.LocationName=='Home'){
                    $scope.home=angular.copy(location);
+                   console.log("HOme");
+                   console.log($scope.home);
                }
             });
             console.log("User locations ");

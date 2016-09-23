@@ -31,7 +31,7 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
         }).catch(function (error) {
             console.log(error.errors);
             var errorMessage=error.errors?error.errors:"Invalid Credentials";
-            //$cordovaToast.showLongBottom(errorMessage)
+            $cordovaToast.showLongBottom(errorMessage)
         });
        // $state.go('app.dashboard');
     };

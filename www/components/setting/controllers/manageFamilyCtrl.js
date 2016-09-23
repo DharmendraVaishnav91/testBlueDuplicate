@@ -43,11 +43,11 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
               console.log("Family invite success");
               console.log(response);
              fetchInvitedFamilyMembers();
-            //$cordovaToast.showLongBottom("Invitation sent successfully");
+            $cordovaToast.showLongBottom("Invitation sent successfully");
             $scope.hideInviteFamilyModal();
         }).catch(function (error) {
               console.log(error);
-           // $cordovaToast.showLongBottom("Something went wrong, please try after some time.");
+           $cordovaToast.showLongBottom("Something went wrong, please try after some time.");
         })
     }
 });

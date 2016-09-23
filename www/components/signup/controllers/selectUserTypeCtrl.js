@@ -19,18 +19,18 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
                   console.log("OTP requested successfully");
                   console.log(response);
                   $state.go('addHome',{homeData:$scope.data,homeAddress:$scope.home})
-                  //  $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
+                 // $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
               }).catch(function (error) {
                   console.log(error);
               }) ;
-          //$cordovaToast.showLongBottom("Registered successfully with your current location.");
+          $cordovaToast.showLongBottom("Registered successfully with your current location.");
 
 
       }).catch(function(error){
           var errorMessage="";
               errorMessage="Something went wrong on server. Please try after some time.";
           if(errorMessage!=""){
-              //$cordovaToast.showLongBottom(errorMessage);
+              $cordovaToast.showLongBottom(errorMessage);
               console.log(errorMessage);
           }
       });

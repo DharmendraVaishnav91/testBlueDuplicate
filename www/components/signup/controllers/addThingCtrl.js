@@ -49,10 +49,10 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         signUpService.saveThingsData(thingsData).then(function (response) {
             $state.go('addGroup', {groupData: $scope.data});
             console.log("Equipment added successfully.");
-           //$cordovaToast.showShortBottom("Equipment added successfully.");
+           $cordovaToast.showShortBottom("Equipment added successfully.");
         }).catch(function (error) {
             console.log(error);
-            //$cordovaToast.showLongBottom("Something went wrong. Please try again");
+            $cordovaToast.showLongBottom("Something went wrong. Please try again");
         });
     };
 

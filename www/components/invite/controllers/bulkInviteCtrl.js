@@ -79,11 +79,11 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
         console.log(inviteFriendData);
         utilityService.sendBulkInviteToFriend(inviteFriendData).then(function () {
             console.log("Friend invited successfully.");
-            //$cordovaToast.showLongBottom("Friends Invited Successfully.");
+            $cordovaToast.showLongBottom("Friends Invited Successfully.");
             $state.go('app.invite');
         }).catch(function (error) {
             console.log(error);
-           // $cordovaToast.showLongBottom("Something went wrong while inviting your friend.");
+           $cordovaToast.showLongBottom("Something went wrong while inviting your friend.");
         })
     };
     $scope.isSelected = function(id) {

@@ -1,5 +1,5 @@
 <ion-modal-view  style="z-index:9" >
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" >
         <button ng-click="hideThingAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
@@ -8,13 +8,7 @@
 }" >{{'ADD_THING' | translate }}</h1>
     </ion-header-bar>
     <form name="addThingForm">
-    <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
-            <div class="center" style="width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting">
-                <h3 style="color: #ffffff;">
-                    <i class="ion-folder"></i>&nbsp;{{'ADD_THING' | translate }}
-                </h3>
-            </div>
-
+    <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
 
@@ -28,7 +22,7 @@
                     <span class="input-label label-text "  style="color:white">{{'EQUIPMENT_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%" ng-model="data.equipType" ng-required="true"  ng-change="workTypeChange()">
+                    <select style="width: 100%" ng-model="thing.equipType" ng-required="true"  ng-change="workTypeChange()">
                         <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                         <!--<option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>-->

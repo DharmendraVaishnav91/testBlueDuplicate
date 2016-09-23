@@ -40,10 +40,10 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
         signUpService.saveGroupsData(groupsData).then(function (response) {
             console.log("Group added successfully.");
             $state.go('accntCreateSuccess');
-            //$cordovaToast.showShortBottom("Group added successfully.") ;
+            $cordovaToast.showShortBottom("Group added successfully.") ;
         }).catch(function (error) {
             console.log(error);
-           // $cordovaToast.showLongBottom("Something went wrong. Please try again");
+           $cordovaToast.showLongBottom("Something went wrong. Please try again");
         });
     };
 

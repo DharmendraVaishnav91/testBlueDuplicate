@@ -1,30 +1,46 @@
 <form name="credentialForm">
-<ion-content scroll="true" class="blueno-bg has-footer" has-footer="true">
-        <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
+    <ion-content scroll="true" class="blueno-bg has-footer" has-footer="true">
+        <div class="center" style=";width: inherit;height: auto;padding-top:15px">
             <h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>
         </div>
-        <div class="list" ng-style="{'height':(deviceHeight-110)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
+        <div class="list" ng-style="{'height':(deviceHeight-110)+'px'}"
+             style="overflow: scroll;width: 100%;padding: 0;">
+            <div class="row ">
+                <div class="col center ">
+                    <button class="button button-small lgt-blue-btn" style="width: 80%;height: 39px;font-size: large;" ng-click="shareLocation()">
+                        <i class="ion-android-share-alt" ></i> Share location
+                    </button>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col center " style="padding-left: 33px;padding-right: 33px;color: bisque;font-size: 15px;">
+                   <span >(Location must be shared to continue with registration process.)</span>
+                </div>
+            </div>
             <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+                <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select style="width: 100%"  ng-model="data.selectedCountry" ng-required="true"  >
-                    <option ng-selected="data.selectedCountry==null" ></option>
+                <select style="width: 100%" ng-model="data.selectedCountry" ng-required="true">
+                    <option ng-selected="data.selectedCountry==null"></option>
                     <option
                             ng-selected="(obj.CountryCode == userCountry.CountryCode)"
-                            ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}</option>
+                            ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
+                    </option>
                 </select>
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
+                <span class="input-label label-text " style="color:white">{{'MOBILE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
 
                 <div class="row no-padding">
-                    <div class="col no-padding" >
-                        <input class="edit-input-txt" ng-model="loginData.user.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="number"  ng-minlength="10" ng-maxlength="10"/>
-                        <span class="assertive validation-font wrap-content" ng-show="credentialForm.mobile.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>
+                    <div class="col no-padding">
+                        <input class="edit-input-txt" ng-model="loginData.user.mobile" name="mobile" ng-required="true"
+                               style="font-size:18px;" type="number" ng-minlength="10" ng-maxlength="10"/>
+                        <span class="assertive validation-font wrap-content"
+                              ng-show="credentialForm.mobile.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>
                     </div>
                 </div>
 
@@ -32,30 +48,27 @@
 
 
             <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text "  style="color:white">{{'PASSWORD' | translate }}
+                <span class="input-label label-text " style="color:white">{{'PASSWORD' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="loginData.user.password" name="password" ng-required="true"  style="font-size:18px;" type="password"  ng-minlength="8"/>
+                <input class="edit-input-txt" ng-model="loginData.user.password" name="password" ng-required="true"
+                       style="font-size:18px;" type="password" ng-minlength="8"/>
                 <span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>
             </label>
 
-               <div class="row ">
-                   <div class="col center ">
-                      <button class="button button-small lgt-blue-btn" style="width: 80%;height: 39px;font-size: large;" ng-click="shareLocation()">
-                          <i class="ion-android-share-alt" ></i> Share location
-                      </button>
-                   </div>
-               </div>
-            </div>
+
+        </div>
 
 
-</ion-content>
-<ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
-    <div  class="button-bar">
-        <button ng-disabled="credentialForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToProfileCreation()" style="font-size: 20px;">
-            {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
-        </button>
+    </ion-content>
+    <ion-footer-bar class="text-center bar-stable blue-bg"
+                    style="background: transparent !important;border:none;padding:0px !important;">
+        <div class="button-bar">
+            <button ng-disabled="credentialForm.$invalid" class="button no-border lgt-blue-btn button-small"
+                    type="submit" ng-click="goToProfileCreation()" style="font-size: 20px;">
+                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            </button>
 
-    </div>
-</ion-footer-bar>
+        </div>
+    </ion-footer-bar>
 </form>

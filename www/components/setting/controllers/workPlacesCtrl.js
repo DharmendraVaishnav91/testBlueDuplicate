@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 24/8/16.
  */
-userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,userSettingService,utilityService,loginService,$rootScope,signUpService) {
+userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,userSettingService,utilityService,loginService,$rootScope,signUpService,$cordovaToast) {
 
     $scope.isFromSetting=true;
     $scope.isWorkPlace=false;
@@ -11,6 +11,13 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         animation: 'slide-in-right'
     }).then(function (modal) {
         $scope.editWork= modal;
+    });
+
+    $ionicModal.fromTemplateUrl('components/setting/views/workDetail.html', {
+        scope: $scope,
+        animation: 'slide-in-right'
+    }).then(function (modal) {
+        $scope.workDetailModal= modal;
     });
 
     var fetchAllLocations= function () {
@@ -27,15 +34,12 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         })
     };
     fetchAllLocations();
-   // $scope.showEditWork= function(){
-   //   $scope.editWork.show();
-   // };
+
+
     $scope.countryCodeList=[];
     $scope.data={};
     $scope.work={};
     $scope.invitedMember={};
-
-
 
     $scope.countryCodeList=utilityService.countryList();
      $scope.addWork = function () {
@@ -58,6 +62,13 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
 
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
+    };
+    $scope.hideWorkDetailModal= function () {
+        $scope.workDetailModal.hide();
+    };
+
+    $scope.showWorkDetailModal =function(selectedWork){
+        $scope.workDetailModal.show();
     };
 
     $scope.changeSubdivision=function(countryCode){
@@ -107,14 +118,14 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
     var saveWorkData =function(workData){
         loginService.saveWorkData(workData).then(function(response){
 
-            //$cordovaToast.showShortBottom("Work added successfully.");
+            $cordovaToast.showShortBottom("Work added successfully.");
             fetchAllLocations();
             $scope.hideWorkAddModal();
             console.log("Work added successfully.");
 
         }).catch(function(error){
            console.log(error);
-            //$cordovaToast.showLongBottom("Something went wrong. Please try again");
+            $cordovaToast.showLongBottom("Something went wrong. Please try again");
         });
 
     };
