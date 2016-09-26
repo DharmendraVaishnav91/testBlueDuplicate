@@ -22,7 +22,7 @@
                     <span class="input-label label-text "  style="color:white">{{'EQUIPMENT_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%" ng-model="thing.equipType" ng-required="true"  ng-change="workTypeChange()">
+                    <select style="width: 100%" ng-model="data.equipType" ng-required="true"  ng-change="workTypeChange()">
                         <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                         <!--<option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>-->
@@ -32,7 +32,24 @@
                         <!--<option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>-->
                     </select>
                 </label>
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
+                    <span class="input-label label-text "  style="color:white">{{'CROP' | translate }}
+                        <span class="assertive " style="font-size: inherit">* </span>
+                    </span>
+                <select style="width: 100%;" ng-model="thing.crop" ng-required="true"
+                        ng-options="obj.H3Description for obj in productList track by obj.H3Code">
+                </select>
+            </label>
 
+            <!--Hectare-->
+
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
+                    <span class="input-label label-text "  style="color:white">{{'HECTARE' | translate }}
+                        <span class="assertive " style="font-size: inherit">* </span>
+                    </span>
+                <input type="number" class="edit-input-txt"  ng-model="thing.hectare" ng-required="true" name="hectares" />
+
+            </label>
 
                 <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}

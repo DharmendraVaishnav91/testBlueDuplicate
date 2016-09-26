@@ -48,7 +48,8 @@ var HttpRoutes = {
     fetchGroups:apiUrl+"/gpr/v1/groups",
     fetchAllThings:apiUrl+"/gpr/v2/things",
     fetchAssetDetail:apiUrl+"/gpr/v1/assets",
-    visitorBluenumber:apiUrl+"/gpr/visitor_bluenumber/",
+    //visitorBluenumber:apiUrl+"/gpr/visitor_bluenumber/",
+    visitorBluenumber:apiUrl+"/gpr/v1/visitor/",
 
     inviteInGroup:apiUrl+"/gpr/v1/groups/invite" ,
     inviteFriend:apiUrl+"/gpr/v1/invite_friend",

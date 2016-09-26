@@ -4,14 +4,19 @@
     <ion-content scroll="true" class="blueno-bg">
         <div class="center" style="width: inherit;height: auto;padding-top:25px" >
             <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
-            <h3 style="color: #ffffff;">{{'THANKS_FOR_SIGNING_UP' | translate }}</h3>
+            <h3 style="color: #ffffff;">{{'THANKS_FOR_SIGNING_UP' | translate }}{{userMobDetail.country_phone_code}}-{{userMobDetail.mobile}}{{'TO_VERIFY_YOUR_ACCOUNT'| translate}}</h3>
 
         </div>
         <div class="row">
-           <div class="col center">
-               <button class="button button-small" style="font-size:larger;color:#0c60ee" ng-click="goToVerifyAccount()">
-                   {{'CONFIRM_YOUR_ACCOUNT' | translate }}
-               </button>
+               <div class="col center ">
+                   <div class="button"
+                        style="line-height: 42px;min-height: 0px;width: 140px;background-color: rgba(97,137,197,.6);color:white;font-weight: bold;border-radius:0"
+                        ng-click="goToVerifyAccount()">
+                       {{'NEXT' | translate }}
+                   </div>
+               <!--<button class="button button-small" style="font-size:larger;color:#0c60ee" ng-click="goToVerifyAccount()">-->
+                   <!--{{'CONFIRM_YOUR_ACCOUNT' | translate }}-->
+               <!--</button>-->
            </div>
         </div>
         <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->

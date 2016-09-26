@@ -41,7 +41,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         signUpService.saveWorkData(workData).then(function (response) {
             console.log("Work added successfully.");
             $cordovaToast.showShortBottom("Work added successfully.");
-            $cordovaToast.showLongBottom("Work data saved successfully");
+           // $cordovaToast.showLongBottom("Work data saved successfully");
             //$scope.closeModal(openModalType.addWork);
             $state.go('addThing', {thingData: $scope.data});
 

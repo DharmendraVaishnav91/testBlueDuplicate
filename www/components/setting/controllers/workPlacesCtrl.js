@@ -12,7 +12,9 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
     }).then(function (modal) {
         $scope.editWork= modal;
     });
-
+     $scope.backToAccount= function () {
+         $state.go('app.setting');
+     };
     $ionicModal.fromTemplateUrl('components/setting/views/workDetail.html', {
         scope: $scope,
         animation: 'slide-in-right'
@@ -64,10 +66,13 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         $scope.editAccountModal.hide();
     };
     $scope.hideWorkDetailModal= function () {
+
         $scope.workDetailModal.hide();
+        //$scope.selectedWork={};
     };
 
     $scope.showWorkDetailModal =function(selectedWork){
+        $scope.selectedWork=selectedWork;
         $scope.workDetailModal.show();
     };
 

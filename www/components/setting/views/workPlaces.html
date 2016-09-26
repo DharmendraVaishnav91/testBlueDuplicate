@@ -1,21 +1,28 @@
-<ion-view  view-title="Work Places" >
+<ion-view  view-title="{{'MY_WORK_PLACES' | translate}}"  >
+    <ion-nav-bar class="bar-stable blue-bg" align-title="center">
+        <!--<ion-nav-buttons  side="left">-->
+            <!--<button class="button" ng-click="clickButton()">-->
+                <!-- -->
+            <!--</button>-->
+        <!--</ion-nav-buttons>-->
+        </ion-nav-bar>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content scroll="true" class="blueno-bg has-footer">
         <div class="list card" style="background:transparent;" ng-if="isWorkPlace">
             <div class="item no-padding  dark-gray-border " style="background-color: rgba(178, 178, 178,.4) !important;">
                 <div class="row" style="color:white;font-weight: bold;">
                     <div class="col col-33" >
-                        <span style="font-weight: bold;">{{'WORK_NAME' | translate}}</span>
+                        <span style="font-weight: bold;">{{'WORK_PLACE' | translate}}</span>
                     </div>
                     <div class="col  " >
-                        {{'WORK_TYPE' | translate }}
+                        {{'PRODUCT' | translate }}
                     </div>
                 </div>
             </div>
             <div class="item no-padding dark-gray-border bg-transparent" ng-click="showWorkDetailModal(work)" ng-repeat="work in userLocations">
                 <div class="row" style="color:white;">
                     <div class="col col-33 col-center wrap-content">
-                        <span >{{work.work_place_name}}</span>
+                        <span >{{$index+1}}</span>
                     </div>
                     <div class="col col-center wrap-content">
                         {{work.work_place_type}}
@@ -40,9 +47,20 @@
             
         </div>
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" >
+    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
+        <!--<div  class="button-bar">-->
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="addWork()">-->
+                <!--<i class="ion-plus-round"></i>&nbsp;{{'ADD_MORE' | translate }}-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
+    <ion-footer-bar class="text-center bar-stable blue-bg"  >
         <div  class="button-bar">
-            <button type="button" class="button button-clear button-light bold" ng-click="addWork()">
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
+                {{'BACK' | translate }}
+            </button>
+            &nbsp;
+            <button type="submit"  class="button  button-light button-clear bold" ng-click="addWork()">
                 <i class="ion-plus-round"></i>&nbsp;{{'ADD_MORE' | translate }}
             </button>
         </div>

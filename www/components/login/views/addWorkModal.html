@@ -79,7 +79,7 @@
                 <!--State-->
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
-                    <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
+                    <!--<span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>-->
                 </span>
                 <select style="width: 100%" ng-model="work.state" >
                     <option
@@ -90,32 +90,26 @@
 
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="work.latitude" name="latitude"   type="number"/>
+                <input class="edit-input-txt" ng-required="true" ng-model="work.latitude" name="latitude"   type="number"/>
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="work.longitude" name="longitude"   type="number"/>
+                <input class="edit-input-txt" ng-required="true" ng-model="work.longitude" name="longitude"   type="number"/>
             </label>
         </div>
 
     </ion-content>
-    <ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
+    <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
         <div  class="button-bar">
-
-            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToThing()" style="font-size: 20px;">
-                {{'Skip' | translate }} &nbsp;
-            </button>
-            <button ng-if="isFromSetting"  ng-disabled="addWorkForm.$invalid" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="saveWork()" style="font-size: 20px;">
+            <button ng-disabled="addWorkForm.$invalid" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="saveWork()" style="font-size: 20px;">
                 {{'SUBMIT' | translate }}
             </button>
-            <button ng-if="!isFromSetting" ng-disabled="addWorkForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToThing()" style="font-size: 20px;">
-                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
-            </button>
+
         </div>
     </ion-footer-bar>
     </form>

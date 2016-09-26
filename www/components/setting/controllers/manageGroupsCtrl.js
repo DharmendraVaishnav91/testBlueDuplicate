@@ -8,7 +8,9 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     $scope.groupAdminFind = false;
     $scope.groupMemberFind =false;
     $scope.countryCodeList=utilityService.countryList();
-
+    $scope.backToAccount= function () {
+        $state.go('app.setting');
+    };
     var fetchLocation= function () {
         loginService.fetchAllLocation().then(function(response){
             $scope.myLocations=response;

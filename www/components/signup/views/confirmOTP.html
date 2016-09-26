@@ -3,51 +3,51 @@
         <ion-content scroll="true" class="blueno-bg-full">
             <div class="center" style="width: inherit;height: auto;padding-top:15px"  >
                 <h3 style="color: #ffffff;">
-                    <i class="ion-monitor"></i>&nbsp;{{'CONFIRM_OTP' | translate }}
+                    <i class="ion-checkmark"></i>&nbsp;{{'VERIFY_YOUR_ACCOUNT' | translate }}
                 </h3>
             </div>
-            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
-                    <span class="assertive " style="font-size: inherit">*</span>
-                </span>
-                <select style="width: 100%"  ng-model="confirm.country" ng-required="true"  >
-                    <option ng-selected="data.selectedCountry==null" ></option>
-                    <option ng-selected="(obj.CountryCode == userCountry.CountryCode)"
-                            ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">
-                        {{obj.CountryName}}</option>
-                </select>
-            </label>
+            <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
+                <!--<span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}-->
+                    <!--<span class="assertive " style="font-size: inherit">*</span>-->
+                <!--</span>-->
+                <!--<select style="width: 100%"  ng-model="confirm.country" ng-required="true"  >-->
+                    <!--<option ng-selected="data.selectedCountry==null" ></option>-->
+                    <!--<option ng-selected="(obj.CountryCode == userCountry.CountryCode)"-->
+                            <!--ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">-->
+                        <!--{{obj.CountryName}}</option>-->
+                <!--</select>-->
+            <!--</label>-->
 
-            <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
+            <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+                <!--<span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}-->
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                <!--</span>-->
 
-                <div class="row no-padding">
-                    <div class="col no-padding" >
-                        <input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="text" />
-                        <!--<span class="assertive validation-font wrap-content" ng-show="confirmAccountForm.username.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>-->
-                    </div>
-                </div>
+                <!--<div class="row no-padding">-->
+                    <!--<div class="col no-padding" >-->
+                        <!--<input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="text" />-->
+                        <!--&lt;!&ndash;<span class="assertive validation-font wrap-content" ng-show="confirmAccountForm.username.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
 
-            </label>
+            <!--</label>-->
 
             <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text "  style="color:white">{{'CONFIRMATION_CODE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="confirm.code" name="code"   style="font-size:18px;" type="text" />
+                <input class="edit-input-txt" ng-required="true" ng-model="confirm.code" name="code"   style="font-size:18px;" type="text" />
 
             </label>
 
         </ion-content>
         <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
             <div  class="button-bar">
-                <button ng-disabled="confirmAccountForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="requestOTP()" style="font-size: 20px;">
+                <button  class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="requestOTP()" style="font-size: 20px;">
                     {{'REQUEST_OTP' | translate }}
                 </button>
                 <button ng-disabled="confirmAccountForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="confirmOTP()" style="font-size: 20px;">
-                    {{'CONFIRM' | translate }}
+                    {{'NEXT' | translate }}
                 </button>
             </div>
         </ion-footer-bar>

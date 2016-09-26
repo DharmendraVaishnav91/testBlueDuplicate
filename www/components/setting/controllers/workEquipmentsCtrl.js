@@ -7,6 +7,9 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
     $scope.isFromSetting=true;
     $scope.data={};
     $scope.thingFind = true;
+    $scope.backToAccount= function () {
+        $state.go('app.setting');
+    };
     var fetchLocation= function () {
         loginService.fetchAllLocation().then(function(response){
             $scope.myLocations=response;
@@ -19,6 +22,13 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
             $scope.thingsType=response;
         }).catch(function (error) {
 
+        });
+    };
+    var fetchCropList = function(){
+        signUpService.fetchProductsList().then(function(response){
+            $scope.productList=response;
+        }).catch(function(error){
+            console.log(error);
         });
     };
 
@@ -35,7 +45,9 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
     }).then(function (modal) {
         $scope.thingDetailModal= modal;
     });
-
+    $scope.workTypeChange =function(){
+        $scope.enableCrop=$scope.data.equipType=='Agricultural & forest machinery (tractors)';
+    };
     $scope.countryCodeList=utilityService.countryList();
 
     var fetchThings= function () {
@@ -73,9 +85,10 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
     };
     $scope.addNewThing = function () {
         fetchLocation();
+        fetchCropList();
         $scope.addThingModal.show();
     };
-
+     $scope.thing={};
      $scope.createThing = function () {
          var asset_details=[];
          var thing1={
@@ -86,7 +99,8 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
          //Equipment have location other than existing one
          if($scope.data.equipWhere=='OtherThingLocation') {
              thing1.location={
-                 name:$scope.data.assetName,
+                 location_name:"Enter Address",
+                 locationtype:"",
                  latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
                  longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
                  address:$scope.data.otherThingAddress,
@@ -99,12 +113,22 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
          }else{
              //thing1.location=JSON.parse($scope.data.equipWhere);
              thing1.location={
-                 name:(JSON.parse($scope.data.equipWhere)).LocationID
+                 location_name:(JSON.parse($scope.data.equipWhere)).LocationID
              }
+         }
+         if($scope.data.equipType=='Agricultural & forest machinery (tractors)'){
+             thing1.type_details={0:{
+                 crop:""+$scope.thing.crop.H3Code,
+                 hectare:$scope.thing.hectare
+             }};
+             //thing1.type_details.0.crop=$scope.thing.crop.H3Code;
+             //thing1.type_details.hectare=$scope.thing.hectare;
+             thing1.hectares=$scope.thing.hectare;
          }
          asset_details.push(thing1);
          var assetData={
              actorid:$rootScope.user.ActorID,
+             bluenumberid:$rootScope.userInfo.person.actor_bluenumber,
              asset_details:asset_details
          };
          userSettingService.saveAsset(assetData).then(function (response) {
@@ -121,7 +145,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
          })
      } ;
     $scope.changeSubdivision=function(selectedCountry){
-        fetchStates(selectedCountry.CountryCode);
+        fetchStates(selectedCountry);
     };
 
     var fetchStates= function (countryCode) {

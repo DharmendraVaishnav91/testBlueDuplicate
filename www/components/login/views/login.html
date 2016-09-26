@@ -19,18 +19,18 @@
       </div>
     <form name="loginForm">
     <label class="item item-input item-stacked-label no-border label-padding">
-        <span class="input-label label-text "  style="color:white">{{'USERNAME' | translate }}
+        <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
             <span class="assertive " style="font-size: inherit">* </span>
         </span>
 
-        <input type="text" class="edit-input-txt" ng-required="true" name="username" ng-model="loginData.username" placeholder="Email/Mobile" />
+        <input type="number" class="edit-input-txt" ng-required="true" name="username" ng-model="loginData.username" placeholder="Mobile" />
     </label>
     <label class="item item-input item-stacked-label no-border label-padding">
         <span class="input-label label-text "  style="color:white">{{'PASSWORD' | translate }}
             <span class="assertive " style="font-size: inherit">* </span>
         </span>
 
-         <input type="password"  ng-model="loginData.password" ng-required="true" name="password" class="edit-input-txt"  />
+         <input type="password"  ng-model="loginData.password" ng-required="true" name="password" class="edit-input-txt" placeholder="Password"  />
     </label>
         <div class="row" style="margin-top:20px">
             <div class="col col-center center" >

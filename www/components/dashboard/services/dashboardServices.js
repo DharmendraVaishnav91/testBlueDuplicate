@@ -8,7 +8,7 @@
 app.factory('dashboardService',function($http,$ionicPopup,$q,$rootScope,utilityService) {
 
     var self = this;
-    self.fetchMarkers= function () {
+    self.fetchMarkers= function (params) {
 
         var deferred = $q.defer();
         var req={
@@ -19,6 +19,10 @@ app.factory('dashboardService',function($http,$ionicPopup,$q,$rootScope,utilityS
                 'Authorization': 'Token '+ $rootScope.auth_token
             }
         };
+        if(params!=""){
+            req.url+="?"+params;
+        }
+
         return utilityService.makeHTTPRequest(req,deferred);
 
     } ;

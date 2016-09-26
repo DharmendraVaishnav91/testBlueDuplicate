@@ -14,9 +14,13 @@ app.controller('ConfirmOTPCtrl', function ($timeout, $q, $scope, $state, $rootSc
     });
     $scope.requestOTP = function () {
         var requestData = {
-            country_phone_code: $scope.confirm.country,
-            username: $scope.confirm.mobile
+            country_phone_code: $rootScope.userMobDetail.country_phone_code,
+            username: $rootScope.userMobDetail.mobile
         };
+        //var requestData = {
+        //    country_phone_code: $scope.confirm.country,
+        //    username: $scope.confirm.mobile
+        //};
         signUpService.requestOTP(requestData).then(function (response) {
             console.log("OTP requested successfully");
             console.log(response);
@@ -25,12 +29,17 @@ app.controller('ConfirmOTPCtrl', function ($timeout, $q, $scope, $state, $rootSc
             console.log(error);
         })
     };
-    $scope.confirmOTP = function () {
-        var requestData={
-            country_phone_code: $scope.confirm.country,
+    $scope.confirmOTP = function (){
+        var requestData = {
+            country_phone_code: $rootScope.userMobDetail.country_phone_code,
             otp_code: $scope.confirm.code,
-            username:$scope.confirm.mobile
+            username: $rootScope.userMobDetail.mobile
         };
+        //var requestData={
+        //    country_phone_code: $scope.confirm.country,
+        //
+        //    username:$scope.confirm.mobile
+        //};
         signUpService.confirmOTP(requestData).then(function (response) {
             console.log("OTP confirmed successfully");
             //$cordovaToast.showShortBottom("OTP verified successfully");

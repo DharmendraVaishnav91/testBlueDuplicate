@@ -7,6 +7,9 @@ userSetting.controller('InviteFriendCtrl', function(loginService,$scope,$state,$
             $state.go('app.inviteFriend');
     };
     $scope.countryCodeList=utilityService.countryList();
+    $scope.backToInvite= function () {
+      $state.go('app.invite');
+    };
     $scope.inviteFriend = function () {
         console.log("Friend details");
 

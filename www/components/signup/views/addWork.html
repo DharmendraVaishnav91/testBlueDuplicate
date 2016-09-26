@@ -13,12 +13,17 @@
         <div class="center" style=";width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting" >
             <h3 style="color: #ffffff;">
                 <i class="ion-monitor"></i>&nbsp;{{'ADD_WORK' | translate }}
-                <span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>
+                <!--<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>-->
             </h3>
         </div>
 
     <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style=" overflow: scroll;width: 100%;padding: 0;">
         <!--Work place type-->
+        <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;" >
+            <div class=" wrap-content" style="color: bisque;font-size: 14px;">
+                Providing information here is optional. If you continue, information noted with a * is required before selecting Next below. Or you can skip this step by clicking Skip.
+            </div>
+        </div>
         <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text "  style="color:white">{{'WORK_PLACE_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
@@ -49,6 +54,7 @@
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
             <select name="location-where" style="width: 100%" ng-model="work.where" ng-required="true"  ng-change="updateLocationFields(work.where)">
+                <option disabled >{{'SELECT_ONE'| translate}}</option>
                 <option ng-repeat="obj in myLocations" value="{{obj}}">
                     {{obj.LocationType+"("+obj.LocationName+")"}}
                 </option>

@@ -1,64 +1,94 @@
-<ion-view  view-title="Invited Family Members" >
+<ion-view  view-title="{{'MY_FAMILY_MEMBERS' | translate}}" >
+    <ion-nav-bar class="bar-stable blue-bg" align-title="center">
+    </ion-nav-bar>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content scroll="true" class="blueno-bg has-footer">
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
-        <div class="item card no-padding"  ng-repeat="invitedMember in invitedMemebers" ng-if="invitedFind">
-            <div class="row ">
-                <div class="col col-33">
-                    <div >
-                        <span class='label-text' style="color:gray">{{'FULL_NAME' | translate}}</span>
+        <!--<div class="item card no-padding"  ng-repeat="invitedMember in invitedMemebers" ng-if="invitedFind">-->
+            <!--<div class="row ">-->
+                <!--<div class="col col-33">-->
+                    <!--<div>-->
+                        <!--<span class='label-text' style="color:gray">{{'FULL_NAME' | translate}}</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col ">-->
+                    <!--<div class="" style="white-space: normal;font-weight: bold;">-->
+                        <!--{{invitedMember.data.name}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row ">-->
+                <!--<div class="col col-33">-->
+                    <!--<div >-->
+                        <!--<span class='label-text' style="color:gray">{{'Mobile' | translate}}</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col ">-->
+                    <!--<div class="" style="white-space: normal;font-weight: bold;">-->
+                        <!--{{invitedMember.data.mobile}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row ">-->
+                <!--<div class="col col-33">-->
+                    <!--<div >-->
+                        <!--<span class='label-text' style="color:gray">{{'RELATIONSHIP' | translate}}</span>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="col ">-->
+                    <!--<div class="" style="white-space: normal;font-weight: bold;">-->
+                        <!--{{invitedMember.data.relationship}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row ">-->
+                <!--<div class="col col-33">-->
+                    <!--<div >-->
+                        <!--<span class='label-text' style="color:gray">{{'STATUS_SMALL' | translate}}</span>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="col ">-->
+                    <!--<div class="" style="white-space: normal;font-weight: bold;">-->
+                        <!--{{invitedMember.status}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+            <div class="card" style="background:transparent;" ng-if="invitedFind" >
+                <!--<div class="item item-divider dark-gray-border "  style=" background:transparent">-->
+                <!--<div class="row no-padding" >-->
+                <!--<div class="col  col-center no-padding" style="color:cornflowerblue;color: cornflowerblue;font-size: large;font-weight: bold;">-->
+                <!--{{'MY_GROUP' | translate}}-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="item no-padding  dark-gray-border " style="background-color: rgba(178, 178, 178,.4) !important;">
+                    <div class="row" style="color:white;font-weight: bold;">
+                        <div class="col col-33" >
+                            <span style="font-weight: bold;">{{'NAME' | translate }}</span>
+                        </div>
+                        <div class="col " >
+                            {{'RELATIONSHIP' | translate }}
+                        </div>
                     </div>
                 </div>
-                <div class="col ">
-                    <div class="" style="white-space: normal;font-weight: bold;">
-                        {{invitedMember.data.name}}
+                <div class="item no-padding dark-gray-border bg-transparent"  ng-repeat="invitedMember in invitedMemebers" >
+                    <div class="row" style="color:white;">
+                        <div class="col  col-center">
+                            <span class="wrap-content">{{invitedMember.data.name}}</span>
+                        </div>
+                        <div class="col  col-center wrap-content" style="overflow: hidden;text-overflow: ellipsis;" >
+                            {{invitedMember.data.relationship}}
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="row ">
-                <div class="col col-33">
-                    <div >
-                        <span class='label-text' style="color:gray">{{'Mobile' | translate}}</span>
-                    </div>
-                </div>
-                <div class="col ">
-                    <div class="" style="white-space: normal;font-weight: bold;">
-                        {{invitedMember.data.mobile}}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row ">
-                <div class="col col-33">
-                    <div >
-                        <span class='label-text' style="color:gray">{{'RELATIONSHIP' | translate}}</span>
-                    </div>
-
-                </div>
-                <div class="col ">
-                    <div class="" style="white-space: normal;font-weight: bold;">
-                        {{invitedMember.data.relationship}}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row ">
-                <div class="col col-33">
-                    <div >
-                        <span class='label-text' style="color:gray">{{'STATUS_SMALL' | translate}}</span>
-                    </div>
-
-                </div>
-                <div class="col ">
-                    <div class="" style="white-space: normal;font-weight: bold;">
-                        {{invitedMember.status}}
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class= "row no-data-alert" ng-if="!invitedFind">
             <div class="col col-center text-center">
                 <div class="no-data-icon">
@@ -71,10 +101,21 @@
         </div>
         </div>
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" >
+    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
+        <!--<div  class="button-bar">-->
+            <!--<button type="button" class="button button-clear button-light bold" ng-click="showInviteFamilyModal();">-->
+                <!--<i class="ion-plus-round"></i>&nbsp;{{'INVITE_MORE' | translate }}-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</ion-footer-bar>-->
+    <ion-footer-bar class="text-center bar-stable blue-bg"  >
         <div  class="button-bar">
-            <button type="button" class="button button-clear button-light bold" ng-click="showInviteFamilyModal();">
-                <i class="ion-plus-round"></i>&nbsp;{{'INVITE_MORE' | translate }}
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
+                {{'BACK' | translate }}
+            </button>
+            &nbsp;
+            <button type="submit"  class="button  button-light button-clear bold" ng-click="showInviteFamilyModal()">
+                <i class="ion-plus-round"></i>&nbsp;{{'ADD_MORE' | translate }}
             </button>
         </div>
     </ion-footer-bar>

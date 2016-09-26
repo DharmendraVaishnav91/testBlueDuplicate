@@ -1,88 +1,48 @@
-<ion-view  view-title="User Settings" hide-back-button="true">
+<ion-view view-title="{{'ACCOUNT' | translate}}" hide-back-button="true">
     <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" style="color:white" menu-toggle="left">
         </button>
     </ion-nav-buttons>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
-    <ion-content class="blueno-bg-full  has-header" scroll="true"  >
+    <ion-content class="blueno-bg-full  has-header" scroll="true">
 
         <div class="row no-padding">
-            <div class="col center" >
-                 <img ng-src="{{profileUrl}}" style=" height: 80px;width: 80px;border-radius: 38px;">
-                <p style="color:white;font-size: large;"> {{::user.bluenumber }}</p>
-                <a style=" text-decoration: underline;
-                font-size: larger;color: rgba(255,255,255,.7)" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT' | translate }}</a>
+            <div class="col center">
+                <img ng-src="{{profileUrl}}" style=" height: 80px;width: 80px;border-radius: 38px;">
+
+                <p style="color:white;font-size: large;">{{'BLUENUMBER_COLON'|translate}}&nbsp;{{::user.bluenumber }}</p>
+                <!--<a style=" text-decoration: underline;-->
+                <!--font-size: larger;color: rgba(255,255,255,.7)" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT'-->
+                    <!--| translate }}</a>-->
             </div>
         </div>
+
         <div class="list">
+
             <div class="card" style="background:transparent;">
-                <div class="item item-divider custom-item custom-item-header" >
-                    {{'PLACES' | translate }}
+                <div class="item item-divider custom-item custom-item-header">
+                    {{'PEOPLE' | translate }}
                 </div>
-                <div class="item custom-item" style="border:none;padding:0">
+                <div class="item custom-item" style="border:none;padding:0" ng-click="goToEditAccount()">
                     <div class="row">
                         <div class="col col-10">
-                            <i class="icon ion-ios-home" style="font-size: 30px"></i>
+                            <i class="icon ion-android-person" style="font-size: 30px"></i>
                         </div>
                         <div class="col">
-                            {{'HOME' | translate }}
-                            <p class="white-p" ng-if="home==null">{{'ADD_HOME' | translate }}</p>
-                            <p class="white-p" ng-if="home!=null">
-                                {{home.StreetAddressOne}},&nbsp;{{home.Settlement}}
-                            </p>
+                            {{'PROFILE' | translate }}
+                            <p class="white-p">{{'UPDATE_PROFILE' | translate }}</p>
                         </div>
-                        <!--<div class="col col-10">-->
-                            <!--<button class="button button-small button-clear " style="color:white">-->
-                                <!--<i class="ion-ios-arrow-right" style="font-size: 30px"></i>-->
-                            <!--</button>-->
-                        <!--</div>-->
-                    </div>
-                </div>
-                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:45px !important;">
-                <div class="" style="border:none;background-color: gray;height: inherit;">
-                </div>
-                </div>
-                <div class="item custom-item" style="border:none;padding:0" ng-click="goToWorkPlaces()">
-                    <div class="row">
                         <div class="col col-10">
-                            <i class="icon ion-briefcase" style="font-size: 30px"></i>
-                        </div>
-                        <div class="col">
-                            {{'WORK' | translate }}
-                            <p class="white-p">{{'ADD_WORK_PLACE' | translate }}</p>
-                        </div>
-                        <div class="col col-10" >
-                            <button class="button button-small button-clear " ng-click="goToWorkPlaces()" style="color:white">
-                                <i class="ion-ios-arrow-right" style="font-size: 30px"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card" style="background:transparent;">
-                <div class="item item-divider custom-item custom-item-header" >
-                    {{'THINGS' | translate }}
-                </div>
-                <div class="item custom-item " style="border:none;padding:0" ng-click="goToThings()">
-                    <div class="row">
-                        <div class="col col-10">
-                            <i class="icon ion-briefcase" style="font-size: 30px"></i>
-                        </div>
-                        <div class="col">
-                            {{'EQUIPMENT' | translate }}
-                            <p class="white-p">{{'ADD_WORK_EQUIPMENT' | translate }}</p>
-                        </div>
-                        <div class="col col-10" >
                             <button class="button button-small button-clear " style="color:white">
                                 <i class="ion-ios-arrow-right" style="font-size: 30px"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card" style="background:transparent;">
-                <div class="item item-divider custom-item custom-item-header" >
-                    {{'PROFILE' | translate }}
+                <div class="item custom-item no-padding no-margin"
+                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:45px !important;">
+                    <div class="" style="border:none;background-color: gray;height: inherit;">
+                    </div>
                 </div>
                 <div class="item custom-item" style="border:none;padding:0" ng-click="goToManageFamily()">
                     <div class="row">
@@ -90,21 +50,29 @@
                             <i class="icon ion-ios-body" style="font-size: 30px"></i>
                         </div>
                         <div class="col">
-                             {{'FAMILY' | translate }}
+                            {{'FAMILY' | translate }}
                             <p class="white-p">{{'ADD_FAMILY_MEMBER' | translate }}</p>
                         </div>
-                        <div class="col col-10" >
+                        <div class="col col-10">
                             <button class="button button-small button-clear " style="color:white">
                                 <i class="ion-ios-arrow-right" style="font-size: 30px"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:45px !important;">
-                <div class="" style="border:none;background-color: gray;height: inherit;">
-                </div>
+                <!--<div class="item custom-item no-padding no-margin"-->
+                     <!--style="border:none;height: 1px;padding-right: 8px !important;padding-left:45px !important;">-->
+                    <!--<div class="" style="border:none;background-color: gray;height: inherit;">-->
+                    <!--</div>-->
+                <!--</div>-->
+
             </div>
-                <div class="item custom-item" style="border:none;padding:0"  ng-click="goToManageGroup()">
+
+            <div class="card" style="background:transparent;">
+                <div class="item item-divider custom-item custom-item-header">
+                    {{'GROUPS' | translate }}
+                </div>
+                <div class="item custom-item" style="border:none;padding:0" ng-click="goToManageGroup()">
                     <div class="row">
                         <div class="col col-10">
                             <i class="icon ion-briefcase" style="font-size: 30px"></i>
@@ -121,14 +89,84 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card" style="background:transparent;">
+                <div class="item item-divider custom-item custom-item-header">
+                    {{'PLACES' | translate }}
+                </div>
+                <div class="item custom-item" style="border:none;padding:0">
+                    <div class="row">
+                        <div class="col col-10">
+                            <i class="icon ion-ios-home" style="font-size: 30px"></i>
+                        </div>
+                        <div class="col">
+                            {{'HOME' | translate }}
+                            <p class="white-p" ng-if="home==null">{{'ADD_HOME' | translate }}</p>
+
+                            <p class="white-p" ng-if="home!=null">
+                                {{home.StreetAddressOne}},&nbsp;{{home.Settlement}}
+                            </p>
+                        </div>
+                        <!--<div class="col col-10">-->
+                        <!--<button class="button button-small button-clear " style="color:white">-->
+                        <!--<i class="ion-ios-arrow-right" style="font-size: 30px"></i>-->
+                        <!--</button>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+                <div class="item custom-item no-padding no-margin"
+                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:45px !important;">
+                    <div class="" style="border:none;background-color: gray;height: inherit;">
+                    </div>
+                </div>
+                <div class="item custom-item" style="border:none;padding:0" ng-click="goToWorkPlaces()">
+                    <div class="row">
+                        <div class="col col-10">
+                            <i class="icon ion-briefcase" style="font-size: 30px"></i>
+                        </div>
+                        <div class="col">
+                            {{'WORK' | translate }}
+                            <p class="white-p">{{'ADD_WORK' | translate }}</p>
+                        </div>
+                        <div class="col col-10">
+                            <button class="button button-small button-clear " ng-click="goToWorkPlaces()"
+                                    style="color:white">
+                                <i class="ion-ios-arrow-right" style="font-size: 30px"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="background:transparent;">
+                <div class="item item-divider custom-item custom-item-header">
+                    {{'THINGS' | translate }}
+                </div>
+                <div class="item custom-item " style="border:none;padding:0" ng-click="goToThings()">
+                    <div class="row">
+                        <div class="col col-10">
+                            <i class="icon ion-briefcase" style="font-size: 30px"></i>
+                        </div>
+                        <div class="col">
+                            {{'THINGS' | translate }}
+                            <p class="white-p">{{'ADD_THING' | translate }}</p>
+                        </div>
+                        <div class="col col-10">
+                            <button class="button button-small button-clear " style="color:white">
+                                <i class="ion-ios-arrow-right" style="font-size: 30px"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </ion-content>
     <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
-        <!--<div  class="button-bar">-->
-            <!--<button type="button" class="button button-clear button-balanced" ng-click="logout()">-->
-                <!--<i class=""></i> {{'SIGN_OUT' | translate }}-->
-            <!--</button>-->
-        <!--</div>-->
+    <!--<div  class="button-bar">-->
+    <!--<button type="button" class="button button-clear button-balanced" ng-click="logout()">-->
+    <!--<i class=""></i> {{'SIGN_OUT' | translate }}-->
+    <!--</button>-->
+    <!--</div>-->
     <!--</ion-footer-bar>-->
 </ion-view>

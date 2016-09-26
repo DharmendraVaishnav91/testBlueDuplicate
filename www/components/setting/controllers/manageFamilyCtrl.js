@@ -13,6 +13,9 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
     }).then(function (modal) {
         $scope.inviteFamilyModal= modal;
     });
+    $scope.backToAccount= function () {
+        $state.go('app.setting');
+    };
     var fetchInvitedFamilyMembers= function () {
         userSettingService.fetchAllFamilyInvitedMembers().then(function (response) {
             console.log("User all invited members");

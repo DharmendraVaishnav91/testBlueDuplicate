@@ -3,11 +3,15 @@
         <div class="center" style="width: inherit;height: auto;padding-top:15px" >
             <h3 style="color: #ffffff;">
                 <i class="ion-home"></i>&nbsp; {{'ADD_HOME' | translate }}
-                <span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>
+                <!--<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>-->
             </h3>
         </div>
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
-
+            <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;" >
+                <div class=" wrap-content" style="color: bisque;font-size: 14px;">
+                    Providing information here is optional. If you continue, information noted with a * is required before selecting Next below. Or you can skip this step by clicking Skip.
+                </div>
+            </div>
             <!--Newly added field which make user to enter manual address-->
             <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}

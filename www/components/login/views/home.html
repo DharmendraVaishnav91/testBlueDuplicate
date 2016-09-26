@@ -1,18 +1,23 @@
-<ion-content scroll="false" class="blueno-bg" ng-style="{'height':deviceHeight}" >
-       <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
-         <div style="text-align: center;width: inherit;height: auto;padding-top:120px" >
-             <img ng-src="{{bgLargeUrl}}" style="height: 150px;width: 150px;"/>
-             <h2 style="color: white;font-weight: bold;margin-top:0">{{'BLUENUMBER_SMALL'|translate}}</h2>
-         </div>
-        <div class="row" style="margin-top:85px">
-            <div class="col center " >
-                <div class="button" style="line-height: 42px;min-height: 0px;width: 120px;background-color: rgba(97,137,197,.6);color:white;font-weight: bold;" ng-click="openLogin()">
-                    {{'LOGIN' | translate }}
-                </div>
-                &nbsp;&nbsp;&nbsp;
-                <div class="button " style="line-height: 42px;min-height: 0px;width: 120px;border:1px rgba(255,255,255,0.5) solid;color: white;background: transparent;font-weight: bold;" ng-click="openRegistration()">
-                   {{'SIGNUP' | translate }}
-                </div>
+<ion-content scroll="false" class="blueno-bg-full no-margin" ng-style="{'height':deviceHeight}">
+    <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
+    <div style="text-align: center;width: inherit;height: auto;padding-top:120px">
+        <img ng-src="{{bgLargeUrl}}" style="height: 150px;width: 150px;"/>
+
+        <h2 style="color: white;font-weight: bold;margin-top:0">{{'BLUENUMBER_SMALL'|translate}}</h2>
+    </div>
+    <div class="row" style="margin-top:85px">
+        <div class="col center ">
+            <div class="button"
+                 style="line-height: 42px;min-height: 0px;width: 140px;background-color: rgba(97,137,197,.6);color:white;font-weight: bold;border-radius:0"
+                 ng-click="openLogin()">
+                {{'LOGIN' | translate }}
+            </div>
+            &nbsp;&nbsp;&nbsp;
+            <div class="button "
+                 style="line-height: 42px;min-height:0;width: 140px;border:1px rgba(255,255,255,0.5) solid;color: white;background: transparent;font-weight: bold;border-radius: 0;"
+                 ng-click="openRegistration()">
+                {{'SIGNUP' | translate }}
             </div>
         </div>
+    </div>
 </ion-content>
