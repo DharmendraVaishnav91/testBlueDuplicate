@@ -1,39 +1,58 @@
-<ion-view  view-title="{{'INVITE_FRIEND' | translate}}" >
-    <div class="bar bar-subheader blue-bg no-padding" >
-  <input class="blue-bg" style="width:100%;border:none;color:white;" placeholder="{{'TYPE_IN_NAME_OR_NUMBER' | translate }}" type="input" ng-model="search">
-</div>
-    <ion-content overflow-scroll="true" class="blueno-bg-full" ng-class="{'has-subheader':contactFind == true}" >
+<ion-view view-title="{{'INVITE_FRIEND' | translate}}">
+    <div class="bar bar-subheader blue-bg no-padding">
+        <input class="blue-bg" style="width:100%;border:none;color:white;padding: 0px 8px 0px 8px;"
+               placeholder="{{'TYPE_IN_NAME_OR_NUMBER' | translate }}" type="input" ng-model="search">
+    </div>
+    <ion-content overflow-scroll="true" class="blueno-bg-full" ng-class="{'has-subheader':contactFind == true}">
 
-        <div  class= "no-border no-padding list" ng-show="contactFind == true">
-            <div class="card  " style="margin:2px !important;" ng-repeat="contact in phoneContacts  | orderBy:'name' | filter: search ">
+        <div class="no-border no-padding list" ng-show="contactFind == true">
+            <div class="card  " style="margin:2px !important;"
+                 ng-repeat="contact in phoneContacts  | orderBy:'name' | filter: search ">
                 <div class="item item-divider">
                     {{::contact.name}}
                 </div>
-                <div class="item item-text-wrap item-checkbox" ng-repeat="number in ::contact.phoneNumbers | unique: 'value'" >
+                <div class="item item-text-wrap item-checkbox"
+                     ng-repeat="number in ::contact.phoneNumbers | unique: 'value'">
                     {{ ::number.value }}
                     <label class="checkbox">
-                        <input style="height:25px;width: 25px;" type="checkbox" ng-checked="isSelected(number.value)" ng-click="updateSelection($event, number.value)">
+                        <input style="height:25px;width: 25px;" type="checkbox" ng-checked="isSelected(number.value)"
+                               ng-click="updateSelection($event, number.value)">
                     </label>
                 </div>
             </div>
         </div>
-        <div class= "row" ng-show="true" style="width : 100%; height: 80%;" ng-if="contactFind == false">
+        <div class="row" ng-show="true" style="width : 100%; height: 80%;" ng-if="contactFind == false">
             <div class="col col-center text-center">
                 <div>
-                <i class="ion-android-contacts" style="font-size: 100px; color: #f0f0f0;"></i>
+                    <i class="ion-android-contacts" style="font-size: 100px; color: #f0f0f0;"></i>
                 </div>
                 <div style="font-size: 20px; color: #f0f0f0;">
-                There is no contact in your contact list
+                    There is no contact in your contact list
                 </div>
             </div>
-            
+
         </div>
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" >
-        <div  class="button-bar">
-            <button type="submit" ng-disabled="selectedNumber.length<1" class="button button-clear button-balanced" style="font-size: 20px;font-weight: bold" ng-click="sentInvites()">
+    <ion-footer-bar class="text-center bar-stable blue-bg">
+        <div class="button-bar">
+            <button type="submit" ng-disabled="selectedNumber.length<1" class="button button-clear button-balanced"
+                    style="font-size: 20px;font-weight: bold" ng-click="sentInvites()">
                 {{'INVITE' | translate }}
             </button>
+        </div>
+    </ion-footer-bar>
+    <ion-footer-bar class="text-center bar-stable blue-bg " style="border:none;padding:0px !important;">
+        <div class="button-bar">
+            <button class="button no-border lgt-blue-btn button-small"
+                    ng-click="backToInvite()" style="font-size: 20px;">
+                {{'CANCEL' | translate }} &nbsp;
+            </button>
+            <button ng-disabled="selectedNumber.length<1"
+                    class="button no-border lgt-blue-btn button-small" type="submit" ng-click="sentInvites()"
+                    style="font-size: 20px;">
+                {{'INVITE' | translate }}
+            </button>
+
         </div>
     </ion-footer-bar>
 </ion-view>

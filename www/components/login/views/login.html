@@ -1,16 +1,4 @@
-<style type="text/css">
-    input[type="checkbox"]{
-        width: 18px; /*Desired width*/
-        height: 18px; /*Desired height*/
-    }
-    .inline-field input,
-    .inline-field label {
-        display: inline-block;
-        margin-bottom: 0; /* I added this after I posted my reply */
-        vertical-align: middle; /* Fixes any weird issues in Firefox and IE */
-    }
-</style>
-<ion-content scroll="true" class="blueno-bg">
+\<ion-content scroll="true" class="blueno-bg no-margin">
 
       <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
           <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
@@ -18,12 +6,22 @@
 
       </div>
     <form name="loginForm">
+    <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
+            <span class="input-label label-text " style="color:white">{{'COUNTRY_OF_REGISTRATION' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+        <select style="width: 100%;font-size:12px;" ng-model="loginData.phoneCode" ng-required="true">
+            <option selected value="" disabled>Select country</option>
+            <option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
+            </option>
+        </select>
+    </label>
     <label class="item item-input item-stacked-label no-border label-padding">
         <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
             <span class="assertive " style="font-size: inherit">* </span>
         </span>
 
-        <input type="number" class="edit-input-txt" ng-required="true" name="username" ng-model="loginData.username" placeholder="Mobile" />
+        <input type="number" class="edit-input-txt" ng-required="true" name="username" ng-model="loginData.mobile" placeholder="Mobile" />
     </label>
     <label class="item item-input item-stacked-label no-border label-padding">
         <span class="input-label label-text "  style="color:white">{{'PASSWORD' | translate }}

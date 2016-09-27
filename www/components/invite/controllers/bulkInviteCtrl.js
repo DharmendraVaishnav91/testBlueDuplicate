@@ -12,6 +12,9 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
     console.log(userPhone);
     var userCountryCode=$rootScope.user.username.substring(0,indexOfPhone);
 
+    $scope.backToInvite= function () {
+        $state.go('app.invite');
+    };
     $scope.getAllContacts = function() {
         $ionicLoading.show({
             template: 'Loading contacts...'

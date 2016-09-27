@@ -64,8 +64,8 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-            $scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+            //$scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            //$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
             $scope.data.workState = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.data.workCountry = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         } else if(locationWay=="manual") {
@@ -73,8 +73,8 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             $scope.work.city = "";
             //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.work.latitude = "";
-            $scope.work.longitude = "";
+            //$scope.work.latitude = "";
+            //$scope.work.longitude = "";
             $scope.data.workState = "";
             $scope.data.workCountry = "";
         }else{
@@ -88,12 +88,13 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         if($scope.work.where=="manual"||$scope.work.where=="current") {
             location={
                 name:$scope.work.where=="manual"?"Enter Address":"My Current Location",
-                latitude: $scope.work.latitude,
-                longitude: $scope.work.longitude,
+                latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
+                longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
                 address: $scope.work.address,
                 city: $scope.work.city,
                 subdivision_code: $scope.data.workState ? $scope.data.workState : '',
-                country_code: $scope.data.workCountry
+                country_code: $scope.data.workCountry,
+                locationtype:"Registration Worksite"
             }
         }else{
             //thing1.location=JSON.parse($scope.data.equipWhere);

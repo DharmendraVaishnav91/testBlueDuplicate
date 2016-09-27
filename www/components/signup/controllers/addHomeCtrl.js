@@ -31,16 +31,16 @@ $rootScope,$cordovaToast) {
             $scope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-            $scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+            //$scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            //$scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
             $scope.data.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.data.homeCountry = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         } else {
             $scope.home.address = "";
             $scope.home.city = "";
 
-            $scope.home.latitude = "";
-            $scope.home.longitude = "";
+            //$scope.home.latitude = "";
+            //$scope.home.longitude = "";
             $scope.data.state = "";
             $scope.data.homeCountry = "";
         }
@@ -54,8 +54,8 @@ $rootScope,$cordovaToast) {
         }
         //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
         $scope.home.country_code = $scope.data.homeCountry;
-        //$scope.home.latitude =  $scope.home.latitude;
-        //$scope.home.longitude = $scope.home.longitude;
+        $scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        $scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
         $scope.home.name = 'Home';
         console.log("Add home data");
         console.log($scope.home);

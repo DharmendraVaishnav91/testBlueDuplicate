@@ -46,7 +46,7 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     };
     validateUser();
     $scope.openRegistration= function () {
-        $state.go('verifyAccount');
+        $state.go('regCreateAccount');
     };
     $scope.openLogin = function() {
 

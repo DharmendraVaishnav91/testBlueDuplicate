@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$rootScope,$localStorage,userSettingService,$cordovaToast) {
+app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$rootScope,$localStorage,userSettingService,$cordovaToast,utilityService) {
 
     // Form data for the login modal
     $scope.loginData = {};
@@ -9,10 +9,19 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
     var saveUser=function(user){
         $localStorage[STORAGE.LOGIN_KEY]=user;
     };
-
+    utilityService.getCountryList().then(function (response) {
+        $scope.countryCodeList = response;
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
     $scope.doLogin= function () {
         console.log("Doing login");
-        loginService.doLogin($scope.loginData).then(function (user){
+        var data={
+            username:$scope.loginData.phoneCode+""+$scope.loginData.mobile,
+            password:$scope.loginData.password
+        };
+        loginService.doLogin(data).then(function (user){
             $rootScope.user=user;
             $rootScope.auth_token=user.auth_token;
             userSettingService.fetchUserInfo($rootScope.user.ActorID).then(function(response){

@@ -21,7 +21,7 @@
                 <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select style="width: 100%" ng-model="data.selectedCountry" ng-required="true">
+                <select style="width: 100%;font-size:12px;" ng-model="data.selectedCountry" ng-required="true">
                     <option ng-selected="data.selectedCountry==null"></option>
                     <option
                             ng-selected="(obj.CountryCode == userCountry.CountryCode)"
