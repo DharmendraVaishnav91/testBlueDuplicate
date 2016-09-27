@@ -7,7 +7,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
     $scope.isFromSetting=true;
     $scope.invitedFind=false;
     $scope.family={};
-    $ionicModal.fromTemplateUrl('components/login/views/inviteFamily.html', {
+    $ionicModal.fromTemplateUrl('components/login/views/inviteFamilyModal.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {
