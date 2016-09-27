@@ -43,7 +43,7 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
     };
 
     $scope.workTypeChange =function(){
-        $scope.enableCrop=$scope.data.equipType=='Agricultural & forest machinery (tractors)';
+        $scope.enableCrop=$scope.thing.equipType=='Agricultural & forest machinery (tractors)';
     };
     var saveThingsData = function (thingsData) {
         signUpService.saveThingsData(thingsData).then(function (response) {

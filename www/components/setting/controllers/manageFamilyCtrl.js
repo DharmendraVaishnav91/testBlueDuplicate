@@ -21,7 +21,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
             console.log("User all invited members");
             console.log(response);
             $scope.invitedMemebers=response;
-            $scope.invitedFind=$scope.invitedMemebers.length != 0
+            $scope.invitedFind=$scope.invitedMemebers.length != 0 ;
             //if($scope.invitedMemebers.length == 0){
             //    invitedFind = false;
             //}
