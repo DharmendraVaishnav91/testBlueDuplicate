@@ -4,10 +4,21 @@ app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ioni
     $scope.skipToSuccess = function () {
         $state.go('accntCreateSuccess');
     };
+    utilityService.getCountryList().then(function (response) {
+        $scope.countryCodeList = response;
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
     $scope.family={};
     $scope.sendInviteToFamily = function () {
         var members = [];
-        members.push($scope.family);
+        var data={
+            name:$scope.family.name,
+            mobile:$scope.family.phoneCode+""+$scope.family.mobile,
+            relationship:$scope.family.relationship
+        };
+        members.push(data);
         var inviteData = {
             members: members
         };

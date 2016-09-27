@@ -21,7 +21,16 @@
                     </span>
                     <input type="text" name="name" ng-required="true" ng-model="family.name" class="edit-input-txt"  />
                 </label>
-
+                <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
+            <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+                    <select style="width: 100%;font-size:12px;" ng-model="family.phoneCode" ng-required="true">
+                        <option selected value="" disabled>Select country</option>
+                        <option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
+                        </option>
+                    </select>
+                </label>
                 <label class="item item-input item-stacked-label no-border label-padding"  >
                 <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
                    <span class="assertive " style="font-size: inherit">* </span>
