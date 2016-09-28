@@ -7,6 +7,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     $scope.invite={};
     $scope.groupAdminFind = false;
     $scope.groupMemberFind =false;
+    $scope.isInvitationsAvailable=false;
     $scope.countryCodeList=utilityService.countryList();
     $scope.backToAccount= function () {
         $state.go('app.setting');
@@ -59,6 +60,11 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
           console.log("Group details");
            console.log(response);
            $scope.curSelGroupFullDetail=response;
+           if($scope.curSelGroupFullDetail.invitations.length!=0){
+                $scope.isInvitationsAvailable=true;
+           }else{
+               $scope.isInvitationsAvailable=false;
+           }
        }).catch(function (error) {
             console.log(error);
        });
@@ -69,9 +75,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
         $scope.curSelGroup=group;
         console.log("Current selected group");
         console.log($scope.curSelGroup);
-
         $scope.groupDetail.show();
-
     };
     $scope.hideGroupDetails = function () {
         $scope.groupDetail.hide();
@@ -113,6 +117,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
         loginService.saveGroupsData(groupsData).then(function(response){
             fetchGroups();
             $scope.hideGroupAddModal();
+            $scope.group={};
             console.log("Group added successfully.");
             $cordovaToast.showShortBottom("Group added successfully.")
         }).catch(function(error){

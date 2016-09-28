@@ -103,8 +103,8 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
             $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-            $scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+           // $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            //$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
             $scope.work.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.work.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         } else if(locationWay=="manual") {
@@ -112,8 +112,8 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
             $scope.work.city = "";
             //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.work.latitude = "";
-            $scope.work.longitude = "";
+            //$scope.work.latitude = "";
+           // $scope.work.longitude = "";
             $scope.work.state = "";
             $scope.work.country = "";
         }else{
@@ -123,9 +123,11 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
     var saveWorkData =function(workData){
         loginService.saveWorkData(workData).then(function(response){
 
-            $cordovaToast.showShortBottom("Work added successfully.");
+
             fetchAllLocations();
             $scope.hideWorkAddModal();
+            $scope.work={};
+            $cordovaToast.showShortBottom("Work added successfully.");
             console.log("Work added successfully.");
 
         }).catch(function(error){
@@ -142,12 +144,13 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         if($scope.work.where=="manual"||$scope.work.where=="current") {
             location={
                 name:$scope.work.where=="manual"?"Enter Address":"My Current Location",
-                latitude: $scope.work.latitude,
-                longitude: $scope.work.longitude,
+                latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
+                longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
                 address: $scope.work.address,
                 city: $scope.work.city,
                 subdivision_code: $scope.work.state ? $scope.work.state : '',
-                country_code: $scope.work.country
+                country_code: $scope.work.country,
+                locationtype:"Registration Worksite"
             }
         }else{
             //thing1.location=JSON.parse($scope.data.equipWhere);

@@ -25,8 +25,9 @@ app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ioni
         userSettingService.sendInviteToFamilyMembers(inviteData).then(function (response) {
             console.log("Family invite success");
             console.log(response);
+            $state.go('accntCreateSuccess');
             $cordovaToast.showLongBottom("Member added successfully");
-            $scope.hideInviteFamilyModal();
+            //$scope.hideInviteFamilyModal();
         }).catch(function (error) {
             console.log(error);
             $cordovaToast.showLongBottom("Something went wrong, please try after some time.");

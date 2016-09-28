@@ -42,7 +42,7 @@ app.controller('ConfirmOTPCtrl', function ($timeout, $q, $scope, $state, $rootSc
         //};
         signUpService.confirmOTP(requestData).then(function (response) {
             console.log("OTP confirmed successfully");
-            //$cordovaToast.showShortBottom("OTP verified successfully");
+            $cordovaToast.showShortBottom("Account verified successfully");
             $state.go('home');
             console.log(response);
         }).catch(function (error) {

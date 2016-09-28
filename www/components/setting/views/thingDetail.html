@@ -24,7 +24,7 @@
                 <!--</div>-->
             <!--</div>-->
 
-            <div class="item no-padding" ng-repeat="curThing in curSelThingFullDetail.asset_details" >
+            <div class="item no-padding"  >
                 <div class="row ">
                     <div class="col col-33">
                         <div >
@@ -34,7 +34,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold" >
-                            {{curThing.asset_name}}
+                            {{curSelThingFullDetail.asset_details.asset_name}}
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold">
-                            {{curThing.type}}
+                            {{curSelThingFullDetail.asset_details.type}}
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold">
-                            {{curThing.asset_relationship}}
+                            {{curSelThingFullDetail.asset_details.asset_relationship}}
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold">
-                            {{curThing.location.location_name}}
+                            {{curSelThingFullDetail.asset_details.location.location_name}}
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold">
-                            {{curThing.location.locationtype}}
+                            {{curSelThingFullDetail.asset_details.location.locationtype}}
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold" >
-                            {{curThing.location.latitude}}
+                            {{curSelThingFullDetail.asset_details.location.latitude}}
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold">
-                            {{curThing.location.longitude}}
+                            {{curSelThingFullDetail.asset_details.location.longitude}}
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold" >
-                            {{curThing.location.country_code}}
+                            {{curSelThingFullDetail.asset_details.location.country_code}}
                         </div>
                     </div>
                 </div>
@@ -151,7 +151,7 @@
                     </div>
                     <div class="col ">
                         <div class="wrap-content bold" >
-                            {{curThing.location.subdivision_code}}
+                            {{curSelThingFullDetail.asset_details.location.subdivision_code}}
                         </div>
                     </div>
                 </div>
