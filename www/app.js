@@ -104,8 +104,8 @@ app.run(function ($ionicPlatform, EventService, utilityService) {
             .state('inviteFamily', {
                 url: '/inviteFamily',
                 params: {inviteFamilyData: {}},
-                templateUrl: 'components/login/views/inviteFamily.html',
-                controller: 'inviteFamilyCtrl'
+                templateUrl: 'components/signup/views/inviteFamily.html',
+                controller: 'InviteFamilyCtrl'
             })
             .state('accntCreateSuccess', {
                 url: '/accntCreateSuccess',

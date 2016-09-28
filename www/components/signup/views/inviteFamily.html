@@ -1,16 +1,28 @@
 <form name="inviteFamilyForm">
     <ion-content scroll="true" class="blueno-bg-full has-footer no-margin">
-        <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
-    overflow: scroll;
-    width: 100%;
-    padding: 0;">
+        <div class="center" style="width: inherit;height: auto;padding-top:15px">
+            <h3 style="color: #ffffff;">
+                <i class="ion-folder"></i>&nbsp;{{'ADD_FAMILY' | translate }}
+                <!--<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>-->
+            </h3>
+        </div>
+        <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
             <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text " style="color:white">{{'FULL_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                 <input type="text" name="name" ng-required="true" ng-model="family.name" class="edit-input-txt"/>
             </label>
-
+            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
+            <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+                <select style="width: 100%;font-size:12px;" ng-model="family.phoneCode" ng-required="true">
+                    <option selected value="" disabled>Select country</option>
+                    <option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
+                    </option>
+                </select>
+            </label>
             <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text " style="color:white">{{'MOBILE' | translate }}
                    <span class="assertive " style="font-size: inherit">* </span>
@@ -22,6 +34,7 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                 <select style="width: 100%;" ng-model="family.relationship" name="relationship" ng-required="true">
+                    <option value="" selected disabled>Select relationship</option>
                     <option value="Mother">{{'MOTHER' | translate }}</option>
                     <option value="Father" selected="selected">{{'FATHER' | translate }}</option>
                     <option value="Uncle">{{'UNCLE' | translate }}</option>
@@ -30,15 +43,15 @@
                     <option value="Cousin">{{'COUSIN' | translate }}</option>
                     <option value="Wife">{{'WIFE' | translate }}</option>
                     <option value="Husband">{{'HUSBAND' | translate }}</option>
-                    <option value="Other">{{'OTHER' | translate }}</option>
+                    <!--<option value="Other">{{'OTHER' | translate }}</option>-->
                 </select>
             </label>
         </div>
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;">
         <div class="button-bar">
-            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToGroup()" style="font-size: 20px;">
-            {{'Skip' | translate }} &nbsp;
+            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">
+                {{'Skip' | translate }} &nbsp;
             </button>
 
             <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"
@@ -48,4 +61,3 @@
         </div>
     </ion-footer-bar>
 </form>
-</ion-modal-view>

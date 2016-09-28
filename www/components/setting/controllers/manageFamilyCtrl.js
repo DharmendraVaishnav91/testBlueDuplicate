@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,userSettingService,$cordovaToast) {
+userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,userSettingService,$cordovaToast,utilityService) {
 
 
     $scope.isFromSetting=true;
@@ -21,7 +21,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
             console.log("User all invited members");
             console.log(response);
             $scope.invitedMemebers=response;
-            $scope.invitedFind=$scope.invitedMemebers.length != 0
+            $scope.invitedFind=$scope.invitedMemebers.length != 0 ;
             //if($scope.invitedMemebers.length == 0){
             //    invitedFind = false;
             //}
@@ -31,6 +31,12 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
     };
     fetchInvitedFamilyMembers();
     $scope.showInviteFamilyModal= function(){
+        utilityService.getCountryList().then(function (response) {
+            $scope.countryCodeList = response;
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
         $scope.inviteFamilyModal.show();
     };
     $scope.hideInviteFamilyModal =function(){
@@ -38,7 +44,12 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
     };
     $scope.sendInviteToFamily  = function () {
         var members=[];
-        members.push($scope.family);
+        var data={
+            name:$scope.family.name,
+            mobile:$scope.family.phoneCode+""+$scope.family.mobile,
+            relationship:$scope.family.relationship
+        };
+        members.push(data);
         var inviteData={
             members:members
         };

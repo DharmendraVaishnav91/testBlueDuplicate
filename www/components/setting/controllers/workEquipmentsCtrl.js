@@ -46,7 +46,7 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
         $scope.thingDetailModal= modal;
     });
     $scope.workTypeChange =function(){
-        $scope.enableCrop=$scope.data.equipType=='Agricultural & forest machinery (tractors)';
+        $scope.enableCrop=$scope.thing.equipType=='Agricultural & forest machinery (tractors)';
     };
     $scope.countryCodeList=utilityService.countryList();
 
@@ -86,37 +86,64 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
     $scope.addNewThing = function () {
         fetchLocation();
         fetchCropList();
+        //$scope.data={};
+        $scope.thing={};
+        $scope.enableAddressFields=false;
+        $scope.enableCrop=false;
         $scope.addThingModal.show();
+    };
+    //Change address fields according user choice
+    $scope.updateLocationFields = function (locationWay) {
+        $scope.enableAddressFields = true;
+        if (locationWay == "current") {
+            $scope.thing.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+            $scope.thing.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+            $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+            //$scope.thing.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            //$scope.thing.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+            $scope.thing.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            $scope.thing.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        } else if(locationWay == "manual") {
+            $scope.thing.address ="";
+            $scope.thing.city = "";
+            //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+            //$scope.thing.latitude = "";
+            //$scope.thing.longitude = "";
+            $scope.thing.state = "";
+            $scope.thing.country = "";
+        } else{
+            $scope.enableAddressFields=false;
+        }
     };
      $scope.thing={};
      $scope.createThing = function () {
          var asset_details=[];
          var thing1={
-             type:$scope.data.equipType,
-             asset_relationship:$scope.data.equipRelationship,
-             asset_name:$scope.data.assetName
+             type:$scope.thing.equipType,
+             asset_relationship:$scope.thing.equipRelationship,
+             asset_name:$scope.thing.assetName
          };
          //Equipment have location other than existing one
-         if($scope.data.equipWhere=='OtherThingLocation') {
+         if($scope.thing.where=="manual"||$scope.thing.where=="current") {
              thing1.location={
-                 location_name:"Enter Address",
-                 locationtype:"",
+                 location_name:$scope.thing.where=="manual"?"Enter Address":"My Current Location",
                  latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
                  longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
-                 address:$scope.data.otherThingAddress,
-                 city:$scope.data.otherThingCity,
-                 subdivision_code:$scope.data.otherThingState?$scope.data.otherThingState.SubdivisionCode:'',
-                 country_code:$scope.data.otherThingCountry.CountryCode
-
+                 address:$scope.thing.address,
+                 city:$scope.thing.city,
+                 subdivision_code:$scope.thing.state,
+                 country_code:$scope.thing.country,
+                 locationtype:"Registration Thing"
              };
 
          }else{
              //thing1.location=JSON.parse($scope.data.equipWhere);
              thing1.location={
-                 location_name:(JSON.parse($scope.data.equipWhere)).LocationID
+                 location_name:(JSON.parse($scope.thing.where)).LocationID
              }
          }
-         if($scope.data.equipType=='Agricultural & forest machinery (tractors)'){
+         if($scope.thing.equipType=='Agricultural & forest machinery (tractors)'){
              thing1.type_details={0:{
                  crop:""+$scope.thing.crop.H3Code,
                  hectare:$scope.thing.hectare
@@ -135,8 +162,12 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
                console.log("Asset create success.");
                console.log(response);
              fetchThings();
-             $cordovaToast.showLongBottom("Asset created successfully.");
+           //  $scope.data={};
+           //  $scope.thing={};
+           //  $scope.enableAddressFields=false;
+           //  $scope.enableCrop=false;
              $scope.hideThingAddModal();
+             $cordovaToast.showLongBottom("Asset created successfully.");
 
 
          }).catch(function (error) {

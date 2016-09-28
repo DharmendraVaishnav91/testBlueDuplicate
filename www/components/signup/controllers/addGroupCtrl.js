@@ -39,7 +39,7 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
         console.log(groupsData);
         signUpService.saveGroupsData(groupsData).then(function (response) {
             console.log("Group added successfully.");
-            $state.go('accntCreateSuccess');
+            $state.go('inviteFamily');
             $cordovaToast.showShortBottom("Group added successfully.") ;
         }).catch(function (error) {
             console.log(error);
@@ -80,7 +80,7 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
     };
 
     $scope.skipToInviteFamily = function () {
-        $state.go('accntCreateSuccess');
+        $state.go('inviteFamily');
     };
 
     $scope.goToInviteFamily = function () {
