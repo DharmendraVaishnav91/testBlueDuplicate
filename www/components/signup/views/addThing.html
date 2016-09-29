@@ -11,7 +11,7 @@
                  style="overflow: scroll;width: 100%;padding: 0;">
                 <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;" >
                     <div class=" wrap-content" style="color: bisque;font-size: 14px;">
-                        Providing information here is optional. If you continue, information noted with a * is required before selecting Next below. Or you can skip this step by clicking Skip.
+                       {{'OPTIONAL_INFO_ALERT'| translate}}
                     </div>
                 </div>
                 <label class="item item-input item-stacked-label no-border label-padding">
@@ -23,35 +23,35 @@
                         <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
                     </select>
                 </label>
-                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
-                    <span class="input-label label-text "  style="color:white">{{'CROP' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                    <select style="width: 100%;" ng-model="thing.crop" ng-required="true"
-                            ng-options="obj.H3Description for obj in productList track by obj.H3Code">
-                    </select>
-                </label>
+                <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">-->
+                    <!--<span class="input-label label-text "  style="color:white">{{'CROP' | translate }}-->
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <!--</span>-->
+                    <!--<select style="width: 100%;" ng-model="thing.crop" ng-required="true"-->
+                            <!--ng-options="obj.H3Description for obj in productList track by obj.H3Code">-->
+                    <!--</select>-->
+                <!--</label>-->
 
-                <!--Hectare-->
+                <!--&lt;!&ndash;Hectare&ndash;&gt;-->
 
-                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
-                    <span class="input-label label-text "  style="color:white">{{'HECTARE' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                    <input type="number" class="edit-input-txt"  ng-model="thing.hectare" ng-required="true" name="hectares" />
+                <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">-->
+                    <!--<span class="input-label label-text "  style="color:white">{{'HECTARE' | translate }}-->
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <!--</span>-->
+                    <!--<input type="number" class="edit-input-txt"  ng-model="thing.hectare" ng-required="true" name="hectares" />-->
 
-                </label>
+                <!--</label>-->
 
-                <label class="item item-input item-stacked-label no-border label-padding">
-                    <span class="input-label label-text " style="color:white">{{'RELATIONSHIP' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                    <select style="width: 100%" ng-model="thing.equipRelationship" ng-required="true">
-                        <option value="Worker">{{'WORKER' | translate }}</option>
-                        <option value="Owner">{{'OWNER' | translate }}</option>
-                        <option value="Lessor">{{'LESSOR' | translate }}</option>
-                    </select>
-                </label>
+                <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+                    <!--<span class="input-label label-text " style="color:white">{{'RELATIONSHIP' | translate }}-->
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <!--</span>-->
+                    <!--<select style="width: 100%" ng-model="thing.equipRelationship" ng-required="true">-->
+                        <!--<option value="Worker">{{'WORKER' | translate }}</option>-->
+                        <!--<option value="Owner">{{'OWNER' | translate }}</option>-->
+                        <!--<option value="Lessor">{{'LESSOR' | translate }}</option>-->
+                    <!--</select>-->
+                <!--</label>-->
                 <div class="row">
                     <div class="col" >
                         <div class="inline-field">
@@ -71,17 +71,13 @@
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
                     <select style="width: 100%" ng-model="thing.thingIdType" >
-                        <option value="Universal Product Code (UPC), also called GTIN-12 and UPC-A">Universal Product Code (UPC), also called GTIN-12 and UPC-A</option>
-                        <option value="European Article Number (EAN), also called GTIN-13">European Article Number (EAN), also called GTIN-13</option>
-                        <option value="Japanese Article Number (JAN), also called GTIN-13">Japanese Article Number (JAN), also called GTIN-13</option>
-                        <option value="Manufacturer Part Number (MPN)">Manufacturer Part Number (MPN)</option>
-                        <option value="Brand Name">Brand Name</option>
-                        <option value="Amazon Standard Identification Number (ASIN)">Amazon Standard Identification Number (ASIN)</option>
-                        <option value="Vehicle Identification Number (VIN), also called a chassis number">Vehicle Identification Number (VIN), also called a chassis number</option>
-                        <option value="Maritime Mobile Service Identity (MMSI)">Maritime Mobile Service Identity (MMSI)</option>
-                        <option value="International Maritime Organization (IMO) number">International Maritime Organization (IMO) number</option>
-                        <option value="European Number of Identification (ENI) or European Vessel Identification Number (EVIN)">European Number of Identification (ENI) or European Vessel Identification Number (EVIN)</option>
-                        <option value="Other (Please tell us the ID type)">Other (Please tell us the ID type)</option>
+                        <option value="Brand">{{'BRAND' | translate }}</option>
+                        <option value="European Article Number (EAN), also called GTIN-13">{{'EUROPEAN_ARTICLE_NUMBER' | translate}}</option>
+                        <option value="Manufacturer Part Number (MPN)">{{'MANUFACTURER_PART_NUMBER' | translate}}</option>
+                        <option value="License plate number">{{'LICENSE_PLATE_NUMBER'| translate}}</option>
+                        <option value="Chassis number, also Vehicle Identification Number (VIN)">{{'CHASSIS_NUMBER' | translate}}</option>
+                        <option value="Other (Please tell us the ID type)">{{'OTHER_THING_ID' | translate}}</option>
+                        <option value="I don't know my ID type">{{'I_DONT_KNOW_THING_ID' | translate}}</option>
                     </select>
                 </label>
 
@@ -91,19 +87,19 @@
                     </span>
                     <input type="text" class="edit-input-txt"  ng-model="thing.thingId" name="thingId" />
                 </label>
-                <label class="item item-input item-stacked-label no-border label-padding">
-                    <span class="input-label label-text " style="color:white">{{'LOCATION' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                    <select style="width: 100%" ng-model="thing.where" ng-required="true" ng-change="updateLocationFields(thing.where)">
-                        <option disabled >{{'SELECT_ONE'| translate}}</option>
-                        <option ng-repeat="obj in myLocations" value="{{obj}}">
-                            {{obj.LocationType+"("+obj.LocationName+")"}}
-                        </option>
-                        <option value="current">{{'MY_CURRENT_LOCATION' | translate }}</option>
-                        <option value="manual">{{'ENTER_ADDRESS' | translate }}</option>
-                    </select>
-                </label>
+                <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+                    <!--<span class="input-label label-text " style="color:white">{{'LOCATION' | translate }}-->
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <!--</span>-->
+                    <!--<select style="width: 100%" ng-model="thing.where" ng-required="true" ng-change="updateLocationFields(thing.where)">-->
+                        <!--<option disabled >{{'SELECT_ONE'| translate}}</option>-->
+                        <!--<option ng-repeat="obj in myLocations" value="{{obj}}">-->
+                            <!--{{obj.LocationType+"("+obj.LocationName+")"}}-->
+                        <!--</option>-->
+                        <!--<option value="current">{{'MY_CURRENT_LOCATION' | translate }}</option>-->
+                        <!--<option value="manual">{{'ENTER_ADDRESS' | translate }}</option>-->
+                    <!--</select>-->
+                <!--</label>-->
 
 
                 <label class="item item-input item-stacked-label no-border label-padding"
@@ -167,7 +163,7 @@
             <div class="button-bar">
                 <button  class="button no-border lgt-blue-btn button-small" type="submit"
                         ng-click="skipToGroup()" style="font-size: 20px;">
-                    {{'Skip' | translate }} &nbsp;
+                    {{'SKIP' | translate }} &nbsp;
                 </button>
                 <!--<button ng-if="isFromSetting" ng-disabled="addThingForm.$invalid"-->
                         <!--ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small"-->
@@ -177,7 +173,7 @@
                 <button  ng-disabled="addThingForm.$invalid"
                         class="button no-border lgt-blue-btn button-small" type="submit" ng-click="goToGroup()"
                         style="font-size: 20px;">
-                    {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+                    {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
                 </button>
 
             </div>

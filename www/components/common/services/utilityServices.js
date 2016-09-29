@@ -4,7 +4,7 @@
 
 var appUtilityServices = angular.module("app.utility.services", []);
 
-appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicPopup,$q,$rootScope,$cordovaCamera,$cordovaGeolocation) {
+appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicPopup,$q,$rootScope,$cordovaCamera,$cordovaGeolocation,$filter) {
 
     var utilityService = {};
     utilityService.sendAppInviteToFriend = function (inviteData) {
@@ -123,10 +123,10 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         var scope = $rootScope.$new();
         var imageOptions = $ionicPopup.show({
             templateUrl:'components/common/views/imageSelectOptions.html',
-            title: 'Choose Image Source',
+            title:$filter('translate')('CHOOSE_IMAGE_SOURCE'),
             scope:scope,
             buttons: [
-                { text: 'Cancel' }
+                { text: $filter('translate')('CANCEL') }
             ]
         });
 

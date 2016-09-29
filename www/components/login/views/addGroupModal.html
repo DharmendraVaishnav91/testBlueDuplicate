@@ -25,30 +25,35 @@
                     <option ng-repeat="obj in groupsType" value="{{obj.name}}">{{obj.name}}</option>
                 </select>
             </label>
-
             <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
+                    <span class="input-label label-text "  style="color:white">{{'DESCRIPTION' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <select style="width: 100%" ng-required="true" ng-model="group.relationship" name="relationship">
-                    <option value="Owner" >{{'OWNER' | translate }}</option>
-                    <option value="Employee" >{{'EMPLOYEE' | translate }}</option>
-                    <option value="Buyer" >{{'BUYER' | translate }}</option>
-                    <option value="Selle" >{{'SELLER' | translate }}</option>
-                </select>
+                <textarea  rows="4" style="background-color: rgba(97, 137, 197, .7) !important;font-size: 16px;padding: 10px;color:white" ng-required="true" name="groupDescription" ng-model="group.description"  class=""  ></textarea>
             </label>
+            <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
+                    <!--<span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}-->
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <!--</span>-->
+                <!--<select style="width: 100%" ng-required="true" ng-model="group.relationship" name="relationship">-->
+                    <!--<option value="Owner" >{{'OWNER' | translate }}</option>-->
+                    <!--<option value="Employee" >{{'EMPLOYEE' | translate }}</option>-->
+                    <!--<option value="Buyer" >{{'BUYER' | translate }}</option>-->
+                    <!--<option value="Selle" >{{'SELLER' | translate }}</option>-->
+                <!--</select>-->
+            <!--</label>-->
 
 
-            <label class="item item-input item-stacked-label no-border label-padding" >
-                <span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
-                <select style="width: 100%" ng-model="group.location" ng-required="true" ng-change="updateLocationFields(group.location)" name="location">
-                    <option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>
-                    <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
-                    <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
-                </select>
-            </label>
+            <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
+                <!--<span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}-->
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                <!--</span>-->
+                <!--<select style="width: 100%" ng-model="group.location" ng-required="true" ng-change="updateLocationFields(group.location)" name="location">-->
+                    <!--<option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>-->
+                    <!--<option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>-->
+                    <!--<option value="manual">{{'ENTER_ADDRESS'|translate}}</option>-->
+                <!--</select>-->
+            <!--</label>-->
 
 
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">

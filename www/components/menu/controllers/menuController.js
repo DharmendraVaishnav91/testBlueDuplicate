@@ -1,6 +1,6 @@
-angular.module('app.menu', [])
+var menu=angular.module('app.menu', []);
 
-    .controller('MenuCtrl', function($scope,$state,loginService,$localStorage,$rootScope) {
+    menu.controller('MenuCtrl', function($scope,$state,loginService,$localStorage,$rootScope) {
 
         var removeUser= function () {
             $localStorage[STORAGE.LOGIN_KEY]=null;
@@ -15,6 +15,9 @@ angular.module('app.menu', [])
                 $state.go('login');
                 console.log(error);
             });
+        };
+        $scope.goToSetting= function () {
+           $state.go('app.manageSetting');
         };
         $scope.goToInvitations = function () {
             $state.go('app.invitations');

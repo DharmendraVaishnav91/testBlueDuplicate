@@ -1,10 +1,10 @@
-app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast) {
+app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast,$filter) {
     console.log($stateParams.groupData);
     $scope.data = $stateParams.groupData;
     $scope.isFromSetting = false;
     $scope.location = {};
     $scope.countryCodeList = utilityService.countryList();
-
+    $scope.group={};
     var fetchGroupsType = function () {
         signUpService.fetchGroupsType().then(function (response) {
             $scope.groupsType=response;
@@ -40,10 +40,10 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
         signUpService.saveGroupsData(groupsData).then(function (response) {
             console.log("Group added successfully.");
             $state.go('inviteFamily');
-            $cordovaToast.showShortBottom("Group added successfully.") ;
+            $cordovaToast.showShortBottom($filter('translate')('GROUP_ADDED_SUCCESSFULLY')) ;
         }).catch(function (error) {
             console.log(error);
-           $cordovaToast.showLongBottom("Something went wrong. Please try again");
+           $cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
         });
     };
 
@@ -87,9 +87,24 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
         var groups = [];
         var group1 = {
             type: $scope.data.groupType,
-            relationship: $scope.data.groupRelationship,
-            name: $scope.data.groupName
+            //relationship: $scope.data.groupRelationship,
+            relationship: "Owner",
+            name: $scope.data.groupName ,
+            description:$scope.group.description?$scope.group.description:""
             //location:$scope.data.groupLocation
+        };
+
+        //$scope.location = {
+        //    name: (JSON.parse($scope.data.groupLocation)).LocationID
+        //};
+        $scope.location = {
+            name: "My Current Location",
+            latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
+            longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
+            address: angular.copy($rootScope.addressDataFromCoordinate.address),
+            city: angular.copy($rootScope.addressDataFromCoordinate.city),
+            subdivision_code: angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode),
+            country_code: angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode)
         };
         group1.location = $scope.location;
         groups.push(group1);

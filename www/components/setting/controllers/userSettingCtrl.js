@@ -2,7 +2,7 @@
  * Created by dharmendra on 23/8/16.
  */
 var userSetting = angular.module('app.userSetting',[]);
-userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ionicModal,$localStorage,utilityService,userSettingService,signUpService,$cordovaToast) {
+userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ionicModal,$localStorage,utilityService,userSettingService,signUpService,$cordovaToast,$filter) {
 
     $scope.isFromSetting=true;
     var updatedImage='';
@@ -97,7 +97,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
                 $rootScope.profileUrl=response.image;
             }
             $scope.editAccountModal.hide();
-            $cordovaToast.showShortBottom("User personal details updated successfully");
+            $cordovaToast.showShortBottom($filter('translate')('USER_PERSONAL_DETAIL_UPDATED_SUCCESSFULLY'));
         });
     };
     $scope.hideEditAccount =function(){
@@ -125,7 +125,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
         loginService.doLogout().then(function(response) {
             removeUser();
             $state.go('login');
-            $cordovaToast.showShortBottom('Logged out successfully');
+            $cordovaToast.showShortBottom($filter('translate')('LOGGED_OUT_SUCCESSFULLY'));
         }).catch(function(error){
             console.log(error);
         });

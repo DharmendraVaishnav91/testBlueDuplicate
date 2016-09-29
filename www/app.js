@@ -134,6 +134,14 @@ app.run(function ($ionicPlatform, EventService, utilityService) {
                         controller: 'UserSettingCtrl'
                     }
                 }
+            }).state('app.manageSetting', {
+                url: '/manageSetting',
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/menu/views/settings.html',
+                        controller: 'SettingCtrl'
+                    }
+                }
             }).state('app.workPlaces', {
                 url: '/setting/workPlaces',
                 views: {

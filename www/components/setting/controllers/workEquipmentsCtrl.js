@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,userSettingService,loginService,utilityService,$rootScope,$cordovaToast,signUpService) {
+userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,userSettingService,loginService,utilityService,$rootScope,$cordovaToast,signUpService,$filter) {
 
 
     $scope.isFromSetting=true;
@@ -119,15 +119,24 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
      $scope.thing={};
      $scope.createThing = function () {
          var asset_details=[];
+         $scope.thing.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+         $scope.thing.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+         $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+         //$scope.thing.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+         //$scope.thing.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+         $scope.thing.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+         $scope.thing.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
          var thing1={
              type:$scope.thing.equipType,
-             asset_relationship:$scope.thing.equipRelationship,
+             //asset_relationship:$scope.thing.equipRelationship,
+             asset_relationship:"Owner",
              asset_name:$scope.thing.assetName
          };
          //Equipment have location other than existing one
-         if($scope.thing.where=="manual"||$scope.thing.where=="current") {
+         //if($scope.thing.where=="manual"||$scope.thing.where=="current") {
              thing1.location={
-                 location_name:$scope.thing.where=="manual"?"Enter Address":"My Current Location",
+                // location_name:$scope.thing.where=="manual"?"Enter Address":"My Current Location",
+                 location_name:"My Current Location",
                  latitude:$rootScope.position?$rootScope.position.coords.latitude:'',
                  longitude:$rootScope.position?$rootScope.position.coords.longitude:'',
                  address:$scope.thing.address,
@@ -137,21 +146,21 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
                  locationtype:"Registration Thing"
              };
 
-         }else{
-             //thing1.location=JSON.parse($scope.data.equipWhere);
-             thing1.location={
-                 location_name:(JSON.parse($scope.thing.where)).LocationID
-             }
-         }
-         if($scope.thing.equipType=='Agricultural & forest machinery (tractors)'){
-             thing1.type_details={0:{
-                 crop:""+$scope.thing.crop.H3Code,
-                 hectare:$scope.thing.hectare
-             }};
-             //thing1.type_details.0.crop=$scope.thing.crop.H3Code;
-             //thing1.type_details.hectare=$scope.thing.hectare;
-             thing1.hectares=$scope.thing.hectare;
-         }
+         //}else{
+         //    //thing1.location=JSON.parse($scope.data.equipWhere);
+         //    thing1.location={
+         //        location_name:(JSON.parse($scope.thing.where)).LocationID
+         //    }
+         //}
+         //if($scope.thing.equipType=='Agricultural & forest machinery (tractors)'){
+         //    thing1.type_details={0:{
+         //        crop:""+$scope.thing.crop.H3Code,
+         //        hectare:$scope.thing.hectare
+         //    }};
+         //    //thing1.type_details.0.crop=$scope.thing.crop.H3Code;
+         //    //thing1.type_details.hectare=$scope.thing.hectare;
+         //    thing1.hectares=$scope.thing.hectare;
+         //}
          asset_details.push(thing1);
          var assetData={
              actorid:$rootScope.user.ActorID,
@@ -167,12 +176,12 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
            //  $scope.enableAddressFields=false;
            //  $scope.enableCrop=false;
              $scope.hideThingAddModal();
-             $cordovaToast.showLongBottom("Asset created successfully.");
+             $cordovaToast.showLongBottom($filter('translate')('ASSET_CREATE_SUCCESSFULLY'));
 
 
          }).catch(function (error) {
             console.log(error);
-             $cordovaToast.showLongBottom("Something went wrong, please try after some time.");
+             $cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
          })
      } ;
     $scope.changeSubdivision=function(selectedCountry){

@@ -1,4 +1,4 @@
-app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService,$rootScope,$cordovaToast) {
+app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService,$rootScope,$cordovaToast,$filter) {
   console.log($stateParams.profileData);
   $scope.loginData=$stateParams.profileData;
   $scope.home={} ;
@@ -23,7 +23,7 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
               }).catch(function (error) {
                   console.log(error);
               }) ;
-          $cordovaToast.showLongBottom("Registered successfully with your current location.");
+          $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
 
 
       }).catch(function(error){

@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,userSettingService,$cordovaToast,utilityService) {
+userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,userSettingService,$filter,$cordovaToast,utilityService) {
 
 
     $scope.isFromSetting=true;
@@ -20,8 +20,8 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
         userSettingService.fetchAllFamilyInvitedMembers().then(function (response) {
             console.log("User all invited members");
             console.log(response);
-            $scope.invitedMemebers=response;
-            $scope.invitedFind=$scope.invitedMemebers.length != 0 ;
+            $scope.invitedMembers=response;
+            $scope.invitedFind=$scope.invitedMembers.members.length != 0 ;
             //if($scope.invitedMemebers.length == 0){
             //    invitedFind = false;
             //}
@@ -29,6 +29,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
             console.log(error);
         })
     };
+
     fetchInvitedFamilyMembers();
     $scope.showInviteFamilyModal= function(){
         utilityService.getCountryList().then(function (response) {
@@ -37,6 +38,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
         }).catch(function (error) {
             console.log(error);
         });
+        $scope.family={};
         $scope.inviteFamilyModal.show();
     };
     $scope.hideInviteFamilyModal =function(){
@@ -46,7 +48,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
         var members=[];
         var data={
             name:$scope.family.name,
-            mobile:$scope.family.phoneCode+""+$scope.family.mobile,
+           // mobile:$scope.family.phoneCode+""+$scope.family.mobile,
             relationship:$scope.family.relationship
         };
         members.push(data);
@@ -57,11 +59,12 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
               console.log("Family invite success");
               console.log(response);
              fetchInvitedFamilyMembers();
-            $cordovaToast.showLongBottom("Invitation sent successfully");
             $scope.hideInviteFamilyModal();
+            $cordovaToast.showLongBottom($filter('translate')('INVITATION_SENT_SUCCESSFULLY'));
+
         }).catch(function (error) {
               console.log(error);
-           $cordovaToast.showLongBottom("Something went wrong, please try after some time.");
+           $cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
         })
     }
 });

@@ -32,7 +32,7 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <select style="width: 100%"  ng-model="data.gender" ng-required="true">
-                    <option disabled  value="" selected >Select Gender</option>
+                    <option disabled  value="" selected >{{'SELECT_GENDER' | translate}}</option>
                     <option value="male" >{{'MALE' | translate }}</option>
                     <option value="female">{{'FEMALE' | translate }}</option>
                 </select>
@@ -43,7 +43,7 @@
 <ion-footer-bar  class="text-center bar-stable blue-bg" style="padding:0px !important;" >
     <div  class="button-bar">
         <button ng-disabled="basicInfoForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToSelectUserType()" style="font-size: 20px;">
-            {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
         </button>
     </div>
 </ion-footer-bar>

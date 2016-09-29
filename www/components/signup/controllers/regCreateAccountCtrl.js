@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 10/8/16.
  */
-app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, signUpService, $rootScope, $cordovaToast) {
+app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, signUpService, $rootScope, $cordovaToast,$filter) {
 
     $scope.loginData = {
         user: {},
@@ -42,19 +42,19 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
         isPopupOpen = true;
         // An elaborate, custom popup
         myPopup = $ionicPopup.show({
-            title: 'Warning',
-            template: '<span style="font-size: 18px;">Location must be enabled to continue, please go to setting to enable this.</span>',
+            title: $filter('translate')('WARNING'),
+            template: "<span style='font-size: 18px;'>{{'ENABLE_LOCATION_IN_SETTING' | translate}}</span>",
             scope: $scope,
             cssClass: 'custom-title',
             buttons: [
                 {
-                    text: 'Cancel',
+                    text: $filter('translate')('CANCEL'),
                     onTap: function () {
                         ionic.Platform.exitApp();
                     }
                 },
                 {
-                    text: '<b>Go to settings</b>',
+                    text: "<b>{{'GO_TO_SETTING'|translate}}</b>",
                     type: 'button-positive',
                     onTap: function (e) {
                         isPopupOpen = false;
@@ -99,10 +99,10 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
 
     $scope.showConfirm = function () {
         var confirmPopup = $ionicPopup.confirm({
-            title: 'Confirm share',
+            title: $filter('translate')('CONFIRM_SHARE'),
             template:'<span>{{"LOCATION_CONFIRMATION"| translate}}</span>',
-            cancelText: 'Deny',
-            okText: 'Allow'
+            cancelText: $filter('translate')('DENY'),
+            okText:$filter('translate')('ALLOW')
         });
 
         confirmPopup.then(function (res) {
@@ -133,7 +133,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
             } else {
                 $scope.isLocationShared = false;
                 console.log('Location must be shared to continue with registration.');
-                $cordovaToast.showLongBottom("Location must be shared to continue with registration.")
+                $cordovaToast.showLongBottom($filter('translate')('LOCATION_MUST_BE_SHARED'))
             }
         });
     };
@@ -178,12 +178,12 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
 
             }).catch(function (error) {
                 console.log(error.error);
-                $cordovaToast.showLongBottom("Username already taken. Try another.");
+                $cordovaToast.showLongBottom(error.error);
                 console.log("Username already taken. Try another.")
             });
             //}
         } else {
-            $cordovaToast.showLongBottom("Location must be shared to continue with registration");
+            $cordovaToast.showLongBottom($filter('translate')('LOCATION_MUST_BE_SHARED'));
         }
 
 

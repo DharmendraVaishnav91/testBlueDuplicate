@@ -1,4 +1,4 @@
-<ion-view view-title="{{'BLUENUMBER' |translate}}">
+<ion-view view-title="{{'DASHBOARD' |translate}}">
     <ion-nav-buttons side="right">
         <button class="button button-clear button-icon" ng-click="showFilters()">
             <i class="fa fa-filter" style="font-size: 25px;color:white"></i>
@@ -18,13 +18,13 @@
             </div>
             <div class="row no-padding " style="background-color: #4E5C6E;">
                 <div class="col">
-                    <input class="edit-input-txt"  type="text" style="width: 100%;background-color: rgba(97,137,197,.9) !important;" ng-model="filter.crop" placeholder="Crops"/>
+                    <input class="edit-input-txt"  type="text" style="width: 100%;background-color: rgba(97,137,197,.9) !important;" ng-model="filter.crop" placeholder="{{'CROPS' | translate}}"/>
                 </div>
             </div>
             <div class="row no-padding " style="background-color: #4E5C6E;" >
                 <div class="col">
                     <select style="width: 100%;background: rgba(97,137,197,.9) !important;" ng-model="filter.gender">
-                        <option value="" disabled selected>Gender</option>
+                        <option value="" disabled selected>{{'GENDER'| translate}}</option>
                         <option value="m">{{'MALE' | translate }}</option>
                         <option value="f">{{'FEMALE' | translate }}</option>
                     </select>
@@ -32,12 +32,12 @@
                 <div class="col right">
                     <button class="button " style="background-color: white;min-height: 38px;line-height: 38px;"
                             ng-click="resetFilter()">
-                        Reset
+                        {{'RESET' | translate}}
                     </button>
                     <button class="button "
-                            style="background-color: rgb(51, 205, 95);min-height: 38px;line-height: 38px;"
+                            style="background-color: rgb(51, 205, 95);min-height: 38px;line-height: 38px;color:white"
                             ng-click="applyFilter()">
-                        Filter
+                        {{'FILTER' | translate}}
                     </button>
                 </div>
             </div>

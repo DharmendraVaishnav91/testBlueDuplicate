@@ -1,11 +1,20 @@
 /**
  * Created by dharmendra on 24/8/16.
  */
-userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,userSettingService,utilityService,loginService,$rootScope,signUpService,$cordovaToast) {
+userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,userSettingService,utilityService,loginService,$rootScope,signUpService,$cordovaToast,$filter) {
 
     $scope.isFromSetting=true;
     $scope.isWorkPlace=false;
     $scope.showNoDataAlert=false;
+    var fetchCropList = function(){
+        signUpService.fetchProductsList().then(function(response){
+            $scope.productList=response;
+        }).catch(function(error){
+            console.log(error);
+        });
+    };
+
+    //$scope.work.name="My Work Place 1";
     $ionicModal.fromTemplateUrl('components/login/views/addWorkModal.html', {
         scope: $scope,
         animation: 'slide-in-right'
@@ -55,6 +64,10 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
              });
          };
          fetchWorkTypes();
+         fetchCropList();
+         $scope.work={};
+         $scope.enableAddressFields=false;
+         $scope.work.name="My Work Place 1";
          $scope.editWork.show();
      };
 
@@ -126,13 +139,13 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
 
             fetchAllLocations();
             $scope.hideWorkAddModal();
-            $scope.work={};
-            $cordovaToast.showShortBottom("Work added successfully.");
+
+            $cordovaToast.showShortBottom($filter('translate')('WORK_ADDED_SUCCESSFULLY'));
             console.log("Work added successfully.");
 
         }).catch(function(error){
            console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
+            $cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
         });
 
     };
@@ -141,9 +154,18 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         console.log($scope.data);
         var works = [];
         var location ={};
+        //$scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+        //$scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+        //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        //
+        //// $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        ////$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        //$scope.work.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+        //$scope.work.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         if($scope.work.where=="manual"||$scope.work.where=="current") {
             location={
                 name:$scope.work.where=="manual"?"Enter Address":"My Current Location",
+                //name:"My Current Location",
                 latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
                 longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
                 address: $scope.work.address,
@@ -151,7 +173,7 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
                 subdivision_code: $scope.work.state ? $scope.work.state : '',
                 country_code: $scope.work.country,
                 locationtype:"Registration Worksite"
-            }
+            };
         }else{
             //thing1.location=JSON.parse($scope.data.equipWhere);
             location = {
@@ -159,10 +181,15 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
             }
         }
         var work = {
-            type: $scope.work.type,
-            relationship: $scope.work.relationship,
+            //type: $scope.work.type,
+            type: "Work",
+            relationship:"Owner",
             location: location
         };
+        if($scope.work.crop){
+            work.crop=$scope.work.crop.H3Code;
+            work.hectares=0;
+        }
         works.push(work);
         var workData = {
             works: works

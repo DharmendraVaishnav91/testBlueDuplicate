@@ -11,7 +11,7 @@
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
         <select style="width: 100%;font-size:12px;" ng-model="loginData.phoneCode" ng-required="true">
-            <option selected value="" disabled>Select country</option>
+            <option selected value="" disabled>{{'SELECT_COUNTRY' | translate}}</option>
             <option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
             </option>
         </select>

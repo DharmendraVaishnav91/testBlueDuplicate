@@ -1,7 +1,7 @@
 /**
  * Created by ramkumar on 24/8/16.
  */
-userSetting.controller('InviteFriendCtrl', function(loginService,$scope,$state,$ionicModal,utilityService,$cordovaToast) {
+userSetting.controller('InviteFriendCtrl', function($filter,loginService,$scope,$state,$ionicModal,utilityService,$cordovaToast) {
     $scope.friend ={};
 	$scope.goToInviteFriend=function(){
             $state.go('app.inviteFriend');
@@ -20,10 +20,10 @@ userSetting.controller('InviteFriendCtrl', function(loginService,$scope,$state,$
         utilityService.sendAppInviteToFriend(inviteFriendData).then(function () {
            console.log("Friend invited successfully.");
             $scope.friend={};
-            $cordovaToast.showLongBottom("Friend Invited Successfully.");
+            $cordovaToast.showLongBottom($filter('translate')('FRIEND_INVITED'));
         }).catch(function (error) {
             console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong while inviting your friend.");
+            $cordovaToast.showLongBottom($filter('translate')('FRIEND_INVITE_FAILED'));
         })
     };
 });

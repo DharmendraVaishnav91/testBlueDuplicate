@@ -1,4 +1,4 @@
-app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast,userSettingService) {
+app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast,userSettingService,$filter) {
     console.log($stateParams.inviteFamilyData);
     $scope.data = {};
     $scope.skipToSuccess = function () {
@@ -15,7 +15,7 @@ app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ioni
         var members = [];
         var data={
             name:$scope.family.name,
-            mobile:$scope.family.phoneCode+""+$scope.family.mobile,
+           // mobile:$scope.family.phoneCode+""+$scope.family.mobile,
             relationship:$scope.family.relationship
         };
         members.push(data);
@@ -26,11 +26,11 @@ app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ioni
             console.log("Family invite success");
             console.log(response);
             $state.go('accntCreateSuccess');
-            $cordovaToast.showLongBottom("Member added successfully");
+            $cordovaToast.showLongBottom($filter('translate')('MEMBER_ADDED_SUCCESSFULLY'));
             //$scope.hideInviteFamilyModal();
         }).catch(function (error) {
             console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong, please try after some time.");
+            $cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
         })
     };
 

@@ -1,4 +1,4 @@
-app.controller('accntCreateSuccessCtrl', function ($timeout, $q, $scope, $state, $rootScope, $cordovaToast,utilityService, signUpService) {
+app.controller('accntCreateSuccessCtrl', function ($timeout, $q, $scope, $state, $rootScope, $cordovaToast,utilityService, signUpService,$filter) {
     $scope.confirm = {};
     $scope.goToVerifyAccount = function () {
         $state.go('verifyAccount');
@@ -17,7 +17,7 @@ app.controller('accntCreateSuccessCtrl', function ($timeout, $q, $scope, $state,
         signUpService.requestOTP(requestData).then(function (response) {
             console.log("OTP requested successfully");
             console.log(response);
-            $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
+            $cordovaToast.showLongBottom($filter('translate')('OTP_SENT_SUCCESSFULLY'));
         }).catch(function (error) {
             console.log(error);
         })
@@ -30,7 +30,7 @@ app.controller('accntCreateSuccessCtrl', function ($timeout, $q, $scope, $state,
           };
         signUpService.confirmOTP(requestData).then(function (response) {
             console.log("OTP confirmed successfully");
-            $cordovaToast.showShortBottom("OTP verified successfully");
+            $cordovaToast.showShortBottom($filter('translate')('OTP_VERIFIED_SUCCESSFULLY'));
             $state.go('home');
             console.log(response);
         }).catch(function (error) {

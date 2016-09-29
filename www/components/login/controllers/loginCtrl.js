@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$rootScope,$localStorage,userSettingService,$cordovaToast,utilityService) {
+app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$rootScope,$localStorage,userSettingService,$cordovaToast,utilityService,$filter,menuService,$translate) {
 
     // Form data for the login modal
     $scope.loginData = {};
@@ -34,12 +34,18 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
                     $rootScope.profileUrl=$rootScope.userInfo.image;
                 }
 
+
+            });
+            menuService.fetchPreferredLanguage().then(function (response) {
+                $translate.use(response.language);
+            }).catch(function (response) {
+
             });
             saveUser(user);
             $state.go('app.dashboard');
         }).catch(function (error) {
             console.log(error.errors);
-            var errorMessage=error.errors?error.errors:"Invalid Credentials";
+            var errorMessage=error.errors?error.errors:$filter('translate')('INVALID_CREDENTIALS');
             $cordovaToast.showLongBottom(errorMessage)
         });
        // $state.go('app.dashboard');

@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 22/9/16.
  */
-app.controller('ConfirmOTPCtrl', function ($timeout, $q, $scope, $state, $rootScope, $cordovaToast,utilityService, signUpService) {
+app.controller('ConfirmOTPCtrl', function ($timeout, $q, $scope, $state, $rootScope, $cordovaToast,utilityService, signUpService,$filter) {
     $scope.confirm = {};
     $scope.goToHome = function () {
         $state.go('home');
@@ -32,7 +32,7 @@ app.controller('ConfirmOTPCtrl', function ($timeout, $q, $scope, $state, $rootSc
     $scope.confirmOTP = function (){
         var requestData = {
             country_phone_code: $rootScope.userMobDetail.country_phone_code,
-            otp_code: $scope.confirm.code,
+            otp_code: $scope.confirm.code+"",
             username: $rootScope.userMobDetail.mobile
         };
         //var requestData={
@@ -42,8 +42,9 @@ app.controller('ConfirmOTPCtrl', function ($timeout, $q, $scope, $state, $rootSc
         //};
         signUpService.confirmOTP(requestData).then(function (response) {
             console.log("OTP confirmed successfully");
-            $cordovaToast.showShortBottom("Account verified successfully");
             $state.go('home');
+            $cordovaToast.showShortBottom($filter('translate')('OTP_VERIFIED_SUCCESSFULLY'));
+
             console.log(response);
         }).catch(function (error) {
             console.log(error);

@@ -1,5 +1,5 @@
 app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService ,
-$rootScope,$cordovaToast) {
+$rootScope,$cordovaToast,$filter) {
     console.log($stateParams.homeData);
     console.log($stateParams.homeAddress);
     $scope.data = $stateParams.homeData;
@@ -62,7 +62,7 @@ $rootScope,$cordovaToast) {
 
         signUpService.saveUserHome($scope.home).then(function (response) {
             console.log("User created successfully");
-            $cordovaToast.showLongBottom("Home added to your locations successfully");
+            $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));
             $state.go('addWork', {workData: $scope.data})
 
         }).catch(function (error) {

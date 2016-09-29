@@ -1,4 +1,4 @@
-app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService,$rootScope,$cordovaToast) {
+app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService,$rootScope,$cordovaToast,$filter) {
 
     console.log($stateParams.thingData);
     $scope.data = $stateParams.thingData;
@@ -49,10 +49,10 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         signUpService.saveThingsData(thingsData).then(function (response) {
             $state.go('addGroup', {groupData: $scope.data});
             console.log("Equipment added successfully.");
-           $cordovaToast.showShortBottom("Equipment added successfully.");
+           $cordovaToast.showShortBottom($filter('translate')('EQUIPMENT_ADDED_SUCCESSFULLY'));
         }).catch(function (error) {
             console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
+            $cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
         });
     };
 
@@ -89,7 +89,8 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         var things = [];
         var thing1 = {
             equipment_type: $scope.thing.equipType,
-            relationship: $scope.thing.equipRelationship
+            //relationship: $scope.thing.equipRelationship
+            relationship: "Owner"
             //location:$scope.data.equipWhere
         };
         if($scope.thing.haveThingId="have"){
@@ -99,26 +100,35 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         }else{
             thing1.thing_identification="";
         }
-        if($scope.thing.equipType=='Agricultural & forest machinery (tractors)'){
-            thing1.crop=$scope.thing.crop.H3Code;
-            thing1.hectares=$scope.thing.hectare;
-        }
-        if($scope.thing.where=="manual"||$scope.thing.where=="current") {
+        //if($scope.thing.equipType=='Agricultural & forest machinery (tractors)'){
+        //    thing1.crop=$scope.thing.crop.H3Code;
+        //    thing1.hectares=$scope.thing.hectare;
+        //}
+        //if($scope.thing.where=="manual"||$scope.thing.where=="current") {
+        $scope.thing.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+        $scope.thing.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+        $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+        //$scope.thing.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        //$scope.thing.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        $scope.thing.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+        $scope.thing.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
             thing1.location={
-                name:$scope.thing.where=="manual"?"Enter Address":"My Current Location",
+               // name:$scope.thing.where=="manual"?"Enter Address":"My Current Location",
+                name:"My Current Location",
                 latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
                 longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
                 address: $scope.thing.address,
                 city: $scope.thing.city,
                 subdivision_code: $scope.thing.state ? $scope.thing.state : '',
                 country_code: $scope.thing.country
-            }
-        }else{
-            //thing1.location=JSON.parse($scope.data.equipWhere);
-            thing1.location = {
-                name: (JSON.parse($scope.thing.where)).LocationID
-            }
-        }
+            };
+        //}else{
+        //    //thing1.location=JSON.parse($scope.data.equipWhere);
+        //    thing1.location = {
+        //        name: (JSON.parse($scope.thing.where)).LocationID
+        //    }
+        //}
 
 
         things.push(thing1);

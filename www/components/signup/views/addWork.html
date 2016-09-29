@@ -1,140 +1,158 @@
 <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
-    <button ng-click="hideWorkAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
+    <button ng-click="hideWorkAddModal()" style="color:white"
+            class="button back-button buttons  button-clear header-item">
         <i class="icon ion-android-arrow-back"></i>
         <span class="back-text"></span>
     </button>
     <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >{{'ADD_WORK_PLACE' | translate }}
+}">{{'ADD_WORK_PLACE' | translate }}
 
     </h1>
 </ion-header-bar>
 <form name="addWorkForm">
-<ion-content scroll="true" class="blueno-bg has-footer" ng-class="{'has-header':isFromSetting}">
-        <div class="center" style=";width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting" >
+    <ion-content scroll="true" class="blueno-bg has-footer" ng-class="{'has-header':isFromSetting}">
+        <div class="center" style=";width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting">
             <h3 style="color: #ffffff;">
                 <i class="ion-monitor"></i>&nbsp;{{'ADD_WORK' | translate }}
                 <!--<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>-->
             </h3>
         </div>
 
-    <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style=" overflow: scroll;width: 100%;padding: 0;">
-        <!--Work place type-->
-        <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;" >
-            <div class=" wrap-content" style="color: bisque;font-size: 14px;">
-                Providing information here is optional. If you continue, information noted with a * is required before selecting Next below. Or you can skip this step by clicking Skip.
+        <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}"
+             style=" overflow: scroll;width: 100%;padding: 0;">
+            <!--Work place type-->
+            <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;">
+                <div class=" wrap-content" style="color: bisque;font-size: 14px;">
+                    {{'OPTIONAL_INFO_ALERT'| translate}}
+                </div>
             </div>
-        </div>
-        <label class="item item-input item-stacked-label no-border label-padding">
-                    <span class="input-label label-text "  style="color:white">{{'WORK_PLACE_TYPE' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-
-            <select ng-model="data.type" style="width: 100%;" ng-required="true">
-                 <option value="{{type.name}}" ng-repeat="type in workTypes">{{type.name}}</option>
-            </select>
-        </label>
-
-        <!--Relationship-->
-
-        <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-            <select style="width: 100%;" ng-model="data.relationship"  ng-required="true">
-                <option value="Worker">{{'WORKER' | translate }}</option>
-                <option value="Owner">{{'OWNER' | translate }}</option>
-                <option value="Lessor">{{'LESSOR' | translate }}</option>
-            </select>
-        </label>
-
-        <!--Address-->
-        <!--Newly added field which make user to enter manual address-->
-        <label class="item item-input item-stacked-label no-border label-padding">
-                    <span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}
+            <label class="item item-input item-stacked-label no-border label-padding" >
+                    <span class="input-label label-text " style="color:white">{{'NAME' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
-            <select name="location-where" style="width: 100%" ng-model="work.where" ng-required="true"  ng-change="updateLocationFields(work.where)">
-                <option disabled >{{'SELECT_ONE'| translate}}</option>
-                <option ng-repeat="obj in myLocations" value="{{obj}}">
+                <input type="text"  class="edit-input-txt" ng-model="work.name"/>
+            </label>
+            <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'PRODUCT' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <select style="width: 100%;" ng-model="work.crop" ng-required="true"
+                        ng-options="obj.H3Description for obj in productList track by obj.H3Code">
+                </select>
+            </label>
+            <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+            <!--<span class="input-label label-text "  style="color:white">{{'WORK_PLACE_TYPE' | translate }}-->
+            <!--<span class="assertive " style="font-size: inherit">* </span>-->
+            <!--</span>-->
+
+            <!--<select ng-model="data.type" style="width: 100%;" ng-required="true">-->
+            <!--<option value="{{type.name}}" ng-repeat="type in workTypes">{{type.name}}</option>-->
+            <!--</select>-->
+            <!--</label>-->
+
+            <!--Relationship-->
+
+            <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
+            <!--<span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}-->
+            <!--<span class="assertive " style="font-size: inherit">* </span>-->
+            <!--</span>-->
+            <!--<select style="width: 100%;" ng-model="data.relationship"  ng-required="true">-->
+            <!--<option value="Worker">{{'WORKER' | translate }}</option>-->
+            <!--<option value="Owner">{{'OWNER' | translate }}</option>-->
+            <!--<option value="Lessor">{{'LESSOR' | translate }}</option>-->
+            <!--</select>-->
+            <!--</label>-->
+
+            <!--Address-->
+            <!--Newly added field which make user to enter manual address-->
+            <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <select name="location-where" style="width: 100%" ng-model="work.where" ng-required="true"  ng-change="updateLocationFields(work.where)">
+                    <option disabled >{{'SELECT_ONE'| translate}}</option>
+                    <option ng-repeat="obj in myLocations" value="{{obj}}">
                     {{obj.LocationType+"("+obj.LocationName+")"}}
-                </option>
-                <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
-                <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
-            </select>
-        </label>
+                    </option>
+                    <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
+                    <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
+                </select>
+            </label>
 
-        <label class="item item-input item-stacked-label no-border label-padding"  ng-if="enableAddressFields">
-                    <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                    <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-            <input type="text" ng-required="true" class="edit-input-txt"  ng-model="work.address"/>
-        </label>
+                <input type="text" ng-required="true" class="edit-input-txt" ng-model="work.address"/>
+            </label>
 
-        <!--CIty-->
+            <!--CIty-->
 
-        <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
-                    <span class="input-label label-text "  style="color:white">{{'City' | translate }}
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                    <span class="input-label label-text " style="color:white">{{'City' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
-            <input type="text"   ng-model="work.city" class="edit-input-txt"  />
-        </label>
+                <input type="text" ng-model="work.city" class="edit-input-txt"/>
+            </label>
 
-        <!--Country-->
+            <!--Country-->
 
-        <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
-                <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
 
-            <select style="width: 100%" ng-model="data.workCountry" ng-required="true"  ng-change="changeSubdivision(data.workCountry)">
-                <option
-                        ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
-                        ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
-            </select>
-        </label>
-        <!--State-->
+                <select style="width: 100%" ng-model="data.workCountry" ng-required="true"
+                        ng-change="changeSubdivision(data.workCountry)">
+                    <option
+                            ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
+                            ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}
+                    </option>
+                </select>
+            </label>
+            <!--State-->
 
-
-        <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
-                <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                <span class="input-label label-text " style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
-            <select style="width: 100%" ng-model="data.workState" >
-                <option
-                        ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
-                        ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
-            </select>
-        </label>
+                <select style="width: 100%" ng-model="data.workState">
+                    <option
+                            ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
+                            ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
+                    </option>
+                </select>
+            </label>
 
-        <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
-                <!--<span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}-->
-                    <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
-                <!--</span>-->
+            <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
+            <!--<span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}-->
+            <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
+            <!--</span>-->
             <!--<input class="edit-input-txt" ng-model="work.latitude" name="latitude"   type="number"/>-->
-        <!--</label>-->
+            <!--</label>-->
 
-        <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
-                <!--<span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}-->
-                    <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
-                <!--</span>-->
+            <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
+            <!--<span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}-->
+            <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
+            <!--</span>-->
             <!--<input class="edit-input-txt" ng-model="work.longitude" name="longitude"   type="number"/>-->
-        <!--</label>-->
-    </div>
+            <!--</label>-->
+        </div>
 
 
-</ion-content>
-<ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
-    <div  class="button-bar">
+    </ion-content>
+    <ion-footer-bar class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;">
+        <div class="button-bar">
 
-        <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToThing()" style="font-size: 20px;">
-            {{'Skip' | translate }} &nbsp;
-        </button>
-        <button ng-if="isFromSetting"  ng-disabled="addWorkForm.$invalid" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="saveWork()" style="font-size: 20px;">
-            {{'SUBMIT' | translate }}
-        </button>
-        <button ng-if="!isFromSetting" ng-disabled="addWorkForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToThing()" style="font-size: 20px;">
-            {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
-        </button>
-    </div>
-</ion-footer-bar>
+            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"
+                    ng-click="skipToThing()" style="font-size: 20px;">
+                {{'SKIP' | translate }} &nbsp;
+            </button>
+            <button ng-if="!isFromSetting" ng-disabled="addWorkForm.$invalid"
+                    class="button no-border lgt-blue-btn button-small" type="submit" ng-click="goToThing()"
+                    style="font-size: 20px;">
+                {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            </button>
+        </div>
+    </ion-footer-bar>
 </form>

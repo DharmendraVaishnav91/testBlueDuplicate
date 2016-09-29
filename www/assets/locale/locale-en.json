@@ -7,7 +7,15 @@
   "TERMS_OF_REGISTRY":"Terms Of Registry Use",
   "I_HAVE_BLUENUMBER":"I Already Have a Bluenumber",
   "WHAT_IS_YOUR_MOBILE":"What's Your Mobile?",
-
+  "DESCRIPTION":"Description",
+  "CHOOSE_IMAGE_SOURCE":"Choose Image Source",
+  "RESET":"Reset",
+  "FILTER":"Filter",
+  "ABOUT":"About",
+  "GO_TO_SETTING":"Go to settings",
+  "WARNING":"Warning",
+  "ENABLE_LOCATION_IN_SETTING":"Location must be enabled to continue, please go to setting to enable this.",
+  "CONFIRM_SHARE":"Confirm share",
   "SHARE_MY_LOCATION":"Share My Location",
   "NEXT":"Next",
   "WHAT_IS_YOUR_PASSWORD":"What's Your Password?",
@@ -30,6 +38,9 @@
   "FORGOT_PASSWORD":"Forgot Password",
   "REMEMBER_ME":"Remember me",
   "SIGN_UP_FOR_BN":"Sign up for a bluenumber",
+  "ALLOW":"Allow",
+  "DENY":"Deny",
+  "OPTIONAL_INFO_ALERT":"Providing information here is optional. If you continue, information noted with a * is required before selecting Next below. Or you can skip this step by clicking Skip.",
 
   "CREATE_AN_ACCOUNT":"Create Account",
   "COUNTRY":"Country",
@@ -47,7 +58,7 @@
 
   "SELECT_USER_TYPE":"Select Your Type",
   "WHAT_IS_YOUR_TYPE":"What's Your Type?",
-  "FISHER":"Fisher",
+  "FISHERMAN":"Fisherman",
   "FARMER":"Farmer",
   "SELECT_ONE":"Select One",
   "FACTORY_WORKER":"Factory Worker",
@@ -85,11 +96,6 @@
   "WATER_FISHERY":"Water (fishery)",
   "WATER_PORT":"Water (port, dock)",
 
-
-
-
-
-
   "COUNTRY_OF_REGISTRATION":"Country of Registration",
   "MY_FAMILY_MEMBERS":"My Family Members",
   "RELATIONSHIP":"Relationship",
@@ -100,11 +106,22 @@
   "BUYER":"Buyer",
   "SELLER":"Seller",
   "CROP":"Crop",
+  "CROPS":"Crops",
   "HECTARE":"Hectares",
   "INVITATIONS":"Invitations",
 
   "THING_ID":"Thing ID",
   "THING_ID_TYPE":"Thing Id Type",
+
+  "BRAND":"Brand",
+  "EUROPEAN_ARTICLE_NUMBER":"European Article Number (EAN), also called GTIN-13",
+  "MANUFACTURER_PART_NUMBER":"Manufacturer Part Number (MPN)",
+  "LICENSE_PLATE_NUMBER":"License plate number",
+  "CHASSIS_NUMBER":"Chassis number, also Vehicle Identification Number (VIN)",
+  "OTHER_THING_ID":"Other (Please tell us the ID type)",
+  "I_DONT_KNOW_THING_ID":"I don't know my ID type",
+
+
   "THING_HAS_ID":"My thing has an ID",
   "THING_NOT_HAVE_ID":"My thing doesn't have an ID / I don't know if my thing has an ID",
   "MY_THING":"My Things",
@@ -156,6 +173,8 @@
   "NICE":"Nice",
   "COUSIN":"Cousin",
   "WIFE":"Wife",
+  "SON":"Son",
+  "DAUGHTER":"Daughter",
   "HUSBAND":"Husband",
   "LOADING":"Loading",
   "BE_SEEN_BE_FOUND":"Be Seen. Be Found with your bluenumber",
@@ -211,6 +230,8 @@
   "GROUP_INVITE":"Group Invites",
   "INVITE_FRIEND":"Invite a Friend",
   "INVITE_PERSON":"Invite a person",
+  "INVITE_PERSON_HEADER":"Invite a Person",
+
   "INVITE_MORE":"Invite More",
   "INVITED_BY":"Invited By",
   "INVITED_ON":"Invited On",
@@ -287,5 +308,33 @@
   "INVALID_MOBILE":"Number should be of 10 digits",
   "PASSWORD_MIN_LENGTH":"Password should be minimum of eight characters long",
   "FIRST_NAME_MAX_LENGTH":"First name should not be greater than 50 characters",
-  "LAST_NAME_MAX_LENGTH":"Last name should not be greater than 50 characters"
+  "LAST_NAME_MAX_LENGTH":"Last name should not be greater than 50 characters",
+  "BULK_INVITE_SUCCESSFULLY":"Invitations sent Successfully.",
+  "BULK_INVITED_FAILED":"Something went wrong while inviting your contacts.",
+  "FRIEND_INVITED":"Friend Invited Successfully.",
+  "FRIEND_INVITE_FAILED":"Something went wrong while inviting your friend.",
+  "INVALID_CREDENTIALS":"Invalid Credentials.",
+  "INVITATION_SENT_SUCCESSFULLY":"Invitation sent successfully.",
+  "GROUP_ADDED_SUCCESSFULLY":"Group added successfully." ,
+  "GROUP_ADD_FAILED":"Something went wrong while creating group.",
+  "USER_PERSONAL_DETAIL_UPDATED_SUCCESSFULLY":"User personal details updated successfully.",
+  "LOGGED_OUT_SUCCESSFULLY":"Logged out successfully.",
+  "ASSET_CREATE_SUCCESSFULLY":"Asset created successfully.",
+  "WORK_ADDED_SUCCESSFULLY":"Work added successfully.",
+  "OTP_SENT_SUCCESSFULLY":"OTP has been sent to your mobile.",
+  "OTP_VERIFIED_SUCCESSFULLY":"Account verified successfully.",
+  "HOME_ADDED_SUCCESSFULLY":"Home added to your locations successfully.",
+  "EQUIPMENT_ADDED_SUCCESSFULLY":"Equipment added successfully.",
+  "MEMBER_ADDED_SUCCESSFULLY":"Member added successfully",
+  "LOCATION_MUST_BE_SHARED":"Location must be shared to continue with registration.",
+  "REGISTERED_WITH_CURRENT_LOCATION":"Registered successfully with your current location.",
+  "TERMS_OF_REGISTRY_1":"1. You are providing data about yourself voluntarily.",
+  "TERMS_OF_REGISTRY_2":"2. Your data belongs to you, and you always own your data.",
+  "TERMS_OF_REGISTRY_3":"3. Your data will be listed in the Bluenumber Registry for the public good.",
+  "TERMS_OF_REGISTRY_4":" 4. The Bluenumber Foundation manages the data on the Bluenumber Registry and will generate reports using the data.",
+  "TERMS_OF_REGISTRY_5":"5. If the Bluenumber Foundation ever receives any income from any report it generates using your data,you will always be paid a share of the actual income received.",
+  "TERMS_OF_REGISTRY_6":"6.You will always be able to see if your data is used, how much was earned, and what is your share.",
+  "TERMS_OF_REGISTRY_7":"7.The way in which your share is paid will depend on where you live."
+
 }
+

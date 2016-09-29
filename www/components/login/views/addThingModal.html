@@ -51,35 +51,35 @@
 
             </label>
 
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                    <select style="width: 100%" ng-model="thing.equipRelationship" ng-required="true">
-                        <option value="Worker">{{'WORKER' | translate }}</option>
-                        <option value="Owner">{{'OWNER' | translate }}</option>
-                        <option value="Lessor">{{'LESSOR' | translate }}</option>
-                    </select>
-                </label>
-
-
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                    <!--<select style="width: 100%" ng-model="thing.equipWhere" ng-required="true" >-->
-
-                        <!--<option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>-->
-                        <!--<option value="OtherThingLocation">{{'OTHER' | translate }}</option>-->
+                <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
+                    <!--<span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}-->
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <!--</span>-->
+                    <!--<select style="width: 100%" ng-model="thing.equipRelationship" ng-required="true">-->
+                        <!--<option value="Worker">{{'WORKER' | translate }}</option>-->
+                        <!--<option value="Owner">{{'OWNER' | translate }}</option>-->
+                        <!--<option value="Lessor">{{'LESSOR' | translate }}</option>-->
                     <!--</select>-->
-                    <select name="location-where" style="width: 100%" ng-model="thing.where" ng-required="true"  ng-change="updateLocationFields(thing.where)">
-                        <option ng-repeat="obj in myLocations" value="{{obj}}">
-                            {{obj.LocationType+"("+obj.LocationName+")"}}
-                        </option>
-                        <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
-                        <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
-                    </select>
-                </label>
+                <!--</label>-->
+
+
+                <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
+                    <!--<span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}-->
+                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <!--</span>-->
+                    <!--&lt;!&ndash;<select style="width: 100%" ng-model="thing.equipWhere" ng-required="true" >&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option value="OtherThingLocation">{{'OTHER' | translate }}</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                    <!--<select name="location-where" style="width: 100%" ng-model="thing.where" ng-required="true"  ng-change="updateLocationFields(thing.where)">-->
+                        <!--<option ng-repeat="obj in myLocations" value="{{obj}}">-->
+                            <!--{{obj.LocationType+"("+obj.LocationName+")"}}-->
+                        <!--</option>-->
+                        <!--<option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>-->
+                        <!--<option value="manual">{{'ENTER_ADDRESS'|translate}}</option>-->
+                    <!--</select>-->
+                <!--</label>-->
                 <label class="item item-input item-stacked-label no-border label-padding"  ng-if="enableAddressFields">
                     <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>

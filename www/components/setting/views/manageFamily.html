@@ -78,13 +78,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="item no-padding dark-gray-border bg-transparent"  ng-repeat="invitedMember in invitedMemebers" >
+                <div class="item no-padding dark-gray-border bg-transparent"  ng-repeat="invitedMember in invitedMembers.members" >
                     <div class="row" style="color:white;">
                         <div class="col  col-center">
-                            <span class="wrap-content">{{invitedMember.data.name}}</span>
+                            <span class="wrap-content">{{invitedMember.name}}</span>
                         </div>
                         <div class="col  col-center wrap-content" style="overflow: hidden;text-overflow: ellipsis;" >
-                            {{invitedMember.data.relationship}}
+                            {{invitedMember.relationship}}
                         </div>
                     </div>
                 </div>

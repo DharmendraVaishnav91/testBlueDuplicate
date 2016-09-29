@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 1/9/16.
  */
-userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$rootScope,$scope,$state,$ionicModal,utilityService,$cordovaToast,$cordovaContacts) {
+userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$rootScope,$scope,$state,$ionicModal,utilityService,$cordovaToast,$cordovaContacts,$filter) {
     $scope.friend ={};
     $scope.selectedNumber=[];
     $scope.phoneContacts = [];
@@ -32,6 +32,8 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
                         contact.phoneNumbers[k].value=contact.phoneNumbers[k].value.replace("+", "");
                         contact.phoneNumbers[k].value=contact.phoneNumbers[k].value.replace(/[\s]/g, '');
                         contact.phoneNumbers[k].value=contact.phoneNumbers[k].value.replace("-", '');
+                        contact.phoneNumbers[k].value=contact.phoneNumbers[k].value.replace("(", '');
+                        contact.phoneNumbers[k].value=contact.phoneNumbers[k].value.replace(")", '');
                     }
                     $scope.phoneContacts.push(contact);
                 }
@@ -81,12 +83,12 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
         } ;
         console.log(inviteFriendData);
         utilityService.sendBulkInviteToFriend(inviteFriendData).then(function () {
-            console.log("Friend invited successfully.");
-            $cordovaToast.showLongBottom("Friends Invited Successfully.");
+            console.log($filter('translate')('FRIEND_INVITED_SUCCESSFULLY'));
+            $cordovaToast.showLongBottom($filter('translate')('BULK_INVITE_SUCCESSFULLY'));
             $state.go('app.invite');
         }).catch(function (error) {
             console.log(error);
-           $cordovaToast.showLongBottom("Something went wrong while inviting your friend.");
+           $cordovaToast.showLongBottom($filter('translate')('BULK_INVITED_FAILED'));
         })
     };
     $scope.isSelected = function(id) {

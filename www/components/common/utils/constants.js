@@ -58,7 +58,8 @@ var HttpRoutes = {
     groupPendingInvitations:apiUrl+"/gpr/v1/groups/group_invites",
     acceptGroupInvitation:apiUrl+"/gpr/v1/groups/accept_invitation/",
     rejectGroupInvitation:apiUrl+"/gpr/v1/groups/reject_invitation/",
-
+    selectLanguage:apiUrl+"/gpr/v1/preference/select_language" ,
+    fetchPreferredLanguage:apiUrl+"/gpr/v1/preference/language",
 
     fetchWorkPlaces:apiUrl+"/gpr/v1/assets/work_places",
     workTypes:apiUrl+"/gpr/v2/work_types",

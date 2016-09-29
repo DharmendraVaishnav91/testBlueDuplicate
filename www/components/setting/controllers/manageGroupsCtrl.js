@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 26/8/16.
  */
-userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$ionicModal,userSettingService,loginService,utilityService,$cordovaToast,signUpService) {
+userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$ionicModal,userSettingService,loginService,utilityService,$cordovaToast,signUpService,$filter) {
 
     $scope.group={};
     $scope.invite={};
@@ -75,6 +75,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
         $scope.curSelGroup=group;
         console.log("Current selected group");
         console.log($scope.curSelGroup);
+        $scope.group={};
+        $scope.enableAddressFields=false;
         $scope.groupDetail.show();
     };
     $scope.hideGroupDetails = function () {
@@ -85,7 +87,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     };
     $scope.addNewGroup = function () {
         fetchLocation();
-
+        $scope.group={};
+        $scope.enableAddressFields=false;
         $scope.editGroup.show();
     };
     //Change address fields according user choice
@@ -96,8 +99,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
             $scope.group.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.group.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-            $scope.group.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+           // $scope.group.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+           // $scope.group.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
             $scope.group.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.group.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         } else if(locationWay == "manual") {
@@ -105,8 +108,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
             $scope.group.city = "";
             //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
-            $scope.group.latitude = "";
-            $scope.group.longitude = "";
+            //$scope.group.latitude = "";
+           // $scope.group.longitude = "";
             $scope.group.state = "";
             $scope.group.country = "";
         } else{
@@ -117,13 +120,13 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
         loginService.saveGroupsData(groupsData).then(function(response){
             fetchGroups();
             $scope.hideGroupAddModal();
-            $scope.group={};
+
             console.log("Group added successfully.");
-            $cordovaToast.showShortBottom("Group added successfully.")
+            $cordovaToast.showShortBottom($filter('translate')('GROUP_ADDED_SUCCESSFULLY'));
         }).catch(function(error){
             console.log(error);
             //Remove this after demo
-           $cordovaToast.showShortBottom("Something Went wrong while creating group.");
+           $cordovaToast.showShortBottom($filter('translate')('GROUP_ADD_FAILED'));
             // $scope.openModal(openModalType.signUpSuccess);
         });
     };
@@ -151,26 +154,37 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
         var groups=[];
         var group1={
             type:$scope.group.type,
-            relationship:$scope.group.relationship,
-            name:$scope.group.name
+           // relationship:$scope.group.relationship,
+            relationship:"Owner",
+            name:$scope.group.name ,
+            description:$scope.group.description?$scope.group.description:""
             //location:$scope.data.groupLocation
         };
-        //Equipment have location other than existing one
-        if($scope.group.location=='manual'||$scope.group.location=='current') {
+        $scope.group.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+        $scope.group.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+        $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+        // $scope.group.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        // $scope.group.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        $scope.group.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+        $scope.group.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        ////Equipment have location other than existing one
+        //$scope.group.location=='manual'||$scope.group.location=='current') {
             group1.location={
-                name:$scope.group.location=="manual"?"Enter Address":"My Current Location",
-                latitude:$scope.group.latitude,
-                longitude:$scope.group.longitude,
+               //name:$scope.group.location=="manual"?"Enter Address":"My Current Location",
+                name:"My Current Location",
+                latitude:angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
+                longitude:angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
                 address:$scope.group.address,
                 city:$scope.group.city,
                 subdivision_code:$scope.group.state?$scope.group.state:'',
                 country_code:$scope.group.country
             };
-        }else{
-            group1.location={
-                name:(JSON.parse($scope.group.location)).LocationID
-            } ;
-        }
+        //}else{
+        //    group1.location={
+        //        name:(JSON.parse($scope.group.location)).LocationID
+        //    } ;
+        //}
         groups.push(group1);
         var groupsData={
             groups:groups
@@ -197,7 +211,7 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
           console.log("Response of invite in group ");
           console.log(response);
            $scope.showGroupInfo($scope.curSelGroup);
-           $cordovaToast.showLongBottom("Invitation sent successfully.");
+           $cordovaToast.showLongBottom($filter('translate')('INVITATION_SENT_SUCCESSFULLY'));
            $scope.hideInviteModal();
        }).catch(function (error) {
             console.log(error);

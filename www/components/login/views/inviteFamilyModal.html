@@ -5,7 +5,7 @@
             <span class="back-text"></span>
         </button>
         <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >Invite Family</h1>
+}" >{{'ADD_FAMILY' | translate}}</h1>
     </ion-header-bar>
     <form name="inviteFamilyForm">
     <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
@@ -21,22 +21,22 @@
                     </span>
                     <input type="text" name="name" ng-required="true" ng-model="family.name" class="edit-input-txt"  />
                 </label>
-                <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
-            <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
-                <span class="assertive " style="font-size: inherit">* </span>
-            </span>
-                    <select style="width: 100%;font-size:12px;" ng-model="family.phoneCode" ng-required="true">
-                        <option selected value="" disabled>Select country</option>
-                        <option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
-                        </option>
-                    </select>
-                </label>
-                <label class="item item-input item-stacked-label no-border label-padding"  >
-                <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
-                   <span class="assertive " style="font-size: inherit">* </span>
-                </span>
-                    <input type="number" name="mobile" ng-required="true" class="edit-input-txt"  ng-model="family.mobile"/>
-                </label>
+                <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
+            <!--<span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}-->
+                <!--<span class="assertive " style="font-size: inherit">* </span>-->
+            <!--</span>-->
+                    <!--<select style="width: 100%;font-size:12px;" ng-model="family.phoneCode" ng-required="true">-->
+                        <!--<option selected value="" disabled>Select country</option>-->
+                        <!--<option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}-->
+                        <!--</option>-->
+                    <!--</select>-->
+                <!--</label>-->
+                <!--<label class="item item-input item-stacked-label no-border label-padding"  >-->
+                <!--<span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}-->
+                   <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                <!--</span>-->
+                    <!--<input type="number" name="mobile" ng-required="true" class="edit-input-txt"  ng-model="family.mobile"/>-->
+                <!--</label>-->
                 <label class="item item-input item-stacked-label no-border label-padding"  >
                     <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
@@ -44,13 +44,8 @@
                     <select style="width: 100%;" ng-model="family.relationship" name="relationship" ng-required="true">
                         <option value="Mother">{{'MOTHER' | translate }}</option>
                         <option value="Father" selected="selected">{{'FATHER' | translate }}</option>
-                        <option value="Uncle">{{'UNCLE' | translate }}</option>
-                        <option value="Aunt">{{'AUNT' | translate }}</option>
-                        <option value="Nephew">{{'NEPHEW' | translate }}</option>
-                        <option value="Cousin">{{'COUSIN' | translate }}</option>
-                        <option value="Wife">{{'WIFE' | translate }}</option>
-                        <option value="Husband">{{'HUSBAND' | translate }}</option>
-                        <option value="Other">{{'OTHER' | translate }}</option>
+                        <option value="Son">{{'SON' | translate }}</option>
+                        <option value="Daughter">{{'DAUGHTER' | translate }}</option>
                     </select>
                 </label>
             </div>
@@ -60,12 +55,12 @@
             <!--<button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToGroup()" style="font-size: 20px;">-->
             <!--{{'Skip' | translate }} &nbsp;-->
             <!--</button>-->
-            <button ng-if="isFromSetting" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="sendInviteToFamily()" style="font-size: 20px;">
-                {{'Invite' | translate }}
+            <button  ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="sendInviteToFamily()" style="font-size: 20px;">
+                {{'INVITE' | translate }}
             </button>
-            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">
-                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
-            </button>
+            <!--<button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">-->
+                <!--{{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>-->
+            <!--</button>-->
             <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
             <!--<{{'Next' | translate }} <i class="ion-arrow-right-b"></i>-->
             <!--</button>-->

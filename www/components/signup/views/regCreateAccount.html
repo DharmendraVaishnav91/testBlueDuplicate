@@ -14,7 +14,7 @@
             </div>
             <div class="row ">
                 <div class="col center " style="padding-left: 33px;padding-right: 33px;color: bisque;font-size: 15px;">
-                   <span >(Location must be shared to continue with registration process.)</span>
+                   <span >({{'LOCATION_MUST_BE_SHARED'| translate}})</span>
                 </div>
             </div>
             <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
@@ -22,6 +22,7 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <select style="width: 100%;font-size:12px;" ng-model="data.selectedCountry" ng-required="true">
+                    <option selected value="" disabled>{{'SELECT_COUNTRY' | translate}}</option>
                     <option ng-selected="data.selectedCountry==null"></option>
                     <option
                             ng-selected="(obj.CountryCode == userCountry.CountryCode)"
@@ -60,7 +61,7 @@
         <div class="button-bar">
             <button ng-disabled="credentialForm.$invalid" class="button no-border lgt-blue-btn button-small"
                     type="submit" ng-click="goToProfileCreation()" style="font-size: 20px;">
-                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+                {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
 
         </div>

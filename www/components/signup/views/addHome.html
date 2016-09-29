@@ -9,13 +9,13 @@
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
             <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;" >
                 <div class=" wrap-content" style="color: bisque;font-size: 14px;">
-                    Providing information here is optional. If you continue, information noted with a * is required before selecting Next below. Or you can skip this step by clicking Skip.
+                    {{'OPTIONAL_INFO_ALERT'| translate}}
                 </div>
             </div>
             <!--Newly added field which make user to enter manual address-->
             <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <select name="location-where" style="width: 100%" ng-model="locationWay" ng-required="true"  ng-change="updateLocationFields(locationWay)">
                    <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
@@ -79,10 +79,10 @@
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="background: transparent !important;border:none;padding:0px !important;" >
         <div  class="button-bar">
             <button  class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToWork()" style="font-size: 20px;">
-                {{'Skip' | translate }} &nbsp;
+                {{'SKIP' | translate }} &nbsp;
             </button>
             <button ng-disabled="addressForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToWork()" style="font-size: 20px;">
-                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+                {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
 
         </div>

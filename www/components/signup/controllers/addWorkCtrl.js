@@ -1,9 +1,10 @@
-app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast) {
+app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast,$filter) {
     console.log($stateParams.workData);
     $scope.enableCrop = false;
     $scope.isFromSetting = false;
     $scope.data = $stateParams.workData;
     $scope.work = {};
+    $scope.work.name="My Work Place 1";
     $scope.workLocations = [];
     $scope.countryCodeList = utilityService.countryList();
     var fetchWorkTypes= function () {
@@ -16,9 +17,24 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         });
     };
     fetchWorkTypes();
+    var fetchCropList = function(){
+        signUpService.fetchProductsList().then(function(response){
+            $scope.productList=response;
+        }).catch(function(error){
+            console.log(error);
+        });
+    };
+    fetchCropList();
     var fetchLocation = function () {
         signUpService.fetchAllLocation().then(function (response) {
             $scope.myLocations = response;
+            angular.forEach(response, function (location) {
+                if(location.LocationName=='Home'){
+                    $scope.home=angular.copy(location);
+                    console.log("HOme");
+                    console.log($scope.home);
+                }
+            });
         }).catch(function (error) {
             console.log(error);
         });
@@ -40,14 +56,15 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     var saveWorkData = function (workData) {
         signUpService.saveWorkData(workData).then(function (response) {
             console.log("Work added successfully.");
-            $cordovaToast.showShortBottom("Work added successfully.");
+            $cordovaToast.showShortBottom($filter('translate')('WORK_ADDED_SUCCESSFULLY'));
+
            // $cordovaToast.showLongBottom("Work data saved successfully");
             //$scope.closeModal(openModalType.addWork);
             $state.go('addThing', {thingData: $scope.data});
 
         }).catch(function (error) {
             console.log(error);
-            $cordovaToast.showLongBottom("Something went wrong. Please try again");
+            $cordovaToast.showShortBottom($filter('translate')('SOMETHING_WENT_WRONG'));
             //Remove this after demo
             //$scope.openModal(openModalType.addThing);
         });
@@ -85,6 +102,14 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         console.log($scope.data);
         var works = [];
         var location ={};
+        //$scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+        //$scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+        //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        //
+        ////$scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        ////$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        //$scope.data.workState = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+        //$scope.data.workCountry = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         if($scope.work.where=="manual"||$scope.work.where=="current") {
             location={
                 name:$scope.work.where=="manual"?"Enter Address":"My Current Location",
@@ -98,15 +123,32 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             }
         }else{
             //thing1.location=JSON.parse($scope.data.equipWhere);
+
             location = {
                 name: (JSON.parse($scope.work.where)).LocationID
-            }
+            };
         }
+        //location={
+        //            name:"My Current Location",
+        //            latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
+        //            longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
+        //            address: $scope.work.address,
+        //            city: $scope.work.city,
+        //            subdivision_code: $scope.data.workState ? $scope.data.workState : '',
+        //            country_code: $scope.data.workCountry,
+        //            locationtype:"Registration Worksite"
+        //        };
         var work = {
-            type: $scope.data.type,
-            relationship: $scope.data.relationship,
+            //type: $scope.data.type,
+            name:$scope.work.name?$scope.work.name:"",
+            type: "Work",
+            relationship:"Owner",
             location: location
         };
+        if($scope.work.crop){
+            work.crop=$scope.work.crop.H3Code;
+            work.hectares=0;
+        }
         works.push(work);
         var workData = {
             works: works

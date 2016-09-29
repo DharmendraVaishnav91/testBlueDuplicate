@@ -7,17 +7,17 @@
             <div class="row">
                 <div class="col" style="padding-left: 80px;color: white;">
                     <div class="inline-field">
-                        <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
-                               type="radio" id="fisher" name="userType" value="Fisher">
-                        <label for="fisher" style="font-size: 25px">&nbsp;{{'FISHER' | translate }}</label> <br>
+
                         <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
                                type="radio" name="userType" id="farmer" value="Farmer">
-                        <label ng-required="true" for="farmer" style="font-size: 25px ">&nbsp;{{'FARMER' | translate
-                            }}</label> <br>
+                        <label ng-required="true" for="farmer" style="font-size: 25px ">&nbsp;{{'FARMER' | translate}}</label> <br>
                         <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
                                type="radio" name="userType" id="factoryFarmer" value="Factory Worker">
                         <label ng-required="true" for="factoryFarmer" style=" font-size: 25px">&nbsp;{{'FACTORY_WORKER'
                             | translate }}</label><br>
+                        <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
+                               type="radio" id="fisher" name="userType" value="Fisherman">
+                        <label for="fisher" style="font-size: 25px">&nbsp;{{'FISHERMAN' | translate }}</label> <br>
                         <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
                                type="radio" name="userType" id="none" value="other">
                         <label ng-required="true" for="none" style="font-size: 25px" checked="checked">&nbsp;{{'OTHER' |
@@ -26,7 +26,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
     </ion-content>
@@ -35,7 +34,7 @@
         <div class="button-bar">
             <button ng-disabled="selectUserTypeForm.$invalid" class="button no-border lgt-blue-btn button-small"
                     type="submit" ng-click="goToAddHome()" style="font-size: 20px;">
-                {{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+                {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
 
         </div>

@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 9/8/16.
  */
-app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage,userSettingService,$timeout) {
+app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage,userSettingService,$timeout,menuService,$translate) {
 
     // Form data for the login modal
     $rootScope.deviceHeight = $window.innerHeight;
@@ -41,10 +41,20 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
                 }
 
             });
+            menuService.fetchPreferredLanguage().then(function (response) {
+                $translate.use(response.language);
+            }).catch(function (response) {
+
+            });
             $state.go('app.dashboard');
         }
     };
     validateUser();
+    $scope.changeLanguage= function (selectedLang) {
+
+            $translate.use(selectedLang);
+            //$cordovaToast.showLongBottom("Language preference updated successfully");
+    } ;
     $scope.openRegistration= function () {
         $state.go('regCreateAccount');
     };

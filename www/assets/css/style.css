@@ -3,6 +3,10 @@ h1 {
     color: blue;
 }
 
+.home-language-span{
+    font-size: 20px;
+    text-decoration: underline;
+}
 div.leaflet-right {
     display: none;
 }
