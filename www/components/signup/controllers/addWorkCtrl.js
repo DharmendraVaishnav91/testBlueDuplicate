@@ -146,7 +146,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             location: location
         };
         if($scope.work.crop){
-            work.crop=$scope.work.crop.H3Code;
+            work.crop=$scope.work.crop;
             work.hectares=0;
         }
         works.push(work);

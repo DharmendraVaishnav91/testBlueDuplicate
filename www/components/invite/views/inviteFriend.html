@@ -11,7 +11,10 @@
                     <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%" ng-model="friend.friendCountry" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" >
+                    <select style="width: 100%" ng-model="friend.friendCountry" ng-required="true">
+                        <option selected value="" disabled>{{'SELECT_COUNTRY' | translate}}</option>
+                        <option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
+                        </option>
                     </select>
                 </label>
 

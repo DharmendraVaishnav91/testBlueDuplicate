@@ -1,6 +1,7 @@
 {
   "HELLO":"Hello",
   "BLUENUMBER":"Bluenumber",
+  "EDIT_HOME":"Edit Home",
   "BLUENUMBER_COLON":"Bluenumber:",
   "JOIN_BLUENUMBER":"Join Bluenumber",
   "PLEASE_READ":"Please read our",
@@ -51,6 +52,7 @@
   "FIRST_NAME":"First Name",
   "LAST_NAME":"Last Name",
   "SELECT_GENDER":"Select Gender",
+  "SELECT_GROUP_TYPE":"Select Group Type",
   "GENDER":"Gender",
   "WHAT_IS_YOUR_GENDER":"What's Your Gender?",
   "MALE":"Male",
@@ -67,6 +69,7 @@
 
   "ADD_HOME":"Add Home",
   "WHERE_DO_YOU_LIVE":"Where do you live?",
+  "WHERE_YOU_WORK":"Where you work",
   "TYPE_IN_LOCATION":"Type in a location",
   "ADDRESS":"Address",
   "CITY":"City",
@@ -99,6 +102,7 @@
   "COUNTRY_OF_REGISTRATION":"Country of Registration",
   "MY_FAMILY_MEMBERS":"My Family Members",
   "RELATIONSHIP":"Relationship",
+  "SELECT_RELATIONSHIP":"Select Relationship",
   "WORKER":"Worker",
   "OWNER":"Owner",
   "LESSOR":"Lessor",
@@ -112,7 +116,7 @@
 
   "THING_ID":"Thing ID",
   "THING_ID_TYPE":"Thing Id Type",
-
+  "SELECT_ID_TYPE":"Select thing id type",
   "BRAND":"Brand",
   "EUROPEAN_ARTICLE_NUMBER":"European Article Number (EAN), also called GTIN-13",
   "MANUFACTURER_PART_NUMBER":"Manufacturer Part Number (MPN)",
@@ -120,7 +124,8 @@
   "CHASSIS_NUMBER":"Chassis number, also Vehicle Identification Number (VIN)",
   "OTHER_THING_ID":"Other (Please tell us the ID type)",
   "I_DONT_KNOW_THING_ID":"I don't know my ID type",
-
+   "LICENSE_NUMBER":"License number",
+   "SERIAL_NUMBER":"Serial number",
 
   "THING_HAS_ID":"My thing has an ID",
   "THING_NOT_HAVE_ID":"My thing doesn't have an ID / I don't know if my thing has an ID",
@@ -277,6 +282,10 @@
   "GO_TO_LOGIN":"Go to Login",
   "HELLO_USER":"Hello User",
   "SELECT_COUNTRY":"Select Country",
+  "SELECT_PRODUCT":"Select Product",
+  "SELECT_STATE":"Select State",
+  "SELECT_THING_TYPE":"Select Thing Type",
+  "SELECT_CROP":"Select Crop",
   "USER_NAME":"User Name",
   "HOME":"Home",
   "FARM1":"Farm1",
@@ -305,7 +314,7 @@
   "NO_WORK_PLACE" : "No work place added yet. Add by tapping add more button below.",
 
   "BACK":"Back",
-  "INVALID_MOBILE":"Number should be of 10 digits",
+  "INVALID_MOBILE":"Number should be 10 digits",
   "PASSWORD_MIN_LENGTH":"Password should be minimum of eight characters long",
   "FIRST_NAME_MAX_LENGTH":"First name should not be greater than 50 characters",
   "LAST_NAME_MAX_LENGTH":"Last name should not be greater than 50 characters",

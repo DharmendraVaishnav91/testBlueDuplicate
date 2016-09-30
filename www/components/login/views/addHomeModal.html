@@ -34,7 +34,8 @@
 
 
                     <select style="width: 100%" ng-model="data.homeCountry" ng-required="true"  ng-change="changeSubdivision(data.homeCountry)">
-                    <option
+                        <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
+                        <option
                             ng-selected="obj.CountryCode == userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select>
@@ -45,6 +46,7 @@
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
                 <select style="width: 100%" ng-model="data.state" >
+                    <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
                     <option
                             ng-selected="obj.SubdivisionName == userState.SubdivisionName"
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>

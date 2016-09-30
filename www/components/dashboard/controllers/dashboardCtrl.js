@@ -55,7 +55,13 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
         dashboardService.fetchMarkers(param).then(function (response) {
             angular.forEach(response, function (key, val) {
                 if(key.user_info==null){
+                    var pointColor = (key.gender == "Female" ) ? "#EEDB00" : "#1565C0" ;
                     markers["marker" + val] = {
+                        icon:{
+                            markerSymbol: 'circle',
+                            markerSize:'small',
+                            markerColor:pointColor
+                        },
                         layer: "india",
                         lng: parseInt(key.coordinates[0]),
                         lat: parseInt(key.coordinates[1]),
@@ -65,7 +71,11 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
                     }
                 }else{
                     markers["marker" + val] = {
-                        icon:{iconUrl:"assets/img/user-pin.png",iconSize:[25, 30],iconAnchor:   [20, 40]},
+                        icon:{
+                            iconUrl:"assets/img/user-pin.png",
+                            iconSize:[25, 30],
+                            iconAnchor:[20, 40]
+                        },
                         lng: parseInt(key.coordinates[0]),
                         lat: parseInt(key.coordinates[1]),
                         message: key.gender + " " + key.crops,

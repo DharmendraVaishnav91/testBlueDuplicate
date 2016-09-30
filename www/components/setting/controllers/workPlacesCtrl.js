@@ -187,7 +187,7 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
             location: location
         };
         if($scope.work.crop){
-            work.crop=$scope.work.crop.H3Code;
+            work.crop=$scope.work.crop;
             work.hectares=0;
         }
         works.push(work);

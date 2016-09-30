@@ -23,6 +23,7 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <select style="width: 100%" ng-model="thing.equipType" ng-required="true"  ng-change="workTypeChange()">
+                        <option selected disabled value="">{{'SELECT_THING_TYPE' | translate}}</option>
                         <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                         <!--<option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>-->
@@ -36,8 +37,9 @@
                     <span class="input-label label-text "  style="color:white">{{'CROP' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <select style="width: 100%;" ng-model="thing.crop" ng-required="true"
-                        ng-options="obj.H3Description for obj in productList track by obj.H3Code">
+                <select style="width: 100%;" ng-model="thing.crop" ng-required="true">
+                    <option selected disabled value="">{{'SELECT_CROP' | translate}}</option>
+                    <option ng-repeat="obj in productList | orderBy:'H3Description'" value="{{obj.H3Code}}">{{obj.H3Description}}</option>
                 </select>
             </label>
 
@@ -101,6 +103,7 @@
                     <!--<select style="width: 100%" ng-model="thing.country" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(thing.country.CountryCode)">-->
                     <!--</select>-->
                     <select style="width: 100%" ng-model="thing.country" ng-required="true"  ng-change="changeSubdivision(thing.country)">
+                        <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
                     <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                     </select>
@@ -114,8 +117,8 @@
                     <!--<select style="width: 100%" ng-model="thing.state" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">-->
                     <!--</select>-->
                     <select style="width: 100%" ng-model="thing.state" >
-                        <option
-                                ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
+                        <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
+                        <option ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                                 ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
                     </select>
                 </label>

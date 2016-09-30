@@ -1,0 +1,92 @@
+<ion-modal-view style="z-index:8">
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
+        <button ng-click="hideEditHomeModal()" style="color:white"
+                class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
+        <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
+}">{{'EDIT_HOME' | translate }}</h1>
+    </ion-header-bar>
+    <form name="addressForm">
+        <ion-content scroll="true" class="blueno-bg-full has-footer">
+            <!--<div class="center" style="width: inherit;height: auto;padding-top:15px">-->
+                <!--<h3 style="color: #ffffff;">-->
+                    <!--<i class="ion-home"></i>&nbsp; {{'ADD_HOME' | translate }}-->
+                    <!--&lt;!&ndash;<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>&ndash;&gt;-->
+                <!--</h3>-->
+            <!--</div>-->
+            <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}"
+                 style="overflow: scroll;width: 100%;padding: 0;">
+                <!--<div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;">-->
+                    <!--<div class=" wrap-content" style="color: bisque;font-size: 14px;">-->
+                        <!--{{'OPTIONAL_INFO_ALERT'| translate}}-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--Newly added field which make user to enter manual address-->
+                <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+                <!--<span class="input-label label-text " style="color:white">{{'LOCATION_WHERE' | translate }}-->
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                <!--</span>-->
+                    <!--<select name="location-where" style="width: 100%" ng-model="home.where" ng-required="true"-->
+                            <!--ng-change="updateLocationFields(home.where)">-->
+                        <!--<option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>-->
+                        <!--<option value="manual">{{'ENTER_ADDRESS'|translate}}</option>-->
+                    <!--</select>-->
+                <!--</label>-->
+
+
+                <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                    <input class="edit-input-txt" ng-model="newHome.address" name="address" ng-required="true"
+                           type="text"/>
+                </label>
+
+                <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'CITY' | translate }}
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                </span>
+                    <input class="edit-input-txt" ng-model="newHome.city" name="city" type="text"/>
+                </label>
+
+                <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+
+                    <select style="width: 100%" ng-model="newHome.country" ng-required="true"
+                            ng-change="changeSubdivision(newHome.country)">
+                        <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
+                        <option ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}
+                        </option>
+                    </select>
+                </label>
+                <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'STATE' | translate }}
+                    <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
+                </span>
+                    <select style="width: 100%" ng-model="newHome.state">
+                        <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
+                        <option ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
+                        </option>
+                    </select>
+                </label>
+            </div>
+        </ion-content>
+        <ion-footer-bar class="text-center bar-stable blue-bg" style="padding:0px !important;">
+            <div class="button-bar">
+                <button class="button no-border lgt-blue-btn button-small" type="submit" ng-click="hideEditHomeModal()"
+                        style="font-size: 20px;">
+                    {{'CANCEL' | translate }} &nbsp;
+                </button>
+                <button ng-disabled="addressForm.$invalid" class="button no-border lgt-blue-btn button-small"
+                        type="submit" ng-click="goToWork()" style="font-size: 20px;">
+                    {{'SAVE' | translate }}
+                </button>
+
+            </div>
+        </ion-footer-bar>
+    </form>
+</ion-modal-view>

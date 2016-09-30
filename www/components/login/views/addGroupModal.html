@@ -22,6 +22,7 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                 <select style="width: 100%" ng-required="true" ng-model="group.type" name="groupType">
+                    <option value="" disabled selected>{{'SELECT_GROUP_TYPE' | translate}}</option>
                     <option ng-repeat="obj in groupsType" value="{{obj.name}}">{{obj.name}}</option>
                 </select>
             </label>
@@ -75,8 +76,8 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <select style="width: 100%" ng-model="group.country" ng-required="true"  ng-change="changeSubdivision(group.country)" name="country">
-                    <option
-                            ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
+                    <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
+                    <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select>
             </label>
@@ -86,6 +87,7 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <select style="width: 100%" ng-model="group.state" ng-required="subDivList.length!=0?true:false"  name="state">
+                    <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
                     <option
                             ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>

@@ -7,6 +7,11 @@
             </h3>
         </div>
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
+            <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;">
+                <div class=" wrap-content" style="color: bisque;font-size: 14px;">
+                    {{'OPTIONAL_INFO_ALERT'| translate}}
+                </div>
+            </div>
             <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text " style="color:white">{{'FULL_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
@@ -34,11 +39,13 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                 <select style="width: 100%;" ng-model="family.relationship" name="relationship" ng-required="true">
-                    <option value="" selected disabled>Select relationship</option>
+                    <option value="" selected disabled>{{'SELECT_RELATIONSHIP' | translate}}</option>
                     <option value="Mother">{{'MOTHER' | translate }}</option>
                     <option value="Father" selected="selected">{{'FATHER' | translate }}</option>
                     <option value="Son">{{'SON' | translate }}</option>
                     <option value="Daughter">{{'DAUGHTER' | translate }}</option>
+                    <option value="Husband">{{'HUSBAND' | translate }}</option>
+                    <option value="Wife">{{'WIFE' | translate }}</option>
 
                     <!--<option value="Other">{{'OTHER' | translate }}</option>-->
                 </select>

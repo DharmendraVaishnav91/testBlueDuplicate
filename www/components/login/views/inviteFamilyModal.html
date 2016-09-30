@@ -1,11 +1,10 @@
 <ion-modal-view  >
     <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" >
-        <button ng-click="hideInviteFamilyModal()" style="color:white" class="button back-button buttons  button-clear header-item">
-            <i class="icon ion-android-arrow-back"></i>
-            <span class="back-text"></span>
-        </button>
-        <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >{{'ADD_FAMILY' | translate}}</h1>
+        <!--<button ng-click="hideInviteFamilyModal()" style="color:white" class="button back-button buttons  button-clear header-item">-->
+            <!--<i class="icon ion-android-arrow-back"></i>-->
+            <!--<span class="back-text"></span>-->
+        <!--</button>-->
+        <h1 class="title " style="max-width:none;text-align: center" >{{'ADD_FAMILY' | translate}}</h1>
     </ion-header-bar>
     <form name="inviteFamilyForm">
     <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
@@ -42,21 +41,24 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <select style="width: 100%;" ng-model="family.relationship" name="relationship" ng-required="true">
+                        <option value="" selected disabled>{{'SELECT_RELATIONSHIP' | translate}}</option>
                         <option value="Mother">{{'MOTHER' | translate }}</option>
                         <option value="Father" selected="selected">{{'FATHER' | translate }}</option>
                         <option value="Son">{{'SON' | translate }}</option>
                         <option value="Daughter">{{'DAUGHTER' | translate }}</option>
+                        <option value="Husband">{{'HUSBAND' | translate }}</option>
+                        <option value="Wife">{{'WIFE' | translate }}</option>
                     </select>
                 </label>
             </div>
     </ion-content>
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
         <div  class="button-bar">
-            <!--<button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToGroup()" style="font-size: 20px;">-->
-            <!--{{'Skip' | translate }} &nbsp;-->
-            <!--</button>-->
+            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="hideInviteFamilyModal()" style="font-size: 20px;">
+            {{'CANCEL' | translate }} &nbsp;
+            </button>
             <button  ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="sendInviteToFamily()" style="font-size: 20px;">
-                {{'INVITE' | translate }}
+                {{'SAVE' | translate }}
             </button>
             <!--<button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">-->
                 <!--{{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>-->

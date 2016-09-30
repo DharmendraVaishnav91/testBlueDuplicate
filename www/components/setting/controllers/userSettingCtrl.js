@@ -5,6 +5,7 @@ var userSetting = angular.module('app.userSetting',[]);
 userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ionicModal,$localStorage,utilityService,userSettingService,signUpService,$cordovaToast,$filter) {
 
     $scope.isFromSetting=true;
+
     var updatedImage='';
     $ionicModal.fromTemplateUrl('components/setting/views/editAccount.html', {
         scope: $scope,
@@ -13,7 +14,15 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
         $scope.editAccountModal= modal;
 
     });
+    $ionicModal.fromTemplateUrl('components/setting/views/addHomeModal.html', {
+        scope: $scope,
+        animation: 'slide-in-right'
+    }).then(function (modal) {
+        $scope.editHome= modal;
+
+    });
     $scope.home=null;
+    $scope.newHome={};
     $rootScope.addressDataFromCoordinate={};
     var fetchCurrentLocation= function () {
         utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
@@ -100,10 +109,33 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
             $cordovaToast.showShortBottom($filter('translate')('USER_PERSONAL_DETAIL_UPDATED_SUCCESSFULLY'));
         });
     };
+    var fetchStates = function (countryCode) {
+        signUpService.fetchStates(countryCode).then(function (response) {
+            $scope.subDivList = response;
+        }).catch(function (error) {
+            console.log(error);
+        })
+    };
+    $scope.countryCodeList = utilityService.countryList();
+    $scope.changeSubdivision = function (countryCode) {
+        fetchStates(countryCode);
+    };
+
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
     };
-
+    $scope.editUserHome= function () {
+        $scope.newHome.address=angular.copy($scope.home.StreetAddressOne);
+        $scope.newHome.city=angular.copy($scope.home.Settlement);
+        $scope.newHome.state=angular.copy($scope.home.SubdivisionID);
+        $scope.newHome.country=angular.copy($scope.home.CountryCode);
+        $scope.newHome.latitude=angular.copy($scope.home.Latitude);
+        $scope.newHome.longitude=angular.copy($scope.home.Longitude);
+        $scope.editHome.show();
+    };
+    $scope.hideEditHomeModal= function () {
+        $scope.editHome.hide();
+    } ;
     $scope.goToWorkPlaces=function(){
         $state.go('app.workPlaces');
     };

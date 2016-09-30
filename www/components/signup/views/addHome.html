@@ -17,7 +17,7 @@
                 <span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select name="location-where" style="width: 100%" ng-model="locationWay" ng-required="true"  ng-change="updateLocationFields(locationWay)">
+                <select name="location-where" style="width: 100%" ng-model="locationWay" ng-required="true"  ng-change="updateLocationFields(locationWay)">                 <option value="" disabled selected>{{'SELECT_ONE' | translate}}</option>
                    <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
                    <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
                 </select>
@@ -44,7 +44,8 @@
                 </span>
 
                     <select style="width: 100%" ng-model="data.homeCountry" ng-required="true"  ng-change="changeSubdivision(data.homeCountry)">
-                    <option
+                        <option value="" disabled selected>{{'SELECT_COUNTRY' | translate}}</option>
+                        <option
                             ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select>
@@ -55,6 +56,7 @@
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
                 <select style="width: 100%" ng-model="data.state" >
+                    <option value="" disabled selected>{{'SELECT_STATE' | translate}}</option>
                     <option
                             ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>

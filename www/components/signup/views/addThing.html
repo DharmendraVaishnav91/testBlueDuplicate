@@ -20,6 +20,7 @@
                     </span>
                     <select style="width: 100%" ng-model="thing.equipType" ng-required="true" ng-change="workTypeChange()">
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
+                        <option value="" disabled selected>{{'SELECT_THING_TYPE' | translate}}</option>
                         <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
                     </select>
                 </label>
@@ -71,11 +72,14 @@
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
                     <select style="width: 100%" ng-model="thing.thingIdType" >
-                        <option value="Brand">{{'BRAND' | translate }}</option>
-                        <option value="European Article Number (EAN), also called GTIN-13">{{'EUROPEAN_ARTICLE_NUMBER' | translate}}</option>
-                        <option value="Manufacturer Part Number (MPN)">{{'MANUFACTURER_PART_NUMBER' | translate}}</option>
-                        <option value="License plate number">{{'LICENSE_PLATE_NUMBER'| translate}}</option>
-                        <option value="Chassis number, also Vehicle Identification Number (VIN)">{{'CHASSIS_NUMBER' | translate}}</option>
+                        <!--<option value="Brand">{{'BRAND' | translate }}</option>-->
+                        <!--<option value="European Article Number (EAN), also called GTIN-13">{{'EUROPEAN_ARTICLE_NUMBER' | translate}}</option>-->
+                        <!--<option value="Manufacturer Part Number (MPN)">{{'MANUFACTURER_PART_NUMBER' | translate}}</option>-->
+                        <!--<option value="License plate number">{{'LICENSE_PLATE_NUMBER'| translate}}</option>-->
+                        <!--<option value="Chassis number, also Vehicle Identification Number (VIN)">{{'CHASSIS_NUMBER' | translate}}</option>-->
+                        <option value="" disabled selected>{{'SELECT_ID_TYPE' | translate}}</option>
+                        <option value="License number">{{'LICENSE_NUMBER' | translate}}</option>
+                        <option value="Serial number">{{'SERIAL_NUMBER' | translate}}</option>
                         <option value="Other (Please tell us the ID type)">{{'OTHER_THING_ID' | translate}}</option>
                         <option value="I don't know my ID type">{{'I_DONT_KNOW_THING_ID' | translate}}</option>
                     </select>
@@ -126,6 +130,7 @@
 
                     <select style="width: 100%" ng-model="thing.country" ng-required="true"
                             ng-change="changeSubdivision(thing.country)">
+                        <option value="" disabled selected>{{'SELECT_COUNTRY' | translate}}</option>
                         <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                                 ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                     </select>
@@ -139,6 +144,7 @@
                     </span>
                     <select style="width: 100%" ng-model="thing.state"
                             ng-required="subDivList.length!=0?true:false">
+                        <option value="" disabled selected>{{'SELECT_STATE' | translate}}</option>
                         <option
                                 ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                                 ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>

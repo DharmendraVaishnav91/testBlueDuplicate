@@ -14,7 +14,7 @@ userSetting.controller('InviteFriendCtrl', function($filter,loginService,$scope,
         console.log("Friend details");
 
         var inviteFriendData={
-            friend:parseInt($scope.friend.friendCountry.CountryPhoneCode+$scope.friend.friendMobile)
+            friend:parseInt($scope.friend.friendCountry+$scope.friend.friendMobile)
         } ;
         console.log(inviteFriendData);
         utilityService.sendAppInviteToFriend(inviteFriendData).then(function () {
