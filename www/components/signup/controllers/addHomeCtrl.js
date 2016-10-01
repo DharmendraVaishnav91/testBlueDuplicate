@@ -62,8 +62,8 @@ $rootScope,$cordovaToast,$filter) {
 
         signUpService.saveUserHome($scope.home).then(function (response) {
             console.log("User created successfully");
+            $state.go('addWork', {workData: $scope.data});
             $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));
-            $state.go('addWork', {workData: $scope.data})
 
         }).catch(function (error) {
             var errorMessage = "";

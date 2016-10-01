@@ -1,11 +1,10 @@
-<ion-modal-view  style="z-index:8">
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" >
-        <button ng-click="hideWorkAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
-            <i class="icon ion-android-arrow-back"></i>
-            <span class="back-text"></span>
-        </button>
-        <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >{{'ADD_WORK_PLACE' | translate }}</h1>
+<ion-modal-view >
+    <ion-header-bar class="bar bar-header blue-bg no-border">
+        <!--<button ng-click="hideWorkAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">-->
+            <!--<i class="icon ion-android-arrow-back"></i>-->
+            <!--<span class="back-text"></span>-->
+        <!--</button>-->
+        <h1 class="title" style="max-width:none;text-align: center !important;" >{{'ADD_WORK_PLACE' | translate }}</h1>
     </ion-header-bar>
     <form name="addWorkForm">
     <ion-content scroll="true" class="blueno-bg-full has-footer has-header" >
@@ -133,9 +132,12 @@
         </div>
 
     </ion-content>
-    <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
+    <ion-footer-bar  class="text-center bar-stable blue-bg no-border">
         <div  class="button-bar">
-            <button ng-disabled="addWorkForm.$invalid" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="saveWork()" style="font-size: 20px;">
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="hideWorkAddModal()">
+                {{'CANCEL' | translate }}
+            </button> &nbsp;
+            <button ng-disabled="addWorkForm.$invalid" class="button  button-light button-clear bold" type="submit"  ng-click="saveWork()">
                 {{'SUBMIT' | translate }}
             </button>
 

@@ -1,5 +1,5 @@
 <form name="selectUserTypeForm">
-    <ion-content scroll="true" class="blueno-bg">
+    <ion-content scroll="true" class="blueno-bg-full has-footer">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px">
             <h3 style="color: #ffffff;">{{'SELECT_USER_TYPE' | translate }}</h3>
         </div>
@@ -29,11 +29,10 @@
         </div>
 
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg"
-                    style="background: transparent !important;border:none;padding:0px !important;">
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border" >
         <div class="button-bar">
-            <button ng-disabled="selectUserTypeForm.$invalid" class="button no-border lgt-blue-btn button-small"
-                    type="submit" ng-click="goToAddHome()" style="font-size: 20px;">
+            <button ng-disabled="selectUserTypeForm.$invalid" class="button button-light button-clear bold"
+                    type="submit" ng-click="goToAddHome()">
                 {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
 

@@ -36,6 +36,7 @@
   "CONFIRM":"Confirm",
   "MOBILE":"Mobile",
   "PASSWORD":"Password",
+  "CREATE_PASSWORD":"Create a password",
   "FORGOT_PASSWORD":"Forgot Password",
   "REMEMBER_ME":"Remember me",
   "SIGN_UP_FOR_BN":"Sign up for a bluenumber",
@@ -115,7 +116,7 @@
   "INVITATIONS":"Invitations",
 
   "THING_ID":"Thing ID",
-  "THING_ID_TYPE":"Thing Id Type",
+  "THING_ID_TYPE":"Thing ID Type",
   "SELECT_ID_TYPE":"Select thing id type",
   "BRAND":"Brand",
   "EUROPEAN_ARTICLE_NUMBER":"European Article Number (EAN), also called GTIN-13",

@@ -1,12 +1,7 @@
 <ion-view  view-title="{{'INVITE_PERSON_HEADER' | translate}}" >
+    <form name="inviteFriendForm">
     <ion-content scroll="false" class="blueno-bg-full" >
-
-        <form name="inviteFriendForm">
-            <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
-    overflow: scroll;
-    width: 100%;
-    padding: 0;">
-
+            <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
                 <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
@@ -27,31 +22,18 @@
                 </label>
 
             </div>
-        </form>
+
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" >
-        <div  class="button-bar">
-            <button type="submit"  class="button button-clear button-balanced" style="font-size: 20px;font-weight: bold" ng-click="inviteFriend()">
-                 {{'INVITE' | translate }}
-            </button>
-        </div>
-    </ion-footer-bar>
-    <ion-footer-bar class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;">
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
-            <button  class="button no-border lgt-blue-btn button-small"
-                     ng-click="backToInvite()" style="font-size: 20px;">
+            <button  class="button button-light button-clear bold" ng-click="backToInvite()" >
                 {{'CANCEL' | translate }} &nbsp;
             </button>
-            <!--<button ng-if="isFromSetting" ng-disabled="addThingForm.$invalid"-->
-            <!--ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small"-->
-            <!--type="submit" ng-click="createThing()" style="font-size: 20px;">-->
-            <!--{{'SUBMIT' | translate }}-->
-            <!--</button>-->
-            <button class="button no-border lgt-blue-btn button-small" type="submit" ng-click="inviteFriend()"
-                     style="font-size: 20px;">
+            <button class="button button-light button-clear bold" ng-disabled="inviteFriendForm.$invalid" type="submit" ng-click="inviteFriend()">
                 {{'INVITE' | translate }}
             </button>
 
         </div>
     </ion-footer-bar>
+    </form>
 </ion-view>

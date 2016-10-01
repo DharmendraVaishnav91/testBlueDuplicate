@@ -52,21 +52,15 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         fetchStates(countryCode);
     };
 
-
     var saveWorkData = function (workData) {
         signUpService.saveWorkData(workData).then(function (response) {
             console.log("Work added successfully.");
-            $cordovaToast.showShortBottom($filter('translate')('WORK_ADDED_SUCCESSFULLY'));
-
-           // $cordovaToast.showLongBottom("Work data saved successfully");
-            //$scope.closeModal(openModalType.addWork);
             $state.go('addThing', {thingData: $scope.data});
+            $cordovaToast.showShortBottom($filter('translate')('WORK_ADDED_SUCCESSFULLY'));
 
         }).catch(function (error) {
             console.log(error);
             $cordovaToast.showShortBottom($filter('translate')('SOMETHING_WENT_WRONG'));
-            //Remove this after demo
-            //$scope.openModal(openModalType.addThing);
         });
 
     };

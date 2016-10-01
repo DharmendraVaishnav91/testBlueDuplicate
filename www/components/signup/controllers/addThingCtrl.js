@@ -93,7 +93,7 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
             relationship: "Owner"
             //location:$scope.data.equipWhere
         };
-        if($scope.thing.haveThingId="have"){
+        if($scope.thing.haveThingId=="have"){
             thing1.thing_identification="has_thing_id";
             thing1.thing_id= $scope.thing.thingId?$scope.thing.thingId:"";
             thing1.thing_id_type=$scope.thing.thingIdType?$scope.thing.thingIdType:"";

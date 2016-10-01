@@ -124,14 +124,54 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
     };
-    $scope.editUserHome= function () {
-        $scope.newHome.address=angular.copy($scope.home.StreetAddressOne);
-        $scope.newHome.city=angular.copy($scope.home.Settlement);
-        $scope.newHome.state=angular.copy($scope.home.SubdivisionID);
-        $scope.newHome.country=angular.copy($scope.home.CountryCode);
-        $scope.newHome.latitude=angular.copy($scope.home.Latitude);
-        $scope.newHome.longitude=angular.copy($scope.home.Longitude);
+    $scope.editUserHome= function (home) {
+        if(home!=null){
+            $scope.newHome.address=angular.copy($scope.home.StreetAddressOne);
+            $scope.newHome.city=angular.copy($scope.home.Settlement);
+            $scope.newHome.country=angular.copy($scope.home.CountryCode);
+            $scope.changeSubdivision($scope.newHome.country);
+            $scope.newHome.state=angular.copy($scope.home.subdivision_code);
+            $scope.newHome.stateId=angular.copy($scope.home.SubdivisionID);
+
+            $scope.newHome.latitude=angular.copy($scope.home.Latitude);
+            $scope.newHome.longitude=angular.copy($scope.home.Longitude);
+        }else{
+            $scope.newHome={};
+        }
+
         $scope.editHome.show();
+    };
+    $scope.saveHome = function () {
+       var data={};
+        if ($scope.newHome.state != undefined && $scope.newHome.state != null) {
+            //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
+            data.subdivision_code = $scope.newHome.state;
+        } else {
+            data.subdivision_code = "";
+        }
+        //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+        data.address = $scope.newHome.address;
+        data.city=$scope.newHome.city;
+
+        data.country_code = $scope.newHome.country;
+        data.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        data.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        data.name = 'Home';
+        console.log("Add home data");
+        console.log($scope.home);
+
+        signUpService.saveUserHome(data).then(function (response) {
+            console.log("User created successfully");
+            fetchLocation();
+            $scope.hideEditHomeModal();
+            $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));
+
+        }).catch(function (error) {
+
+            var errorMessage = $filter('translate')('SOMETHING_WENT_WRONG');
+                $cordovaToast.showLongBottom(errorMessage);
+                console.log(error);
+        });
     };
     $scope.hideEditHomeModal= function () {
         $scope.editHome.hide();

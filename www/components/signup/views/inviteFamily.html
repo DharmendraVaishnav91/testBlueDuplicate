@@ -52,14 +52,14 @@
             </label>
         </div>
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;">
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
-            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">
+            <button class="button button-light button-clear bold" type="submit"  ng-click="skipToSuccess()">
                 {{'SKIP' | translate }} &nbsp;
             </button>
 
-            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"
-                    ng-click="sendInviteToFamily()" style="font-size: 20px;">
+            <button ng-disabled="inviteFamilyForm.$invalid" class="button button-light button-clear bold" type="submit"
+                    ng-click="sendInviteToFamily()" >
                 {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
         </div>

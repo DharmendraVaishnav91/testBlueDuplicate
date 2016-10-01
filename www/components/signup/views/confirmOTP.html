@@ -41,12 +41,12 @@
             </label>
 
         </ion-content>
-        <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
+        <ion-footer-bar  class="text-center bar-stable blue-bg no-border" >
             <div  class="button-bar">
-                <button  class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="requestOTP()" style="font-size: 20px;">
+                <button  class="button button-light button-clear bold" type="submit"  ng-click="requestOTP()">
                     {{'REQUEST_OTP' | translate }}
                 </button>
-                <button ng-disabled="confirmAccountForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="confirmOTP()" style="font-size: 20px;">
+                <button ng-disabled="confirmAccountForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="confirmOTP()" >
                     {{'NEXT' | translate }}
                 </button>
             </div>

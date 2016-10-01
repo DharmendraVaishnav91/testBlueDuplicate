@@ -1,16 +1,5 @@
-<ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" ng-if="isFromSetting">
-    <button ng-click="hideWorkAddModal()" style="color:white"
-            class="button back-button buttons  button-clear header-item">
-        <i class="icon ion-android-arrow-back"></i>
-        <span class="back-text"></span>
-    </button>
-    <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}">{{'ADD_WORK_PLACE' | translate }}
-
-    </h1>
-</ion-header-bar>
 <form name="addWorkForm">
-    <ion-content scroll="true" class="blueno-bg has-footer" ng-class="{'has-header':isFromSetting}">
+    <ion-content scroll="true" class="blueno-bg-full has-footer" ng-class="{'has-header':isFromSetting}">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px" ng-if="!isFromSetting">
             <h3 style="color: #ffffff;">
                 <i class="ion-monitor"></i>&nbsp;{{'ADD_WORK' | translate }}
@@ -142,16 +131,15 @@
 
 
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;">
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border" >
         <div class="button-bar">
 
-            <button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"
-                    ng-click="skipToThing()" style="font-size: 20px;">
+            <button class="button button-light button-clear bold" type="submit"
+                    ng-click="skipToThing()">
                 {{'SKIP' | translate }} &nbsp;
             </button>
-            <button ng-if="!isFromSetting" ng-disabled="addWorkForm.$invalid"
-                    class="button no-border lgt-blue-btn button-small" type="submit" ng-click="goToThing()"
-                    style="font-size: 20px;">
+            <button ng-disabled="addWorkForm.$invalid"
+                    class="button button-light button-clear bold" type="submit" ng-click="goToThing()">
                 {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
         </div>

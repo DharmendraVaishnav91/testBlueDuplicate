@@ -1,5 +1,5 @@
 <form name="basicInfoForm">
-<ion-content scroll="true" class="blueno-bg-full no-margin">
+<ion-content scroll="true" class="blueno-bg-full has-footer">
     <div class="center" style=";width: inherit;height: auto;padding-top:15px" >
           <h3 style="color: #ffffff;"> {{'CREATE_PROFILE' | translate }}</h3>
     </div>
@@ -40,9 +40,9 @@
             </div>
 
 </ion-content>
-<ion-footer-bar  class="text-center bar-stable blue-bg" style="padding:0px !important;" >
+<ion-footer-bar  class="text-center bar-stable blue-bg no-border">
     <div  class="button-bar">
-        <button ng-disabled="basicInfoForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToSelectUserType()" style="font-size: 20px;">
+        <button ng-disabled="basicInfoForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="goToSelectUserType()">
             {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
         </button>
     </div>

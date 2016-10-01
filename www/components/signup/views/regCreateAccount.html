@@ -1,5 +1,5 @@
 <form name="credentialForm">
-    <ion-content scroll="true" class="blueno-bg-full has-footer no-margin has-footer" has-footer="true">
+    <ion-content scroll="true" class="blueno-bg-full has-footer" has-footer="true">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px">
             <h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>
         </div>
@@ -47,7 +47,7 @@
 
             </label>
             <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text " style="color:white">{{'PASSWORD' | translate }}
+                <span class="input-label label-text " style="color:white">{{'CREATE_PASSWORD' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" ng-model="loginData.user.password" name="password" ng-required="true"
@@ -56,11 +56,10 @@
             </label>
         </div>
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg"
-                    style="padding:0px !important;">
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
-            <button ng-disabled="credentialForm.$invalid" class="button no-border lgt-blue-btn button-small"
-                    type="submit" ng-click="goToProfileCreation()" style="font-size: 20px;">
+            <button ng-disabled="credentialForm.$invalid" class="button button-clear button-light bold"
+                    type="submit" ng-click="goToProfileCreation()" >
                 {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
 

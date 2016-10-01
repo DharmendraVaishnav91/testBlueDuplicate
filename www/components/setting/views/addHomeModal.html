@@ -1,12 +1,11 @@
-<ion-modal-view style="z-index:8">
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
-        <button ng-click="hideEditHomeModal()" style="color:white"
-                class="button back-button buttons  button-clear header-item">
-            <i class="icon ion-android-arrow-back"></i>
-            <span class="back-text"></span>
-        </button>
-        <h1 class="title" style="max-width:none;text-align: left !important;left: 23px !important;right:0px !important;
-}">{{'EDIT_HOME' | translate }}</h1>
+<ion-modal-view >
+    <ion-header-bar class="bar bar-header blue-bg no-border">
+        <!--<button ng-click="hideEditHomeModal()" style="color:white"-->
+                <!--class="button back-button buttons  button-clear header-item">-->
+            <!--<i class="icon ion-android-arrow-back"></i>-->
+            <!--<span class="back-text"></span>-->
+        <!--</button>-->
+        <h1 class="title" style=" max-width:none;text-align: center !important;">{{'EDIT_HOME' | translate }}</h1>
     </ion-header-bar>
     <form name="addressForm">
         <ion-content scroll="true" class="blueno-bg-full has-footer">
@@ -69,20 +68,20 @@
                 </span>
                     <select style="width: 100%" ng-model="newHome.state">
                         <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
-                        <option ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
+                        <option  ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
                         </option>
                     </select>
                 </label>
             </div>
         </ion-content>
-        <ion-footer-bar class="text-center bar-stable blue-bg" style="padding:0px !important;">
+        <ion-footer-bar class="text-center bar-stable blue-bg no-border" style="padding:0px !important;">
             <div class="button-bar">
-                <button class="button no-border lgt-blue-btn button-small" type="submit" ng-click="hideEditHomeModal()"
-                        style="font-size: 20px;">
+                <button class="button button-clear button-light bold" type="submit" ng-click="hideEditHomeModal()"
+                        >
                     {{'CANCEL' | translate }} &nbsp;
                 </button>
-                <button ng-disabled="addressForm.$invalid" class="button no-border lgt-blue-btn button-small"
-                        type="submit" ng-click="goToWork()" style="font-size: 20px;">
+                <button ng-disabled="addressForm.$invalid" class="button button-clear button-light bold"
+                        type="submit" ng-click="saveHome()" >
                     {{'SAVE' | translate }}
                 </button>
 

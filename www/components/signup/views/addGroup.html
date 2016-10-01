@@ -113,15 +113,12 @@
 
         </div>
     </ion-content>
-    <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0 !important;" >
+    <ion-footer-bar  class="text-center bar-stable blue-bg no-border">
         <div  class="button-bar">
-            <button class="button no-border lgt-blue-btn button-small" type="submit" ng-if="!isFromSetting"  ng-click="skipToInviteFamily()" style="font-size: 20px;">
+            <button class="button button-light button-clear bold" type="submit"  ng-click="skipToInviteFamily()" >
                 {{'SKIP' | translate }} &nbsp;
             </button>
-            <button ng-if="isFromSetting" ng-disabled="addGroupForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="createAndUpdateGroup()" style="font-size: 20px;">
-                {{'CREATE' | translate }}
-            </button>
-            <button ng-if="!isFromSetting" ng-disabled="addGroupForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="goToInviteFamily()" style="font-size: 20px;">
+            <button  ng-disabled="addGroupForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="goToInviteFamily()" >
                 {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
 

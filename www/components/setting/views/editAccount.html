@@ -1,11 +1,10 @@
 <ion-modal-view >
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
-        <button ng-click="hideEditAccount()" style="color:white" class="button back-button buttons  button-clear header-item">
-            <i class="icon ion-android-arrow-back"></i>
-            <span class="back-text"></span>
-        </button>
-        <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
-}" >{{'EDIT_ACCOUNT_SMALL' | translate }}</h1>
+    <ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;">
+        <!--<button ng-click="hideEditAccount()" style="color:white" class="button back-button buttons  button-clear header-item">-->
+            <!--<i class="icon ion-android-arrow-back"></i>-->
+            <!--<span class="back-text"></span>-->
+        <!--</button>-->
+        <h1 class="title" style=" max-width:none;text-align: center !important;" >{{'EDIT_ACCOUNT_SMALL' | translate }}</h1>
     </ion-header-bar>
     <form name="editAccountForm">
     <ion-content   class="has-header has-footer blueno-bg-full" >
@@ -96,7 +95,7 @@
            </div>
 
     </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg"  >
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border"  >
         <div  class="button-bar">
             <button  type="button"  class="button  button-light button-clear bold" ng-click="hideEditAccount()">
                  {{'CANCEL' | translate }}

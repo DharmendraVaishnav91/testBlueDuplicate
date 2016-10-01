@@ -54,7 +54,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
                     }
                 },
                 {
-                    text: "<b>{{'GO_TO_SETTING'|translate}}</b>",
+                    text: $filter('translate')('GO_TO_SETTING'),
                     type: 'button-positive',
                     onTap: function (e) {
                         isPopupOpen = false;

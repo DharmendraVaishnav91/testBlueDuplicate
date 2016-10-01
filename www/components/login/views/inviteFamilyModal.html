@@ -1,5 +1,5 @@
 <ion-modal-view  >
-    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;" >
+    <ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;" >
         <!--<button ng-click="hideInviteFamilyModal()" style="color:white" class="button back-button buttons  button-clear header-item">-->
             <!--<i class="icon ion-android-arrow-back"></i>-->
             <!--<span class="back-text"></span>-->
@@ -54,10 +54,10 @@
     </ion-content>
     <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
         <div  class="button-bar">
-            <button class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="hideInviteFamilyModal()" style="font-size: 20px;">
+            <button class="button no-border button-light button-clear bold " type="submit"  ng-click="hideInviteFamilyModal()" >
             {{'CANCEL' | translate }} &nbsp;
             </button>
-            <button  ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="sendInviteToFamily()" style="font-size: 20px;">
+            <button  ng-disabled="inviteFamilyForm.$invalid" class="button no-border button-light button-clear bold" type="submit"  ng-click="sendInviteToFamily()" >
                 {{'SAVE' | translate }}
             </button>
             <!--<button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">-->
