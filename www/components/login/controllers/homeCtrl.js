@@ -43,6 +43,7 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
             });
             menuService.fetchPreferredLanguage().then(function (response) {
                 $translate.use(response.language);
+                $rootScope.language = response.language;
             }).catch(function (response) {
 
             });

@@ -38,6 +38,7 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
             });
             menuService.fetchPreferredLanguage().then(function (response) {
                 $translate.use(response.language);
+                $rootScope.language = response.language;
             }).catch(function (response) {
 
             });
