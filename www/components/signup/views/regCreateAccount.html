@@ -39,7 +39,7 @@
                 <div class="row no-padding">
                     <div class="col no-padding">
                         <input class="edit-input-txt" ng-model="loginData.user.mobile" name="mobile" ng-required="true"
-                               style="font-size:18px;" type="number" ng-minlength="10" ng-maxlength="10"/>
+                               style="font-size:18px;" type="number" ng-minlength="8" ng-maxlength="15"/>
                         <span class="assertive validation-font wrap-content"
                               ng-show="credentialForm.mobile.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>
                     </div>

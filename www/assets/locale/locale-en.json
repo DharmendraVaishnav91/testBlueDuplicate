@@ -43,7 +43,7 @@
   "ALLOW":"Allow",
   "DENY":"Deny",
   "OPTIONAL_INFO_ALERT":"Providing information here is optional. If you continue, information noted with a * is required before selecting Next below. Or you can skip this step by clicking Skip.",
-
+  "CHANGE_PROFILE_PICTURE":"Change Profile Picture",
   "CREATE_AN_ACCOUNT":"Create Account",
   "COUNTRY":"Country",
   "SELECT":"Select",
