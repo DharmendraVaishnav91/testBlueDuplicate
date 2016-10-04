@@ -142,14 +142,6 @@ app.run(function ($ionicPlatform, EventService, utilityService) {
                         controller: 'SettingCtrl'
                     }
                 }
-              }).state('app.chooseLanguage', {
-                  url: '/chooseLanguage',
-                  views: {
-                      'mainContent': {
-                          templateUrl: 'components/menu/views/language.html',
-                          controller: 'LanguageCtrl'
-                      }
-                }
             }).state('app.workPlaces', {
                 url: '/setting/workPlaces',
                 views: {
