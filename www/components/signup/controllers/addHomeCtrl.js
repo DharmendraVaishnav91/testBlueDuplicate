@@ -1,5 +1,4 @@
-app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService ,
-$rootScope,$cordovaToast,$filter) {
+app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService , $rootScope,$cordovaToast,$filter) {
     console.log($stateParams.homeData);
     console.log($stateParams.homeAddress);
     $scope.data = $stateParams.homeData;
@@ -66,18 +65,9 @@ $rootScope,$cordovaToast,$filter) {
             $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));
 
         }).catch(function (error) {
-            var errorMessage = "";
-            if (error.error_status) {
-                errorMessage = error.country_code != null ? error.country_code.error : "";
-                errorMessage += error.home_location != null ? error.home_location.error : "";
-                errorMessage += error.user != null ? error.user.error : "";
-            } else {
-                errorMessage = "Something went wrong on server. Please try after some time."
-            }
-            if (errorMessage != "") {
+            var errorMessage =$filter('translate')('SOMETHING_WENT_WRONG');
                 $cordovaToast.showLongBottom(errorMessage);
                 console.log(errorMessage);
-            }
         });
     };
 });
