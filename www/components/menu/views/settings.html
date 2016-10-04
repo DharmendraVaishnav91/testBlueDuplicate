@@ -1,52 +1,72 @@
 <ion-view  view-title="{{'SETTING' | translate}}" >
     <ion-content scroll="false" class="blueno-bg-full" >
+      <div class="card">
+
         <div class="list">
-            <div class="item no-padding bg-transparent" ng-click="changeLanguage('en')">
-                <div class="row" style="color:white;">
+            <div class="item item-divider bold">
+                Select Language
+            </div>
+            <div class=" item no-padding bg-transparent" ng-click="changeLanguage('en')">
+                <div class="row" >
                     <div class="col col-center" >
                         English
+                    </div>
+                    <div class="col col-10">
+                        <i ng-show="language == 'en'" class="icon ion-checkmark" style="color:green"></i>
                     </div>
                 </div>
             </div>
             <div class="item no-padding bg-transparent" ng-click="changeLanguage('ms')">
-                <div class="row" style="color:white;">
+                <div class="row" >
                     <div class="col col-center">
                         بهاس ملايو‎ (Malay)
+                    </div>
+                    <div class="col col-10">
+                        <i ng-show="language == 'ms'" class="icon ion-checkmark" style="color:green"></i>
                     </div>
                 </div>
             </div>
             <div class="item no-padding bg-transparent" ng-click="changeLanguage('vi')">
-                <div class="row" style="color:white;">
+                <div class="row" >
                     <div class="col col-center">
                         Tiếng Việt (Vietnamese)
+                    </div>
+                    <div class="col col-10">
+                        <i ng-show="language == 'vi'" class="icon ion-checkmark" style="color:green"></i>
                     </div>
                 </div>
             </div>
             <div class="item no-padding bg-transparent" ng-click="changeLanguage('ja')">
-                <div class="row" style="color:white;">
+                <div class="row" >
                     <div class="col col-center">
                         日本語 (にほんご) (Japanese)
+                    </div>
+                    <div class="col col-10">
+                        <i ng-show="language == 'ja'" class="icon ion-checkmark" style="color:green"></i>
                     </div>
                 </div>
             </div>
             <div class="item no-padding bg-transparent" ng-click="changeLanguage('my')">
-                <div class="row" style="color:white;">
+                <div class="row" >
                     <div class="col col-center">
                         ဗမာစာ (Burmese)
+                    </div>
+                    <div class="col col-10">
+                        <i ng-show="language == 'my'" class="icon ion-checkmark" style="color:green"></i>
                     </div>
                 </div>
             </div>
             <div class="item no-padding bg-transparent" ng-click="changeLanguage('th')">
-                <div class="row" style="color:white;">
+                <div class="row" >
                     <div class="col col-center">
                         ไทย(Thai)
                     </div>
+                    <div class="col col-10">
+                        <i ng-show="language == 'th'" class="icon ion-checkmark" style="color:green"></i>
+                    </div>
                 </div>
             </div>
-
-
-
-
         </div>
+      </div>
     </ion-content>
 </ion-view>

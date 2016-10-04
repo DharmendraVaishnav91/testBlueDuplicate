@@ -67,5 +67,3 @@ var HttpRoutes = {
     groupTypes:apiUrl+"/gpr/v2/group_types"
 
 };
-
-

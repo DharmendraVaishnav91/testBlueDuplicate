@@ -17,6 +17,7 @@ var menu=angular.module('app.menu', []);
             });
         };
         $scope.goToSetting= function () {
+          console.log("inside goToSetting function in menuController b4 calling state go\n")
            $state.go('app.manageSetting');
         };
         $scope.goToInvitations = function () {
@@ -36,4 +37,3 @@ var menu=angular.module('app.menu', []);
         };
 
     });
-

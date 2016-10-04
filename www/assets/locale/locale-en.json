@@ -262,6 +262,7 @@
   "CANCEL":"Cancel",
   "SEND":"SEND",
   "SETTING":"Settings",
+  "LANGUAGE" : "Select Language",
   "ACCOUNT":"Account",
   "INVITE":"Invite",
   "SIGN_OUT":"Sign Out",
@@ -347,4 +348,3 @@
   "TERMS_OF_REGISTRY_7":"7.The way in which your share is paid will depend on where you live."
 
 }
-
