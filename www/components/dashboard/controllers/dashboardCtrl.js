@@ -117,6 +117,8 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
        // layers={};
         zoom=15;
         loadMap("",$scope.userLocation.lat,$scope.userLocation.lng);
+        $scope.filter={};
+        $scope.showFilter=false;
     };
     $scope.resetFilter= function () {
         var params="";

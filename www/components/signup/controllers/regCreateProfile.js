@@ -19,6 +19,7 @@ app.controller('RegCreateProfileCtrl', function($timeout,$q,$scope,$state,$ionic
   $scope.goToSelectUserType = function () {
       $scope.loginData.profile.gender=$scope.data.gender;
       $scope.loginData.profile.image=updatedImage;
+      $scope.loginData.profile.language=$rootScope.selectedLanguage!=null?$rootScope.selectedLanguage:'en';
       console.log($scope.loginData);
       $state.go('selectUserType',{profileData:$scope.loginData});
   };

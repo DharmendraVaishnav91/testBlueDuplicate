@@ -117,7 +117,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
                         };
                         $rootScope.addressDataFromCoordinate.userState = {
                             SubdivisionID: "",
-                            SubdivisionCode: addr.province_code != null ? addr.province_code : "",
+                            SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
                             SubdivisionName: addr.state != null ? addr.state : "",
                             CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
                             CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName

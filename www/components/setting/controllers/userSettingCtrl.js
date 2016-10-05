@@ -34,7 +34,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
             };
             $rootScope.addressDataFromCoordinate.userState={
                 SubdivisionID:"",
-                SubdivisionCode:addr.province_code!=null?addr.province_code:"",
+                SubdivisionCode:addr.subdivision_code!=null?addr.subdivision_code:"",
                 SubdivisionName:addr.state!=null?addr.state:"" ,
                 CountryCode:$rootScope.addressDataFromCoordinate.userCountry.CountryCode,
                 CountryName:$rootScope.addressDataFromCoordinate.userCountry.CountryName

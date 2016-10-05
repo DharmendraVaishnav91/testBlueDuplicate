@@ -8,7 +8,7 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     $rootScope.deviceWidth = $window.innerWidth;
     $scope.loginData = {};
     var languageData={};
-
+    $rootScope.selectedLanguage=null;
     $rootScope.bgUrl="assets/img/logo_small.png";
     $rootScope.bgLargeUrl="assets/img/logo_big.png";
     var checkCordovaPlugin= function () {
@@ -53,7 +53,8 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     validateUser();
     $scope.changeLanguage= function (selectedLang) {
 
-            $translate.use(selectedLang);
+        $translate.use(selectedLang);
+        $rootScope.selectedLanguage=selectedLang;
             //$cordovaToast.showLongBottom("Language preference updated successfully");
     } ;
     $scope.openRegistration= function () {

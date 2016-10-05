@@ -1,7 +1,10 @@
 app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,utilityService,$stateParams,signUpService,$rootScope,$cordovaToast,$filter) {
   console.log($stateParams.profileData);
   $scope.loginData=$stateParams.profileData;
-  $scope.home={} ;
+    console.log("User created data till now");
+    console.log($scope.loginData);
+
+    $scope.home={} ;
   $scope.data={};
   var createUser = function(userData){
       console.log("User data before creation");
@@ -59,7 +62,7 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
           };
           $rootScope.addressDataFromCoordinate.userState={
               SubdivisionID:"",
-              SubdivisionCode:addr.province_code!=null?addr.province_code:"",
+              SubdivisionCode:addr.subdivision_code!=null?addr.subdivision_code:"",
               SubdivisionName:addr.state!=null?addr.state:"" ,
               CountryCode:$rootScope.addressDataFromCoordinate.userCountry.CountryCode,
               CountryName:$rootScope.addressDataFromCoordinate.userCountry.CountryName

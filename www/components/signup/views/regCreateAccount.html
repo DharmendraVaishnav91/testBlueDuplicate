@@ -23,7 +23,6 @@
                 </span>
                 <select style="width: 100%;font-size:12px;" ng-model="data.selectedCountry" ng-required="true">
                     <option selected value="" disabled>{{'SELECT_COUNTRY' | translate}}</option>
-                    <option ng-selected="data.selectedCountry==null"></option>
                     <option
                             ng-selected="(obj.CountryCode == userCountry.CountryCode)"
                             ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
