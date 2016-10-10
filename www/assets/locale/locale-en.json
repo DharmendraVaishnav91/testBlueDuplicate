@@ -17,6 +17,7 @@
   "WARNING":"Warning",
   "ENABLE_LOCATION_IN_SETTING":"Location must be enabled to continue, please go to setting to enable this.",
   "CONFIRM_SHARE":"Confirm share",
+  "CONFIRM_CREATE":"Confirm Creation",
   "SHARE_MY_LOCATION":"Share My Location",
   "NEXT":"Next",
   "WHAT_IS_YOUR_PASSWORD":"What's Your Password?",
@@ -260,6 +261,7 @@
   "GREENFENCE_BLUENUMBER":"Greenfence's bluenumber",
   "SAVE":"Save",
   "CANCEL":"Cancel",
+  "OKAY" : "Okay",
   "SEND":"SEND",
   "SETTING":"Settings",
   "SELECT_LANGUAGE" : "Select Language",
@@ -309,6 +311,7 @@
 
   "OPTIONAL":"Optional",
   "LOCATION_CONFIRMATION":"Allow Bluenumber to access your current location?",
+  "ACCOUNT_CREATE_CONFIRMATION": "Please check your details before creation of account!",
   "THERE_IS_NO_THING" : "No things available to show",
   "NO_INVITED_MEMBERS" : "No pending invitations",
   "NO_GROUP_FIND" : "No groups available associated to you",

@@ -51,6 +51,24 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
         fetchStates(countryCode);
   };
 
+  $scope.goToAddHomeWithCheck = function () {
+      var confirmPopup = $ionicPopup.confirm({
+          title: $filter('translate')('CONFIRM_CREATE'),
+          template:'<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span>',
+          cancelText: $filter('translate')('CANCEL'),
+          okText:$filter('translate')('OKAY')
+      });
+
+      confirmPopup.then(function (res) {
+          if (res) {
+              console.log("Account Confirmed.")
+              $scope.goToAddHome();
+          } else{
+
+          }
+      });
+    };
+
   $scope.goToAddHome=function(){
       console.log($scope.loginData);
       utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
