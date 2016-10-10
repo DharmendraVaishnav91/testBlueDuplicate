@@ -52,9 +52,13 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
   };
 
   $scope.goToAddHomeWithCheck = function () {
+      $scope.username = $scope.loginData.profile.given_name.concat(" ").concat($scope.loginData.profile.family_name);
+      $scope.number = $scope.loginData.user.country_phone_code.concat($scope.loginData.user.mobile);
+      console.log($scope.username);
+      console.log($scope.number);
       var confirmPopup = $ionicPopup.confirm({
           title: $filter('translate')('CONFIRM_CREATE'),
-          template:'<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span>',
+          template:'<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>'+$scope.username+'</span><br><span>{{"NUMBER" | translate}}:</span><span>'+$scope.number+'</span>',
           cancelText: $filter('translate')('CANCEL'),
           okText:$filter('translate')('OKAY')
       });

@@ -15,6 +15,7 @@
   "ABOUT":"About",
   "GO_TO_SETTING":"Go to settings",
   "WARNING":"Warning",
+  "NUMBER": "Number",
   "ENABLE_LOCATION_IN_SETTING":"Location must be enabled to continue, please go to setting to enable this.",
   "CONFIRM_SHARE":"Confirm share",
   "CONFIRM_CREATE":"Confirm Creation",
