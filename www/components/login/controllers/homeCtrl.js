@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 9/8/16.
  */
-app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage,userSettingService,$timeout,menuService,$translate) {
+app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$window,loginService,$localStorage,userSettingService,$timeout,menuService,$translate,$cordovaToast) {
 
     // Form data for the login modal
     $rootScope.deviceHeight = $window.innerHeight;
@@ -11,6 +11,8 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     $rootScope.selectedLanguage=null;
     $rootScope.bgUrl="assets/img/logo_small.png";
     $rootScope.bgLargeUrl="assets/img/logo_big.png";
+    //$cordovaToast.showShortBottom("app version=",$rootScope.appVersion);
+
     var checkCordovaPlugin= function () {
         if (window.cordova&& window.cordova.plugins&&window.cordova.plugins.diagnostics) {
             cordova.plugins.diagnostics.isCameraAuthorized(function(authorized){

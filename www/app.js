@@ -1,6 +1,6 @@
 var app = angular.module('app', ['ionic', 'ngSanitize', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet']);
 
-app.run(function ($ionicPlatform, EventService, utilityService) {
+app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordovaToast) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -9,6 +9,12 @@ app.run(function ($ionicPlatform, EventService, utilityService) {
             cordova.plugins.Keyboard.disableScroll(true);
 
         }
+        cordova.getAppVersion(function(version){
+              console.log("app version=",version);
+            $rootScope.appVersion=version;
+           // $cordovaToast.showShortBottom("app version=",$rootScope.appVersion);
+            console.log("app version=",$rootScope.appVersion);
+        });
         //var permissions = window.plugins.permissions;
         ////do we already have permissions
         //permissions.hasPermission(function(status){

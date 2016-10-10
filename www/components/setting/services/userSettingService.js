@@ -21,7 +21,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
     self.updateUserInfo = function (userInfo) {
         var deferred = $q.defer();
         var req={
-            url:HttpRoutes.fetchUserDetail+userInfo.actorid,
+            //url:HttpRoutes.fetchUserDetail+userInfo.actorid,
+            url:HttpRoutes.fetchUserDetail,
             method:HttpRequestType.PUT,
             data:userInfo,
             headers: {

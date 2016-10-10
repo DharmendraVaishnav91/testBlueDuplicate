@@ -4,7 +4,7 @@
 
 var appUtilityServices = angular.module("app.utility.services", []);
 
-appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicPopup,$q,$rootScope,$cordovaCamera,$cordovaGeolocation,$filter) {
+appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicPopup,$q,$rootScope,$cordovaCamera,$cordovaGeolocation,$filter,$ionicLoading) {
 
     var utilityService = {};
     utilityService.sendAppInviteToFriend = function (inviteData) {
@@ -84,17 +84,19 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
     };
 
     utilityService.getPosition= function () {
-        var posOptions = {timeout: 10000, enableHighAccuracy: false};
+        var posOptions = {timeout: 60000, enableHighAccuracy: true};
         var coordinates = null;
         var deferred= $q.defer();
+       // $ionicLoading.show("Loading");
         $cordovaGeolocation.getCurrentPosition(posOptions)
             .then(function (position) {
                 coordinates=position;
                 deferred.resolve(coordinates);
+                //$ionicLoading.hide();
             }, function(err) {
-                
                 console.log("Unable to fetch location "+err);
-                deferred.resolve(null);
+                deferred.reject(err);
+                //$ionicLoading.hide();
             });
         return deferred.promise;
     };

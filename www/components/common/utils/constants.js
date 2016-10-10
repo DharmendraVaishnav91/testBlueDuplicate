@@ -1,8 +1,8 @@
 /**
  * Created by dharmendra on 16/8/16.
  */
-var apiUrl="https://bnstaging.herokuapp.com";
-//var apiUrl= "https://blue-dev.herokuapp.com";
+///var apiUrl="https://bnstaging.herokuapp.com";
+var apiUrl= "https://blue-dev.herokuapp.com";
 var HttpRequestType = {
     GET: 'GET',
     POST: 'POST',
@@ -29,7 +29,7 @@ var DEFAULT_AVATAR_PATH="assets/img/blank-avatar.png";
 var HttpRoutes = {
     login:apiUrl+"/gpr/v1/sessions/",
     checkUserName:apiUrl+"/gpr/v2/user_check?username=",
-    fetchUserDetail:apiUrl+"/gpr/v1/people/",
+    fetchUserDetail:apiUrl+"/gpr/v1/people/update_user",
     fetchAddressFromCoordinates:apiUrl+"/gpr/v1/process_coordinates/",
     fetchCountryCode:  apiUrl + '/gpr/country_list/',
     signUpStep1:apiUrl+'/gpr/v2/signup_user/',
