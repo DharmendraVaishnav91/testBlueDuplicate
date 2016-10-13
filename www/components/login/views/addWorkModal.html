@@ -77,6 +77,41 @@
                 </select>
             </label>
 
+            <!--Country-->
+
+        <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+            <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+
+            <select style="width: 100%" ng-model="work.country" ng-required="true"  ng-change="changeSubdivision(work.country)">
+                <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
+                <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
+                        ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
+            </select>
+        </label>
+            <!--State-->
+        <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+            <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
+                <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
+            </span>
+            <select style="width: 100%" ng-model="work.state" >
+                <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
+                <option
+                        ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
+                        ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
+            </select>
+        </label>
+
+            <!--CIty-->
+
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                <span class="input-label label-text "  style="color:white">{{'City' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input type="text"   ng-model="work.city" class="edit-input-txt"  />
+            </label>
+
             <label class="item item-input item-stacked-label no-border label-padding"  ng-if="enableAddressFields">
                     <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
@@ -84,40 +119,17 @@
                     <input type="text" ng-required="true" class="edit-input-txt"  ng-model="work.address"/>
                 </label>
 
-                <!--CIty-->
+                <!--postalCode-->
 
                 <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
-                    <span class="input-label label-text "  style="color:white">{{'City' | translate }}
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
+                    <span class="input-label label-text "  style="color:white">{{'POSTAL' | translate }}
+                        <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <input type="text"   ng-model="work.city" class="edit-input-txt"  />
+                    <input type="number"   ng-model="work.postalcode" class="edit-input-txt"  />
                 </label>
 
-                <!--Country-->
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
-                <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
 
-                <select style="width: 100%" ng-model="work.country" ng-required="true"  ng-change="changeSubdivision(work.country)">
-                    <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
-                    <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
-                            ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
-                </select>
-            </label>
-                <!--State-->
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
-                <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>-->
-                </span>
-                <select style="width: 100%" ng-model="work.state" >
-                    <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
-                    <option
-                            ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
-                            ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
-                </select>
-            </label>
 
             <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
                 <!--<span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}-->
