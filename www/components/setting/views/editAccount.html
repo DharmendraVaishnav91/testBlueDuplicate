@@ -5,6 +5,7 @@
             <!--<span class="back-text"></span>-->
         <!--</button>-->
         <h1 class="title" style=" max-width:none;text-align: center !important;" >{{'EDIT_ACCOUNT_SMALL' | translate }}</h1>
+
     </ion-header-bar>
     <form name="editAccountForm">
     <ion-content   class="has-header has-footer blueno-bg-full" >
@@ -21,7 +22,9 @@
             </div>
         </div>
            <div class="list" style="width:100%;overflow: scroll;padding:0px" >
-
+               <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
+                   <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
+               </div>
             <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'FIRST_NAME' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>

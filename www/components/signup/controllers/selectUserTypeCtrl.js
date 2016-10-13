@@ -21,20 +21,22 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
               signUpService.requestOTP(requestData).then(function (response) {
                   console.log("OTP requested successfully");
                   console.log(response);
-                  $state.go('addHome',{homeData:$scope.data,homeAddress:$scope.home});
-                 // $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
+
+                 $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
               }).catch(function (error) {
                   console.log(error);
               }) ;
+          $state.go('accntCreateSuccess');
           $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
+
 
 
       }).catch(function(error){
           var errorMessage="";
-              errorMessage="Something went wrong on server. Please try after some time.";
-          $state.go('addHome',{homeData:$scope.data,homeAddress:$scope.home});
+              errorMessage=$filter('translate')('SOMETHING_WENT_WRONG');
+         // $state.go('accntCreateSuccess');
           if(errorMessage!=""){
-              //$cordovaToast.showLongBottom(errorMessage);
+              $cordovaToast.showLongBottom(errorMessage);
               console.log(errorMessage);
           }
       });
@@ -60,12 +62,12 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
           title: $filter('translate')('CONFIRM_CREATE'),
           template:'<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>'+$scope.username+'</span><br><span>{{"NUMBER" | translate}}:</span><span>'+$scope.number+'</span>',
           cancelText: $filter('translate')('CANCEL'),
-          okText:$filter('translate')('OKAY')
+          okText:$filter('translate')('OK')
       });
 
       confirmPopup.then(function (res) {
           if (res) {
-              console.log("Account Confirmed.")
+              console.log("Account Confirmed.") ;
               $scope.goToAddHome();
           } else{
 

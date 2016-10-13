@@ -52,7 +52,9 @@ app.controller('LoginCtrl', function($scope,$state,$translate,loginService,$root
        // $state.go('app.dashboard');
     };
 
-
+    $scope.confirmUserAccount = function () {
+       $state.go('verifyAccount',{isFromLogin:true})
+    };
     $scope.openRegistration= function () {
         $state.go('regCreateAccount');
     }

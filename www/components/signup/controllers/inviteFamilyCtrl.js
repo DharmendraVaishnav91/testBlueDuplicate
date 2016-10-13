@@ -2,7 +2,7 @@ app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ioni
     console.log($stateParams.inviteFamilyData);
     $scope.data = {};
     $scope.skipToSuccess = function () {
-        $state.go('accntCreateSuccess');
+        $state.go('home');
     };
     utilityService.getCountryList().then(function (response) {
         $scope.countryCodeList = response;
@@ -25,7 +25,7 @@ app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ioni
         userSettingService.sendInviteToFamilyMembers(inviteData).then(function (response) {
             console.log("Family invite success");
             console.log(response);
-            $state.go('accntCreateSuccess');
+            $state.go('home');
             $cordovaToast.showLongBottom($filter('translate')('MEMBER_ADDED_SUCCESSFULLY'));
             //$scope.hideInviteFamilyModal();
         }).catch(function (error) {
