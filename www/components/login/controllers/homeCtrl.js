@@ -9,6 +9,9 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     $scope.loginData = {};
     var languageData={};
     $rootScope.selectedLanguage=null;
+    $scope.lang={
+        selected:"en"
+    };
     $rootScope.bgUrl="assets/img/logo_small.png";
     $rootScope.bgLargeUrl="assets/img/logo_big.png";
     //$cordovaToast.showShortBottom("app version=",$rootScope.appVersion);
@@ -53,9 +56,9 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
         }
     };
     validateUser();
-    $scope.changeLanguage= function (selectedLang) {
+    $scope.changeLanguage= function () {
 
-        $translate.use(selectedLang);
+        $translate.use($scope.lang.selected);
         $rootScope.selectedLanguage=selectedLang;
             //$cordovaToast.showLongBottom("Language preference updated successfully");
     } ;

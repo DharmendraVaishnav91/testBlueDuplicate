@@ -36,23 +36,6 @@
                         <!--<option value="manual">{{'ENTER_ADDRESS'|translate}}</option>-->
                     <!--</select>-->
                 <!--</label>-->
-
-
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
-                    <input class="edit-input-txt" ng-model="newHome.address" name="address" ng-required="true"
-                           type="text"/>
-                </label>
-
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                <span class="input-label label-text " style="color:white">{{'CITY' | translate }}
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                </span>
-                    <input class="edit-input-txt" ng-model="newHome.city" name="city" type="text"/>
-                </label>
-
                 <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
@@ -75,6 +58,29 @@
                         </option>
                     </select>
                 </label>
+                <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'CITY' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                    <input class="edit-input-txt" ng-model="newHome.city" name="city" type="text"/>
+                </label>
+
+                <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                    <input class="edit-input-txt" ng-model="newHome.address" name="address" ng-required="true"
+                           type="text"/>
+                </label>
+
+                <label class="item item-input item-stacked-label no-border label-padding" >
+                <span class="input-label label-text " style="color:white">{{'POSTAL' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                    <input class="edit-input-txt" ng-model="newHome.postalcode" name="postal" type="number"/>
+                </label>
+
+
             </div>
         </ion-content>
         <ion-footer-bar class="text-center bar-stable blue-bg no-border" style="padding:0px !important;">

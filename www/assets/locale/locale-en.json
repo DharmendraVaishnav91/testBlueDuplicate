@@ -115,7 +115,7 @@
   "FRIEND_COUNTRY": "Friend Country",
   "FRIEND_INVITED": "Friend Invited Successfully.",
   "FRIEND_INVITE_FAILED": "Something went wrong while inviting your friend.",
-  "FRIEND_MOB_WITH_COUNTRY_CODE": "Friend Mobile No. With Country Code",
+  "FRIEND_MOB_WITH_COUNTRY_CODE": "Friend's Mobile No. With Country Code",
   "FULL_NAME": "Full Name",
   "GALLERY": "Gallery",
   "GENDER": "Gender",
@@ -186,7 +186,7 @@
   "MANUFACTURER_PART_NUMBER": "Manufacturer Part Number (MPN)",
   "MEMBER": "MEMBER",
   "MEMBER_ADDED_SUCCESSFULLY": "Member added successfully",
-  "MOBILE": "Mobile",
+  "MOBILE": "Mobile Number",
   "MOTHER": "Mother",
   "MY_CURRENT_LOCATION": "My Current Location",
   "MY_FAMILY_MEMBERS": "My Family Members",
@@ -216,7 +216,7 @@
   "OTHER_GROUP": "Other Groups",
   "OTHER_THING": "Other Things",
   "OTHER_THING_ID": "Other (Please tell us the ID type)",
-  "OTP_SENT_SUCCESSFULLY": "OTP has been sent to your mobile.",
+  "OTP_SENT_SUCCESSFULLY": "OTP has been sent to your mobile number.",
   "OTP_VERIFIED_SUCCESSFULLY": "Account verified successfully.",
   "OWNER": "Owner",
   "PASSWORD": "Password",
@@ -312,7 +312,7 @@
   "WHAT_EQUIPMENT_DO_YOU_USE": "What equipment do you use for work?",
   "WHAT_GROUP": "What companies, organisations or groups relates to your work?",
   "WHAT_IS_YOUR_GENDER": "What's Your Gender?",
-  "WHAT_IS_YOUR_MOBILE": "What's Your Mobile?",
+  "WHAT_IS_YOUR_MOBILE": "What's Your Mobile Number?",
   "WHAT_IS_YOUR_NAME": "What's Your Name?",
   "WHAT_IS_YOUR_PASSWORD": "What's Your Password?",
   "WHAT_IS_YOUR_TYPE": "What's Your Type?",
@@ -331,8 +331,9 @@
   "WORK_PLACE_DETAIL": "Work Place Detail",
   "WORK_PLACE_TYPE": "Work Place Type",
   "WORK_TYPE": "Work Type",
-  "YOUR_BLUENUMBER": "Your bluenumber"
-
+  "YOUR_BLUENUMBER": "Your bluenumber",
+  "LANGUAGE": "Language",
+  "POSTAL": "Postal Code"
 
 
 
