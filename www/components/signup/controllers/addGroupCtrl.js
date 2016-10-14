@@ -58,7 +58,8 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
                 address: angular.copy($rootScope.addressDataFromCoordinate.address),
                 city: angular.copy($rootScope.addressDataFromCoordinate.city),
                 subdivision_code: angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode),
-                country_code: angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode)
+                country_code: angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode) ,
+                postalcode: angular.copy($rootScope.addressDataFromCoordinate.userCountry.postalcode)
             }
         } else if (locationWay != "manual") {
             $scope.enableAddressFields = false;
@@ -74,7 +75,8 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
                 address: "",
                 city: "",
                 subdivision_code:"",
-                country_code: ""
+                country_code: "",
+                postalcode:""
             }
         }
     };
@@ -104,7 +106,8 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
             address: angular.copy($rootScope.addressDataFromCoordinate.address),
             city: angular.copy($rootScope.addressDataFromCoordinate.city),
             subdivision_code: angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode),
-            country_code: angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode)
+            country_code: angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode),
+            postalcode: angular.copy($rootScope.addressDataFromCoordinate.userCountry.postalcode)
         };
         group1.location = $scope.location;
         groups.push(group1);

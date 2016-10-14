@@ -66,6 +66,7 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         if (locationWay == "current") {
             $scope.thing.address = angular.copy($rootScope.addressDataFromCoordinate.address);
             $scope.thing.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+            $scope.thing.postalcode = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
             //$scope.thing.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
@@ -75,7 +76,8 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         } else if(locationWay == "manual") {
             $scope.thing.address ="";
             $scope.thing.city = "";
-            //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+            $scope.thing.postalcode ="";
+                //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
            // $scope.thing.latitude = "";
            // $scope.thing.longitude = "";
@@ -113,6 +115,7 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
         //$scope.thing.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
         $scope.thing.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
         $scope.thing.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        $scope.thing.postalcode =  angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
             thing1.location={
                // name:$scope.thing.where=="manual"?"Enter Address":"My Current Location",
                 name:"My Current Location",
@@ -121,7 +124,8 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
                 address: $scope.thing.address,
                 city: $scope.thing.city,
                 subdivision_code: $scope.thing.state ? $scope.thing.state : '',
-                country_code: $scope.thing.country
+                country_code: $scope.thing.country,
+                postalcode:$scope.thing.postalcode
             };
         //}else{
         //    //thing1.location=JSON.parse($scope.data.equipWhere);

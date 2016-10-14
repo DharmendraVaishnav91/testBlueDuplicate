@@ -95,9 +95,10 @@ app.controller('selectUserTypeCtrl', function ($timeout, $q, $scope, $state, $io
             // $rootScope.addressDataFromCoordinate.address= angular.copy(addr.street_number!=null?addr.street_number:"");
             $rootScope.addressDataFromCoordinate.address = angular.copy(addr.street_address != null ? addr.street_address : "");
             //Prepare data for creating user
+            $rootScope.addressDataFromCoordinate.postalcode=parseInt(angular.copy(addr.postal_code));
 
             $scope.loginData.registration_location.subdivision_code = $rootScope.addressDataFromCoordinate.userState.SubdivisionCode;
-
+            $scope.loginData.registration_location.postalcode=angular.copy($rootScope.addressDataFromCoordinate.postalcode);
             //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
             $scope.loginData.registration_location.address = $rootScope.addressDataFromCoordinate.address;
             $scope.loginData.registration_location.country_code = $rootScope.addressDataFromCoordinate.userCountry.CountryCode;

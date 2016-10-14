@@ -44,6 +44,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
             $rootScope.addressDataFromCoordinate.city=angular.copy(addr.sub_state!=null?addr.sub_state:"");
             $rootScope.addressDataFromCoordinate.address= angular.copy(addr.street_number!=null?addr.street_number:"");
             $rootScope.addressDataFromCoordinate.address+=angular.copy(addr.street_address!=null?addr.street_address:"");
+            $rootScope.addressDataFromCoordinate.postalcode=parseInt(angular.copy(addr.postal_code));
             //Prepare data for creating user
 
 
@@ -135,6 +136,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
 
             $scope.newHome.latitude=angular.copy($scope.home.Latitude);
             $scope.newHome.longitude=angular.copy($scope.home.Longitude);
+            $scope.newHome.postalcode=angular.copy($scope.home.PostalCode);
         }else{
             $scope.newHome={};
         }
@@ -152,7 +154,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
         //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
         data.address = $scope.newHome.address;
         data.city=$scope.newHome.city;
-
+        data.postalcode=$scope.newHome.postalcode;
         data.country_code = $scope.newHome.country;
         data.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
         data.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');

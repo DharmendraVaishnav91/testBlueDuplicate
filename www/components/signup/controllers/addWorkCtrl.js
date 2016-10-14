@@ -73,6 +73,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         if (locationWay == "current") {
             $scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
             $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+            $scope.work.postalcode=angular.copy($rootScope.addressDataFromCoordinate.postalcode);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
             //$scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
@@ -83,7 +84,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             $scope.work.address = "";
             $scope.work.city = "";
             //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-
+            $scope.work.postalcode="";
             //$scope.work.latitude = "";
             //$scope.work.longitude = "";
             $scope.data.workState = "";
@@ -113,7 +114,8 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
                 city: $scope.work.city,
                 subdivision_code: $scope.data.workState ? $scope.data.workState : '',
                 country_code: $scope.data.workCountry,
-                locationtype:"Registration Worksite"
+                locationtype:"Registration Worksite",
+                postalcode:$scope.work.postalcode
             }
         }else{
             //thing1.location=JSON.parse($scope.data.equipWhere);

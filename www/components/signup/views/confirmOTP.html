@@ -47,7 +47,7 @@
                 <input class="edit-input-txt" ng-required="true" ng-model="confirm.code" name="code"   style="font-size:18px;" type="number" />
 
             </label>
-            <div class="row" ng-if="!isNewCodeRequested">
+            <div class="row" ng-if="!isNewCodeRequested||isFromLogin">
                 <div class="col center" style="font-size: 18px;">
                     <p class="positive" style="text-decoration: underline">
                         {{'DID_NOT_RECEIVE_CODE' | translate}}
@@ -58,7 +58,7 @@
 
                 </div>
             </div>
-            <div class="row" ng-if="isNewCodeRequested">
+            <div class="row" ng-if="isNewCodeRequested&&!isFromLogin">
                 <div class="col center" style="font-size: 18px;padding: 0px 33px;">
                     <p ng-disabled="confirmAccountForm.$invalid" class="positive" style="text-decoration: underline" ng-click="skipToAddHome()">
                         {{'SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER' | translate}}

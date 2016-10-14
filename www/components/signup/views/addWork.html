@@ -20,13 +20,13 @@
                     <span class="input-label label-text " style="color:white">{{'NAME' | translate }}
                         <!--<span class="assertive " style="font-size: inherit">* </span>-->
                     </span>
-                <input type="text"  class="edit-input-txt" ng-model="work.name"/>
+                <input type="text"  class="edit-input-txt" ng-model="work.name" />
             </label>
             <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text " style="color:white">{{'PRODUCT' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select style="width: 100%;" ng-model="work.crop" ng-required="true">
+                <select style="width: 100%;" ng-model="work.crop" ng-required="true" name="crop">
                     <option selected disabled value="">{{'SELECT_PRODUCT' | translate}}</option>
                     <option ng-repeat="obj in productList | orderBy:'H3Description'" value="{{obj.H3Code}}">{{obj.H3Description}}</option>
                 </select>
@@ -78,7 +78,7 @@
                 </span>
 
                 <select style="width: 100%" ng-model="data.workCountry" ng-required="true"
-                        ng-change="changeSubdivision(data.workCountry)">
+                        ng-change="changeSubdivision(data.workCountry)" name="country">
                     <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
                     <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}
@@ -91,7 +91,7 @@
                 <span class="input-label label-text " style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
-                <select style="width: 100%" ng-model="data.workState">
+                <select style="width: 100%" ng-model="data.workState" name="state">
                     <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
                     <option ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
@@ -105,22 +105,22 @@
                     <span class="input-label label-text " style="color:white">{{'CITY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="text" ng-model="work.city" class="edit-input-txt"/>
-            </label>
-
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
-                    <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
-                        <span class="assertive " style="font-size: inherit">* </span>
-                    </span>
-                <input type="text" ng-required="true" class="edit-input-txt" ng-model="work.address"/>
+                <input type="text" ng-model="work.city" class="edit-input-txt" ng-required="true" name="city"/>
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                     <span class="input-label label-text " style="color:white">{{'POSTAL' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="number" ng-model="work.postalcode" class="edit-input-txt"/>
+                <input type="number" ng-model="work.postalcode" class="edit-input-txt" name="postalcode" ng-required="true"/>
             </label>
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                    <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
+                        <span class="assertive " style="font-size: inherit">* </span>
+                    </span>
+                <input type="text" ng-required="true" class="edit-input-txt" ng-model="work.address" name="address"/>
+            </label>
+
 
             <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
             <!--<span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}-->
