@@ -333,8 +333,9 @@
   "WORK_TYPE": "Work Type",
   "YOUR_BLUENUMBER": "Your bluenumber",
   "LANGUAGE": "Language",
-  "POSTAL": "Postal Code"
-
+  "POSTAL": "Postal Code",
+  "THANK_YOU":"Thank you!" ,
+  "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code? Continue registration and confirm your account later."
 
 
 

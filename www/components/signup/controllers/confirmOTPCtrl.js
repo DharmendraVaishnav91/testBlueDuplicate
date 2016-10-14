@@ -6,8 +6,10 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
     $scope.goToHome = function () {
         $state.go('home');
     };
+
     $scope.isFromLogin=$stateParams['isFromLogin'] ;
     $scope.indirect=$stateParams['indirect'] ;
+    $scope.isNewCodeRequested=false;
     utilityService.getCountryList().then(function(response){
         $scope.countryCodeList=response;
         console.log(response);
@@ -15,8 +17,9 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
         console.log(error);
     });
     $scope.requestOTP = function () {
+        $scope.isNewCodeRequested=true;
         var requestData={};
-        if($scope.isFromLogin && !$scope.indirect){
+        if($scope.isFromLogin && $scope.indirect){
             requestData = {
                 country_phone_code: $scope.confirm.country,
                 username: ""+$scope.confirm.mobile
@@ -35,9 +38,12 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
             console.log(error);
         })
     };
+    $scope.skipToAddHome= function () {
+        $state.go('addHome');
+    };
     $scope.confirmOTP = function (){
         var requestData={};
-        if($scope.isFromLogin && !$scope.indirect){
+        if($scope.isFromLogin && $scope.indirect){
             requestData={
                 country_phone_code: $scope.confirm.country,
                 otp_code: $scope.confirm.code+"",

@@ -8,13 +8,17 @@
                 </h3>
                 <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
             </div>
-            <p ng-if="(isFromLogin&&!indirect) || !isFromLogin" style="    font-size: 20px;padding: 0px 40px;color: white;margin-top: 50px;line-height: 30px;
-    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}{{userMobDetail.country_phone_code+userMobDetail.mobile}}</p>
-            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;" ng-if="isFromLogin">
+            <div style="margin-top: 50px;">
+            <p ng-if="!isFromLogin&&!isNewCodeRequested"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
+    text-align: center;">{{'THANK_YOU' | translate}}</p>
+            <p ng-if="(isFromLogin&&!indirect) || !isFromLogin"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
+    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;{{userMobDetail.country_phone_code+userMobDetail.mobile}}</p>
+            </div>
+            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;" ng-if="isFromLogin&&indirect">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">*</span>
                 </span>
-                <select style="width: 100%"  ng-model="confirm.country" ng-required="true"  >
+                <select style="width: 100%"  ng-model="confirm.country" ng-required="true" name="countryCode" >
                     <option ng-selected="data.selectedCountry==null" ></option>
                     <option ng-selected="(obj.CountryCode == userCountry.CountryCode)"
                             ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">
@@ -22,7 +26,7 @@
                 </select>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="isFromLogin">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="isFromLogin&&indirect">
                 <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
@@ -43,13 +47,21 @@
                 <input class="edit-input-txt" ng-required="true" ng-model="confirm.code" name="code"   style="font-size:18px;" type="number" />
 
             </label>
-            <div class="row">
+            <div class="row" ng-if="!isNewCodeRequested">
                 <div class="col center" style="font-size: 18px;">
                     <p class="positive" style="text-decoration: underline">
                         {{'DID_NOT_RECEIVE_CODE' | translate}}
                     </p>
-                    <p class="positive" style="text-decoration: underline">
+                    <p ng-disabled="confirmAccountForm.$invalid" class="positive" style="text-decoration: underline" ng-click="requestOTP()">
                         {{'REQUEST_A_NEW_CODE' | translate}}
+                    </p>
+
+                </div>
+            </div>
+            <div class="row" ng-if="isNewCodeRequested">
+                <div class="col center" style="font-size: 18px;padding: 0px 33px;">
+                    <p ng-disabled="confirmAccountForm.$invalid" class="positive" style="text-decoration: underline" ng-click="skipToAddHome()">
+                        {{'SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER' | translate}}
                     </p>
 
                 </div>
@@ -59,9 +71,9 @@
         </ion-content>
         <ion-footer-bar  class="text-center bar-stable blue-bg no-border" >
             <div  class="button-bar">
-                <button  class="button button-light button-clear bold" type="submit"  ng-click="requestOTP()">
-                    {{'REQUEST_OTP' | translate }}
-                </button>
+                <!--<button  class="button button-light button-clear bold" type="submit"  ng-click="requestOTP()">-->
+                    <!--{{'REQUEST_OTP' | translate }}-->
+                <!--</button>-->
                 <button  ng-disabled="confirmAccountForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="confirmOTP()" >
                     {{isFromLogin?"CONFIRM":'NEXT' | translate }}
                 </button>
