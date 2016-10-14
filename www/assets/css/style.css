@@ -2,7 +2,9 @@
 h1 {
     color: blue;
 }
-
+.bg-lang-highlight{
+    background-color: gainsboro;
+}
 .home-language-span{
     font-size: 20px;
     text-decoration: underline;

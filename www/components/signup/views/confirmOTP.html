@@ -3,10 +3,13 @@
         <ion-content scroll="true" class="blueno-bg-full">
             <div class="center" style="width: inherit;height: auto;padding-top:15px"  >
                 <h3 style="color: #ffffff;">
-                    <i class="ion-checkmark"></i>&nbsp;{{'CONFIRM_YOUR_ACCOUNT_TITLE' | translate }}
+                    <!--<i class="ion-checkmark"></i>&nbsp;-->
+                    {{'CONFIRM_YOUR_ACCOUNT_TITLE' | translate }}
                 </h3>
                 <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
             </div>
+            <p ng-if="(isFromLogin&&!indirect) || !isFromLogin" style="    font-size: 20px;padding: 0px 40px;color: white;margin-top: 50px;line-height: 30px;
+    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}{{userMobDetail.country_phone_code+userMobDetail.mobile}}</p>
             <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;" ng-if="isFromLogin">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">*</span>
@@ -26,7 +29,7 @@
 
                 <div class="row no-padding">
                     <div class="col no-padding" >
-                        <input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="text" />
+                        <input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="number" />
                         <!--<span class="assertive validation-font wrap-content" ng-show="confirmAccountForm.username.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>-->
                     </div>
                 </div>
@@ -40,6 +43,18 @@
                 <input class="edit-input-txt" ng-required="true" ng-model="confirm.code" name="code"   style="font-size:18px;" type="number" />
 
             </label>
+            <div class="row">
+                <div class="col center" style="font-size: 18px;">
+                    <p class="positive" style="text-decoration: underline">
+                        {{'DID_NOT_RECEIVE_CODE' | translate}}
+                    </p>
+                    <p class="positive" style="text-decoration: underline">
+                        {{'REQUEST_A_NEW_CODE' | translate}}
+                    </p>
+
+                </div>
+            </div>
+
 
         </ion-content>
         <ion-footer-bar  class="text-center bar-stable blue-bg no-border" >

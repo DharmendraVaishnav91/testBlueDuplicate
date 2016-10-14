@@ -16,11 +16,17 @@
                 <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
                     <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
                 </div>
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'FULL_NAME' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding">
+                    <span class="input-label label-text " style="color:white">{{'FIRST_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <input type="text" name="name" ng-required="true" ng-model="family.name" class="edit-input-txt"  />
+                    <input type="text" name="name" ng-required="true" ng-model="family.firstName" class="edit-input-txt"/>
+                </label>
+                <label class="item item-input item-stacked-label no-border label-padding">
+                    <span class="input-label label-text " style="color:white">{{'LAST_NAME' | translate }}
+                        <span class="assertive " style="font-size: inherit">* </span>
+                    </span>
+                    <input type="text" name="name" ng-required="true" ng-model="family.lastName" class="edit-input-txt"/>
                 </label>
                 <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
             <!--<span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}-->

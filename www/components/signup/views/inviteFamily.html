@@ -14,10 +14,16 @@
                 </div>
             </div>
             <label class="item item-input item-stacked-label no-border label-padding">
-                    <span class="input-label label-text " style="color:white">{{'FULL_NAME' | translate }}
+                    <span class="input-label label-text " style="color:white">{{'FIRST_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="text" name="name" ng-required="true" ng-model="family.name" class="edit-input-txt"/>
+                <input type="text" name="name" ng-required="true" ng-model="family.firstName" class="edit-input-txt"/>
+            </label>
+            <label class="item item-input item-stacked-label no-border label-padding">
+                    <span class="input-label label-text " style="color:white">{{'LAST_NAME' | translate }}
+                        <span class="assertive " style="font-size: inherit">* </span>
+                    </span>
+                <input type="text" name="name" ng-required="true" ng-model="family.lastName" class="edit-input-txt"/>
             </label>
             <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
             <!--<span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}-->

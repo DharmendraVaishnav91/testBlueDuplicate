@@ -54,6 +54,9 @@
 
   "CONFIRM_SHARE": "Confirm share",
   "CONFIRM_YOUR_ACCOUNT": "Confirm your account",
+  "CONFIRM_CODE_SENT":"A confirmation code has been sent to:",
+  "DID_NOT_RECEIVE_CODE":"Did not receive a code?",
+  "REQUEST_A_NEW_CODE":" Request a new code.",
   "CONSUMER_PRODUCT": "Consumer Product",
   "COOPERATIVE": "Cooperative",
   "COUNTRY": "Country",

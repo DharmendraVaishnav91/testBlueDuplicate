@@ -47,7 +47,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
     $scope.sendInviteToFamily  = function () {
         var members=[];
         var data={
-            name:$scope.family.name,
+            name:$scope.family.firstName+" "+$scope.family.lastName,
            // mobile:$scope.family.phoneCode+""+$scope.family.mobile,
             relationship:$scope.family.relationship
         };

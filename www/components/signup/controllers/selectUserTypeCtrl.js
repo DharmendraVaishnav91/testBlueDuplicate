@@ -21,12 +21,12 @@ app.controller('selectUserTypeCtrl', function($timeout,$q,$scope,$state,$ionicPo
               signUpService.requestOTP(requestData).then(function (response) {
                   console.log("OTP requested successfully");
                   console.log(response);
-
+                  $state.go('verifyAccount');
                  $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
               }).catch(function (error) {
                   console.log(error);
               }) ;
-          $state.go('accntCreateSuccess');
+
           $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
 
 

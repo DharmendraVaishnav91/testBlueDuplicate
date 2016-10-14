@@ -7,7 +7,7 @@
                     {{'SELECT_LANGUAGE' | translate}}
                 </div>
                 <div class=" item no-padding bg-transparent" ng-click="changeLanguage('en')">
-                    <div class="row">
+                    <div class="row" ng-class="{'bg-lang-highlight':language == 'en'}">
                         <div class="col col-center">
                             English
                         </div>
@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="item no-padding bg-transparent" ng-click="changeLanguage('ms')">
-                    <div class="row">
+                    <div class="row" ng-class="{'bg-lang-highlight':language == 'ms'}">
                         <div class="col col-center">
                             Malay
                         </div>
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="item no-padding bg-transparent" ng-click="changeLanguage('vi')">
-                    <div class="row">
+                    <div class="row" ng-class="{'bg-lang-highlight':language == 'vi'}">
                         <div class="col col-center">
                             Tiếng Việt (Vietnamese)
                         </div>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="item no-padding bg-transparent" ng-click="changeLanguage('ja')">
-                    <div class="row">
+                    <div class="row" ng-class="{'bg-lang-highlight':language == 'ja'}">
                         <div class="col col-center">
                             日本語 (Japanese)
                         </div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="item no-padding bg-transparent" ng-click="changeLanguage('my')">
-                    <div class="row">
+                    <div class="row" ng-class="{'bg-lang-highlight':language == 'my'}">
                         <div class="col col-center">
                             ဗမာစာ (Burmese)
                         </div>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="item no-padding bg-transparent" ng-click="changeLanguage('th')">
-                    <div class="row">
+                    <div class="row" ng-class="{'bg-lang-highlight':language == 'th'}">
                         <div class="col col-center">
                             ไทย(Thai)
                         </div>

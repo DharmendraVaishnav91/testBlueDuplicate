@@ -7,6 +7,7 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
         $state.go('home');
     };
     $scope.isFromLogin=$stateParams['isFromLogin'] ;
+    $scope.indirect=$stateParams['indirect'] ;
     utilityService.getCountryList().then(function(response){
         $scope.countryCodeList=response;
         console.log(response);
@@ -15,15 +16,15 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
     });
     $scope.requestOTP = function () {
         var requestData={};
-        if($scope.isFromLogin){
+        if($scope.isFromLogin && !$scope.indirect){
             requestData = {
                 country_phone_code: $scope.confirm.country,
-                username: $scope.confirm.mobile
+                username: ""+$scope.confirm.mobile
             };
         }else{
             requestData = {
                 country_phone_code: $rootScope.userMobDetail.country_phone_code,
-                username: $rootScope.userMobDetail.mobile
+                username: ""+$rootScope.userMobDetail.mobile
             };
         }
         signUpService.requestOTP(requestData).then(function (response) {
@@ -36,18 +37,18 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
     };
     $scope.confirmOTP = function (){
         var requestData={};
-        if($scope.isFromLogin){
+        if($scope.isFromLogin && !$scope.indirect){
             requestData={
                 country_phone_code: $scope.confirm.country,
                 otp_code: $scope.confirm.code+"",
-                username:$scope.confirm.mobile
+                username:""+$scope.confirm.mobile
             };
         }else{
 
             requestData = {
                 country_phone_code: $rootScope.userMobDetail.country_phone_code,
                 otp_code: $scope.confirm.code+"",
-                username: $rootScope.userMobDetail.mobile
+                username: ""+$rootScope.userMobDetail.mobile
             };
         }
         //var requestData = {
