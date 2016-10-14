@@ -40,12 +40,26 @@
                     <option value="female">{{'FEMALE' | translate }}</option>
                 </select>
             </label>
+
+            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">
+                    {{'OCCUPATION' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <select style="width: 100%"  ng-model="loginData.user_type" ng-required="true">
+                    <option disabled  value="" selected >{{'SELECT_YOUR_TYPE' | translate}}</option>
+                    <option value="farmer" >{{'FARMER' | translate}}</option>
+                    <option value="Factory Worker">{{'FACTORY_WORKER' | translate }}</option>
+                    <option value="Fisherman" >{{'FISHERMAN' | translate}}</option>
+                    <option value="Other" >{{'OTHER' | translate}}</option>
+                </select>
+            </label>
             </div>
 
 </ion-content>
 <ion-footer-bar  class="text-center bar-stable blue-bg no-border">
     <div  class="button-bar">
-        <button ng-disabled="basicInfoForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="goToSelectUserType()">
+        <button ng-disabled="basicInfoForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="goToAddHomeWithCheck()">
             {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
         </button>
     </div>
