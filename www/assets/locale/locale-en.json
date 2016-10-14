@@ -335,6 +335,7 @@
   "LANGUAGE": "Language",
   "POSTAL": "Postal Code",
   "THANK_YOU":"Thank you!" ,
+  "SELECT_OCCUPATION":"Select Occupation",
   "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code? Continue registration and confirm your account later."
 
 
