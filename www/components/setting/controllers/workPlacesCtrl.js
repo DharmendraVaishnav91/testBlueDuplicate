@@ -1,15 +1,15 @@
 /**
  * Created by dharmendra on 24/8/16.
  */
-userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,userSettingService,utilityService,loginService,$rootScope,signUpService,$cordovaToast,$filter) {
+userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, userSettingService, utilityService, loginService, $rootScope, signUpService, $cordovaToast, $filter) {
 
-    $scope.isFromSetting=true;
-    $scope.isWorkPlace=false;
-    $scope.showNoDataAlert=false;
-    var fetchCropList = function(){
-        signUpService.fetchProductsList().then(function(response){
-            $scope.productList=response;
-        }).catch(function(error){
+    $scope.isFromSetting = true;
+    $scope.isWorkPlace = false;
+    $scope.showNoDataAlert = false;
+    var fetchCropList = function () {
+        signUpService.fetchProductsList().then(function (response) {
+            $scope.productList = response;
+        }).catch(function (error) {
             console.log(error);
         });
     };
@@ -19,141 +19,136 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {
-        $scope.editWork= modal;
+        $scope.editWork = modal;
     });
-     $scope.backToAccount= function () {
-         $state.go('app.setting');
-     };
+    $scope.backToAccount = function () {
+        $state.go('app.setting');
+    };
     $ionicModal.fromTemplateUrl('components/setting/views/workDetail.html', {
         scope: $scope,
         animation: 'slide-in-right'
     }).then(function (modal) {
-        $scope.workDetailModal= modal;
+        $scope.workDetailModal = modal;
     });
 
-    var fetchAllLocations= function () {
+    var fetchAllLocations = function () {
         userSettingService.fetchAllLocations().then(function (response) {
-            $scope.userLocations=response;
+            $scope.userLocations = response;
             console.log("User locations");
             console.log(response);
-            $scope.isWorkPlace=$scope.userLocations.length!=0;
-            $scope.showNoDataAlert=$scope.userLocations.length==0;
+            $scope.isWorkPlace = $scope.userLocations.length != 0;
+            $scope.showNoDataAlert = $scope.userLocations.length == 0;
 
         }).catch(function (error) {
             console.log(error);
-            $scope.isWorkPlace=false;
+            $scope.isWorkPlace = false;
         })
     };
     fetchAllLocations();
 
 
-    $scope.countryCodeList=[];
-    $scope.data={};
-    $scope.work={};
-    $scope.invitedMember={};
+    $scope.countryCodeList = [];
+    $scope.data = {};
+    $scope.work = {};
+    $scope.invitedMember = {};
 
-    $scope.countryCodeList=utilityService.countryList();
-     $scope.addWork = function () {
-         var fetchWorkTypes= function () {
-             signUpService.fetchWorkTypes().then(function (response) {
-                 console.log("Work types are :");
-                 console.log(response);
-                 $scope.workTypes=response;
-             }).catch(function (error) {
-                 console.log(error);
-             });
-         };
-         fetchWorkTypes();
-         fetchCropList();
-         $scope.work={};
-         $scope.enableAddressFields=false;
-         $scope.work.name="My Work Place 1";
-         $scope.editWork.show();
-     };
+    $scope.countryCodeList = utilityService.countryList();
+    $scope.addWork = function () {
+        var fetchWorkTypes = function () {
+            signUpService.fetchWorkTypes().then(function (response) {
+                console.log("Work types are :");
+                console.log(response);
+                $scope.workTypes = response;
+            }).catch(function (error) {
+                console.log(error);
+            });
+        };
+        fetchWorkTypes();
+        fetchCropList();
+        $scope.work = {};
+        $scope.enableAddressFields = false;
+        $scope.work.name = "My Work Place 1";
+        $scope.editWork.show();
+    };
 
-    $scope.hideWorkAddModal= function () {
+    $scope.hideWorkAddModal = function () {
         $scope.editWork.hide();
     };
 
-    $scope.hideEditAccount =function(){
+    $scope.hideEditAccount = function () {
         $scope.editAccountModal.hide();
     };
-    $scope.hideWorkDetailModal= function () {
+    $scope.hideWorkDetailModal = function () {
 
         $scope.workDetailModal.hide();
         //$scope.selectedWork={};
     };
 
-    $scope.showWorkDetailModal =function(selectedWork){
-        $scope.selectedWork=selectedWork;
+    $scope.showWorkDetailModal = function (selectedWork) {
+        $scope.selectedWork = selectedWork;
         $scope.workDetailModal.show();
     };
 
-    $scope.changeSubdivision=function(countryCode){
+    $scope.changeSubdivision = function (countryCode) {
         fetchStates(countryCode);
     };
 
-    var fetchStates= function (countryCode) {
-      loginService.fetchStates(countryCode).then(function (response) {
-           $scope.subDivList=response;
-      }).catch(function(error){
-          console.log(error);
-      })
+    var fetchStates = function (countryCode) {
+        loginService.fetchStates(countryCode).then(function (response) {
+            $scope.subDivList = response;
+        }).catch(function (error) {
+            console.log(error);
+        })
     };
 
-    var fetchLocation= function () {
-      loginService.fetchAllLocation().then(function(response){
-         $scope.myLocations=response;
-      }).catch(function(error){
-         console.log(error);
-      });
-    };
-    fetchLocation();
+    //var fetchLocation= function () {
+    //  loginService.fetchAllLocation().then(function(response){
+    //     $scope.myLocations=response;
+    //  }).catch(function(error){
+    //     console.log(error);
+    //  });
+    //};
+    //fetchLocation();
     $scope.updateLocationFields = function (locationWay) {
         $scope.enableAddressFields = true;
         if (locationWay == "current") {
             $scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
             $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-
-           // $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+            $scope.work.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
+            // $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
             //$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
             $scope.work.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.work.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-        } else if(locationWay=="manual") {
+        } else if (locationWay == "manual") {
             $scope.work.address = "";
             $scope.work.city = "";
             //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-
+            $scope.work.postalcode = "";
             //$scope.work.latitude = "";
-           // $scope.work.longitude = "";
+            // $scope.work.longitude = "";
             $scope.work.state = "";
             $scope.work.country = "";
-        }else{
-            $scope.enableAddressFields=false;
+        } else {
+            $scope.enableAddressFields = false;
         }
     };
-    var saveWorkData =function(workData){
-        loginService.saveWorkData(workData).then(function(response){
-
-
+    var saveWorkData = function (workData) {
+        loginService.saveWorkData(workData).then(function (response) {
             fetchAllLocations();
             $scope.hideWorkAddModal();
-
             $cordovaToast.showShortBottom($filter('translate')('WORK_ADDED_SUCCESSFULLY'));
             console.log("Work added successfully.");
-
-        }).catch(function(error){
-           console.log(error);
+        }).catch(function (error) {
+            console.log(error);
             $cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
         });
-
     };
 
-    $scope.saveWork= function(){
+    $scope.saveWork = function () {
         console.log($scope.data);
         var works = [];
-        var location ={};
+        var location = {};
         //$scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
         //$scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
         //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
@@ -162,9 +157,9 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         ////$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
         //$scope.work.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
         //$scope.work.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-        if($scope.work.where=="manual"||$scope.work.where=="current") {
-            location={
-                name:$scope.work.where=="manual"?"Enter Address":"My Current Location",
+        if ($scope.work.where == "manual" || $scope.work.where == "current") {
+            location = {
+                name: $scope.work.where == "manual" ? "Enter Address" : "My Current Location",
                 //name:"My Current Location",
                 latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
                 longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
@@ -172,9 +167,10 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
                 city: $scope.work.city,
                 subdivision_code: $scope.work.state ? $scope.work.state : '',
                 country_code: $scope.work.country,
-                locationtype:"Registration Worksite"
+                locationtype: "Registration Worksite",
+                postalcode: $scope.work.postalcode
             };
-        }else{
+        } else {
             //thing1.location=JSON.parse($scope.data.equipWhere);
             location = {
                 name: (JSON.parse($scope.work.where)).LocationID
@@ -183,12 +179,12 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         var work = {
             //type: $scope.work.type,
             type: "Work",
-            relationship:"Owner",
+            relationship: "Owner",
             location: location
         };
-        if($scope.work.crop){
-            work.crop=$scope.work.crop;
-            work.hectares=0;
+        if ($scope.work.crop) {
+            work.crop = $scope.work.crop;
+            work.hectares = 0;
         }
         works.push(work);
         var workData = {
@@ -197,7 +193,7 @@ userSetting.controller('WorkPlacesCtrl', function($scope,$state,$ionicModal,user
         console.log("work data");
         console.log(workData);
         saveWorkData(workData);
-        
-       //$scope.openModal(openModalType.addThing);
+
+        //$scope.openModal(openModalType.addThing);
     };
 });
