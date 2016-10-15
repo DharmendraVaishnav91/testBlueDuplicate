@@ -64,11 +64,25 @@
             </select>
             </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding" >
+            <!-- <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'OCCUPATION' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" type="text" name="occupation"   style="font-size:18px;" ng-required="true"   ng-model="person.occupation"/>
+            </label> -->
+
+            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
+                <span class="input-label label-text "  style="color:white">
+                    {{'OCCUPATION' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <select style="width: 100%"  ng-model="person.occupation" ng-required="true">
+                    <option disabled  value="" selected >{{'SELECT_OCCUPATION' | translate}}</option>
+                    <option value="Farmer" >{{'FARMER' | translate}}</option>
+                    <option value="Factory Worker">{{'FACTORY_WORKER' | translate }}</option>
+                    <option value="Fisherman" >{{'FISHERMAN' | translate}}</option>
+                    <option value="Other" >{{'OTHER' | translate}}</option>
+                </select>
             </label>
             <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
                 <!--<span class="input-label label-text "  style="color:white">{{'STREET_ADDRESS_ONE' | translate }}-->
@@ -111,4 +125,3 @@
     </ion-footer-bar>
     </form>
 </ion-modal-view >
-
