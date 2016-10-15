@@ -25,21 +25,21 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         });
     };
     fetchCropList();
-    var fetchLocation = function () {
-        signUpService.fetchAllLocation().then(function (response) {
-            $scope.myLocations = response;
-            angular.forEach(response, function (location) {
-                if(location.LocationName=='Home'){
-                    $scope.home=angular.copy(location);
-                    console.log("HOme");
-                    console.log($scope.home);
-                }
-            });
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    fetchLocation();
+    //var fetchLocation = function () {
+    //    signUpService.fetchAllLocation().then(function (response) {
+    //        $scope.myLocations = response;
+    //        angular.forEach(response, function (location) {
+    //            if(location.LocationName=='Home'){
+    //                $scope.home=angular.copy(location);
+    //                console.log("HOme");
+    //                console.log($scope.home);
+    //            }
+    //        });
+    //    }).catch(function (error) {
+    //        console.log(error);
+    //    });
+    //};
+    //fetchLocation();
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;

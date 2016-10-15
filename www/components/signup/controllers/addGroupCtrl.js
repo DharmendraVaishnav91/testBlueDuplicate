@@ -14,14 +14,14 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
     };
 
     fetchGroupsType();
-    var fetchLocation = function () {
-        signUpService.fetchAllLocation().then(function (response) {
-            $scope.myLocations = response;
-        }).catch(function (error) {
-            console.log(error);
-        });
-    };
-    fetchLocation();
+    //var fetchLocation = function () {
+    //    signUpService.fetchAllLocation().then(function (response) {
+    //        $scope.myLocations = response;
+    //    }).catch(function (error) {
+    //        console.log(error);
+    //    });
+    //};
+    //fetchLocation();
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;
@@ -47,39 +47,39 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
         });
     };
 
-    $scope.updateLocationFields = function (locationWay) {
-        if (locationWay == "current") {
-            $scope.enableAddressFields = true;
-            $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-            $scope.location = {
-                name: "My Current Location",
-                latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
-                longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
-                address: angular.copy($rootScope.addressDataFromCoordinate.address),
-                city: angular.copy($rootScope.addressDataFromCoordinate.city),
-                subdivision_code: angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode),
-                country_code: angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode) ,
-                postalcode: angular.copy($rootScope.addressDataFromCoordinate.userCountry.postalcode)
-            }
-        } else if (locationWay != "manual") {
-            $scope.enableAddressFields = false;
-            $scope.location = {
-                name: (JSON.parse($scope.data.groupLocation)).LocationID
-            };
-        } else {
-            $scope.enableAddressFields = true;
-            $scope.location = {
-                name: "Enter Address",
-                latitude: "",
-                longitude: "",
-                address: "",
-                city: "",
-                subdivision_code:"",
-                country_code: "",
-                postalcode:""
-            }
-        }
-    };
+    //$scope.updateLocationFields = function (locationWay) {
+    //    if (locationWay == "current") {
+    //        $scope.enableAddressFields = true;
+    //        $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+    //        $scope.location = {
+    //            name: "My Current Location",
+    //            latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
+    //            longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
+    //            address: angular.copy($rootScope.addressDataFromCoordinate.address),
+    //            city: angular.copy($rootScope.addressDataFromCoordinate.city),
+    //            subdivision_code: angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode),
+    //            country_code: angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode) ,
+    //            postalcode: angular.copy($rootScope.addressDataFromCoordinate.userCountry.postalcode)
+    //        }
+    //    } else if (locationWay != "manual") {
+    //        $scope.enableAddressFields = false;
+    //        $scope.location = {
+    //            name: (JSON.parse($scope.data.groupLocation)).LocationID
+    //        };
+    //    } else {
+    //        $scope.enableAddressFields = true;
+    //        $scope.location = {
+    //            name: "Enter Address",
+    //            latitude: "",
+    //            longitude: "",
+    //            address: "",
+    //            city: "",
+    //            subdivision_code:"",
+    //            country_code: "",
+    //            postalcode:""
+    //        }
+    //    }
+    //};
 
     $scope.skipToInviteFamily = function () {
         $state.go('inviteFamily');
