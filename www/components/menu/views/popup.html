@@ -1,0 +1,12 @@
+<label class="item item-input" style="width:100%, color:white">
+  <i class="icon ion-search placeholder-search" style="color:black"></i>
+  <input type="search" placeholder="Search" ng-model="searchQuery" style="color:black"/>
+</label>
+<div class="list" style="max-height: 200px !important;
+overflow: scroll;">
+
+  <ion-radio ng-repeat="item in items | orderBy:sort | filter:searchQuery" ng-value="item" ng-model="model" ng-change="onChangeModel(item)" style="width:100%">
+    {{ item[displayProperty] || item.name || item}}
+  </ion-radio>
+  <h5 style="text-align: center" ng-show="items.length==0">Nothing found</h5>
+</div>

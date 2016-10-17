@@ -1,6 +1,12 @@
 menu.controller('SettingCtrl', function($scope, $state, loginService, $localStorage, $rootScope, menuService, $translate, $window, $cordovaToast) {
+  console.log("inside SettingCtrl");
+  console.log("selected language");
+  console.log($rootScope.language);
+  $scope.local={
+    language:angular.copy($rootScope.language)
+  }
   $scope.changeLanguage = function(selectedLang) {
-    console.log("inside SettingCtrl");
+
     menuService.selectLanguage(selectedLang).then(function(response) {
       console.log($rootScope.language);
       $translate.use(selectedLang);
@@ -10,12 +16,12 @@ menu.controller('SettingCtrl', function($scope, $state, loginService, $localStor
 
     })
   };
-   $scope.arr = { prop: ["Saab", "Volvo", "BMW", "Audi", "Mercedes", "Suzuki" , "Range Rover", "Jaguar", "TATA", "WolksVegon", "Lamborghini", "Mazda"] };
+   $scope.arr = { prop: [{id:1,name:"Saab"}, {id:2,name:"Volvo"},{id:3,name:"BMW"},{id:4,name:"Saab1"}, {id:5,name:"Volvo1"},{id:6,name:"BMW1"}] };
 });
 menu.directive('directiveParameterList' , function($ionicPopup){
       var directive = {};
       directive.restrict = 'EAC';
-      directive.templateUrl = 'components/menu/views/sample.html';
+      directive.templateUrl = 'components/menu/views/listDirective.html';
       // directive.replace   = true;
       directive.scope = {
         items: "=arr",
@@ -39,23 +45,31 @@ menu.directive('directiveParameterList' , function($ionicPopup){
           elem.bind('click', function (event) {
 
               scope.popup = $ionicPopup.show({
-                  title: attrs.heading,
-                  template: '<ion-radio ng-repeat="item in items | orderBy:sort" ng-value="item" ng-model="model" ' +
-                              'ng-change="onChangeModel(item)" style="width:100%">{{ item[displayProperty] || item.name || item}}</ion-radio>' +
-                              '<h5 style="text-align: center" ng-if="items.length==0">Nothing found</h5>',
+                  // title: attrs.heading,
+                  // template: '<ion-searchbar' +
+                  //           '[(ngModel)]="items"' +
+                  //           '[showCancelButton]="shouldShowCancel"' +
+                  //           '(ionInput)="onInput($event)"' +
+                  //           '(ionCancel)="onCancel($event)">' +
+                  //           '</ion-searchbar><ion-radio ng-repeat="item in items | orderBy:sort" ng-value="item" ng-model="model" ' +
+                  //           'ng-change="onChangeModel(item)" style="width:100%">{{ item[displayProperty] || item.name || item}}</ion-radio>' +
+                  //           '<h5 style="text-align: center" ng-if="items.length==0">Nothing found</h5>',
+                  templateUrl: 'components/menu/views/popup.html',
                   buttons: [{
                       type:'button-clear button-assertive',
                       text: 'Cancel'
-                  },{
-                      text:'Clear',
-                      type:' button-clear button-dark',
-                      onTap:function(e){
-                          console.log("Clear Model");
-                          scope.model = null;
-                          scope.onClear();
-
-                      }
-                  }],
+                  }
+                  // ,{
+                  //     text:'Clear',
+                  //     type:' button-clear button-dark',
+                  //     onTap:function(e){
+                  //         console.log("Clear Model");
+                  //         scope.model = null;
+                  //         scope.onClear();
+                  //
+                  //     }
+                  // }
+                ],
                   scope: scope
               });
           });

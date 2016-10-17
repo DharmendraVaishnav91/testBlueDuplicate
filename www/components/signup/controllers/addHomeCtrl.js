@@ -28,6 +28,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
         if (locationWay == "current") {
             $scope.home.address = angular.copy($rootScope.addressDataFromCoordinate.address);
             $scope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+            $scope.home.postalcode=angular.copy($rootScope.addressDataFromCoordinate.postalcode);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
             //$scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
@@ -37,7 +38,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
         } else {
             $scope.home.address = "";
             $scope.home.city = "";
-
+            $scope.home.postalcode="";
             //$scope.home.latitude = "";
             //$scope.home.longitude = "";
             $scope.data.state = "";

@@ -3,6 +3,7 @@
       <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
           <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
           <h3 style="color: white;font-weight: bold;margin-top:0">{{'BLUENUMBER_SMALL'| translate}}</h3>
+          <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
 
       </div>
     <form name="loginForm">
@@ -38,9 +39,16 @@
             </div>
         </div>
     </form>
-      <div class="row" style="margin-top: 10px;">
-          <div class="col col-center center" >
-              <a style="font-size:larger;color: white;text-decoration: underline" ng-click="openRegistration()">{{'SIGN_UP_FOR_BN' | translate }}</a>
+      <div class="row no-padding" style="margin-top: 10px;">
+          <div class="col no-padding col-center center" >
+              <button style="font-size:larger;color: white;text-decoration: underline" class="button button-clear" ng-click="openRegistration()">{{'SIGN_UP_FOR_BN' | translate }}</button>
+
           </div>
       </div>
+    <div class="row no-padding" style="margin-top: 10px;">
+        <div class="col col-center center no-padding" >
+            <button  class="button button-clear button-outline button-balanced" ng-click="confirmUserAccount()">{{'ACCOUNT_NOT_CONFIRMED' | translate }}</button>
+
+        </div>
+    </div>
   </ion-content>

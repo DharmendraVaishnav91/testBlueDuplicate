@@ -10,7 +10,9 @@
     <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
-
+            <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
+                <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
+            </div>
             <label class="item item-input item-stacked-label no-border label-padding"  >
                     <span class="input-label label-text "  style="color:white">{{'ASSET_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
@@ -132,7 +134,7 @@
                 {{'CANCEL' | translate }}
             </button> &nbsp;
             <button ng-disabled="addThingForm.$invalid" class="button  button-light button-clear bold" type="submit"  ng-click="createThing()">
-                {{'SUBMIT' | translate }}
+                {{'SAVE' | translate }}
             </button>
 
         </div>

@@ -2,9 +2,10 @@
     <ion-content scroll="true" class="blueno-bg-full has-footer no-margin">
         <div class="center" style="width: inherit;height: auto;padding-top:15px">
             <h3 style="color: #ffffff;">
-                <i class="ion-folder"></i>&nbsp;{{'ADD_FAMILY' | translate }}
+                <i class="ion-person"></i>&nbsp;{{'ADD_FAMILY' | translate }}
                 <!--<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>-->
             </h3>
+            <!--<span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>-->
         </div>
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
             <div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;">
@@ -13,10 +14,16 @@
                 </div>
             </div>
             <label class="item item-input item-stacked-label no-border label-padding">
-                    <span class="input-label label-text " style="color:white">{{'FULL_NAME' | translate }}
+                    <span class="input-label label-text " style="color:white">{{'FIRST_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="text" name="name" ng-required="true" ng-model="family.name" class="edit-input-txt"/>
+                <input type="text" name="name" ng-required="true" ng-model="family.firstName" class="edit-input-txt"/>
+            </label>
+            <label class="item item-input item-stacked-label no-border label-padding">
+                    <span class="input-label label-text " style="color:white">{{'LAST_NAME' | translate }}
+                        <span class="assertive " style="font-size: inherit">* </span>
+                    </span>
+                <input type="text" name="name" ng-required="true" ng-model="family.lastName" class="edit-input-txt"/>
             </label>
             <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
             <!--<span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}-->

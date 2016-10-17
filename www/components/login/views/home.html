@@ -4,7 +4,7 @@
         <img ng-src="{{bgLargeUrl}}" style="height: 150px;width: 150px;"/>
 
         <h2 style="color: white;font-weight: bold;margin-top:0">{{'BLUENUMBER_SMALL'|translate}}</h2>
-        <span style="color:white">Version:&nbsp;{{appVersion}}</span>
+        <span style="color:white">{{'VERSION' | translate}}:&nbsp;{{appVersion}}</span>
     </div>
     <div class="row" style="margin-top:85px">
         <div class="col center ">
@@ -23,13 +23,27 @@
 
     </div>
     <div class="row" style="margin-top: 10px;">
-        <div class="col" style="    padding: 5px 32px 5px 31px;">
+      <label class="item item-input item-stacked-label no-border label-padding" >
+              <span class="input-label label-text "  style="color:white">{{'LANGUAGE' | translate }}
+                  <span class="assertive " style="font-size: inherit">* </span>
+              </span>
+          <select style="width: 100%" ng-model="lang.selected" name="language" ng-change="changeLanguage()">
+              <option value="" disabled selected>{{'SELECT_LANGUAGE' | translate}}</option>
+              <option value="en">English</option>
+              <option value="ms">Malay</option>
+              <option value="vi">Tiếng Việt(Vietnamese)</option>
+              <option value="ja">日本語 (にほんご)(Japanese)</option>
+              <option value="my">ဗမာစာ (Burmese)</option>
+              <option value="th"> ไทย(Thai)</option>
+          </select>
+      </label>
+        <!-- <div class="col" style="    padding: 5px 32px 5px 31px;">
             <span class="home-language-span positive" ng-click="changeLanguage('en')">English</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
             <span class="home-language-span positive" ng-click="changeLanguage('ms')">Malay</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
             <span  class="home-language-span positive" ng-click="changeLanguage('vi')">Tiếng Việt(Vietnamese)</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
             <span  class="home-language-span positive" ng-click="changeLanguage('ja')">日本語 (にほんご)(Japanese)</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
             <span class="home-language-span positive" ng-click="changeLanguage('my')">ဗမာစာ (Burmese)</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
             <span class="home-language-span positive" ng-click="changeLanguage('th')"> ไทย(Thai)</span>
-        </div>
+        </div> -->
     </div>
 </ion-content>
