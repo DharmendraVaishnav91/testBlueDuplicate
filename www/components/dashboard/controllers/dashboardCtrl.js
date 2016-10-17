@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService) {
+app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
     $scope.showFilter = false;
@@ -90,8 +90,16 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
     };
     var params="" ;
     loadMap(params,defaultLat,defaultLng);
+    var fetchCropList = function(){
+        signUpService.fetchProductsList().then(function(response){
+            $scope.productList=response;
+        }).catch(function(error){
+            console.log(error);
+        });
+    };
 
     $scope.showFilters = function () {
+        fetchCropList();
         $scope.showFilter = !$scope.showFilter;
     };
     $scope.applyFilter= function () {
