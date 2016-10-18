@@ -248,7 +248,7 @@
   "SELECT_CROP": "Select Crop",
   "SELECT_GENDER": "Select Gender",
   "SELECT_GROUP_TYPE": "Select Group Type",
-  "SELECT_ID_TYPE": "Select thing id type",
+  "SELECT_ID_TYPE": "Select Thing ID Type",
   "SELECT_LANGUAGE": "Select Language",
   "SELECT_ONE": "Select One",
   "SELECT_PRODUCT": "Select Product",
@@ -336,7 +336,8 @@
   "POSTAL": "Postal Code",
   "THANK_YOU":"Thank you!" ,
   "SELECT_OCCUPATION":"Select Occupation",
-  "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code? Continue registration and confirm your account later."
+  "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code?",
+  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later."
 
 
 

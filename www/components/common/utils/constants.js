@@ -1,8 +1,8 @@
 /**
  * Created by dharmendra on 16/8/16.
  */
-var apiUrl="https://bnstaging.herokuapp.com";
-//var apiUrl= "https://blue-dev.herokuapp.com";
+//var apiUrl="https://bnstaging.herokuapp.com";
+var apiUrl= "https://blue-dev.herokuapp.com";
 var HttpRequestType = {
     GET: 'GET',
     POST: 'POST',
@@ -22,7 +22,13 @@ var INVITATION={
 };
 var STORAGE={
     LOGIN_KEY:"login-key",
-    COUNTRIES:"countries"
+    COUNTRIES:"countries",
+    COUNTRIES_JA:"countries_ja",
+    COUNTRIES_VI:"countries_vi",
+    COUNTRIES_TH:"countries_th",
+    COUNTRIES_MY:"countries_my",
+    COUNTRIES_MS:"countries_ms",
+    COUNTRIES_EN:"countries_en"
 };
 var DEFAULT_PROFILE_PATH="/assets/user.png"  ;
 var DEFAULT_AVATAR_PATH="assets/img/blank-avatar.png";

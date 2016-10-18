@@ -29,7 +29,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
     $scope.work = {};
     $scope.workLocations = [];
 
-    utilityService.getCountryList().then(function (response) {
+    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
         console.log(response);
     }).catch(function (error) {

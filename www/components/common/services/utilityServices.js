@@ -47,13 +47,16 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         };
         return utilityService.makeHTTPRequest(req,deferred);
     } ;
-    utilityService.countryList= function () {
+    utilityService.countryList= function (selectedLanguage) {
         if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
             var deferred = $q.defer();
             var req={
                 url:HttpRoutes.fetchCountryCode,
                 method:HttpRequestType.GET
             };
+            if(selectedLanguage!=null){
+                req.url+="?locale="+selectedLanguage;
+            }
             utilityService.makeHTTPRequest(req,deferred).then(function (countryList) {
                 $localStorage[STORAGE.COUNTRIES]=countryList;
                 return  $localStorage[STORAGE.COUNTRIES];
@@ -64,22 +67,25 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         }
 
     };
-    utilityService.getCountryList= function () {
+    utilityService.getCountryList= function (selectedLanguage) {
         var deferred = $q.defer();
-        if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
+        //if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
 
             var req={
                 url:HttpRoutes.fetchCountryCode,
                 method:HttpRequestType.GET
             };
+            if(selectedLanguage!=null){
+                req.url+="?locale="+selectedLanguage;
+            }
             utilityService.makeHTTPRequest(req,deferred).then(function (countryList) {
                 $localStorage[STORAGE.COUNTRIES]=countryList;
                 deferred.resolve($localStorage[STORAGE.COUNTRIES]);
             });
 
-        }else{
-             deferred.resolve($localStorage[STORAGE.COUNTRIES]);
-        }
+        //}else{
+        //     deferred.resolve($localStorage[STORAGE.COUNTRIES]);
+        //}
         return deferred.promise;
     };
 

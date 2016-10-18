@@ -8,7 +8,7 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     $rootScope.deviceWidth = $window.innerWidth;
     $scope.loginData = {};
     var languageData={};
-    $rootScope.selectedLanguage=null;
+    $rootScope.selectedLanguage="en";
     $scope.lang={
         selected:"en"
     };
@@ -59,7 +59,7 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     $scope.changeLanguage= function () {
 
         $translate.use($scope.lang.selected);
-        $rootScope.selectedLanguage=selectedLang;
+        $rootScope.selectedLanguage=$scope.lang.selected;
             //$cordovaToast.showLongBottom("Language preference updated successfully");
     } ;
     $scope.openRegistration= function () {

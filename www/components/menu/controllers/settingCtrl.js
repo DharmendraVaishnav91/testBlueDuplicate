@@ -4,7 +4,7 @@ menu.controller('SettingCtrl', function($scope, $state, loginService, $localStor
   console.log($rootScope.language);
   $scope.local={
     language:angular.copy($rootScope.language)
-  }
+  };
   $scope.changeLanguage = function(selectedLang) {
 
     menuService.selectLanguage(selectedLang).then(function(response) {
