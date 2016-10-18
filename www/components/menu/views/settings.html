@@ -1,24 +1,27 @@
-
 <ion-view view-title="{{'SETTING' | translate}}">
-<!-- <ion-content> -->
-<ion-content scroll="false" class="blueno-bg-full">
-    <label class="item item-input item-stacked-label no-border label-padding" >
-            <span class="input-label label-text "  style="color:white">{{'LANGUAGE' | translate }}
+    <!-- <ion-content> -->
+    <ion-content scroll="false" class="blueno-bg-full">
+        <label class="item item-input item-stacked-label no-border label-padding">
+            <span class="input-label label-text " style="color:white">{{'LANGUAGE' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-        <select style="width: 100%" ng-model="local.language" name="language" ng-change="changeLanguage(local.language)">
-            <option value="" disabled selected>{{'SELECT_LANGUAGE' | translate}}</option>
-            <option value="en">English</option>
-            <option value="ms">Bahasa Melayu (Malay)</option>
-            <option value="vi">Tiếng Việt(Vietnamese)</option>
-            <option value="ja">日本語 (にほんご)(Japanese)</option>
-            <option value="my">ဗမာစာ (Burmese)</option>
-            <option value="th"> ไทย(Thai)</option>
-        </select>
-    </label>
-    <directive-parameter-list arr="arr.prop" on-change="onChangeState"
-model="studentInfoToUpdate.state" heading="Pick A Car Brand" on-clear="clearDistricts()"></directive-parameter-list>
-</ion-content>
+            <select style="width: 100%" ng-model="local.language" name="language"
+                    ng-change="changeLanguage(local.language)">
+                <option value="" disabled selected>{{'SELECT_LANGUAGE' | translate}}</option>
+                <option value="en">English</option>
+                <option value="ms">Bahasa Melayu (Malay)</option>
+                <option value="vi">Tiếng Việt(Vietnamese)</option>
+                <option value="ja">日本語 (にほんご)(Japanese)</option>
+                <option value="my">ဗမာစာ (Burmese)</option>
+                <option value="th"> ไทย(Thai)</option>
+            </select>
+        </label>
+        <directive-parameter-list arr="arr.prop" on-change="onChangeState"
+                                  model="studentInfoToUpdate.state" heading="Pick A Car Brand"
+                                  on-clear="clearDistricts()">
+
+        </directive-parameter-list>
+    </ion-content>
     <!-- <ion-content scroll="false" class="blueno-bg-full">
         <div class="card">
 

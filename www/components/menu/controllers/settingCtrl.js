@@ -18,7 +18,8 @@ menu.controller('SettingCtrl', function($scope, $state, loginService, $localStor
   };
    $scope.arr = { prop: [{id:1,name:"Saab"}, {id:2,name:"Volvo"},{id:3,name:"BMW"},{id:4,name:"Saab1"}, {id:5,name:"Volvo1"},{id:6,name:"BMW1"}] };
 });
-menu.directive('directiveParameterList' , function($ionicPopup){
+var picklist=angular.module('picklist',[]);
+picklist.directive('directiveParameterList' , function($ionicPopup){
       var directive = {};
       directive.restrict = 'EAC';
       directive.templateUrl = 'components/menu/views/listDirective.html';
@@ -42,8 +43,11 @@ menu.directive('directiveParameterList' , function($ionicPopup){
           } else {
               scope.sort = 'name';
           }
-          elem.bind('click', function (event) {
-
+          scope.onClear= function () {
+             console.log("On clear get called")
+          };
+          scope.onPicklistClick= function (event) {
+            console.log("I am clicked by button");
               scope.popup = $ionicPopup.show({
                   // title: attrs.heading,
                   // template: '<ion-searchbar' +
@@ -59,20 +63,51 @@ menu.directive('directiveParameterList' , function($ionicPopup){
                       type:'button-clear button-assertive',
                       text: 'Cancel'
                   }
-                  // ,{
-                  //     text:'Clear',
-                  //     type:' button-clear button-dark',
-                  //     onTap:function(e){
-                  //         console.log("Clear Model");
-                  //         scope.model = null;
-                  //         scope.onClear();
-                  //
-                  //     }
-                  // }
-                ],
+                      // ,{
+                      //     text:'Clear',
+                      //     type:' button-clear button-dark',
+                      //     onTap:function(e){
+                      //         console.log("Clear Model");
+                      //         scope.model = null;
+                      //         scope.onClear();
+                      //
+                      //     }
+                      // }
+                  ],
                   scope: scope
               });
-          });
+          };
+          //elem.bind('click', function (event) {
+          //
+          //    scope.popup = $ionicPopup.show({
+          //        // title: attrs.heading,
+          //        // template: '<ion-searchbar' +
+          //        //           '[(ngModel)]="items"' +
+          //        //           '[showCancelButton]="shouldShowCancel"' +
+          //        //           '(ionInput)="onInput($event)"' +
+          //        //           '(ionCancel)="onCancel($event)">' +
+          //        //           '</ion-searchbar><ion-radio ng-repeat="item in items | orderBy:sort" ng-value="item" ng-model="model" ' +
+          //        //           'ng-change="onChangeModel(item)" style="width:100%">{{ item[displayProperty] || item.name || item}}</ion-radio>' +
+          //        //           '<h5 style="text-align: center" ng-if="items.length==0">Nothing found</h5>',
+          //        templateUrl: 'components/menu/views/popup.html',
+          //        buttons: [{
+          //            type:'button-clear button-assertive',
+          //            text: 'Cancel'
+          //        }
+          //        // ,{
+          //        //     text:'Clear',
+          //        //     type:' button-clear button-dark',
+          //        //     onTap:function(e){
+          //        //         console.log("Clear Model");
+          //        //         scope.model = null;
+          //        //         scope.onClear();
+          //        //
+          //        //     }
+          //        // }
+          //      ],
+          //        scope: scope
+          //    });
+          //});
 
           scope.onChangeModel = function (item) {
               if (scope.idAsVal) {

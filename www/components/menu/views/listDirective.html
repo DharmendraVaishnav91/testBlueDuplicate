@@ -17,11 +17,11 @@
     <!-- <div class="item item-divider bold">
       Direct. Param List
     </div> -->
-      <button type="button" class="button button-clear button-positive" style="padding:0px;">
+      <button type="button" class="button button-clear button-positive" style="padding:0px;" ng-click="onPicklistClick(event)">
         <div class="customise-picklist-div" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
             {{model.name ? model.name :title}}
         </div>
       </button>
-      <button class="button icon ion-close" onclick="" style="float:right"></button>
+      <button class="button icon ion-close" onclick="" style="float:right" ng-click="onClear()"></button>
   </div>
 </div>
