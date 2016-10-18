@@ -12,16 +12,17 @@
     </div>
 </div>
 </div> -->
-<div class="card">
+<div class="card" style="max-width: 76%; margin-left: 12%; background-color: rgba(97, 137, 197, .7);">
   <div class="list">
     <!-- <div class="item item-divider bold">
       Direct. Param List
     </div> -->
-      <button type="button" class="button button-clear button-positive" style="padding:0px;" ng-click="onPicklistClick(event)">
-        <div class="customise-picklist-div" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+      <button type="button" class="button button-clear button-positive" style="padding:0px; color:white;" ng-click="onPicklistClick(event)">
+        <div class="customise-picklist-div" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size:115%;">
             {{model.name ? model.name :title}}
         </div>
       </button>
-      <button class="button icon ion-close" onclick="" style="float:right" ng-click="onClear()"></button>
+      <!-- <button class="button icon ion-close no-border" style="float:right;background: rgba(97, 137, 197, .7);color:white;" ng-click="onClear()"></button> -->
+      <a class="button" style="float:right;color:white;background-color:transparent;" ng-click="onClear()"><i class="icon ion-close" style="font-size:10px;"></i></a>
   </div>
 </div>
