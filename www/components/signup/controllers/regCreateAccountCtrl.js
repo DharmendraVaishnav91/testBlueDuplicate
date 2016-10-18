@@ -121,7 +121,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
             if (res) {
                 $scope.isLocationShared = true;
                 if ($rootScope.position!=null) {
-                    utilityService.fetchAddressFromCoords({latitude:40.7053094,longitude:-74.2588812}).then(function (addr) {
+                    utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
                         $rootScope.addressDataFromCoordinate.userCountry = {
                             CountryName: addr.country != null ? addr.country : "",
                             CountryCode: addr.country_code != null ? addr.country_code : "",
@@ -178,7 +178,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
                 // if(isLocationEnabled()){
                 // $scope.openModal(openModalType.addWork);
                 $scope.loginData.user.country_code = $scope.data.selectedCountry.CountryCode;
-                $scope.loginData.user.country_phone_code = JSON.parse($scope.data.selectedCountry).CountryPhoneCode;
+                $scope.loginData.user.country_phone_code = $scope.data.selectedCountry;
                 //$scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
                 signUpService.checkUserNameAvailability($scope.loginData).then(function (response) {
                     console.log("Username available");
