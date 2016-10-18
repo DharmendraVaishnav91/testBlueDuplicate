@@ -12,7 +12,7 @@
             <p ng-if="!isFromLogin&&!isNewCodeRequested"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
     text-align: center;">{{'THANK_YOU' | translate}}</p>
             <p ng-if="(isFromLogin&&!indirect) || !isFromLogin"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
-    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;{{userMobDetail.country_phone_code+userMobDetail.mobile}}</p>
+    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;{{"(+"+userMobDetail.country_phone_code+") "+userMobDetail.mobile}}</p>
             </div>
             <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;" ng-if="isFromLogin&&indirect">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
@@ -61,7 +61,8 @@
             <div class="row" ng-if="isNewCodeRequested&&!isFromLogin">
                 <div class="col center" style="font-size: 18px;padding: 0px 33px;">
                     <p ng-disabled="confirmAccountForm.$invalid" class="positive" style="text-decoration: underline" ng-click="skipToAddHome()">
-                        {{'SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER' | translate}}
+                        {{'SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER' | translate}}<br>
+                        {{'CONTINUE_WITH_REGISTRATION' | translate}}
                     </p>
 
                 </div>

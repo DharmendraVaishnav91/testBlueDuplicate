@@ -71,7 +71,7 @@ app.controller('RegCreateProfileCtrl', function($timeout,$q,$scope,$state,$ionic
       console.log($scope.number);
       var confirmPopup = $ionicPopup.confirm({
           title: $filter('translate')('CONFIRM_CREATE'),
-          template:'<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>'+$scope.username+'</span><br><span>{{"NUMBER" | translate}}:</span><span>'+$scope.number+'</span>',
+          template:'<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>'+" "+$scope.username+'</span><br><span>{{"NUMBER" | translate}}:</span><span>'+" (+"+ $scope.loginData.user.country_phone_code+") "+$scope.loginData.user.mobile+'</span>',
           cancelText: $filter('translate')('CANCEL'),
           okText:$filter('translate')('OK')
       });
