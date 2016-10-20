@@ -88,7 +88,8 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
     $scope.goToInviteFamily = function () {
         var groups = [];
         var group1 = {
-            type: $scope.data.groupType,
+            ///type: $scope.data.groupType,
+            group_type_id: $scope.data.groupType,
             //relationship: $scope.data.groupRelationship,
             relationship: "Owner",
             name: $scope.data.groupName ,

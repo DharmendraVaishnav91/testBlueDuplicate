@@ -42,7 +42,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
             if(position==null){
                 fetchUserCoords();
             }
-            $ionicLoading.hide("Loading");
+            $ionicLoading.hide();
             console.log("position in scope");
             console.log($rootScope.position);
         }).catch(function (error) {
@@ -50,8 +50,8 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
             //if(position==null){
                 fetchUserCoords();
         //    }
-            $ionicLoading.hide("Loading");
-            $cordovaToast.showShortBottom("Unable to fetch your current location. Ensure that your GPS is enabled and working.");
+            $ionicLoading.hide();
+            //$cordovaToast.showShortBottom("Unable to fetch your current location. Ensure that your GPS is enabled and working.");
         });
     };
     $scope.isLocationShared = false;
@@ -109,7 +109,10 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
         return $scope.isLocationOn;
         //return deferred.promise;
     };
-
+    $scope.selectChange = function (item) {
+        console.log("Selected item")
+        console.log($scope.data.selectedCountry);
+    }
     $scope.showConfirm = function () {
         var confirmPopup = $ionicPopup.confirm({
             title: $filter('translate')('CONFIRM_SHARE'),
@@ -121,24 +124,32 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
             if (res) {
                 $scope.isLocationShared = true;
                 if ($rootScope.position!=null) {
-                    utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
-                        $rootScope.addressDataFromCoordinate.userCountry = {
-                            CountryName: addr.country != null ? addr.country : "",
-                            CountryCode: addr.country_code != null ? addr.country_code : "",
-                            CountryPhoneCode: addr.country_phone_code != null ? addr.country_phone_code : ""
-                        };
-                        $rootScope.addressDataFromCoordinate.userState = {
-                            SubdivisionID: "",
-                            SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
-                            SubdivisionName: addr.state != null ? addr.state : "",
-                            CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
-                            CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
-                        };
+                    if($rootScope.addressDataFromCoordinate.userCountry==undefined){
+                        utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
 
-                        $scope.data.selectedCountry =$rootScope.addressDataFromCoordinate.userCountry.CountryPhoneCode;
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
+                            $rootScope.addressDataFromCoordinate.userCountry = {
+                                CountryName: addr.country != null ? addr.country : "",
+                                CountryCode: addr.country_code != null ? addr.country_code : "",
+                                CountryPhoneCode: addr.country_phone_code != null ? addr.country_phone_code : ""
+                            };
+                            $rootScope.addressDataFromCoordinate.userState = {
+                                SubdivisionID: "",
+                                SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
+                                SubdivisionName: addr.state != null ? addr.state : "",
+                                CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
+                                CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
+                            };
+
+                            $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
+                    }else{
+                        $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+                        //$scope.data.selectedCountry =$rootScope.addressDataFromCoordinate.userCountry;
+                    }
+
                 }else{
                     fetchUserCoords();
                 }
@@ -177,8 +188,8 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
             if($rootScope.position!=null){
                 // if(isLocationEnabled()){
                 // $scope.openModal(openModalType.addWork);
-                $scope.loginData.user.country_code = $scope.data.selectedCountry.CountryCode;
-                $scope.loginData.user.country_phone_code = $scope.data.selectedCountry;
+                //$scope.loginData.user.country_code = $scope.data.selectedCountry.CountryCode;
+                $scope.loginData.user.country_phone_code = $scope.data.selectedCountry.CountryPhoneCode;
                 //$scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
                 signUpService.checkUserNameAvailability($scope.loginData).then(function (response) {
                     console.log("Username available");

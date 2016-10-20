@@ -153,7 +153,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     $scope.createAndUpdateGroup=function(){
         var groups=[];
         var group1={
-            type:$scope.group.type,
+            //type:$scope.group.type,
+            group_type_id:$scope.group.type,
            // relationship:$scope.group.relationship,
             relationship:"Owner",
             name:$scope.group.name ,

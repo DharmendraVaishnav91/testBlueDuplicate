@@ -51,18 +51,19 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
     $scope.data = {};
     $scope.work = {};
     $scope.invitedMember = {};
+    var fetchWorkTypes = function () {
+        signUpService.fetchWorkTypes().then(function (response) {
+            console.log("Work types are :");
+            console.log(response);
+            $scope.workTypes = response;
 
+        }).catch(function (error) {
+            console.log(error);
+        });
+    };
     $scope.countryCodeList = utilityService.countryList();
     $scope.addWork = function () {
-        var fetchWorkTypes = function () {
-            signUpService.fetchWorkTypes().then(function (response) {
-                console.log("Work types are :");
-                console.log(response);
-                $scope.workTypes = response;
-            }).catch(function (error) {
-                console.log(error);
-            });
-        };
+
         fetchWorkTypes();
         fetchCropList();
         $scope.work = {};
@@ -101,14 +102,6 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         })
     };
 
-    //var fetchLocation= function () {
-    //  loginService.fetchAllLocation().then(function(response){
-    //     $scope.myLocations=response;
-    //  }).catch(function(error){
-    //     console.log(error);
-    //  });
-    //};
-    //fetchLocation();
     $scope.updateLocationFields = function (locationWay) {
         $scope.enableAddressFields = true;
         if (locationWay == "current") {
@@ -149,14 +142,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         console.log($scope.data);
         var works = [];
         var location = {};
-        //$scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
-        //$scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
-        //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-        //
-        //// $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-        ////$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-        //$scope.work.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
-        //$scope.work.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        var workTypeToSend=$filter('getByNameInMap')($scope.workTypes,'work');
         if ($scope.work.where == "manual" || $scope.work.where == "current") {
             location = {
                 name: $scope.work.where == "manual" ? "Enter Address" : "My Current Location",
@@ -178,10 +164,12 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         }
         var work = {
             //type: $scope.work.type,
-            type: "Work",
+           // type: "Work",
+            work_type_id: workTypeToSend.value.id,
             relationship: "Owner",
             location: location
         };
+        console.log(work);
         if ($scope.work.crop) {
             work.crop = $scope.work.crop;
             work.hectares = 0;
@@ -194,6 +182,5 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         console.log(workData);
         saveWorkData(workData);
 
-        //$scope.openModal(openModalType.addThing);
     };
 });

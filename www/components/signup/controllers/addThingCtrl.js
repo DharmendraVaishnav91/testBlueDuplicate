@@ -90,7 +90,8 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
     $scope.goToGroup = function () {
         var things = [];
         var thing1 = {
-            equipment_type: $scope.thing.equipType,
+           // equipment_type: $scope.thing.equipType,
+            equipment_id: $scope.thing.equipType,
             //relationship: $scope.thing.equipRelationship
             relationship: "Owner"
             //location:$scope.data.equipWhere
