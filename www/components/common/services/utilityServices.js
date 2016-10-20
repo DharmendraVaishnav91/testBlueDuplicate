@@ -127,10 +127,13 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         return utilityService.makeHTTPRequest(req,deferred);
     };
     function goToNextStep(obj){
+      var errorMessage = "";
+      var value;
+      var key;
         angular.forEach(obj, function(value1, key1) {
           if(typeof value1 === 'string'){
-           $scope.error += value1 + ",\n";
-           $scope.value = value1;
+           error += value1 + ",\n";
+           value = value1;
           }
           else if(Array.isArray(value1)){
              value = value1;
@@ -143,21 +146,20 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
               value = value1;
           }
        });
+       return {errorMessage: errorMessage, key: key, value: value}
     }
     utilityService.getErrorMessage = function(error){
-      var errorMessage = "";
-      var value;
-      var key;
+      var obj1;
       if(typeof error === 'object'){
      	   if(error.error_status){
               delete error['error_status']
               while(!Array.isArray(error) && (typeof error !== 'string')){
-                 goToNextStep(error);
-                 error = value;
+                 obj1 = goToNextStep(error);
+                 error = obj1.value;
               }
             }
       }
-      return errorMessage;
+      return obj1.errorMessage.slice(0,-2);
     }
     utilityService.getImage = function(cameraOptions) {
         var deferred = $q.defer();

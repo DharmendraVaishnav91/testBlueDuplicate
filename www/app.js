@@ -1,4 +1,6 @@
-var app = angular.module('app', ['ionic', 'ngSanitize', 'picklist','app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet']);
+
+var app = angular.module('app', ['ionic', 'ngSanitize','picklist', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters']);
+
 
 app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordovaToast) {
     $ionicPlatform.ready(function () {

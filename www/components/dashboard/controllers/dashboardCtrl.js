@@ -63,8 +63,8 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
                             markerColor:pointColor
                         },
                         layer: "india",
-                        lng: parseInt(key.coordinates[0]),
-                        lat: parseInt(key.coordinates[1]),
+                        lng: parseFloat(key.coordinates[0]),
+                        lat: parseFloat(key.coordinates[1]),
                         message: key.gender + " " + key.crops,
                         focus: false,
                         draggable: false
@@ -76,8 +76,8 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
                             iconSize:[25, 30],
                             iconAnchor:[20, 40]
                         },
-                        lng: parseInt(key.coordinates[0]),
-                        lat: parseInt(key.coordinates[1]),
+                        lng: parseFloat(key.coordinates[0]),
+                        lat: parseFloat(key.coordinates[1]),
                         message: key.gender + " " + key.crops,
                         focus: false,
                         draggable: false

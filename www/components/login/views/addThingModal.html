@@ -25,7 +25,7 @@
                     </span>
                     <select style="width: 100%" ng-model="thing.equipType" ng-required="true"  ng-change="workTypeChange()">
                         <option selected disabled value="">{{'SELECT_THING_TYPE' | translate}}</option>
-                        <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
+                        <option ng-repeat="obj in thingsType" value="{{obj.id}}">{{obj.name}}</option>
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                         <!--<option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>-->
                         <!--<option value="Fishery">{{'FISHERY' | translate }}</option>-->

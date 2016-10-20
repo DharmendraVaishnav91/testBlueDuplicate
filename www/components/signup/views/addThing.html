@@ -22,7 +22,7 @@
                     <select style="width: 100%" ng-model="thing.equipType" ng-required="true" ng-change="workTypeChange()">
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
                         <option value="" disabled selected>{{'SELECT_THING_TYPE' | translate}}</option>
-                        <option ng-repeat="obj in thingsType" value="{{obj.name}}">{{obj.name}}</option>
+                        <option ng-repeat="obj in thingsType" value="{{obj.id}}">{{obj.name}}</option>
                     </select>
                 </label>
                 <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">-->

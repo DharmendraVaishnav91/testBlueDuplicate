@@ -2,7 +2,7 @@
   "server": {
     "development": "https://blue-dev.herokuapp.com",
     "staging": "https://bnstaging.herokuapp.com",
-    "production":"https://bnstaging.herokuapp.com"
+    "production":"https://bnproduction.herokuapp.com"
   },
   "apn": {
     "development": {}

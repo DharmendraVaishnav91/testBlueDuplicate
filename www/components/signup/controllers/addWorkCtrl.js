@@ -97,14 +97,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         console.log($scope.data);
         var works = [];
         var location ={};
-        //$scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
-        //$scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
-        //$scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-        //
-        ////$scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-        ////$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-        //$scope.data.workState = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
-        //$scope.data.workCountry = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        var workTypeToSend=$filter('getByNameInMap')($scope.workTypes,'work');
         if($scope.work.where=="manual"||$scope.work.where=="current") {
             location={
                 name:$scope.work.where=="manual"?"Enter Address":"My Current Location",
@@ -124,20 +117,11 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
                 name: (JSON.parse($scope.work.where)).LocationID
             };
         }
-        //location={
-        //            name:"My Current Location",
-        //            latitude: angular.copy($rootScope.position ? $rootScope.position.coords.latitude : ''),
-        //            longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
-        //            address: $scope.work.address,
-        //            city: $scope.work.city,
-        //            subdivision_code: $scope.data.workState ? $scope.data.workState : '',
-        //            country_code: $scope.data.workCountry,
-        //            locationtype:"Registration Worksite"
-        //        };
         var work = {
             //type: $scope.data.type,
             name:$scope.work.name?$scope.work.name:"",
-            type: "Work",
+           // type: "Work",
+            work_type_id: workTypeToSend.value.id,
             relationship:"Owner",
             location: location
         };

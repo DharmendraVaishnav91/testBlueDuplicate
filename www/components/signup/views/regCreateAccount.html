@@ -22,12 +22,11 @@
                 <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select style="width: 100%;font-size:12px;" ng-model="data.selectedCountry" ng-required="true">
+                <select style="width: 100%;font-size:12px;" ng-model="data.selectedCountry" ng-required="true" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()">
                     <option selected value="" disabled>{{'SELECT_COUNTRY' | translate}}</option>
-                    <option
-                            ng-selected="(obj.CountryCode == userCountry.CountryCode)"
-                            ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
-                    </option>
+                    <!--<option ng-selected="(obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode)"-->
+                            <!--ng-repeat="obj in countryCodeList" ng-value="obj.CountryPhoneCode">{{obj.CountryName}}-->
+                    <!--</option>-->
                 </select>
             </label>
 

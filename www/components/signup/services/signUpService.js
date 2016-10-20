@@ -110,7 +110,10 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
         var deferred = $q.defer();
         var req={
             url:HttpRoutes.fetchProductList,
-            method:HttpRequestType.GET
+            method:HttpRequestType.GET,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token
+            }
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };

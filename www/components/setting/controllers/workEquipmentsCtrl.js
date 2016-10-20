@@ -127,8 +127,9 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
          $scope.thing.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
          $scope.thing.country = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
          var thing1={
-             type:$scope.thing.equipType,
+             //type:$scope.thing.equipType,
              //asset_relationship:$scope.thing.equipRelationship,
+             equipment_id:$scope.thing.equipType,
              asset_relationship:"Owner",
              asset_name:$scope.thing.assetName
          };

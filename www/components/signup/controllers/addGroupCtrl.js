@@ -44,7 +44,9 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
         }).catch(function (error) {
             console.log(error);
             console.log("Errors: " + utilityService.getErrorMessage(error));
+            var errorMessage = utilityService.getErrorMessage(error)) || $filter('translate')('SOMETHING_WENT_WRONG');
            //$cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
+           $cordovaToast.showLongBottom(errorMessage);
         });
     };
 
@@ -89,7 +91,7 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
     $scope.goToInviteFamily = function () {
         var groups = [];
         var group1 = {
-            type: $scope.data.groupType,
+            group_type_id:$scope.group.type,
             //relationship: $scope.data.groupRelationship,
             relationship: "Owner",
             name: $scope.data.groupName ,

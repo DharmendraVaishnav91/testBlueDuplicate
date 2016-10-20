@@ -126,6 +126,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
         }).catch(function(error){
             console.log(error);
             console.log("Errors: " + utilityService.getErrorMessage(error));
+            var errorMessage = utilityService.getErrorMessage(error)) || $filter('translate')('GROUP_ADD_FAILED');
+           $cordovaToast.showLongBottom(errorMessage);
             //Remove this after demo
            //$cordovaToast.showShortBottom($filter('translate')('GROUP_ADD_FAILED'));
             // $scope.openModal(openModalType.signUpSuccess);
@@ -154,7 +156,8 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
     $scope.createAndUpdateGroup=function(){
         var groups=[];
         var group1={
-            type:$scope.group.type,
+            //type:$scope.group.type,
+            group_type_id:$scope.group.type,
            // relationship:$scope.group.relationship,
             relationship:"Owner",
             name:$scope.group.name ,
