@@ -15,7 +15,22 @@
             <option value="th"> ไทย(Thai)</option>
         </select>
     </label>
+
+        <label class="item item-input">
+          <span class="input-label">Multiple select autocomplete</span>
+          <input ion-autocomplete type="text"
+                 readonly="readonly"
+                 class="ion-autocomplete"
+                 autocomplete="off"
+                 item-method-value-key="items"
+                 items-method="getSearchedCountryList(query)"
+                 item-view-value-key="CountryName"
+                 ng-model="selectedCountry"
+                 max-selected-items="1"
+                cancel-label="Cancel"  />
+        </label>
   </ion-content>
+
     <!-- <ion-content scroll="false" class="blueno-bg-full">
         <div class="card">
 

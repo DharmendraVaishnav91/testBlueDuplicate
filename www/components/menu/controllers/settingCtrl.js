@@ -1,10 +1,21 @@
-menu.controller('SettingCtrl', function($scope, $state, loginService, $localStorage, $rootScope, menuService, $translate, $window, $cordovaToast) {
+menu.controller('SettingCtrl', function($scope, $filter, $state, loginService, $localStorage, $rootScope, menuService, utilityService, $translate, $window, $cordovaToast) {
   console.log("inside SettingCtrl");
   console.log("selected language");
   console.log($rootScope.language);
   $scope.local={
     language:angular.copy($rootScope.language)
   };
+  $scope.abcabc = ['aa','bb','cc','dd','ee','ffr','ccr','ddr','eer'];
+  utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
+      $scope.items = response;
+      console.log(response);
+  }).catch(function (error) {
+      console.log(error);
+  });
+  $scope.getSearchedCountryList=function(query){
+
+    return $filter('filter')($scope.items,query);
+  }
   $scope.changeLanguage = function(selectedLang) {
 
     menuService.selectLanguage(selectedLang).then(function(response) {
