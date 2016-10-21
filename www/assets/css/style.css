@@ -92,20 +92,20 @@ div.leaflet-right {
 }
 
 /*Custom popup style for testing*/
-.popup-container .popup {
-  max-height:48% !important;
-}
-.popup-head{
-  padding: 0px !important;
-}
-.popup-body{
-  padding:0px;
-  overflow: hidden;
-}
-.popup-buttons{
-  padding: 0px;
-  min-height: 40px;
-}
+/*.popup-container .popup {*/
+  /*max-height:48% !important;*/
+/*}*/
+/*.popup-head{*/
+  /*padding: 0px !important;*/
+/*}*/
+/*.popup-body{*/
+  /*padding:0px;*/
+  /*overflow: hidden;*/
+/*}*/
+/*.popup-buttons{*/
+  /*padding: 0px;*/
+  /*min-height: 40px;*/
+/*}*/
 .edit-input-txt {
     font-size: 18px !important;
     background-color: rgba(97, 137, 197, .7) !important;;

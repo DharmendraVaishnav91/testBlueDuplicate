@@ -44,7 +44,7 @@ app.controller('addGroupCtrl', function ($timeout, $q, $scope, $state, $ionicPop
         }).catch(function (error) {
             console.log(error);
             console.log("Errors: " + utilityService.getErrorMessage(error));
-            var errorMessage = utilityService.getErrorMessage(error)) || $filter('translate')('SOMETHING_WENT_WRONG');
+            var errorMessage = utilityService.getErrorMessage(error) || $filter('translate')('SOMETHING_WENT_WRONG');
            //$cordovaToast.showLongBottom($filter('translate')('SOMETHING_WENT_WRONG'));
            $cordovaToast.showLongBottom(errorMessage);
         });
