@@ -1,4 +1,4 @@
-app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast,userSettingService,$filter) {
+app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast,userSettingService,$filter,$ionicHistory) {
     console.log($stateParams.inviteFamilyData);
     $scope.data = {};
     $scope.skipToSuccess = function () {
@@ -25,6 +25,7 @@ app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ioni
         userSettingService.sendInviteToFamilyMembers(inviteData).then(function (response) {
             console.log("Family invite success");
             console.log(response);
+            $ionicHistory.clearCache();
             $state.go('home');
             $cordovaToast.showLongBottom($filter('translate')('MEMBER_ADDED_SUCCESSFULLY'));
             //$scope.hideInviteFamilyModal();

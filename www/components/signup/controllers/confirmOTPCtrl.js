@@ -80,6 +80,7 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
             console.log(response);
         }).catch(function (error) {
             console.log(error);
+            $cordovaToast.showShortBottom(error.error);
         })
     };
 });

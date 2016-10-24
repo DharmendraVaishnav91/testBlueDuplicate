@@ -11,7 +11,7 @@ menu.controller('SettingCtrl', function($scope, $state, loginService, $localStor
       console.log($rootScope.language);
       $translate.use(selectedLang);
       $rootScope.language = selectedLang;
-      $cordovaToast.showLongBottom("Language preference updated successfully");
+      $cordovaToast.showLongBottom("Language preference updated successfully.");
     }).catch(function(error) {
 
     })
