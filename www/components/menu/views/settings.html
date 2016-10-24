@@ -19,9 +19,9 @@
         <!--<label class="item item-input" style="">-->
           <!--<span class="input-label" style="color: white;font-size: 18px !important;margin-left: -12px;">Select Country</span>-->
           <input ion-autocomplete type="text"
-                  template-url="components/menu/views/autoCompleteDrop.html"
+                 template-url="components/menu/views/autoCompleteDrop.html"
                  readonly="readonly"
-   class="ion-autocomplete"
+                 class="ion-autocomplete"
                  autocomplete="off"
                  item-method-value-key="items"
                  items-method="getSearchedCountryList(query)"
@@ -29,7 +29,7 @@
                  ng-model="selectedCountry"
                  max-selected-items="1"
                  cancel-label="Cancel"
-                items-clicked-method="clickedMethod(callback)"
+                 items-clicked-method="clickedMethod(callback)"
              />
         <!--</label>-->
   </ion-content>

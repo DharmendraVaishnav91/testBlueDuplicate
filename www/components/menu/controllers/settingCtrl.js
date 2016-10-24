@@ -24,7 +24,6 @@ menu.controller('SettingCtrl', function($scope, $filter, $state, loginService, $
       console.log(callback.selectedItems);
   }
   $scope.getSearchedCountryList=function(query){
-
     return $filter('filter')($scope.items,query);
   }
   $scope.changeLanguage = function(selectedLang) {

@@ -1,4 +1,4 @@
-<div class="ion-autocomplete-container modal ion-autocomplete-random-50" style="display: none;">
+<div class="ion-autocomplete-container ion-autocomplete-random-50 modal" style="display: none;">
     <div class="bar bar-header item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-search placeholder-icon"></i>
@@ -9,7 +9,7 @@
         <div class="ion-autocomplete-loading-icon" ng-if="viewModel.showLoadingIcon && viewModel.loadingIcon">
             <ion-spinner icon="{{viewModel.loadingIcon}}"></ion-spinner>
         </div>
-        <button class="ion-autocomplete-cancel button button-clear" ng-click="viewModel.cancelClick()">
+        <button class="ion-autocomplete-cancel button button-clear" ng-click="viewModel.cancelClick()" style="color:black;">
             {{viewModel.cancelLabel}}
         </button>
     </div>
@@ -28,7 +28,7 @@
             <!--{{viewModel.getItemValue(viewModel.selectedItems, viewModel.itemViewValueKey)}}-->
             <!--<i class="icon ion-trash-a" style="cursor:pointer" ng-click="viewModel.removeItem(0)"></i>-->
         <!--</ion-item>-->
-        <ion-item class="item-divider" ng-if="viewModel.searchItems.length > 0">{{viewModel.selectItemsLabel}}
+        <ion-item class="item-divider" ng-if="viewModel.searchItems.length > 0">select a country...
         </ion-item>
         <ion-item ng-repeat="item in viewModel.searchItems" item-height="55px" item-width="100%"
                   ng-click="viewModel.selectItem(item)" class="item-text-wrap">

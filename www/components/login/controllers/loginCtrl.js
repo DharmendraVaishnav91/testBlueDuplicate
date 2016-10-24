@@ -15,12 +15,26 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     }).catch(function (error) {
         console.log(error);
     });
+    $scope.getSearchedCountryList=function(query){
+      return $filter('filter')($scope.countryCodeList,query);
+    }
+    $scope.clickedMethod = function (callback) {
+        // print out the selected item
+        console.log(callback.item);
+
+        // print out the component id
+        console.log(callback.componentId);
+
+        // print out the selected items if the multiple select flag is set to true and multiple elements are selected
+        console.log(callback.selectedItems);
+    }
     $scope.doLogin= function () {
         console.log("Doing login");
         var data={
-            username:$scope.loginData.phoneCode+""+$scope.loginData.mobile,
+            username:$scope.loginData.phoneCode.CountryPhoneCode+""+$scope.loginData.mobile,
             password:$scope.loginData.password
         };
+        console.log(data);
         $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode;
             $rootScope.userMobDetail.mobile=$scope.loginData.mobile;
         loginService.doLogin(data).then(function (user){
