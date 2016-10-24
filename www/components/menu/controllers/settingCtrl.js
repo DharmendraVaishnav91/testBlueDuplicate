@@ -12,6 +12,17 @@ menu.controller('SettingCtrl', function($scope, $filter, $state, loginService, $
   }).catch(function (error) {
       console.log(error);
   });
+  //items-clicked-method
+  $scope.clickedMethod = function (callback) {
+      // print out the selected item
+      console.log(callback.item);
+
+      // print out the component id
+      console.log(callback.componentId);
+
+      // print out the selected items if the multiple select flag is set to true and multiple elements are selected
+      console.log(callback.selectedItems);
+  }
   $scope.getSearchedCountryList=function(query){
 
     return $filter('filter')($scope.items,query);
