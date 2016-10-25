@@ -77,13 +77,28 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
 
-                <select style="width: 100%" ng-model="data.workCountry" ng-required="true"
+                <input ion-autocomplete type="text"
+                       template-url="components/menu/views/autoCompleteDrop.html"
+                       readonly="readonly"
+                       class="ion-autocomplete"
+                       autocomplete="off"
+                       item-method-value-key="countryCodeList"
+                       items-method="getSearchedCountryList(query)"
+                       item-view-value-key="CountryName"
+                       ng-model="data.workCountry"
+                       max-selected-items="1"
+                       cancel-label="{{'CANCEL' | translate }}"
+                       style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                       placeholder="{{'SEARCH' | translate }}"
+                       items-clicked-method="changeSubdivision(data.workCountry)"
+                   />
+                <!-- <select style="width: 100%" ng-model="data.workCountry" ng-required="true"
                         ng-change="changeSubdivision(data.workCountry)" name="country">
                     <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
                     <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}
                     </option>
-                </select>
+                </select> -->
             </label>
             <!--State-->
 

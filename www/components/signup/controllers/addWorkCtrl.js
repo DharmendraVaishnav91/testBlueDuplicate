@@ -6,7 +6,13 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     $scope.work = {};
     $scope.work.name="My Work Place 1";
     $scope.workLocations = [];
-    $scope.countryCodeList = utilityService.countryList();
+    // $scope.countryCodeList = utilityService.countryList();
+    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
+        $scope.countryCodeList = response;
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
     var fetchWorkTypes= function () {
         signUpService.fetchWorkTypes().then(function (response) {
             console.log("Work types are :");
@@ -16,6 +22,9 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
            console.log(error);
         });
     };
+    $scope.getSearchedCountryList=function(query){
+      return $filter('filter')($scope.countryCodeList,query);
+    }
     fetchWorkTypes();
     var fetchCropList = function(){
         signUpService.fetchProductsList().then(function(response){
@@ -48,8 +57,8 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         })
     };
     //fetchStates($scope.data.homeCountry)
-    $scope.changeSubdivision = function (countryCode) {
-        fetchStates(countryCode);
+    $scope.changeSubdivision = function (callback) {
+        fetchStates(callback);
     };
 
     var saveWorkData = function (workData) {

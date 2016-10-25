@@ -4,8 +4,15 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     $scope.data = $stateParams.homeData;
     $scope.home = $stateParams.homeAddress;
     $scope.isFromSetting = false;
-    $scope.countryCodeList = utilityService.countryList();
+  //  $scope.countryCodeList = utilityService.countryList();
     $scope.locationWay = "";
+    console.log($scope.data.homeCountry);
+    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
+        $scope.countryCodeList = response;
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;
@@ -15,10 +22,12 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     };
     fetchStates($scope.data.homeCountry);
 
-    $scope.changeSubdivision = function (countryCode) {
-        fetchStates(countryCode);
+    $scope.changeSubdivision = function (callback) {
+        fetchStates(callback);
     };
-
+    $scope.getSearchedCountryList=function(query){
+      return $filter('filter')($scope.countryCodeList,query);
+    }
     $scope.skipToWork = function () {
         $state.go('addWork', {workData: $scope.data})
     };
