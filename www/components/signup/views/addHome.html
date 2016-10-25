@@ -24,7 +24,7 @@
             </label>
 
             <!--Newly added field which make user to enter manual address-->
-            <label class="item item-input item-stacked-label no-border label-padding" >
+            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
@@ -36,12 +36,12 @@
                        item-method-value-key="countryCodeList"
                        items-method="getUpdatedCountryList(query)"
                        item-view-value-key="CountryName"
-                       ng-model="data.country"
+                       ng-model="data.homeCountry"
                        max-selected-items="1"
                        cancel-label="{{'CANCEL' | translate }}"
                        style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
                        placeholder="{{'SEARCH' | translate }}"
-                       items-clicked-method="changeSubdivision(data.homeCountry)"
+                       items-clicked-method="changeSubdivision(data.homeCountry.CountryCode)"
                    />
 
                 <!-- <select style="width: 100%" ng-model="data.homeCountry" ng-required="true" name="country"  ng-change="changeSubdivision(data.homeCountry)">

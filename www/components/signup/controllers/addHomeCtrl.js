@@ -43,7 +43,8 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
             //$scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
             //$scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
             $scope.data.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
-            $scope.data.homeCountry = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+            $scope.data.homeCountry = $filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+            console.log($scope.data.homeCountry);
         } else {
             $scope.home.address = "";
             $scope.home.city = "";
@@ -62,7 +63,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
             $scope.home.subdivision_code = "";
         }
         //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
-        $scope.home.country_code = $scope.data.homeCountry;
+        $scope.home.country_code = $scope.data.homeCountry.CountryCode;
         $scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
         $scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
         $scope.home.name = 'Home';
