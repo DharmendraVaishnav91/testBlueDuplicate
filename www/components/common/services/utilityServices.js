@@ -148,11 +148,12 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
        });
        return {errorMessage: errorMessage, key: key, value: value}
     }
-    utilityService.getErrorMessage = function(error){
+    utilityService.getErrorMessage = function(actualError){
+        var error=angular.copy(actualError);
       var obj1;
       if(typeof error === 'object'){
      	   if(error.error_status){
-              delete error['error_status']
+              delete error['error_status'] ;
               while(!Array.isArray(error) && (typeof error !== 'string')){
                  obj1 = goToNextStep(error);
                  error = obj1.value;
@@ -160,7 +161,7 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             }
       }
       return obj1.errorMessage.slice(0,-2);
-    }
+    };
     utilityService.getImage = function(cameraOptions) {
         var deferred = $q.defer();
         var scope = $rootScope.$new();
