@@ -32,9 +32,10 @@ menu.controller('SettingCtrl', function($scope, $filter, $state, loginService, $
       console.log($rootScope.language);
       $translate.use(selectedLang);
       $rootScope.language = selectedLang;
-      $cordovaToast.showLongBottom("Language preference updated successfully");
+      $cordovaToast.showLongBottom("Language preference updated successfully.");
     }).catch(function(error) {
 
     })
   };
+   $scope.arr = { prop: [{id:1,name:"Saab"}, {id:2,name:"Volvo"},{id:3,name:"BMW"},{id:4,name:"Saab1"}, {id:5,name:"Volvo1"},{id:6,name:"BMW1"}] };
 });

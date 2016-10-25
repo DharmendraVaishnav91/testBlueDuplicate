@@ -125,8 +125,11 @@ userSetting.controller('ManageGroupsCtrl', function($rootScope,$scope,$state,$io
             $cordovaToast.showShortBottom($filter('translate')('GROUP_ADDED_SUCCESSFULLY'));
         }).catch(function(error){
             console.log(error);
+            console.log("Errors: " + utilityService.getErrorMessage(error));
+            var errorMessage = utilityService.getErrorMessage(error)|| $filter('translate')('GROUP_ADD_FAILED');
+           $cordovaToast.showLongBottom(errorMessage);
             //Remove this after demo
-           $cordovaToast.showShortBottom($filter('translate')('GROUP_ADD_FAILED'));
+           //$cordovaToast.showShortBottom($filter('translate')('GROUP_ADD_FAILED'));
             // $scope.openModal(openModalType.signUpSuccess);
         });
     };

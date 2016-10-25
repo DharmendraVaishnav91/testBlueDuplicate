@@ -9,7 +9,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     var saveUser=function(user){
         $localStorage[STORAGE.LOGIN_KEY]=user;
     };
-    utilityService.getCountryList().then(function (response) {
+    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
         console.log(response);
     }).catch(function (error) {
@@ -23,6 +23,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
         var data={
             username:$scope.loginData.phoneCode.CountryPhoneCode+""+$scope.loginData.mobile,
             password:$scope.loginData.password
+            locale:$rootScope.selectedLanguage
         };
         console.log(data);
         $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode;

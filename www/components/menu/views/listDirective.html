@@ -1,0 +1,28 @@
+<!-- <div class="card">
+  <div class="list">
+    <div class="item item-divider bold">
+      Direct. Param List
+    </div>
+    <div class="item no-padding bg-transparent" ng-repeat="a in arr.prop">
+      <div class="row" >
+          <div class="col col-center" >
+              {{a}}
+          </div>
+      </div>
+    </div>
+</div>
+</div> -->
+<div class="item no-padding no-border" style="max-width: 76%; margin-left: 12%;border-radius: 5px; background-color: rgba(97, 137, 197, .7);">
+    <!-- <div class="item item-divider bold">
+      Direct. Param List
+    </div> -->
+      <button type="button" class="button button-clear button-positive" style="padding:0px; color:white;margin-left:5px;width: 78%;text-align: left;" ng-click="onPicklistClick(event)">
+        <div class="customise-picklist-div" style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;font-size:115%;">
+            {{model.name ? model.name :title}}
+        </div>
+      </button>
+      <!-- <button class="button icon ion-close no-border" style="float:right;background: rgba(97, 137, 197, .7);color:white;" ng-click="onClear()"></button> -->
+      <button class="button button-clear" style="float:right;color:white;background-color:transparent;" ng-click="onClear()">
+        <i class="ion-close" style="font-size: 20px;float: right;margin-right: 5px;;"></i>
+      </button>
+</div>

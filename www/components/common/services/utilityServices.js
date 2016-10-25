@@ -126,6 +126,41 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
+    function goToNextStep(obj){
+      var errorMessage = "";
+      var value;
+      var key;
+        angular.forEach(obj, function(value1, key1) {
+          if(typeof value1 === 'string'){
+           error += value1 + ",\n";
+           value = value1;
+          }
+          else if(Array.isArray(value1)){
+             value = value1;
+             for(var i=0; i<value1.length; i++){
+                 errorMessage += (key1 + " " + value1[i] + ",\n");
+             }
+          }
+          else{
+              key = key1;
+              value = value1;
+          }
+       });
+       return {errorMessage: errorMessage, key: key, value: value}
+    }
+    utilityService.getErrorMessage = function(error){
+      var obj1;
+      if(typeof error === 'object'){
+     	   if(error.error_status){
+              delete error['error_status']
+              while(!Array.isArray(error) && (typeof error !== 'string')){
+                 obj1 = goToNextStep(error);
+                 error = obj1.value;
+              }
+            }
+      }
+      return obj1.errorMessage.slice(0,-2);
+    }
     utilityService.getImage = function(cameraOptions) {
         var deferred = $q.defer();
         var scope = $rootScope.$new();
