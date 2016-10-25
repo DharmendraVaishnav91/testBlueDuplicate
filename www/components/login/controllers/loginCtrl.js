@@ -18,16 +18,6 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     $scope.getSearchedCountryList=function(query){
       return $filter('filter')($scope.countryCodeList,query);
     }
-    $scope.clickedMethod = function (callback) {
-        // print out the selected item
-        console.log(callback.item);
-
-        // print out the component id
-        console.log(callback.componentId);
-
-        // print out the selected items if the multiple select flag is set to true and multiple elements are selected
-        console.log(callback.selectedItems);
-    }
     $scope.doLogin= function () {
         console.log("Doing login");
         var data={

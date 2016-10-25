@@ -13,7 +13,12 @@
             {{viewModel.cancelLabel}}
         </button>
     </div>
-    <ion-content class="has-header">
+    <div class="bar bar-subheader no-padding">
+      <ion-item class="item-divider" ng-if="viewModel.searchItems.length > 0" style="width: 100%;line-height: 26px;">{{'SELECT_COUNTRY' | translate}}
+      </ion-item>
+    </div>
+
+    <ion-content class="has-header has-subheader">
         <!--<ion-item class="item-divider">{{viewModel.selectedItemsLabel}}</ion-item>-->
         <!--<ion-item ng-if="viewModel.isArray(viewModel.selectedItems)"-->
                   <!--ng-repeat="selectedItem in viewModel.selectedItems track by $index"-->
@@ -28,8 +33,7 @@
             <!--{{viewModel.getItemValue(viewModel.selectedItems, viewModel.itemViewValueKey)}}-->
             <!--<i class="icon ion-trash-a" style="cursor:pointer" ng-click="viewModel.removeItem(0)"></i>-->
         <!--</ion-item>-->
-        <ion-item class="item-divider" ng-if="viewModel.searchItems.length > 0">select a country...
-        </ion-item>
+
         <ion-item ng-repeat="item in viewModel.searchItems" item-height="55px" item-width="100%"
                   ng-click="viewModel.selectItem(item)" class="item-text-wrap">
             {{viewModel.getItemValue(item, viewModel.itemViewValueKey)}}
