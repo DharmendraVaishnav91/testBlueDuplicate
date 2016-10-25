@@ -24,7 +24,7 @@
             </label>
 
             <!--Newly added field which make user to enter manual address-->
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+            <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
@@ -34,9 +34,9 @@
                        class="ion-autocomplete"
                        autocomplete="off"
                        item-method-value-key="countryCodeList"
-                       items-method="getSearchedCountryList(query)"
+                       items-method="getUpdatedCountryList(query)"
                        item-view-value-key="CountryName"
-                       ng-model="data.homeCountry"
+                       ng-model="data.country"
                        max-selected-items="1"
                        cancel-label="{{'CANCEL' | translate }}"
                        style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"

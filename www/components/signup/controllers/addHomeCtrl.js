@@ -25,7 +25,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     $scope.changeSubdivision = function (callback) {
         fetchStates(callback);
     };
-    $scope.getSearchedCountryList=function(query){
+    $scope.getUpdatedCountryList=function(query){
       return $filter('filter')($scope.countryCodeList,query);
     }
     $scope.skipToWork = function () {

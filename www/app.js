@@ -64,17 +64,20 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('login', {
                 url: '/login',
+                cache:false,
                 templateUrl: 'components/login/views/login.html',
                 controller: 'LoginCtrl'
             })
             .state('regCreateAccount', {
                 url: '/regCreateAccount',
+                cache:false,
                 templateUrl: 'components/signup/views/regCreateAccount.html',
                 controller: 'RegCreateAccountCtrl'
             })
             .state('regCreateProfile', {
                 url: '/regCreateProfile',
                 params: {accountData: {}},
+                cache:false,
                 templateUrl: 'components/signup/views/regCreateProfile.html',
                 controller: 'RegCreateProfileCtrl'
             })
@@ -86,6 +89,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('addHome', {
                 url: '/addHome',
+                cache:false,
                 params: {homeData: {}, homeAddress: {}},
                 templateUrl: 'components/signup/views/addHome.html',
                 controller: 'addHomeCtrl'
