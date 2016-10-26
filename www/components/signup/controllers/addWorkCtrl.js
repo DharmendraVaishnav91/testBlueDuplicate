@@ -25,6 +25,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     $scope.getSearchedCountryList=function(query){
       return $filter('filter')($scope.countryCodeList,query);
     }
+
     fetchWorkTypes();
     var fetchCropList = function(){
         signUpService.fetchProductsList().then(function(response){
@@ -34,6 +35,10 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         });
     };
     fetchCropList();
+    $scope.getUpdatedProductList=function(query){
+      return $filter('filter')($scope.productList,query);
+    }
+
     //var fetchLocation = function () {
     //    signUpService.fetchAllLocation().then(function (response) {
     //        $scope.myLocations = response;
@@ -88,7 +93,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
 
             //$scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
             //$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-            $scope.data.workState = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            $scope.data.workState = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.data.workCountry = $filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         } else if(locationWay=="manual") {
             $scope.work.address = "";
@@ -103,6 +108,9 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             $scope.enableAddressFields=false;
         }
     };
+    $scope.getUpdatedStateList=function(query){
+      return $filter('filter')($scope.subDivList,query);
+    }
     $scope.goToThing = function () {
         console.log($scope.data);
         var works = [];
@@ -115,7 +123,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
                 longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
                 address: $scope.work.address,
                 city: $scope.work.city,
-                subdivision_code: $scope.data.workState ? $scope.data.workState : '',
+                subdivision_code: $scope.data.workState ? $scope.data.workState.SubdivisionCode : '',
                 country_code: $scope.data.workCountry.CountryCode,
                 locationtype:"Registration Worksite",
                 postalcode:$scope.work.postalcode

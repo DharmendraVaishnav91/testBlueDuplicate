@@ -22,14 +22,13 @@
                    <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
                 </select>
             </label>
-
+            {{data}}
             <!--Newly added field which make user to enter manual address-->
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input ion-autocomplete type="text"
-                       template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
                        component-id="component1"
                        class="ion-autocomplete"
@@ -52,7 +51,7 @@
                         ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select> -->
             </label>
-
+            <span>data.state:{{data.state}}</span>
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
@@ -64,7 +63,6 @@
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
                 </select> -->
                 <input ion-autocomplete type="text"
-                       template-url="components/menu/views/autoCompleteDropStates.html"
                        readonly="readonly"
                        class="ion-autocomplete"
                        autocomplete="off"

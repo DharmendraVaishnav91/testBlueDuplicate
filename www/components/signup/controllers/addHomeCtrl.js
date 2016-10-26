@@ -30,7 +30,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
         fetchStates(callback);
     };
     $scope.getUpdatedCountryList=function(query){
-      
+
       return $filter('filter')($scope.countryCodeList,query);
     }
     $scope.getUpdatedStateList=function(query){
@@ -69,7 +69,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     $scope.goToWork = function () {
         if ($scope.data.state != undefined && $scope.data.state != null) {
             //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
-            $scope.home.subdivision_code = $scope.data.state;
+            $scope.home.subdivision_code = $scope.data.state.SubdivisionCode;
         } else {
             $scope.home.subdivision_code = "";
         }
