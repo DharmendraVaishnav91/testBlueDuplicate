@@ -1,4 +1,4 @@
-<div class="ion-autocomplete-container ion-autocomplete-random-50 modal" style="display: none;">
+<div class="ion-autocomplete-container {{viewModel.randomCssClass}} modal" style="display: none;">
     <div class="bar bar-header item-input-inset">
         <label class="item-input-wrapper">
             <i class="icon ion-search placeholder-icon"></i>
@@ -19,20 +19,6 @@
     </div>
 
     <ion-content class="has-header has-subheader">
-        <!--<ion-item class="item-divider">{{viewModel.selectedItemsLabel}}</ion-item>-->
-        <!--<ion-item ng-if="viewModel.isArray(viewModel.selectedItems)"-->
-                  <!--ng-repeat="selectedItem in viewModel.selectedItems track by $index"-->
-                  <!--class="item-icon-left item-icon-right item-text-wrap">-->
-            <!--<i class="icon ion-checkmark"></i>-->
-            <!--{{viewModel.getItemValue(selectedItem, viewModel.itemViewValueKey)}}-->
-            <!--<i class="icon ion-trash-a" style="cursor:pointer" ng-click="viewModel.removeItem($index)"></i>-->
-        <!--</ion-item>-->
-        <!--<ion-item ng-if="!viewModel.isArray(viewModel.selectedItems)"-->
-                  <!--class="item-icon-left item-icon-right item-text-wrap">-->
-            <!--<i class="icon ion-checkmark"></i>-->
-            <!--{{viewModel.getItemValue(viewModel.selectedItems, viewModel.itemViewValueKey)}}-->
-            <!--<i class="icon ion-trash-a" style="cursor:pointer" ng-click="viewModel.removeItem(0)"></i>-->
-        <!--</ion-item>-->
 
         <ion-item ng-repeat="item in viewModel.searchItems" item-height="55px" item-width="100%"
                   ng-click="viewModel.selectItem(item)" class="item-text-wrap">
