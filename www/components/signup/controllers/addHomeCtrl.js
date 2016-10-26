@@ -6,6 +6,8 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     $scope.isFromSetting = false;
   //  $scope.countryCodeList = utilityService.countryList();
     $scope.locationWay = "";
+    $scope.subDivList = "";
+    $scope.a = "";
     console.log($scope.data.homeCountry);
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
@@ -16,17 +18,23 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;
+            $scope.a = response;
+            console.log($scope.subDivList);
         }).catch(function (error) {
             console.log(error);
         })
     };
-    fetchStates($scope.data.homeCountry);
+    //fetchStates($scope.data.homeCountry);
 
     $scope.changeSubdivision = function (callback) {
         fetchStates(callback);
     };
     $scope.getUpdatedCountryList=function(query){
+      
       return $filter('filter')($scope.countryCodeList,query);
+    }
+    $scope.getUpdatedStateList=function(query){
+      return $filter('filter')($scope.subDivList,query);
     }
     $scope.skipToWork = function () {
         $state.go('addWork', {workData: $scope.data})
@@ -34,17 +42,20 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     //Change address fields according user choice
     $scope.updateLocationFields = function (locationWay) {
         $scope.enableAddressFields=true;
+        console.log(locationWay);
         if (locationWay == "current") {
             $scope.home.address = angular.copy($rootScope.addressDataFromCoordinate.address);
             $scope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.home.postalcode=angular.copy($rootScope.addressDataFromCoordinate.postalcode);
+            console.log($rootScope.addressDataFromCoordinate);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
             //$scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
             //$scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-            $scope.data.state = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            console.log($scope.subDivList);
+            //$scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.data.homeCountry = $filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-            console.log($scope.data.homeCountry);
+
         } else {
             $scope.home.address = "";
             $scope.home.city = "";
