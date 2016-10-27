@@ -49,21 +49,21 @@
             </label>
             <div class="row" ng-if="!isNewCodeRequested||isFromLogin">
                 <div class="col center" style="font-size: 18px;">
-                    <p class="positive" style="text-decoration: underline">
+                    <p class="" style="color: burlywood;" >
                         {{'DID_NOT_RECEIVE_CODE' | translate}}
                     </p>
-                    <p ng-disabled="confirmAccountForm.$invalid" class="positive" style="text-decoration: underline" ng-click="requestOTP()">
+                    <button  class="button button-positive button-clear" style="text-decoration: underline;font-size: inherit;line-height: 22px;min-height: 0;" ng-click="requestOTP()">
                         {{'REQUEST_A_NEW_CODE' | translate}}
-                    </p>
+                    </button>
 
                 </div>
             </div>
             <div class="row" ng-if="isNewCodeRequested&&!isFromLogin">
                 <div class="col center" style="font-size: 18px;padding: 0px 33px;">
-                    <p ng-disabled="confirmAccountForm.$invalid" class="positive" style="text-decoration: underline" ng-click="skipToAddHome()">
+                    <button  class="button button-clear button-positive"  style="text-decoration: underline;font-size: inherit;line-height: 22px;min-height: 0;" ng-click="skipToAddHome()">
                         {{'SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER' | translate}}<br>
                         {{'CONTINUE_WITH_REGISTRATION' | translate}}
-                    </p>
+                    </button>
 
                 </div>
             </div>
