@@ -22,9 +22,8 @@
                    <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
                 </select>
             </label>
-            {{data}}
             <!--Newly added field which make user to enter manual address-->
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-show="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
@@ -51,8 +50,7 @@
                         ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select> -->
             </label>
-            <span>data.state:{{data.state}}</span>
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-show="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>

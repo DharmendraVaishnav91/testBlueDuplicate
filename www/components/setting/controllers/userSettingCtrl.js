@@ -121,18 +121,32 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
     $scope.changeSubdivision = function (countryCode) {
         fetchStates(countryCode);
     };
-
+    $scope.getUpdatedCountryList = function(query){
+      return $filter('filter')($scope.countryCodeList,query);
+    }
+    $scope.getUpdatedStateList=function(query){
+      return $filter('filter')($scope.subDivList,query);
+    }
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
     };
     $scope.editUserHome= function (home) {
         if(home!=null){
             $scope.newHome.address=angular.copy($scope.home.StreetAddressOne);
+
             $scope.newHome.city=angular.copy($scope.home.Settlement);
-            $scope.newHome.country=angular.copy($scope.home.CountryCode);
-            $scope.changeSubdivision($scope.newHome.country);
-            $scope.newHome.state=angular.copy($scope.home.subdivision_code);
-            $scope.newHome.stateId=angular.copy($scope.home.SubdivisionID);
+            $scope.newHome.country=$filter('getById')($scope.countryCodeList,"CountryCode",$scope.home.CountryCode);
+            console.log($scope.newHome.country);
+            $scope.changeSubdivision($scope.newHome.country.countryCode);
+            //$scope.newHome.state=angular.copy($scope.home.subdivision_code);
+            signUpService.fetchStates($scope.newHome.country.countryCode).then(function (response) {
+                $scope.subDivList = response;
+                $scope.newHome.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$scope.home.subdivision_code);
+                $scope.newHome.stateId=$filter('getById')($scope.subDivList,"SubdivisionID",$scope.home.SubdivisionID);
+            }).catch(function (error) {
+                console.log(error);
+            })
+            //$scope.newHome.stateId=angular.copy($scope.home.SubdivisionID);
 
             $scope.newHome.latitude=angular.copy($scope.home.Latitude);
             $scope.newHome.longitude=angular.copy($scope.home.Longitude);
@@ -155,7 +169,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
         data.address = $scope.newHome.address;
         data.city=$scope.newHome.city;
         data.postalcode=$scope.newHome.postalcode;
-        data.country_code = $scope.newHome.country;
+        data.country_code = $scope.newHome.country.countryCode;
         data.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
         data.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
         data.name = 'Home';
