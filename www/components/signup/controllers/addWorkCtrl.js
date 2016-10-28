@@ -90,10 +90,15 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.work.postalcode=angular.copy($rootScope.addressDataFromCoordinate.postalcode);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-
+            signUpService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
+                $scope.subDivList = response;
+                $scope.data.workState = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            }).catch(function (error) {
+                console.log(error);
+            })
             //$scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
             //$scope.work.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-            $scope.data.workState = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+
             $scope.data.workCountry = $filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         } else if(locationWay=="manual") {
             $scope.work.address = "";

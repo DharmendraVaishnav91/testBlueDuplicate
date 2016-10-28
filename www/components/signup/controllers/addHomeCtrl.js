@@ -7,7 +7,6 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
   //  $scope.countryCodeList = utilityService.countryList();
     $scope.locationWay = "";
     $scope.subDivList = "";
-    $scope.a = "";
     console.log($scope.data.homeCountry);
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
@@ -18,8 +17,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;
-            $scope.a = response;
-            console.log($scope.subDivList);
+            $scope.data.state = "";
         }).catch(function (error) {
             console.log(error);
         })
@@ -54,10 +52,14 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
             $scope.home.postalcode=angular.copy($rootScope.addressDataFromCoordinate.postalcode);
             console.log($rootScope.addressDataFromCoordinate);
             $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-
+            signUpService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
+                $scope.subDivList = response;
+                $scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            }).catch(function (error) {
+                console.log(error);
+            })
             //$scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
             //$scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-            console.log($scope.subDivList);
             //$scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             $scope.data.homeCountry = $filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 

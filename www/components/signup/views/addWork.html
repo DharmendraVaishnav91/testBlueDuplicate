@@ -86,7 +86,7 @@
 
             <!--Country-->
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-show="enableAddressFields">
                 <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
@@ -115,7 +115,7 @@
             </label>
             <!--State-->
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+            <label class="item item-input item-stacked-label no-border label-padding" ng-show="enableAddressFields">
                 <span class="input-label label-text " style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
@@ -125,7 +125,6 @@
                             ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
                     </option>
                 </select> -->
-                <span style="color:white;">data.workspace: {{data.workState}}</span>
                 <input ion-autocomplete type="text"
                        readonly="readonly"
                        class="ion-autocomplete"
