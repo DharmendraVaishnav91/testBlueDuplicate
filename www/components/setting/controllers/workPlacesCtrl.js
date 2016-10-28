@@ -16,7 +16,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
     fetchCropList();
     $scope.getUpdatedProductList=function(query){
       return $filter('filter')($scope.productList,query);
-    }
+    };
     //$scope.work.name="My Work Place 1";
     $ionicModal.fromTemplateUrl('components/login/views/addWorkModal.html', {
         scope: $scope,
@@ -64,7 +64,12 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
             console.log(error);
         });
     };
-    $scope.countryCodeList = utilityService.countryList();
+    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
+        $scope.countryCodeList = response;
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
     $scope.addWork = function () {
 
         fetchWorkTypes();
@@ -94,14 +99,15 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
     };
 
     $scope.changeSubdivision = function (countryCode) {
+        $scope.work.state=null;
         fetchStates(countryCode);
     };
     $scope.getUpdatedCountryList = function(query){
       return $filter('filter')($scope.countryCodeList,query);
-    }
+    } ;
     $scope.getUpdatedStateList=function(query){
       return $filter('filter')($scope.subDivList,query);
-    }
+    } ;
     var fetchStates = function (countryCode) {
         loginService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;
@@ -115,13 +121,14 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         if (locationWay == "current") {
             $scope.work.address = angular.copy($rootScope.addressDataFromCoordinate.address);
             $scope.work.city = angular.copy($rootScope.addressDataFromCoordinate.city);
-            $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-            loginService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
+           // $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+            loginService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode)
+                .then(function (response) {
                 $scope.subDivList = response;
                 $scope.work.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             }).catch(function (error) {
                 console.log(error);
-            })
+            });
 
             $scope.work.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
             // $scope.work.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
@@ -166,8 +173,8 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
                 longitude: angular.copy($rootScope.position ? $rootScope.position.coords.longitude : ''),
                 address: $scope.work.address,
                 city: $scope.work.city,
-                subdivision_code: $scope.work.state ? $scope.work.state : '',
-                country_code: $scope.work.country.countryCode,
+                subdivision_code: $scope.work.state.SubdivisionCode,
+                country_code: $scope.work.country.CountryCode,
                 locationtype: "Registration Worksite",
                 postalcode: $scope.work.postalcode
             };
