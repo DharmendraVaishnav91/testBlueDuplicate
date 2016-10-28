@@ -169,7 +169,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
         data.address = $scope.newHome.address;
         data.city=$scope.newHome.city;
         data.postalcode=$scope.newHome.postalcode;
-        data.country_code = $scope.newHome.country.countryCode;
+        data.country_code = $scope.newHome.country.CountryCode;
         data.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
         data.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
         data.name = 'Home';

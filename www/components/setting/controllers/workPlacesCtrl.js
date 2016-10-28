@@ -100,6 +100,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
       return $filter('filter')($scope.countryCodeList,query);
     }
     $scope.getUpdatedStateList=function(query){
+      console.log($scope.subDivList);
       return $filter('filter')($scope.subDivList,query);
     }
     var fetchStates = function (countryCode) {
@@ -167,7 +168,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
                 address: $scope.work.address,
                 city: $scope.work.city,
                 subdivision_code: $scope.work.state ? $scope.work.state : '',
-                country_code: $scope.work.country.countryCode,
+                country_code: $scope.work.country.CountryCode,
                 locationtype: "Registration Worksite",
                 postalcode: $scope.work.postalcode
             };
