@@ -11,12 +11,12 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             cordova.plugins.Keyboard.disableScroll(true);
 
         }
-        cordova.getAppVersion(function(version){
-              console.log("app version=",version);
-            $rootScope.appVersion=version;
-           // $cordovaToast.showShortBottom("app version=",$rootScope.appVersion);
-            console.log("app version=",$rootScope.appVersion);
-        });
+        //cordova.getAppVersion(function(version){
+        //      console.log("app version=",version);
+        //    $rootScope.appVersion=version;
+        //   // $cordovaToast.showShortBottom("app version=",$rootScope.appVersion);
+        //    console.log("app version=",$rootScope.appVersion);
+        //});
         //var permissions = window.plugins.permissions;
         ////do we already have permissions
         //permissions.hasPermission(function(status){
