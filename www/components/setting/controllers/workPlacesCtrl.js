@@ -61,9 +61,14 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
             console.log(error);
         });
     };
-    $scope.countryCodeList = utilityService.countryList();
-    $scope.addWork = function () {
 
+    utilityService.getCountryListForLoggedInUser().then(function (countryList) {
+        $scope.countryCodeList = countryList;
+    }).catch(function (error) {
+       console.log("Error occurred in fetching country list is =");
+        console.log(error);
+    });
+    $scope.addWork = function () {
         fetchWorkTypes();
         fetchCropList();
         $scope.work = {};
@@ -95,7 +100,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
     };
 
     var fetchStates = function (countryCode) {
-        loginService.fetchStates(countryCode).then(function (response) {
+        loginService.fetchStatesForLoggedInUser(countryCode).then(function (response) {
             $scope.subDivList = response;
         }).catch(function (error) {
             console.log(error);

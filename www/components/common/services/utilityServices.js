@@ -47,6 +47,17 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         };
         return utilityService.makeHTTPRequest(req,deferred);
     } ;
+    utilityService.getCountryListForLoggedInUser= function () {
+            var deferred = $q.defer();
+            var req={
+                url:HttpRoutes.fetchCountryCode,
+                method:HttpRequestType.GET,
+                headers: {
+                    'Authorization': 'Token '+ $rootScope.auth_token
+                }
+            };
+          return  utilityService.makeHTTPRequest(req,deferred);
+    };
     utilityService.countryList= function (selectedLanguage) {
         if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
             var deferred = $q.defer();
