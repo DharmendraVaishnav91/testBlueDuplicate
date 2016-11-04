@@ -64,14 +64,14 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
             console.log(error);
         });
     };
-    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
-        $scope.countryCodeList = response;
-        console.log(response);
+
+    utilityService.getCountryListForLoggedInUser().then(function (countryList) {
+        $scope.countryCodeList = countryList;
     }).catch(function (error) {
+       console.log("Error occurred in fetching country list is =");
         console.log(error);
     });
     $scope.addWork = function () {
-
         fetchWorkTypes();
         fetchCropList();
         $scope.work = {};
@@ -109,7 +109,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
       return $filter('filter')($scope.subDivList,query);
     } ;
     var fetchStates = function (countryCode) {
-        loginService.fetchStates(countryCode).then(function (response) {
+        loginService.fetchStatesForLoggedInUser(countryCode).then(function (response) {
             $scope.subDivList = response;
         }).catch(function (error) {
             console.log(error);
