@@ -123,10 +123,10 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
     };
     $scope.getUpdatedCountryList = function(query){
       return $filter('filter')($scope.countryCodeList,query);
-    }
+    } ;
     $scope.getUpdatedStateList=function(query){
       return $filter('filter')($scope.subDivList,query);
-    }
+    } ;
     $scope.hideEditAccount =function(){
         $scope.editAccountModal.hide();
     };
@@ -137,15 +137,15 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
             $scope.newHome.city=angular.copy($scope.home.Settlement);
             $scope.newHome.country=$filter('getById')($scope.countryCodeList,"CountryCode",$scope.home.CountryCode);
             console.log($scope.newHome.country);
-            $scope.changeSubdivision($scope.newHome.country.countryCode);
+            //$scope.changeSubdivision($scope.newHome.country.countryCode);
             //$scope.newHome.state=angular.copy($scope.home.subdivision_code);
-            signUpService.fetchStates($scope.newHome.country.countryCode).then(function (response) {
+            signUpService.fetchStates($scope.newHome.country.CountryCode).then(function (response) {
                 $scope.subDivList = response;
                 $scope.newHome.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$scope.home.subdivision_code);
-                $scope.newHome.stateId=$filter('getById')($scope.subDivList,"SubdivisionID",$scope.home.SubdivisionID);
+                //$scope.newHome.stateId=$filter('getById')($scope.subDivList,"SubdivisionID",$scope.home.SubdivisionID);
             }).catch(function (error) {
                 console.log(error);
-            })
+            });
             //$scope.newHome.stateId=angular.copy($scope.home.SubdivisionID);
 
             $scope.newHome.latitude=angular.copy($scope.home.Latitude);
@@ -161,7 +161,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
        var data={};
         if ($scope.newHome.state != undefined && $scope.newHome.state != null) {
             //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
-            data.subdivision_code = $scope.newHome.state;
+            data.subdivision_code = $scope.newHome.state.SubdivisionCode;
         } else {
             data.subdivision_code = "";
         }

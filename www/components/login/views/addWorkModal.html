@@ -29,8 +29,6 @@
                 </select> -->
                 <input ion-autocomplete type="text"
                        readonly="readonly"
-                       component-id="component3"
-                       class="ion-autocomplete"
                        autocomplete="off"
                        item-method-value-key="productList"
                        items-method="getUpdatedProductList(query)"
@@ -105,8 +103,6 @@
             </select> -->
             <input ion-autocomplete type="text"
                    readonly="readonly"
-                   component-id="component1"
-                   class="ion-autocomplete"
                    autocomplete="off"
                    item-method-value-key="countryCodeList"
                    items-method="getUpdatedCountryList(query)"
@@ -132,9 +128,7 @@
             </select> -->
             <input ion-autocomplete type="text"
                    readonly="readonly"
-                   class="ion-autocomplete"
                    autocomplete="off"
-                   component-id="component2"
                    item-method-value-key="subDivList"
                    items-method="getUpdatedStateList(query)"
                    item-view-value-key="SubdivisionName"
@@ -145,8 +139,6 @@
                    placeholder="{{'SEARCH' | translate }}"
                />
         </label>
-        </label>
-
             <!--CIty-->
 
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">

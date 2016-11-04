@@ -47,6 +47,17 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         };
         return utilityService.makeHTTPRequest(req,deferred);
     } ;
+    utilityService.getCountryListForLoggedInUser= function () {
+            var deferred = $q.defer();
+            var req={
+                url:HttpRoutes.fetchCountryCode,
+                method:HttpRequestType.GET,
+                headers: {
+                    'Authorization': 'Token '+ $rootScope.auth_token
+                }
+            };
+          return  utilityService.makeHTTPRequest(req,deferred);
+    };
     utilityService.countryList= function (selectedLanguage) {
         if($localStorage[STORAGE.COUNTRIES]==null || $localStorage[STORAGE.COUNTRIES]==undefined){
             var deferred = $q.defer();
@@ -148,11 +159,12 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
        });
        return {errorMessage: errorMessage, key: key, value: value}
     }
-    utilityService.getErrorMessage = function(error){
+    utilityService.getErrorMessage = function(actualError){
+        var error=angular.copy(actualError);
       var obj1;
       if(typeof error === 'object'){
      	   if(error.error_status){
-              delete error['error_status']
+              delete error['error_status'] ;
               while(!Array.isArray(error) && (typeof error !== 'string')){
                  obj1 = goToNextStep(error);
                  error = obj1.value;
@@ -160,7 +172,7 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             }
       }
       return obj1.errorMessage.slice(0,-2);
-    }
+    };
     utilityService.getImage = function(cameraOptions) {
         var deferred = $q.defer();
         var scope = $rootScope.$new();

@@ -30,7 +30,6 @@
                 <input ion-autocomplete type="text"
                        readonly="readonly"
                        component-id="component1"
-                       class="ion-autocomplete"
                        autocomplete="off"
                        item-method-value-key="countryCodeList"
                        items-method="getUpdatedCountryList(query)"
@@ -40,8 +39,7 @@
                        cancel-label="{{'CANCEL' | translate }}"
                        style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
                        placeholder="{{'SEARCH' | translate }}"
-                       items-clicked-method="changeSubdivision(data.homeCountry.CountryCode)"
-                   />
+                       items-clicked-method="countrySelected(data.homeCountry)"/>
 
                 <!-- <select style="width: 100%" ng-model="data.homeCountry" ng-required="true" name="country"  ng-change="changeSubdivision(data.homeCountry)">
                     <option value="" disabled selected>{{'SELECT_COUNTRY' | translate}}</option>
@@ -50,6 +48,7 @@
                         ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
                 </select> -->
             </label>
+          
             <label class="item item-input item-stacked-label no-border label-padding" ng-show="enableAddressFields">
                 <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
@@ -62,7 +61,6 @@
                 </select> -->
                 <input ion-autocomplete type="text"
                        readonly="readonly"
-                       class="ion-autocomplete"
                        autocomplete="off"
                        component-id="component2"
                        item-method-value-key="subDivList"
@@ -97,7 +95,7 @@
             </label>
 
 
-
+                                                                                                                    ,
 
 
             <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->

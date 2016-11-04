@@ -24,16 +24,21 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     };
     //fetchStates($scope.data.homeCountry);
 
-    $scope.changeSubdivision = function (callback) {
-        fetchStates(callback);
+    $scope.changeSubdivision = function (countryCode) {
+       console.log(countryCode);
+        fetchStates(countryCode);
+    };
+    $scope.countrySelected= function (selectedCountry) {
+        console.log("Selected country");
+        console.log(selectedCountry);
     };
     $scope.getUpdatedCountryList=function(query){
 
       return $filter('filter')($scope.countryCodeList,query);
-    }
+    };
     $scope.getUpdatedStateList=function(query){
       return $filter('filter')($scope.subDivList,query);
-    }
+    };
     $scope.skipToWork = function () {
         $state.go('addWork', {workData: $scope.data})
     };

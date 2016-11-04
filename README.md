@@ -11,12 +11,13 @@ Bluenumber Mobile application is a Hybrid Mobile Application developed using Ion
  3. Clone project repository by using `git clone https://github.com/S3plus2/BlueMobile.git`.
  4. Fetch all git branches by using `git fetch --all`.
  5. Clone the repository and run `npm install` or `sudo npm install` to install all node dependencies.
- 6. Run `npm install bower -g` to install bower.
- 7. Run `npm install bower-installer -g` to install bower-installer.
- 8. Run `bower install` to install the *ionic library* and its dependencies and other project libraries.
- 9. *bower* settings are derived from `bower.json`  and all libraries files are installed in `bower_components`  folder. Any third party library should be used via *bower* by adding in the dependency list.
- 10. Run `bower-installer -p` in current directory. Read more about it [here](https://github.com/blittle/bower-installer).  
- 11. Now run the project on web browser using `ionic serve` or `ionic serve -l` commands.  
+ 6. Run `sudo npm install gulp -g` to install gulp.
+ 7. Run `sudo npm install bower -g` to install bower.
+ 8. Run `sudo npm install bower-installer -g` to install bower-installer.
+ 9. Run `bower install` to install the *ionic library* and its dependencies and other project libraries.
+ 10. *bower* settings are derived from `bower.json`  and all libraries files are installed in `bower_components`  folder. Any third party library should be used via *bower* by adding in the dependency list.
+ 11. Run `bower-installer -p` in current directory. Read more about it [here](https://github.com/blittle/bower-installer).  
+ 12. Now run the project on web browser using `ionic serve` or `ionic serve -l` commands.  
 
 ###Android Build
 
