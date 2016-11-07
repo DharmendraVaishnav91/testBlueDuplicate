@@ -31,6 +31,7 @@
                        readonly="readonly"
                        component-id="component1"
                        autocomplete="off"
+                       select-items-label="{{'SELECT_COUNTRY' | translate}}"
                        item-method-value-key="countryCodeList"
                        items-method="getUpdatedCountryList(query)"
                        item-view-value-key="CountryName"
@@ -39,7 +40,7 @@
                        cancel-label="{{'CANCEL' | translate }}"
                        style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
                        placeholder="{{'SEARCH' | translate }}"
-                       items-clicked-method="countrySelected(data.homeCountry)"/>
+                       items-clicked-method="changeSubdivision(data.homeCountry.CountryCode)"/>
 
                 <!-- <select style="width: 100%" ng-model="data.homeCountry" ng-required="true" name="country"  ng-change="changeSubdivision(data.homeCountry)">
                     <option value="" disabled selected>{{'SELECT_COUNTRY' | translate}}</option>
@@ -63,6 +64,7 @@
                        readonly="readonly"
                        autocomplete="off"
                        component-id="component2"
+                       select-items-label="{{'SELECT_STATE' | translate}}"
                        item-method-value-key="subDivList"
                        items-method="getUpdatedStateList(query)"
                        item-view-value-key="SubdivisionName"

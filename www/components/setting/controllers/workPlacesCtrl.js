@@ -97,7 +97,13 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         $scope.selectedWork = selectedWork;
         $scope.workDetailModal.show();
     };
-
+    var fetchStates = function (countryCode) {
+        loginService.fetchStatesForLoggedInUser(countryCode).then(function (response) {
+            $scope.subDivList = response;
+        }).catch(function (error) {
+            console.log(error);
+        })
+    };
     $scope.changeSubdivision = function (countryCode) {
         $scope.work.state=null;
         fetchStates(countryCode);
@@ -108,13 +114,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
     $scope.getUpdatedStateList=function(query){
       return $filter('filter')($scope.subDivList,query);
     } ;
-    var fetchStates = function (countryCode) {
-        loginService.fetchStatesForLoggedInUser(countryCode).then(function (response) {
-            $scope.subDivList = response;
-        }).catch(function (error) {
-            console.log(error);
-        })
-    };
+
 
     $scope.updateLocationFields = function (locationWay) {
         $scope.enableAddressFields = true;

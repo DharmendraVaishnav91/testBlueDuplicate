@@ -49,7 +49,7 @@
                     <input ion-autocomplete type="text"
                            readonly="readonly"
                            component-id="component12"
-                        
+                           select-items-label="{{'SELECT_COUNTRY' | translate}}"
                            autocomplete="off"
                            item-method-value-key="countryCodeList"
                            items-method="getUpdatedCountryList(query)"
@@ -76,6 +76,7 @@
 
                            autocomplete="off"
                            component-id="component13"
+                           select-items-label="{{'SELECT_STATE' | translate}}"
                            item-method-value-key="subDivList"
                            items-method="getUpdatedStateList(query)"
                            item-view-value-key="SubdivisionName"

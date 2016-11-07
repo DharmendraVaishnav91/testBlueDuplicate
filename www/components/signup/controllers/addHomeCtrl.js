@@ -17,7 +17,6 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;
-            $scope.data.state = "";
         }).catch(function (error) {
             console.log(error);
         })
@@ -26,6 +25,7 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
 
     $scope.changeSubdivision = function (countryCode) {
        console.log(countryCode);
+        $scope.data.state=null;
         fetchStates(countryCode);
     };
     $scope.countrySelected= function (selectedCountry) {
@@ -51,13 +51,13 @@ app.controller('addHomeCtrl', function($timeout,$q,$scope,$state,$ionicPopup,uti
             $scope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
             $scope.home.postalcode=angular.copy($rootScope.addressDataFromCoordinate.postalcode);
             console.log($rootScope.addressDataFromCoordinate);
-            $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+           // $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
             signUpService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
                 $scope.subDivList = response;
                 $scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             }).catch(function (error) {
                 console.log(error);
-            })
+            }) ;
             //$scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
             //$scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
             //$scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);

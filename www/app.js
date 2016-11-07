@@ -50,6 +50,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
         $translateProvider.useSanitizeValueStrategy('escape');
         $translateProvider.preferredLanguage('en');
 
+
         $stateProvider
             .state('app', {
                 url: '/app',

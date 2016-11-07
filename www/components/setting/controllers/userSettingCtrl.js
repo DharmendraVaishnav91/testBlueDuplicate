@@ -112,6 +112,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
     };
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
+            $scope.newHome.state=null;
             $scope.subDivList = response;
         }).catch(function (error) {
             console.log(error);

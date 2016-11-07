@@ -30,6 +30,7 @@
                 <input ion-autocomplete type="text"
                        readonly="readonly"
                        autocomplete="off"
+                       select-items-label="{{'SELECT_PRODUCT' | translate}}"
                        item-method-value-key="productList"
                        items-method="getUpdatedProductList(query)"
                        item-view-value-key="H3Description"
@@ -104,6 +105,7 @@
             <input ion-autocomplete type="text"
                    readonly="readonly"
                    autocomplete="off"
+                   select-items-label="{{'SELECT_COUNTRY' | translate}}"
                    item-method-value-key="countryCodeList"
                    items-method="getUpdatedCountryList(query)"
                    item-view-value-key="CountryName"
@@ -129,6 +131,7 @@
             <input ion-autocomplete type="text"
                    readonly="readonly"
                    autocomplete="off"
+                   select-items-label="{{'SELECT_STATE' | translate}}"
                    item-method-value-key="subDivList"
                    items-method="getUpdatedStateList(query)"
                    item-view-value-key="SubdivisionName"
@@ -160,14 +163,7 @@
                     </span>
                     <input type="text" ng-required="true" class="edit-input-txt" name="address"  ng-model="work.address"/>
                 </label>
-
                 <!--postalCode-->
-
-
-
-
-
-
             <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
                 <!--<span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}-->
                     <!--<span class="assertive " style="font-size: inherit">* </span>-->
