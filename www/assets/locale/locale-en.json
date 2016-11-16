@@ -338,11 +338,12 @@
   "SELECT_OCCUPATION":"Select Occupation",
   "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code?",
   "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
+
   "RESET_PASSWORD":"Reset Password",
   "UPDATE_PASSWORD":"Update Password",
   "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password"
-
+  "CONFIRM_PASSWORD":"Confirm Password",
+  "SEARCH": "Search"
 
 
 }

@@ -340,10 +340,11 @@
   "THING_ID_TYPE": "物のIDタイプ",
   "VERSION": "バージョン",
   "WHERE_YOU_WORK": "勤務地",
-  
+
   "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
   "RESET_PASSWORD":"Reset Password",
   "UPDATE_PASSWORD":"Update Password",
   "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password"
+  "CONFIRM_PASSWORD":"Confirm Password",
+  "SEARCH": "Search"
 }

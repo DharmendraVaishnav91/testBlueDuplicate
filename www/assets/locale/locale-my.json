@@ -345,5 +345,6 @@
   "RESET_PASSWORD":"Reset Password",
   "UPDATE_PASSWORD":"Update Password",
   "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password"
+  "CONFIRM_PASSWORD":"Confirm Password",
+  "SEARCH": "Search"
 }
