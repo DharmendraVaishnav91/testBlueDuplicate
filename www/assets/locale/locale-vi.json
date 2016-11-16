@@ -339,5 +339,11 @@
   "THANK_YOU": "Cảm ơn!",
   "THING_ID_TYPE": "Loại mã định danh",
   "VERSION": "Phiên bản",
-  "WHERE_YOU_WORK": "Nơi làm việc"
+  "WHERE_YOU_WORK": "Nơi làm việc",
+
+  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
+  "RESET_PASSWORD":"Reset Password",
+  "UPDATE_PASSWORD":"Update Password",
+  "ENTER_OTP":"Enter OTP",
+  "CONFIRM_PASSWORD":"Confirm Password"
 }

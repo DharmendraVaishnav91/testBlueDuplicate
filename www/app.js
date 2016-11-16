@@ -73,6 +73,16 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 templateUrl: 'components/signup/views/regCreateAccount.html',
                 controller: 'RegCreateAccountCtrl'
             })
+            .state('forgotPassword', {
+                url: '/forgotPassword',
+                templateUrl: 'components/login/views/forgotPassword.html',
+                controller: 'ForgotPasswordCtrl'
+            })
+            .state('passwordReset', {
+                url: '/passwordReset',
+                templateUrl: 'components/login/views/passwordReset.html',
+                controller: 'PasswordResetCtrl'
+            })
             .state('regCreateProfile', {
                 url: '/regCreateProfile',
                 params: {accountData: {}},

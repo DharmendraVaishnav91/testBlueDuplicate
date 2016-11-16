@@ -339,5 +339,11 @@
   "THANK_YOU": "ကျေးဇူးတင်ပါသည်!",
   "THING_ID_TYPE": "အရာဝတ္ထု ID အမျိုးအစား",
   "VERSION": "ဗားရှင်း",
-  "WHERE_YOU_WORK": "သင်ဘယ်မှာအလုပ်လုပ်သလဲ"
+  "WHERE_YOU_WORK": "သင်ဘယ်မှာအလုပ်လုပ်သလဲ",
+
+  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
+  "RESET_PASSWORD":"Reset Password",
+  "UPDATE_PASSWORD":"Update Password",
+  "ENTER_OTP":"Enter OTP",
+  "CONFIRM_PASSWORD":"Confirm Password"
 }

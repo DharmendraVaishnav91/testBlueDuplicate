@@ -338,5 +338,11 @@
   "THANK_YOU": "ขอบคุณมากค่ะ",
   "THING_ID_TYPE": "ประเภท ID สิ่งของ",
   "VERSION": "เวอร์ชั่น",
-  "WHERE_YOU_WORK": "สถานที่ทำงาน"
+  "WHERE_YOU_WORK": "สถานที่ทำงาน",
+
+  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
+  "RESET_PASSWORD":"Reset Password",
+  "UPDATE_PASSWORD":"Update Password",
+  "ENTER_OTP":"Enter OTP",
+  "CONFIRM_PASSWORD":"Confirm Password"
 }

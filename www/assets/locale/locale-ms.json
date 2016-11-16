@@ -361,5 +361,11 @@
   "THANK_YOU": "Terima Kasih!",
   "THING_ID_TYPE": "Jenis Barang ID",
   "VERSION": "Versi",
-  "WHERE_YOU_WORK": "Di mana anda bekerja"
+  "WHERE_YOU_WORK": "Di mana anda bekerja",
+
+  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
+  "RESET_PASSWORD":"Reset Password",
+  "UPDATE_PASSWORD":"Update Password",
+  "ENTER_OTP":"Enter OTP",
+  "CONFIRM_PASSWORD":"Confirm Password"
 }
