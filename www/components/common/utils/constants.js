@@ -70,6 +70,7 @@ var HttpRoutes = {
     fetchWorkPlaces:apiUrl+"/gpr/v1/assets/work_places",
     workTypes:apiUrl+"/gpr/v2/work_types",
     thingTypes:apiUrl+"/gpr/v2/thing_types",
-    groupTypes:apiUrl+"/gpr/v2/group_types"
+    groupTypes:apiUrl+"/gpr/v2/group_types",
+    resetPass:apiUrl+"/gpr/v2/reset_password/"
 
 };

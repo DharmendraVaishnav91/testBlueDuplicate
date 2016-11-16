@@ -160,6 +160,27 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         console.log(req);
         return utilityService.makeHTTPRequest(req,deferred);
     };
+    self.getOtpToResetPassword = function(FPData){ //Forgot Password Data
+        var deferred = $q.defer();
+        var req={
+            url:HttpRoutes.resetPass,
+            data:FPData,
+            method:HttpRequestType.POST
+        };
+        console.log(req);
+        return utilityService.makeHTTPRequest(req,deferred);
+    }
+    self.resetPasswordWithOtp = function(RPData){ //Reset Password Data
+      console.log(RPData);
+      var deferred = $q.defer();
+      var req={
+          url:HttpRoutes.resetPass+""+RPData.token,
+          data:RPData.data,
+          method:HttpRequestType.PUT
+      };
+      console.log(req);
+      return utilityService.makeHTTPRequest(req,deferred);
+    }
 
     return self;
 });

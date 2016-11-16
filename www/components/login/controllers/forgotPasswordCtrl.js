@@ -1,4 +1,4 @@
-app.controller('ForgotPasswordCtrl', function($timeout, $q, $scope, $state, $ionicPopup, utilityService, loginService, $rootScope, $cordovaToast,$filter,$ionicLoading){
+app.controller('ForgotPasswordCtrl', function($timeout, $q, $scope, $state, $stateParams, $ionicPopup, utilityService, loginService, $rootScope, $cordovaToast,$filter,$ionicLoading){
 
     $scope.countryCodeList = "";
     $scope.data = {};
@@ -15,9 +15,26 @@ app.controller('ForgotPasswordCtrl', function($timeout, $q, $scope, $state, $ion
         console.log($scope.data.selectedCountry);
     }
 
+    $scope.getSearchedCountryList=function(query){
+      return $filter('filter')($scope.countryCodeList,query);
+    }
+
     $scope.goToPasswordRecreation = function(){
       console.log($scope.data);
-      // TODO
-      $state.go('passwordReset');
+      // Todo
+      var dataToSend = {
+        country_phone_code: $scope.data.selectedCountry.CountryPhoneCode,
+        username: $scope.data.mobile.toString()
+      };
+      console.log(dataToSend);
+      loginService.getOtpToResetPassword(dataToSend).then(function (response){
+          //success part
+          $scope.prToken = response.token;
+          console.log("in 1st js file the token is : "+$scope.prToken);
+          $state.go('passwordReset',{token: $scope.prToken});
+      }).catch(function (error){
+          console.log(error);
+      });
+
     }
 });
