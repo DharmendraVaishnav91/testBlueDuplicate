@@ -1,5 +1,4 @@
-
-var app = angular.module('app', ['ionic', 'ngSanitize','picklist', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters']);
+var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters']);
 
 
 app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordovaToast) {
@@ -51,6 +50,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
         $translateProvider.useSanitizeValueStrategy('escape');
         $translateProvider.preferredLanguage('en');
 
+
         $stateProvider
             .state('app', {
                 url: '/app',
@@ -65,17 +65,20 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('login', {
                 url: '/login',
+                cache:false,
                 templateUrl: 'components/login/views/login.html',
                 controller: 'LoginCtrl'
             })
             .state('regCreateAccount', {
                 url: '/regCreateAccount',
+                cache:false,
                 templateUrl: 'components/signup/views/regCreateAccount.html',
                 controller: 'RegCreateAccountCtrl'
             })
             .state('regCreateProfile', {
                 url: '/regCreateProfile',
                 params: {accountData: {}},
+                cache:false,
                 templateUrl: 'components/signup/views/regCreateProfile.html',
                 controller: 'RegCreateProfileCtrl'
             })
@@ -87,6 +90,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('addHome', {
                 url: '/addHome',
+                cache:false,
                 params: {homeData: {}, homeAddress: {}},
                 templateUrl: 'components/signup/views/addHome.html',
                 controller: 'addHomeCtrl'
