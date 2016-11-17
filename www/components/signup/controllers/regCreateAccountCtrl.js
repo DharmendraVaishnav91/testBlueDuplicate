@@ -113,6 +113,9 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
         console.log("Selected item")
         console.log($scope.data.selectedCountry);
     }
+    $scope.getSearchedCountryList=function(query){
+      return $filter('filter')($scope.countryCodeList,query);
+    }
     $scope.showConfirm = function () {
         var confirmPopup = $ionicPopup.confirm({
             title: $filter('translate')('CONFIRM_SHARE'),
