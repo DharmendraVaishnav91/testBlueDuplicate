@@ -341,10 +341,10 @@
   "VERSION": "バージョン",
   "WHERE_YOU_WORK": "勤務地",
 
-  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
-  "RESET_PASSWORD":"Reset Password",
-  "UPDATE_PASSWORD":"Update Password",
-  "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password",
-  "SEARCH": "Search"
+  "CONTINUE_WITH_REGISTRATION":"登録を続行し、後であなたのアカウントを確認します。",
+  "RESET_PASSWORD":"パスワードをリセットします。",
+  "UPDATE_PASSWORD":"パスワードの更新",
+  "ENTER_OTP":"OTP を入力してください。",
+  "CONFIRM_PASSWORD":"パスワードを確認します。",
+  "SEARCH": "検索"
 }

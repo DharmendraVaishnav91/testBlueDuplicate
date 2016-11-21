@@ -341,10 +341,10 @@
   "VERSION": "Phiên bản",
   "WHERE_YOU_WORK": "Nơi làm việc",
 
-  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
-  "RESET_PASSWORD":"Reset Password",
-  "UPDATE_PASSWORD":"Update Password",
-  "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password",
-  "SEARCH": "Search"
+  "CONTINUE_WITH_REGISTRATION":"Tiếp tục đăng ký và xác nhận tài khoản của bạn sau này.",
+  "RESET_PASSWORD":"Đặt lại mật khẩu",
+  "UPDATE_PASSWORD":"Cập nhật mật khẩu",
+  "ENTER_OTP":"Nhập OTP",
+  "CONFIRM_PASSWORD":"Xác nhận mật khẩu",
+  "SEARCH": "Tìm kiếm"
 }

@@ -363,10 +363,10 @@
   "VERSION": "Versi",
   "WHERE_YOU_WORK": "Di mana anda bekerja",
 
-  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
-  "RESET_PASSWORD":"Reset Password",
-  "UPDATE_PASSWORD":"Update Password",
-  "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password",
-  "SEARCH": "Search"
+  "CONTINUE_WITH_REGISTRATION":"Terus pendaftaran dan mengesahkan akaun anda kemudian.",
+  "RESET_PASSWORD":"Set semula kata laluan",
+  "UPDATE_PASSWORD":"Kemaskini kata laluan",
+  "ENTER_OTP":"Masukkan OTP",
+  "CONFIRM_PASSWORD":"Sahkan kata laluan",
+  "SEARCH": "Cari"
 }
