@@ -17,7 +17,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     });
     $scope.getSearchedCountryList=function(query){
       return $filter('filter')($scope.countryCodeList,query);
-    }
+    } ;
     $scope.doLogin= function () {
         console.log("Doing login");
         var data={
@@ -25,7 +25,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
             password:$scope.loginData.password            
         };
         console.log(data);
-        $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode;
+        $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode.CountryPhoneCode;
             $rootScope.userMobDetail.mobile=$scope.loginData.mobile;
         loginService.doLogin(data).then(function (user){
             $rootScope.user=user;

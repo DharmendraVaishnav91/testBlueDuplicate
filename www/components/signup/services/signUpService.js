@@ -13,10 +13,7 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
         var req={
             url:HttpRoutes.requestOTP,
             method:HttpRequestType.POST,
-            data:postData,
-            headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
-            }
+            data:postData
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
@@ -25,10 +22,7 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
         var req={
             url:HttpRoutes.confirmOTP,
             method:HttpRequestType.POST,
-            data:postData,
-            headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
-            }
+            data:postData
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
