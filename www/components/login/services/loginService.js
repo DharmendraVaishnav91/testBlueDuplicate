@@ -21,7 +21,11 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var req={
             url:HttpRoutes.login,
             method:HttpRequestType.POST,
-            data:loginData
+            data:loginData,
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
+            }
         };
 
         //var response= utilityService.makeHTTPRequest(req,deferred);
@@ -56,7 +60,10 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var deferred = $q.defer();
         var req={
             url:HttpRoutes.fetchSubDivisionList+""+countryCode,
-            method:HttpRequestType.GET
+            method:HttpRequestType.GET,
+            headers: {
+                'Accept' : 'application/json'
+            }
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
@@ -66,7 +73,8 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
             url:HttpRoutes.fetchSubDivisionList+""+countryCode,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -76,7 +84,10 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var deferred = $q.defer();
         var req={
             url:HttpRoutes.checkUserName+""+username,
-            method:HttpRequestType.GET
+            method:HttpRequestType.GET,
+            headers: {
+                'Accept' : 'application/json'
+            }
         };
         return utilityService.makeHTTPRequest(req,deferred);
 
@@ -87,7 +98,10 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var req={
             url:HttpRoutes.signUpStep1,
             data:userData,
-            method:HttpRequestType.POST
+            method:HttpRequestType.POST,
+            headers: {
+                'Accept' : 'application/json'
+            }
         };
         console.log(req);
         return utilityService.makeHTTPRequest(req,deferred);
@@ -99,7 +113,8 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
             data:{home:userData},
             method:HttpRequestType.POST,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         console.log(req);
@@ -111,7 +126,8 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
             url:HttpRoutes.fetchAllCreatedLocations,
             method:HttpRequestType.GET ,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         console.log(req);
@@ -122,6 +138,9 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var req={
             url:HttpRoutes.fetchProductList,
             method:HttpRequestType.GET
+            headers: {
+                'Accept' : 'application/json'
+            }
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
@@ -132,7 +151,8 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
              data:workData,
              method:HttpRequestType.POST,
              headers: {
-                 'Authorization': 'Token '+ $rootScope.auth_token
+                 'Authorization': 'Token '+ $rootScope.auth_token,
+                 'Accept' : 'application/json'
              }
          };
          console.log(req);
@@ -145,7 +165,8 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
             data:thingsData,
             method:HttpRequestType.POST,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         console.log(req);
@@ -158,7 +179,8 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
             data:groupsData,
             method:HttpRequestType.POST,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         console.log(req);
