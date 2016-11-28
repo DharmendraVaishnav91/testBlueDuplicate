@@ -34,7 +34,8 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
             url:HttpRoutes.login,
             method:HttpRequestType.DELETE,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         //$http.defaults.headers.common.Authorization = 'Token '+ token;
@@ -44,7 +45,10 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var deferred = $q.defer();
         var req={
             url:HttpRoutes.fetchCountryCode,
-            method:HttpRequestType.GET
+            method:HttpRequestType.GET,
+            headers: {
+                'Accept' : 'application/json'
+            }
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
