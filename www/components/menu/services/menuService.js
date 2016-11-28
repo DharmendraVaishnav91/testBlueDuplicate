@@ -12,7 +12,8 @@ menu.factory('menuService',function($http,$ionicPopup,$q,$rootScope,utilityServi
             url:HttpRoutes.fetchUserDetail+actorId,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -25,7 +26,8 @@ menu.factory('menuService',function($http,$ionicPopup,$q,$rootScope,utilityServi
             method:HttpRequestType.POST,
             data:{language:language},
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -37,7 +39,8 @@ menu.factory('menuService',function($http,$ionicPopup,$q,$rootScope,utilityServi
             url:HttpRoutes.fetchPreferredLanguage,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);

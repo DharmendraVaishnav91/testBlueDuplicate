@@ -14,7 +14,8 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             method:HttpRequestType.POST,
             data:inviteData,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -26,7 +27,8 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             method:HttpRequestType.POST,
             data:inviteData,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -42,7 +44,8 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             method:HttpRequestType.POST,
             data:coordData,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -53,7 +56,8 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
                 url:HttpRoutes.fetchCountryCode,
                 method:HttpRequestType.GET,
                 headers: {
-                    'Authorization': 'Token '+ $rootScope.auth_token
+                    'Authorization': 'Token '+ $rootScope.auth_token,
+                    'Accept' : 'application/json'
                 }
             };
           return  utilityService.makeHTTPRequest(req,deferred);
@@ -63,7 +67,10 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             var deferred = $q.defer();
             var req={
                 url:HttpRoutes.fetchCountryCode,
-                method:HttpRequestType.GET
+                method:HttpRequestType.GET,
+                headers: {
+                    'Accept' : 'application/json'
+                }
             };
             if(selectedLanguage!=null){
                 req.url+="?locale="+selectedLanguage;
@@ -84,7 +91,10 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
 
             var req={
                 url:HttpRoutes.fetchCountryCode,
-                method:HttpRequestType.GET
+                method:HttpRequestType.GET,
+                headers: {
+                    'Accept' : 'application/json'
+                }
             };
             if(selectedLanguage!=null){
                 req.url+="?locale="+selectedLanguage;
@@ -133,7 +143,10 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
         var deferred = $q.defer();
         var req={
             url:'assets/locale/'+langName+".json",
-            method:HttpRequestType.GET
+            method:HttpRequestType.GET,
+            headers: {
+                'Accept' : 'application/json'
+            }
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };

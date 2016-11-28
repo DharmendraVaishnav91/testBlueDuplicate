@@ -16,7 +16,8 @@ app.factory('dashboardService',function($http,$ionicPopup,$q,$rootScope,utilityS
             method:HttpRequestType.GET,
             dataType: 'json',
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         if(params!=""){

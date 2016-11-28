@@ -13,7 +13,8 @@ userSetting.factory('inviteService',function($http,$ionicPopup,$q,$rootScope,uti
             url:HttpRoutes.groupPendingInvitations,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -25,7 +26,8 @@ userSetting.factory('inviteService',function($http,$ionicPopup,$q,$rootScope,uti
             method:HttpRequestType.POST,
             data:{id:inviteId},
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
