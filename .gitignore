@@ -7,6 +7,7 @@ plugins/
 RealeaseApk/
 outputs
 hooks/
+/res
 # Ignore compiled css
 
 www/assets/css/ionic.app.css

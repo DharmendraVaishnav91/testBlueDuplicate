@@ -339,5 +339,9 @@
   "THANK_YOU": "ကျေးဇူးတင်ပါသည်!",
   "THING_ID_TYPE": "အရာဝတ္ထု ID အမျိုးအစား",
   "VERSION": "ဗားရှင်း",
-  "WHERE_YOU_WORK": "သင်ဘယ်မှာအလုပ်လုပ်သလဲ"
+  "WHERE_YOU_WORK": "သင်ဘယ်မှာအလုပ်လုပ်သလဲ",
+
+
+  "ORGANIZATION": "Organization",
+  "CREATE_ORG":"Create Organization"
 }

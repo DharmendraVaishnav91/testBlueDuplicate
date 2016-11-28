@@ -338,5 +338,9 @@
   "THANK_YOU": "ขอบคุณมากค่ะ",
   "THING_ID_TYPE": "ประเภท ID สิ่งของ",
   "VERSION": "เวอร์ชั่น",
-  "WHERE_YOU_WORK": "สถานที่ทำงาน"
+  "WHERE_YOU_WORK": "สถานที่ทำงาน",
+
+
+  "ORGANIZATION": "Organization",
+  "CREATE_ORG":"Create Organization"
 }

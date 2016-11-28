@@ -361,5 +361,9 @@
   "THANK_YOU": "Terima Kasih!",
   "THING_ID_TYPE": "Jenis Barang ID",
   "VERSION": "Versi",
-  "WHERE_YOU_WORK": "Di mana anda bekerja"
+  "WHERE_YOU_WORK": "Di mana anda bekerja",
+
+
+  "ORGANIZATION": "Organization",
+  "CREATE_ORG":"Create Organization"
 }

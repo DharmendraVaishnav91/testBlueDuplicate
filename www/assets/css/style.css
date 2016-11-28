@@ -114,7 +114,13 @@ div.leaflet-right {
     padding: 0 10px 0 10px !important;;
     height: 40px !important;
 }
-
+.edit-input-textarea {
+    font-size: 18px !important;
+    background-color: rgba(97, 137, 197, .7) !important;;
+    border-radius: 4px !important;;
+    color: white !important;;
+    padding: 0 10px 0 10px !important;;
+}
 input[type="radio"] {
     width: 18px;
     height: 18px;

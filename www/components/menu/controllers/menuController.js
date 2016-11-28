@@ -26,6 +26,9 @@ var menu=angular.module('app.menu', []);
         $scope.openDashboard= function () {
             $state.go('app.dashboard');
         };
+        $scope.goToOrganization = function() {
+            $state.go('app.organization');
+        };
         $scope.openSetting=function(){
             $state.go('app.setting');
         };

@@ -339,7 +339,20 @@
   "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code?",
   "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
 
-  "SEARCH": "Search"
+  "SEARCH": "Search",
+  "ORGANIZATION": "Organization",
+  "CREATE_ORG":"Create Organization",
+  "ORG_NAME": "Organization Name",
+  "ORG_TYPE": "Organization Type",
+  "SELECT_ORG_TYPE": "Select Organization Type",
+  "OWNERSHIP":"Ownership",
+  "SELECT_OWNERSHIP": "Select Ownership",
+  "SELECT_ADDRESS": "Select Address",
+  "STREET_ADDRESS": "Street Address",
+  "UNIQUE_ID": "Unique Identifier",
+  "CEO": "CEO / Owner",
+  "WEBSITE":"Website",
+  "FB_PAGE": "Facebook Page"
 
 
 }

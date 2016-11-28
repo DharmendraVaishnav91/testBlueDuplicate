@@ -147,6 +147,23 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'UserSettingCtrl'
                     }
                 }
+            }).state('app.createOrg', {
+                url: '/createOrg',
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/setting/views/createOrg.html',
+                        controller: 'CreateOrgCtrl'
+                    }
+                }
+            }).state('app.organization', {
+                url: '/organization',
+                params: {orgExist: false, org: {}, loc: {}},
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/setting/views/organization.html',
+                        controller: 'OrganizationCtrl'
+                    }
+                }
             }).state('app.manageSetting', {
                 url: '/manageSetting',
                 views: {
