@@ -157,7 +157,6 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             }).state('app.organization', {
                 url: '/organization',
-                params: {orgExist: false, org: {}, loc: {}},
                 views: {
                     'mainContent': {
                         templateUrl: 'components/setting/views/organization.html',

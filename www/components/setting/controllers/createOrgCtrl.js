@@ -36,6 +36,9 @@ menu.controller('CreateOrgCtrl',function($scope, $filter, $state, loginService, 
   $scope.createOrg = function(){
       console.log($scope.org);
       console.log($scope.loc);
-      $state.go('app.organization',{orgExist: true, org: $scope.org, loc: $scope.loc});
+      $rootScope.orgExist = true;
+      $rootScope.org = $scope.org;
+      $rootScope.orgLoc = $scope.loc;
+      $state.go('app.organization');
   };
 });
