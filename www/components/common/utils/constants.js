@@ -1,8 +1,9 @@
 /**
  * Created by dharmendra on 16/8/16.
  */
-//var apiUrl="https://bnstaging.herokuapp.com";
-var apiUrl= "https://blue-dev.herokuapp.com";
+//var apiUrl="https://bnproduction.herokuapp.com";
+var apiUrl="https://bnstaging.herokuapp.com";
+//var apiUrl= "https://blue-dev.herokuapp.com";
 var HttpRequestType = {
     GET: 'GET',
     POST: 'POST',

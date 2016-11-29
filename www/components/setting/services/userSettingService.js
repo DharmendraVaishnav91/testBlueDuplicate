@@ -12,7 +12,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             url:HttpRoutes.fetchUserDetail+actorId,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -26,7 +27,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             method:HttpRequestType.PUT,
             data:userInfo,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -38,7 +40,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             method:HttpRequestType.POST,
             data:inviteData,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -50,7 +53,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             url:HttpRoutes.fetchWorkPlaces,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -62,7 +66,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             url:HttpRoutes.invitedFamilyMembers,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -74,7 +79,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             method:HttpRequestType.POST,
             data:invitedData ,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -86,7 +92,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             url:HttpRoutes.fetchGroups,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -97,7 +104,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             url:HttpRoutes.fetchGroups+"/"+businessRelId,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -108,7 +116,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             url:HttpRoutes.fetchAllThings,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -120,7 +129,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             method:HttpRequestType.POST,
             data:assetData,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);
@@ -131,7 +141,8 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
             url:HttpRoutes.fetchAssetDetail+"/"+assetId,
             method:HttpRequestType.GET,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
             }
         };
         return utilityService.makeHTTPRequest(req,deferred);

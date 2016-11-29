@@ -75,7 +75,7 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
                         },
                         lng: parseFloat(key.coordinates[0]),
                         lat: parseFloat(key.coordinates[1]),
-                        message: key.gender + " " + key.crops,
+                        message: "<b>Gender: </b> "+key.gender + "<br><b>Crops: </b>" + key.crops+"<br><b>what3words: </b>"+key.w3w ,
                         focus: false,
                         draggable: false
                     } ;
