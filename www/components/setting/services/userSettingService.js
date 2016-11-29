@@ -147,6 +147,19 @@ userSetting.factory('userSettingService',function($http,$ionicPopup,$q,$rootScop
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
+    self.registerOrg = function (orgData) {
+      var deferred = $q.defer();
+      var req={
+          url:HttpRoutes.registerOrg,
+          method:HttpRequestType.POST,
+          data:orgData,
+          headers: {
+              'Authorization': 'Token '+ $rootScope.auth_token,
+              'Accept' : 'application/json'
+          }
+      };
+      return utilityService.makeHTTPRequest(req,deferred);
+    };
 
     return self;
 });

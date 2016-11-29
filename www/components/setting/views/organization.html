@@ -2,7 +2,7 @@
     <ion-content scroll="false" class="blueno-bg-full">
 
       <!-- create org button -->
-      <div class="button-bar" ng-if="!orgExist">
+      <div class="button-bar" ng-if="!npFound() && user.organization_name.length == 0">
           <button ng-disabled="" class="button button-clear button-light bold"
                   type="submit" ng-click="createNewOrganization()" >
               <i class=" ion-plus-round" style="font-size: 20px;"></i> &nbsp;{{'CREATE_ORG' | translate }}
@@ -33,14 +33,14 @@
           margin-right: -16px;
         }
       </style>
-      <div class="list card" ng-if="orgExist" style="margin:5px;">
+      <div class="list card" ng-if="npFound() && user.organization_name.length != 0" style="margin:5px;">
           <div class="item item-image" id="image-container">
             <img src="http://lorempixel.com/400/120/sports/2">
           </div>
 
 
-        <h1 style="text-align:center;color:black;margin-top: 5px;">Metacube Soft.</h1>
-        <p style="text-align:center;color:rgb(102,102,102);margin-top: -15px;">CEO: Keshav Sharma</p>
+        <h1 style="text-align:center;color:black;margin-top: 5px;">{{org.name}}</h1>
+        <p style="text-align:center;color:rgb(102,102,102);margin-top: -15px;">CEO: {{org.ceo}}</p>
         <div class="item" style="margin-top: -5px; text-align:center; padding-top: 6px;padding-bottom:initial;margin-bottom: 5px;border: 0px;">
           <img id="" class="img-circle imc-left" style="margin-left:10px;" src="http://lorempixel.com/30/30/people/7">
           <img id="" class="img-circle imc-left" src="http://lorempixel.com/30/30/people/9">

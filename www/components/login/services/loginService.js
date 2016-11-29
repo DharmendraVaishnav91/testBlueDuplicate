@@ -137,7 +137,7 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var deferred = $q.defer();
         var req={
             url:HttpRoutes.fetchProductList,
-            method:HttpRequestType.GET
+            method:HttpRequestType.GET,
             headers: {
                 'Accept' : 'application/json'
             }
