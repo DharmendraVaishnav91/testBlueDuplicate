@@ -1,0 +1,25 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;">
+        <button ng-click="hideOrgMemberList()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+             <span class="back-text"></span>
+        </button>
+        <h1 class="title" style=" max-width:none;text-align: center !important;">
+            Members
+        </h1>
+
+    </ion-header-bar>
+    <ion-content class="has-header blueno-bg-full">
+        <div class="list" style="width:100%;overflow: scroll;padding:0px">
+            <!--<div class="item" >-->
+                <!--{{member.name}}-->
+            <!--</div>-->
+            <a class="item item-avatar" href="#" ng-repeat="member in memberList">
+                <img ng-src="http://lorempixel.com/30/30/people/{{$index}}">
+                <h2>{{member.name}}</h2>
+                <!--<p>Back off, man. I'm a scientist.</p>-->
+            </a>
+        </div>
+
+    </ion-content>
+</ion-modal-view>

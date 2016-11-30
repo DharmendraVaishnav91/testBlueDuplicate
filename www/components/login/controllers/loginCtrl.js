@@ -28,6 +28,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
         $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode.CountryPhoneCode;
             $rootScope.userMobDetail.mobile=$scope.loginData.mobile;
         loginService.doLogin(data).then(function (user){
+
             $rootScope.user=user;
             $rootScope.auth_token=user.auth_token;
             userSettingService.fetchUserInfo($rootScope.user.ActorID).then(function(response){

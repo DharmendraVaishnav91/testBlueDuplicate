@@ -237,3 +237,35 @@ option {
     -webkit-transition: all ease-in-out 250ms;
     transition: all ease-in-out 250ms;
 }
+
+.my-card .item.item-image{
+    width: 100vw;
+    margin-left: -10px;
+    margin-top: -20px;
+}
+
+.my-card.card{
+    overflow: visible;
+}
+.img-circle {
+    border-radius: 50%;
+    border: 1px solid white;
+    /*padding: 1px;*/
+}
+.imc-left {
+    margin-left: -16px;
+}
+.imc-right {
+    margin-right: -16px;
+}
+.custom-subheader.bar-subheader  {
+    height: auto !important;
+}
+.tabs-striped .tabs{
+    background-color: #4E5C6E !important;
+    color:white;
+    border-color: white !important;
+}
+.tabs-striped .tab-item.tab-item-active{
+    border-color:white !important;
+}

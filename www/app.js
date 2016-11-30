@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters']);
+var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters','app.org']);
 
 
 app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordovaToast) {
@@ -157,14 +157,44 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             }).state('app.organization', {
                 url: '/organization',
+                cache:false,
+                abstract:true,
                 params: {orgExist: false, org: {}, loc: {}},
                 views: {
                     'mainContent': {
-                        templateUrl: 'components/setting/views/organization.html',
-                        controller: 'OrganizationCtrl'
+                        templateUrl: 'components/organization/views/orgTab.html',
+                        controller: 'OrganizationTabCtrl'
                     }
                 }
-            }).state('app.manageSetting', {
+            }).state('app.organization.detail', {
+                url: '/organization/detail',
+                cache:false,
+                views: {
+                    'orgDetail': {
+                        templateUrl: 'components/organization/views/orgDetail.html',
+                        controller: 'OrganizationDetailCtrl'
+                    }
+                }
+            }) .state('app.organization.members', {
+                url: '/organization/members',
+                cache:false,
+                views: {
+                    'orgMembers': {
+                        templateUrl: 'components/organization/views/orgMembers.html',
+                        controller: 'OrganizationMembersCtrl'
+                    }
+                }
+            }) .state('app.organization.invitations', {
+                url: '/organization/invitations',
+                cache:false,
+                views: {
+                    'orgInvitations': {
+                        templateUrl: 'components/organization/views/orgInvitations.html',
+                        controller: 'OrganizationInvitationsCtrl'
+                    }
+                }
+            })
+            .state('app.manageSetting', {
                 url: '/manageSetting',
                 views: {
                     'mainContent': {

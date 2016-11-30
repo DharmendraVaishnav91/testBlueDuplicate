@@ -27,7 +27,7 @@ var menu=angular.module('app.menu', []);
             $state.go('app.dashboard');
         };
         $scope.goToOrganization = function() {
-            $state.go('app.organization');
+            $state.go('app.organization.detail');
         };
         $scope.openSetting=function(){
             $state.go('app.setting');
