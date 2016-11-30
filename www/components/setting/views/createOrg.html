@@ -25,11 +25,20 @@
 
         <!-- Description -->
         <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text"  style="color:white">{{'DESCRIPTION' | translate }}
+            <span class="input-label label-text"  style="color:white">{{'ORG_DESCRIPTION' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <!-- <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   /> -->
-            <textarea class="edit-input-textarea" name="orgDescription" ng-required="true" ng-model="org.description" rows="4"></textarea>
+            <textarea class="edit-input-textarea" name="orgDescription" ng-required="true" ng-model="org.description1" rows="4"></textarea>
+        </label>
+
+        <!-- No of Employee -->
+        <label class="item item-input item-stacked-label no-border label-padding">
+            <span class="input-label label-text"  style="color:white">{{'NO_OF_EMPLOYEE' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+            <!-- <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   /> -->
+            <input class="edit-input-txt" type="number" name="employee_count" ng-required="" ng-model="org.emp_cnt"  style="font-size:18px;" min=1 max=99999  />
         </label>
 
         <!-- organization type -->
@@ -38,11 +47,11 @@
                <span class="assertive " style="font-size: inherit">* </span>
            </span>
            <!-- ng-model="data.selectedCountry" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()" -->
-           <select style="width: 100%;font-size:12px;"  ng-required="true" ng-model="org.type">
-               <option selected value="" disabled>{{'SELECT_ORG_TYPE' | translate}}</option>
-               <option value="b">Blue</option>
-               <option value="g" selected>Green</option>
-               <option value="r">Red</option>
+           <select style="width: 100%;font-size:12px;"  ng-required="true" ng-model="org.organization_type">
+                <option selected value="" disabled>{{'SELECT_ORG_TYPE' | translate}}</option>
+                <option value="Cooperative">Cooperative</option>
+                <option value="Firm">Firm</option>
+                <option value="LLC">LLC</option>
                <!--<option ng-selected="(obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode)"-->
                        <!--ng-repeat="obj in countryCodeList" ng-value="obj.CountryPhoneCode">{{obj.CountryName}}-->
                <!--</option>-->
@@ -52,103 +61,17 @@
         <!-- ownership -->
         <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
            <span class="input-label label-text " style="color:white">{{'OWNERSHIP' | translate }}
-               <span class="assertive " style="font-size: inherit">* </span>
+               <span class="assertive " style="font-size: inherit"></span>
            </span>
            <!-- ng-model="data.selectedCountry" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()" -->
            <select style="width: 100%;font-size:12px;"  ng-required="true" ng-model="org.ownership">
                <option selected value="" disabled>{{'SELECT_OWNERSHIP' | translate}}</option>
-               <option value="b">Blue</option>
-               <option value="g" selected>Green</option>
-               <option value="r">Red</option>
+               <option value="Sole Ownership">Sole Ownership</option>
+               <option value="Proprietary">Proprietary</option>
                <!--<option ng-selected="(obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode)"-->
                        <!--ng-repeat="obj in countryCodeList" ng-value="obj.CountryPhoneCode">{{obj.CountryName}}-->
                <!--</option>-->
            </select>
-        </label>
-
-        <!-- address - dropdown -->
-        <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
-           <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
-               <span class="assertive " style="font-size: inherit">* </span>
-           </span>
-           <!-- ng-model="data.selectedCountry" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()" -->
-           <select style="width: 100%;font-size:12px;"  ng-required="true" ng-model="loc.name">
-               <option selected value="" disabled>{{'SELECT_ADDRESS' | translate}}</option>
-               <option value="b">Blue</option>
-               <option value="g" selected>Green</option>
-               <option value="r">Red</option>
-               <!--<option ng-selected="(obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode)"-->
-                       <!--ng-repeat="obj in countryCodeList" ng-value="obj.CountryPhoneCode">{{obj.CountryName}}-->
-               <!--</option>-->
-           </select>
-        </label>
-
-        <!-- street address text  -->
-        <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text "  style="color:white">{{'STREET_ADDRESS' | translate }}
-                <span class="assertive " style="font-size: inherit">* </span>
-            </span>
-            <input class="edit-input-txt" type="text" name="streetAdd" ng-required="true" ng-model="loc.streetAdd"  style="font-size:18px;" />
-        </label>
-
-        <!-- city -->
-        <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
-                <span class="assertive " style="font-size: inherit">* </span>
-            </span>
-            <input class="edit-input-txt" type="text" name="city" ng-required="true" ng-model="loc.city"  style="font-size:18px;"   />
-        </label>
-
-        <!-- country -->
-        <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
-                <span class="assertive " style="font-size: inherit">* </span>
-            </span>
-            <input ion-autocomplete type="text"
-                   readonly="readonly"
-                   name="country"
-                   component-id="component1"
-                   autocomplete="off"
-                   select-items-label="{{'SELECT_COUNTRY' | translate}}"
-                   item-method-value-key="countryCodeList"
-                   items-method="getUpdatedCountryList(query)"
-                   item-view-value-key="CountryName"
-                   ng-model="loc.country"
-                   max-selected-items="1"
-                   cancel-label="{{'CANCEL' | translate }}"
-                   style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
-                   placeholder="{{'SEARCH' | translate }}"
-                   items-clicked-method="changeSubdivision(loc.country.CountryCode)"/>
-        </label>
-
-        <!-- state -->
-        <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
-                <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
-            </span>
-            <input ion-autocomplete type="text"
-                   readonly="readonly"
-                   name="state"
-                   autocomplete="off"
-                   component-id="component2"
-                   select-items-label="{{'SELECT_STATE' | translate}}"
-                   item-method-value-key="subDivList"
-                   items-method="getUpdatedStateList(query)"
-                   item-view-value-key="SubdivisionName"
-                   ng-model="loc.state"
-                   max-selected-items="1"
-                   cancel-label="{{'CANCEL' | translate }}"
-                   style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
-                   placeholder="{{'SEARCH' | translate }}"
-               />
-        </label>
-
-        <!-- unique identifier -->
-        <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text "  style="color:white">{{'UNIQUE_ID' | translate }}
-                <span class="assertive " style="font-size: inherit">* </span>
-            </span>
-            <input class="edit-input-txt" type="text" name="id" ng-required="true" ng-model="org.id"  style="font-size:18px;"   />
         </label>
 
         <!-- ceo/owner -->
@@ -156,7 +79,7 @@
             <span class="input-label label-text "  style="color:white">{{'CEO' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-            <input class="edit-input-txt" type="text" name="ceo" ng-required="true" ng-model="org.ceo"  style="font-size:18px;"   />
+            <input class="edit-input-txt" type="text" name="ceo" ng-required="true" ng-model="org.owner_name"  style="font-size:18px;"   />
         </label>
 
         <!-- website -->
@@ -174,7 +97,100 @@
             </span>
             <input class="edit-input-txt" type="text" name="fbPage" ng-required="true" ng-model="org.fbPage"  style="font-size:18px;"   />
         </label>
+
+        <!-- unique identifier -->
+        <label class="item item-input item-stacked-label no-border label-padding">
+            <span class="input-label label-text "  style="color:white">{{'UNIQUE_ID' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+            <input class="edit-input-txt" type="text" name="id" ng-required="true" ng-model="org.identifier"  style="font-size:18px;"   />
+        </label>
+
+        <!-- identifier type ID-->
+        <label class="item item-input item-stacked-label no-border label-padding">
+            <span class="input-label label-text "  style="color:white">{{'ID_TYPE' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+            <input class="edit-input-txt" type="text" name="id" ng-required="true" ng-model="org.identifier_type"  style="font-size:18px;"   />
+        </label>
+
+        <!-- address - dropdown -->
+        <label class="item item-input item-stacked-label no-border label-padding">
+            <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
+                <span class="assertive " style="font-size: inherit">* </span>
+            </span>
+            <select name="location-where" style="width: 100%;font-size:12px;" ng-model="loc.name" ng-required="true"  ng-change="updateLocationFields(loc.name)">                 <option value="" disabled selected>{{'SELECT_ONE' | translate}}</option>
+               <!-- <option selected value="" disabled>{{'SELECT_ADDRESS' | translate}}</option> -->
+               <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
+               <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
+            </select>
+        </label>
+
+        <div ng-show="enableAddressFields">
+          <!-- street address text  -->
+          <label class="item item-input item-stacked-label no-border label-padding">
+              <span class="input-label label-text "  style="color:white">{{'STREET_ADDRESS' | translate }}
+                  <span class="assertive " style="font-size: inherit">* </span>
+              </span>
+              <input class="edit-input-txt" type="text" name="streetAdd" ng-required="true" ng-model="loc.streetAdd"  style="font-size:18px;" />
+          </label>
+
+          <!-- city -->
+          <label class="item item-input item-stacked-label no-border label-padding">
+              <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
+                  <span class="assertive " style="font-size: inherit">* </span>
+              </span>
+              <input class="edit-input-txt" type="text" name="city" ng-required="true" ng-model="loc.city"  style="font-size:18px;"   />
+          </label>
+
+          <!-- country -->
+          <label class="item item-input item-stacked-label no-border label-padding">
+              <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+                  <span class="assertive " style="font-size: inherit">* </span>
+              </span>
+              <input ion-autocomplete type="text"
+                     readonly="readonly"
+                     name="country"
+                     component-id="component1"
+                     autocomplete="off"
+                     select-items-label="{{'SELECT_COUNTRY' | translate}}"
+                     item-method-value-key="countryCodeList"
+                     items-method="getUpdatedCountryList(query)"
+                     item-view-value-key="CountryName"
+                     ng-model="loc.country"
+                     max-selected-items="1"
+                     cancel-label="{{'CANCEL' | translate }}"
+                     style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                     placeholder="{{'SEARCH' | translate }}"
+                     items-clicked-method="changeSubdivision(loc.country.CountryCode)"/>
+          </label>
+
+          <!-- state -->
+          <label class="item item-input item-stacked-label no-border label-padding">
+              <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
+                  <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
+              </span>
+              <input ion-autocomplete type="text"
+                     readonly="readonly"
+                     name="state"
+                     autocomplete="off"
+                     component-id="component2"
+                     select-items-label="{{'SELECT_STATE' | translate}}"
+                     item-method-value-key="subDivList"
+                     items-method="getUpdatedStateList(query)"
+                     item-view-value-key="SubdivisionName"
+                     ng-model="loc.state"
+                     max-selected-items="1"
+                     cancel-label="{{'CANCEL' | translate }}"
+                     style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                     placeholder="{{'SEARCH' | translate }}"
+                 />
+          </label>
+        </div>
+
+
       </div>
+
       <!-- contacts - multi select -->
 
     </ion-content>

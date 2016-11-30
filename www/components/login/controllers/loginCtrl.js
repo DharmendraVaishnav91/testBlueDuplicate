@@ -22,7 +22,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
         console.log("Doing login");
         var data={
             username:$scope.loginData.phoneCode.CountryPhoneCode+""+$scope.loginData.mobile,
-            password:$scope.loginData.password            
+            password:$scope.loginData.password
         };
         console.log(data);
         $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode.CountryPhoneCode;

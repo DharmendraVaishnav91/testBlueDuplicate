@@ -365,5 +365,19 @@
 
 
   "ORGANIZATION": "Organization",
-  "CREATE_ORG":"Create Organization"
+  "CREATE_ORG":"Create Organization",
+  "ORG_NAME": "Organization Name",
+  "ORG_TYPE": "Organization Type",
+  "SELECT_ORG_TYPE": "Select Organization Type",
+  "OWNERSHIP":"Ownership",
+  "SELECT_OWNERSHIP": "Select Ownership",
+  "SELECT_ADDRESS": "Select Address",
+  "STREET_ADDRESS": "Street Address",
+  "UNIQUE_ID": "Unique Identifier",
+  "CEO": "CEO / Owner",
+  "WEBSITE":"Website",
+  "FB_PAGE": "Facebook Page",
+  "ORG_DESCRIPTION": "Organization Description",
+  "NO_OF_EMPLOYEE": "Number of Employees",
+  "ID_TYPE": "Identifier Type ID"
 }

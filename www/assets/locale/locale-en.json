@@ -352,7 +352,11 @@
   "UNIQUE_ID": "Unique Identifier",
   "CEO": "CEO / Owner",
   "WEBSITE":"Website",
-  "FB_PAGE": "Facebook Page"
+  "FB_PAGE": "Facebook Page",
+  "ORG_DESCRIPTION": "Organization Description",
+  "NO_OF_EMPLOYEE": "Number of Employees",
+  "ID_TYPE": "Identifier Type ID"
+
 
 
 }
