@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<ion-view view-title="{{'ORGANIZATION' | translate}}">
 
-</body>
-</html>
+    <ion-content scroll="true" class="blueno-bg-full">
+        <div class="list no-padding" style="width:100%;overflow: scroll;height: 100%">
+            <div class="item no-padding" ng-repeat="invitation in pendingInvitations">
+                <div class="row">
+                    <div class="col no-padding">
+                        <span>{{invitation.name}}</span>
+                        <span class="  float-right" ng-class="{'pending-span-label':invitation.status=='Invited','success-span-label':invitation.status=='Accepted'}">{{invitation.status}}</span>
+                    </div>
+                </div>
+                <div class="row " style="margin-top: 3px;">
+                    <div class="col no-padding">
+                        <span>{{invitation.mobile}}</span>
+                        <span class="float-right">{{invitation.invitedOn}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
