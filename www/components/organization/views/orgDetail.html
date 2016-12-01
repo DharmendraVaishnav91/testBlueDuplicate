@@ -1,13 +1,64 @@
 <ion-view view-title="{{'ORGANIZATION' | translate}}">
 
     <ion-content scroll="true" class="blueno-bg-full">
-        <div class="list card no-padding no-margin"  >
+
+        <!-- create org button -->
+        <!-- <div class="button-bar" ng-if="!npFound() && user.organization_name.length == 0">
+          <button ng-disabled="" class="button button-clear button-light bold"
+                  type="submit" ng-click="createNewOrganization()" >
+              <i class=" ion-plus-round" style="font-size: 20px;"></i> &nbsp;{{'CREATE_ORG' | translate }}
+          </button>
+        </div> -->
+
+        <div class="list card no-margin no-padding" >
             <div class="item item-image" id="image-container">
                 <img src="http://lorempixel.com/400/120/sports/2">
             </div>
-            <h1 style="text-align:center;color:black;margin-top: 5px;">Metacube Soft.</h1>
+            <h1 style="text-align:center;color:black;margin-top: 5px;">{{detailsData.name}}</h1>
 
-            <p style="text-align:center;color:rgb(102,102,102);margin-top: -15px;">CEO: Keshav Sharma</p>
+            <p style="text-align:center;color:rgb(102,102,102);margin-top: -15px;">CEO: {{detailsData.owner_name}}</p>
+
+            <div class="list">
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Organization Description</p><br>
+                <span class="span-org">{{detailsData.description}}</span>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Organization Type</p><br>
+                <span class="span-org">{{detailsData.organization_type}}</span>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Ownership</p><br>
+                <span class="span-org">IDK</span>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Number Of Employees</p><br>
+                <span class="span-org">{{450}}</span>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Website</p><br>
+                <span class="span-org">www.metacube.com</span>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Facebook</p><br>
+                <span class="span-org">https://facebook.com/metacube</span>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Unique Identifier</p><br>
+                <span class="span-org">{{detailsData.identifier}}</span>
+              </label>
+
+              <label class="item item-input item-stacked-label">
+                <p class="input-label width-auto font-grey">Unique Identifier Type ID</p><br>
+                <span class="span-org">{{detailsData.identifier_type}}</span>
+              </label>
+            </div>
         </div>
         <!--<div class="list" style="width:100%;overflow: scroll;padding:0px;height: 100%">-->
             <!--<a class="item item-avatar" ng-repeat="member in memberList">-->

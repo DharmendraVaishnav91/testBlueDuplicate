@@ -1,4 +1,4 @@
-menu.controller('OrganizationCtrl', function($scope, $filter, $state, utilityService, $translate, $window, $cordovaToast,$ionicModal){
+// menu.controller('OrganizationCtrl', function($scope, $filter, $state, utilityService, $translate, $window, $cordovaToast,$ionicModal){
 menu.controller('OrganizationCtrl', function($scope, $filter, $state, $stateParams, loginService, $localStorage, $rootScope, menuService, utilityService, $translate, $window, $cordovaToast){
 
     // $state
@@ -100,5 +100,5 @@ menu.controller('OrganizationCtrl', function($scope, $filter, $state, $statePara
     };
     $scope.hideOrgMemberList = function () {
         $scope.memberListModal.hide();
-    }
+    };
 });

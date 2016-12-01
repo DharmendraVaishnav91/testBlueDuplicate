@@ -269,3 +269,13 @@ option {
 .tabs-striped .tab-item.tab-item-active{
     border-color:white !important;
 }
+.width-auto{
+  width: auto !important;
+}
+.span-org{
+  display:block;
+  padding-top:7px;
+}
+.font-grey{
+  color:grey;
+}
