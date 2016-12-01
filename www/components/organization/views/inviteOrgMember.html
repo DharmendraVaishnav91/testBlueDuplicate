@@ -1,0 +1,56 @@
+<ion-view view-title="{{'ACCOUNT' | translate}}">
+    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
+    </ion-nav-bar>
+    <!--<ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;">-->
+        <!--<button ng-click="hideOrgMemberList()" style="color:white" class="button back-button buttons  button-clear header-item">-->
+            <!--<i class="icon ion-android-arrow-back"></i>-->
+             <!--<span class="back-text"></span>-->
+        <!--</button>-->
+        <!--<h1 class="title" style=" max-width:none;text-align: center !important;">-->
+            <!--Invite people to organization-->
+        <!--</h1>-->
+
+    <!--</ion-header-bar>-->
+    <ion-content class=" blueno-bg-full">
+       <form name="inviteMemberForm">
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'MOBILE' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+               <input class="edit-input-txt" ng-model="inviteUser.mobile" name="mobile" ng-required="true"
+                      style="font-size:18px;" type="number" ng-minlength="9"/>
+               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
+           </label>
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'FIRST_NAME' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+               <input class="edit-input-txt" ng-model="inviteUser.firstName" name="firstName" ng-required="true"
+                      style="font-size:18px;" type="text" />
+
+               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
+           </label>
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'LAST_NAME' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+               <input class="edit-input-txt" ng-model="inviteUser.lastName" name="lastName" ng-required="true"
+                      style="font-size:18px;" type="text" />
+
+               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
+           </label>
+       </form>
+
+    </ion-content>
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border"  >
+        <div  class="button-bar">
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
+                {{'BACK' | translate }}
+            </button>
+            &nbsp;
+            <button type="submit"  class="button  button-light button-clear bold" ng-click="addNewThing()">
+                <i class="ion-plus-round"></i>&nbsp;{{'ADD' | translate }}
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-view>

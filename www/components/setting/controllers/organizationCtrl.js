@@ -2,13 +2,7 @@ menu.controller('OrganizationCtrl', function($scope, $filter, $state, $statePara
 
     // $state
     $scope.orgExist = true;
-    $ionicModal.fromTemplateUrl('components/organization/views/orgMemberListModal.html', {
-        scope: $scope,
-        animation: 'slide-in-right'
-    }).then(function (modal) {
-        $scope.memberListModal= modal;
 
-    });
 
     $scope.imgUrl="http://lorempixel.com/30/30/people/";
     console.log($rootScope.orgExist);
@@ -27,10 +21,5 @@ menu.controller('OrganizationCtrl', function($scope, $filter, $state, $statePara
     $scope.createNewOrganization = function(){
         $state.go('app.createOrg');
     };
-    $scope.showMemberList = function () {
-        $scope.memberListModal.show();
-    };
-    $scope.hideOrgMemberList = function () {
-        $scope.memberListModal.hide();
-    };
+
 });
