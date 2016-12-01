@@ -65,6 +65,9 @@ div.leaflet-right {
 .right {
     text-align: right;
 }
+.float-right{
+    float: right;
+}
 
 .validation-font {
     color: #ffa366;
@@ -268,4 +271,22 @@ option {
 }
 .tabs-striped .tab-item.tab-item-active{
     border-color:white !important;
+}
+.tab-title{
+    font-size:16px !important;
+    font-weight: bold;
+}
+.pending-span-label{
+    background-color: #ffc900;
+    padding: 2px 13px;
+    border-radius: 5px;
+    color: cornflowerblue;
+    font-weight: bold;
+}
+.success-span-label{
+    background-color: rgba(51, 205, 95, 0.78);
+    color: cornsilk;
+    padding: 2px 13px;
+    border-radius: 5px;
+    font-weight: bold;
 }

@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<ion-view view-title="{{'ORGANIZATION' | translate}}">
 
-</body>
-</html>
+    <ion-content scroll="true" class="blueno-bg-full">
+        <div class="list" style="width:100%;overflow: scroll;padding:0px;height: 100%">
+            <a class="item item-avatar" ng-repeat="member in memberList">
+                <img ng-src="http://lorempixel.com/30/30/people/{{$index}}">
+
+                <h2>{{member.name}}</h2>
+            </a>
+        </div>
+    </ion-content>
+</ion-view>
+
