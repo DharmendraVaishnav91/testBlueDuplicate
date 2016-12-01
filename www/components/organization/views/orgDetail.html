@@ -14,7 +14,7 @@
             <div class="item item-image" id="image-container">
                 <img src="http://lorempixel.com/400/120/sports/2">
             </div>
-            <h1 style="text-align:center;color:black;margin-top: 5px;">{{detailsData.name}}</h1>
+            <h1 style="text-align:center;color:black;margin-top: 5px; font-size:200%;">{{detailsData.name}}</h1>
 
             <p style="text-align:center;color:rgb(102,102,102);margin-top: -15px;">CEO: {{detailsData.owner_name}}</p>
 
@@ -31,22 +31,22 @@
 
               <label class="item item-input item-stacked-label">
                 <p class="input-label width-auto font-grey">Ownership</p><br>
-                <span class="span-org">IDK</span>
+                <span class="span-org">{{detailsData.ownership}}</span>
               </label>
 
               <label class="item item-input item-stacked-label">
                 <p class="input-label width-auto font-grey">Number Of Employees</p><br>
-                <span class="span-org">{{450}}</span>
+                <span class="span-org">{{detailsData.number_of_employees}}</span>
               </label>
 
               <label class="item item-input item-stacked-label">
                 <p class="input-label width-auto font-grey">Website</p><br>
-                <span class="span-org">www.metacube.com</span>
+                <span class="span-org">{{detailsData.website}}</span>
               </label>
 
               <label class="item item-input item-stacked-label">
                 <p class="input-label width-auto font-grey">Facebook</p><br>
-                <span class="span-org">https://facebook.com/metacube</span>
+                <span class="span-org">{{detailsData.facebook_page}}</span>
               </label>
 
               <label class="item item-input item-stacked-label">
