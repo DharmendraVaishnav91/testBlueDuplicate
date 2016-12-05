@@ -15,14 +15,6 @@
     <ion-content class=" blueno-bg-full">
 
            <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text " style="color:white">{{'MOBILE' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
-                </span>
-               <input class="edit-input-txt" ng-model="inviteUser.mobile" name="mobile" ng-required="true"
-                      style="font-size:18px;" type="number" ng-minlength="9"/>
-               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
-           </label>
-           <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text " style="color:white">{{'FIRST_NAME' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
@@ -40,6 +32,34 @@
 
                <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
            </label>
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input ion-autocomplete type="text"
+                       template-url="components/menu/views/autoCompleteDrop.html"
+                       readonly="readonly"
+                       class="ion-autocomplete"
+                       autocomplete="off"
+                       item-method-value-key="countryCodeList"
+                       items-method="getSearchedCountryList(query)"
+                       item-view-value-key="CountryName"
+                       ng-model="inviteUser.phoneCode"
+                       max-selected-items="1"
+                       cancel-label="{{'CANCEL' | translate }}"
+                       items-clicked-method="clickedMethod(callback)"
+                       style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                       placeholder="{{'SEARCH' | translate }}"
+                   />
+           </label>
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'MOBILE' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+               <input class="edit-input-txt" ng-model="inviteUser.mobile" name="mobile" ng-required="true"
+                      style="font-size:18px;" type="number" ng-minlength="9"/>
+               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
+           </label>
 
 
     </ion-content>
@@ -49,7 +69,7 @@
                 {{'BACK' | translate }}
             </button>
             &nbsp;
-            <button  ng-disabled="inviteMemberForm.$invalid" class="button  button-light button-clear bold" ng-click="addNewThing()">
+            <button  ng-disabled="inviteMemberForm.$invalid" class="button  button-light button-clear bold" ng-click="inviteOrgMember()">
                 {{'ADD' | translate }}
             </button>
         </div>

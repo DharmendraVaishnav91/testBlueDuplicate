@@ -1,14 +1,9 @@
-menu.controller('CreateOrgCtrl',function($scope, $filter, $state, userSettingService, loginService, signUpService, $localStorage, $rootScope, menuService, utilityService, $translate, $window, $cordovaToast){
+menu.controller('CreateOrgCtrl',function($scope, $filter, $state, $timeout, userSettingService,orgService, loginService, signUpService, $localStorage, $rootScope, menuService, utilityService, $translate, $window, $cordovaToast){
 
-  $scope.org = {};
   $scope.loc = {};
+  console.log($rootScope.orgDetail);
 
-  utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
-      $scope.countryCodeList = response;
-      console.log(response);
-  }).catch(function (error) {
-      console.log(error);
-  });
+
 
   $scope.changeSubdivision = function (countryCode) {
       fetchStates(countryCode);
@@ -29,8 +24,72 @@ menu.controller('CreateOrgCtrl',function($scope, $filter, $state, userSettingSer
     return $filter('filter')($scope.subDivList,query);
   } ;
 
+  $scope.updateLocationFieldsWhileEdit = function () {
+      $scope.enableAddressFields = true;
+      if ($scope.orgData.included[1].attributes!=null) {
+        $scope.loc.name = "manual";
+        $scope.loc.streetAdd = angular.copy($scope.orgData.included[1].attributes.address);
+        $scope.loc.city = angular.copy($scope.orgData.included[1].attributes.city);
+        $scope.loc.postalcode=angular.copy($scope.orgData.included[1].attributes.postalcode);
+        console.log($scope.orgData.included[1].attributes);
+       // $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        signUpService.fetchStates($scope.orgData.included[1].attributes.country_code).then(function (response) {
+            $scope.subDivList = response;
+
+            $scope.loc.state = $filter('getById')($scope.subDivList,"SubdivisionID",$scope.orgData.included[1].attributes.subdivision_code);
+        }).catch(function (error) {
+            console.log(error);
+        }) ;
+        //$scope.loc.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        //$scope.loc.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        //$scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+        console.log($scope.countryCodeList);
+
+        $scope.loc.country = $filter('getById')($scope.countryCodeList,"CountryCode",$scope.orgData.included[1].attributes.country_code);
+      } else{
+          $scope.enableAddressFields=false;
+      }
+  };
+
+  if($rootScope.orgDetail!=null){
+      $scope.orgData = $rootScope.orgDetail;
+      $scope.org = {
+        owner_name: $scope.orgData.data.attributes.owner_name,
+        description1:$scope.orgData.data.attributes.description,
+        identifier:$scope.orgData.data.attributes.identifier,
+        identifier_type:$scope.orgData.data.attributes.identifier_type,
+        name:$scope.orgData.data.attributes.name,
+        organization_type:$scope.orgData.data.attributes.organization_type,
+        emp_cnt:$scope.orgData.data.attributes.number_of_employees,
+        ownership:$scope.orgData.data.attributes.ownership,
+        website:$scope.orgData.data.attributes.website,
+        fbPage:$scope.orgData.data.attributes.facebook_page
+      };
+      $scope.image = $scope.orgData.data.picture!=null?$scope.orgData.data.picture.data:"";
+      utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
+          $scope.countryCodeList = response;
+          $scope.updateLocationFieldsWhileEdit();
+          console.log("Country list is=");
+          console.log(response);
+      }).catch(function (error) {
+          console.log(error);
+      });
+
+  }else{
+    $scope.image = "";
+    $scope.org = {};
+     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
+          $scope.countryCodeList = response;
+
+          console.log("Country list is=");
+          console.log(response);
+      }).catch(function (error) {
+          console.log(error);
+      });
+  }
+
   $scope.hideCreateOrg = function(){
-      $state.go('app.organization');
+      $state.go('app.organization.detail');
   };
 
   $scope.changeImage= function(){
@@ -101,11 +160,11 @@ menu.controller('CreateOrgCtrl',function($scope, $filter, $state, userSettingSer
         $scope.loc.country = $filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
     } else {
-        $scope.loc.streetAdd = "";
-        $scope.loc.city = "";
-        // $scope.loc.postalcode="";
-        $scope.loc.state = "";
-        $scope.loc.country = "";
+        $scope.loc.streetAdd = $scope.loc.streetAdd!=null?$scope.loc.streetAdd:"";
+        $scope.loc.city = $scope.loc.city!=null?$scope.loc.city:"";
+        $scope.loc.postalcode=$scope.loc.postalcode!=null?$scope.loc.postalcode:"";
+        $scope.loc.state = $scope.loc.state!=null?$scope.loc.state:"";
+        $scope.loc.country = $scope.loc.country!=null?$scope.loc.country:"";
     }
   };
 
@@ -119,11 +178,15 @@ menu.controller('CreateOrgCtrl',function($scope, $filter, $state, userSettingSer
         "identifier_type": $scope.org.identifier_type,
         "name": $scope.org.name,
         "organization_type": $scope.org.organization_type,
+        "number_of_employees": $scope.org.emp_cnt,
+        "ownership":$scope.org.ownership,
+        "website":$scope.org.website,
+        "facebook_page":$scope.org.fbPage,
         "actor_attributes": {
             "location_attributes": {
               "name": $scope.loc.name,
-              "latitude": "22",
-              "longitude": "-103",
+              "latitude": $rootScope.location.coords.latitude,
+              "longitude": $rootScope.location.coords.longitude,
               "address": $scope.loc.streetAdd,
               "subdivision_code": $scope.loc.state.SubdivisionCode,
               "country_code": $scope.loc.country.CountryCode,
@@ -137,7 +200,48 @@ menu.controller('CreateOrgCtrl',function($scope, $filter, $state, userSettingSer
           console.log(response);
           $rootScope.user.organization_name = $scope.org.name;
           $rootScope.user.user_role_names.push("national_partner");
-          $state.go('app.organization');
+          $state.go('app.organization.detail');
+      }).catch(function (error) {
+          console.log(error);
+      });
+  };
+
+  $scope.updateOrg = function(){
+      // console.log($scope.org);
+      // console.log($scope.loc);
+      var data = {
+        "owner_name": $scope.org.owner_name,
+        "description": $scope.org.description1,
+        "identifier": $scope.org.identifier,
+        "identifier_type": $scope.org.identifier_type,
+        "name": $scope.org.name,
+        "organization_type": $scope.org.organization_type,
+        "number_of_employees": $scope.org.emp_cnt,
+        "ownership":$scope.org.ownership,
+        "website":$scope.org.website,
+        "facebook_page":$scope.org.fbPage,
+        "actor_attributes": {
+            "id":$scope.orgData.data.relationships.actor.data.id,
+            "location_attributes": {
+              "id":$scope.orgData.data.relationships.location.data.id,
+              "name": $scope.loc.name,
+              "latitude": $rootScope.position.coords.latitude,
+              "longitude": $rootScope.position.coords.longitude,
+              "address": $scope.loc.streetAdd,
+              "subdivision_code": $scope.loc.state.SubdivisionCode,
+              "country_code": $scope.loc.country.CountryCode,
+              "postalcode": $scope.loc.postalCode
+            },
+            "picture_attributes": {
+              "id":$scope.orgData.data.relationships.picture.data!=null?$scope.orgData.data.relationships.picture.data.id:null,
+              "image": $scope.image
+            }
+        }
+      };
+      console.log(data);
+      orgService.updateOrgInfo(data,$scope.orgData.data.id).then(function (response) {
+          console.log(response);
+          $state.go('app.organization.detail');
       }).catch(function (error) {
           console.log(error);
       });

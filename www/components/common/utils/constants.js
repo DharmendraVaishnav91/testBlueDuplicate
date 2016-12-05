@@ -2,8 +2,8 @@
  * Created by dharmendra on 16/8/16.
  */
 //var apiUrl="https://bnproduction.herokuapp.com";
-var apiUrl="https://bnstaging.herokuapp.com";
-//var apiUrl= "https://blue-dev.herokuapp.com";
+// var apiUrl="https://bnstaging.herokuapp.com";
+var apiUrl= "https://blue-dev.herokuapp.com";
 var HttpRequestType = {
     GET: 'GET',
     POST: 'POST',
@@ -73,6 +73,8 @@ var HttpRoutes = {
     thingTypes:apiUrl+"/gpr/v2/thing_types",
     groupTypes:apiUrl+"/gpr/v2/group_types",
     registerOrg:apiUrl+"/gpr/v2/organizations/",
-    fetchOrgInfo:apiUrl+"/gpr/v2/organizations/1"
+    fetchOrgInfo:apiUrl+"/gpr/v2/organizations/1",
+    inviteOrgMember:apiUrl+"/gpr/v2/organizations/invite",
+    updateOrg:apiUrl+"/gpr/v2/organizations/"
 
 };
