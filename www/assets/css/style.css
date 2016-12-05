@@ -267,7 +267,7 @@ option {
 .tabs-striped .tabs{
     background-color: #4E5C6E !important;
     color:white;
-    border-color: white !important;
+    border-color: #4E5C6E !important;
 }
 .tabs-striped .tab-item.tab-item-active{
     border-color:white !important;
@@ -300,3 +300,29 @@ option {
     border-radius: 5px;
     font-weight: bold;
 }
+.button.button-grey {
+    border-color: transparent;
+    background-color: #4E5C6E;
+    color: #fff; }
+.button.button-grey:hover {
+    color: #fff;
+    text-decoration: none; }
+.button.button-grey.active, .button.button-grey.activated {
+    border-color: #a2a2a2;
+    background-color:  #4E5C6E; }
+.button.button-grey.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color:  #4E5C6E; }
+.button.button-grey.button-icon {
+    border-color: transparent;
+    background: none; }
+.button.button-grey.button-outline {
+    border-color:  #4E5C6E;
+    background: transparent;
+    color:  #4E5C6E; }
+.button.button-grey.button-outline.active, .button.button-grey.button-outline.activated {
+    background-color:  #4E5C6E;
+    box-shadow: none;
+    color: #fff; }
