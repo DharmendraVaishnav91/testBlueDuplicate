@@ -200,7 +200,10 @@
                  {{'CANCEL' | translate }}
             </button>
             &nbsp;
-            <button type="submit" ng-disabled="createOrgForm.$invalid" class="button  button-light button-clear bold" ng-click="createOrg()">
+            <button type="submit" ng-show="orgData==null" ng-disabled="createOrgForm.$invalid" class="button  button-light button-clear bold" ng-click="createOrg()">
+                 {{'SAVE' | translate }}
+            </button>
+            <button type="submit" ng-show="orgData!=null" ng-disabled="createOrgForm.$invalid" class="button  button-light button-clear bold" ng-click="updateOrg()">
                  {{'SAVE' | translate }}
             </button>
         </div>
