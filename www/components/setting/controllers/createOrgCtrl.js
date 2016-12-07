@@ -89,8 +89,13 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
         });
     }
 
-    $scope.hideCreateOrg = function () {
-        $state.go('app.organization.detail');
+    $scope.hideCreateOrg = function (orgExist) {
+        if(orgExist){
+          $state.go('app.organization.detail');
+        }
+        else {
+          $state.go('app.dashboard');
+        }
     };
     var updatedImage=null;
     $scope.changeImage = function () {
@@ -170,8 +175,7 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
     };
 
     $scope.createOrg = function () {
-        // console.log($scope.org);
-        // console.log($scope.loc);
+
         var data = {
             "owner_name": $scope.org.owner_name,
             "description": $scope.org.description1,
