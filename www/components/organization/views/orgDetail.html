@@ -12,11 +12,11 @@
 
         <div class="list card no-margin no-padding" >
             <div class="item item-image" id="image-container">
-                <img style="height: 100px;" ng-src="{{detailsData.relationships.picture.data.image.profile_pic.url}}">
+                <img style="height: 100px;" ng-src="{{detailsData.relationships.picture.data.image.profile_pic.url!=null?detailsData.relationships.picture.data.image.profile_pic.url!=null:defaultImageURL}}">
             </div>
             <h1 style="text-align:center;color:black;margin-top: 5px; font-size:200%;">{{detailsData.attributes.name}}</h1>
 
-            <p style="text-align:center;color:rgb(102,102,102);margin-top: -15px;">CEO: {{detailsData.attributes.owner_name}}</p>
+            <p style="text-align:center;color:rgb(102,102,102);margin-top: -10px;">CEO: {{detailsData.attributes.owner_name}}</p>
 
             <div class="list">
               <label class="item item-input item-stacked-label">

@@ -7,7 +7,7 @@
        <div class="list" style="width:100%;overflow: scroll;padding:0px" ng-style="{'height':(deviceHeight-96)+'px'}">
         <div class="row">
             <div class="col center " >
-                <img ng-src="{{orgImage?orgImage:orgImageUrl}}" style=" height: 80px;width: 80px;border-radius: 38px;border: 5px solid white">
+                <img ng-src="{{orgImage!=null?orgImage:defaultImageURL}}" style=" height: 80px;width: 80px;border-radius: 38px;border: 5px solid white">
                 <div >
                     <button class="button button-small button-clear" style="font-size: large;color: rgba(255,255,255,.7);text-decoration: underline;" ng-click="changeImage()">
                         {{'CHANGE_PHOTO' | translate }}
@@ -24,6 +24,8 @@
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <input class="edit-input-txt" type="text" name="orgName" ng-required="true" ng-model="org.name"  style="font-size:18px;"   />
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.orgName.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- Description -->
@@ -32,7 +34,9 @@
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <!-- <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   /> -->
-            <textarea class="edit-input-textarea" name="orgDescription" ng-required="true" ng-model="org.description1" rows="4"></textarea>
+            <textarea class="edit-input-textarea" name="orgDescription" ng-required="true" ng-model="org.description1" rows="4" style="padding:10px !important;"></textarea>
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.orgDescription.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- No of Employee -->
@@ -41,7 +45,9 @@
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <!-- <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   /> -->
-            <input class="edit-input-txt" type="number" name="employee_count" ng-required="" ng-model="org.emp_cnt"  style="font-size:18px;" min=1 max=99999  />
+            <input class="edit-input-txt" type="number" name="employee_count" ng-required="true" ng-model="org.emp_cnt"  style="font-size:18px;" min=1 max=99999  />
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.employee_count.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- organization type -->
@@ -50,7 +56,7 @@
                <span class="assertive " style="font-size: inherit">* </span>
            </span>
            <!-- ng-model="data.selectedCountry" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()" -->
-           <select style="width: 100%;font-size:12px;"  ng-required="true" ng-model="org.organization_type">
+           <select style="width: 100%;font-size:12px;" name="org_type" ng-required="true" ng-model="org.organization_type">
                 <option selected value="" disabled>{{'SELECT_ORG_TYPE' | translate}}</option>
                 <option value="Cooperative">Cooperative</option>
                 <option value="Firm">Firm</option>
@@ -59,6 +65,8 @@
                        <!--ng-repeat="obj in countryCodeList" ng-value="obj.CountryPhoneCode">{{obj.CountryName}}-->
                <!--</option>-->
            </select>
+           <span class="assertive validation-font wrap-content"
+                 ng-hide="createOrgForm.org_type.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- ownership -->
@@ -67,7 +75,7 @@
                <span class="assertive " style="font-size: inherit"></span>
            </span>
            <!-- ng-model="data.selectedCountry" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()" -->
-           <select style="width: 100%;font-size:12px;"  ng-required="true" ng-model="org.ownership">
+           <select style="width: 100%;font-size:12px;" name="ownership" ng-required="true" ng-model="org.ownership">
                <option selected value="" disabled>{{'SELECT_OWNERSHIP' | translate}}</option>
                <option value="Sole Ownership">Sole Ownership</option>
                <option value="Proprietary">Proprietary</option>
@@ -75,6 +83,8 @@
                        <!--ng-repeat="obj in countryCodeList" ng-value="obj.CountryPhoneCode">{{obj.CountryName}}-->
                <!--</option>-->
            </select>
+           <span class="assertive validation-font wrap-content"
+                 ng-hide="createOrgForm.ownership.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- ceo/owner -->
@@ -83,6 +93,8 @@
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <input class="edit-input-txt" type="text" name="ceo" ng-required="true" ng-model="org.owner_name"  style="font-size:18px;"   />
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.ceo.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- website -->
@@ -91,6 +103,8 @@
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <input class="edit-input-txt" type="text" name="website" ng-required="true" ng-model="org.website"  style="font-size:18px;"   />
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.website.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- fb page -->
@@ -99,6 +113,8 @@
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <input class="edit-input-txt" type="text" name="fbPage" ng-required="true" ng-model="org.fbPage"  style="font-size:18px;"   />
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.fbPage.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- unique identifier -->
@@ -106,7 +122,8 @@
             <span class="input-label label-text "  style="color:white">{{'UNIQUE_ID' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-            <input class="edit-input-txt" type="text" name="id" ng-required="true" ng-model="org.identifier"  style="font-size:18px;"   />
+            <input class="edit-input-txt" type="text" name="id" ng-required="true" ng-model="org.identifier"  style="font-size:18px;"   /><span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.id.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- identifier type ID-->
@@ -114,7 +131,9 @@
             <span class="input-label label-text "  style="color:white">{{'ID_TYPE' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-            <input class="edit-input-txt" type="text" name="id" ng-required="true" ng-model="org.identifier_type"  style="font-size:18px;"   />
+            <input class="edit-input-txt" type="text" name="id_type" ng-required="true" ng-model="org.identifier_type"  style="font-size:18px;"   />
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.id_type.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <!-- address - dropdown -->
@@ -122,11 +141,13 @@
             <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-            <select name="location-where" style="width: 100%;font-size:12px;" ng-model="loc.name" ng-required="true"  ng-change="updateLocationFields(loc.name)">                 <option value="" disabled selected>{{'SELECT_ONE' | translate}}</option>
+            <select name="location_where" style="width: 100%;font-size:12px;" ng-model="loc.name" ng-required="true"  ng-change="updateLocationFields(loc.name)">                 <option value="" disabled selected>{{'SELECT_ONE' | translate}}</option>
                <!-- <option selected value="" disabled>{{'SELECT_ADDRESS' | translate}}</option> -->
                <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
                <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
             </select>
+            <span class="assertive validation-font wrap-content"
+                  ng-hide="createOrgForm.location_where.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
 
         <div ng-show="enableAddressFields">
@@ -136,6 +157,8 @@
                   <span class="assertive " style="font-size: inherit">* </span>
               </span>
               <input class="edit-input-txt" type="text" name="streetAdd" ng-required="true" ng-model="loc.streetAdd"  style="font-size:18px;" />
+              <span class="assertive validation-font wrap-content"
+                    ng-hide="createOrgForm.streetAdd.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
           </label>
 
           <!-- city -->
@@ -144,6 +167,8 @@
                   <span class="assertive " style="font-size: inherit">* </span>
               </span>
               <input class="edit-input-txt" type="text" name="city" ng-required="true" ng-model="loc.city"  style="font-size:18px;"   />
+              <span class="assertive validation-font wrap-content"
+                    ng-hide="createOrgForm.city.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
           </label>
 
           <!-- country -->
@@ -166,7 +191,10 @@
                      style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
                      placeholder="{{'SEARCH' | translate }}"
                      items-clicked-method="changeSubdivision(loc.country.CountryCode)"/>
+                     <span class="assertive validation-font wrap-content"
+                           ng-hide="createOrgForm.country.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
           </label>
+
 
           <!-- state -->
           <label class="item item-input item-stacked-label no-border label-padding">
@@ -188,6 +216,8 @@
                      style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
                      placeholder="{{'SEARCH' | translate }}"
                  />
+                 <span class="assertive validation-font wrap-content"
+                       ng-hide="createOrgForm.state.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
           </label>
         </div>
 
@@ -199,12 +229,12 @@
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg no-border"  >
         <div  class="button-bar">
-            <button  type="button"  class="button  button-light button-clear bold" ng-click="hideCreateOrg()">
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="hideCreateOrg(orgData!=null)">
                  {{'CANCEL' | translate }}
             </button>
             &nbsp;
             <button type="submit" ng-show="orgData==null" ng-disabled="createOrgForm.$invalid" class="button  button-light button-clear bold" ng-click="createOrg()">
-                 {{'SAVE' | translate }}
+                 {{'CREATE' | translate }}
             </button>
             <button type="submit" ng-show="orgData!=null" ng-disabled="createOrgForm.$invalid" class="button  button-light button-clear bold" ng-click="updateOrg()">
                  {{'SAVE' | translate }}
