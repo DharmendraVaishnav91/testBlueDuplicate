@@ -1,10 +1,13 @@
-<ion-view view-title="{{'CREATE_ORG' | translate}}">
+<ion-view view-title="{{orgDetail == null?('CREATE_ORG' | translate) :('UPDATE_ORGANIZATION' | translate) }}">
+
+    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
+    </ion-nav-bar>
   <form name="createOrgForm">
-    <ion-content scroll="false" class="has-footer blueno-bg-full">
-       <div class="list" style="width:100%;overflow: scroll;padding:0px" ng-style="{'height':(deviceHeight-73)+'px'}">
+    <ion-content scroll="true" class="has-footer blueno-bg-full">
+       <div class="list" style="width:100%;overflow: scroll;padding:0px" ng-style="{'height':(deviceHeight-96)+'px'}">
         <div class="row">
             <div class="col center " >
-                <img ng-src="{{updateImageSrc?updateImageSrc:profileUrl}}" style=" height: 80px;width: 80px;border-radius: 38px;border: 5px solid white">
+                <img ng-src="{{orgImage?orgImage:orgImageUrl}}" style=" height: 80px;width: 80px;border-radius: 38px;border: 5px solid white">
                 <div >
                     <button class="button button-small button-clear" style="font-size: large;color: rgba(255,255,255,.7);text-decoration: underline;" ng-click="changeImage()">
                         {{'CHANGE_PHOTO' | translate }}

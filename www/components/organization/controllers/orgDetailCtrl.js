@@ -4,13 +4,13 @@
 org.controller('OrganizationDetailCtrl', function ($scope, $state, $actionButton, orgService, $rootScope) {
     console.log("welcome to org tab view controller");
 
-    orgService.fetchOrgInfo().then(function (response) {
-        $scope.detailsData = response.data.attributes;
-        $rootScope.orgDetail = response;
-        console.log("Responce from server\n",response);
-    }).catch(function (error) {
-        console.log(error);
-    });
+    //orgService.fetchOrgInfo().then(function (response) {
+    //    $scope.detailsData = response.data.attributes;
+    //    $rootScope.orgDetail = response;
+    //    console.log("Responce from server\n",response);
+    //}).catch(function (error) {
+    //    console.log(error);
+    //});
     var actionButton = $actionButton.create({
         mainAction: {
             icon: 'ion-edit',

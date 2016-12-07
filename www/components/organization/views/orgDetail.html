@@ -10,9 +10,9 @@
           </button>
         </div> -->
 
-        <div class="list card no-margin no-padding" ng-if="">
+        <div class="list card no-margin no-padding" >
             <div class="item item-image" id="image-container">
-                <img src="http://lorempixel.com/400/120/sports/2">
+                <img style="height: 100px;" ng-src="{{detailsData.relationships.picture.data.image.profile_pic.url}}">
             </div>
             <h1 style="text-align:center;color:black;margin-top: 5px; font-size:200%;">{{detailsData.attributes.name}}</h1>
 

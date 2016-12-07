@@ -17,7 +17,7 @@ var menu=angular.module('app.menu', []);
             });
         };
         $scope.goToSetting= function () {
-          console.log("inside goToSetting function in menuController b4 calling state go\n")
+          console.log("inside goToSetting function in menuController b4 calling state go\n") ;
            $state.go('app.manageSetting');
         };
         $scope.goToInvitations = function () {
@@ -27,7 +27,13 @@ var menu=angular.module('app.menu', []);
             $state.go('app.dashboard');
         };
         $scope.goToOrganization = function() {
-            $state.go('app.organization.detail');
+              if($rootScope.user.organization_name){
+                  $state.go('app.organization.detail');
+              }else{
+                  $state.go('app.createOrg') ;
+              }
+
+
         };
         $scope.openSetting=function(){
             $state.go('app.setting');
@@ -39,4 +45,13 @@ var menu=angular.module('app.menu', []);
             $state.go('app.aboutInfo');
         };
 
+        $scope.npFound = function(){
+            var user_role = $rootScope.user.user_role_names;
+            for (var i = 0; i < user_role.length; i++) {
+                if(user_role[i] == "national_partner"){
+                    return true;
+                }
+            }
+            return false;
+        };
     });

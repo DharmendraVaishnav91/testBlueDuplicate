@@ -379,5 +379,7 @@
   "FB_PAGE": "Facebook Page",
   "ORG_DESCRIPTION": "Organization Description",
   "NO_OF_EMPLOYEE": "Number of Employees",
-  "ID_TYPE": "Identifier Type ID"
+  "ID_TYPE": "Identifier Type ID",
+  "INVITE_MEMBER":"Invite member",
+  "UPDATE_ORGANIZATION":"Edit organization"
 }
