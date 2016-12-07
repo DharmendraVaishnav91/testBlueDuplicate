@@ -11,6 +11,7 @@ org.controller('OrganizationDetailCtrl', function ($scope, $state, $actionButton
     //}).catch(function (error) {
     //    console.log(error);
     //});
+
     var actionButton = $actionButton.create({
         mainAction: {
             icon: 'ion-edit',

@@ -4,6 +4,7 @@
 var org=angular.module('app.org',[]);
 org.controller('OrganizationTabCtrl', function (orgService,$scope,$rootScope) {
    console.log("welcome to org tab view controller");
+   $scope.defaultAvatar=DEFAULT_AVATAR_PATH;
    orgService.fetchOrgInfo().then(function (response) {
       $scope.detailsData = response.data;
       $rootScope.orgDetail = response;

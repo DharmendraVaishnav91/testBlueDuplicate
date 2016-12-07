@@ -155,7 +155,12 @@ input[type="radio"] {
     background-size: 100% 100%
 
 }
-
+.menu-bg{
+    background-image: url(../img/background_img.png);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
 .blueno-bg-full {
     width: 100%;
     background: url(../img/background_img.png) no-repeat;
@@ -278,9 +283,23 @@ option {
 .span-org{
   display:block;
   padding-top:7px;
+    color:white;
 }
 .font-grey{
   color:grey;
+}
+.font-white{
+    color:white !important;
+}
+.grey-hr-separator{
+    border: none;border-bottom: 1px solid grey;width: 92%;
+}
+.grey-hr-menu-separator{
+    border: none;
+    border-bottom: 1px solid grey;
+    width: 79%;
+    /* float: right; */
+    margin-left: 51px;
 }
 .tab-title{
     font-size:16px !important;
