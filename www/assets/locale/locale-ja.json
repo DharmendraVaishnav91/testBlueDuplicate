@@ -339,5 +339,8 @@
   "THANK_YOU": "ありがとうございます。",
   "THING_ID_TYPE": "物のIDタイプ",
   "VERSION": "バージョン",
-  "WHERE_YOU_WORK": "勤務地"
+  "WHERE_YOU_WORK": "勤務地",
+  "SEARCH": "サーチ",
+  "MY_WORK_PLACE_1":"私の職場1"
+
 }
