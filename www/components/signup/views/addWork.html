@@ -31,6 +31,7 @@
                     <option ng-repeat="obj in productList | orderBy:'H3Description'" value="{{obj.H3Code}}">{{obj.H3Description}}</option>
                 </select> -->
                 <input ion-autocomplete type="text"
+                       template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
                        component-id="component3"
                        class="ion-autocomplete"
@@ -43,7 +44,7 @@
                        max-selected-items="1"
                        cancel-label="{{'CANCEL' | translate }}"
                        style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
-                       placeholder="{{'SEARCH' | translate }}"
+                       placeholder="{{'SEARCH_PRODUCT' | translate }}"
                    />
             </label>
             <!--<label class="item item-input item-stacked-label no-border label-padding">-->
@@ -92,6 +93,7 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input ion-autocomplete type="text"
+                       template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
                        component-id="component1"
                        class="ion-autocomplete"
@@ -104,7 +106,7 @@
                        max-selected-items="1"
                        cancel-label="{{'CANCEL' | translate }}"
                        style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
-                       placeholder="{{'SEARCH' | translate }}"
+                       placeholder="{{'SEARCH_COUNTRY' | translate }}"
                        items-clicked-method="changeSubdivision(data.workCountry.CountryCode)"
                    />
                 <!-- <select style="width: 100%" ng-model="data.workCountry" ng-required="true"
@@ -128,6 +130,7 @@
                     </option>
                 </select> -->
                 <input ion-autocomplete type="text"
+                       template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
                        class="ion-autocomplete"
                        autocomplete="off"
@@ -140,7 +143,7 @@
                        max-selected-items="1"
                        cancel-label="{{'CANCEL' | translate }}"
                        style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
-                       placeholder="{{'SEARCH' | translate }}"
+                       placeholder="{{'SEARCH_STATE' | translate }}"
                    />
             </label>
 

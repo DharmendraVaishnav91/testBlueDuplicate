@@ -358,7 +358,10 @@
   "ID_TYPE": "Identifier Type ID",
   "INVITE_MEMBER":"Invite member",
   "UPDATE_ORGANIZATION":"Edit organization",
-  "FILL_THIS_FIELD": "Please fill in this field"
+  "FILL_THIS_FIELD": "Please fill in this field",
+  "SEARCH_COUNTRY": "Search Country",
+  "SEARCH_STATE": "Search State",
+  "SEARCH_PRODUCT": "Search Product"
 
 
 
