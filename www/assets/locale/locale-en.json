@@ -341,5 +341,11 @@
 
   "SEARCH": "Search",
   "MY_WORK_PLACE_1":"My Work Place 1"
+  "RESET_PASSWORD":"Reset Password",
+  "UPDATE_PASSWORD":"Update Password",
+  "ENTER_OTP":"Enter OTP",
+  "CONFIRM_PASSWORD":"Confirm Password",
+  "SEARCH": "Search"
+
 
 }

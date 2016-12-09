@@ -341,5 +341,11 @@
   "VERSION": "Phiên bản",
   "WHERE_YOU_WORK": "Nơi làm việc",
   "SEARCH":"Tìm kiếm",
-  "MY_WORK_PLACE_1":"My Place làm việc 1"
+  "MY_WORK_PLACE_1":"My Place làm việc 1",
+  
+  "CONTINUE_WITH_REGISTRATION":"Tiếp tục đăng ký và xác nhận tài khoản của bạn sau này.",
+  "RESET_PASSWORD":"Đặt lại mật khẩu",
+  "UPDATE_PASSWORD":"Cập nhật mật khẩu",
+  "ENTER_OTP":"Nhập OTP",
+  "CONFIRM_PASSWORD":"Xác nhận mật khẩu"
 }

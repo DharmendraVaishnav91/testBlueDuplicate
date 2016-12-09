@@ -340,6 +340,13 @@
   "THING_ID_TYPE": "အရာဝတ္ထု ID အမျိုးအစား",
   "VERSION": "ဗားရှင်း",
   "WHERE_YOU_WORK": "သင်ဘယ်မှာအလုပ်လုပ်သလဲ" ,
+ 
   "SEARCH":"ရှာဖှေ",
-  "MY_WORK_PLACE_1":"အကြှနျုပျ၏အလုပျရာဌာန 1"
+  "MY_WORK_PLACE_1":"အကြှနျုပျ၏အလုပျရာဌာန 1",
+
+  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
+  "RESET_PASSWORD":"Reset Password",
+  "UPDATE_PASSWORD":"Update Password",
+  "ENTER_OTP":"Enter OTP",
+  "CONFIRM_PASSWORD":"Confirm Password"
 }

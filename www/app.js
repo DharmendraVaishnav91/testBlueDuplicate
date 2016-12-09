@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters']);
+var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'common.directive','app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters']);
 
 
 app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordovaToast) {
@@ -74,6 +74,17 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 cache:false,
                 templateUrl: 'components/signup/views/regCreateAccount.html',
                 controller: 'RegCreateAccountCtrl'
+            })
+            .state('forgotPassword', {
+                url: '/forgotPassword',
+                templateUrl: 'components/login/views/forgotPassword.html',
+                controller: 'ForgotPasswordCtrl'
+            })
+            .state('passwordReset', {
+                url: '/passwordReset',
+                params:{token:""},
+                templateUrl: 'components/login/views/passwordReset.html',
+                controller: 'PasswordResetCtrl'
             })
             .state('regCreateProfile', {
                 url: '/regCreateProfile',

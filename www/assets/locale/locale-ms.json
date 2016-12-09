@@ -362,6 +362,12 @@
   "THING_ID_TYPE": "Jenis Barang ID",
   "VERSION": "Versi",
   "WHERE_YOU_WORK": "Di mana anda bekerja" ,
-  "SEARCH": "carian"  ,
-  "MY_WORK_PLACE_1":"My Work Place 1"
+  "MY_WORK_PLACE_1":"My Work Place 1",
+
+  "CONTINUE_WITH_REGISTRATION":"Terus pendaftaran dan mengesahkan akaun anda kemudian.",
+  "RESET_PASSWORD":"Set semula kata laluan",
+  "UPDATE_PASSWORD":"Kemaskini kata laluan",
+  "ENTER_OTP":"Masukkan OTP",
+  "CONFIRM_PASSWORD":"Sahkan kata laluan",
+  "SEARCH": "Cari"
 }

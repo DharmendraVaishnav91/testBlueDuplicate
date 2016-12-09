@@ -340,7 +340,13 @@
   "THING_ID_TYPE": "物のIDタイプ",
   "VERSION": "バージョン",
   "WHERE_YOU_WORK": "勤務地",
-  "SEARCH": "サーチ",
-  "MY_WORK_PLACE_1":"私の職場1"
-
+  
+  "MY_WORK_PLACE_1":"私の職場1",
+  
+  "CONTINUE_WITH_REGISTRATION":"登録を続行し、後であなたのアカウントを確認します。",
+  "RESET_PASSWORD":"パスワードをリセットします。",
+  "UPDATE_PASSWORD":"パスワードの更新",
+  "ENTER_OTP":"OTP を入力してください。",
+  "CONFIRM_PASSWORD":"パスワードを確認します。",
+  "SEARCH": "検索"
 }
