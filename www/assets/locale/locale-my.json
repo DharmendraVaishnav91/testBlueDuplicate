@@ -344,9 +344,9 @@
   "SEARCH":"ရှာဖှေ",
   "MY_WORK_PLACE_1":"အကြှနျုပျ၏အလုပျရာဌာန 1",
 
-  "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
-  "RESET_PASSWORD":"Reset Password",
+  "CONTINUE_WITH_REGISTRATION":"မှတ်ပုံတင် Continue နောက်ပိုင်းမှာသင့်ရဲ့အကောင့်ကိုအတည်ပြုပါ။",
+  "RESET_PASSWORD":"စကားဝှက်ပြန်ညှိ",
   "UPDATE_PASSWORD":"Update Password",
   "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password"
+  "CONFIRM_PASSWORD":"စကားဝှက်ကိုအတည်ပြုပါ"
 }
