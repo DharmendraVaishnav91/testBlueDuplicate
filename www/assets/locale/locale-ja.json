@@ -96,7 +96,7 @@
   "FISHERMAN": "漁業従事者",
   "FISHERY": "漁業",
   "FISHING_BOAT": "漁船",
-  "FORGOT_PASSWORD": "パスワードを忘れた",
+
   "FOR_MORE_MSG": "bluenumber.com にアクセスしてもっとフィルターを使いましょう",
   "FRIEND_COUNTRY": "友人の国",
   "FRIEND_INVITED": "ご友人の招待に成功しました。",
@@ -342,7 +342,7 @@
   "WHERE_YOU_WORK": "勤務地",
   
   "MY_WORK_PLACE_1":"私の職場1",
-  
+  "FORGOT_PASSWORD": "パスワードを忘れた",
   "CONTINUE_WITH_REGISTRATION":"登録を続行し、後であなたのアカウントを確認します。",
   "RESET_PASSWORD":"パスワードをリセットします。",
   "UPDATE_PASSWORD":"パスワードの更新",

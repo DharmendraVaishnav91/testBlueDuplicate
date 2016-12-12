@@ -23,7 +23,7 @@
   "VERIFY_YOUR_ACCOUNT":"Sahkan Akaun Anda",
   "CONFIRM":"Sahkan",
   "PASSWORD":"Kata Laluan",
-  "FORGOT_PASSWORD":"Terlupa Kata Laluan",
+
   "REMEMBER_ME":"Ingati saya",
   "SIGN_UP_FOR_BN":"Daftar untuk mendapatkan bluenumber",
 
@@ -369,5 +369,6 @@
   "UPDATE_PASSWORD":"Kemaskini kata laluan",
   "ENTER_OTP":"Masukkan OTP",
   "CONFIRM_PASSWORD":"Sahkan kata laluan",
-  "SEARCH": "Cari"
+  "SEARCH": "Cari",
+  "FORGOT_PASSWORD":"Terlupa Kata Laluan"
 }

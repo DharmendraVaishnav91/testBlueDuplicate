@@ -110,7 +110,7 @@
   "FISHERMAN": "Fisherman",
   "FISHERY": "Fishery",
   "FISHING_BOAT": "Fishing boat",
-  "FORGOT_PASSWORD": "Forgot Password",
+
   "FOR_MORE_MSG": "For more filters, go to bluenumber.com",
   "FRIEND_COUNTRY": "Friend Country",
   "FRIEND_INVITED": "Friend Invited Successfully.",
@@ -339,6 +339,7 @@
   "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code?",
   "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
 
+  "FORGOT_PASSWORD": "Forgot Password",
   "SEARCH": "Search",
   "MY_WORK_PLACE_1":"My Work Place 1" ,
   "RESET_PASSWORD":"Reset Password",
