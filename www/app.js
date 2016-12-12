@@ -139,6 +139,15 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'DashboardCtrl'
                     }
                 }
+            })
+            .state('app.receivedOrgRequest',{
+                url: '/receivedOrgRequest',
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/organization/views/orgInvite.html',
+                        controller: 'OrgInviteCtrl'
+                    }
+                }
             }).state('app.setting', {
                 url: '/setting',
                 views: {

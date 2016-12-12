@@ -1,11 +1,12 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService) {
+app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
     $scope.showFilter = false;
     $scope.filter = {};
+    var productListFetched=false;
     var markers = {};
     var layers= {
         baselayers: {
@@ -31,6 +32,17 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
             }
         }
     };
+    var actionButton = $actionButton.create({
+        mainAction: {
+            icon: 'fa fa-filter',
+            backgroundColor: '#4E5C6E',
+            textColor: ' white',
+            onClick: function() {
+                console.log('clicked edit BUTTON');
+                $scope.showFilters();
+            }
+        }
+    });
     var zoom=2;
     var defaultLat= 38.6280322;
     var defaultLng=26.2408987;
@@ -89,16 +101,28 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
     var params="" ;
     loadMap(params,defaultLat,defaultLng);
     var fetchCropList = function(){
-        signUpService.fetchProductsList().then(function(response){
-            $scope.productList=response;
-        }).catch(function(error){
-            console.log(error);
-        });
+        if(!productListFetched){
+            signUpService.fetchProductsList().then(function(response){
+                $scope.productList=response;
+            }).catch(function(error){
+                console.log(error);
+            });
+        }
+    };
+    $scope.showPendingOrgRequest= function () {
+        $state.go('app.receivedOrgRequest');
     };
 
+     $scope.hideFilter = function () {
+         actionButton.show();
+         $scope.showFilter = !$scope.showFilter;
+     } ;
     $scope.showFilters = function () {
+        actionButton.hide();
         fetchCropList();
+        productListFetched=true;
         $scope.showFilter = !$scope.showFilter;
+
     };
     $scope.applyFilter= function () {
         var params="";

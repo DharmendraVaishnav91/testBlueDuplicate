@@ -1,8 +1,12 @@
 <ion-view view-title="{{'DASHBOARD' |translate}}">
     <ion-nav-buttons side="right">
-        <button class="button button-clear button-icon" ng-click="showFilters()">
-            <i class="fa fa-filter" style="font-size: 25px;color:white"></i>
+
+         <button class="button button-clear button-icon" ng-click="showPendingOrgRequest()">
+            <i class="ion-person-stalker" style="font-size: 25px;color:white"></i>
         </button>
+        <!--<button class="button button-clear button-icon" ng-click="showFilters()">-->
+            <!--<i class="fa fa-filter" style="font-size: 25px;color:white"></i>-->
+        <!--</button>-->
 
     </ion-nav-buttons>
     <ion-content  data-tap-disabled="true">
@@ -17,7 +21,7 @@
             <i class="ion-android-locate" style="font-size: 25px;vertical-align: middle;"></i>
         </div>
         <div class="item no-border no-padding no-margin center" ng-if="showFilter" style="position: absolute;bottom:0;width: 100%;background:none;">
-            <div class="button button-small" style="color:white;background: #4E5C6E;border:none;border-radius: 0" ng-click="showFilters()">
+            <div class="button button-small" style="color:white;background: #4E5C6E;border:none;border-radius: 0" ng-click="hideFilter()">
                 <i class="fa fa-angle-double-down" style="font-size: 25px;"></i>
             </div>
             <div class="row no-padding " style="background-color: #4E5C6E;">
