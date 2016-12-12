@@ -1,5 +1,5 @@
-var picklist=angular.module('picklist',[]);
-picklist.directive('directiveParameterList' , function($ionicPopup){
+var commonDirective=angular.module('common.directive',[]);
+commonDirective.directive('directiveParameterList' , function($ionicPopup){
       var directive = {};
       directive.restrict = 'EAC';
       directive.templateUrl = 'components/menu/views/listDirective.html';
@@ -105,4 +105,22 @@ picklist.directive('directiveParameterList' , function($ionicPopup){
           }
       };
       return directive;
+});
+commonDirective.directive("compareTo", function(){
+  return {
+      require: "ngModel",
+      scope: {
+          otherModelValue: "=compareTo"
+      },
+      link: function(scope, element, attributes, ngModel) {
+
+          ngModel.$validators.compareTo = function(modelValue) {
+              return modelValue == scope.otherModelValue;
+          };
+
+          scope.$watch("otherModelValue", function() {
+              ngModel.$validate();
+          });
+      }
+  };
 });

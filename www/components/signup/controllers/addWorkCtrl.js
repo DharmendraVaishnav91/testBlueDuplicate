@@ -4,7 +4,7 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     $scope.isFromSetting = false;
     $scope.data = $stateParams.workData;
     $scope.work = {};
-    $scope.work.name="My Work Place 1";
+    $scope.work.name=$filter('translate')("MY_WORK_PLACE_1");
     $scope.workLocations = [];
     // $scope.countryCodeList = utilityService.countryList();
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {

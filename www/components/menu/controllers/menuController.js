@@ -9,10 +9,10 @@ var menu=angular.module('app.menu', []);
         $scope.logout = function(){
             loginService.doLogout().then(function(response) {
                 removeUser();
-                $state.go('login');
+                $state.go('home');
             }).catch(function(error){
                 removeUser();
-                $state.go('login');
+                $state.go('home');
                 console.log(error);
             });
         };

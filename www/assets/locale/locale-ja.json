@@ -96,7 +96,7 @@
   "FISHERMAN": "漁業従事者",
   "FISHERY": "漁業",
   "FISHING_BOAT": "漁船",
-  "FORGOT_PASSWORD": "パスワードを忘れた",
+
   "FOR_MORE_MSG": "bluenumber.com にアクセスしてもっとフィルターを使いましょう",
   "FRIEND_COUNTRY": "友人の国",
   "FRIEND_INVITED": "ご友人の招待に成功しました。",
@@ -362,6 +362,14 @@
   "UPDATE_ORGANIZATION":"Edit organization",
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
-  "SEARCH_PRODUCT": "Search Product"
-
+  "SEARCH_PRODUCT": "Search Product",
+  
+  "MY_WORK_PLACE_1":"私の職場1",
+  "FORGOT_PASSWORD": "パスワードを忘れた",
+  "CONTINUE_WITH_REGISTRATION":"登録を続行し、後であなたのアカウントを確認します。",
+  "RESET_PASSWORD":"パスワードをリセットします。",
+  "UPDATE_PASSWORD":"パスワードの更新",
+  "ENTER_OTP":"OTP を入力してください。",
+  "CONFIRM_PASSWORD":"パスワードを確認します。",
+  "SEARCH": "検索"
 }

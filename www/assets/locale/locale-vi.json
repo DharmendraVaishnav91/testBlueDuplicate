@@ -96,7 +96,7 @@
   "FISHERMAN": "Ngư dân",
   "FISHERY": "Ngư nghiệp",
   "FISHING_BOAT": "Tàu đánh cá",
-  "FORGOT_PASSWORD": "Quên mật khẩu",
+
   "FOR_MORE_MSG": "Để có nhiều bộ lọc hơn, vui lòng ghé thăm bluenumber.com",
   "FRIEND_COUNTRY": "Quốc gia của bạn bè",
   "FRIEND_INVITED": "Mời bạn bè thành công.",
@@ -362,5 +362,14 @@
   "UPDATE_ORGANIZATION":"Edit organization",
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
-  "SEARCH_PRODUCT": "Search Product"
+  "SEARCH_PRODUCT": "Search Product",
+  "SEARCH":"Tìm kiếm",
+  "MY_WORK_PLACE_1":"My Place làm việc 1",
+
+  "FORGOT_PASSWORD": "Quên mật khẩu",
+  "CONTINUE_WITH_REGISTRATION":"Tiếp tục đăng ký và xác nhận tài khoản của bạn sau này.",
+  "RESET_PASSWORD":"Đặt lại mật khẩu",
+  "UPDATE_PASSWORD":"Cập nhật mật khẩu",
+  "ENTER_OTP":"Nhập OTP",
+  "CONFIRM_PASSWORD":"Xác nhận mật khẩu"
 }

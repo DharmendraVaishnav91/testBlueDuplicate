@@ -81,4 +81,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     $scope.openRegistration= function () {
         $state.go('regCreateAccount');
     }
+    $scope.forgotPassword = function(){
+        $state.go('forgotPassword');
+    }
 });

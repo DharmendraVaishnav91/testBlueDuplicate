@@ -76,7 +76,7 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         fetchCropList();
         $scope.work = {};
         $scope.enableAddressFields = false;
-        $scope.work.name = "My Work Place 1";
+        $scope.work.name = $filter('translate')("MY_WORK_PLACE_1");
         $scope.editWork.show();
     };
 

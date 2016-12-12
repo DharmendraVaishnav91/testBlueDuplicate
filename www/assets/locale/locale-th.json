@@ -96,7 +96,7 @@
   "FISHERMAN": "ชาวประมง",
   "FISHERY": "การประมง",
   "FISHING_BOAT": "เรือหาปลา",
-  "FORGOT_PASSWORD": "ลืมรหัสผ่าน",
+
   "FOR_MORE_MSG": "สำหรับตัวคัดกรองเพิ่มเติม กรุณาไปที่ bluenumber.com",
   "FRIEND_COUNTRY": "ประเทศของเพื่อน",
   "FRIEND_INVITED": "ส่งคำเชิญเพื่อนสำเร็จแล้ว",
@@ -361,5 +361,14 @@
   "UPDATE_ORGANIZATION":"Edit organization",
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
-  "SEARCH_PRODUCT": "Search Product"
+  "SEARCH_PRODUCT": "Search Product",
+  "MY_WORK_PLACE_1":"สถานที่ทำงานของฉัน 1",
+
+  "FORGOT_PASSWORD": "ลืมรหัสผ่าน",
+  "CONTINUE_WITH_REGISTRATION":"ดำเนินการลงทะเบียน และยืนยันบัญชีของคุณในภายหลัง",
+  "RESET_PASSWORD":"รีเซ็ตรหัสผ่าน",
+  "UPDATE_PASSWORD":"ปรับปรุงรหัสผ่าน",
+  "ENTER_OTP":"ป้อนรหัส OTP",
+  "CONFIRM_PASSWORD":"ยืนยันรหัสผ่าน",
+  "SEARCH": "ค้นหา"
 }

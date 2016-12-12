@@ -110,7 +110,7 @@
   "FISHERMAN": "Fisherman",
   "FISHERY": "Fishery",
   "FISHING_BOAT": "Fishing boat",
-  "FORGOT_PASSWORD": "Forgot Password",
+
   "FOR_MORE_MSG": "For more filters, go to bluenumber.com",
   "FRIEND_COUNTRY": "Friend Country",
   "FRIEND_INVITED": "Friend Invited Successfully.",
@@ -361,8 +361,15 @@
   "FILL_THIS_FIELD": "Please fill in this field",
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
-  "SEARCH_PRODUCT": "Search Product"
+  "SEARCH_PRODUCT": "Search Product",
 
+  "FORGOT_PASSWORD": "Forgot Password",
+  "SEARCH": "Search",
+  "MY_WORK_PLACE_1":"My Work Place 1" ,
+  "RESET_PASSWORD":"Reset Password",
+  "UPDATE_PASSWORD":"Update Password",
+  "ENTER_OTP":"Enter OTP",
+  "CONFIRM_PASSWORD":"Confirm Password"
 
 
 }
