@@ -358,7 +358,13 @@
   "ID_TYPE": "Identifier Type ID",
   "INVITE_MEMBER":"Invite member",
   "UPDATE_ORGANIZATION":"Edit organization",
-  "FILL_THIS_FIELD": "Please fill in this field"
+  "FILL_THIS_FIELD": "Please fill in this field",
+  "GROUPS": "Groups",
+  "PRIVATE":"Private",
+  "GROUP_DESCRIPTION": "Group Description",
+  "CREATE_GROUP": "Create Group",
+  "NO_GROUPS": "No groups listed in your organization",
+  "NO_REQUEST": "No request pending"
 
 
 

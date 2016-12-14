@@ -359,5 +359,11 @@
   "NO_OF_EMPLOYEE": "Number of Employees",
   "ID_TYPE": "Identifier Type ID",
   "INVITE_MEMBER":"Invite member",
-  "UPDATE_ORGANIZATION":"Edit organization"
+  "UPDATE_ORGANIZATION":"Edit organization",
+  "GROUPS": "Groups",
+  "PRIVATE":"Private",
+  "GROUP_DESCRIPTION": "Group Description",
+  "CREATE_GROUP": "Create Group",
+  "NO_GROUPS": "No groups listed in your organization",
+  "NO_REQUEST": "No request pending"
 }

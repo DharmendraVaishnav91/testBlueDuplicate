@@ -1,0 +1,33 @@
+<ion-view view-title="{{'GROUPS' | translate}}">
+
+    <ion-content scroll="true" class="blueno-bg-full">
+
+      <div class="list">
+          <div class="" ng-repeat="group in groupDetails">
+            <div class="list card" style="margin-bottom:20px;">
+
+              <a class="item item-thumbnail-left" href="#/app/dashboard" style="min-height: 92px;">
+                <img ng-src="{{group.attributes.picture?group.attributes.picture.image.url:defaultAvatar}}" style="top:5px; left:5px;">
+                <h2 class="bold">{{group.attributes.name}} <i class="ion-pin" style="position:absolute;right:12px;color:red"></i></h2>
+                <p>{{group.attributes.public?"Public":"Private"}}</p>
+                <p>XY Members</p>
+                <a class="item assertive" href="#/app/dashboard" style="padding:8px;">
+                  <p class="assertive">{{group.attributes.description}}</p>
+                </a>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- =========================================== -->
+        <div class= "row no-data-alert" ng-if="false">
+            <div class="col col-center text-center">
+                <div class="no-data-icon">
+                    <i class="icon ion-briefcase"></i>
+                </div>
+                <div class="no-data-text">
+                    {{'NO_GROUPS' | translate}}
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
