@@ -372,5 +372,13 @@
   "UPDATE_PASSWORD":"パスワードの更新",
   "ENTER_OTP":"OTP を入力してください。",
   "CONFIRM_PASSWORD":"パスワードを確認します。",
-  "SEARCH": "検索"
+  "SEARCH": "検索" ,
+  "UPDATE_ORGANIZATION":"Edit organization",
+  "GROUPS": "Groups",
+  "PRIVATE":"Private",
+  "GROUP_DESCRIPTION": "Group Description",
+  "CREATE_GROUP": "Create Group",
+  "NO_GROUPS": "No groups listed in your organization",
+  "NO_REQUEST": "No request pending"
+
 }

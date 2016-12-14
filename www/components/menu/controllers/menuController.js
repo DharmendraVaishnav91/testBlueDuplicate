@@ -32,8 +32,13 @@ var menu=angular.module('app.menu', []);
               }else{
                   $state.go('app.createOrg') ;
               }
-
-
+        };
+        $scope.goToGroup = function(){
+            if(true){
+                $state.go('app.group.manage');
+            }else{
+                $state.go('app.createGroup') ;
+            }
         };
         $scope.openSetting=function(){
             $state.go('app.setting');
@@ -53,5 +58,12 @@ var menu=angular.module('app.menu', []);
                 }
             }
             return false;
+        };
+        $scope.orgFound = function(){
+            if($rootScope.user.organization_name && $scope.npFound()){
+                return true;
+            }else {
+              return false;
+            }
         };
     });

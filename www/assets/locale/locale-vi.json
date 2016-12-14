@@ -372,5 +372,12 @@
   "RESET_PASSWORD":"Đặt lại mật khẩu",
   "UPDATE_PASSWORD":"Cập nhật mật khẩu",
   "ENTER_OTP":"Nhập OTP",
-  "CONFIRM_PASSWORD":"Xác nhận mật khẩu"
+  "CONFIRM_PASSWORD":"Xác nhận mật khẩu",
+  "UPDATE_ORGANIZATION":"Edit organization",
+  "GROUPS": "Groups",
+  "PRIVATE":"Private",
+  "GROUP_DESCRIPTION": "Group Description",
+  "CREATE_GROUP": "Create Group",
+  "NO_GROUPS": "No groups listed in your organization",
+  "NO_REQUEST": "No request pending"
 }

@@ -372,5 +372,12 @@
   "RESET_PASSWORD":"စကားဝှက်ပြန်ညှိ",
   "UPDATE_PASSWORD":"Update Password",
   "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"စကားဝှက်ကိုအတည်ပြုပါ"
+  "CONFIRM_PASSWORD":"စကားဝှက်ကိုအတည်ပြုပါ",
+  "UPDATE_ORGANIZATION":"Edit organization",
+  "GROUPS": "Groups",
+  "PRIVATE":"Private",
+  "GROUP_DESCRIPTION": "Group Description",
+  "CREATE_GROUP": "Create Group",
+  "NO_GROUPS": "No groups listed in your organization",
+  "NO_REQUEST": "No request pending"
 }

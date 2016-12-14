@@ -81,6 +81,8 @@ var HttpRoutes = {
     rejectOrgInvite:apiUrl+"/gpr/v2/organizations/reject/",
     fetchGroupInvites:apiUrl+"/gpr/v2/groups/myinvites",
     inviteOrgMember:apiUrl+"/gpr/v2/organizations/invite",
-    updateOrg:apiUrl+"/gpr/v2/organizations/"
+    updateOrg:apiUrl+"/gpr/v2/organizations/",
+    createGroup:apiUrl+"/gpr/v2/groups/",
+    getGroupDetails:apiUrl+"/gpr/v2/groups/"
 
 };

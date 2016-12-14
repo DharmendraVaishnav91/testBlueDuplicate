@@ -372,5 +372,12 @@
   "UPDATE_PASSWORD":"ปรับปรุงรหัสผ่าน",
   "ENTER_OTP":"ป้อนรหัส OTP",
   "CONFIRM_PASSWORD":"ยืนยันรหัสผ่าน",
-  "SEARCH": "ค้นหา"
+  "SEARCH": "ค้นหา",
+  "UPDATE_ORGANIZATION":"Edit organization",
+  "GROUPS": "Groups",
+  "PRIVATE":"Private",
+  "GROUP_DESCRIPTION": "Group Description",
+  "CREATE_GROUP": "Create Group",
+  "NO_GROUPS": "No groups listed in your organization",
+  "NO_REQUEST": "No request pending"
 }

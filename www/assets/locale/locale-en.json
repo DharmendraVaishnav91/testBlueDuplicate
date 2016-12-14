@@ -110,7 +110,6 @@
   "FISHERMAN": "Fisherman",
   "FISHERY": "Fishery",
   "FISHING_BOAT": "Fishing boat",
-
   "FOR_MORE_MSG": "For more filters, go to bluenumber.com",
   "FRIEND_COUNTRY": "Friend Country",
   "FRIEND_INVITED": "Friend Invited Successfully.",
@@ -362,6 +361,13 @@
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
   "SEARCH_PRODUCT": "Search Product",
+  "FILL_THIS_FIELD": "Please fill in this field",
+  "GROUPS": "Groups",
+  "PRIVATE":"Private",
+  "GROUP_DESCRIPTION": "Group Description",
+  "CREATE_GROUP": "Create Group",
+  "NO_GROUPS": "No groups listed in your organization",
+  "NO_REQUEST": "No request pending",
 
   "FORGOT_PASSWORD": "Forgot Password",
   "SEARCH": "Search",
