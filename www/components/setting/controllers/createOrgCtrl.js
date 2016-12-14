@@ -142,6 +142,9 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
         console.log("position in scope");
         console.log($rootScope.position);
         fetchCurrentLocation();
+    }).catch(function (error) {
+        console.log("Error in occurred in fetching location");
+        console.log(error);
     });
 
     $scope.updateLocationFields = function (lName) {

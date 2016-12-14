@@ -384,9 +384,9 @@
   "UPDATE_ORGANIZATION":"Edit organization",
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
-  "SEARCH_PRODUCT": "Search Product"
-  "WHERE_YOU_WORK": "Di mana anda bekerja" ,
+  "SEARCH_PRODUCT": "Search Product",
   "MY_WORK_PLACE_1":"My Work Place 1",
+  "NO_PENDING_REQUEST":"No pending request available",
 
   "CONTINUE_WITH_REGISTRATION":"Terus pendaftaran dan mengesahkan akaun anda kemudian.",
   "RESET_PASSWORD":"Set semula kata laluan",

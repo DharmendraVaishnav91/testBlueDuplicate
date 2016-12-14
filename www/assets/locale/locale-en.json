@@ -369,7 +369,8 @@
   "RESET_PASSWORD":"Reset Password",
   "UPDATE_PASSWORD":"Update Password",
   "ENTER_OTP":"Enter OTP",
-  "CONFIRM_PASSWORD":"Confirm Password"
+  "CONFIRM_PASSWORD":"Confirm Password" ,
+  "NO_PENDING_REQUEST":"No pending request available"
 
 
 }

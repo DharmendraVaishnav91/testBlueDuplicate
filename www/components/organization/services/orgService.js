@@ -18,6 +18,33 @@
          return utilityService.makeHTTPRequest(req,deferred);
      };
 
+     self.fetchOrgInvitations= function () {
+         var deferred = $q.defer();
+         var req={
+             url:HttpRoutes.fetchOrgInvites,
+             method:HttpRequestType.GET,
+             headers: {
+                 'Authorization': 'Token '+ $rootScope.auth_token,
+                 'Accept' : 'application/json'
+             }
+         };
+         return utilityService.makeHTTPRequest(req,deferred);
+     };
+     self.processOrgRequest= function (invitationId,reqResStr) {
+        var deferred=$q.defer();
+        var req={
+            url:reqResStr=='Accept'?HttpRoutes.acceptOrgInvite:HttpRoutes.rejectOrgInvite,
+            method:HttpRequestType.POST,
+            data:{
+                id:invitationId
+            },
+            headers: {
+                'Authorization': 'Token '+ $rootScope.auth_token,
+                'Accept' : 'application/json'
+            }
+        }
+         return utilityService.makeHTTPRequest(req,deferred);
+     };
      self.inviteOrgMembers = function(dataToSend) {
        var deferred = $q.defer();
        var req={

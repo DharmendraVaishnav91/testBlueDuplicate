@@ -6,27 +6,40 @@
             <!--<input type="search" placeholder="Search" style="color:white" ng-model="searchMember">-->
             <!--<i class="ion-ios-close-empty"></i>-->
         <!--</label>-->
-        <div class="list" style="width:100%;overflow: scroll;padding:0px;height: 100%">
-            <a class="item item-avatar" ng-repeat="member in detailsData.relationships.admins.data | filter:searchMember" >
-                <img ng-src="http://lorempixel.com/30/30/people/{{$index}}">
+        <div class="list" style="width:100%;overflow: scroll;padding:0px;">
+            <a class="item" ng-repeat="request in orgRequests" >
+                <div class="row no-padding" >
+                    <div class="col no-padding">
+                        <h2 class="bold">
+                            <span>{{request.organization.name}}</span>
 
-                <h2 class="bold">
-                    <span>{{member.given_name_primary}}&nbsp;{{member.family_name_primary}}</span>
+                        </h2>
 
-                </h2>
-
-
-                <p style="color:#13171d">{{member.occupation}}</p>
-                <p style="color:#387ef5 !important">Admin</p>
+                        <p style="color:#13171d">{{request.organization.owner_name}}</p>
+                        <p>{{request.created_at | date:'mediumDate'}}</p>
+                    </div>
+                    <div class="col no-padding col-33 right">
+                        <div class="button button-balanced button-small " ng-click="processRequest(request.id,'Accept')">
+                            Accept
+                        </div>
+                        <div class="button button-dark button-small" ng-click="processRequest(request.id,'Reject')">
+                            Reject
+                        </div>
+                    </div>
+                </div>
             </a>
 
-            <a class="item item-avatar" ng-repeat="member in detailsData.relationships.members.data | filter:searchMember">
-                <img ng-src="http://lorempixel.com/30/30/people/{{$index}}">
+        </div>
+        <div class= "row no-data-alert" ng-if="orgRequests.length==0">
+            <div class="col col-center text-center">
+                <div class="no-data-icon">
+                    <i class="icon ion-briefcase"></i>
+                </div>
+                <div class="no-data-text">
+                    {{'NO_PENDING_REQUEST' | translate}}
+                </div>
+            </div>
 
-                <h2 class="bold">{{member.given_name_primary}}&nbsp;{{member.family_name_primary}}</h2>
-                <p style="color:#13171d" class="">{{member.occupation}}</p>
-                <p class="button button-grey button-outline button-small">Promote to admin</p>
-            </a>
         </div>
     </ion-content>
 </ion-view>

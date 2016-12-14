@@ -362,7 +362,9 @@
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
   "SEARCH_PRODUCT": "Search Product",
+  "NO_PENDING_REQUEST":"No pending request available",
   "MY_WORK_PLACE_1":"สถานที่ทำงานของฉัน 1",
+
 
   "FORGOT_PASSWORD": "ลืมรหัสผ่าน",
   "CONTINUE_WITH_REGISTRATION":"ดำเนินการลงทะเบียน และยืนยันบัญชีของคุณในภายหลัง",
