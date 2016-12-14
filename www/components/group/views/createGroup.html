@@ -25,13 +25,13 @@
             </span>
             <input class="edit-input-txt" type="text" name="groupName" ng-required="true" ng-model="group.name"  style="font-size:18px;"   />
             <span class="assertive validation-font wrap-content"
-                  ng-hide="createGroupForm.groupName.$valid">{{'FILL_THIS_FIELD'| translate}}</span>
+                  ng-show="createGroupForm.groupName.$error && createGroupForm.groupName.$pristine">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
         <!-- Description -->
         <label class="item item-input item-stacked-label no-border label-padding">
             <span class="input-label label-text"  style="color:white">{{'GROUP_DESCRIPTION' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
-            </span>
+            </span>                                        hide
             <!-- <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   /> -->
             <textarea class="edit-input-textarea" name="groupDescription" ng-required="true" ng-model="group.description" rows="4" style="padding:10px !important;"></textarea>
             <span class="assertive validation-font wrap-content"
@@ -48,7 +48,7 @@
                  {{'CANCEL' | translate }}
             </button>
             &nbsp;
-            <button type="submit" ng-show="true" ng-disabled="createOrgForm.$invalid" class="button  button-light button-clear bold" ng-click="createGroup()">
+            <button type="submit" ng-show="true" ng-disabled="createGroupForm.$invalid" class="button  button-light button-clear bold" ng-click="createGroup()">
                  {{'CREATE' | translate }}
             </button>
         </div>
