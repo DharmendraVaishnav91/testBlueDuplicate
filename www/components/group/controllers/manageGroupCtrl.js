@@ -11,4 +11,19 @@ group.controller('ManageGroupCtrl', function (groupService,$state,$actionButton,
           }
       }
   });
+  groupService.fetchGroupsDetail().then(function(response){
+    console.log("Available group list data :\n", response);
+    $scope.groupDetails = response.data;
+  }).catch(function(error){
+      console.log("Error occurred in fetching groups list");
+      console.log(error);
+  });
+  $scope.showMoreDescription = function(selectedGroup){
+    selectedGroup.expand=!  selectedGroup.expand;
+    // if(what){
+    //   $scope.expand = true;
+    // }else{
+    //   $scope.expand = false;
+    // }
+  };
 });

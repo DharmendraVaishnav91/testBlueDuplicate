@@ -9,10 +9,5 @@ group.controller('GroupTabCtrl', function (groupService,$scope,$rootScope) {
   //     console.log(error);
   //  });
   $scope.defaultAvatar = "http://ecx.images-amazon.com/images/I/41D5vU4I1NL.jpg";
-  groupService.fetchGroupsDetail().then(function(response){
-    console.log("responce from Server:\n", response);
-    $scope.groupDetails = response.data;
-  }).catch(function(error){
 
-  });
 });
