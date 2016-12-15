@@ -294,6 +294,9 @@ option {
 .grey-hr-separator{
     border: none;border-bottom: 1px solid grey;width: 92%;
 }
+.input-label-color{
+    color: rgba(255,255,255,.6);
+}
 .grey-hr-menu-separator{
     border: none;
     border-bottom: 1px solid grey;

@@ -3,7 +3,7 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
     $scope.loc = {};
     console.log($rootScope.orgDetail);
     $scope.orgImage=null;
-
+     $scope.defaultImageURL=DEFAULT_AVATAR_PATH;
     $scope.changeSubdivision = function (countryCode) {
         fetchStates(countryCode);
     };
@@ -77,7 +77,7 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
         });
 
     } else {
-        $scope.orgImageUrl = "";
+        $scope.orgImageUrl =null;
         $scope.org = {};
         utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
             $scope.countryCodeList = response;

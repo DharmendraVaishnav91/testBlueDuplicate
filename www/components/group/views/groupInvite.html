@@ -1,14 +1,37 @@
 <ion-view view-title="{{'GROUPS' | translate}}">
 
     <ion-content scroll="true" class="blueno-bg-full">
+        <div class="list" style="width:100%;overflow: scroll;padding:0px;">
+            <a class="item" ng-repeat="request in groupRequests" >
+                <div class="row no-padding" >
+                    <div class="col no-padding">
+                        <h2 class="bold">
+                            <span>{{request.organization.name}}</span>
 
-        <div class= "row no-data-alert" ng-if="true">
+                        </h2>
+
+                        <p style="color:#13171d">{{request.organization.owner_name}}</p>
+                        <p>{{request.created_at | date:'mediumDate'}}</p>
+                    </div>
+                    <div class="col no-padding col-33 right">
+                        <div class="button button-balanced button-small " ng-click="processRequest(request.id,'Accept')">
+                            Accept
+                        </div>
+                        <div class="button button-dark button-small" ng-click="processRequest(request.id,'Reject')">
+                            Reject
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+        <div class= "row no-data-alert" ng-if="groupRequests.length==0">
             <div class="col col-center text-center">
                 <div class="no-data-icon">
                     <i class="icon ion-briefcase"></i>
                 </div>
                 <div class="no-data-text">
-                    {{'NO_INVITED_MEMBERS' | translate}}
+                    {{'NO_PENDING_REQUEST' | translate}}
                 </div>
             </div>
 

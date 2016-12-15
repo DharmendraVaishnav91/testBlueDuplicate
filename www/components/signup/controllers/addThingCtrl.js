@@ -47,7 +47,8 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
     };
     var saveThingsData = function (thingsData) {
         signUpService.saveThingsData(thingsData).then(function (response) {
-            $state.go('addGroup', {groupData: $scope.data});
+            //$state.go('addGroup', {groupData: $scope.data});
+            $state.go('inviteFamily');
             console.log("Equipment added successfully.");
            $cordovaToast.showShortBottom($filter('translate')('EQUIPMENT_ADDED_SUCCESSFULLY'));
         }).catch(function (error) {
@@ -57,7 +58,8 @@ app.controller('addThingCtrl', function($timeout,$q,$scope,$state,$ionicPopup,ut
     };
 
     $scope.skipToGroup = function () {
-        $state.go('addGroup', {groupData: $scope.data});
+        //$state.go('addGroup', {groupData: $scope.data});
+        $state.go('inviteFamily');
     };
 
     //Change address fields according user choice

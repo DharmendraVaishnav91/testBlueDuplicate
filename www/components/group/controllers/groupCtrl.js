@@ -2,8 +2,9 @@ var group = angular.module('app.org.group',[]);
 group.controller('GroupCtrl', function ($scope, utilityService, $state, groupService){
 
   $scope.group = {};
-  $scope.group.image = "";
+  $scope.group.image = null;
   $scope.group.private = false;
+    $scope.defaultImageURL=DEFAULT_AVATAR_PATH;
   $scope.hideCreateGroup = function () {
       $state.go('app.dashboard');
   };

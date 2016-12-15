@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'common.directive', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters','app.org','$actionButton']);
+var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'common.directive', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters','app.org','$actionButton','app.org.group']);
 
 app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordovaToast) {
     $ionicPlatform.ready(function () {
