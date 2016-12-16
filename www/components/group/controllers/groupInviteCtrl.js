@@ -3,7 +3,7 @@ group.controller('GroupInviteCtrl', function (groupService,$scope,$rootScope) {
     groupService.fetchGroupInvitations().then(function (response) {
         console.log("Fetching org invites")   ;
         console.log(response);
-        $scope.groupRequests=response;
+        $scope.groupRequests=response.data;
 
     }).catch(function (error) {
         console.log("Error occurred while fetching org invitations");

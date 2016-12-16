@@ -1,31 +1,33 @@
 <ion-view view-title="{{'GROUPS' | translate}}">
-
     <ion-content scroll="true" class="blueno-bg-full">
-        <div class="list" style="width:100%;overflow: scroll;padding:0px;">
-            <a class="item" ng-repeat="request in groupRequests" >
-                <div class="row no-padding" >
-                    <div class="col no-padding">
-                        <h2 class="bold">
-                            <span>{{request.organization.name}}</span>
+        <div class="list" style="width:100%;">
+            <div class="list card" ng-repeat="request in groupRequests" style="padding-bottom:0px;">
+                <a class="item item-avatar" >
+                    <img ng-src="{{request.attributes.inviter_picture}}">
 
-                        </h2>
+                    <h2 class="bold">
+                        <span>{{request.attributes.group_name}}</span>
 
-                        <p style="color:#13171d">{{request.organization.owner_name}}</p>
-                        <p>{{request.created_at | date:'mediumDate'}}</p>
+                    </h2>
+
+                    <p style="color:#13171d">{{request.attributes.inviter_name}}</p>
+
+                    <p>{{request.attributes.created_at | date:'mediumDate'}}</p>
+                </a>
+
+                <div class="item no-border" style="padding: 0px 20px 5px 0px;text-align: right;">
+                    <div class="button button-dark button-small" ng-click="processRequest(request.id,'Reject')">
+                        Deny
                     </div>
-                    <div class="col no-padding col-33 right">
-                        <div class="button button-balanced button-small " ng-click="processRequest(request.id,'Accept')">
-                            Accept
-                        </div>
-                        <div class="button button-dark button-small" ng-click="processRequest(request.id,'Reject')">
-                            Reject
-                        </div>
+                    <div class="button button-balanced button-small " ng-click="processRequest(request.id,'Accept')">
+                        Accept
                     </div>
+
                 </div>
-            </a>
 
+            </div>
         </div>
-        <div class= "row no-data-alert" ng-if="groupRequests.length==0">
+        <div class="row no-data-alert" ng-if="groupRequests.length==0">
             <div class="col col-center text-center">
                 <div class="no-data-icon">
                     <i class="icon ion-briefcase"></i>

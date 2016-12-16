@@ -28,6 +28,7 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
         return utilityService.makeHTTPRequest(req, deferred);
     };
     self.fetchGroupInvitations = function () {
+        var deferred = $q.defer();
         var req = {
             url: HttpRoutes.fetchGroupInvites,
             method: HttpRequestType.GET,
