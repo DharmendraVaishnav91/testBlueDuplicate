@@ -40,7 +40,7 @@
             <a class="item item-avatar" href="">
               <img ng-src="{{person.invitee_picture!=null?person.invitee_picture:defaultAvatar}}">
               <h2>{{person.invitee_name}}</h2>
-              <p>Back off, man. I'm a scientist.</p>
+              <p>{{person.role}}</p>
             </a>
           </div>
           <p class="no-margin" ng-if="person != groupDetails.attributes.members[groupDetails.attributes.members.length - 1]">
