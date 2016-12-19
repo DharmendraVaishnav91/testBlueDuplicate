@@ -5,14 +5,11 @@
         <div class="list">
             <div class="" ng-repeat="group in groupDetails">
                 <div class="list card" style="margin-bottom:20px;">
-                    <div class="item item-thumbnail-left" style="min-height: 92px;">
+                    <div class="item item-thumbnail-left" style="min-height: 92px;" ng-click="showGroupDetail(group)">
                         <img ng-src="{{group.attributes.picture?group.attributes.picture.image.url:defaultAvatar}}"
                              style="top:5px; left:5px;">
-
                         <h2 class="bold">{{group.attributes.name}}</h2>
-
                         <p>{{group.attributes.public?"Public":"Private"}}</p>
-
                         <p>{{group.attributes.members.length}} Members</p>
                     </div>
                     <div class="item " ng-if="group.attributes.description!=null"

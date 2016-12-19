@@ -18,12 +18,12 @@ group.controller('ManageGroupCtrl', function (groupService,$state,$actionButton,
       console.log("Error occurred in fetching groups list");
       console.log(error);
   });
+
   $scope.showMoreDescription = function(selectedGroup){
     selectedGroup.expand=!  selectedGroup.expand;
-    // if(what){
-    //   $scope.expand = true;
-    // }else{
-    //   $scope.expand = false;
-    // }
+  };
+
+  $scope.showGroupDetail = function(group){
+    $state.go('app.groupDetails',{group:group});
   };
 });
