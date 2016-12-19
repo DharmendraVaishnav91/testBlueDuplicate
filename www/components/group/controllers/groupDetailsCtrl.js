@@ -8,4 +8,14 @@ group.controller('GroupDetailsCtrl', function (groupService,$stateParams,$state,
       selectedGroup.expand=!  selectedGroup.expand;
       console.log("new expand : ",selectedGroup.expand);
     };
+
+    $scope.goToPosts = function(name,data){
+        $state.go("app.groupPosts",{name:name,data:data});
+    };
+    $scope.goToGrpInvites = function(name,data){
+        $state.go("app.groupPendingInvites",{name:name,data:data});
+    };
+    $scope.goToPendingReq = function(name,data){
+        $state.go("app.groupRequests",{name:name,data:data});
+    };
 });
