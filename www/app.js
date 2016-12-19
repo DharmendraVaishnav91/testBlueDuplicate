@@ -158,7 +158,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'OrgInviteCtrl'
                     }
                 }
-            }).state('app.setting', {
+            })
+            .state('app.setting', {
                 url: '/setting',
                 views: {
                     'mainContent': {
@@ -166,7 +167,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'UserSettingCtrl'
                     }
                 }
-            }).state('app.createOrg', {
+            })
+            .state('app.createOrg', {
                 url: '/createOrg',
                 views: {
                     'mainContent': {
@@ -174,7 +176,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'CreateOrgCtrl'
                     }
                 }
-            }).state('app.organization', {
+            })
+            .state('app.organization', {
                 url: '/organization',
                 cache:false,
                 abstract:true,
@@ -185,7 +188,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'OrganizationTabCtrl'
                     }
                 }
-            }).state('app.organization.detail', {
+            })
+            .state('app.organization.detail', {
                 url: '/organization/detail',
                 cache:false,
                 views: {
@@ -194,7 +198,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'OrganizationDetailCtrl'
                     }
                 }
-            }) .state('app.organization.members', {
+            })
+            .state('app.organization.members', {
                 url: '/organization/members',
                 cache:false,
                 views: {
@@ -203,7 +208,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'OrganizationMembersCtrl'
                     }
                 }
-            }) .state('app.organization.invitations', {
+            })
+            .state('app.organization.invitations', {
                 url: '/organization/invitations',
                 cache:false,
                 views: {
@@ -230,7 +236,18 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                        controller: 'GroupCtrl'
                    }
                }
-            }).state('app.group', {
+            })
+            .state('app.groupDetails', {
+               url: '/groupDetails',
+               params:{group:{}},
+               views: {
+                   'mainContent': {
+                       templateUrl: 'components/group/views/groupDetails.html',
+                       controller: 'GroupDetailsCtrl'
+                   }
+               }
+            })
+            .state('app.group', {
                  url: '/group',
                  cache:false,
                  abstract:true,
@@ -240,7 +257,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                          controller: 'GroupTabCtrl'
                      }
                  }
-             }).state('app.group.manage', {
+             })
+             .state('app.group.manage', {
                  url: '/group/manage',
                  cache:false,
                  views: {
@@ -249,7 +267,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                          controller: 'ManageGroupCtrl'
                      }
                  }
-             }) .state('app.group.invite', {
+             })
+             .state('app.group.invite', {
                  url: '/group/invite',
                  cache:false,
                  views: {
@@ -258,7 +277,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                          controller: 'GroupInviteCtrl'
                      }
                  }
-             }) .state('app.group.request', {
+             })
+             .state('app.group.request', {
                  url: '/group/request',
                  cache:false,
                  views: {
@@ -267,7 +287,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                          controller: 'GroupJoinRequestCtrl'
                      }
                  }
-           }).state('app.manageSetting', {
+           })
+           .state('app.manageSetting', {
                 url: '/manageSetting',
                 views: {
                     'mainContent': {
@@ -275,7 +296,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'SettingCtrl'
                     }
                 }
-            }).state('app.workPlaces', {
+            })
+            .state('app.workPlaces', {
                 url: '/setting/workPlaces',
                 views: {
                     'mainContent': {
@@ -283,7 +305,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'WorkPlacesCtrl'
                     }
                 }
-            }).state('app.workEquipments', {
+            })
+            .state('app.workEquipments', {
                 url: '/setting/workEquipments',
                 views: {
                     'mainContent': {
@@ -291,7 +314,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'WorkEquipmentsCtrl'
                     }
                 }
-            }).state('app.manageFamily', {
+            })
+            .state('app.manageFamily', {
                 url: '/setting/manageFamily',
                 views: {
                     'mainContent': {
@@ -299,7 +323,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'ManageFamilyCtrl'
                     }
                 }
-            }).state('app.invite', {
+            })
+            .state('app.invite', {
                 url: '/invite/invite',
                 views: {
                     'mainContent': {
@@ -334,7 +359,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'InviteFriendCtrl'
                     }
                 }
-            }).state('app.aboutInfo', {
+            })
+            .state('app.aboutInfo', {
                 url: '/menu/aboutInfo',
                 views: {
                     'mainContent': {
@@ -342,7 +368,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                         controller: 'AboutInfoCtrl'
                     }
                 }
-            }).state('app.manageGroups', {
+            })
+            .state('app.manageGroups', {
                 url: '/setting/manageGroups',
                 views: {
                     'mainContent': {

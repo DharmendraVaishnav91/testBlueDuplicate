@@ -1,0 +1,40 @@
+<ion-view view-title="{{groupDetails.attributes.name}}" hide-back-button="false">
+    <ion-content scroll="true" class="blueno-bg-full">
+      <!-- <div class="list card no-margin" style="margin-bottom:20px;margin-bottom:3px !important;">
+        <div class="item " ng-if="groupDetails.attributes.description!=null"
+             style="padding:8px;white-space:normal !important;border-bottom:none;">
+            <span class="" style="color: black;font-size: 14px;" ng-if="groupDetails.expand">{{groupDetails.attributes.description}}
+            </span>
+            <span class="" style="color: black;font-size: 14px;" ng-if="!groupDetails.expand">{{groupDetails.attributes.description | limitTo:35}}
+            </span>
+        </div>
+        <div class="" ng-if="groupDetails.attributes.description.length > 35 && !groupDetails.expand">
+            <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(groupDetails)">More</a>
+        </div>
+        <div class="" ng-if="groupDetails.expand && groupDetails.attributes.description.length > 35">
+            <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(groupDetails)">Less</a>
+        </div>
+      </div> -->
+        <!-- =========================== -->
+        <div class="list card no-margin" style="margin-bottom:20px;margin-bottom:3px !important;">
+        <div class="item item-thumbnail-left" style="min-height: 170px;">
+            <img ng-src="{{groupDetails.attributes.picture?groupDetails.attributes.picture.image.url:defaultAvatar}}"
+                 style="top:5px; left:5px; max-width:160px; max-height:160px;">
+            <h2 class="bold" style="margin-left:90px;margin-top: 5px;">{{groupDetails.attributes.members.length}} Members</h2>
+            <h2 class="bold" style="margin-left:90px;margin-top: 5px;">{{groupDetails.relationships.posts.data.length}} Posts</h2>
+            <h2 class="bold" style="margin-left:90px;margin-top: 5px;">{{groupDetails.relationships.group_invites.data.length}} Invites</h2>
+        </div>
+      </div>
+
+      <div class="list card no-margin" style="margin-bottom:20px;">
+          <div class="item no-margin no-padding">
+            <a class="item item-avatar" href="#">
+              <img src="http://ionicframework.com/img/docs/venkman.jpg">
+              <h2>Venkman</h2>
+              <p>Back off, man. I'm a scientist.</p>
+            </a>
+          </div>
+      </div>
+
+    </ion-content>
+</ion-view>
