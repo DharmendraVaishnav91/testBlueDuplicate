@@ -190,7 +190,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             })
             .state('app.organization.detail', {
-                url: '/organization/detail',
+                url: '/detail',
                 cache:false,
                 views: {
                     'orgDetail': {
@@ -200,7 +200,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             })
             .state('app.organization.members', {
-                url: '/organization/members',
+                url: '/members',
                 cache:false,
                 views: {
                     'orgMembers': {
@@ -210,7 +210,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             })
             .state('app.organization.invitations', {
-                url: '/organization/invitations',
+                url: '/invitations',
                 cache:false,
                 views: {
                     'orgInvitations': {
@@ -259,7 +259,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                  }
              })
              .state('app.group.manage', {
-                 url: '/group/manage',
+                 url: '/manage',
                  cache:false,
                  views: {
                      'manageGroup': {
@@ -269,7 +269,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                  }
              })
              .state('app.group.invite', {
-                 url: '/group/invite',
+                 url: '/invite',
                  cache:false,
                  views: {
                      'groupInvite': {
@@ -279,7 +279,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                  }
              })
              .state('app.group.request', {
-                 url: '/group/request',
+                 url: '/request',
                  cache:false,
                  views: {
                      'groupJoinRequest': {
@@ -288,6 +288,36 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                      }
                  }
            })
+           .state('app.groupPosts', {
+                url: '/groupPosts',
+                params:{name:"",data:{}},
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/groupPosts.html',
+                        controller: 'GroupPostsCtrl'
+                    }
+                }
+            })
+            .state('app.groupPendingInvites', {
+                 url: '/groupPendingInvites',
+                 params:{name:"",data:{}},
+                 views: {
+                     'mainContent': {
+                         templateUrl: 'components/group/views/groupPendingInvites.html',
+                         controller: 'GroupPendingInvitesCtrl'
+                     }
+                 }
+             })
+             .state('app.groupRequests', {
+                  url: '/groupRequests',
+                  params:{name:"",data:{}},
+                  views: {
+                      'mainContent': {
+                          templateUrl: 'components/group/views/groupRequests.html',
+                          controller: 'GroupRequestsCtrl'
+                      }
+                  }
+              })
            .state('app.manageSetting', {
                 url: '/manageSetting',
                 views: {
