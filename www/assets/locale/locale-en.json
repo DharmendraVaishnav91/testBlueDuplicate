@@ -365,6 +365,7 @@
   "GROUPS": "Groups",
   "PRIVATE":"Private",
   "GROUP_DESCRIPTION": "Group Description",
+  "GROUP_TYPE":"Group Type",
   "CREATE_GROUP": "Create Group",
   "NO_GROUPS": "No groups listed in your organization",
   "NO_REQUEST": "No request pending",

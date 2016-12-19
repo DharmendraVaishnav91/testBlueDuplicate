@@ -6,20 +6,20 @@
                     <img ng-src="{{request.attributes.inviter_picture}}">
 
                     <h2 class="bold">
-                        <span>{{request.attributes.group_name}}</span>
+                        <span>{{request.attributes.inviter_name}}</span>
 
                     </h2>
 
-                    <p style="color:#13171d">{{request.attributes.inviter_name}}</p>
+                    <p style="color:#13171d" class="wrap-content">invited you to join <span class="positive bold">{{request.attributes.group_name}}</span> group.</p>
 
-                    <p>{{request.attributes.created_at | date:'mediumDate'}}</p>
+                    <p>{{request.attributes.created_at | momentTimeAgo}}</p>
                 </a>
 
                 <div class="item no-border" style="padding: 0px 20px 5px 0px;text-align: right;">
-                    <div class="button button-dark button-small" ng-click="processRequest(request.id,'Reject')">
+                    <div class="button button-dark button-small bold" ng-click="processRequest(request.id,'Reject')">
                         Deny
                     </div>
-                    <div class="button button-balanced button-small " ng-click="processRequest(request.id,'Accept')">
+                    <div class="button button-balanced button-small bold" ng-click="processRequest(request.id,'Accept')">
                         Accept
                     </div>
 

@@ -16,6 +16,25 @@ angular.module("app.filters", [])
             });
             return output;
         };
+    })
+    .filter("timeAgo", function () {
+        return function (date) {
+            var momentObj = moment(date);
+            var today = moment();
+            if (momentObj.date() == today.date()) {
+                //return momentObj.fromNow();
+                return momentObj.format("h:mm a");
+            } else if (momentObj.year() == today.year()) {
+                return momentObj.format("MMM DD");
+            } else {
+                momentObj.format("DD/MM/YYYY")
+            }
+        }
+    })
+    .filter("momentTimeAgo",function() {
+        return function(date,isTrue) {
+            return  isTrue ? moment(date).fromNow(true) : moment(date).fromNow()
+        }
     }).
     filter('getByNameInMap', function() {
         return function(inputArray, name) {
@@ -37,4 +56,4 @@ angular.module("app.filters", [])
         }
         return null;
     }
-});;
+});

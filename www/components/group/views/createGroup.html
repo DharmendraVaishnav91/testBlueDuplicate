@@ -20,7 +20,7 @@
        </div>
         <!-- organization name -->
         <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text input-label-colors" >{{'GROUP_NAME' | translate }}
+            <span class="input-label label-text input-label-color" >{{'GROUP_NAME' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
             <input class="edit-input-txt" type="text" name="groupName" ng-required="true" ng-model="group.name"  style="font-size:18px;"   />
@@ -31,13 +31,15 @@
         <label class="item item-input item-stacked-label no-border label-padding">
             <span class="input-label label-text input-label-color"  >{{'GROUP_DESCRIPTION' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
-            </span>                                        hide
+            </span>
             <!-- <input class="edit-input-txt" type="text" name="firstName" ng-required="true" ng-model="person.givenname1"  style="font-size:18px;"   /> -->
             <textarea class="edit-input-textarea" name="groupDescription" ng-required="true" ng-model="group.description" rows="4" style="padding:10px !important;"></textarea>
             <span class="assertive validation-font wrap-content"
                   ng-show="createGroupForm.groupDescription.$invalid && !createGroupForm.groupDescription.$pristine">{{'FILL_THIS_FIELD'| translate}}</span>
         </label>
         <label class="item item-input item-stacked-label no-border label-padding">
+             <span class="input-label label-text input-label-color"  >{{'GROUP_TYPE' | translate }}
+            </span>
             <ion-toggle ng-model="group.private" class="no-border" toggle-class="toggle-balanced" style="border-radius:4px !important; background-color:rgba(97, 137, 197, 0.701961); color:white">{{'PRIVATE' | translate }}</ion-toggle>
         </label>
       </div>
