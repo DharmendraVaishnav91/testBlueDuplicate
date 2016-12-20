@@ -31,12 +31,32 @@
           I'm a Header in a Card!
         </div> -->
 
-      <div class="list card no-margin" style="margin-bottom:20px; margin-top:3px !important;">
-        <div class="item item-divider" style="text-align:center; background:lightgrey">
-          Posts ({{groupDetails.relationships.posts.data.length}})
+      <!--<div class="list card no-margin" style="margin-bottom:20px; margin-top:3px !important;">-->
+        <!--<div class="item item-divider" style="text-align:center; background:lightgrey">-->
+          <!--Posts ({{groupDetails.relationships.posts.data.length}})-->
+        <!--</div>-->
+        <!-- -->
+      <!--</div>-->
+        <div class="list card" ng-repeat="post in postData">
+
+            <div class="item item-avatar">
+                <img src="mcfly.jpg">
+                <h2>{{post.attributes.creater}}</h2>
+                <p>{{post.attributes.created_at | momentTimeAgo}}</p>
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" src="delorean.jpg">
+                <p>
+                    {{post.attributes.content}}
+                </p>
+                <!--<p>-->
+                    <!--<a href="#" class="subdued">1 Like</a>-->
+                    <!--<a href="#" class="subdued">5 Comments</a>-->
+                <!--</p>-->
+            </div>
+
         </div>
-        
-      </div>
       <!-- </div> -->
     </ion-content>
 </ion-view>

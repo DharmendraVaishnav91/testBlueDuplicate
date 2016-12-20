@@ -8,7 +8,14 @@ group.controller('GroupDetailsCtrl', function (groupService,$stateParams,$state,
       selectedGroup.expand=!  selectedGroup.expand;
       console.log("new expand : ",selectedGroup.expand);
     };
-
+    groupService.fetchGroupDetail($scope.groupDetails.id).then(function (response) {
+       console.log("Group detail");
+        console.log(response);
+        $scope.postData=response.data;
+    }).catch(function (error) {
+        console.log("Error occurred in fetching group detail");
+        console.log(error);
+    });
     $scope.goToMembers = function(name,data){
         $state.go("app.groupMembers",{name:name,data:data});
     };

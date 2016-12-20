@@ -70,5 +70,18 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
         }
         return utilityService.makeHTTPRequest(req, deferred);
     };
+    self.fetchGroupDetail= function (group_id) {
+
+        var deferred = $q.defer();
+        var req = {
+            url:HttpRoutes.createGroup+group_id+"/posts",
+            method: HttpRequestType.GET,
+            headers: {
+                'Authorization': 'Token ' + $rootScope.auth_token,
+                'Accept': 'application/json'
+            }
+        };
+        return utilityService.makeHTTPRequest(req, deferred);
+    };
     return self;
 });
