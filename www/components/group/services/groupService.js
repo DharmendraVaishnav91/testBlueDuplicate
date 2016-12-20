@@ -54,16 +54,20 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
     self.processGroupJoinRequest= function (data, reqStr) {
         var deferred = $q.defer();
         var req = {
-            url:HttpRoutes.createGroup+data.group_id+"/group_memberships/"+(reqStr=='Accept'?"accept":"reject"),
-            method: HttpRequestType.POST,
-            data: {
-                group_membership:data
-            },
+            method: reqStr=="Accept"?HttpRequestType.POST:HttpRequestType.DELETE,
             headers: {
                 'Authorization': 'Token ' + $rootScope.auth_token,
                 'Accept': 'application/json'
             }
         };
+        if(reqStr=='Accept'){
+            req.url=HttpRoutes.createGroup+data.group_id+"/group_memberships/accept";
+            req.data={
+                group_membership:data
+            };
+        }else{
+            req.url=HttpRoutes.createGroup+data.group_id+"/group_invites/"+data.group_invite_id+"/reject";
+        }
         return utilityService.makeHTTPRequest(req, deferred);
     };
     return self;
