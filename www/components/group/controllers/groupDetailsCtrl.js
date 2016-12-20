@@ -9,8 +9,8 @@ group.controller('GroupDetailsCtrl', function (groupService,$stateParams,$state,
       console.log("new expand : ",selectedGroup.expand);
     };
 
-    $scope.goToPosts = function(name,data){
-        $state.go("app.groupPosts",{name:name,data:data});
+    $scope.goToMembers = function(name,data){
+        $state.go("app.groupMembers",{name:name,data:data});
     };
     $scope.goToGrpInvites = function(name,data){
         $state.go("app.groupPendingInvites",{name:name,data:data});

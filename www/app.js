@@ -288,13 +288,13 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                      }
                  }
            })
-           .state('app.groupPosts', {
-                url: '/groupPosts',
+           .state('app.groupMembers', {
+                url: '/groupMembers',
                 params:{name:"",data:{}},
                 views: {
                     'mainContent': {
-                        templateUrl: 'components/group/views/groupPosts.html',
-                        controller: 'GroupPostsCtrl'
+                        templateUrl: 'components/group/views/groupMembers.html',
+                        controller: 'GroupMembersCtrl'
                     }
                 }
             })

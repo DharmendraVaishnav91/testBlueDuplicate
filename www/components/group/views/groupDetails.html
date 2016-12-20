@@ -20,7 +20,7 @@
         <div class="item item-thumbnail-left" style="min-height: 106px;">
             <img ng-src="{{groupDetails.attributes.picture?groupDetails.attributes.picture.image.url:defaultAvatar}}"
                  style="top:5px; left:5px; max-width:96px; max-height:96px;">
-            <h2 class="bold positive" style="margin-left:30px;margin-top: 5px;" ng-click="goToPosts(groupDetails.attributes.name,groupDetails.relationships.posts.data)">{{groupDetails.relationships.posts.data.length}} Posts</h2></a>
+            <h2 class="bold positive" style="margin-left:30px;margin-top: 5px;" ng-click="goToMembers(groupDetails.attributes.name,groupDetails.attributes.members)">{{groupDetails.attributes.members.length}} Members</h2></a>
             <h2 class="bold positive" style="margin-left:30px;margin-top: 5px;"ng-click="goToGrpInvites(groupDetails.attributes.name,groupDetails.relationships.group_invites.data)">{{groupDetails.relationships.group_invites.data.length}} Invites</h2></a>
             <h2 class="bold positive" ng-if="!groupDetails.attributes.public" ng-click="goToPendingReq(groupDetails.attributes.name,groupDetails.attributes.requests!=null?groupDetails.attributes.requests.data:null)" style="margin-left:30px;margin-top: 5px;">{{groupDetails.attributes.requests!=null ? groupDetails.attributes.requests.data.length : "0"}} Pending Requests</h2></a>
         </div>
@@ -33,20 +33,9 @@
 
       <div class="list card no-margin" style="margin-bottom:20px; margin-top:3px !important;">
         <div class="item item-divider" style="text-align:center; background:lightgrey">
-          Members ({{groupDetails.attributes.members.length}})
+          Posts ({{groupDetails.relationships.posts.data.length}})
         </div>
-        <div class="" ng-repeat="person in groupDetails.attributes.members">
-          <div class="item no-margin no-padding">
-            <a class="item item-avatar" href="">
-              <img ng-src="{{person.invitee_picture!=null?person.invitee_picture:defaultAvatar}}">
-              <h2>{{person.invitee_name}}</h2>
-              <p>{{person.role}}</p>
-            </a>
-          </div>
-          <p class="no-margin" ng-if="person != groupDetails.attributes.members[groupDetails.attributes.members.length - 1]">
-          </p>
-          <!-- <hr class="grey-hr-separator" ng-if="person != groupDetails.attributes.members[groupDetails.attributes.members.length - 1]"> -->
-        </div>
+        
       </div>
       <!-- </div> -->
     </ion-content>
