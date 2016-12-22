@@ -239,6 +239,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.groupDetails', {
                url: '/groupDetails',
+                cache:false,
                params:{group:{}},
                views: {
                    'mainContent': {
