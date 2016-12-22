@@ -2,7 +2,7 @@
  * Created by dharmendra on 16/8/16.
  */
 //var apiUrl="https://bnproduction.herokuapp.com";
-//var apiUrl="https://bnstaging.herokuapp.com";
+// var apiUrl="https://bnstaging.herokuapp.com";
  var apiUrl= "https://blue-dev.herokuapp.com";
 var HttpRequestType = {
     GET: 'GET',
@@ -85,5 +85,6 @@ var HttpRoutes = {
     createGroup:apiUrl+"/gpr/v2/groups/",
     getGroupDetails:apiUrl+"/gpr/v2/groups/",
     fetchGroupJoinRequests:apiUrl+"/gpr/v2/groups/join_requests",
+    processGroupInvites:apiUrl+"/gpr/v2/groups/",
 
 };

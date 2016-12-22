@@ -5,21 +5,21 @@
 
 
     <ion-content scroll="true" class="blueno-bg-full">
-        <!-- <div class="list card no-margin" style="margin-bottom:20px;margin-bottom:3px !important;">
-          <div class="item " ng-if="groupDetails.attributes.description!=null"
-               style="padding:8px;white-space:normal !important;border-bottom:none;">
-              <span class="" style="color: black;font-size: 14px;" ng-if="groupDetails.expand">{{groupDetails.attributes.description}}
-              </span>
-              <span class="" style="color: black;font-size: 14px;" ng-if="!groupDetails.expand">{{groupDetails.attributes.description | limitTo:35}}
-              </span>
-          </div>
-          <div class="" ng-if="groupDetails.attributes.description.length > 35 && !groupDetails.expand">
-              <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(groupDetails)">More</a>
-          </div>
-          <div class="" ng-if="groupDetails.expand && groupDetails.attributes.description.length > 35">
-              <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(groupDetails)">Less</a>
-          </div>
-        </div> -->
+      <!-- <div class="list card no-margin" style="margin-bottom:20px;margin-bottom:3px !important;">
+        <div class="item " ng-if="groupDetails.attributes.description!=null"
+             style="padding:8px;white-space:normal !important;border-bottom:none;">
+            <span class="" style="color: black;font-size: 14px;" ng-if="groupDetails.expand">{{groupDetails.attributes.description}}
+            </span>
+            <span class="" style="color: black;font-size: 14px;" ng-if="!groupDetails.expand">{{groupDetails.attributes.description | limitTo:35}}
+            </span>
+        </div>
+        <div class="" ng-if="groupDetails.attributes.description.length > 35 && !groupDetails.expand">
+            <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(groupDetails)">More</a>
+        </div>
+        <div class="" ng-if="groupDetails.expand && groupDetails.attributes.description.length > 35">
+            <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(groupDetails)">Less</a>
+        </div>
+      </div> -->
         <!-- =========================== -->
         <div class="list card no-margin" style="margin-bottom:3px; ">
             <div class="item item-thumbnail-left" style="min-height: 106px;">
@@ -27,18 +27,18 @@
                      style="top:5px; left:5px; max-width:96px; max-height:96px;">
 
                 <h2 class=" positive" style="font-size: 15px; margin-left:30px;height: 23px"
-                    ng-click="goToMembers(groupDetails.attributes.name,groupDetails.attributes.members)">
+                    ng-click="goToMembers(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.members)">
                     <i class="ion-android-people"></i>
 
                     <span>{{groupDetails.attributes.members.length}}Members  </span>
                 </h2>
                 <h2 class=" positive" style="margin-left:30px;font-size: 15px;height: 23px"
-                    ng-click="goToGrpInvites(groupDetails.attributes.name,groupDetails.relationships.group_invites.data)">
+                    ng-click="goToGrpInvites(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.group_invites.data)">
                     <i class="fa fa-user-plus"></i>
                     <span>{{groupDetails.relationships.group_invites.data.length}} Invites</span>
                 </h2>
                 <h2 class="" ng-if="!groupDetails.attributes.public"
-                    ng-click="goToPendingReq(groupDetails.attributes.name,groupDetails.attributes.requests!=null?groupDetails.attributes.requests.data:null)"
+                    ng-click="goToPendingReq(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.requests!=null?groupDetails.attributes.requests.data:null)"
                     style="margin-left:30px;margin-top: 5px;color: rgba(191, 60, 60,.9);font-size: 15px;height: 23px">
                     <i class="ion-android-alert"></i>
                     <span>{{groupDetails.attributes.requests!=null ?groupDetails.attributes.requests.data.length : "0"}}
@@ -46,6 +46,7 @@
                 </h2>
             </div>
         </div>
+      </div>
 
         <!-- <div class="card"> -->
         <!-- <div class="item item-divider">
@@ -75,28 +76,13 @@
                  <h2>{{post.attributes.content}}</h2>
                  <p style="">
                     {{post.attributes.content}}
-                 </p>
-             </div>
-
-            <!--<div class="item item-avatar">-->
-                <!--<img ng-src="{{post.attributes.creater_picture}}" style="top:5px;left:5px;height: 30px;width:30px">-->
-                <!--<h2 style="    margin: -6px 0 2px -29px;font-size: 13px;">{{post.attributes.creater}}</h2>-->
-
-                <!--&lt;!&ndash;<p>{{post.attributes.created_at | momentTimeAgo}}</p>&ndash;&gt;-->
-            <!--</div>-->
-            <!--<div class="item" >-->
-                <!--<h2>{{post.attributes.title}}</h2>-->
-            <!--</div>-->
-            <!--<div class="item item-body">-->
-                <!--&lt;!&ndash;<img class="full-image" src="delorean.jpg">&ndash;&gt;-->
-                <!--<p style="margin-top:0px">-->
-                    <!--{{post.attributes.content}}-->
+                </p>
+                <!--<p>-->
+                    <!--<a href="#" class="subdued">1 Like</a>-->
+                    <!--<a href="#" class="subdued">5 Comments</a>-->
                 <!--</p>-->
-                <!--&lt;!&ndash;<p>&ndash;&gt;-->
-                <!--&lt;!&ndash;<a href="#" class="subdued">1 Like</a>&ndash;&gt;-->
-                <!--&lt;!&ndash;<a href="#" class="subdued">5 Comments</a>&ndash;&gt;-->
-                <!--&lt;!&ndash;</p>&ndash;&gt;-->
-            <!--</div>-->
+            </div>
+
         </div>
         <!-- </div> -->
     </ion-content>

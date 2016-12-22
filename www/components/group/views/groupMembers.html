@@ -7,7 +7,7 @@
               <img ng-src="{{person.invitee_picture!=null?person.invitee_picture:defaultAvatar}}">
               <h2>{{person.invitee_name}}</h2>
               <p>{{person.role}}</p>
-              <button class="button button-positive button-small" style="font-size:15px; min-height:25px;">
+              <button class="button button-positive button-small" style="font-size:14px; line-height:14px; min-height:25px;" ng-click="promoteToAdmin(person)">
                 Promote To Admin
               </button>
             </a>

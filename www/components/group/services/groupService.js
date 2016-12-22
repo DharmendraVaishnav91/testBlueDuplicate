@@ -70,6 +70,25 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
         }
         return utilityService.makeHTTPRequest(req, deferred);
     };
+    self.processOrgRequest = function (data, reqStr) {
+      var deferred = $q.defer();
+      var req = {
+          method: reqStr=="Accept"?HttpRequestType.POST:HttpRequestType.DELETE,
+          headers: {
+              'Authorization': 'Token ' + $rootScope.auth_token,
+              'Accept': 'application/json'
+          }
+      };
+      if(reqStr=='Accept'){
+          req.url=HttpRoutes.processGroupInvites+data.group_id+"/group_memberships/accept";
+          req.data={
+              group_membership:data
+          };
+      }else{
+          req.url=HttpRoutes.processGroupInvites+data.group_id+"/group_invites/"+data.group_invite_id+"/reject";
+      }
+      return utilityService.makeHTTPRequest(req, deferred);
+    };
     self.fetchGroupDetail= function (group_id) {
 
         var deferred = $q.defer();
