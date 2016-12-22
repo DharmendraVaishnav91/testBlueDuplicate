@@ -1,4 +1,31 @@
 <ion-view view-title="{{name}} - Pending Invites" hide-back-button="false">
     <ion-content scroll="true" class="blueno-bg-full">
+      <div class="list" style="width:100%;">
+          <div class="list card" ng-repeat="request in groupPendingInvites" style="margin:5px">
+              <a class="item item-avatar" style="padding-bottom:0px;">
+                  <img ng-src="{{request.attributes.inviter_picture}}">
+
+                  <h2 class="bold">
+                      <span>{{request.attributes.inviter_name}}</span>
+
+                  </h2>
+
+                  <p style="color:#13171d" class="wrap-content">invited you to join <span class="positive bold">{{request.attributes.group_name}}</span> group.</p>
+
+                  <p>{{request.attributes.created_at | momentTimeAgo}}</p>
+              </a>
+
+              <div class="item no-border" style="padding: 0px 20px 5px 0px;text-align: right;">
+                  <div class="button button-dark button-small bold" ng-click="processRequest(request.id,'Reject')">
+                      Deny
+                  </div>
+                  <div class="button button-balanced button-small bold" ng-click="processRequest(request.id,'Accept')">
+                      Accept
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
     </ion-content>
 </ion-view>

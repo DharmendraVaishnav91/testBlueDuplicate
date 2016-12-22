@@ -16,13 +16,13 @@ group.controller('GroupDetailsCtrl', function (groupService,$stateParams,$state,
         console.log("Error occurred in fetching group detail");
         console.log(error);
     });
-    $scope.goToMembers = function(name,data){
-        $state.go("app.groupMembers",{name:name,data:data});
+    $scope.goToMembers = function(name,id,data){
+        $state.go("app.groupMembers",{name:name,id:id,data:data});
     };
-    $scope.goToGrpInvites = function(name,data){
-        $state.go("app.groupPendingInvites",{name:name,data:data});
+    $scope.goToGrpInvites = function(name,id,data){
+        $state.go("app.groupPendingInvites",{name:name,id:id,data:data});
     };
-    $scope.goToPendingReq = function(name,data){
-        $state.go("app.groupRequests",{name:name,data:data});
+    $scope.goToPendingReq = function(name,id,data){
+        $state.go("app.groupRequests",{name:name,id:id,data:data});
     };
 });
