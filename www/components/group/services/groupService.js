@@ -102,5 +102,30 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
         };
         return utilityService.makeHTTPRequest(req, deferred);
     };
+    self.checkUser = function(phone){
+      var deferred = $q.defer();
+      var req = {
+          url:HttpRoutes.checkUser+phone,
+          method: HttpRequestType.GET,
+          headers: {
+              'Authorization': 'Token ' + $rootScope.auth_token,
+              'Accept': 'application/json'
+          }
+      };
+      return utilityService.makeHTTPRequest(req, deferred);
+    };
+    self.inviteGroupMembers = function(data,gid){
+      var deferred = $q.defer();
+      var req = {
+          url:HttpRoutes.getGroupDetails+gid+"/group_invites",
+          method: HttpRequestType.POST,
+          data: data,
+          headers: {
+              'Authorization': 'Token ' + $rootScope.auth_token,
+              'Accept': 'application/json'
+          }
+      };
+      return utilityService.makeHTTPRequest(req, deferred);
+    };
     return self;
 });
