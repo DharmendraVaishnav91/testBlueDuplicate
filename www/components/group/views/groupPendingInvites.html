@@ -2,13 +2,25 @@
     <ion-content scroll="true" class="blueno-bg-full">
         <div class="list" style="width:100%;">
             <div class="list card" ng-repeat="request in groupPendingInvites" style="margin:5px">
-                <a class="item item-avatar" style="padding-bottom:0px;">
-                    <img ng-src="{{request.attributes.invitee_picture}}">
+                <a class="item " style="padding:5px">
+                    <div class="row no-padding">
+                        <div class="col col-10">
+                            <img ng-src="{{request.attributes.invitee_picture}}" style="border-radius: 50%;height: 30px;width: 30px">
+                        </div>
+                        <div class="col">
+                            <h2 class="bold">
+                                <span>{{request.attributes.invitee_name}}</span>
+                                <p style="font-weight: 100">{{request.attributes.created_at | momentTimeAgo}}
+                                    <span style="float: right; background-color: #ffc900;color: black;font-weight: 300;padding: 2px 6px;border-radius: 3px;">
+                                        {{request.attributes.status}}
+                                    </span>
+                                </p>
+                            </h2>
 
-                    <h2 class="bold">
-                        <span>{{request.attributes.invitee_name}}</span>
-                    </h2>
-                    <p>{{request.attributes.created_at | momentTimeAgo}}</p>
+                        </div>
+                    </div>
+
+
                 </a>
             </div>
 

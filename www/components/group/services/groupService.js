@@ -102,5 +102,19 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
         };
         return utilityService.makeHTTPRequest(req, deferred);
     };
+    self.submitPost= function (postData,groupId) {
+
+        var deferred = $q.defer();
+        var req = {
+            url:HttpRoutes.createGroup+groupId+"/posts",
+            method: HttpRequestType.POST,
+            data:postData,
+            headers: {
+                'Authorization': 'Token ' + $rootScope.auth_token,
+                'Accept': 'application/json'
+            }
+        };
+        return utilityService.makeHTTPRequest(req, deferred);
+    };
     return self;
 });
