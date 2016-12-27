@@ -301,7 +301,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.groupPendingInvites', {
                  url: '/groupPendingInvites',
-                 params:{name:"",id:1,data:{}},
+                 params:{name:"",id:1,data:[]},
                  views: {
                      'mainContent': {
                          templateUrl: 'components/group/views/groupPendingInvites.html',
@@ -319,7 +319,17 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                       }
                   }
               })
-           .state('app.manageSetting', {
+              .state('app.inviteGroupMember', {
+                   url: '/inviteGroupMember',
+                   params:{groupID:1,prevStateData:{}},
+                   views: {
+                       'mainContent': {
+                           templateUrl: 'components/group/views/inviteGroupMember.html',
+                           controller: 'InviteGroupMemberCtrl'
+                       }
+                   }
+               })
+               .state('app.manageSetting', {
                 url: '/manageSetting',
                 views: {
                     'mainContent': {
