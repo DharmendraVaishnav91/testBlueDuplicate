@@ -25,6 +25,8 @@ group.controller('GroupDetailsCtrl', function (groupService, $stateParams, $stat
     $scope.createPost = function () {
         groupService.submitPost($scope.post, $rootScope.groupId).then(function (response) {
             console.log("Submit created post by user");
+            fetchPost();
+            $scope.createPostView = !$scope.createPostView;
         }).catch(function (error) {
             console.log("Error occurred while creating post");
         })
@@ -33,14 +35,18 @@ group.controller('GroupDetailsCtrl', function (groupService, $stateParams, $stat
     $scope.showCreatePostView = function () {
         $scope.createPostView = !$scope.createPostView;
     };
-    groupService.fetchGroupPosts($rootScope.groupId).then(function (response) {
-        console.log("Group detail");
-        console.log(response);
-        $scope.postData = response.data;
-    }).catch(function (error) {
-        console.log("Error occurred in fetching group detail");
-        console.log(error);
-    });
+    var fetchPost=function () {
+        groupService.fetchGroupPosts($rootScope.groupId).then(function (response) {
+            console.log("Group detail");
+            console.log(response);
+            $scope.postData = response.data;
+        }).catch(function (error) {
+            console.log("Error occurred in fetching group detail");
+            console.log(error);
+        });
+    };
+    fetchPost();
+
 
     $scope.goToMembers = function (name, id, data) {
         $state.go("app.groupMembers", {name: name, id: id, data: data});
