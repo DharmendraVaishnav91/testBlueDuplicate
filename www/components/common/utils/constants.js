@@ -83,7 +83,6 @@ var HttpRoutes = {
     inviteOrgMember:apiUrl+"/gpr/v2/organizations/invite",
     updateOrg:apiUrl+"/gpr/v2/organizations/",
     createGroup:apiUrl+"/gpr/v2/groups/",
-    getGroupDetails:apiUrl+"/gpr/v2/groups/",
     fetchGroupJoinRequests:apiUrl+"/gpr/v2/groups/join_requests",
     processGroupInvites:apiUrl+"/gpr/v2/groups/",
     checkUser:apiUrl+"/gpr/v2/groups/search_user?username=",
