@@ -1,28 +1,31 @@
-<div class="ion-autocomplete-container {{viewModel.randomCssClass}} modal" style="display: none;">
-    <div class="bar bar-header item-input-inset">
-        <label class="item-input-wrapper">
-            <i class="icon ion-search placeholder-icon"></i>
+<div class="ion-autocomplete-container {{viewModel.randomCssClass}} modal blueno-bg" style="display: none;">
+    <div class="bar bar-header item-input-inset blue-bg">
+        <label class="item-input-wrapper" style="background-color:transparent;border-bottom:1px solid white; border-radius:0;">
+            <i class="icon ion-search placeholder-icon" style="color:white;font-size:20px;"></i>
             <input type="search" class="ion-autocomplete-search" ng-model="viewModel.searchQuery"
-                   ng-model-options="viewModel.ngModelOptions" placeholder="{{viewModel.placeholder}}"/>
+                   ng-model-options="viewModel.ngModelOptions" placeholder="{{viewModel.placeholder}}" style="color:white;"/>
         </label>
 
         <div class="ion-autocomplete-loading-icon" ng-if="viewModel.showLoadingIcon && viewModel.loadingIcon">
             <ion-spinner icon="{{viewModel.loadingIcon}}"></ion-spinner>
         </div>
-        <button class="ion-autocomplete-cancel button button-clear" ng-click="viewModel.cancelClick()" style="color:black;">
+        <button class="ion-autocomplete-cancel button button-clear" ng-click="viewModel.cancelClick()" style="color:white;">
             {{viewModel.cancelLabel}}
         </button>
     </div>
-    <div class="bar bar-subheader no-padding">
-      <ion-item class="item-divider" ng-if="viewModel.searchItems.length > 0" style="width: 100%;line-height: 26px;">{{'SELECT_COUNTRY' | translate}}
+    <!-- <div class="bar bar-subheader no-padding" style="background-color:transparent;">
+      <ion-item class="item-divider" style="width: 100%;line-height: 26px; background-color:transparent; color:white">{{'SELECT_COUNTRY' | translate}}
       </ion-item>
-    </div>
+    </div> -->
 
-    <ion-content class="has-header has-subheader">
-
-        <ion-item ng-repeat="item in viewModel.searchItems" item-height="55px" item-width="100%"
-                  ng-click="viewModel.selectItem(item)" class="item-text-wrap">
+    <ion-content class="has-header">
+        <div class="" ng-repeat="item in viewModel.searchItems">
+        <ion-item  item-height="55px" item-width="100%"
+                  ng-click="viewModel.selectItem(item)" class="item-text-wrap no-border"  style="padding:15px;color:white; background-color:transparent">
             {{viewModel.getItemValue(item, viewModel.itemViewValueKey)}}
         </ion-item>
+        <hr class="grey-hr-separator no-margin" style="width:100%">
+      </div>
     </ion-content>
 </div>
+<!-- ng-if="viewModel.searchItems.length > 0" -->

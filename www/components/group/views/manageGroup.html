@@ -1,0 +1,44 @@
+<ion-view view-title="{{'GROUPS' | translate}}">
+
+    <ion-content scroll="true" class="blueno-bg-full">
+
+        <div class="list">
+            <div class="" ng-repeat="group in ::groupDetails">
+                <div class="list card" style="margin-bottom:20px;">
+                    <div class="item item-thumbnail-left" style="min-height: 92px;" ng-click="showGroupDetail(group)">
+                        <img ng-src="{{group.attributes.picture?group.attributes.picture.image.url:defaultAvatar}}"
+                             style="top:5px; left:5px;">
+                        <h2 class="bold">{{::group.attributes.name}}</h2>
+                        <p>{{group.attributes.public?"Public":"Private"}}</p>
+                        <p>{{group.attributes.members.length}} Members</p>
+                    </div>
+                    <div class="item " ng-if="group.attributes.description!=null"
+                         style="padding:8px;white-space:normal !important;border-bottom:none;">
+                        <span class="" style="color: black;font-size: 14px;" ng-if="group.expand">{{::group.attributes.description}}
+                        </span>
+                        <span class="" style="color: black;font-size: 14px;" ng-if="!group.expand">{{::group.attributes.description | limitTo:35}}
+                        </span>
+                    </div>
+                    <div class="" ng-if="group.attributes.description.length > 35 && !group.expand">
+                        <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(group)">More</a>
+                    </div>
+                    <div class="" ng-if="group.expand && group.attributes.description.length > 35">
+                        <a style="float:right;padding-right:5px;" ng-click="showMoreDescription(group)">Less</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========================================== -->
+        <div class="row no-data-alert" ng-if="groupDetails.length==0||!groupDetails">
+            <div class="col col-center text-center">
+                <div class="no-data-icon">
+                    <i class="icon ion-briefcase"></i>
+                </div>
+                <div class="no-data-text">
+                    {{'NO_GROUPS' | translate}}
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

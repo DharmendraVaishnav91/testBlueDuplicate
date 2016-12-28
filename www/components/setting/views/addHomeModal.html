@@ -47,6 +47,7 @@
                         </option>
                     </select> -->
                     <input ion-autocomplete type="text"
+                           template-url="components/menu/views/autoCompleteDrop.html"
                            readonly="readonly"
                            component-id="component12"
                            select-items-label="{{'SELECT_COUNTRY' | translate}}"
@@ -58,7 +59,7 @@
                            max-selected-items="1"
                            cancel-label="{{'CANCEL' | translate }}"
                            style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
-                           placeholder="{{'SEARCH' | translate }}"
+                           placeholder="{{'SEARCH_COUNTRY' | translate }}"
                            items-clicked-method="changeSubdivision(newHome.country.CountryCode)"
                        />
                 </label>
@@ -72,8 +73,8 @@
                         </option>
                     </select> -->
                     <input ion-autocomplete type="text"
+                           template-url="components/menu/views/autoCompleteDrop.html"
                            readonly="readonly"
-
                            autocomplete="off"
                            component-id="component13"
                            select-items-label="{{'SELECT_STATE' | translate}}"
@@ -84,7 +85,7 @@
                            max-selected-items="1"
                            cancel-label="{{'CANCEL' | translate }}"
                            style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
-                           placeholder="{{'SEARCH' | translate }}"
+                           placeholder="{{'SEARCH_STATE' | translate }}"
                        />
                 </label>
                 </label>

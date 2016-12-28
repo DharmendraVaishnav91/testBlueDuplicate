@@ -1,0 +1,33 @@
+<ion-view view-title="{{'ORGANIZATION' | translate}}">
+
+    <ion-content scroll="true" class="blueno-bg-full">
+        <div class="list no-padding" style="width:100%;">
+            <div class="item no-padding" ng-repeat="invitation in  detailsData.relationships.invites.data">
+                <div class="row">
+                    <div class="col no-padding">
+                        <span>{{invitation.user_firstname}}&nbsp;{{invitation.user_lastname}}</span>
+                        <span class="  float-right" ng-class="{'pending-span-label':invitation.status=='Invited','success-span-label':invitation.status=='Accepted'}">{{invitation.status}}</span>
+                    </div>
+                </div>
+                <div class="row " style="margin-top: 3px;">
+                    <div class="col no-padding">
+                        <span>{{invitation.user_phone}}</span>
+                        <span class="float-right">{{invitation.created_at | date:'mediumDate'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class= "row no-data-alert" ng-if="detailsData.relationships.invites.data.length==0">
+            <div class="col col-center text-center">
+                <div class="no-data-icon">
+                    <i class="icon ion-briefcase"></i>
+                </div>
+                <div class="no-data-text">
+                    {{'NO_INVITED_MEMBERS' | translate}}
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>
+

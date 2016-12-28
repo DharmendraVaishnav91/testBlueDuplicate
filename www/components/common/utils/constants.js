@@ -2,8 +2,8 @@
  * Created by dharmendra on 16/8/16.
  */
 //var apiUrl="https://bnproduction.herokuapp.com";
-var apiUrl="https://bnstaging.herokuapp.com";
-//var apiUrl= "https://blue-dev.herokuapp.com";
+// var apiUrl="https://bnstaging.herokuapp.com";
+ var apiUrl= "https://blue-dev.herokuapp.com";
 var HttpRequestType = {
     GET: 'GET',
     POST: 'POST',
@@ -71,7 +71,22 @@ var HttpRoutes = {
     fetchWorkPlaces:apiUrl+"/gpr/v1/assets/work_places",
     workTypes:apiUrl+"/gpr/v2/work_types",
     thingTypes:apiUrl+"/gpr/v2/thing_types",
+    resetPass:apiUrl+"/gpr/v2/reset_password/",
     groupTypes:apiUrl+"/gpr/v2/group_types",
-    resetPass:apiUrl+"/gpr/v2/reset_password/"
+    registerOrg:apiUrl+"/gpr/v2/organizations/",
+    fetchOrgInfo:apiUrl+"/gpr/v2/organizations/1",
+
+    fetchOrgInvites :apiUrl+"/gpr/v2/users/my_organization_invites",
+    acceptOrgInvite:apiUrl+"/gpr/v2/organizations/accept/",
+    rejectOrgInvite:apiUrl+"/gpr/v2/organizations/reject/",
+    fetchGroupInvites:apiUrl+"/gpr/v2/groups/myinvites",
+    inviteOrgMember:apiUrl+"/gpr/v2/organizations/invite",
+    updateOrg:apiUrl+"/gpr/v2/organizations/",
+    createGroup:apiUrl+"/gpr/v2/groups/",
+    getGroupDetails:apiUrl+"/gpr/v2/groups/",
+    fetchGroupJoinRequests:apiUrl+"/gpr/v2/groups/join_requests",
+    processGroupInvites:apiUrl+"/gpr/v2/groups/",
+    checkUser:apiUrl+"/gpr/v2/groups/search_user?username=",
+    promote_member:apiUrl+"/gpr/v1/groups/promote_member"
 
 };

@@ -1,0 +1,78 @@
+<ion-view cache-view="false" view-title="{{'INVITE_MEMBER' | translate}}">
+    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
+    </ion-nav-bar>
+    <!--<ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;">-->
+        <!--<button ng-click="hideOrgMemberList()" style="color:white" class="button back-button buttons  button-clear header-item">-->
+            <!--<i class="icon ion-android-arrow-back"></i>-->
+             <!--<span class="back-text"></span>-->
+        <!--</button>-->
+        <!--<h1 class="title" style=" max-width:none;text-align: center !important;">-->
+            <!--Invite people to organization-->
+        <!--</h1>-->
+
+    <!--</ion-header-bar>-->
+    <form name="inviteMemberForm">
+    <ion-content class=" blueno-bg-full">
+
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'FIRST_NAME' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+               <input class="edit-input-txt" ng-model="inviteUser.firstName" name="firstName" ng-required="true"
+                      style="font-size:18px;" type="text" />
+
+               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
+           </label>
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'LAST_NAME' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+               <input class="edit-input-txt" ng-model="inviteUser.lastName" name="lastName" ng-required="true"
+                      style="font-size:18px;" type="text" />
+
+               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
+           </label>
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input ion-autocomplete type="text"
+                       template-url="components/menu/views/autoCompleteDrop.html"
+                       readonly="readonly"
+                       class="ion-autocomplete"
+                       autocomplete="off"
+                       item-method-value-key="countryCodeList"
+                       items-method="getSearchedCountryList(query)"
+                       item-view-value-key="CountryName"
+                       ng-model="inviteUser.phoneCode"
+                       max-selected-items="1"
+                       cancel-label="{{'CANCEL' | translate }}"
+                       items-clicked-method="clickedMethod(callback)"
+                       style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                       placeholder="{{'SEARCH_COUNTRY' | translate }}"
+                   />
+           </label>
+           <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'MOBILE' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+               <input class="edit-input-txt" ng-model="inviteUser.mobile" name="mobile" ng-required="true"
+                      style="font-size:18px;" type="number" ng-minlength="9"/>
+               <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.password.$error.minlength">{{'PASSWORD_MIN_LENGTH'| translate}}</span>-->
+           </label>
+
+
+    </ion-content>
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border"  >
+        <div  class="button-bar">
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
+                {{'BACK' | translate }}
+            </button>
+            &nbsp;
+            <button  ng-disabled="inviteMemberForm.$invalid" class="button  button-light button-clear bold" ng-click="inviteOrgMember()">
+                {{'ADD' | translate }}
+            </button>
+        </div>
+    </ion-footer-bar>
+    </form>
+</ion-view>

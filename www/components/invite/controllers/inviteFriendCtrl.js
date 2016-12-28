@@ -10,11 +10,14 @@ userSetting.controller('InviteFriendCtrl', function($filter,loginService,$scope,
     $scope.backToInvite= function () {
       $state.go('app.invite');
     };
+    $scope.getSearchedCountryList=function(query){
+      return $filter('filter')($scope.countryCodeList,query);
+    } ;
     $scope.inviteFriend = function () {
         console.log("Friend details");
 
         var inviteFriendData={
-            friend:parseInt($scope.friend.friendCountry+$scope.friend.friendMobile)
+            friend:parseInt($scope.friend.friendCountry.CountryPhoneCode+$scope.friend.friendMobile)
         } ;
         console.log(inviteFriendData);
         utilityService.sendAppInviteToFriend(inviteFriendData).then(function () {

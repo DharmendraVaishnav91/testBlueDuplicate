@@ -1,0 +1,22 @@
+<ion-view view-title="{{name}} - Members" hide-back-button="false">
+    <ion-content scroll="true" class="blueno-bg-full">
+      <div class="list card no-margin" style="margin-bottom:20px; margin-top:3px !important;">
+        <div class="" ng-repeat="person in data">
+          <div class="item no-margin no-padding">
+            <a class="item item-avatar" href="">
+              <img ng-src="{{person.invitee_picture!=null?person.invitee_picture:defaultAvatar}}">
+              <h2>{{person.invitee_name}}</h2>
+              <p>{{person.role}}</p>
+              <button class="button button-positive button-small" style="font-size:14px; line-height:14px; min-height:25px;" ng-click="promoteToAdmin(person)">
+                Promote To Admin
+              </button>
+            </a>
+
+          </div>
+          <p class="no-margin" ng-if="person != data[data.length - 1]">
+          </p>
+          <!-- <hr class="grey-hr-separator" ng-if="person != groupDetails.attributes.members[groupDetails.attributes.members.length - 1]"> -->
+        </div>
+      </div>
+    </ion-content>
+</ion-view>

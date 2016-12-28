@@ -10,11 +10,27 @@
                     <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%" ng-model="friend.friendCountry" ng-required="true">
+                    <!-- <select style="width: 100%" ng-model="friend.friendCountry" ng-required="true">
                         <option selected value="" disabled>{{'SELECT_COUNTRY' | translate}}</option>
                         <option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}
                         </option>
-                    </select>
+                    </select> -->
+                    <input ion-autocomplete type="text"
+                           template-url="components/menu/views/autoCompleteDrop.html"
+                           readonly="readonly"
+                           ng-required="true"
+                           class="ion-autocomplete"
+                           autocomplete="off"
+                           item-method-value-key="countryCodeList"
+                           items-method="getSearchedCountryList(query)"
+                           item-view-value-key="CountryName"
+                           ng-model="friend.friendCountry"
+                           max-selected-items="1"
+                           cancel-label="{{'CANCEL' | translate }}"
+                           items-clicked-method="clickedMethod(callback)"
+                           style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                           placeholder="{{'SEARCH_COUNTRY' | translate }}"
+                       />
                 </label>
 
                 <label class="item item-input item-stacked-label no-border label-padding">

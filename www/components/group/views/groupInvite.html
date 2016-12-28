@@ -1,0 +1,42 @@
+<ion-view view-title="{{'GROUPS' | translate}}">
+    <ion-content scroll="true" class="blueno-bg-full">
+        <div class="list" style="width:100%;">
+            <div class="list card" ng-repeat="request in groupRequests" style="margin:5px">
+                <a class="item item-avatar" style="padding-bottom:0px;">
+                    <img ng-src="{{request.attributes.inviter_picture}}">
+
+                    <h2 class="bold">
+                        <span>{{request.attributes.inviter_name}}</span>
+
+                    </h2>
+
+                    <p style="color:#13171d" class="wrap-content">invited you to join <span class="positive bold">{{request.attributes.group_name}}</span> group.</p>
+
+                    <p>{{request.attributes.created_at | momentTimeAgo}}</p>
+                </a>
+
+                <div class="item no-border" style="padding: 0px 20px 5px 0px;text-align: right;">
+                    <div class="button button-dark button-small bold" ng-click="processRequest(request,'Reject')">
+                        Deny
+                    </div>
+                    <div class="button button-balanced button-small bold" ng-click="processRequest(request,'Accept')">
+                        Accept
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row no-data-alert" ng-if="groupRequests.length==0">
+            <div class="col col-center text-center">
+                <div class="no-data-icon">
+                    <i class="icon ion-briefcase"></i>
+                </div>
+                <div class="no-data-text">
+                    {{'NO_PENDING_REQUEST' | translate}}
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

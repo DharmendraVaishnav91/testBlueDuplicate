@@ -21,6 +21,9 @@
     <!--<link href="lib/ion-autocomplete/css/ion-autocomplete.css" rel="stylesheet">-->
     <script src="assets/js/ion-autocomplete.js"></script>
     <link href="assets/css/ion-autocomplete.css" rel="stylesheet">
+    <script src="assets/js/ion-action-button.js"></script>
+    <link href="assets/css/ion-action-button.css" rel="stylesheet">
+
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
@@ -34,6 +37,7 @@
     <link href="lib/leaflet/css/leaflet.css"  rel="stylesheet">
     <link href="lib/leaflet.markercluster/css/MarkerCluster.css"  rel="stylesheet">
     <link href="lib/leaflet.markercluster/css/MarkerCluster.Default.css"  rel="stylesheet">
+    <script src="lib/moment/js/moment.js"></script>
     <script src="app.js"></script>
 
     <script src="components/menu/controllers/menuController.js"></script>
@@ -72,7 +76,8 @@
     <script src="components/setting/controllers/workPlacesCtrl.js"></script>
     <script src="components/setting/controllers/workEquipmentsCtrl.js"></script>
     <script src="components/setting/controllers/manageFamilyCtrl.js"></script>
-    <script src="components/setting/controllers/manageGroupsCtrl.js"></script>
+    <script src="components/setting/controllers/createOrgCtrl.js"></script>
+    <script src="components/setting/controllers/organizationCtrl.js"></script>
 
     <script src="components/invite/controllers/inviteCtrl.js"></script>
     <script src="components/invite/controllers/inviteFriendCtrl.js"></script>
@@ -80,10 +85,30 @@
     <script src="components/invite/controllers/groupInvitationsCtrl.js"></script>
     <script src="components/invite/services/inviteService.js"></script>
 
+     <script src="components/organization/controllers/orgTabCtrl.js"></script>
+     <script src="components/organization/controllers/orgDetailCtrl.js"></script>
+     <script src="components/organization/controllers/orgInvitationsCtrl.js"></script>
+     <script src="components/organization/controllers/orgMembersCtrl.js"></script>
+     <script src="components/organization/controllers/inviteOrgMemberCtrl.js"></script>
 
+     <script src="components/group/controllers/groupCtrl.js"></script>
+     <script src="components/group/controllers/groupTabCtrl.js"></script>
+     <script src="components/group/controllers/manageGroupCtrl.js"></script>
+     <script src="components/group/controllers/groupInviteCtrl.js"></script>
+     <script src="components/group/controllers/groupJoinRequestCtrl.js"></script>
+     <script src="components/group/services/groupService.js"></script>
+     <script src="components/group/controllers/groupDetailsCtrl.js"></script>
+     <script src="components/group/controllers/groupPendingInvitesCtrl.js"></script>
+     <script src="components/group/controllers/groupMembersCtrl.js"></script>
+     <script src="components/group/controllers/groupRequestsCtrl.js"></script>
+     <script src="components/organization/controllers/orgInviteCtrl.js"></script>
+     <script src="components/group/controllers/inviteGroupMemberCtrl.js"></script>
     <!--Utility -->
     <script src="components/common/services/utilityServices.js"></script>
     <script src="components/common/services/eventService.js"></script>
+
+    <!-- org -->
+    <script src="components/organization/services/orgService.js"></script>
 </head>
 
 <body ng-app="app">

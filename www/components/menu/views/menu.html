@@ -10,18 +10,17 @@
         </ion-nav-bar>
         <ion-nav-view name="mainContent"></ion-nav-view>
     </ion-side-menu-content>
-    <ion-side-menu side="left">
-        <div class="item item-avatar" style="background-color: #4E5C6E;height:81px;">
+    <ion-side-menu side="left" class="menu-bg">
+        <div class="item item-avatar " style="height:81px;background: transparent">
                 <img  ng-src="{{profileUrl}}" style="max-width:50px;max-height: 50px">
-                <h2 class="title light" style="font-size: larger;font-weight: bold">{{userInfo.person.givenname1+" "+userInfo.person.familyname1}}</h2>
-                <p style="padding-left:5px;color: rgba(126, 192, 238, 1);font-size: 15px;">{{::userInfo.person.actor_bluenumber }}</p>
+                <h2 class="title light" style="font-size: larger;">{{userInfo.person.givenname1+" "+userInfo.person.familyname1}}</h2>
+                <p style="padding-left: 2px;color: rgba(126, 192, 238, 1);font-size: 15px;margin-top: 5px;">{{::userInfo.person.actor_bluenumber }}</p>
         </div>
         <!--<ion-header-bar class="bar-stable">-->
           <!-- -->
         <!--</ion-header-bar>-->
-        <ion-content style="background-color: #4E5C6E;top:80px">
-            <ion-list>
-                <ion-item menu-close ng-click="openDashboard()" style="padding:6px;background-color: transparent;color:white">
+        <ion-content  style="top:80px">
+                <ion-item class="no-border" menu-close ng-click="openDashboard()" style="padding:6px;background-color: transparent;color:white">
                     <div class="row no-padding no-margin">
                         <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
                             <span class="ion-android-globe" style="font-size: 30px;;"></span>
@@ -31,7 +30,8 @@
                         </div>
                     </div>
                 </ion-item>
-                <ion-item menu-close ng-click="openSetting()" style="padding:6px;background-color: transparent;color:white">
+                <hr class="grey-hr-menu-separator">
+                <ion-item class="no-border" menu-close ng-click="openSetting()" style="padding:6px;background-color: transparent;color:white">
                     <div class="row no-padding no-margin">
                         <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
                             <span class="ion-person" style="font-size: 30px;;"></span>
@@ -41,7 +41,8 @@
                         </div>
                     </div>
                 </ion-item>
-                <ion-item menu-close ng-click="goToInvite()" style="padding:6px;background-color: transparent;color:white">
+            <hr class="grey-hr-menu-separator">
+                <ion-item class="no-border" menu-close ng-click="goToInvite()" style="padding:6px;background-color: transparent;color:white">
                     <div class="row no-padding no-margin">
                         <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
                             <span class="ion-person-add" style="font-size: 30px;;"></span>
@@ -51,6 +52,7 @@
                         </div>
                     </div>
                 </ion-item>
+            <hr class="grey-hr-menu-separator">
                 <!--<ion-item menu-close ng-click="goToInvitations()" style="padding:6px;background-color: transparent;color:white">-->
                     <!--<div class="row no-padding no-margin">-->
                         <!--<div class="col col-10  no-margin" style="padding: 0 0 0 10px">-->
@@ -61,7 +63,30 @@
                         <!--</div>-->
                     <!--</div>-->
                 <!--</ion-item>-->
-                <ion-item menu-close ng-click="goToSetting()" style="padding:6px;background-color: transparent;color:white">
+                <ion-item class="no-border" menu-close ng-click="goToOrganization()"  style="padding:6px;background-color: transparent;color:white">
+                    <div class="row no-padding no-margin">
+                        <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
+                            <span class="ion-nuclear" style="font-size: 30px;;"></span>
+                        </div>
+                        <div class="col no-padding col-center" style="margin-left:30px;font-size: large">
+                            {{'ORGANIZATION' | translate }}
+                        </div>
+                    </div>
+                </ion-item>
+            <hr class="grey-hr-menu-separator">
+            <!-- group -->
+            <ion-item class="no-border" menu-close ng-click="goToGroup()"  style="padding:6px;background-color: transparent;color:white">
+                <div class="row no-padding no-margin">
+                    <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
+                        <span class="ion-person-stalker" style="font-size: 30px;;"></span>
+                    </div>
+                    <div class="col no-padding col-center" style="margin-left:30px;font-size: large">
+                        {{'GROUPS' | translate }}
+                    </div>
+                </div>
+            </ion-item>
+        <hr class="grey-hr-menu-separator">
+                <ion-item class="no-border" menu-close ng-click="goToSetting()" style="padding:6px;background-color: transparent;color:white">
                     <div class="row no-padding no-margin">
                         <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
                             <span class="ion-gear-b" style="font-size: 30px;;"></span>
@@ -71,7 +96,8 @@
                         </div>
                     </div>
                 </ion-item>
-                <ion-item menu-close ng-click="showAbout()" style="padding:6px;background-color: transparent;color:white">
+            <hr class="grey-hr-menu-separator">
+                <ion-item class="no-border" menu-close ng-click="showAbout()" style="padding:6px;background-color: transparent;color:white">
                     <div class="row no-padding no-margin">
                         <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
                             <span class="ion-information-circled" style="font-size: 30px;;"></span>
@@ -81,7 +107,8 @@
                         </div>
                     </div>
                 </ion-item>
-                <ion-item menu-close ng-click="logout()" style="padding:6px;background-color: transparent;color:white">
+            <hr class="grey-hr-menu-separator">
+                <ion-item class="no-border" menu-close ng-click="logout()" style="padding:6px;background-color: transparent;color:white">
                     <div class="row no-padding no-margin">
                         <div class="col col-10  no-margin" style="padding: 0 0 0 10px">
                             <span class="ion-log-out" style="font-size: 30px;;"></span>
