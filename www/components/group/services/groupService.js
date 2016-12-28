@@ -4,7 +4,7 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
     self.fetchGroupsDetail = function () {
         var deferred = $q.defer();
         var req = {
-            url: HttpRoutes.getGroupDetails,
+            url: HttpRoutes.createGroup,
             method: HttpRequestType.GET,
             headers: {
                 'Authorization': 'Token ' + $rootScope.auth_token,
@@ -14,6 +14,18 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
         return utilityService.makeHTTPRequest(req, deferred);
     };
 
+    self.fetchGroupDetail = function (groupId) {
+        var deferred = $q.defer();
+        var req = {
+            url: HttpRoutes.createGroup+groupId,
+            method: HttpRequestType.GET,
+            headers: {
+                'Authorization': 'Token ' + $rootScope.auth_token,
+                'Accept': 'application/json'
+            }
+        };
+        return utilityService.makeHTTPRequest(req, deferred);
+    };
     self.createGroup = function (data) {
         var deferred = $q.defer();
         var req = {
@@ -89,7 +101,7 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
       }
       return utilityService.makeHTTPRequest(req, deferred);
     };
-    self.fetchGroupDetail= function (group_id) {
+    self.fetchGroupPosts= function (group_id) {
 
         var deferred = $q.defer();
         var req = {

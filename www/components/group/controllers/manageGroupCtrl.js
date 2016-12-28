@@ -25,6 +25,7 @@ group.controller('ManageGroupCtrl', function (groupService, $state, $actionButto
 
     $scope.showGroupDetail = function (group) {
         console.log("Show group detail");
-        $state.go('app.groupDetails', {group: group});
+        $rootScope.groupId=group.id;
+        $state.go('app.groupDetails');
     };
 });
