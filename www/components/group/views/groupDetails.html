@@ -34,7 +34,7 @@
                 <h2 class=" positive" style="margin-left:30px;font-size: 15px;height: 23px"
                     ng-click="goToGrpInvites(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.pending_invitations.data)">
                     <i class="fa fa-user-plus"></i>
-                    <span>{{groupDetails.relationships.group_invites.data.length}} Invites</span>
+                    <span>{{groupDetails.attributes.pending_invitations.data.length}} Invites</span>
                 </h2>
                 <h2 class="" ng-if="!groupDetails.attributes.public"
                     ng-click="goToPendingReq(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.requests!=null?groupDetails.attributes.requests.data:null)"
