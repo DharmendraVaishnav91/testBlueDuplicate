@@ -170,6 +170,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.createOrg', {
                 url: '/createOrg',
+                cache:false,
                 views: {
                     'mainContent': {
                         templateUrl: 'components/setting/views/createOrg.html',
