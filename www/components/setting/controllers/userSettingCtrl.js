@@ -148,7 +148,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
                 console.log(error);
             });
             //$scope.newHome.stateId=angular.copy($scope.home.SubdivisionID);
-
+            console.log("Data Check : \n",$scope.home);
             $scope.newHome.latitude=angular.copy($scope.home.Latitude);
             $scope.newHome.longitude=angular.copy($scope.home.Longitude);
             $scope.newHome.postalcode=angular.copy($scope.home.PostalCode);
@@ -175,7 +175,7 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
         data.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
         data.name = 'Home';
         console.log("Add home data");
-        console.log($scope.home);
+        console.log($scope.data);
 
         signUpService.saveUserHome(data).then(function (response) {
             console.log("User created successfully");

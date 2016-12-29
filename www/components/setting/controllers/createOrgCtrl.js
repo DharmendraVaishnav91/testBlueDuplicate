@@ -169,11 +169,12 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
             $scope.loc.country = $filter('getById')($scope.countryCodeList, "CountryCode", $rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
         } else {
-            $scope.loc.streetAdd = $scope.loc.streetAdd != null ? $scope.loc.streetAdd : "";
-            $scope.loc.city = $scope.loc.city != null ? $scope.loc.city : "";
-            $scope.loc.postalcode = $scope.loc.postalcode != null ? $scope.loc.postalcode : "";
-            $scope.loc.state = $scope.loc.state != null ? $scope.loc.state : "";
-            $scope.loc.country = $scope.loc.country != null ? $scope.loc.country : "";
+          $scope.updateLocationFieldsWhileEdit();
+            // $scope.loc.streetAdd = $scope.loc.streetAdd != null ? $scope.loc.streetAdd : "";
+            // $scope.loc.city = $scope.loc.city != null ? $scope.loc.city : "";
+            // $scope.loc.postalcode = $scope.loc.postalcode != null ? $scope.loc.postalcode : "";
+            // $scope.loc.state = $scope.loc.state != null ? $scope.loc.state : "";
+            // $scope.loc.country = $scope.loc.country != null ? $scope.loc.country : "";
         }
     };
 
