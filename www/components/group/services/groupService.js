@@ -143,7 +143,7 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
     self.inviteGroupMembers = function(data,gid){
       var deferred = $q.defer();
       var req = {
-          url:HttpRoutes.getGroupDetails+gid+"/group_invites",
+          url:HttpRoutes.createGroup+gid+"/group_invites",
           method: HttpRequestType.POST,
           data: data,
           headers: {

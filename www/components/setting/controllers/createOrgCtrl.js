@@ -25,17 +25,17 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
 
     $scope.updateLocationFieldsWhileEdit = function () {
         $scope.enableAddressFields = true;
-        if ($scope.orgData.included[1].attributes != null) {
+        if ($scope.orgData.data.attributes.location != null) {
             $scope.loc.name = "manual";
-            $scope.loc.streetAdd = angular.copy($scope.orgData.included[1].attributes.address);
-            $scope.loc.city = angular.copy($scope.orgData.included[1].attributes.city);
-            $scope.loc.postalcode = angular.copy($scope.orgData.included[1].attributes.postalcode);
-            console.log($scope.orgData.included[1].attributes);
+            $scope.loc.streetAdd = angular.copy($scope.orgData.data.attributes.location.StreetAddressOne);
+            $scope.loc.city = angular.copy($scope.orgData.data.attributes.location.Settlement);
+            $scope.loc.postalcode = angular.copy($scope.orgData.data.attributes.location.postalcode);
+            console.log($scope.orgData.data.attributes.location);
             // $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-            signUpService.fetchStates($scope.orgData.included[1].attributes.country_code).then(function (response) {
+            signUpService.fetchStates($scope.orgData.data.attributes.location.CountryCode).then(function (response) {
                 $scope.subDivList = response;
 
-                $scope.loc.state = $filter('getById')($scope.subDivList, "SubdivisionID", $scope.orgData.included[1].attributes.subdivision_code);
+                $scope.loc.state = $filter('getById')($scope.subDivList, "SubdivisionID", $scope.orgData.data.attributes.location.SubdivisionID);
             }).catch(function (error) {
                 console.log(error);
             });
@@ -44,7 +44,7 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
             //$scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
             console.log($scope.countryCodeList);
 
-            $scope.loc.country = $filter('getById')($scope.countryCodeList, "CountryCode", $scope.orgData.included[1].attributes.country_code);
+            $scope.loc.country = $filter('getById')($scope.countryCodeList, "CountryCode", $scope.orgData.data.attributes.location.CountryCode);
         } else {
             $scope.enableAddressFields = false;
         }
@@ -173,11 +173,12 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
             $scope.loc.country = $filter('getById')($scope.countryCodeList, "CountryCode", $rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
 
         } else {
-            $scope.loc.streetAdd = $scope.loc.streetAdd != null ? $scope.loc.streetAdd : "";
-            $scope.loc.city = $scope.loc.city != null ? $scope.loc.city : "";
-            $scope.loc.postalcode = $scope.loc.postalcode != null ? $scope.loc.postalcode : "";
-            $scope.loc.state = $scope.loc.state != null ? $scope.loc.state : "";
-            $scope.loc.country = $scope.loc.country != null ? $scope.loc.country : "";
+          $scope.updateLocationFieldsWhileEdit();
+            // $scope.loc.streetAdd = $scope.loc.streetAdd != null ? $scope.loc.streetAdd : "";
+            // $scope.loc.city = $scope.loc.city != null ? $scope.loc.city : "";
+            // $scope.loc.postalcode = $scope.loc.postalcode != null ? $scope.loc.postalcode : "";
+            // $scope.loc.state = $scope.loc.state != null ? $scope.loc.state : "";
+            // $scope.loc.country = $scope.loc.country != null ? $scope.loc.country : "";
         }
     };
 

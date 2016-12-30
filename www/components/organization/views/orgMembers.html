@@ -7,20 +7,16 @@
             <i class="ion-ios-close-empty"></i>
         </label>
         <div class="list" style="width:100%;overflow: scroll;padding:0px;height: 100%">
-            <a class="item item-avatar" ng-repeat="member in detailsData.relationships.admins.data | filter:searchMember" >
-                <img ng-src="http://lorempixel.com/30/30/people/{{$index}}">
-
+            <a class="item item-avatar" ng-repeat="member in detailsData.attributes.admins | filter:searchMember" >
+                <img ng-src="{{member.picture}}">
                 <h2 class="bold">
                     <span>{{member.name}}</span>
-
                 </h2>
-
-
                 <p style="color:#13171d">{{member.occupation}}</p>
                 <p style="color:#387ef5 !important">Admin</p>
             </a>
 
-            <a class="item item-avatar" ng-repeat="member in detailsData.relationships.members.data | filter:searchMember">
+            <a class="item item-avatar" ng-repeat="member in detailsData.attributes.members | filter:searchMember">
                 <img ng-src="http://lorempixel.com/30/30/people/{{$index}}">
 
                 <h2 class="bold">{{member.given_name_primary}}&nbsp;{{member.family_name_primary}}</h2>
@@ -30,4 +26,3 @@
         </div>
     </ion-content>
 </ion-view>
-
