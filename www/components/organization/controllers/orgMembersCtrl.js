@@ -13,7 +13,7 @@ org.controller('OrganizationMembersCtrl', function ($scope,$actionButton,$ionicM
     $scope.searchMember="";
     var actionButton = $actionButton.create({
         mainAction: {
-            icon: 'ion-android-add',
+            icon: 'fa fa-plus',
             backgroundColor: '#4E5C6E',
             textColor: ' white',
             onClick: function() {

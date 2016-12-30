@@ -50,22 +50,25 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
         }
     };
 
+    var fillFormData=function () {
+        $scope.org = {
+
+            owner_name: angular.copy($scope.orgData.data.attributes.owner_name),
+            description1: angular.copy($scope.orgData.data.attributes.description),
+            identifier: angular.copy($scope.orgData.data.attributes.identifier),
+            identifier_type: angular.copy($scope.orgData.data.attributes.identifier_type),
+            name: angular.copy($scope.orgData.data.attributes.name),
+            organization_type: angular.copy($scope.orgData.data.attributes.organization_type),
+            emp_cnt: angular.copy($scope.orgData.data.attributes.number_of_employees),
+            ownership: angular.copy($scope.orgData.data.attributes.ownership),
+            website: angular.copy($scope.orgData.data.attributes.website),
+            fbPage: angular.copy($scope.orgData.data.attributes.facebook_page)
+        };
+    };
     if ($rootScope.orgDetail != null) {
         $scope.orgData = angular.copy($rootScope.orgDetail);
         $scope.orgImageUrl=$scope.orgData.data.relationships.picture.data?$scope.orgData.data.relationships.picture.data.image.profile_pic.url:null;
-        $scope.org = {
-
-            owner_name: $scope.orgData.data.attributes.owner_name,
-            description1: $scope.orgData.data.attributes.description,
-            identifier: $scope.orgData.data.attributes.identifier,
-            identifier_type: $scope.orgData.data.attributes.identifier_type,
-            name: $scope.orgData.data.attributes.name,
-            organization_type: $scope.orgData.data.attributes.organization_type,
-            emp_cnt: $scope.orgData.data.attributes.number_of_employees,
-            ownership: $scope.orgData.data.attributes.ownership,
-            website: $scope.orgData.data.attributes.website,
-            fbPage: $scope.orgData.data.attributes.facebook_page
-        };
+       fillFormData();
       //  $scope.image = $scope.orgData.data.picture != null ? $scope.orgData.data.picture.data : "";
         utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
             $scope.countryCodeList = response;
@@ -92,6 +95,7 @@ menu.controller('CreateOrgCtrl', function ($scope, $filter, $state, $timeout, us
     $scope.hideCreateOrg = function (orgExist) {
         if(orgExist){
           $state.go('app.organization.detail');
+            // $scope.org = {};
         }
         else {
           $state.go('app.dashboard');

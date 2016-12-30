@@ -24,30 +24,30 @@
         <div class="list card no-margin" style="margin-bottom:3px; ">
             <div class="item item-thumbnail-left" style="padding-bottom: 20px">
                 <img ng-src="{{groupDetails.attributes.picture?groupDetails.attributes.picture.image.url:defaultAvatar}}"
-                     style="top:5px; left:5px; max-width:96px; max-height:96px;border-radius: 50%">
+                     style="top:3px; left:5px; max-width:96px; max-height:96px;border-radius: 50%">
                 <h2 class=" positive" style="font-size: 15px; margin-left:30px;height: 23px"
                     ng-click="goToMembers(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.members)">
                     <i class="ion-android-people"></i>
 
-                    <span>{{groupDetails.attributes.members.length}}Members  </span>
+                    <span>&nbsp;{{groupDetails.attributes.members.length}}{{groupDetails.attributes.members.length<=1?' Member':' Members'}}</span>
                 </h2>
                 <h2 class=" positive" style="margin-left:30px;font-size: 15px;height: 23px"
                     ng-click="goToGrpInvites(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.pending_invitations.data)">
                     <i class="fa fa-user-plus"></i>
-                    <span>{{groupDetails.attributes.pending_invitations.data.length}} Invites</span>
+                    <span>&nbsp;{{groupDetails.attributes.pending_invitations.data.length}}{{groupDetails.attributes.pending_invitations.data.length<=1?' Invite':' Invites'}}</span>
                 </h2>
                 <h2 class="" ng-if="!groupDetails.attributes.public"
                     ng-click="goToPendingReq(groupDetails.attributes.name,groupDetails.id,groupDetails.attributes.requests!=null?groupDetails.attributes.requests.data:null)"
                     style="margin-left:30px;margin-top: 5px;color: rgba(191, 60, 60,.9);font-size: 15px;height: 23px">
                     <i class="ion-android-alert"></i>
-                    <span>{{groupDetails.attributes.requests!=null ?groupDetails.attributes.requests.data.length : "0"}}
-                    Pending Requests</span>
+                    <span>&nbsp;{{groupDetails.attributes.requests!=null ?groupDetails.attributes.requests.data.length : "0"}}
+                    &nbsp;&nbsp;Pending Requests</span>
                 </h2>
             </div>
         </div>
-        </div>
-        <div class="button button-balanced button-block" ng-if="!createPostView"
-             style="max-height: 30px !important;min-height: 20px !important;line-height: 30px;margin: 2px 2px 2px 2px;" ng-click="showCreatePostView()">
+
+        <div class="button  button-block" ng-if="!createPostView"
+             style="max-height: 30px !important;min-height: 20px !important;line-height: 28px; background-color: #6bce65;   margin: 7px 2px 8px 3px;" ng-click="showCreatePostView()">
             Create post
         </div>
         <div class="list card" ng-if="createPostView">

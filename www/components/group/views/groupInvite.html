@@ -1,7 +1,7 @@
 <ion-view view-title="{{'GROUPS' | translate}}">
     <ion-content scroll="true" class="blueno-bg-full">
         <div class="list" style="width:100%;">
-            <div class="list card" ng-repeat="request in groupRequests" style="margin:5px">
+            <div class="list card" ng-repeat="request in groupRequests | orderBy:'-attributes.created_at'" style="margin:5px">
                 <a class="item item-avatar" style="padding-bottom:0px;">
                     <img ng-src="{{request.attributes.inviter_picture}}">
 

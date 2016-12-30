@@ -193,9 +193,10 @@ userSetting.controller('WorkPlacesCtrl', function ($scope, $state, $ionicModal, 
         };
         console.log(work);
         if ($scope.work.crop) {
-            work.crop = $scope.work.crop;
+            work.crop = $scope.work.crop.H3Code;
             work.hectares = 0;
         }
+        work.name=$scope.work.name;
         works.push(work);
         var workData = {
             works: works

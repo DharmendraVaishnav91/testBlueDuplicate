@@ -3,9 +3,7 @@
     <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
     </ion-nav-bar>
     <form name="createOrgForm">
-        <ion-content scroll="true" class="has-footer blueno-bg-full">
-            <div class="list" style="width:100%;overflow: scroll;padding:0px"
-                 ng-style="{'height':(deviceHeight-96)+'px'}">
+        <ion-content  class="has-footer blueno-bg-full">
                 <div class="row">
                     <div class="col center ">
                         <img ng-src="{{orgImage!=null?orgImage:(orgImageUrl!=null?orgImageUrl:defaultImageURL)}}"
@@ -20,6 +18,7 @@
                         </div>
                     </div>
                 </div>
+                 <div class="list" style="width:100%;padding:0px" >
                 <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
                <span style="color:white;font-size: 20px;">
                    (<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span

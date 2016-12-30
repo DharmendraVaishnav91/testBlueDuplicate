@@ -97,7 +97,7 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
               group_membership:data
           };
       }else{
-          req.url=HttpRoutes.processGroupInvites+data.group_id+"/group_invites/"+data.group_invite_id+"/reject";
+          req.url=HttpRoutes.processGroupInvites+data.group_id+"/group_invites/"+data.group_invite_id;
       }
       return utilityService.makeHTTPRequest(req, deferred);
     };

@@ -28,7 +28,7 @@ group.controller('GroupPendingInvitesCtrl', function ($state,utilityService,grou
     }
     var actionButton = $actionButton.create({
         mainAction: {
-            icon: 'ion-plus-round',
+            icon: 'fa fa-plus',
             backgroundColor: '#4E5C6E',
             textColor: ' white',
             onClick: function() {

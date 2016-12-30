@@ -131,7 +131,8 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
              //asset_relationship:$scope.thing.equipRelationship,
              equipment_id:$scope.thing.equipType,
              asset_relationship:"Owner",
-             asset_name:$scope.thing.assetName
+             asset_name:$scope.thing.assetName,
+             hectares:100
          };
          //Equipment have location other than existing one
          //if($scope.thing.where=="manual"||$scope.thing.where=="current") {

@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state) {
+app.controller('DashboardCtrl', function ($scope,$filter, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state,$ionicPopup) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
     $scope.showFilter = false;
@@ -43,6 +43,30 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
             }
         }
     });
+    var myPopup="";
+    $scope.showFilterPopup=function () {
+         myPopup = $ionicPopup.show({
+            templateUrl: "components/dashboard/views/filterPopup.html",
+            scope: $scope
+            // buttons: [
+            //     {   text: "<b>Reset</b> ",
+            //         onTap: function(e) {
+            //             $scope.resetFilter();
+            //             e.stopPropagation();
+            //         }
+            //     },
+            //     {
+            //         text: "<b>Apply</b>",
+            //         type: 'lgt-blue-btn ',
+            //         onTap: function(e) {
+            //             $scope.applyFilter();
+            //             e.stopPropagation();
+            //         }
+            //     }
+            // ]
+        });
+    };
+
     var zoom=2;
     var defaultLat= 38.6280322;
     var defaultLng=26.2408987;
@@ -119,12 +143,18 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
      } ;
     $scope.showFilters = function () {
         actionButton.hide();
+
         fetchCropList();
         productListFetched=true;
         $scope.showFilter = !$scope.showFilter;
+        if($scope.showFilter){
+            $scope.showFilterPopup();
+        }else{
+        }
 
     };
     $scope.applyFilter= function () {
+
         var params="";
         if($scope.filter.gender){
             params+="gender="+$scope.filter.gender;
@@ -140,6 +170,8 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
         markers={};
         zoom=2;
         loadMap(params,defaultLat,defaultLng);
+        myPopup.close();
+        $scope.hideFilter();
 
     };
     $scope.showMeOnMap= function () {
@@ -152,6 +184,8 @@ app.controller('DashboardCtrl', function ($scope, $ionicModal, $timeout, leaflet
     };
     $scope.resetFilter= function () {
         var params="";
+        myPopup.close();
+        $scope.hideFilter();
         $scope.filter={};
         zoom=2;
         loadMap(params,defaultLat,defaultLng);

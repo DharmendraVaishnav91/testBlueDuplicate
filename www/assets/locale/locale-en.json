@@ -338,7 +338,6 @@
   "SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER":"Still didn't receive code?",
   "CONTINUE_WITH_REGISTRATION":"Continue registration and confirm your account later.",
 
-  "SEARCH": "Search",
   "ORGANIZATION": "Organization",
   "CREATE_ORG":"Create Organization",
   "ORG_NAME": "Organization Name",
@@ -357,15 +356,12 @@
   "ID_TYPE": "Identifier Type ID",
   "INVITE_MEMBER":"Invite member",
   "UPDATE_ORGANIZATION":"Edit organization",
-  "FILL_THIS_FIELD": "Please fill in this field",
   "SEARCH_COUNTRY": "Search Country",
   "SEARCH_STATE": "Search State",
   "SEARCH_PRODUCT": "Search Product",
   "FILL_THIS_FIELD": "Please fill in this field",
-  "GROUPS": "Groups",
   "PRIVATE":"Private",
   "GROUP_DESCRIPTION": "Group Description",
-  "GROUP_TYPE":"Group Type",
   "CREATE_GROUP": "Create Group",
   "NO_GROUPS": "No groups listed in your organization",
   "NO_REQUEST": "No request pending",
@@ -377,7 +373,8 @@
   "UPDATE_PASSWORD":"Update Password",
   "ENTER_OTP":"Enter OTP",
   "CONFIRM_PASSWORD":"Confirm Password" ,
-  "NO_PENDING_REQUEST":"No pending request available"
+  "NO_PENDING_REQUEST":"No pending request available",
+  "ADD":"Add"
 
 
 }

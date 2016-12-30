@@ -1,14 +1,17 @@
 group.controller('GroupInviteCtrl', function (groupService,$scope,$rootScope) {
 
-    groupService.fetchGroupInvitations().then(function (response) {
-        console.log("Fetching org invites")   ;
-        console.log(response);
-        $scope.groupRequests=response.data;
+    var fetchGroupsInWhichInvited=function () {
+        groupService.fetchGroupInvitations().then(function (response) {
+            console.log("Fetching org invites")   ;
+            console.log(response);
+            $scope.groupRequests=response.data;
 
-    }).catch(function (error) {
-        console.log("Error occurred while fetching org invitations");
-        console.log(error);
-    });
+        }).catch(function (error) {
+            console.log("Error occurred while fetching org invitations");
+            console.log(error);
+        });
+    };
+    fetchGroupsInWhichInvited();
 
 
     $scope.processRequest= function (invitationReq, reqResStr) {
@@ -18,6 +21,7 @@ group.controller('GroupInviteCtrl', function (groupService,$scope,$rootScope) {
         };
         groupService.processOrgRequest(data,reqResStr).then(function (response) {
             console.log("Processing to organization request for joining");
+            fetchGroupsInWhichInvited()
         }).catch(function (error) {
             console.log("Error occurred while processing org invitation for joining");
         })
