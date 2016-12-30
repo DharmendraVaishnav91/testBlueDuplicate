@@ -150,13 +150,14 @@ app.controller('addWorkCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             location: location
         };
         if($scope.work.crop){
-            work.crop=$scope.work.crop;
+            work.crop=$scope.work.crop.H3Code;
             work.hectares=0;
         }
         works.push(work);
         var workData = {
             works: works
         };
+        work.name=$scope.work.name;
         console.log("work data");
         console.log(workData);
         saveWorkData(workData);

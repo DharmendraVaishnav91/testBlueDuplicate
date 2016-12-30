@@ -10,6 +10,7 @@ org.controller('OrganizationMembersCtrl', function ($scope,$actionButton,$ionicM
     //    $scope.inviteInOrgModal= modal;
     //
     //});
+    $scope.defaulaAvatar=DEFAULT_AVATAR_PATH;
     $scope.searchMember="";
     var actionButton = $actionButton.create({
         mainAction: {

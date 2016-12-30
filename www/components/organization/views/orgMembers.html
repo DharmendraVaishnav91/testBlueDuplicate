@@ -8,7 +8,7 @@
         </label>
         <div class="list" style="width:100%;overflow: scroll;padding:0px;height: 100%">
             <a class="item item-avatar" ng-repeat="member in detailsData.attributes.admins | filter:searchMember" >
-                <img ng-src="{{member.picture}}">
+                <img ng-src="{{member.picture==null?defaulaAvatar:member.picture}}">
                 <h2 class="bold">
                     <span>{{member.name}}</span>
                 </h2>
@@ -17,11 +17,11 @@
             </a>
 
             <a class="item item-avatar" ng-repeat="member in detailsData.attributes.members | filter:searchMember">
-                <img ng-src="http://lorempixel.com/30/30/people/{{$index}}">
+                <img ng-src="{{member.picture}}">
 
-                <h2 class="bold">{{member.given_name_primary}}&nbsp;{{member.family_name_primary}}</h2>
+                <h2 class="bold">{{member.name}}&nbsp</h2>
                 <p style="color:#13171d" class="">{{member.occupation}}</p>
-                <p class="button button-grey button-outline button-small">Promote to admin</p>
+                <!--<p class="button button-grey button-outline button-small" ng-click="promoteToAdmin()">Promote to admin</p>-->
             </a>
         </div>
     </ion-content>
