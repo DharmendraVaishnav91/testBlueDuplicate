@@ -399,5 +399,7 @@
   "GROUP_DESCRIPTION": "Group Description",
   "CREATE_GROUP": "Create Group",
   "NO_GROUPS": "No groups listed in your organization",
-  "NO_REQUEST": "No request pending"
+  "NO_REQUEST": "No request pending",
+  "SEARCH_GROUP": "Search Group",
+  "NO_SUCH_GROUPS": "No Such Group Exists."
 }

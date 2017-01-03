@@ -7,9 +7,27 @@ group.controller('ManageGroupCtrl', function (groupService, $state, $actionButto
             textColor: ' white',
             onClick: function () {
                 console.log('clicked edit BUTTON');
-                $state.go('app.createGroup');
             }
-        }
+        },
+        buttons: [{
+          icon: 'ion-plus-round',
+          label: 'Create',
+          backgroundColor: '#4E5C6E',
+          iconColor: 'white',
+          onClick: function() {
+            console.log('clicked create');
+            $state.go('app.createGroup');
+          }
+        }, {
+          icon: 'ion-android-search',
+          label: 'Search',
+          backgroundColor: '#4E5C6E',
+          iconColor: 'white',
+          onClick: function() {
+            console.log('clicked search');
+            $state.go('app.searchGroup');
+          }
+        }]
     });
     groupService.fetchGroupsDetail().then(function (response) {
         console.log("Available group list data :\n", response);

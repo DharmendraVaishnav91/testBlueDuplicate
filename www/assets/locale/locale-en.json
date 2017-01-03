@@ -374,7 +374,9 @@
   "ENTER_OTP":"Enter OTP",
   "CONFIRM_PASSWORD":"Confirm Password" ,
   "NO_PENDING_REQUEST":"No pending request available",
-  "ADD":"Add"
+  "ADD":"Add",
+  "SEARCH_GROUP": "Search Group",
+  "NO_SUCH_GROUPS": "No Such Group Exists."
 
 
 }
