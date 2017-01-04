@@ -173,7 +173,16 @@ input[type="radio"] {
     color: white !important;
     font-weight: bold !important;
 }
-
+.notification-indicator{
+    position:absolute;
+    top: 0px;
+    right: -7px;
+    background-color: #ef473a;
+    border-radius: 50% 50%;
+    height: 18px;
+    line-height: 18px;
+    padding: 0px 6px 0px 6px;
+}
 input[type="checkbox"] {
     width: 18px;
     height: 18px;

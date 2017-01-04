@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('DashboardCtrl', function ($scope,$filter, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state,$ionicPopup) {
+app.controller('DashboardCtrl', function (groupService,$scope,$filter, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state,$ionicPopup) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
     $scope.showFilter = false;
@@ -143,6 +143,18 @@ app.controller('DashboardCtrl', function ($scope,$filter, $ionicModal, $timeout,
          actionButton.show();
          $scope.showFilter = !$scope.showFilter;
      } ;
+    var fetchGroupsInWhichInvited=function () {
+        groupService.fetchGroupInvitations().then(function (response) {
+            console.log("Fetching org invites")   ;
+            console.log(response);
+            $scope.groupPendingRequests=response.data;
+
+        }).catch(function (error) {
+            console.log("Error occurred while fetching org invitations");
+            console.log(error);
+        });
+    };
+    fetchGroupsInWhichInvited();
     $scope.showFilters = function () {
         actionButton.hide();
 

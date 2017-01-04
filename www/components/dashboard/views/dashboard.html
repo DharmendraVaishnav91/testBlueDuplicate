@@ -5,11 +5,15 @@
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
 
-         <button class="button button-clear button-icon" ng-click="showPendingOrgRequest()">
-            <i class="ion-person-stalker" style="font-size: 25px;color:white"></i>
+         <button class="button button-clear button-icon" ng-click="showPendingOrgRequest()" style="margin-right: 5px;">
+             <span class="notification-indicator" style="color:white;font-size: 10px;">2</span>
+            <i class="fa fa-building-o " style="font-size: 20px;color:white">
+            </i>
         </button>
-        <button class="button button-clear button-icon" ng-click="showPendingGroupRequest()">
-            <i class="ion-person-stalker" style="font-size: 25px;color:white"></i>
+        <button class="button button-clear button-icon" ng-click="showPendingGroupRequest()" style="margin-right: 5px;">
+            <span class="notification-indicator" style="color:white;font-size: 10px;">{{groupPendingRequests.length}}</span>
+            <i class="ion-person-stalker " style="font-size: 25px;color:white">
+            </i>
         </button>
         <!--<button class="button button-clear button-icon" ng-click="showFilters()">-->
             <!--<i class="fa fa-filter" style="font-size: 25px;color:white"></i>-->
