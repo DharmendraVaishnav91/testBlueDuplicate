@@ -165,5 +165,29 @@ group.factory('groupService', function ($http, $ionicPopup, $q, $rootScope, util
       };
       return utilityService.makeHTTPRequest(req, deferred);
     };
+    self.searchGroup = function(search){
+      var deferred = $q.defer();
+      var req = {
+          url:HttpRoutes.searchGroup+search,
+          method: HttpRequestType.GET,
+          headers: {
+              'Authorization': 'Token ' + $rootScope.auth_token,
+              'Accept': 'application/json'
+          }
+      };
+      return utilityService.makeHTTPRequest(req, deferred);
+    };
+    self.joinGroup = function(gid){
+      var deferred = $q.defer();
+      var req = {
+          url:HttpRoutes.createGroup+gid+"/group_invites/request_to_join",
+          method: HttpRequestType.POST,
+          headers: {
+              'Authorization': 'Token ' + $rootScope.auth_token,
+              'Accept': 'application/json'
+          }
+      };
+      return utilityService.makeHTTPRequest(req, deferred);
+    };
     return self;
 });

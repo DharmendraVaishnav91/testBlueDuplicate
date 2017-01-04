@@ -86,6 +86,7 @@ var HttpRoutes = {
     fetchGroupJoinRequests:apiUrl+"/gpr/v2/groups/join_requests",
     processGroupInvites:apiUrl+"/gpr/v2/groups/",
     checkUser:apiUrl+"/gpr/v2/groups/search_user?username=",
-    promote_member:apiUrl+"/gpr/v1/groups/promote_member"
+    promote_member:apiUrl+"/gpr/v1/groups/promote_member",
+    searchGroup:apiUrl+"/gpr/v2/groups/search_groups?name="
 
 };

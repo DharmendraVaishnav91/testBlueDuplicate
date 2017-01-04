@@ -247,6 +247,15 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                    }
                }
             })
+            .state('app.searchGroup', {
+               url: '/searchGroup',
+               views: {
+                   'mainContent': {
+                       templateUrl: 'components/group/views/searchGroup.html',
+                       controller: 'SearchGroupCtrl'
+                   }
+               }
+            })
             .state('app.groupDetails', {
                url: '/groupDetails',
                 cache:false,
