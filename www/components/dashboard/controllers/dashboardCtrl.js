@@ -136,7 +136,9 @@ app.controller('DashboardCtrl', function ($scope,$filter, $ionicModal, $timeout,
     $scope.showPendingOrgRequest= function () {
         $state.go('app.receivedOrgRequest');
     };
-
+    $scope.showPendingGroupRequest=function () {
+        $state.go('app.receivedGroupRequest');
+    };
      $scope.hideFilter = function () {
          actionButton.show();
          $scope.showFilter = !$scope.showFilter;

@@ -159,6 +159,15 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                     }
                 }
             })
+            .state('app.receivedGroupRequest',{
+                url: '/receivedGroupRequest',
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/userGroupPendingInvites.html',
+                        controller: 'GroupPendingInvitationsCtrl'
+                    }
+                }
+            })
             .state('app.setting', {
                 url: '/setting',
                 views: {
