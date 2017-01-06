@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('DashboardCtrl', function (groupService,$scope,$filter, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state,$ionicPopup) {
+app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state,$ionicPopup) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
     $scope.showFilter = false;
@@ -143,6 +143,7 @@ app.controller('DashboardCtrl', function (groupService,$scope,$filter, $ionicMod
          actionButton.show();
          $scope.showFilter = !$scope.showFilter;
      } ;
+     $scope.groupPendingRequests=[];
     var fetchGroupsInWhichInvited=function () {
         groupService.fetchGroupInvitations().then(function (response) {
             console.log("Fetching org invites")   ;
@@ -155,6 +156,15 @@ app.controller('DashboardCtrl', function (groupService,$scope,$filter, $ionicMod
         });
     };
     fetchGroupsInWhichInvited();
+    $scope.orgRequests=[];
+    orgService.fetchOrgInvitations().then(function (response) {
+        console.log("Fetching org invites")   ;
+        console.log(response);
+        $scope.orgRequests=response;
+    }).catch(function (error) {
+        console.log("Error occurred while fetching org invitations");
+        console.log(error);
+    });
     $scope.showFilters = function () {
         actionButton.hide();
 
