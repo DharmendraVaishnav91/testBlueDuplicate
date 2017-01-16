@@ -23,6 +23,9 @@ org.controller('OrganizationDetailCtrl', function ($scope, $state, $actionButton
             }
         }
     });
+    $scope.openOrgMapView =function () {
+        $state.go('app.orgMapView');
+    };
     // $scope.detailsData = {
     //      "owner_name": 'Keshav Sharma',
     //      "description": 'Software Company',

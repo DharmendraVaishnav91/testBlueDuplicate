@@ -72,6 +72,24 @@
        };
        return utilityService.makeHTTPRequest(req,deferred);
      };
+     self.fetchOrgMapMarkers= function (params) {
 
+         var deferred = $q.defer();
+         var req={
+             url:HttpRoutes.fetchOrgMapMarkers+"/?"+params,
+             method:HttpRequestType.GET,
+             dataType: 'json',
+             headers: {
+                 'Authorization': 'Token '+ $rootScope.auth_token,
+                 'Accept' : 'application/json'
+             }
+         };
+         // if(params!=""){
+         //     req.url+="?"+params;
+         // }
+
+         return utilityService.makeHTTPRequest(req,deferred);
+
+     } ;
      return self;
 });

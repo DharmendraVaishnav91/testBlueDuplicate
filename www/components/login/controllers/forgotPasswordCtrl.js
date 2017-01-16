@@ -11,13 +11,13 @@ app.controller('ForgotPasswordCtrl', function($timeout, $q, $scope, $state, $sta
     });
 
     $scope.selectChange = function (item) {
-        console.log("Selected item")
+        console.log("Selected item");
         console.log($scope.data.selectedCountry);
-    }
+    };
 
     $scope.getSearchedCountryList=function(query){
       return $filter('filter')($scope.countryCodeList,query);
-    }
+    };
 
     $scope.goToPasswordRecreation = function(){
       console.log($scope.data);

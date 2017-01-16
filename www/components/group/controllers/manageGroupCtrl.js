@@ -29,6 +29,7 @@ group.controller('ManageGroupCtrl', function (groupService, $state, $actionButto
           }
         }]
     });
+
     groupService.fetchGroupsDetail().then(function (response) {
         console.log("Available group list data :\n", response);
         $scope.groupDetails = response.data;

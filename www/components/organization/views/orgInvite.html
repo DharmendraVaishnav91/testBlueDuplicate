@@ -19,10 +19,10 @@
                         <p>{{request.created_at | date:'mediumDate'}}</p>
                     </div>
                     <div class="col no-padding col-33 right">
-                        <div class="button button-balanced button-small " ng-click="processRequest(request.id,'Accept')">
+                        <div class="button button-balanced button-small button-material " style="background-color: #4CAF50;" ng-click="processRequest(request.id,'Accept')">
                             Accept
                         </div>
-                        <div class="button button-dark button-small" ng-click="processRequest(request.id,'Reject')">
+                        <div class="button button-dark button-small button-material" ng-click="processRequest(request.id,'Reject')">
                             Reject
                         </div>
                     </div>

@@ -229,6 +229,16 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                     }
                 }
             })
+            .state('app.orgMapView', {
+                url: '/invitations',
+                cache:false,
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/organization/views/orgMapView.html',
+                        controller: 'OrganizationMapViewCtrl'
+                    }
+                }
+            })
             .state('app.inviteMemberInOrg', {
                 url: '/inviteMemberInOrg',
                 views: {

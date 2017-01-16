@@ -1,0 +1,33 @@
+<ion-modal-view class="blueno-bg-full">
+    <ion-header-bar class="bar bar-header blue-bg" style="border-color:gray;">
+        <button ng-click="closeOrgFilterModal()" style="color:white"
+                class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
+        <h1 class="title" style="max-width:none;max-width: none;text-align: left !important;left: 23px !important;right:0px !important;
+}">Filter</h1>
+    </ion-header-bar>
+    <ion-content has-bouncing="true" class="has-header has-footer blueno-bg-full">
+        <div class="card " style="margin:2px !important;"
+             ng-repeat="group in groupDetails">
+            <div class="item item-text-wrap item-checkbox">
+                {{ group.attributes.name}}
+                <label class="checkbox">
+                    <input style="height:25px;width: 25px;" type="checkbox" ng-model="group.checked" ng-checked="isSelected(group.id)"
+                           ng-click="updateSelection($event, group)">
+                </label>
+            </div>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="no-border no-padding" style="background: transparent">
+        <div class="button-bar">
+            <button ng-disabled="selectedGroups.length==0" class="button button-material lgt-blue-btn" ng-click="resetFilters()">
+                Reset
+            </button>
+            <button ng-disabled="selectedGroups.length==0" class="button button-material lgt-blue-btn" ng-click="applyFilters()">
+                Apply
+            </button>
+        </div>
+    </ion-footer-bar>
+</ion-modal-view>

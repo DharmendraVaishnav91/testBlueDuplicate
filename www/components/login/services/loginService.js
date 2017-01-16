@@ -191,22 +191,28 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
         var req={
             url:HttpRoutes.resetPass,
             data:FPData,
-            method:HttpRequestType.POST
+            method:HttpRequestType.POST,
+            headers: {
+                'Accept' : 'application/json'
+            }
         };
         console.log(req);
         return utilityService.makeHTTPRequest(req,deferred);
-    }
+    };
     self.resetPasswordWithOtp = function(RPData){ //Reset Password Data
       console.log(RPData);
       var deferred = $q.defer();
       var req={
           url:HttpRoutes.resetPass+""+RPData.token,
           data:RPData.data,
-          method:HttpRequestType.PUT
+          method:HttpRequestType.PUT,
+          headers: {
+            'Accept' : 'application/json'
+        }
       };
       console.log(req);
       return utilityService.makeHTTPRequest(req,deferred);
-    }
+    };
 
     return self;
 });

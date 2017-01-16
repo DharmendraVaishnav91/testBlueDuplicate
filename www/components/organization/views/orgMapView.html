@@ -1,0 +1,19 @@
+<ion-view view-title="Organization BlueView" >
+    <ion-nav-buttons side="left">
+        <button style="color: white;" ng-click="$ionicGoBack()" class="button back-button buttons button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
+    </ion-nav-buttons>
+
+
+    <ion-content  data-tap-disabled="true">
+        <ion-nav-title>Organization blueView</ion-nav-title>
+        <leaflet id='map' center="center" defaults="defaults" markers="markers"
+                 ng-style="{'height':(deviceHeight+'px')}" width="100%" layers="layers"></leaflet>
+
+
+
+        <!--<div id="map" ng-style="{'height':(deviceHeight-96)+'px'}" width="100%"></div>-->
+    </ion-content>
+</ion-view>

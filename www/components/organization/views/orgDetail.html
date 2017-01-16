@@ -10,66 +10,77 @@
           </button>
         </div> -->
 
-        <div class="list card no-margin no-padding"  style="background: transparent">
-            <div class="item no-padding" style="background:transparent;" >
+        <div class="list card no-margin no-padding" style="background: transparent">
+            <div class="item no-padding" style="background:transparent;">
+                <button class="button button-material button-small"
+                        style="position: absolute;right: 5px;top: 5px;background-color: #4e5c6e;color: white;font-weight: bold;
+}" ng-click="openOrgMapView()">
+                    Map view
+                </button>
                 <div style="height: 150px;background-size: cover;background-repeat: no-repeat;background-position: 50% 50%;"
                      ng-style="{'background-image':'url('+(detailsData.relationships.picture.data.image.profile_pic.url?detailsData.relationships.picture.data.image.profile_pic.url:defaultAvatar)+')'}">
-            </div>
-            <h1 style="text-align:center;color:white;margin-top: 5px; position: absolute;font-size: 200%;z-index: 3;top: 72px;width: 100%;">
-                {{detailsData.attributes.name}}</h1>
+                </div>
+                <h1 style="text-align:center;color:cornflowerblue;margin-top: 5px; position: absolute;font-size: 200%;z-index: 3;top: 72px;width: 100%;">
+                    {{detailsData.attributes.name}}</h1>
 
-            <p style="text-align:center;position: absolute;top: 128px;width: 100%;color: white;">
-                CEO: {{detailsData.attributes.owner_name}}
-            </p>
-            <div class="list">
-              <label class="item item-input item-stacked-label no-border" >
-                <p class="input-label width-auto" style="color: rgba(250, 250, 250, 0.6);" >Organization Description</p><br>
-                <span class="span-org wrap-content">{{detailsData.attributes.description}}</span>
-              </label>
-               <hr class="grey-hr-separator">
-              <label class="item item-input item-stacked-label no-border">
-                <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Organization Type</p><br>
-                <span class="span-org">{{detailsData.attributes.organization_type}}</span>
-              </label>
-                <hr class="grey-hr-separator">
-              <label class="item item-input item-stacked-label no-border">
-                <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Ownership</p><br>
-                <span class="span-org">{{detailsData.attributes.ownership}}</span>
-              </label>
-                <hr class="grey-hr-separator">
-              <label class="item item-input item-stacked-label no-border">
-                <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Number Of Employees</p><br>
-                <span class="span-org">{{detailsData.attributes.number_of_employees}}</span>
-              </label>
-                <hr class="grey-hr-separator">
-              <label class="item item-input item-stacked-label no-border">
-                <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Website</p><br>
-                <span class="span-org">{{detailsData.attributes.website}}</span>
-              </label>
-                <hr class="grey-hr-separator">
-              <label class="item item-input item-stacked-label no-border">
-                <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Facebook</p><br>
-                <span class="span-org">{{detailsData.attributes.facebook_page}}</span>
-              </label>
-                <hr class="grey-hr-separator">
-              <label class="item item-input item-stacked-label no-border">
-                <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Unique Identifier</p><br>
-                <span class="span-org">{{detailsData.attributes.identifier}}</span>
-              </label>
-                <hr class="grey-hr-separator">
-              <label class="item item-input item-stacked-label no-border">
-                <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Unique Identifier Type ID</p><br>
-                <span class="span-org">{{detailsData.attributes.identifier_type}}</span>
-              </label>
-                <hr class="grey-hr-separator">
+                <p style="text-align:center;position: absolute;top: 128px;width: 100%;color:cornflowerblue;">
+                    CEO: {{detailsData.attributes.owner_name}}
+                </p>
+                <div class="list">
+
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto" style="color: rgba(250, 250, 250, 0.6);">Organization
+                            Description</p><br>
+                        <span class="span-org wrap-content">{{detailsData.attributes.description}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Organization
+                            Type</p><br>
+                        <span class="span-org">{{detailsData.attributes.organization_type}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Ownership</p><br>
+                        <span class="span-org">{{detailsData.attributes.ownership}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Number Of
+                            Employees</p><br>
+                        <span class="span-org">{{detailsData.attributes.number_of_employees}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Website</p><br>
+                        <span class="span-org">{{detailsData.attributes.website}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Facebook</p><br>
+                        <span class="span-org">{{detailsData.attributes.facebook_page}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Unique
+                            Identifier</p><br>
+                        <span class="span-org">{{detailsData.attributes.identifier}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                    <label class="item item-input item-stacked-label no-border">
+                        <p class="input-label width-auto " style="color: rgba(250, 250, 250, 0.6);">Unique Identifier
+                            Type ID</p><br>
+                        <span class="span-org">{{detailsData.attributes.identifier_type}}</span>
+                    </label>
+                    <hr class="grey-hr-separator">
+                </div>
             </div>
-        </div>
-        <!--<div class="list" style="width:100%;overflow: scroll;padding:0px;height: 100%">-->
+            <!--<div class="list" style="width:100%;overflow: scroll;padding:0px;height: 100%">-->
             <!--<a class="item item-avatar" ng-repeat="member in memberList">-->
-                <!--<img ng-src="http://lorempixel.com/30/30/people/{{$index}}">-->
+            <!--<img ng-src="http://lorempixel.com/30/30/people/{{$index}}">-->
 
-                <!--<h2>{{member.name}}</h2>-->
+            <!--<h2>{{member.name}}</h2>-->
             <!--</a>-->
-        <!--</div>-->
+            <!--</div>-->
     </ion-content>
 </ion-view>

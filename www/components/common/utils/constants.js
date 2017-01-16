@@ -75,6 +75,7 @@ var HttpRoutes = {
     groupTypes:apiUrl+"/gpr/v2/group_types",
     registerOrg:apiUrl+"/gpr/v2/organizations/",
     fetchOrgInfo:apiUrl+"/gpr/v2/organizations/1",
+    fetchOrgMapMarkers:apiUrl+"/gpr/v2/organizations/dashboard",
 
     fetchOrgInvites :apiUrl+"/gpr/v2/users/my_organization_invites",
     acceptOrgInvite:apiUrl+"/gpr/v2/organizations/accept/",
