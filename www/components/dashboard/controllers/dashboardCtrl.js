@@ -43,27 +43,12 @@ app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter
             }
         }
     });
+
     var myPopup="";
     $scope.showFilterPopup=function () {
          myPopup = $ionicPopup.show({
             templateUrl: "components/dashboard/views/filterPopup.html",
             scope: $scope
-            // buttons: [
-            //     {   text: "<b>Reset</b> ",
-            //         onTap: function(e) {
-            //             $scope.resetFilter();
-            //             e.stopPropagation();
-            //         }
-            //     },
-            //     {
-            //         text: "<b>Apply</b>",
-            //         type: 'lgt-blue-btn ',
-            //         onTap: function(e) {
-            //             $scope.applyFilter();
-            //             e.stopPropagation();
-            //         }
-            //     }
-            // ]
         });
     };
 

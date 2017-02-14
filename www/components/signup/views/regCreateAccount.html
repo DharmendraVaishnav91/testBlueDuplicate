@@ -1,4 +1,4 @@
-<form name="credentialForm">
+<form name="credentialForm" ng-submit="goToProfileCreation()">
     <ion-content scroll="true" class="blueno-bg-full has-footer" has-footer="true">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px">
             <h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>
@@ -8,7 +8,9 @@
              style="overflow: scroll;width: 100%;padding: 0;">
             <div class="row ">
                 <div class="col center ">
-                    <button class="button button-small lgt-blue-btn" style="width: 80%;height: 39px;font-size: large;font-weight: normal !important;" ng-click="shareLocation()">
+                    <button class="button button-small lgt-blue-btn" type="button"
+                            style="width: 80%;height: 39px;font-size: large;font-weight: normal !important;border:1px solid rgba(255,255,255,.3)"
+                            ng-click="shareLocation()">
                         <i class="ion-android-share-alt" ></i>&nbsp;{{'SHARE_MY_LOCATION' | translate}}
                     </button>
                 </div>
@@ -74,7 +76,7 @@
     <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
             <button ng-disabled="credentialForm.$invalid||position==null" class="button button-clear button-light bold"
-                    type="submit" ng-click="goToProfileCreation()" >
+                    type="submit">
                 {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
             </button>
 

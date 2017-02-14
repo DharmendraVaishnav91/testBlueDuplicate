@@ -37,7 +37,9 @@ div.leaflet-right {
 .dark-gray-border {
     border-color: gray !important;
 }
-
+.light-grey-border-popup{
+    border:1px solid lightgrey !important;
+}
 .bg-transparent {
     background: transparent !important;
 }

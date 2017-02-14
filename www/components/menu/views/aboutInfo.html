@@ -1,7 +1,7 @@
 <ion-view  view-title="{{'ABOUT' | translate}}" >
     <ion-content scroll="false" class="blueno-bg-full" >
         <div class="list">
-            <div class="item no-padding bg-transparent" onclick="window.open('https://play.google.com/store/apps/details?id=org.bluenumber.app', '_system', 'location=yes')">
+            <div class="item no-padding bg-transparent" ng-click="openAppLink()" >
                 <div class="row" style="color:white;">
                     <div class="col col-center" >
                         {{'RATE_US_MSG' | translate }}&nbsp;{{isAndroid?('PLAY_STORE'|translate):('APP_STORE'|translate)}}

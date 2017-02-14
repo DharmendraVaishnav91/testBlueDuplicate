@@ -9,15 +9,18 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     var saveUser=function(user){
         $localStorage[STORAGE.LOGIN_KEY]=user;
     };
+
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
         console.log(response);
     }).catch(function (error) {
         console.log(error);
     });
+
     $scope.getSearchedCountryList=function(query){
       return $filter('filter')($scope.countryCodeList,query);
     } ;
+
     $scope.doLogin= function () {
         console.log("Doing login");
         var data={
@@ -25,12 +28,16 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
             password:$scope.loginData.password
         };
         console.log(data);
+        //Setting user mobile and country phone code to chec
         $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode.CountryPhoneCode;
-            $rootScope.userMobDetail.mobile=$scope.loginData.mobile;
+        $rootScope.userMobDetail.mobile=$scope.loginData.mobile;
+
         loginService.doLogin(data).then(function (user){
 
             $rootScope.user=user;
             $rootScope.auth_token=user.auth_token;
+
+            //Fetching user information
             userSettingService.fetchUserInfo($rootScope.user.ActorID).then(function(response){
                 console.log("User personal details");
                 console.log(response);
@@ -40,12 +47,16 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
                 }else{
                     $rootScope.profileUrl=$rootScope.userInfo.image;
                 }
+            }).catch(function (errorMessage) {
+                console.log(errorMessage);
             });
+            
+            //Fetching user preferred language if selected
             menuService.fetchPreferredLanguage().then(function (response) {
                 $translate.use(response.language);
                 $rootScope.language = response.language;
-            }).catch(function (response) {
-
+            }).catch(function (errorMessage) {
+                console.log(errorMessage);
             });
             saveUser(user);
             $state.go('app.dashboard');
@@ -53,14 +64,14 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
             var errorMessage=error.error?error.error:$filter('translate')('INVALID_CREDENTIALS');
             console.log(errorMessage);
             if(errorMessage=="Please confirm your account."){
-                requestOTP();
+                requestOTP(data);
 
             }
             $cordovaToast.showLongBottom(errorMessage)
         });
        // $state.go('app.dashboard');
     };
-    var requestOTP = function () {
+    var requestOTP = function (userCredential) {
         var requestData = {
                 country_phone_code: $rootScope.userMobDetail.country_phone_code,
                 username: $rootScope.userMobDetail.mobile
@@ -69,7 +80,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
         signUpService.requestOTP(requestData).then(function (response) {
             console.log("OTP requested successfully");
             console.log(response);
-            $state.go('verifyAccount',{isFromLogin:true,indirect:false});
+            $state.go('verifyAccount',{isFromLogin:true,indirect:false,credential:userCredential});
             //  $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
         }).catch(function (error) {
             console.log(error);

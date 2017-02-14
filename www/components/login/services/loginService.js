@@ -23,7 +23,6 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
             method:HttpRequestType.POST,
             data:loginData,
             headers: {
-                'Authorization': 'Token '+ $rootScope.auth_token,
                 'Accept' : 'application/json'
             }
         };

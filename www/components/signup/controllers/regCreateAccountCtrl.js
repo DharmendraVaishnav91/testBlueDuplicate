@@ -48,7 +48,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
         }).catch(function (error) {
             console.log(error);
             //if(position==null){
-                fetchUserCoords();
+               // fetchUserCoords();
         //    }
             $ionicLoading.hide();
             //$cordovaToast.showShortBottom("Unable to fetch your current location. Ensure that your GPS is enabled and working.");
@@ -109,61 +109,118 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
         return $scope.isLocationOn;
         //return deferred.promise;
     };
+
     $scope.selectChange = function (item) {
-        console.log("Selected item")
+        console.log("Selected item");
         console.log($scope.data.selectedCountry);
-    }
+    };
+
     $scope.getSearchedCountryList=function(query){
       return $filter('filter')($scope.countryCodeList,query);
-    }
-    $scope.showConfirm = function () {
-        var confirmPopup = $ionicPopup.confirm({
-            title: $filter('translate')('CONFIRM_SHARE'),
-            template:'<span>{{"LOCATION_CONFIRMATION"| translate}}</span>',
-            cancelText: $filter('translate')('DENY'),
-            okText:$filter('translate')('ALLOW')
-        });
-        confirmPopup.then(function (res) {
-            if (res) {
-                $scope.isLocationShared = true;
-                if ($rootScope.position!=null) {
-                    if($rootScope.addressDataFromCoordinate.userCountry==undefined){
-                        utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
+    };
 
-                            $rootScope.addressDataFromCoordinate.userCountry = {
-                                CountryName: addr.country != null ? addr.country : "",
-                                CountryCode: addr.country_code != null ? addr.country_code : "",
-                                CountryPhoneCode: addr.country_phone_code != null ? addr.country_phone_code : ""
-                            };
-                            $rootScope.addressDataFromCoordinate.userState = {
-                                SubdivisionID: "",
-                                SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
-                                SubdivisionName: addr.state != null ? addr.state : "",
-                                CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
-                                CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
-                            };
+    var showConfirm = function () {
+        // var confirmPopup = $ionicPopup.confirm({
+        //     title: $filter('translate')('CONFIRM_SHARE'),
+        //     template:'<span>{{"LOCATION_CONFIRMATION"| translate}}</span>',
+        //     cancelText: $filter('translate')('DENY'),
+        //     okText:$filter('translate')('ALLOW')
+        // });
+        var confirmPopup = $ionicPopup.show({
+            title : $filter('translate')('CONFIRM_SHARE'),
+            subTitle: $filter('translate')('LOCATION_CONFIRMATION'),
+            scope: $scope,
+            buttons: [
+                { text: $filter('translate')('DENY'),
+                    onTap: function(e) {
+                        $scope.isLocationShared = false;
+                        console.log('Location must be shared to continue with registration.');
+                        $cordovaToast.showLongBottom($filter('translate')('LOCATION_MUST_BE_SHARED'));
 
-                            $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-
-                        }).catch(function (error) {
-                            console.log(error);
-                        });
-                    }else{
-                        $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-                        //$scope.data.selectedCountry =$rootScope.addressDataFromCoordinate.userCountry;
                     }
+                },
+                {
+                    text: $filter('translate')('ALLOW'),
+                    type: 'lgt-blue-btn',
+                    onTap: function(e) {
+                        $scope.isLocationShared = true;
+                        if ($rootScope.position!=null) {
+                            if($rootScope.addressDataFromCoordinate.userCountry==undefined){
+                                utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
 
-                }else{
-                    fetchUserCoords();
+                                    $rootScope.addressDataFromCoordinate.userCountry = {
+                                        CountryName: addr.country != null ? addr.country : "",
+                                        CountryCode: addr.country_code != null ? addr.country_code : "",
+                                        CountryPhoneCode: addr.country_phone_code != null ? addr.country_phone_code : ""
+                                    };
+                                    $rootScope.addressDataFromCoordinate.userState = {
+                                        SubdivisionID: "",
+                                        SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
+                                        SubdivisionName: addr.state != null ? addr.state : "",
+                                        CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
+                                        CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
+                                    };
+
+                                    $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+
+                                }).catch(function (error) {
+                                    console.log(error);
+                                });
+                            }else{
+                                $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+                                //$scope.data.selectedCountry =$rootScope.addressDataFromCoordinate.userCountry;
+                            }
+
+                        }else{
+                            fetchUserCoords();
+                        }
+
+                        console.log('You are sure');
+                    }
                 }
-
-                console.log('You are sure');
-            } else {
-                $scope.isLocationShared = false;
-                console.log('Location must be shared to continue with registration.');
-                $cordovaToast.showLongBottom($filter('translate')('LOCATION_MUST_BE_SHARED'))
-            }
+            ]
         });
+        // confirmPopup.then(function (res) {
+        //     if (res) {
+        //         $scope.isLocationShared = true;
+        //         if ($rootScope.position!=null) {
+        //             if($rootScope.addressDataFromCoordinate.userCountry==undefined){
+        //                 utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
+        //
+        //                     $rootScope.addressDataFromCoordinate.userCountry = {
+        //                         CountryName: addr.country != null ? addr.country : "",
+        //                         CountryCode: addr.country_code != null ? addr.country_code : "",
+        //                         CountryPhoneCode: addr.country_phone_code != null ? addr.country_phone_code : ""
+        //                     };
+        //                     $rootScope.addressDataFromCoordinate.userState = {
+        //                         SubdivisionID: "",
+        //                         SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
+        //                         SubdivisionName: addr.state != null ? addr.state : "",
+        //                         CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
+        //                         CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
+        //                     };
+        //
+        //                     $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        //
+        //                 }).catch(function (error) {
+        //                     console.log(error);
+        //                 });
+        //             }else{
+        //                 $scope.data.selectedCountry =$filter('getById')($scope.countryCodeList,"CountryCode",$rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        //                 //$scope.data.selectedCountry =$rootScope.addressDataFromCoordinate.userCountry;
+        //             }
+        //
+        //         }else{
+        //             fetchUserCoords();
+        //         }
+        //
+        //         console.log('You are sure');
+        //     } else {
+        //         $scope.isLocationShared = false;
+        //         console.log('Location must be shared to continue with registration.');
+        //         $cordovaToast.showLongBottom($filter('translate')('LOCATION_MUST_BE_SHARED'))
+        //     }
+        // });
     };
     isLocationEnabled();
 
@@ -183,39 +240,54 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
     };
 
     $scope.shareLocation = function () {
-        $scope.showConfirm();
+        showConfirm();
+    };
+
+    var showErrorAlert=function(){
+        var confirmPopup = $ionicPopup.show({
+
+            subTitle: "<span style='font-size: 15px !important;color:brown'>Username already taken. Try another by continuing or do login by click login.</span>",
+            scope: $scope,
+            buttons: [
+                { text: $filter('translate')('CONTINUE_SIGN_UP'),
+                    type:'light-grey-border-popup',
+                    onTap: function(e) {
+                        return true;
+                    }
+                },
+                {
+                    text: $filter('translate')('LOGIN'),
+                    type: 'lgt-blue-btn',
+                    onTap: function(e) {
+
+                        $state.go('login');
+                        return true;
+                    }
+                }
+            ]
+        });
     };
 
     $scope.goToProfileCreation = function () {
+
         if ($scope.isLocationShared) {
             if($rootScope.position!=null){
-                // if(isLocationEnabled()){
-                // $scope.openModal(openModalType.addWork);
-                //$scope.loginData.user.country_code = $scope.data.selectedCountry.CountryCode;
                 $scope.loginData.user.country_phone_code = $scope.data.selectedCountry.CountryPhoneCode;
-                //$scope.loginData.user.mobile_country_code=$scope.data.selectedCountry.CountryPhoneCode;
                 signUpService.checkUserNameAvailability($scope.loginData).then(function (response) {
-                    console.log("Username available");
-                    //$cordovaToast.showLongBottom("Username available");
                     console.log($scope.loginData.user);
                     $rootScope.userMobDetail = angular.copy($scope.loginData.user);
-
                     $state.go('regCreateProfile', {accountData: $scope.loginData})
-
                 }).catch(function (error) {
                     console.log(error.error);
-                    $cordovaToast.showLongBottom(error.error);
-                    console.log("Username already taken. Try another.")
+                   // $cordovaToast.showLongBottom(error.error);
+                    showErrorAlert(error.error);
+                    console.log("Username already taken. Try another.");
                 });
             }else{
                 fetchUserCoords();
             }
-
-            //}
         } else {
             $cordovaToast.showLongBottom($filter('translate')('LOCATION_MUST_BE_SHARED'));
         }
-
-
     };
 });

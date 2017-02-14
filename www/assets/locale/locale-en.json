@@ -376,7 +376,9 @@
   "NO_PENDING_REQUEST":"No pending request available",
   "ADD":"Add",
   "SEARCH_GROUP": "Search Group",
-  "NO_SUCH_GROUPS": "No Such Group Exists."
+  "NO_SUCH_GROUPS": "No Such Group Exists.",
+  "CONTINUE_SIGN_UP":"Continue",
+  "ERROR":"Error"
 
 
 }

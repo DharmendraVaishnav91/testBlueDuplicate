@@ -111,7 +111,7 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
     };
 
     utilityService.getPosition= function () {
-        var posOptions = {timeout: 60000, enableHighAccuracy: true};
+        var posOptions = { enableHighAccuracy: false};
         var coordinates = null;
         var deferred= $q.defer();
        // $ionicLoading.show("Loading");

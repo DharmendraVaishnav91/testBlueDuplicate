@@ -1,6 +1,6 @@
 {
   "server": {
-    "development": "https://blue-dev.herokuapp.com",
+    "development": "https://bnproduction.herokuapp.com",
     "staging": "https://bnstaging.herokuapp.com",
     "production":"https://bnproduction.herokuapp.com"
   },

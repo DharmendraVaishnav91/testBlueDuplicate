@@ -136,7 +136,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('verifyAccount', {
                 url: '/verify-account',
-                params:{isFromLogin:false,indirect:false},
+                params:{isFromLogin:false,indirect:false,credential:null},
                 templateUrl: 'components/signup/views/confirmOTP.html',
                 controller: 'ConfirmOTPCtrl'
             })
