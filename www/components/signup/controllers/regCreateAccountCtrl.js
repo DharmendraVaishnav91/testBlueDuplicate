@@ -131,7 +131,9 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
             subTitle: $filter('translate')('LOCATION_CONFIRMATION'),
             scope: $scope,
             buttons: [
-                { text: $filter('translate')('DENY'),
+                {
+                    text: $filter('translate')('DENY'),
+                    type:'light-grey-border-popup',
                     onTap: function(e) {
                         $scope.isLocationShared = false;
                         console.log('Location must be shared to continue with registration.');
@@ -242,32 +244,46 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
     $scope.shareLocation = function () {
         showConfirm();
     };
-
+    var usernameExistPopup="";
     var showErrorAlert=function(){
-        var confirmPopup = $ionicPopup.show({
+        usernameExistPopup = $ionicPopup.show({
 
-            subTitle: "<span style='font-size: 15px !important;color:brown'>Username already taken. Try another by continuing or do login by click login.</span>",
-            scope: $scope,
-            buttons: [
-                { text: $filter('translate')('CONTINUE_SIGN_UP'),
-                    type:'light-grey-border-popup',
-                    onTap: function(e) {
-                        return true;
-                    }
-                },
-                {
-                    text: $filter('translate')('LOGIN'),
-                    type: 'lgt-blue-btn',
-                    onTap: function(e) {
-
-                        $state.go('login');
-                        return true;
-                    }
-                }
-            ]
+            templateUrl: "components/signup/views/usernameExistPopup.html",
+            scope: $scope
+            // subTitle: "Username already taken. Try another by continuing or do login by click login.",
+            // scope: $scope,
+            // buttons: [
+            //     { text: $filter('translate')('CONTINUE_SIGN_UP'),
+            //         type:'light-grey-border-popup',
+            //         onTap: function(e) {
+            //             return true;
+            //         }
+            //     },
+            //     {
+            //         text: $filter('translate')('LOGIN'),
+            //         type: 'lgt-blue-btn',
+            //         onTap: function(e) {
+            //
+            //             $state.go('login');
+            //             return true;
+            //         }
+            //     }
+            // ]
         });
     };
+    $scope.goToLogin=function () {
+        usernameExistPopup.close();
+        $state.go('login');
+    };
+    $scope.goToResetPassword=function () {
+        usernameExistPopup.close();
+        $state.go('forgotPassword');
+    };
+    $scope.closeAlertError=function () {
+        usernameExistPopup.close()
+        angular.element('#mobileNumber').focus();
 
+    };
     $scope.goToProfileCreation = function () {
 
         if ($scope.isLocationShared) {

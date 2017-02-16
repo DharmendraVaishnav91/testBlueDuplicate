@@ -1,0 +1,44 @@
+<style>
+    .popup{
+        border-radius:5px !important;
+        width:80% !important;
+    }
+    .popup-head{
+        padding:0px;
+        height:0px;
+        border:none;
+    }
+    .popup-body{
+        padding:0px;
+    }
+</style>
+<div class="item  no-padding no-margin center"  style=";width: 100%; border-radius:5px !important;">
+
+    <!--<div class="row  no-padding" style="background: rgba(179,52,57,.8) !important;">-->
+    <div class="row  no-padding">
+        <div class="col col-10 col-center">
+            <i class="ion-alert-circled validation-font" style="font-size: 25px;"></i>
+        </div>
+        <div class="col wrap-content validation-font" >
+
+            The username <span class="bold " style="text-decoration: underline">{{loginData.user.mobile}}</span> has already been taken.
+        </div>
+    </div>
+    <div><span style="font-size: 14px;">You Can :</span></div>
+    <div class="row  no-padding" style="margin-top:5px">
+        <div class="col ">
+            <button class="button button-small lgt-blue-btn" ng-click="goToLogin()">Login if you know credentials</button>
+        </div>
+    </div>
+    <div class="row  no-padding" >
+        <div class="col ">
+            <button class="button button-small   lgt-blue-btn" ng-click="goToResetPassword()">Reset password</button>
+        </div>
+    </div>
+    <div class="row  no-padding " >
+        <div class="col ">
+            <button class="button button-small   lgt-blue-btn" ng-click="closeAlertError()">Change mobile number and continue</button>
+        </div>
+    </div>
+
+</div>
