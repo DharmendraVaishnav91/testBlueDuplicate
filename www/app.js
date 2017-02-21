@@ -49,7 +49,6 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
         $translateProvider.useSanitizeValueStrategy('escape');
         $translateProvider.preferredLanguage('en');
 
-
         $stateProvider
             .state('app', {
                 url: '/app',
@@ -449,7 +448,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('home');
+        $urlRouterProvider.otherwise('regCreateProfile');
         $httpProvider.interceptors.push(function ($rootScope, $q) {
             return {
                 request: function (config) {

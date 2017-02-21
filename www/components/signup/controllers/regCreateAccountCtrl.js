@@ -21,7 +21,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
 
     $scope.isFromSetting = false;
     $rootScope.position = null;
-    $scope.addPicIcon = "assets/img/icon_addProfile.png";
+    $scope.addPicIcon = "assets/img/user-edit-icon.png";
     $scope.enableCrop = false;
     $scope.data = {};
     $scope.data.selectedCountry = null;
@@ -280,8 +280,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
         $state.go('forgotPassword');
     };
     $scope.closeAlertError=function () {
-        usernameExistPopup.close()
-        angular.element('#mobileNumber').focus();
+        usernameExistPopup.close();
 
     };
     $scope.goToProfileCreation = function () {

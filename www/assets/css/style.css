@@ -80,7 +80,7 @@ div.leaflet-right {
 }
 
 .blue-bg {
-    background-color: #4E5C6E !important;
+    background-color: #3A5997 !important;
 }
 
 .title {
@@ -113,11 +113,17 @@ div.leaflet-right {
 /*}*/
 .edit-input-txt {
     font-size: 18px !important;
-    background-color: rgba(97, 137, 197, .7) !important;;
-    border-radius: 4px !important;;
-    color: white !important;;
+    /*background-color: rgba(97, 137, 197, .7) !important;;*/
+    /*border-radius: 4px !important;;*/
+    /*color: white !important;;*/
+    border-bottom: 1px solid rgb(221,221,221) !important;
+    margin-bottom: 4px !important;
     padding: 0 10px 0 10px !important;;
     height: 40px !important;
+    color:#3A5997 !important;
+}
+ .edit-input-txt:focus {
+    border-color: cornflowerblue !important;
 }
 .edit-input-textarea {
     font-size: 18px !important;
@@ -165,8 +171,8 @@ input[type="radio"] {
 }
 .blueno-bg-full {
     width: 100%;
-    background: url(../img/background_img.png) no-repeat;
-    background-size: 100% 100%
+    /*background: url(../img/background_img.png) no-repeat;*/
+    /*background-size: 100% 100%*/
 
 }
 

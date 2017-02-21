@@ -1,4 +1,4 @@
-app.controller('RegCreateProfileCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, $rootScope, signUpService, $cordovaToast, $filter) {
+app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, $rootScope, signUpService, $cordovaToast, $filter) {
     console.log($stateParams.accountData);
     $scope.isFromSetting = false;
     $scope.data = {};
@@ -7,7 +7,7 @@ app.controller('RegCreateProfileCtrl', function ($timeout, $q, $scope, $state, $
     var updatedImage = '';
     $rootScope.bgUrl = "assets/img/logo_small.png";
     $scope.updateImageSrc = null;
-    $scope.addPicIcon = "assets/img/icon_addProfile.png";
+    $scope.addPicIcon = "assets/img/user-edit-icon.png";
     $scope.changeImage = function () {
         utilityService.getImage().then(function (src) {
             updatedImage = "data:image/png;base64," + src;
@@ -17,6 +17,7 @@ app.controller('RegCreateProfileCtrl', function ($timeout, $q, $scope, $state, $
             console.log(JSON.stringify(err));
         })
     };
+    $ionicNavBarDelegate.align('center')
     var createUser = function (userData) {
         console.log("User data before creation");
         console.log(userData);
