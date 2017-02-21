@@ -122,8 +122,17 @@ div.leaflet-right {
     height: 40px !important;
     color:#3A5997 !important;
 }
- .edit-input-txt:focus {
-    border-color: cornflowerblue !important;
+.edit-input-txt:focus {
+    border-bottom: 2px solid cornflowerblue !important;
+    transition: .5ms ease all;
+    border-radius: 0px;
+}
+.label-text{
+    color: rgba(0,0,0,.6) !important;
+    font-size:14px;
+}
+.label-text > span{
+    font-size: inherit;
 }
 .edit-input-textarea {
     font-size: 18px !important;

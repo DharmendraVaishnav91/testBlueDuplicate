@@ -35,21 +35,23 @@
 
     <div class="list" ng-style="{'height':(deviceHeight-210)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
         <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
-            <span style="color: rgba(0,0,0,.6) ; font-size: 20px;">
-                (<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span>
-                <span style="color: rgba(0,0,0,.6);font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
+            <span style="color: rgba(0,0,0,.6) ; font-size: 14px;">
+                (<span style="color:rgba(239,71,58,.8);font-size: 12px;" class="ion-asterisk"></span>
+                <span style="color: rgba(0,0,0,.6);">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
             </span>
         </div>
         <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text "  style="color: rgba(0,0,0,.6)">{{'FIRST_NAME' | translate }}
+            <span class="input-label label-text label-span "  style="color: rgba(0,0,0,.6)">{{'FIRST_NAME' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-                <input class="edit-input-txt" ng-model="loginData.profile.given_name" name="firstName" ng-required="true" ng-maxlength="50" type="text"/>
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.firstName.$error.maxlength">{{'FIRST_NAME_MAX_LENGTH'| translate}}</span>
+            <input class="edit-input-txt" ng-model="loginData.profile.given_name" name="firstName" ng-required="true" ng-maxlength="50" type="text"/>
+            <span class="validation-font wrap-content"  ng-show="basicInfoForm.firstName.$error.maxlength">
+                {{'FIRST_NAME_MAX_LENGTH'| translate}}
+            </span>
         </label>
 
             <label class="item item-input item-stacked-label no-border label-padding">
-            <span class="input-label label-text "  style="color: rgba(0,0,0,.6)">{{'LAST_NAME' | translate }}
+            <span class="input-label label-text "  style="">{{'LAST_NAME' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
                 <input ng-model="loginData.profile.family_name" name="lastName" ng-required="true" type="text" class="edit-input-txt"  ng-maxlength="50" />
@@ -57,9 +59,9 @@
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
-                <span class="input-label label-text "  style="color: rgba(0,0,0,.6)">
+                <span class="input-label label-text " >
                     {{'GENDER' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
+                    <span class="assertive " >* </span>
                 </span>
                 <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt"  ng-model="data.gender" ng-required="true">
                     <option disabled  value="" selected >{{'SELECT_GENDER' | translate}}</option>
