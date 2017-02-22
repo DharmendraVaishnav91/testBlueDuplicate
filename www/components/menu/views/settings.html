@@ -5,7 +5,7 @@
             <span class="input-label label-text " style="color:white">{{'LANGUAGE' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-            <select style="width: 100%" ng-model="local.language" name="language" ng-change="changeLanguage(local.language)">
+            <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="local.language" name="language" ng-change="changeLanguage(local.language)">
                 <option value="" disabled selected>{{'SELECT_LANGUAGE' | translate}}</option>
                 <option value="en">English</option>
                 <option value="ms">Bahasa Melayu (Malay)</option>
@@ -18,7 +18,7 @@
 
         <!--<label class="item item-input" style="">-->
           <!--<span class="input-label" style="color: white;font-size: 18px !important;margin-left: -12px;">Select Country</span>-->
-          <input ion-autocomplete type="text"
+          <!-- <input ion-autocomplete type="text"
                  template-url="components/menu/views/autoCompleteDrop.html"
                  readonly="readonly"
                  class="ion-autocomplete"
@@ -30,7 +30,7 @@
                  max-selected-items="1"
                  cancel-label="Cancel"
                  items-clicked-method="clickedMethod(callback)"
-             />
+             /> -->
         <!--</label>-->
   </ion-content>
     <!-- <ion-content scroll="false" class="blueno-bg-full">

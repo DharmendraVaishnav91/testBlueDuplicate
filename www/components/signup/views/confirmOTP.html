@@ -2,16 +2,19 @@
     <form name="confirmAccountForm">
         <ion-content scroll="true" class="blueno-bg-full">
             <div class="center" style="width: inherit;height: auto;padding-top:15px"  >
-                <h3 style="color: #ffffff;">
+                <h3 style="color: rgba(0,0,0,.6);">
                     <!--<i class="ion-checkmark"></i>&nbsp;-->
                     {{'CONFIRM_YOUR_ACCOUNT_TITLE' | translate }}
                 </h3>
-                <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
+                <span style="color:rgba(0,0,0,.6) ; font-size: 14px;">
+                  (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;" class="ion-asterisk">
+                    </span><span style="color:rgba(0,0,0,.6)">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
+                  </span>
             </div>
             <div style="margin-top: 50px;">
-            <p ng-if="!isFromLogin&&!isNewCodeRequested"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
+            <p ng-if="!isFromLogin&&!isNewCodeRequested"  style="font-size: 20px;padding: 0px 40px;color: rgba(0,0,0,.6);line-height: 30px;
     text-align: center;">{{'THANK_YOU' | translate}}</p>
-            <p ng-if="(isFromLogin&&!indirect) || !isFromLogin"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
+            <p ng-if="(isFromLogin&&!indirect) || !isFromLogin"  style="font-size: 20px;padding: 0px 40px;color: rgba(0,0,0,.6);line-height: 30px;
     text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;<br>{{"(+"+userMobDetail.country_phone_code+") "+userMobDetail.mobile}}</p>
             </div>
             <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;" ng-if="isFromLogin&&indirect">

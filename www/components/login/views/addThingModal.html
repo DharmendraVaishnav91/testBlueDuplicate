@@ -11,7 +11,10 @@
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
             <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
-                <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
+                <span style="color:rgba(0,0,0,.6); font-size: 14px;">
+                  (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;" class="ion-asterisk"></span>
+                  <span style="color:rgba(0,0,0,.6);font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
+                </span>
             </div>
             <label class="item item-input item-stacked-label no-border label-padding"  >
                     <span class="input-label label-text "  style="color:white">{{'ASSET_NAME' | translate }}
@@ -23,7 +26,7 @@
                     <span class="input-label label-text "  style="color:white">{{'EQUIPMENT_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="width: 100%" ng-model="thing.equipType" ng-required="true"  ng-change="workTypeChange()">
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.equipType" ng-required="true"  ng-change="workTypeChange()">
                         <option selected disabled value="">{{'SELECT_THING_TYPE' | translate}}</option>
                         <option ng-repeat="obj in thingsType" value="{{obj.id}}">{{obj.name}}</option>
                         <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
@@ -38,7 +41,7 @@
                     <span class="input-label label-text "  style="color:white">{{'CROP' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <select style="width: 100%;" ng-model="thing.crop" ng-required="true">
+                <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.crop" ng-required="true">
                     <option selected disabled value="">{{'SELECT_CROP' | translate}}</option>
                     <option ng-repeat="obj in productList | orderBy:'H3Description'" value="{{obj.H3Code}}">{{obj.H3Description}}</option>
                 </select>
@@ -103,7 +106,7 @@
                     </span>
                     <!--<select style="width: 100%" ng-model="thing.country" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(thing.country.CountryCode)">-->
                     <!--</select>-->
-                    <select style="width: 100%" ng-model="thing.country" ng-required="true"  ng-change="changeSubdivision(thing.country)">
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.country" ng-required="true"  ng-change="changeSubdivision(thing.country)">
                         <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
                     <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
                             ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
@@ -117,7 +120,7 @@
                     </span>
                     <!--<select style="width: 100%" ng-model="thing.state" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">-->
                     <!--</select>-->
-                    <select style="width: 100%" ng-model="thing.state" >
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.state" >
                         <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
                         <option ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
                                 ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>

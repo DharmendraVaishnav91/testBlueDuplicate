@@ -1,7 +1,7 @@
 <form name="addressForm">
     <ion-content scroll="true" class="blueno-bg-full has-footer ">
         <div class="center" style="width: inherit;height: auto;padding-top:15px" >
-            <h3 style="color: #ffffff;">
+            <h3 style="color: rgba(0,0,0,.6);">
                 <i class="ion-home"></i>&nbsp; {{'ADD_HOME' | translate }}
                 <!--<span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>-->
                 <!--<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>-->
@@ -124,7 +124,8 @@
                 {{'SKIP' | translate }} &nbsp;
             </button>
             <button ng-disabled="addressForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="goToWork()" >
-                {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+                {{'NEXT' | translate }}
+                 <!-- &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i> -->
             </button>
 
         </div>

@@ -448,7 +448,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('regCreateProfile');
+        $urlRouterProvider.otherwise('home');
         $httpProvider.interceptors.push(function ($rootScope, $q) {
             return {
                 request: function (config) {
