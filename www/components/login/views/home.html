@@ -1,4 +1,4 @@
-<ion-content scroll="true" class="blueno-bg-full no-margin" ng-style="{'height':deviceHeight-40}">
+<ion-content scroll="true" class="no-margin" ng-style="{'height':deviceHeight-40}" style="background-color: #004192">
     <!--<img src="../../assets/img/background_img.png" style="position:absolute;height: 100%;width: 100%;">-->
     <div style="text-align: center;width: inherit;height: auto;padding-top:120px">
         <img ng-src="{{bgLargeUrl}}" style="height: 150px;width: 150px;"/>
@@ -8,14 +8,12 @@
     </div>
     <div class="row" style="margin-top:85px">
         <div class="col center ">
-            <div class="button"
-                 style="line-height: 42px;min-height: 0px;width: 140px;background-color: rgba(97,137,197,.6);color:black;font-weight: bold;border-radius:0"
+            <div class="button home-page-button"
                  ng-click="openLogin()">
                 {{'LOGIN' | translate }}
             </div>
             &nbsp;&nbsp;&nbsp;
-            <div class="button "
-                 style="line-height: 42px;min-height:0;width: 140px;border:1px rgba(255,255,255,0.5) solid;color: black;background: transparent;font-weight: bold;border-radius: 0;"
+            <div class="button home-page-button"
                  ng-click="openRegistration()">
                 {{'SIGNUP' | translate }}
             </div>
@@ -25,10 +23,10 @@
     <div class="row" style="margin-top: 10px;">
       <label class="item item-input item-stacked-label no-border" style=" padding-right: 9% !important;
     padding-left: 9% !important;width: 100%" >
-              <span class="input-label label-text "  style="color:white">{{'LANGUAGE' | translate }}
+              <span class="input-label label-text " style="color:white !important;">{{'LANGUAGE' | translate }}
                   <span class="assertive " style="font-size: inherit">* </span>
               </span>
-              <select style="width: 100%;" ng-model="lang.selected" name="language" ng-change="changeLanguage()">
+              <select  class="edit-input-select-blue-bg" style="width: 100%;" ng-model="lang.selected" name="language" ng-change="changeLanguage()">
               <option value="" disabled selected>{{'SELECT_LANGUAGE' | translate}}</option>
               <option value="en">English</option>
               <option value="ms">Bahasa Melayu (Malay)</option>
@@ -38,13 +36,5 @@
               <option value="th"> ไทย(Thai)</option>
           </select>
       </label>
-        <!-- <div class="col" style="    padding: 5px 32px 5px 31px;">
-            <span class="home-language-span positive" ng-click="changeLanguage('en')">English</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
-            <span class="home-language-span positive" ng-click="changeLanguage('ms')">Malay</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
-            <span  class="home-language-span positive" ng-click="changeLanguage('vi')">Tiếng Việt(Vietnamese)</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
-            <span  class="home-language-span positive" ng-click="changeLanguage('ja')">日本語 (にほんご)(Japanese)</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
-            <span class="home-language-span positive" ng-click="changeLanguage('my')">ဗမာစာ (Burmese)</span>&nbsp;<span style="color:white;margin-left: 8px;">|</span>&nbsp;
-            <span class="home-language-span positive" ng-click="changeLanguage('th')"> ไทย(Thai)</span>
-        </div> -->
     </div>
 </ion-content>

@@ -12,7 +12,15 @@ h1 {
 div.leaflet-right {
     display: none;
 }
-
+.home-page-button{
+    line-height: 42px;
+    min-height: 0px;
+    width: 140px;
+    background-color: white;
+    color:cornflowerblue;
+    font-weight: bold;
+    border-radius:0
+}
 .list .item.custom-item {
     background: transparent;
     color: rgba(255, 255, 255, .8);
@@ -126,6 +134,32 @@ div.leaflet-right {
     border-bottom: 2px solid cornflowerblue !important;
     transition: .5ms ease all;
     border-radius: 0px;
+}
+.edit-input-select{
+    display: inherit;
+    height: 40px !important;
+    width: 100%;
+    font-size: 18px !important;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid rgb(221,221,221) !important;
+    margin-bottom: 4px !important;
+    padding: 0 10px 0 4px !important;;
+    background:none;
+    color:#3A5997
+}
+.edit-input-select-blue-bg{
+    display: inherit;
+    height: 40px !important;
+    width: 100%;
+    font-size: 18px !important;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid rgb(221,221,221) !important;
+    margin-bottom: 4px !important;
+    padding: 0 10px 0 4px !important;;
+    background:none;
+    color:white
 }
 .label-text{
     color: rgba(0,0,0,.6) !important;

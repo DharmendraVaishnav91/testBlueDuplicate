@@ -210,15 +210,6 @@ appUtilityServices.factory('utilityService',function($http,$localStorage,$ionicP
             saveToPhotoAlbum: false,
             correctOrientation:true
         };
-        //var options = cameraOptions || {
-        //        quality: 100,
-        //        destinationType: Camera.DestinationType.DATA_URL,
-        //        sourceType: Camera.PictureSourceType.CAMERA,
-        //        allowEdit: true,
-        //        encodingType: Camera.EncodingType.JPEG,
-        //        saveToPhotoAlbum: false,
-        //        correctOrientation:true
-        //    };
 
         function getPic() {
             ionic.Platform.ready(function() {
