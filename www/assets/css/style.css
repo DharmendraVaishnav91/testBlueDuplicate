@@ -90,7 +90,9 @@ div.leaflet-right {
 .blue-bg {
     background-color: #3A5997 !important;
 }
-
+/*.card{*/
+    /*box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.6) !important;*/
+/*}*/
 .title {
     color: white !important;
 }
@@ -135,6 +137,18 @@ div.leaflet-right {
     transition: .5ms ease all;
     border-radius: 0px;
 }
+.edit-input-txt-error{
+    border-bottom: 2px solid red !important;
+    transition: .5ms ease all;
+    border-radius: 0px;
+}
+.edit-input-txt-error:focus{
+    border-bottom: 2px solid red !important;
+    transition: .5ms ease all;
+    border-radius: 0px;
+}
+
+
 .edit-input-select{
     display: inherit;
     height: 40px !important;
@@ -147,6 +161,11 @@ div.leaflet-right {
     padding: 0 10px 0 4px !important;;
     background:none;
     color:#3A5997
+}
+.edit-input-select:focus {
+    border-bottom: 2px solid cornflowerblue !important;
+    transition: .5ms ease all;
+    border-radius: 0px;
 }
 .edit-input-select-blue-bg{
     display: inherit;

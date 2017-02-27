@@ -11,12 +11,12 @@ app.controller('UserAgreementCtrl', function ($scope, $state, $rootScope, utilit
     $scope.goToCreateUserInfo=function () {
       $state.go('regCreateProfile');
     };
-    $scope.openRegistration = function () {
-        $state.go('userAgreement');
+    // $scope.openRegistration = function () {
+    //     $state.go('userAgreement');
+    // };
+    $scope.goBack=function () {
+      $state.go('home');
     };
-    $scope.openLogin = function () {
 
-        $state.go('login');
-    };
 });
 

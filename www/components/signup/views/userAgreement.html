@@ -1,4 +1,4 @@
-<form name="termsAndConditionForm" ng-submit="goToCreateUserInfo()">
+<form name="termsAndConditionForm" >
     <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
         <div class="buttons">
             <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
@@ -10,50 +10,55 @@
         <!--<button class="button">Right Button</button>-->
         <!--</div>-->
     </ion-header-bar>
-    <ion-content scroll="true" class="has-footer">
+    <ion-content scroll="true" class="has-footer has-header">
         <!--<div class="center" style=";width: inherit;height: auto;padding-top:15px" >-->
         <!--<h3 style="color: #ffffff;"> {{'CREATE_PROFILE' | translate }}</h3>-->
 
         <!--</div>-->
-        <div style="margin:10px;font-size: 16px;font-family: initial " align="justify">
-
-            <p >
-                {{'TERMS_OF_REGISTRY_1' | translate}}
-            </p>
-
-            <p >
-                {{'TERMS_OF_REGISTRY_2' | translate}}
-            </p>
-
-            <p >
-                {{'TERMS_OF_REGISTRY_3' | translate}}
-            </p>
-
-            <p >
-                {{'TERMS_OF_REGISTRY_4' | translate}}
-            </p>
-
-            <p >
-                {{'TERMS_OF_REGISTRY_5' | translate}}
-            </p>
-
-            <p >
-                {{'TERMS_OF_REGISTRY_6' | translate}}
-            </p>
-
-            <p >
-                {{'TERMS_OF_REGISTRY_7' | translate}}
-            </p>
-        </div>
-        <div class="row">
-            <div class="col">
-                You must agree on BlueNumber terms and conditions to continue in the registration process.
+        <div style="font-size: 16px; " class="card" >
+            <div class="item item-divider " style="background-color:grey;color:white">
+                BlueNumber Terms And Conditions
             </div>
+            <div class="item" style="font-family: initial;">
+                <p class="wrap-content"  style="color:black;font-size: 16px;">
+                    {{'TERMS_OF_REGISTRY_1' | translate}}
+                </p>
+
+                <p class="wrap-content" style="color:black;font-size: 16px;margin-top:5px">
+                    {{'TERMS_OF_REGISTRY_2' | translate}}
+                </p>
+
+                <p class="wrap-content" style="color:black;font-size: 16px;margin-top:5px">
+                    {{'TERMS_OF_REGISTRY_3' | translate}}
+                </p>
+
+                <p class="wrap-content" style="color:black;font-size: 16px;margin-top:5px">
+                    {{'TERMS_OF_REGISTRY_4' | translate}}
+                </p>
+
+                <p class="wrap-content" style="color:black;font-size: 16px;margin-top:5px">
+                    {{'TERMS_OF_REGISTRY_5' | translate}}
+                </p>
+
+                <p class="wrap-content" style="color:black;font-size: 16px;margin-top:5px">
+                    {{'TERMS_OF_REGISTRY_6' | translate}}
+                </p>
+
+                <p class="wrap-content" style="color:black;font-size: 16px;margin-top:5px">
+                    {{'TERMS_OF_REGISTRY_7' | translate}}
+                </p>
+            </div>
+
         </div>
+        <!--<div class="row">-->
+            <!--<div class="col">-->
+                <!--You must agree on BlueNumber terms and conditions to continue in the registration process.-->
+            <!--</div>-->
+        <!--</div>-->
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
-            <button ng-disabled="termsAndConditionForm.$invalid" class="button button-light button-clear bold" type="submit">
+            <button  class="button button-light button-clear bold" type="button" ng-click="goToCreateUserInfo()">
                 {{'AGREE' | translate }}
             </button>
         </div>

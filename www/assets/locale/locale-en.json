@@ -379,7 +379,10 @@
   "NO_SUCH_GROUPS": "No Such Group Exists.",
   "CONTINUE_SIGN_UP":"Continue",
   "ERROR":"Error",
-  "AGREE":"Agree"
+  "AGREE":"Agree",
+  "FIRST_NAME_MIN_LENGTH":"First name is required",
+  "LAST_NAME_MIN_LENGTH":"Last name is required",
+  "GENDER_IS_REQUIRED":"Gender is required"
 
 
 }

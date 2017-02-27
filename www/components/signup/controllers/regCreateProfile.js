@@ -18,6 +18,9 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
         })
     };
     $ionicNavBarDelegate.align('center')
+    $scope.goBack=function () {
+       $state.go('userAgreement');
+    };
     var createUser = function (userData) {
         console.log("User data before creation");
         console.log(userData);
@@ -53,38 +56,37 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
             }
         });
     };
-    var fetchStates = function (countryCode) {
-        signUpService.fetchStates(countryCode).then(function (response) {
-            $scope.subDivList = response;
-        }).catch(function (error) {
-            console.log(error);
-        })
-    };
+    // var fetchStates = function (countryCode) {
+    //     signUpService.fetchStates(countryCode).then(function (response) {
+    //         $scope.subDivList = response;
+    //     }).catch(function (error) {
+    //         console.log(error);
+    //     })
+    // };
 
-    $scope.changeSubdivision = function (countryCode) {
-        fetchStates(countryCode);
-    };
+    // $scope.changeSubdivision = function (countryCode) {
+    //     fetchStates(countryCode);
+    // };
 
     $scope.goToAddHomeWithCheck = function () {
         $scope.username = $scope.loginData.profile.given_name.concat(" ").concat($scope.loginData.profile.family_name);
         $scope.number = $scope.loginData.user.country_phone_code.concat($scope.loginData.user.mobile);
         console.log($scope.username);
         console.log($scope.number);
-        var confirmPopup = $ionicPopup.confirm({
-            title: $filter('translate')('CONFIRM_CREATE'),
-            template: '<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>' + " " + $scope.username + '</span><br><span>{{"NUMBER" | translate}}:</span><span>' + " (+" + $scope.loginData.user.country_phone_code + ") " + $scope.loginData.user.mobile + '</span>',
-            cancelText: $filter('translate')('CANCEL'),
-            okText: $filter('translate')('OK')
-        });
+        // var confirmPopup = $ionicPopup.confirm({
+        //     title: $filter('translate')('CONFIRM_CREATE'),
+        //     template: '<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>' + " " + $scope.username + '</span><br><span>{{"NUMBER" | translate}}:</span><span>' + " (+" + $scope.loginData.user.country_phone_code + ") " + $scope.loginData.user.mobile + '</span>',
+        //     cancelText: $filter('translate')('CANCEL'),
+        //     okText: $filter('translate')('OK')
+        // });
 
-        confirmPopup.then(function (res) {
-            if (res) {
-                console.log("Account Confirmed.");
+        //confirmPopup.then(function (res) {
+          //  if (res) {
+              //  console.log("Account Confirmed.");
                 $scope.goToAddHome();
-            } else {
+            //} else {
 
-            }
-        });
+            //}
     };
 
     $scope.goToAddHome = function () {
