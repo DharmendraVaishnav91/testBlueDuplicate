@@ -2,7 +2,7 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
     console.log($stateParams.accountData);
     $scope.isFromSetting = false;
     $scope.data = {};
-    $scope.home = {};
+    // $scope.home = {};
     $scope.loginData = $stateParams.accountData;
     var updatedImage = '';
     $rootScope.bgUrl = "assets/img/logo_small.png";
@@ -97,49 +97,50 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
         // $state.go('selectUserType',{profileData:$scope.loginData});
         $stateParams.profileData = $scope.loginData;
         console.log($stateParams.profileData);
-        utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
-
-            $rootScope.addressDataFromCoordinate.userCountry = {
-                CountryName: addr.country != null ? addr.country : "",
-                CountryCode: addr.country_code != null ? addr.country_code : "",
-                CountryPhoneCode: ""
-            };
-            $rootScope.addressDataFromCoordinate.userState = {
-                SubdivisionID: "",
-                SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
-                SubdivisionName: addr.state != null ? addr.state : "",
-                CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
-                CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
-            };
-            console.log("User state");
-            console.log($rootScope.addressDataFromCoordinate.userCountry);
-            $rootScope.addressDataFromCoordinate.city = angular.copy(addr.sub_state != null ? addr.sub_state : "");
-            // $rootScope.addressDataFromCoordinate.address= angular.copy(addr.street_number!=null?addr.street_number:"");
-            $rootScope.addressDataFromCoordinate.address = angular.copy(addr.street_address != null ? addr.street_address : "");
-            //Prepare data for creating user
-            $rootScope.addressDataFromCoordinate.postalcode = parseInt(angular.copy(addr.postal_code));
-
-
-            $scope.loginData.registration_location.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
-            $scope.loginData.registration_location.subdivision_code = $rootScope.addressDataFromCoordinate.userState.SubdivisionCode;
-
-            //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
-            $scope.loginData.registration_location.address = $rootScope.addressDataFromCoordinate.address;
-            $scope.loginData.registration_location.country_code = $rootScope.addressDataFromCoordinate.userCountry.CountryCode;
-            $scope.loginData.registration_location.latitude = $rootScope.position ? $rootScope.position.coords.latitude : '';
-            $scope.loginData.registration_location.longitude = $rootScope.position ? $rootScope.position.coords.longitude : '';
-            //$scope.loginData.registration_location.name='Home';
-            console.log($scope.loginData);
-
-            $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-
-
-            createUser(angular.copy($scope.loginData));
-
-
-        }).catch(function (error) {
-            console.log(error);
-        });
+        createUser($scope.loginData);
+        // utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
+        //
+        //     $rootScope.addressDataFromCoordinate.userCountry = {
+        //         CountryName: addr.country != null ? addr.country : "",
+        //         CountryCode: addr.country_code != null ? addr.country_code : "",
+        //         CountryPhoneCode: ""
+        //     };
+        //     $rootScope.addressDataFromCoordinate.userState = {
+        //         SubdivisionID: "",
+        //         SubdivisionCode: addr.subdivision_code != null ? addr.subdivision_code : "",
+        //         SubdivisionName: addr.state != null ? addr.state : "",
+        //         CountryCode: $rootScope.addressDataFromCoordinate.userCountry.CountryCode,
+        //         CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
+        //     };
+        //     console.log("User state");
+        //     console.log($rootScope.addressDataFromCoordinate.userCountry);
+        //     $rootScope.addressDataFromCoordinate.city = angular.copy(addr.sub_state != null ? addr.sub_state : "");
+        //     // $rootScope.addressDataFromCoordinate.address= angular.copy(addr.street_number!=null?addr.street_number:"");
+        //     $rootScope.addressDataFromCoordinate.address = angular.copy(addr.street_address != null ? addr.street_address : "");
+        //     //Prepare data for creating user
+        //     $rootScope.addressDataFromCoordinate.postalcode = parseInt(angular.copy(addr.postal_code));
+        //
+        //
+        //     $scope.loginData.registration_location.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
+        //     $scope.loginData.registration_location.subdivision_code = $rootScope.addressDataFromCoordinate.userState.SubdivisionCode;
+        //
+        //     //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+        //     $scope.loginData.registration_location.address = $rootScope.addressDataFromCoordinate.address;
+        //     $scope.loginData.registration_location.country_code = $rootScope.addressDataFromCoordinate.userCountry.CountryCode;
+        //     $scope.loginData.registration_location.latitude = $rootScope.position ? $rootScope.position.coords.latitude : '';
+        //     $scope.loginData.registration_location.longitude = $rootScope.position ? $rootScope.position.coords.longitude : '';
+        //     //$scope.loginData.registration_location.name='Home';
+        //     console.log($scope.loginData);
+        //
+        //     $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        //
+        //
+        //     createUser(angular.copy($scope.loginData));
+        //
+        //
+        // }).catch(function (error) {
+        //     console.log(error);
+        // });
 
     };
 });
