@@ -4,10 +4,24 @@
 }
 </style>
 <form name="credentialForm" ng-submit="goToProfileCreation()">
+    <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
+        <div class="buttons">
+            <button class="button button-clear" style="font-size: 30px;color:white" ng-click="doSomething()">
+                <i class="ion-android-arrow-back"></i>
+            </button>
+        </div>
+        <h1 class="title">{{'CREATE_AN_ACCOUNT' | translate }}</h1>
+        <!--<div class="buttons">-->
+        <!--<button class="button">Right Button</button>-->
+        <!--</div>-->
+    </ion-header-bar>
     <ion-content scroll="true" class="blueno-bg-full has-footer" has-footer="true">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px">
-            <h3 style="color: rgba(0,0,0,.6);">{{'CREATE_AN_ACCOUNT' | translate }}</h3>
-            <span style="color:rgba(0,0,0,.6); font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:rgba(0,0,0,.6);font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
+            <!--<h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>-->
+            <span style="color: rgba(0,0,0,.6) ; font-size: 14px;">
+                (&nbsp;<span style="color:rgba(239,71,58,.8);font-size: 12px;" class="ion-asterisk"></span>
+                <span style="color: rgba(0,0,0,.6);">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>&nbsp;)
+            </span>
         </div>
         <div class="list" ng-style="{'height':(deviceHeight-110)+'px'}"
              style="overflow: scroll;width: 100%;padding: 0;">

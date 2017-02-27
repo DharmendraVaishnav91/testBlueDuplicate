@@ -1,6 +1,6 @@
-var app = angular.module('app', ['ionic', 'ion-autocomplete','ngSanitize', 'common.directive', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet','app.filters','app.org','$actionButton','app.org.group']);
+var app = angular.module('app', ['ionic', 'ion-autocomplete', 'ngSanitize', 'common.directive', 'app.menu', 'app.utility.services', 'pascalprecht.translate', 'login.service', 'app.common.events', 'ngCordova', 'app.userSetting', 'base64', 'ngStorage', 'ui-leaflet', 'app.filters', 'app.org', '$actionButton', 'app.org.group']);
 
-app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordovaToast) {
+app.run(function ($ionicPlatform, EventService, utilityService, $rootScope, $cordovaToast) {
     $ionicPlatform.ready(function () {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -61,15 +61,20 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 templateUrl: 'components/login/views/home.html',
                 controller: 'HomeCtrl'
             })
+            .state('userAgreement', {
+                url: '/userAgreement',
+                templateUrl: 'components/signup/views/userAgreement.html',
+                controller: 'UserAgreementCtrl'
+            })
             .state('login', {
                 url: '/login',
-                cache:false,
+                cache: false,
                 templateUrl: 'components/login/views/login.html',
                 controller: 'LoginCtrl'
             })
             .state('regCreateAccount', {
                 url: '/regCreateAccount',
-                cache:false,
+                cache: false,
                 templateUrl: 'components/signup/views/regCreateAccount.html',
                 controller: 'RegCreateAccountCtrl'
             })
@@ -80,14 +85,14 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('passwordReset', {
                 url: '/passwordReset',
-                params:{token:""},
+                params: {token: ""},
                 templateUrl: 'components/login/views/passwordReset.html',
                 controller: 'PasswordResetCtrl'
             })
             .state('regCreateProfile', {
                 url: '/regCreateProfile',
                 params: {accountData: {}},
-                cache:false,
+                cache: false,
                 templateUrl: 'components/signup/views/regCreateProfile.html',
                 controller: 'RegCreateProfileCtrl'
             })
@@ -99,7 +104,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('addHome', {
                 url: '/addHome',
-                cache:false,
+                cache: false,
                 params: {homeData: {}, homeAddress: {}},
                 templateUrl: 'components/signup/views/addHome.html',
                 controller: 'addHomeCtrl'
@@ -135,7 +140,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('verifyAccount', {
                 url: '/verify-account',
-                params:{isFromLogin:false,indirect:false,credential:null},
+                params: {isFromLogin: false, indirect: false, credential: null},
                 templateUrl: 'components/signup/views/confirmOTP.html',
                 controller: 'ConfirmOTPCtrl'
             })
@@ -149,7 +154,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                     }
                 }
             })
-            .state('app.receivedOrgRequest',{
+            .state('app.receivedOrgRequest', {
                 url: '/receivedOrgRequest',
                 views: {
                     'mainContent': {
@@ -158,7 +163,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                     }
                 }
             })
-            .state('app.receivedGroupRequest',{
+            .state('app.receivedGroupRequest', {
                 url: '/receivedGroupRequest',
                 views: {
                     'mainContent': {
@@ -178,7 +183,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.createOrg', {
                 url: '/createOrg',
-                cache:false,
+                cache: false,
                 views: {
                     'mainContent': {
                         templateUrl: 'components/setting/views/createOrg.html',
@@ -188,8 +193,8 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.organization', {
                 url: '/organization',
-                cache:false,
-                abstract:true,
+                cache: false,
+                abstract: true,
                 params: {orgExist: false, org: {}, loc: {}},
                 views: {
                     'mainContent': {
@@ -200,7 +205,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.organization.detail', {
                 url: '/detail',
-                cache:false,
+                cache: false,
                 views: {
                     'orgDetail': {
                         templateUrl: 'components/organization/views/orgDetail.html',
@@ -210,7 +215,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.organization.members', {
                 url: '/members',
-                cache:false,
+                cache: false,
                 views: {
                     'orgMembers': {
                         templateUrl: 'components/organization/views/orgMembers.html',
@@ -220,7 +225,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.organization.invitations', {
                 url: '/invitations',
-                cache:false,
+                cache: false,
                 views: {
                     'orgInvitations': {
                         templateUrl: 'components/organization/views/orgInvitations.html',
@@ -230,7 +235,7 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
             })
             .state('app.orgMapView', {
                 url: '/invitations',
-                cache:false,
+                cache: false,
                 views: {
                     'mainContent': {
                         templateUrl: 'components/organization/views/orgMapView.html',
@@ -248,78 +253,78 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             })
             .state('app.createGroup', {
-               url: '/createGroup',
-               views: {
-                   'mainContent': {
-                       templateUrl: 'components/group/views/createGroup.html',
-                       controller: 'GroupCtrl'
-                   }
-               }
+                url: '/createGroup',
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/createGroup.html',
+                        controller: 'GroupCtrl'
+                    }
+                }
             })
             .state('app.searchGroup', {
-               url: '/searchGroup',
-               views: {
-                   'mainContent': {
-                       templateUrl: 'components/group/views/searchGroup.html',
-                       controller: 'SearchGroupCtrl'
-                   }
-               }
+                url: '/searchGroup',
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/searchGroup.html',
+                        controller: 'SearchGroupCtrl'
+                    }
+                }
             })
             .state('app.groupDetails', {
-               url: '/groupDetails',
-                cache:false,
-               params:{group:{}},
-               views: {
-                   'mainContent': {
-                       templateUrl: 'components/group/views/groupDetails.html',
-                       controller: 'GroupDetailsCtrl'
-                   }
-               }
+                url: '/groupDetails',
+                cache: false,
+                params: {group: {}},
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/groupDetails.html',
+                        controller: 'GroupDetailsCtrl'
+                    }
+                }
             })
             .state('app.group', {
-                 url: '/group',
-                 cache:false,
-                 abstract:true,
-                 views: {
-                     'mainContent': {
-                         templateUrl: 'components/group/views/groupTab.html',
-                         controller: 'GroupTabCtrl'
-                     }
-                 }
-             })
-             .state('app.group.manage', {
-                 url: '/manage',
-                 cache:false,
-                 views: {
-                     'manageGroup': {
-                         templateUrl: 'components/group/views/manageGroup.html',
-                         controller: 'ManageGroupCtrl'
-                     }
-                 }
-             })
-             .state('app.group.invite', {
-                 url: '/invite',
-                 cache:false,
-                 views: {
-                     'groupInvite': {
-                         templateUrl: 'components/group/views/groupInvite.html',
-                         controller: 'GroupInviteCtrl'
-                     }
-                 }
-             })
-             .state('app.group.request', {
-                 url: '/request',
-                 cache:false,
-                 views: {
-                     'groupJoinRequest': {
-                         templateUrl: 'components/group/views/groupJoinRequest.html',
-                         controller: 'GroupJoinRequestCtrl'
-                     }
-                 }
-           })
-           .state('app.groupMembers', {
+                url: '/group',
+                cache: false,
+                abstract: true,
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/groupTab.html',
+                        controller: 'GroupTabCtrl'
+                    }
+                }
+            })
+            .state('app.group.manage', {
+                url: '/manage',
+                cache: false,
+                views: {
+                    'manageGroup': {
+                        templateUrl: 'components/group/views/manageGroup.html',
+                        controller: 'ManageGroupCtrl'
+                    }
+                }
+            })
+            .state('app.group.invite', {
+                url: '/invite',
+                cache: false,
+                views: {
+                    'groupInvite': {
+                        templateUrl: 'components/group/views/groupInvite.html',
+                        controller: 'GroupInviteCtrl'
+                    }
+                }
+            })
+            .state('app.group.request', {
+                url: '/request',
+                cache: false,
+                views: {
+                    'groupJoinRequest': {
+                        templateUrl: 'components/group/views/groupJoinRequest.html',
+                        controller: 'GroupJoinRequestCtrl'
+                    }
+                }
+            })
+            .state('app.groupMembers', {
                 url: '/groupMembers',
-                params:{name:"",id:1,data:{}},
+                params: {name: "", id: 1, data: {}},
                 views: {
                     'mainContent': {
                         templateUrl: 'components/group/views/groupMembers.html',
@@ -328,36 +333,36 @@ app.run(function ($ionicPlatform, EventService, utilityService,$rootScope,$cordo
                 }
             })
             .state('app.groupPendingInvites', {
-                 url: '/groupPendingInvites',
-                 params:{name:"",id:1,data:[]},
-                 views: {
-                     'mainContent': {
-                         templateUrl: 'components/group/views/groupPendingInvites.html',
-                         controller: 'GroupPendingInvitesCtrl'
-                     }
-                 }
-             })
-             .state('app.groupRequests', {
-                  url: '/groupRequests',
-                  params:{name:"",id:1,data:{}},
-                  views: {
-                      'mainContent': {
-                          templateUrl: 'components/group/views/groupRequests.html',
-                          controller: 'GroupRequestsCtrl'
-                      }
-                  }
-              })
-              .state('app.inviteGroupMember', {
-                   url: '/inviteGroupMember',
-                   params:{groupID:1,prevStateData:{}},
-                   views: {
-                       'mainContent': {
-                           templateUrl: 'components/group/views/inviteGroupMember.html',
-                           controller: 'InviteGroupMemberCtrl'
-                       }
-                   }
-               })
-               .state('app.manageSetting', {
+                url: '/groupPendingInvites',
+                params: {name: "", id: 1, data: []},
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/groupPendingInvites.html',
+                        controller: 'GroupPendingInvitesCtrl'
+                    }
+                }
+            })
+            .state('app.groupRequests', {
+                url: '/groupRequests',
+                params: {name: "", id: 1, data: {}},
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/groupRequests.html',
+                        controller: 'GroupRequestsCtrl'
+                    }
+                }
+            })
+            .state('app.inviteGroupMember', {
+                url: '/inviteGroupMember',
+                params: {groupID: 1, prevStateData: {}},
+                views: {
+                    'mainContent': {
+                        templateUrl: 'components/group/views/inviteGroupMember.html',
+                        controller: 'InviteGroupMemberCtrl'
+                    }
+                }
+            })
+            .state('app.manageSetting', {
                 url: '/manageSetting',
                 views: {
                     'mainContent': {
