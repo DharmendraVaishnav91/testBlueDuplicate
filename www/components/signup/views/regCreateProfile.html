@@ -78,7 +78,7 @@
                     <span class="assertive ">* </span>
                 </span>
                 <select style=""
-                        class="edit-input-select" ng-model="data.gender" ng-required="true" name="gender">
+                        class="edit-input-select" ng-model="loginData.profile.gender" ng-required="true" name="gender">
                     <option disabled value="" selected>{{'SELECT_GENDER' | translate}}</option>
                     <option value="male">{{'MALE' | translate }}</option>
                     <option value="female">{{'FEMALE' | translate }}</option>
@@ -108,7 +108,7 @@
     <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
             <button ng-disabled="basicInfoForm.$invalid" class="button button-light button-clear bold" type="submit"
-                    ng-click="goToAddHomeWithCheck()">
+                    ng-click="goToAddMobile()">
                 {{'NEXT' | translate }}
             </button>
         </div>

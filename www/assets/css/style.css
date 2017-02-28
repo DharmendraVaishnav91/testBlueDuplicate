@@ -81,6 +81,7 @@ div.leaflet-right {
 
 .validation-font {
     color: #ffa366;
+    font-size: 13px;
 }
 
 .wrap-content {
@@ -126,7 +127,8 @@ div.leaflet-right {
     /*background-color: rgba(97, 137, 197, .7) !important;;*/
     /*border-radius: 4px !important;;*/
     /*color: white !important;;*/
-    border-bottom: 1px solid rgb(221,221,221) !important;
+    /*border-bottom: 1px solid rgb(221,221,221) !important;*/
+    border-bottom: 1px solid grey !important;
     margin-bottom: 4px !important;
     padding: 0 10px 0 10px !important;;
     height: 40px !important;

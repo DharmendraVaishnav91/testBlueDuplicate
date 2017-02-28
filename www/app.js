@@ -96,6 +96,12 @@ app.run(function ($ionicPlatform, EventService, utilityService, $rootScope, $cor
                 templateUrl: 'components/signup/views/regCreateProfile.html',
                 controller: 'RegCreateProfileCtrl'
             })
+            .state('regMobile', {
+                url: '/regMobile',
+                cache: false,
+                templateUrl: 'components/signup/views/regMobile.html',
+                controller: 'RegMobileCtrl'
+            })
             .state('selectUserType', {
                 url: '/selectUserType',
                 params: {profileData: {}},

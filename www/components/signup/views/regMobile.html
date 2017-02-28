@@ -1,0 +1,82 @@
+<form name="credentialForm" ng-submit="goToAddHome()">
+    <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
+        <div class="buttons">
+            <button class="button button-clear" style="font-size: 30px;color:white" ng-click="doSomething()">
+                <i class="ion-android-arrow-back"></i>
+            </button>
+        </div>
+        <h1 class="title">{{'CREATE_AN_ACCOUNT' | translate }}</h1>
+        <!--<div class="buttons">-->
+        <!--<button class="button">Right Button</button>-->
+        <!--</div>-->
+    </ion-header-bar>
+    <ion-content scroll="true" class="blueno-bg-full has-footer" has-footer="true">
+        <div class="center" style=";width: inherit;height: auto;padding-top:15px">
+            <!--<h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>-->
+            <span style="color: rgba(0,0,0,.6) ; font-size: 14px;">
+                (&nbsp;<span style="color:rgba(239,71,58,.8);font-size: 12px;" class="ion-asterisk"></span>
+                <span style="color: rgba(0,0,0,.6);">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>&nbsp;)
+            </span>
+        </div>
+        <div class="list">
+            <!--<label class="item item-input item-stacked-label no-border label-padding">-->
+            <div class="item label-padding no-border">
+                <span class="input-label label-text " style="color:white;">
+                    {{'MOBILE' | translate }}
+                    <span class="assertive " style="font-size: inherit">
+                        *
+                    </span>
+                </span>
+
+                <div class="row no-padding">
+                    <div class="col no-padding col-20">
+                        <div class="" style="color:black;height: 100%;position: relative" ng-click="showCountrySearch()">
+                            <span class="center" style="color:#3A5997;right:3px;width:100%;position: absolute;bottom: 4px;padding-bottom: 7px;border-bottom: 1px solid grey;">US <i class="ion-ios-arrow-down"></i></span>
+                        </div>
+                    </div>
+                    <div class="col no-padding col-20">
+                        <div class="" style="color:black;height: 100%;position: relative">
+                            <span class="center" style="color:#3A5997;padding-top:7px;background-color:lightgrey;position: absolute;bottom: 4px;width:100%;padding-bottom: 7px;border-bottom: 1px solid grey;">+395</span>
+                        </div>
+                    </div>
+                    <div class="col no-padding">
+
+                        <input class="edit-input-txt " ng-model="loginData.user.mobile" name="mobile" ng-required="true"
+                               style="font-size:18px;width:100%" type="number" ng-minlength="9" ng-maxlength="15" id="mobileNumber" />
+
+                    </div>
+                </div>
+                <div class="row no-padding">
+                    <div class="col no-padding">
+                        <span class="assertive validation-font wrap-content"
+                              ng-show="credentialForm.mobile.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!--</label>-->
+            <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text " style="color:white">{{'EMAIL' | translate }}
+                    <span class="assertive " style="font-size: inherit">* </span>
+                </span>
+                <input class="edit-input-txt" ng-model="loginData.user.email" name="userEmail" ng-required="true"
+                       style="font-size:18px;" type="text" />
+                <span class="assertive validation-font wrap-content" ng-show="credentialForm.userEmail.$error.minlength">
+                    {{'PASSWORD_MIN_LENGTH'| translate}}
+                </span>
+            </label>
+        </div>
+    </ion-content>
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border">
+        <div class="button-bar">
+            <button ng-disabled="credentialForm.$invalid" class="button button-clear button-light bold"
+                    type="submit">
+                {{'NEXT' | translate }} &nbsp;
+                <i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+            </button>
+
+        </div>
+    </ion-footer-bar>
+</form>
