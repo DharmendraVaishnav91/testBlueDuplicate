@@ -1,14 +1,29 @@
 <ion-modal-view >
     <ion-header-bar class="bar bar-header blue-bg no-border">
-        <button ng-click="hideEditHomeModal()" style="color:white" class="button back-button buttons  button-clear header-item">
+        <button ng-click="hideCountrySearch()" style="color:white" class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
         </button>
         <h1 class="title" style=" max-width:none;text-align: center !important;">{{'SEARCH_COUNTRY' | translate }}</h1>
     </ion-header-bar>
+    <div class="bar bar-subheader" style="background-color: darkgray !important;">
+        <div class="item no-padding" style="width:100%;border-radius: 5px;">
+            <div class="row no-padding">
+                <div class="col no-padding">
+                    <input style="width: 100%;color:#3A5997;padding:0 10px 0 10px;font-weight: bold;"
+                           type="text" name="searchCountryText" ng-model="countrySearchStr" placeholder="Search"/>
+                </div>
+            </div>
+        </div>
+    </div>
     <form name="addressForm">
-        <ion-content scroll="true" class="blueno-bg-full has-header">
-
+        <ion-content scroll="true" class="blueno-bg-full has-header has-subheader">
+              <div class="list">
+                  <div class="item" style="padding:10px;" ng-click="selectCountry(country)" ng-repeat="country in countryCodeList | filter:countrySearchStr">
+                      <span>{{::country.CountryName}}</span>
+                      <span style="float: right;color:grey">+{{::country.CountryPhoneCode}}</span>
+                  </div>
+              </div>
         </ion-content>
     </form>
 </ion-modal-view>

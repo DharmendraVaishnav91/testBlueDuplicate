@@ -4,7 +4,7 @@
 app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, $rootScope, signUpService, $cordovaToast,utilityService,$ionicModal) {
 
     $scope.isFromSetting = false;
-
+    $scope.selectedCountry=null;
     $scope.loginData = {
         user:{}
     };
@@ -19,7 +19,6 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
         $scope.countrySearchModal = modal;
     });
 
-
     $scope.showCountrySearch = function() {
         console.log("show country search");
         $scope.countrySearchModal.show();
@@ -31,6 +30,10 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
     $scope.$on('$destroy', function() {
         $scope.countrySearchModal.remove();
     });
+    $scope.selectCountry = function (selectedCountry) {
+       $scope.selectedCountry=selectedCountry;
+       $scope.hideCountrySearch();
+    };
 
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
