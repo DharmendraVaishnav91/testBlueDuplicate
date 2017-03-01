@@ -21,6 +21,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
 
     $scope.isFromSetting = false;
     $rootScope.position = null;
+    $rootScope.addressDataFromCoordinate = {};
     $scope.addPicIcon = "assets/img/user-edit-icon.png";
     $scope.enableCrop = false;
     $scope.data = {};
@@ -55,7 +56,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
         });
     };
     $scope.isLocationShared = false;
-    $rootScope.addressDataFromCoordinate = {};
+
     $scope.showPopup = function (position) {
         $scope.data = {};
         isPopupOpen = true;

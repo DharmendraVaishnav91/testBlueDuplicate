@@ -3,7 +3,7 @@
  */
 userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$rootScope,$scope,$state,$ionicModal,utilityService,$cordovaToast,$cordovaContacts,$filter) {
     $scope.friend ={};
-    $scope.selectedNumber=[];
+    $scope.selectedProducts=[];
     $scope.phoneContacts = [];
     $scope.countryCodeList=utilityService.countryList();
     $scope.contactFind = true;
@@ -60,13 +60,13 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
         phoneNumber=""+phoneNumber;
         phoneNumber=addCountryCode(phoneNumber);
         phoneNumber=parseInt(phoneNumber);
-        if (action == 'add' && $scope.selectedNumber.indexOf(phoneNumber) == -1) {
-            $scope.selectedNumber.push(phoneNumber);
+        if (action == 'add' && $scope.selectedProducts.indexOf(phoneNumber) == -1) {
+            $scope.selectedProducts.push(phoneNumber);
         }
-        if (action == 'remove' && $scope.selectedNumber.indexOf(phoneNumber) != -1) {
-            $scope.selectedNumber.splice($scope.selectedNumber.indexOf(phoneNumber), 1);
+        if (action == 'remove' && $scope.selectedProducts.indexOf(phoneNumber) != -1) {
+            $scope.selectedProducts.splice($scope.selectedProducts.indexOf(phoneNumber), 1);
         }
-        console.log($scope.selectedNumber);
+        console.log($scope.selectedProducts);
     };
 
      var addCountryCode= function (phoneNumber) {
@@ -79,7 +79,7 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
         console.log("Friend details");
 
         var inviteFriendData={
-            friends:$scope.selectedNumber
+            friends:$scope.selectedProducts
         } ;
         console.log(inviteFriendData);
         utilityService.sendBulkInviteToFriend(inviteFriendData).then(function () {
@@ -92,6 +92,6 @@ userSetting.controller('BulkInviteCtrl', function($ionicLoading,loginService,$ro
         })
     };
     $scope.isSelected = function(id) {
-        return $scope.selectedNumber.indexOf(id) >= 0;
+        return $scope.selectedProducts.indexOf(id) >= 0;
     };
 });

@@ -1,7 +1,7 @@
 <form name="credentialForm" ng-submit="goToAddHome()">
     <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
         <div class="buttons">
-            <button class="button button-clear" style="font-size: 30px;color:white" ng-click="doSomething()">
+            <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
                 <i class="ion-android-arrow-back"></i>
             </button>
         </div>
@@ -59,13 +59,13 @@
             <!--</label>-->
             <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text " style="color:white">{{'EMAIL' | translate }}
-                    <span class="assertive " style="font-size: inherit">* </span>
+                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
                 </span>
-                <input class="edit-input-txt" ng-model="loginData.user.email" name="userEmail" ng-required="true"
+                <input class="edit-input-txt" ng-model="loginData.user.email" name="userEmail"
                        style="font-size:18px;" type="text" />
-                <span class="assertive validation-font wrap-content" ng-show="credentialForm.userEmail.$error.minlength">
-                    {{'PASSWORD_MIN_LENGTH'| translate}}
-                </span>
+                <!--<span class="assertive validation-font wrap-content" ng-show="credentialForm.userEmail.$error.minlength">-->
+                    <!--{{'PASSWORD_MIN_LENGTH'| translate}}-->
+                <!--</span>-->
             </label>
         </div>
     </ion-content>
@@ -74,7 +74,7 @@
             <button ng-disabled="credentialForm.$invalid" class="button button-clear button-light bold"
                     type="submit">
                 {{'NEXT' | translate }} &nbsp;
-                <i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+                <!--<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>-->
             </button>
 
         </div>

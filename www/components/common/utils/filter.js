@@ -46,7 +46,19 @@ angular.module("app.filters", [])
             }
             return null;
         }
-    }).filter('getById', function() {
+    }).
+    filter('getByParamInMap', function() {
+        return function(inputArray, paramName,paramValue) {
+        var i=0, len=inputArray.length;
+        for (; i<len; i++) {
+            if (inputArray[i][paramName] == paramValue) {
+                return {index:i, value:inputArray[i]};
+            }
+        }
+        return null;
+    }
+})
+    .filter('getById', function() {
     return function(input, idName,id) {
         var i=0, len=input.length;
         for (; i<len; i++) {

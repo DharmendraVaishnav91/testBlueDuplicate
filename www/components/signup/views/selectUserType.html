@@ -1,39 +1,90 @@
-<form name="selectUserTypeForm">
-    <ion-content scroll="true" class="blueno-bg-full has-footer">
+<form name="selectUserTypeForm" ng-submit="goToAddHomeWithCheck()">
+    <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
+        <div class="buttons">
+            <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
+                <i class="ion-android-arrow-back"></i>
+            </button>
+        </div>
+        <h1 class="title">{{'ADD_HOME' | translate }}</h1>
+        <!--<div class="buttons">-->
+        <!--<button class="button">Right Button</button>-->
+        <!--</div>-->
+    </ion-header-bar>
+    <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
         <div class="center" style=";width: inherit;height: auto;padding-top:15px">
-            <h3 style="color: #ffffff;">{{'SELECT_USER_TYPE' | translate }}</h3>
+            <!--<h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>-->
+            <span style="color: rgba(0,0,0,.6) ; font-size: 14px;">
+                (&nbsp;<span style="color:rgba(239,71,58,.8);font-size: 12px;" class="ion-asterisk"></span>
+                <span style="color: rgba(0,0,0,.6);">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>&nbsp;)
+            </span>
         </div>
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
-            <div class="row">
-                <div class="col" style="padding-left: 80px;color: white;">
-                    <div class="inline-field">
 
-                        <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
-                               type="radio" name="userType" id="farmer" value="Farmer">
-                        <label ng-required="true" for="farmer" style="font-size: 25px ">&nbsp;{{'FARMER' | translate}}</label> <br>
-                        <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
-                               type="radio" name="userType" id="factoryFarmer" value="Factory Worker">
-                        <label ng-required="true" for="factoryFarmer" style=" font-size: 25px">&nbsp;{{'FACTORY_WORKER'
-                            | translate }}</label><br>
-                        <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
-                               type="radio" id="fisher" name="userType" value="Fisherman">
-                        <label for="fisher" style="font-size: 25px">&nbsp;{{'FISHERMAN' | translate }}</label> <br>
-                        <input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"
-                               type="radio" name="userType" id="none" value="Other">
-                        <label ng-required="true" for="none" style="font-size: 25px" checked="checked">&nbsp;{{'OTHER' |
-                            translate }}</label><br>
+            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
+                <span class="input-label label-text ">
+                    {{'OCCUPATION' | translate }}
+                    <span class="assertive ">* </span>
+                </span>
+                <select style=""
+                        class="edit-input-select" ng-model="loginData.profile.gender" ng-required="true" name="gender">
+                    <option disabled value="" selected>{{'SELECT_OCCUPATION' | translate}}</option>
+                    <option value="Farmer">{{'FARMER' | translate}}</option>
+                    <option value="Factory Worker">{{'FACTORY_WORKER' | translate }}</option>
+                    <option value="Fisherman">{{'FISHERMAN' | translate }}</option>
+                    <option value="Other">{{'OTHER' | translate }}</option>
+                </select>
+                <!--<span class="validation-font wrap-content" ng-show="basicInfoForm.gender.$error.required && basicInfoForm.gender.$touched">-->
+                    <!--{{'OCCUPATION_IS_REQUIRED'| translate}}-->
+                <!--</span>-->
+            </label>
+            <div class="item label-padding no-border">
+                <span class="input-label label-text " style="color:white;">
+                  {{'PRODUCTS' | translate }}
+                    <span class="assertive " style="font-size: inherit">
+                        *
+                    </span>
+                </span>
+
+                <div class="row" ng-click="showProductSearch()">
+                    <div class="col">
 
                     </div>
+
                 </div>
+
             </div>
+
+            <!--<div class="row">-->
+                <!--<div class="col" style="padding-left: 80px;color: white;">-->
+                    <!--<div class="inline-field">-->
+
+                        <!--<input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"-->
+                               <!--type="radio" name="userType" id="farmer" value="Farmer">-->
+                        <!--<label ng-required="true" for="farmer" style="font-size: 25px ">&nbsp;{{'FARMER' | translate}}</label> <br>-->
+                        <!--<input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"-->
+                               <!--type="radio" name="userType" id="factoryFarmer" value="Factory Worker">-->
+                        <!--<label ng-required="true" for="factoryFarmer" style=" font-size: 25px">&nbsp;{{'FACTORY_WORKER'-->
+                            <!--| translate }}</label><br>-->
+                        <!--<input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"-->
+                               <!--type="radio" id="fisher" name="userType" value="Fisherman">-->
+                        <!--<label for="fisher" style="font-size: 25px">&nbsp;{{'FISHERMAN' | translate }}</label> <br>-->
+                        <!--<input style="height: 30px;width: 30px" ng-model="loginData.user_type" ng-required="true"-->
+                               <!--type="radio" name="userType" id="none" value="Other">-->
+                        <!--<label ng-required="true" for="none" style="font-size: 25px" checked="checked">&nbsp;{{'OTHER' |-->
+                            <!--translate }}</label><br>-->
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
 
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg no-border" >
         <div class="button-bar">
             <button ng-disabled="selectUserTypeForm.$invalid" class="button button-light button-clear bold"
-                    type="submit" ng-click="goToAddHomeWithCheck()">
-                {{'NEXT' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>
+                    type="submit">
+                {{'NEXT' | translate }}
+                <!--&nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>-->
             </button>
 
         </div>

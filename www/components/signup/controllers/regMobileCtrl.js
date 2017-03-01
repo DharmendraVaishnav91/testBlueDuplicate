@@ -49,7 +49,7 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
     $scope.goToAddHome = function () {
         console.log("Add mobile screen ");
         console.log($scope.loginData);
-      //  $state.go('');
+        $state.go('addHome');
 
 
     };
