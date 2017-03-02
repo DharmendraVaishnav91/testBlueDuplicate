@@ -61,7 +61,16 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
         //        CountryName:"United States"
         //    }
         //}
-        $state.go('addHome');
+        var mobileWithCountryCode= $rootScope.loginData.user.selectedCountry.CountryPhoneCode+$rootScope.loginData.user.mobile;
+        signUpService.checkUserNameAvailability(mobileWithCountryCode).then(function (response) {
+            $state.go('addHome');
+        }).catch(function (error) {
+            console.log(error.error);
+            // $cordovaToast.showLongBottom(error.error);
+            //showErrorAlert(error.error);
+            console.log("Username already taken. Try another.");
+        });
+
 
 
     };

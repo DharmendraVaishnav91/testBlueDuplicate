@@ -54,8 +54,8 @@ loginService.factory('signUpService',function($http,$ionicPopup,$q,$rootScope,ut
         };
         return utilityService.makeHTTPRequest(req,deferred);
     };
-    self.checkUserNameAvailability= function (userData) {
-        var username=userData.user.country_phone_code+""+userData.user.mobile;
+    self.checkUserNameAvailability= function (mobileWithCountryCode) {
+        var username=mobileWithCountryCode;
         var deferred = $q.defer();
         var req={
             url:HttpRoutes.checkUserName+""+username,
