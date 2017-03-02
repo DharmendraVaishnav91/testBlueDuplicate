@@ -11,7 +11,10 @@
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style=" overflow: scroll;width: 100%;padding: 0;">
                 <!--Work place type-->
             <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
-                <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
+                <span style="color:rgba(0,0,0,.6) ; font-size: 14px;">
+                  (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;" class="ion-asterisk"></span>
+                  <span style="color:rgba(0,0,0,.6);font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
+                </span>
             </div>
             <label class="item item-input item-stacked-label no-border label-padding" >
                     <span class="input-label label-text " style="color:white">{{'NAME' | translate }}
@@ -30,6 +33,7 @@
                 <input ion-autocomplete type="text"
                        template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
+                       class="edit-input-txt"
                        autocomplete="off"
                        select-items-label="{{'SELECT_PRODUCT' | translate}}"
                        item-method-value-key="productList"
@@ -38,7 +42,7 @@
                        ng-model="work.crop"
                        max-selected-items="1"
                        cancel-label="{{'CANCEL' | translate }}"
-                       style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                       style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
                        placeholder="{{'SEARCH_PRODUCT' | translate }}"
                    />
             </label>
@@ -81,7 +85,7 @@
                 <span class="input-label label-text "  style="color:white">{{'WHERE_YOU_WORK' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <select name="location-where" style="width: 100%" ng-model="work.where" ng-required="true"  ng-change="updateLocationFields(work.where)">
+                <select name="location-where" style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="work.where" ng-required="true"  ng-change="updateLocationFields(work.where)">
                     <option disabled >{{'SELECT_ONE'| translate}}</option>
                     <!--<option ng-repeat="obj in myLocations" value="{{obj}}">-->
                         <!--{{obj.LocationType+"("+obj.LocationName+")"}}-->
@@ -106,6 +110,7 @@
             <input ion-autocomplete type="text"
                    template-url="components/menu/views/autoCompleteDrop.html"
                    readonly="readonly"
+                   class="edit-input-txt"
                    autocomplete="off"
                    select-items-label="{{'SELECT_COUNTRY' | translate}}"
                    item-method-value-key="countryCodeList"
@@ -114,7 +119,7 @@
                    ng-model="work.country"
                    max-selected-items="1"
                    cancel-label="{{'CANCEL' | translate }}"
-                   style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                   style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
                    placeholder="{{'SEARCH_COUNTRY' | translate }}"
                    items-clicked-method="changeSubdivision(work.country.CountryCode)"
                />
@@ -133,6 +138,7 @@
             <input ion-autocomplete type="text"
                    template-url="components/menu/views/autoCompleteDrop.html"
                    readonly="readonly"
+                   class="edit-input-txt"
                    autocomplete="off"
                    select-items-label="{{'SELECT_STATE' | translate}}"
                    item-method-value-key="subDivList"
@@ -141,7 +147,7 @@
                    ng-model="work.state"
                    max-selected-items="1"
                    cancel-label="{{'CANCEL' | translate }}"
-                   style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                   style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
                    placeholder="{{'SEARCH_STATE' | translate }}"
                />
         </label>
