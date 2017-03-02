@@ -15,7 +15,7 @@ org.controller('OrganizationDetailCtrl', function ($scope, $state, $actionButton
     var actionButton = $actionButton.create({
         mainAction: {
             icon: 'fa fa-pencil',
-            backgroundColor: '#4E5C6E',
+            backgroundColor: '#3A5997',
             textColor: ' white',
             onClick: function() {
                 console.log('clicked edit BUTTON');

@@ -52,6 +52,13 @@ userSetting.controller('UserSettingCtrl', function($rootScope,$scope,$state,$ion
             console.log(error);
         });
     };
+
+    userSettingService.fetchUserInfo($rootScope.user.ActorID).then(function(response){
+        $scope.userPersonalInfo=response;
+        $scope.person= angular.copy($scope.userPersonalInfo.person);
+        // $scope.editAccountModal.show();
+    });
+
     utilityService.getPosition().then(function (position) {
         $rootScope.position=position;
         console.log("position in scope");

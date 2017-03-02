@@ -1,8 +1,12 @@
 <ion-view  view-title="{{'MY_FAMILY_MEMBERS' | translate}}" >
-    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
-    </ion-nav-bar>
+    <ion-header-bar class="bar-stable blue-bg no-border" align-title="center">
+      <button ng-click="backToAccount()" style="color:white" class="button back-button buttons  button-clear header-item">
+          <i class="icon ion-android-arrow-back"></i>
+          <span class="back-text"></span>
+      </button>
+    </ion-header-bar>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
-    <ion-content scroll="true" class="blueno-bg has-footer">
+    <ion-content scroll="true" class="has-footer">
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
 
         <!--<div class="item card no-padding"  ng-repeat="invitedMember in invitedMemebers" ng-if="invitedFind">-->
@@ -69,7 +73,7 @@
                 <!--</div>-->
                 <!--</div>-->
                 <div class="item no-padding  dark-gray-border " style="background-color: rgba(178, 178, 178,.4) !important;">
-                    <div class="row" style="color:white;font-weight: bold;">
+                    <div class="row" style="color:#3A5997;font-weight: bold;">
                         <div class="col" >
                             <span style="font-weight: bold;">{{'NAME' | translate }}</span>
                         </div>
@@ -79,7 +83,7 @@
                     </div>
                 </div>
                 <div class="item no-padding dark-gray-border bg-transparent"  ng-repeat="invitedMember in invitedMembers.members" >
-                    <div class="row" style="color:white;">
+                    <div class="row" style="color:#3A5997;">
                         <div class="col  col-center">
                             <span class="wrap-content">{{invitedMember.name}}</span>
                         </div>
@@ -97,7 +101,7 @@
                 <div class="no-data-text">
                 {{'NO_INVITED_MEMBERS' | translate }}
                 </div>
-            </div> 
+            </div>
         </div>
         </div>
     </ion-content>
@@ -110,14 +114,13 @@
     <!--</ion-footer-bar>-->
     <ion-footer-bar class="text-center bar-stable blue-bg no-border"  >
         <div  class="button-bar">
-            <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
+            <!-- <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
                 {{'BACK' | translate }}
             </button>
-            &nbsp;
+            &nbsp; -->
             <button type="submit"  class="button  button-light button-clear bold" ng-click="showInviteFamilyModal()">
                 <i class="ion-plus-round"></i>&nbsp;{{'ADD_MORE' | translate }}
             </button>
         </div>
     </ion-footer-bar>
 </ion-view>
-
