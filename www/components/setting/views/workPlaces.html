@@ -1,16 +1,17 @@
 <ion-view  view-title="{{'MY_WORK_PLACES' | translate}}"  >
-    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
+    <ion-header-bar class="bar-stable blue-bg no-border" align-title="center">
         <!--<ion-nav-buttons  side="left">-->
-            <!--<button class="button" ng-click="clickButton()">-->
-                <!-- -->
-            <!--</button>-->
+        <button ng-click="backToAccount()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
         <!--</ion-nav-buttons>-->
-        </ion-nav-bar>
+      </ion-header-bar>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content scroll="true" class="blueno-bg-full has-footer">
         <div class="list card" style="background:transparent;" ng-if="isWorkPlace">
             <div class="item no-padding  dark-gray-border " style="background-color: rgba(178, 178, 178,.4) !important;">
-                <div class="row" style="color:white;font-weight: bold;">
+                <div class="row" style="color:#3A5997;font-weight: bold;">
                     <div class="col col-33" >
                         <span style="font-weight: bold;">{{'WORK_PLACE' | translate}}</span>
                     </div>
@@ -20,7 +21,7 @@
                 </div>
             </div>
             <div class="item no-padding dark-gray-border bg-transparent" ng-click="showWorkDetailModal(work)" ng-repeat="work in userLocations">
-                <div class="row" style="color:white;">
+                <div class="row" style="color:#3A5997;">
                     <div class="col col-33 col-center wrap-content">
                         <span >{{$index+1}}</span>
                     </div>
@@ -50,10 +51,10 @@
 
     <ion-footer-bar class="text-center bar-stable blue-bg no-border"  >
         <div  class="button-bar">
-            <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
+            <!-- <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
                 {{'BACK' | translate }}
             </button>
-            &nbsp;
+            &nbsp; -->
             <button type="submit"  class="button  button-light button-clear bold" ng-click="addWork()">
                 <i class="ion-plus-round"></i>&nbsp;{{'ADD_MORE' | translate }}
             </button>

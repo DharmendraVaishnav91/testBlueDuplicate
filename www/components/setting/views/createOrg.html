@@ -1,7 +1,11 @@
 <ion-view view-title="{{orgDetail == null?('CREATE_ORG' | translate) :('UPDATE_ORGANIZATION' | translate) }}">
 
-    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
-    </ion-nav-bar>
+    <ion-header-bar class="bar-stable blue-bg no-border" align-title="center">
+      <button ng-click="hideCreateOrg(orgData!=null)" style="color:white" class="button back-button buttons  button-clear header-item">
+          <i class="icon ion-android-arrow-back"></i>
+          <span class="back-text"></span>
+      </button>
+    </ion-header-bar>
     <form name="createOrgForm">
         <ion-content  class="has-footer blueno-bg-full">
                 <div class="row">
@@ -10,21 +14,17 @@
                              style=" height: 80px;width: 80px;border-radius: 38px;border: 5px solid white">
 
                         <div>
-                            <button class="button button-small button-clear"
-                                    style="font-size: large;color: rgba(255,255,255,.7);text-decoration: underline;"
-                                    ng-click="changeImage()">
-                                {{'CHANGE_PHOTO' | translate }}
-                            </button>
+                          <button class="button button-small button-clear" style="font-size: large;color: rgba(0,0,0,.6);text-decoration: underline;" ng-click="changeImage()">
+                              {{'CHANGE_PHOTO' | translate }}
+                          </button>
                         </div>
                     </div>
                 </div>
                  <div class="list" style="width:100%;padding:0px" >
                 <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
-               <span style="color:white;font-size: 20px;">
-                   (<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span
-                       style="color:white;font-size: initial">
-                   &nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}
-                    </span>)
+               <span style="color:rgba(0,0,0,.6);font-size: 14px;">
+                   (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;"  class="ion-asterisk"></span>
+                   <span style="color:rgba(0,0,0,.6);">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
                </span>
                 </div>
                 <!-- organization name -->
@@ -70,7 +70,7 @@
                <span class="assertive " style="font-size: inherit">* </span>
            </span>
                     <!-- ng-model="data.selectedCountry" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()" -->
-                    <select style="width: 100%;font-size:12px;" name="orgType" ng-required="true"
+                    <select class="edit-input-select" name="orgType" ng-required="true"
                             ng-model="org.organization_type">
                         <option selected value="" disabled>{{'SELECT_ORG_TYPE' | translate}}</option>
                         <option value="Cooperative">Cooperative</option>
@@ -90,7 +90,7 @@
                <span class="assertive " style="font-size: inherit"></span>
            </span>
                     <!-- ng-model="data.selectedCountry" ng-options="obj.CountryName for obj in countryCodeList" ng-change="selectChange()" -->
-                    <select style="width: 100%;font-size:12px;" name="ownership" ng-required="true"
+                    <select class="edit-input-select" name="ownership" ng-required="true"
                             ng-model="org.ownership">
                         <option selected value="" disabled>{{'SELECT_OWNERSHIP' | translate}}</option>
                         <option value="Sole Ownership">Sole Ownership</option>
@@ -163,7 +163,7 @@
             <span class="input-label label-text input-label-color">{{'ADDRESS' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
-                    <select name="locationWhere" style="width: 100%;font-size:12px;" ng-model="loc.name"
+                    <select name="locationWhere" class="edit-input-select" ng-model="loc.name"
                             ng-required="true" ng-change="updateLocationFields(loc.name)">
                         <option value="" disabled selected>{{'SELECT_ONE' | translate}}</option>
                         <!-- <option selected value="" disabled>{{'SELECT_ADDRESS' | translate}}</option> -->
@@ -215,7 +215,7 @@
                                ng-model="loc.country"
                                max-selected-items="1"
                                cancel-label="{{'CANCEL' | translate }}"
-                               style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                               style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997;border: none;border-radius: 4px;background:white;font-size: 18px !important;"
                                placeholder="{{'SEARCH_COUNTRY' | translate }}"
                                items-clicked-method="changeSubdivision(loc.country.CountryCode)"/>
                      <span class="assertive validation-font wrap-content"
@@ -241,7 +241,7 @@
                                ng-model="loc.state"
                                max-selected-items="1"
                                cancel-label="{{'CANCEL' | translate }}"
-                               style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                               style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
                                placeholder="{{'SEARCH_STATE' | translate }}"
                                 />
                  <span class="assertive validation-font wrap-content"

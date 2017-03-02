@@ -378,7 +378,8 @@
   "SEARCH_GROUP": "Search Group",
   "NO_SUCH_GROUPS": "No Such Group Exists.",
   "CONTINUE_SIGN_UP":"Continue",
-  "ERROR":"Error"
+  "ERROR":"Error",
+  "AGREE":"Agree"
 
 
 }

@@ -1,13 +1,13 @@
 <ion-modal-view >
     <ion-header-bar class="bar bar-header blue-bg no-border">
-        <!--<button ng-click="hideWorkAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">-->
-            <!--<i class="icon ion-android-arrow-back"></i>-->
-            <!--<span class="back-text"></span>-->
-        <!--</button>-->
+        <button ng-click="hideWorkAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+            <span class="back-text"></span>
+        </button>
         <h1 class="title" style="max-width:none;text-align: center !important;" >{{'ADD_WORK_PLACE' | translate }}</h1>
     </ion-header-bar>
     <form name="addWorkForm">
-    <ion-content scroll="true" class="blueno-bg-full has-footer has-header" >
+    <ion-content scroll="true" class="blueno-bg-full has-header" >
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style=" overflow: scroll;width: 100%;padding: 0;">
                 <!--Work place type-->
             <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
@@ -86,8 +86,18 @@
                 <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <select name="location-where" style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="work.where" ng-required="true"  ng-change="updateLocationFields(work.where)">
-                    <option disabled >{{'SELECT_ONE'| translate}}</option>
-                    <!--<option ng-repeat="obj in myLocations" value="{{obj}}">-->
+                    <option value="" selected disabled >{{'SELECT_ONE'| translate}}</option>
+                    <!--<option ng-rep  <!-- <ion-footer-bar  class="text-center bar-stable blue-bg no-border">
+        <div  class="button-bar">
+            <button  type="button"  class="button  button-light button-clear bold" ng-click="hideWorkAddModal()">
+                {{'CANCEL' | translate }}
+            </button> &nbsp;
+            <button ng-disabled="addWorkForm.$invalid" class="button  button-light button-clear bold" type="submit"  ng-click="saveWork()">
+                {{'SAVE' | translate }}
+            </button>
+
+        </div>
+    </ion-footer-bar> -->eat="obj in myLocations" value="{{obj}}">-->
                         <!--{{obj.LocationType+"("+obj.LocationName+")"}}-->
                     <!--</option>-->
                     <option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>
@@ -189,7 +199,7 @@
         </div>
 
     </ion-content>
-    <ion-footer-bar  class="text-center bar-stable blue-bg no-border">
+    <!-- <ion-footer-bar  class="text-center bar-stable blue-bg no-border">
         <div  class="button-bar">
             <button  type="button"  class="button  button-light button-clear bold" ng-click="hideWorkAddModal()">
                 {{'CANCEL' | translate }}
@@ -199,6 +209,6 @@
             </button>
 
         </div>
-    </ion-footer-bar>
+    </ion-footer-bar> -->
     </form>
 </ion-modal-view>

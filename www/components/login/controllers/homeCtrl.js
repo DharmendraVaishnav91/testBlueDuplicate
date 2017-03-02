@@ -63,7 +63,7 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
             //$cordovaToast.showLongBottom("Language preference updated successfully");
     } ;
     $scope.openRegistration= function () {
-        $state.go('regCreateAccount');
+        $state.go('userAgreement');
     };
     $scope.openLogin = function() {
 

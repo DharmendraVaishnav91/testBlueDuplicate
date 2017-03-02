@@ -1,16 +1,16 @@
 <ion-view view-title="{{'INVITE_MEMBER' | translate}}">
-    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
-    </ion-nav-bar>
-    <!--<ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;">-->
-        <!--<button ng-click="hideOrgMemberList()" style="color:white" class="button back-button buttons  button-clear header-item">-->
-            <!--<i class="icon ion-android-arrow-back"></i>-->
-             <!--<span class="back-text"></span>-->
-        <!--</button>-->
+    <!-- <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
+    </ion-nav-bar> -->
+    <ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;">
+        <button ng-click="hideOrgMemberList()" style="color:white" class="button back-button buttons  button-clear header-item">
+            <i class="icon ion-android-arrow-back"></i>
+             <span class="back-text"></span>
+        </button>
         <!--<h1 class="title" style=" max-width:none;text-align: center !important;">-->
             <!--Invite people to organization-->
         <!--</h1>-->
 
-    <!--</ion-header-bar>-->
+    </ion-header-bar>
     <form name="inviteMemberForm">
     <ion-content class=" blueno-bg-full">
 
@@ -21,7 +21,7 @@
                 <input ion-autocomplete type="text"
                        template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
-                       class="ion-autocomplete"
+                       class="ion-autocomplete edit-input-txt"
                        autocomplete="off"
                        item-method-value-key="countryCodeList"
                        items-method="getSearchedCountryList(query)"
@@ -30,7 +30,7 @@
                        max-selected-items="1"
                        cancel-label="{{'CANCEL' | translate }}"
                        items-clicked-method="clickedMethod(callback)"
-                       style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:white;border: none;border-radius: 4px;background: rgba(97, 137, 197, .7);font-size: 18px !important;"
+                       style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
                        placeholder="{{'SEARCH_COUNTRY' | translate }}"
                    />
            </label>

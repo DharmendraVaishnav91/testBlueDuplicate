@@ -35,7 +35,7 @@ app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter
     var actionButton = $actionButton.create({
         mainAction: {
             icon: 'fa fa-filter',
-            backgroundColor: '#4E5C6E',
+            backgroundColor: '#3A5997',
             textColor: ' white',
             onClick: function() {
                 console.log('clicked edit BUTTON');
