@@ -4,9 +4,13 @@
 app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, $rootScope, signUpService, $cordovaToast,utilityService,$ionicModal) {
 
     $scope.isFromSetting = false;
-    $scope.selectedCountry=null;
-    $scope.loginData = {
-        user:{}
+  //  $scope.selectedCountry=null;
+    $rootScope.loginData.user = {
+        selectedCountry:{
+            CountryPhoneCode:1,
+            CountryCode:"US",
+            CountryName:"United States"
+        }
     };
 
     $ionicNavBarDelegate.align('center');
@@ -31,7 +35,8 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
         $scope.countrySearchModal.remove();
     });
     $scope.selectCountry = function (selectedCountry) {
-       $scope.selectedCountry=selectedCountry;
+        $rootScope.loginData.user.selectedCountry=selectedCountry;
+
        $scope.hideCountrySearch();
     };
 
@@ -48,7 +53,14 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
 
     $scope.goToAddHome = function () {
         console.log("Add mobile screen ");
-        console.log($scope.loginData);
+        console.log($rootScope.loginData);
+        //if($rootScope.loginData.user.selectedCountry==null){
+        //    $rootScope.loginData.user.selectedCountry={
+        //        CountryPhoneCode:1,
+        //        CountryCode:"US",
+        //        CountryName:"United States"
+        //    }
+        //}
         $state.go('addHome');
 
 

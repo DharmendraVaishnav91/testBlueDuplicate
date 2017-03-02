@@ -91,29 +91,36 @@ app.run(function ($ionicPlatform, EventService, utilityService, $rootScope, $cor
             })
             .state('regCreateProfile', {
                 url: '/regCreateProfile',
-                params: {accountData: {}},
-                cache: false,
+                //params: {accountData: {}},
+                cache: true,
                 templateUrl: 'components/signup/views/regCreateProfile.html',
                 controller: 'RegCreateProfileCtrl'
             })
             .state('regMobile', {
                 url: '/regMobile',
-                cache: false,
+                cache: true,
                 templateUrl: 'components/signup/views/regMobile.html',
                 controller: 'RegMobileCtrl'
             })
             .state('selectUserType', {
                 url: '/selectUserType',
-                params: {profileData: {}},
+                //params: {profileData: {}},
                 templateUrl: 'components/signup/views/selectUserType.html',
                 controller: 'selectUserTypeCtrl'
             })
             .state('addHome', {
                 url: '/addHome',
-                cache: false,
+                cache: true,
                 // params: {homeData: {}, homeAddress: {}},
                 templateUrl: 'components/signup/views/addHome.html',
                 controller: 'addHomeCtrl'
+            })
+            .state('userCredential', {
+                url: '/userCredential',
+                cache: true,
+                // params: {homeData: {}, homeAddress: {}},
+                templateUrl: 'components/signup/views/userCredentials.html',
+                controller: 'UserCredentialCtrl'
             })
             .state('addWork', {
                 url: '/addWork',
@@ -459,7 +466,7 @@ app.run(function ($ionicPlatform, EventService, utilityService, $rootScope, $cor
                 }
             });
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('addHome');
+        $urlRouterProvider.otherwise('home');
         $httpProvider.interceptors.push(function ($rootScope, $q) {
             return {
                 request: function (config) {

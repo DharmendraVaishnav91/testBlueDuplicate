@@ -1,82 +1,105 @@
-<ion-modal-view  >
-    <form name="confirmAccountForm">
-        <ion-content scroll="true" class="blueno-bg-full">
-            <div class="center" style="width: inherit;height: auto;padding-top:15px"  >
-                <h3 style="color: #ffffff;">
-                    <!--<i class="ion-checkmark"></i>&nbsp;-->
-                    {{'CONFIRM_YOUR_ACCOUNT_TITLE' | translate }}
-                </h3>
-                <span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>
-            </div>
-            <div style="margin-top: 50px;">
-            <p ng-if="!isFromLogin&&!isNewCodeRequested"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
-    text-align: center;">{{'THANK_YOU' | translate}}</p>
-            <p ng-if="(isFromLogin&&!indirect) || !isFromLogin"  style="font-size: 20px;padding: 0px 40px;color: white;line-height: 30px;
-    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;<br>{{"(+"+userMobDetail.country_phone_code+") "+userMobDetail.mobile}}</p>
-            </div>
-            <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;" ng-if="isFromLogin&&indirect">
-                <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+<form name="confirmAccountForm">
+    <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
+        <div class="buttons">
+            <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
+                <i class="ion-android-arrow-back"></i>
+            </button>
+        </div>
+        <h1 class="title">{{'CONFIRM_YOUR_ACCOUNT_TITLE' | translate }}</h1>
+        <!--<div class="buttons">-->
+        <!--<button class="button">Right Button</button>-->
+        <!--</div>-->
+    </ion-header-bar>
+    <ion-content scroll="true" class="blueno-bg-full">
+        <!--<div class="center" style="width: inherit;height: auto;padding-top:15px">-->
+            <!--<h3 style="color: #ffffff;">-->
+                <!--&lt;!&ndash;<i class="ion-checkmark"></i>&nbsp;&ndash;&gt;-->
+                <!--{{'CONFIRM_YOUR_ACCOUNT_TITLE' | translate }}-->
+            <!--</h3>-->
+            <!--<span style="color:white ; font-size: 20px;">(<span-->
+                    <!--style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span-->
+                    <!--style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>-->
+        <!--</div>-->
+        <div style="margin-top: 50px;">
+            <p ng-if="!isFromLogin&&!isNewCodeRequested"
+               style="font-size: 20px;padding: 0 40px;;line-height: 30px;text-align: center;">{{'THANK_YOU' | translate}}</p>
+
+            <p ng-if="(isFromLogin&&!indirect) || !isFromLogin" style="font-size: 20px;padding: 0px 40px;line-height: 30px;
+    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;<br>{{"(+"+userMobDetail.country_phone_code+")"+userMobDetail.mobile}}</p>
+        </div>
+        <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;"
+               ng-if="isFromLogin&&indirect">
+                <span class="input-label label-text " style="">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">*</span>
                 </span>
-                <select style="width: 100%"  ng-model="confirm.country" ng-required="true" name="countryCode" >
-                    <option ng-selected="data.selectedCountry==null" ></option>
-                    <option ng-selected="(obj.CountryCode == userCountry.CountryCode)"
-                            ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">
-                        {{obj.CountryName}}</option>
-                </select>
-            </label>
+            <select style="width: 100%" ng-model="confirm.country" ng-required="true" name="countryCode">
+                <option ng-selected="data.selectedCountry==null"></option>
+                <option ng-selected="(obj.CountryCode == userCountry.CountryCode)"
+                        ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">
+                    {{obj.CountryName}}
+                </option>
+            </select>
+        </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="isFromLogin&&indirect">
-                <span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}
+        <label class="item item-input item-stacked-label no-border label-padding" ng-if="isFromLogin&&indirect">
+                <span class="input-label label-text ">{{'MOBILE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
 
-                <div class="row no-padding">
-                    <div class="col no-padding" >
-                        <input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"  style="font-size:18px;" type="number" />
-                        <!--<span class="assertive validation-font wrap-content" ng-show="confirmAccountForm.username.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>-->
-                    </div>
+            <div class="row no-padding">
+                <div class="col no-padding">
+                    <input class="edit-input-txt" ng-model="confirm.mobile" name="mobile" ng-required="true"
+                            type="number"/>
+                    <!--<span class="assertive validation-font wrap-content" ng-show="confirmAccountForm.username.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>-->
                 </div>
+            </div>
 
-            </label>
+        </label>
 
-            <label class="item item-input item-stacked-label no-border label-padding">
-                <span class="input-label label-text "  style="color:white">{{'CONFIRMATION_CODE' | translate }}
+        <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text ">{{'CONFIRMATION_CODE' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-required="true" ng-model="confirm.code" name="code"   style="font-size:18px;" type="text" />
+            <input class="edit-input-txt" ng-required="true" ng-model="confirm.code" name="code"
+                   type="text"/>
 
-            </label>
-            <div class="row" ng-if="!isNewCodeRequested||isFromLogin">
-                <div class="col center" style="font-size: 18px;">
-                    <p class="" style="color: burlywood;" >
-                        {{'DID_NOT_RECEIVE_CODE' | translate}}
-                    </p>
-                    <button  class="button button-positive button-clear" style="text-decoration: underline;font-size: inherit;line-height: 22px;min-height: 0;" ng-click="requestOTP()">
-                        {{'REQUEST_A_NEW_CODE' | translate}}
-                    </button>
+        </label>
 
-                </div>
-            </div>
-            <div class="row" ng-if="isNewCodeRequested&&!isFromLogin">
-                <div class="col center" style="font-size: 18px;padding: 0px 33px;">
-                    <button  class="button button-clear button-positive"  style="text-decoration: underline;font-size: inherit;line-height: 22px;min-height: 0;" ng-click="skipToAddHome()">
-                        {{'SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER' | translate}}<br>
-                        {{'CONTINUE_WITH_REGISTRATION' | translate}}
-                    </button>
-
-                </div>
-            </div>
-        </ion-content>
-        <ion-footer-bar  class="text-center bar-stable blue-bg no-border" >
-            <div  class="button-bar">
-                <!--<button  class="button button-light button-clear bold" type="submit"  ng-click="requestOTP()">-->
-                    <!--{{'REQUEST_OTP' | translate }}-->
-                <!--</button>-->
-                <button  ng-disabled="confirmAccountForm.$invalid" class="button button-light button-clear bold" type="submit"  ng-click="confirmOTP()" >
-                    {{isFromLogin?"CONFIRM":'NEXT' | translate }}
+        <div class="row">
+            <div class="col center" style="font-size: 18px;">
+                <p class="" style="color: burlywood;">
+                    {{'DID_NOT_RECEIVE_CODE' | translate}}
+                </p>
+                <button class="button button-positive button-clear"
+                        style="text-decoration: underline;font-size: inherit;line-height: 22px;min-height: 0;"
+                        ng-click="requestOTP()">
+                    {{'REQUEST_A_NEW_CODE' | translate}}
                 </button>
+
             </div>
-        </ion-footer-bar>
-    </form>
-</ion-modal-view>
+        </div>
+        <!--<div class="row" ng-if="isNewCodeRequested&&!isFromLogin">-->
+            <!--<div class="col center" style="font-size: 18px;padding: 0px 33px;">-->
+                <!--<button class="button button-clear button-positive"-->
+                        <!--style="text-decoration: underline;font-size: inherit;line-height: 22px;min-height: 0;"-->
+                        <!--ng-click="skipToAddHome()">-->
+                    <!--{{'SKIP_AND_CONFIRM_YOUR_ACCOUNT_LATER' | translate}}<br>-->
+                    <!--{{'CONTINUE_WITH_REGISTRATION' | translate}}-->
+                <!--</button>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    </ion-content>
+    <ion-footer-bar class="text-center bar-stable blue-bg no-border">
+        <div class="button-bar">
+            <!--<button  class="button button-light button-clear bold" type="submit"  ng-click="requestOTP()">-->
+            <!--{{'REQUEST_OTP' | translate }}-->
+            <!--</button>-->
+            <button ng-disabled="confirmAccountForm.$invalid" class="button button-light button-clear bold"
+                    type="submit" ng-click="confirmOTP()">
+                {{"CONFIRM" | translate}}
+                <!--{{isFromLogin?"CONFIRM":'NEXT' | translate }}-->
+            </button>
+        </div>
+    </ion-footer-bar>
+</form>

@@ -157,8 +157,8 @@ div.leaflet-right {
     width: 100%;
     font-size: 18px !important;
     border: none;
-    border-radius: 0px;
-    border-bottom: 1px solid rgb(221,221,221) !important;
+    border-radius: 0;
+    border-bottom: 1px solid grey !important;
     margin-bottom: 4px !important;
     padding: 0 10px 0 4px !important;;
     background:none;

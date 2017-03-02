@@ -2,7 +2,7 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     // console.log($stateParams.homeData);
     // console.log($stateParams.homeAddress);
     // $scope.data = $stateParams.homeData;
-    // $scope.home = $stateParams.homeAddress;
+    // $rootScope.home = $stateParams.homeAddress;
     // $scope.isFromSetting = false;
     //  $scope.countryCodeList = utilityService.countryList();
     //   $scope.locationWay = "";
@@ -10,8 +10,11 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     $rootScope.position = null;
     $rootScope.addressDataFromCoordinate = {};
     $scope.data = {};
-    $scope.home={};
+    $rootScope.home = {};
+    $rootScope.loginData.registration_location = {};
+   // $rootScope.loginData.home_location = {};
     // console.log($scope.data.homeCountry);
+
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
         console.log(response);
@@ -29,14 +32,43 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             console.log(error);
         })
     };
+    var setRegistrationLocation = function () {
+        $rootScope.loginData.registration_location.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
+        $rootScope.loginData.registration_location.subdivision_code = angular.copy($rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+
+        //$rootScope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+        $rootScope.loginData.registration_location.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+        $rootScope.loginData.registration_location.country_code = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+        $rootScope.loginData.registration_location.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+        $rootScope.loginData.registration_location.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        //$rootScope.loginData.registration_location.name='Home';
+    };
+    var setHomeLocation = function () {
+        $rootScope.home.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+        $rootScope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+        $rootScope.home.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
+
+        if ($scope.countryCodeList.length != 0) {
+            $scope.data.homeCountry = $filter('getById')($scope.countryCodeList,
+                "CountryCode",
+                $rootScope.addressDataFromCoordinate.userCountry.CountryCode);
+            signUpService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
+                $scope.subDivList = response;
+                $scope.data.state = $filter('getById')($scope.subDivList,
+                    "SubdivisionCode",
+                    $rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
+    };
     var fetchUserCoords = function () {
         $ionicLoading.show("Loading");
         utilityService.getPosition().then(function (position) {
             $rootScope.position = position;
-
             $ionicLoading.hide();
-            if ($rootScope.position != null) {
 
+            if ($rootScope.position != null) {
                 utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
 
                     $rootScope.addressDataFromCoordinate.userCountry = {
@@ -52,28 +84,10 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
                         CountryName: $rootScope.addressDataFromCoordinate.userCountry.CountryName
                     };
                     $rootScope.addressDataFromCoordinate.city = angular.copy(addr.sub_state != null ? addr.sub_state : "");
-                    // $rootScope.addressDataFromCoordinate.address= angular.copy(addr.street_number!=null?addr.street_number:"");
                     $rootScope.addressDataFromCoordinate.address = angular.copy(addr.street_address != null ? addr.street_address : "");
-                    //Prepare data for creating user
                     $rootScope.addressDataFromCoordinate.postalcode = parseInt(angular.copy(addr.postal_code));
-
-                    $scope.home.address = angular.copy($rootScope.addressDataFromCoordinate.address);
-                    $scope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
-                    $scope.home.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
-                    console.log($rootScope.addressDataFromCoordinate);
-                    if($scope.countryCodeList.length!=0){
-
-                        $scope.data.homeCountry = $filter('getById')($scope.countryCodeList, "CountryCode", $rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-                    // $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-                        //
-                        signUpService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
-                        $scope.subDivList = response;
-                        $scope.data.state = $filter('getById')($scope.subDivList, "SubdivisionCode", $rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
-                        }).catch(function (error) {
-                        console.log(error);
-                        });
-                    }
-
+                    setRegistrationLocation();
+                    setHomeLocation();
 
                 });
             } else {
@@ -86,6 +100,7 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
             $ionicLoading.hide();
         });
     };
+
     //fetchStates($scope.data.homeCountry);
     var isLocationEnabled = function () {
         //var deferred=$q.defer();
@@ -128,9 +143,9 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     $scope.getUpdatedStateList = function (query) {
         return $filter('filter')($scope.subDivList, query);
     };
-    $scope.goToSelectUserOccupation=function () {
-        $state.go('selectUserType');
-    };
+    //$scope.goToSelectUserOccupation = function () {
+    //    $state.go('selectUserType');
+    //};
     // $scope.skipToWork = function () {
     //     $state.go('addWork', {workData: $scope.data})
     // };
@@ -139,9 +154,9 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     //     $scope.enableAddressFields = true;
     //     console.log(locationWay);
     //     if (locationWay == "current") {
-    //         $scope.home.address = angular.copy($rootScope.addressDataFromCoordinate.address);
-    //         $scope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
-    //         $scope.home.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
+    //         $rootScope.home.address = angular.copy($rootScope.addressDataFromCoordinate.address);
+    //         $rootScope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
+    //         $rootScope.home.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
     //         console.log($rootScope.addressDataFromCoordinate);
     //         // $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
     //         signUpService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
@@ -150,45 +165,46 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     //         }).catch(function (error) {
     //             console.log(error);
     //         });
-    //         //$scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-    //         //$scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+    //         //$rootScope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+    //         //$rootScope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
     //         //$scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
     //         $scope.data.homeCountry = $filter('getById')($scope.countryCodeList, "CountryCode", $rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
     //
     //     } else {
-    //         $scope.home.address = "";
-    //         $scope.home.city = "";
-    //         $scope.home.postalcode = "";
-    //         //$scope.home.latitude = "";
-    //         //$scope.home.longitude = "";
+    //         $rootScope.home.address = "";
+    //         $rootScope.home.city = "";
+    //         $rootScope.home.postalcode = "";
+    //         //$rootScope.home.latitude = "";
+    //         //$rootScope.home.longitude = "";
     //         $scope.data.state = "";
     //         $scope.data.homeCountry = "";
     //     }
     // };
-    // $scope.goToWork = function () {
-    //     if ($scope.data.state != undefined && $scope.data.state != null) {
-    //         //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
-    //         $scope.home.subdivision_code = $scope.data.state.SubdivisionCode;
-    //     } else {
-    //         $scope.home.subdivision_code = "";
-    //     }
-    //     //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
-    //     $scope.home.country_code = $scope.data.homeCountry.CountryCode;
-    //     $scope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-    //     $scope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-    //     $scope.home.name = 'Home';
-    //     console.log("Add home data");
-    //     console.log($scope.home);
-    //
-    //     signUpService.saveUserHome($scope.home).then(function (response) {
-    //         console.log("User created successfully");
-    //         $state.go('addWork', {workData: $scope.data});
-    //         $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));
-    //
-    //     }).catch(function (error) {
-    //         var errorMessage = $filter('translate')('SOMETHING_WENT_WRONG');
-    //         $cordovaToast.showLongBottom(errorMessage);
-    //         console.log(errorMessage);
-    //     });
-    // };
+     $scope.goToSelectUserOccupation = function () {
+         if ($scope.data.state != undefined && $scope.data.state != null) {
+             //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
+             $rootScope.home.subdivision_code = $scope.data.state.SubdivisionCode;
+         } else {
+             $rootScope.home.subdivision_code = "";
+         }
+         //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+         $rootScope.home.country_code = $scope.data.homeCountry.CountryCode;
+         //$rootScope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+         //$rootScope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+         $rootScope.home.name = 'Home';
+
+         console.log("Home Location");
+         console.log($rootScope.home);
+         console.log("Login data");
+         console.log($rootScope.loginData);
+     //    signUpService.saveUserHome($rootScope.home).then(function (response) {
+     //
+     //        $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));
+     //
+     //    }).catch(function (error) {
+     //        var errorMessage = $filter('translate')('SOMETHING_WENT_WRONG');
+     //        $cordovaToast.showLongBottom(errorMessage);
+     //        console.log(errorMessage);
+     //    });
+     };
 });

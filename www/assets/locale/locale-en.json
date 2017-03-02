@@ -383,7 +383,10 @@
   "FIRST_NAME_MIN_LENGTH":"First name is required",
   "LAST_NAME_MIN_LENGTH":"Last name is required",
   "GENDER_IS_REQUIRED":"Gender is required",
-  "PRODUCTS":"Products"
+  "PRODUCTS":"Products"  ,
+  "SEARCH_PRODUCT":"Search Product",
+  "DONE":"Done",
+  "CREDENTIAL":"Credential"
 
 
 }

@@ -4,7 +4,7 @@
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
         </button>
-        <h1 class="title" style=" max-width:none;text-align: center !important;">{{'SEARCH_COUNTRY' | translate }}</h1>
+        <h1 class="title" style=" max-width:none;text-align: center !important;">{{'SEARCH_PRODUCT' | translate }}</h1>
     </ion-header-bar>
     <div class="bar bar-subheader" style="background-color: darkgray !important;">
         <div class="item no-padding" style="width:100%;border-radius: 5px;">
@@ -25,5 +25,14 @@
                 </div>
             </div>
         </ion-content>
+        <ion-footer-bar class="text-center bar-stable blue-bg no-border" style="padding:0px !important;">
+            <div class="button-bar">
+
+                <button ng-disabled="selectedProducts.length==0" class="button button-clear button-light bold"
+                        type="submit" ng-click="hideProductSearch()" >
+                    {{'DONE' | translate }}
+                </button>
+            </div>
+        </ion-footer-bar>
     </form>
 </ion-modal-view>

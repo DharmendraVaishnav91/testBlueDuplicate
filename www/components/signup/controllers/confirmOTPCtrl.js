@@ -20,7 +20,7 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
     });
 
     $scope.requestOTP = function () {
-        $scope.isNewCodeRequested=true;
+        //$scope.isNewCodeRequested=true;
         var requestData={};
         if($scope.isFromLogin && $scope.indirect){
             requestData = {

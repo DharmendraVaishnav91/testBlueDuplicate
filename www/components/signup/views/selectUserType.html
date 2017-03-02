@@ -1,11 +1,11 @@
-<form name="selectUserTypeForm" ng-submit="goToAddHomeWithCheck()">
+<form name="selectUserTypeForm" ng-submit="goToCredential()">
     <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
         <div class="buttons">
             <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
                 <i class="ion-android-arrow-back"></i>
             </button>
         </div>
-        <h1 class="title">{{'ADD_HOME' | translate }}</h1>
+        <h1 class="title">{{'OCCUPATION' | translate }}</h1>
         <!--<div class="buttons">-->
         <!--<button class="button">Right Button</button>-->
         <!--</div>-->
@@ -26,7 +26,7 @@
                     <span class="assertive ">* </span>
                 </span>
                 <select style=""
-                        class="edit-input-select" ng-model="loginData.profile.gender" ng-required="true" name="gender">
+                        class="edit-input-select" ng-model="loginData.profile.gender" ng-required="true" name="occupation">
                     <option disabled value="" selected>{{'SELECT_OCCUPATION' | translate}}</option>
                     <option value="Farmer">{{'FARMER' | translate}}</option>
                     <option value="Factory Worker">{{'FACTORY_WORKER' | translate }}</option>
@@ -46,8 +46,10 @@
                 </span>
 
                 <div class="row" ng-click="showProductSearch()">
-                    <div class="col">
-
+                    <div class="col wrap-content" style="min-height: 40px;border-bottom: 1px solid grey;">
+                       <span ng-repeat="product in selectedProducts" style="color:#3A5997;font-size: 18px;">
+                           {{($index>0?", ":"")+product.H3Description}}
+                       </span>
                     </div>
 
                 </div>

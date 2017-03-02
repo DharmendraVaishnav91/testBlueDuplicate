@@ -31,12 +31,12 @@
                 <div class="row no-padding">
                     <div class="col no-padding col-20">
                         <div class="" style="color:black;height: 100%;position: relative" ng-click="showCountrySearch()">
-                            <span class="center" style="color:#3A5997;right:3px;width:100%;position: absolute;bottom: 4px;padding-bottom: 7px;border-bottom: 1px solid grey;">{{selectedCountry!=null?selectedCountry.CountryCode:'US'}} <i class="ion-ios-arrow-down"></i></span>
+                            <span class="center" style="color:#3A5997;right:3px;width:100%;position: absolute;bottom: 4px;padding-bottom: 7px;border-bottom: 1px solid grey;">{{loginData.user.selectedCountry!=null?loginData.user.selectedCountry.CountryCode:'US'}} <i class="ion-ios-arrow-down"></i></span>
                         </div>
                     </div>
                     <div class="col no-padding col-20">
                         <div class="" style="color:black;height: 100%;position: relative">
-                            <span class="center" style="color:#3A5997;padding-top:7px;background-color:lightgrey;position: absolute;bottom: 4px;width:100%;padding-bottom: 7px;border-bottom: 1px solid grey;">+{{selectedCountry!=null?selectedCountry.CountryPhoneCode:'1'}} </span>
+                            <span class="center" style="color:#3A5997;padding-top:7px;position: absolute;bottom: 4px;width:100%;padding-bottom: 7px;border-bottom: 1px solid grey;">+{{loginData.user.selectedCountry!=null?loginData.user.selectedCountry.CountryPhoneCode:'1'}} </span>
                         </div>
                     </div>
                     <div class="col no-padding">

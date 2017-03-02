@@ -18,6 +18,9 @@ app.controller('selectUserTypeCtrl', function ($ionicModal,$timeout, $q, $scope,
     }).catch(function(error){
         console.log(error);
     });
+    $scope.goBack= function () {
+        $state.go('addHome')
+    };
     $scope.showProductSearch = function() {
         console.log("show country search");
         $scope.productSearchModal.show();
@@ -44,6 +47,9 @@ app.controller('selectUserTypeCtrl', function ($ionicModal,$timeout, $q, $scope,
         console.log($scope.selectedProducts);
     };
 
+    $scope.goToCredential= function () {
+        $state.go('userCredential');
+    };
     // var createUser = function (userData) {
     //     console.log("User data before creation");
     //     console.log(userData);

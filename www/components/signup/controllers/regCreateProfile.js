@@ -4,8 +4,9 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
     // $scope.data = {};
     // $scope.home = {};
     //$scope.profileData={};
-    $scope.loginData = {
+    $rootScope.loginData = {
         profile:{}
+
     };
     var updatedImage = '';
     $rootScope.bgUrl = "assets/img/logo_small.png";
@@ -72,13 +73,13 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
     // };
 
     // $scope.goToAddHomeWithCheck = function () {
-    //     $scope.username = $scope.loginData.profile.given_name.concat(" ").concat($scope.loginData.profile.family_name);
-    //     $scope.number = $scope.loginData.user.country_phone_code.concat($scope.loginData.user.mobile);
+    //     $scope.username = $rootScope.loginData.profile.given_name.concat(" ").concat($rootScope.loginData.profile.family_name);
+    //     $scope.number = $rootScope.loginData.user.country_phone_code.concat($rootScope.loginData.user.mobile);
     //     console.log($scope.username);
     //     console.log($scope.number);
     //     // var confirmPopup = $ionicPopup.confirm({
     //     //     title: $filter('translate')('CONFIRM_CREATE'),
-    //     //     template: '<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>' + " " + $scope.username + '</span><br><span>{{"NUMBER" | translate}}:</span><span>' + " (+" + $scope.loginData.user.country_phone_code + ") " + $scope.loginData.user.mobile + '</span>',
+    //     //     template: '<span>{{"ACCOUNT_CREATE_CONFIRMATION"| translate}}</span><br><span>{{"NAME" | translate}}:</span><span>' + " " + $scope.username + '</span><br><span>{{"NUMBER" | translate}}:</span><span>' + " (+" + $rootScope.loginData.user.country_phone_code + ") " + $rootScope.loginData.user.mobile + '</span>',
     //     //     cancelText: $filter('translate')('CANCEL'),
     //     //     okText: $filter('translate')('OK')
     //     // });
@@ -93,16 +94,16 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
     // };
 
     $scope.goToAddMobile = function () {
-        console.log($scope.loginData);
-        //$scope.loginData.profile.gender = $scope.data.gender;
-        $scope.loginData.profile.image = updatedImage;
-        $scope.loginData.profile.language = $rootScope.selectedLanguage != null ? $rootScope.selectedLanguage : 'en';
-        // $state.go('selectUserType',{profileData:$scope.loginData});
+        console.log($rootScope.loginData);
+        //$rootScope.loginData.profile.gender = $scope.data.gender;
+        $rootScope.loginData.profile.image = updatedImage;
+        $rootScope.loginData.profile.language = $rootScope.selectedLanguage != null ? $rootScope.selectedLanguage : 'en';
+        // $state.go('selectUserType',{profileData:$rootScope.loginData});
 
         console.log("User Sign up data");
-        console.log($scope.loginData.profile);
+        console.log($rootScope.loginData.profile);
         $state.go('regMobile');
-        //createUser($scope.loginData);
+        //createUser($rootScope.loginData);
         // utilityService.fetchAddressFromCoords($rootScope.position.coords).then(function (addr) {
         //
         //     $rootScope.addressDataFromCoordinate.userCountry = {
@@ -126,21 +127,21 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
         //     $rootScope.addressDataFromCoordinate.postalcode = parseInt(angular.copy(addr.postal_code));
         //
         //
-        //     $scope.loginData.registration_location.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
-        //     $scope.loginData.registration_location.subdivision_code = $rootScope.addressDataFromCoordinate.userState.SubdivisionCode;
+        //     $rootScope.loginData.registration_location.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
+        //     $rootScope.loginData.registration_location.subdivision_code = $rootScope.addressDataFromCoordinate.userState.SubdivisionCode;
         //
-        //     //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
-        //     $scope.loginData.registration_location.address = $rootScope.addressDataFromCoordinate.address;
-        //     $scope.loginData.registration_location.country_code = $rootScope.addressDataFromCoordinate.userCountry.CountryCode;
-        //     $scope.loginData.registration_location.latitude = $rootScope.position ? $rootScope.position.coords.latitude : '';
-        //     $scope.loginData.registration_location.longitude = $rootScope.position ? $rootScope.position.coords.longitude : '';
-        //     //$scope.loginData.registration_location.name='Home';
-        //     console.log($scope.loginData);
+        //     //$rootScope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
+        //     $rootScope.loginData.registration_location.address = $rootScope.addressDataFromCoordinate.address;
+        //     $rootScope.loginData.registration_location.country_code = $rootScope.addressDataFromCoordinate.userCountry.CountryCode;
+        //     $rootScope.loginData.registration_location.latitude = $rootScope.position ? $rootScope.position.coords.latitude : '';
+        //     $rootScope.loginData.registration_location.longitude = $rootScope.position ? $rootScope.position.coords.longitude : '';
+        //     //$rootScope.loginData.registration_location.name='Home';
+        //     console.log($rootScope.loginData);
         //
         //     $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         //
         //
-        //     createUser(angular.copy($scope.loginData));
+        //     createUser(angular.copy($rootScope.loginData));
         //
         //
         // }).catch(function (error) {
