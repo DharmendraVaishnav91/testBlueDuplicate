@@ -6,7 +6,8 @@ app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $st
 
     $ionicNavBarDelegate.align('center');
 
-    $scope.username = $rootScope.loginData.user.selectedCountry.CountryPhoneCode + "" + $rootScope.loginData.user.mobile;
+    //$scope.username = $rootScope.loginData.user.selectedCountry.CountryPhoneCode + "" + $rootScope.loginData.user.mobile;
+    $scope.username = "918233772276";
     $scope.goBack = function () {
         $ionicHistory.goBack();
     };

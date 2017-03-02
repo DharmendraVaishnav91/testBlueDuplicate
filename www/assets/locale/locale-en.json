@@ -384,9 +384,11 @@
   "LAST_NAME_MIN_LENGTH":"Last name is required",
   "GENDER_IS_REQUIRED":"Gender is required",
   "PRODUCTS":"Products"  ,
-  "SEARCH_PRODUCT":"Search Product",
   "DONE":"Done",
-  "CREDENTIAL":"Credential"
+  "CREDENTIAL":"Credential",
+  "PASSWORD_IS_REQUIRED":"Password is required",
+  "PASSWORD_NOT_MATCH":"Password didn't match"
+
 
 
 }
