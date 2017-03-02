@@ -1,8 +1,12 @@
 <ion-view  view-title="{{'MY_THINGS'| translate}}" >
-    <ion-nav-bar class="bar-stable blue-bg no-border" align-title="center">
-    </ion-nav-bar>
+    <ion-header-bar class="bar-stable no-border" align-title="center">
+      <button ng-click="backToAccount()" style="color:white" class="button back-button buttons  button-clear header-item">
+          <i class="icon ion-android-arrow-back"></i>
+          <span class="back-text"></span>
+      </button>
+    </ion-header-bar>
     <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
-    <ion-content class="blueno-bg" scroll="true"  >
+    <ion-content class="" scroll="true"  >
         <div class="list card" style="background:transparent;" ng-if = "thingFind && things.length > 0">
             <!--<div class="item item-divider dark-gray-border "  style=" background:transparent">-->
                 <!--<div class="row no-padding" >-->
@@ -12,7 +16,7 @@
                 <!--</div>-->
             <!--</div>-->
             <div class="item no-padding  dark-gray-border " style="background-color: rgba(178, 178, 178,.4) !important;">
-                <div class="row" style="color:white;font-weight: bold;">
+                <div class="row" style="color:#3A5997;font-weight: bold;">
                     <div class="col col-33" >
                         <span style="font-weight: bold;">{{'NAME' | translate }}</span>
                     </div>
@@ -22,7 +26,7 @@
                 </div>
             </div>
             <div class="item no-padding dark-gray-border bg-transparent" ng-click="showThingInfo(thing);" ng-repeat="thing in things">
-                <div class="row" style="color:white;">
+                <div class="row" style="color:#3A5997;">
                     <div class="col col-33 col-center">
                         <span >{{thing.AssetName}}</span>
                     </div>
@@ -46,7 +50,7 @@
                 {{'THERE_IS_NO_THING' | translate}}
                 </div>
             </div>
-            
+
         </div>
 
     </ion-content>
@@ -59,14 +63,13 @@
     <!--</ion-footer-bar>-->
     <ion-footer-bar class="text-center bar-stable blue-bg no-border"  >
         <div  class="button-bar">
-            <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
+            <!-- <button  type="button"  class="button  button-light button-clear bold" ng-click="backToAccount()">
                 {{'BACK' | translate }}
             </button>
-            &nbsp;
+            &nbsp; -->
             <button type="submit"  class="button  button-light button-clear bold" ng-click="addNewThing()">
                 <i class="ion-plus-round"></i>&nbsp;{{'ADD_MORE' | translate }}
             </button>
         </div>
     </ion-footer-bar>
 </ion-view>
-

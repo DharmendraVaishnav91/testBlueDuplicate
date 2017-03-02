@@ -32,7 +32,7 @@
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
-                <div class="item custom-item" style="border:none;padding:0;color:rgba(0,0,0,.6)" ng-click="goToEditAccount()">
+                <div class="item custom-item" style="border:none;padding:0;color:rgba(0,0,0,.6)">
                     <div class="row">
                         <div class="col col-20 col-center">
                           <a class="icon-circle">
@@ -44,7 +44,7 @@
                             <!-- <p class="">{{'UPDATE_PROFILE' | translate }}</p> -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
-                            <button class="button button-small button-clear">
+                            <button class="button button-small button-clear" ng-click="goToEditAccount()">
                               <!-- <p class="white-p">{{'UPDATE_PROFILE' | translate }}</p> -->
                                 <i class="ion-edit white-p" style="color:#3A5997; font-size:20px;"></i>
                             </button>
@@ -56,7 +56,7 @@
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
-                <div class="item custom-item" style="border:none;padding:0" ng-click="goToManageFamily()">
+                <div class="item custom-item" style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
                           <a class="icon-circle">
@@ -68,7 +68,7 @@
                             <!-- <p class="white-p">{{'ADD_FAMILY_MEMBER' | translate }}</p> -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
-                            <button class="button button-small button-clear">
+                            <button class="button button-small button-clear" ng-click="goToManageFamily()">
                               <!-- <p class="white-p">{{'ADD_FAMILY_MEMBER' | translate }}</p> -->
                                 <i class="ion-person-add" style="font-size: 20px; color:#3A5997"></i>
                             </button>
@@ -114,7 +114,7 @@
                 <!-- <div class="item item-divider custom-item custom-item-header">
                     {{'PLACES' | translate }}
                 </div> -->
-                <div class="item custom-item" style="border:none;padding:0" ng-click="editUserHome(home)">
+                <div class="item custom-item" style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
                           <a class="icon-circle">
@@ -127,7 +127,7 @@
                              -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
-                            <button class="button button-small button-clear">
+                            <button class="button button-small button-clear" ng-click="editUserHome(home)">
                               <!-- <p class="white-p" ng-if="home==null">{{'ADD_HOME' | translate }}</p> -->
                               <!-- <p class="white-p" ng-if="home!=null">
                                   {{home.StreetAddressOne}},&nbsp;{{home.Settlement}}
@@ -142,7 +142,7 @@
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
-                <div class="item custom-item" style="border:none;padding:0" ng-click="goToWorkPlaces()">
+                <div class="item custom-item" style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
                           <a class="icon-circle">
@@ -171,11 +171,11 @@
                 <!-- <div class="item item-divider custom-item custom-item-header">
                     {{'THINGS' | translate }}
                 </div> -->
-                <div class="item custom-item " style="border:none;padding:0" ng-click="goToThings()">
+                <div class="item custom-item " style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
                           <a class="icon-circle">
-                            <i class="icon ion-tshirt" style="font-size: 35px;color: white"></i>
+                            <i class="icon ion-settings" style="font-size: 35px;color: white"></i>
                           </a>
                         </div>
                         <div class="col col-30 col-center blue-txt">
@@ -183,7 +183,7 @@
                             <!-- <p class="white-p">{{'ADD_THING' | translate }}</p> -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
-                            <button class="button button-small button-clear">
+                            <button class="button button-small button-clear" ng-click="goToThings()">
                               <!-- <p class="white-p">{{'ADD_THING' | translate }}</p> -->
                                 <i class="ion-plus" style="font-size: 20px; color:#3A5997"></i>
                             </button>
