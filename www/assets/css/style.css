@@ -223,7 +223,7 @@ input[type="radio"] {
 .blueno-bg {
     height: 100%;
     width: 100%;
-    background: url(../img/background_img.png) no-repeat;
+    /*background: url(../img/background_img.png) no-repeat;*/
     background-size: 100% 100%
 
 }
@@ -373,7 +373,7 @@ option {
     color:white !important;
 }
 .grey-hr-separator{
-    border: none;border-bottom: 1px solid grey;width: 92%;
+    border: none;border-bottom: 1px solid lightgrey;width: 92%;
 }
 .input-label-color{
     color: rgba(255,255,255,.6);

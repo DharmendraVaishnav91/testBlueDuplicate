@@ -17,14 +17,12 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
 
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
-        console.log(response);
         isLocationEnabled();
-
-
         fetchUserCoords();
     }).catch(function (error) {
         console.log(error);
     });
+
     var fetchStates = function (countryCode) {
         signUpService.fetchStates(countryCode).then(function (response) {
             $scope.subDivList = response;
@@ -41,6 +39,7 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         $rootScope.loginData.registration_location.country_code = angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
         $rootScope.loginData.registration_location.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
         $rootScope.loginData.registration_location.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+        $rootScope.loginData.registration_location.city = angular.copy($rootScope.addressDataFromCoordinate.city);
         //$rootScope.loginData.registration_location.name='Home';
     };
     var setHomeLocation = function () {
@@ -197,6 +196,7 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
          console.log($rootScope.home);
          console.log("Login data");
          console.log($rootScope.loginData);
+         $state.go('selectUserType');
      //    signUpService.saveUserHome($rootScope.home).then(function (response) {
      //
      //        $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));

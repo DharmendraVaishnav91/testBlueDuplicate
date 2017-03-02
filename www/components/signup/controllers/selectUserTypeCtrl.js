@@ -5,7 +5,7 @@ app.controller('selectUserTypeCtrl', function ($ionicModal,$timeout, $q, $scope,
     //console.log($scope.loginData);
     $scope.home = {};
     $scope.data = {};
-    $scope.selectedProducts=[];
+    $rootScope.loginData.selectedProducts=[];
     $ionicModal.fromTemplateUrl('components/common/views/productListModal.html'
         , {
             scope: $scope,
@@ -35,19 +35,19 @@ app.controller('selectUserTypeCtrl', function ($ionicModal,$timeout, $q, $scope,
     $scope.selectProduct = function ($event,product) {
         var checkbox = $event.target;
         var action = (checkbox.checked ? 'add' : 'remove');
-        var filteredProduct=$filter('getByParamInMap')($scope.selectedProducts,'H3Code',product.H3Code);
+        var filteredProduct=$filter('getByParamInMap')($rootScope.loginData.selectedProducts,'H3Code',product.H3Code);
         if (action == 'add' && filteredProduct == null) {
-            $scope.selectedProducts.push(product);
+            $rootScope.loginData.selectedProducts.push(product);
         }
         if (action == 'remove' && filteredProduct != null) {
-            $scope.selectedProducts.splice(filteredProduct.index, 1);
+            $rootScope.loginData.selectedProducts.splice(filteredProduct.index, 1);
         }
 
-        console.log("Selected product list");
-        console.log($scope.selectedProducts);
     };
 
     $scope.goToCredential= function () {
+        console.log("Select User Type : Data prepared ");
+        console.log($rootScope.loginData);
         $state.go('userCredential');
     };
     // var createUser = function (userData) {

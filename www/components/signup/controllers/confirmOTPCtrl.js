@@ -12,12 +12,15 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
     $scope.isNewCodeRequested=false;
 
     //Fetching country list
-    utilityService.getCountryList().then(function(response){
-        $scope.countryCodeList=response;
-        console.log(response);
-    }).catch(function (error) {
-        console.log(error);
-    });
+    if($scope.isFromLogin){
+        utilityService.getCountryList().then(function(response){
+            $scope.countryCodeList=response;
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
+
 
     $scope.requestOTP = function () {
         //$scope.isNewCodeRequested=true;
