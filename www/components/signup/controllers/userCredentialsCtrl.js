@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 1/3/17.
  */
-app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $state, $ionicHistory, $rootScope, signUpService, $cordovaToast, utilityService) {
+app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $state,$filter, $ionicHistory, $rootScope, signUpService, $cordovaToast, utilityService) {
 
 
     $ionicNavBarDelegate.align('center');
@@ -50,8 +50,29 @@ app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $st
              product_ids.push(currentProduct.H3Code);
         });
         dataToSend.product_code_ids=product_ids;
+
         console.log("User Credential: Sign Up data");
         console.log(dataToSend);
+
+        signUpService.createUser(dataToSend).then(function (response) {
+            //$scope.userId=response;
+            $rootScope.auth_token = response.auth_token;
+            console.log("Registered successfully with your current location.");
+
+            $state.go('verifyAccount');
+           // $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
+
+
+        }).catch(function (error) {
+            var errorMessage = $filter('translate')('SOMETHING_WENT_WRONG');
+            // $state.go('accntCreateSuccess');
+            if (errorMessage != "") {
+                //$cordovaToast.showLongBottom(errorMessage);
+                console.log(errorMessage);
+            }
+        });
+
         // $state.go('verifyAccount');
     };
+
 });

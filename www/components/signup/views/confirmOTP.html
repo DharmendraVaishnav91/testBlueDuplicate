@@ -1,4 +1,4 @@
-<form name="confirmAccountForm">
+<form name="confirmAccountForm" ng-submit="confirmOTP()">
     <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
         <div class="buttons">
             <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
@@ -21,11 +21,11 @@
                     <!--style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>-->
         <!--</div>-->
         <div style="margin-top: 50px;">
-            <p ng-if="!isFromLogin&&!isNewCodeRequested"
+            <p ng-if="!isFromLogin"
                style="font-size: 20px;padding: 0 40px;;line-height: 30px;text-align: center;">{{'THANK_YOU' | translate}}</p>
 
             <p ng-if="(isFromLogin&&!indirect) || !isFromLogin" style="font-size: 20px;padding: 0px 40px;line-height: 30px;
-    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;<br>{{"(+"+userMobDetail.country_phone_code+")"+userMobDetail.mobile}}</p>
+    text-align: center;">{{'CONFIRM_CODE_SENT' | translate}}&nbsp;<br>{{"(+"+loginData.user.selectedCountry.CountryPhoneCode+")"+loginData.user.mobile}}</p>
         </div>
         <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;"
                ng-if="isFromLogin&&indirect">
@@ -92,13 +92,9 @@
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
-            <!--<button  class="button button-light button-clear bold" type="submit"  ng-click="requestOTP()">-->
-            <!--{{'REQUEST_OTP' | translate }}-->
-            <!--</button>-->
             <button ng-disabled="confirmAccountForm.$invalid" class="button button-light button-clear bold"
-                    type="submit" ng-click="confirmOTP()">
+                    type="submit">
                 {{"CONFIRM" | translate}}
-                <!--{{isFromLogin?"CONFIRM":'NEXT' | translate }}-->
             </button>
         </div>
     </ion-footer-bar>

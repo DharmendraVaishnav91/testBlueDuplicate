@@ -39,7 +39,7 @@ var HttpRoutes = {
     fetchUserDetail:apiUrl+"/gpr/v1/people/update_user",
     fetchAddressFromCoordinates:apiUrl+"/gpr/v1/process_coordinates/",
     fetchCountryCode:  apiUrl + '/gpr/country_list/',
-    signUpStep1:apiUrl+'/gpr/v2/signup_user/',
+    signUpStep1:apiUrl+'/gpr/v2/users/',
     signUpStep2:apiUrl+'/gpr/v2/signup_works/',
     signUpStep3:apiUrl+'/gpr/v2/signup_things/',
     signUpStep4:apiUrl+'/gpr/v2/signup_groups',

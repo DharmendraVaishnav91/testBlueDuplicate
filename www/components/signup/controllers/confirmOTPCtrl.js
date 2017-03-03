@@ -3,9 +3,9 @@
  */
 app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $state, $rootScope, $cordovaToast,utilityService, signUpService,$filter) {
     $scope.confirm = {};
-    $scope.goToHome = function () {
-        $state.go('home');
-    };
+    // $scope.goToHome = function () {
+    //     $state.go('home');
+    // };
 
     $scope.isFromLogin=$stateParams['isFromLogin'] ;
     $scope.indirect=$stateParams['indirect'] ;
@@ -32,8 +32,8 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
             };
         }else{
             requestData = {
-                country_phone_code: $rootScope.userMobDetail.country_phone_code,
-                username: ""+$rootScope.userMobDetail.mobile
+                country_phone_code:angular.copy($rootScope.loginData.user.selectedCountry.CountryPhoneCode),
+                username: ""+angular.copy($rootScope.loginData.user.mobile)
             };
         }
         signUpService.requestOTP(requestData).then(function (response) {
@@ -45,9 +45,9 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
         })
     };
 
-    $scope.skipToAddHome= function () {
-        $state.go('addHome');
-    };
+    // $scope.skipToAddHome= function () {
+    //     $state.go('addHome');
+    // };
 
     $scope.confirmOTP = function (){
         var requestData={};
@@ -60,21 +60,18 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
         }else{
 
             requestData = {
-                country_phone_code: $rootScope.userMobDetail.country_phone_code,
-                otp_code: $scope.confirm.code+"",
-                username: ""+$rootScope.userMobDetail.mobile
+                country_phone_code:angular.copy($rootScope.loginData.user.selectedCountry.CountryPhoneCode),
+                username: ""+angular.copy($rootScope.loginData.user.mobile),
+                otp_code: $scope.confirm.code+""
             };
         }
 
         signUpService.confirmOTP(requestData).then(function (response) {
             console.log("OTP confirmed successfully");
-            if($scope.isFromLogin){
-                $state.go('login');
-            }else{
-                $state.go('addHome');
-            }
+            $state.go('login');
 
-            $cordovaToast.showShortBottom($filter('translate')('OTP_VERIFIED_SUCCESSFULLY'));
+
+            //$cordovaToast.showShortBottom($filter('translate')('OTP_VERIFIED_SUCCESSFULLY'));
 
             console.log(response);
         }).catch(function (error) {

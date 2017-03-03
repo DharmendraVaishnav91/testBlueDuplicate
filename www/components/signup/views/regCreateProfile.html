@@ -8,7 +8,6 @@
 <!--</ion-nav-buttons>-->
 <!--</ion-nav-bar>-->
 
-<form name="basicInfoForm">
     <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
         <div class="buttons">
             <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
@@ -20,6 +19,8 @@
         <!--<button class="button">Right Button</button>-->
         <!--</div>-->
     </ion-header-bar>
+
+<form name="basicInfoForm" ng-submit="goToAddMobile()">
     <ion-content scroll="true" class="blueno-bg-full has-footer">
         <!--<div class="center" style=";width: inherit;height: auto;padding-top:15px" >-->
         <!--<h3 style="color: #ffffff;"> {{'CREATE_PROFILE' | translate }}</h3>-->
@@ -108,7 +109,7 @@
     <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
             <button ng-disabled="basicInfoForm.$invalid" class="button button-light button-clear bold" type="submit"
-                    ng-click="goToAddMobile()">
+                  >
                 {{'NEXT' | translate }}
             </button>
         </div>
