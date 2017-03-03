@@ -9,7 +9,7 @@ app.controller('RegCreateProfileCtrl', function ($ionicNavBarDelegate,$timeout, 
 
     };
     var updatedImage = '';
-    $rootScope.bgUrl = "assets/img/logo_small.png";
+    $rootScope.bgUrl = "assets/img/logo_small_old.png";
     $scope.updateImageSrc = null;
     $scope.addPicIcon = "assets/img/user-edit-icon.png";
     $scope.changeImage = function () {

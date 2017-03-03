@@ -1,4 +1,4 @@
-app.controller('selectUserTypeCtrl', function ($ionicModal,$timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast, $filter) {
+app.controller('selectUserTypeCtrl', function ($ionicModal,$timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast, $filter,$ionicHistory) {
     //console.log($stateParams.profileData);
     //$scope.loginData = $stateParams.profileData;
     //console.log("User created data till now");
@@ -19,7 +19,8 @@ app.controller('selectUserTypeCtrl', function ($ionicModal,$timeout, $q, $scope,
         console.log(error);
     });
     $scope.goBack= function () {
-        $state.go('addHome')
+       $state.go('addHome');
+       // $ionicHistory.goBack();
     };
     $scope.showProductSearch = function() {
         console.log("show country search");

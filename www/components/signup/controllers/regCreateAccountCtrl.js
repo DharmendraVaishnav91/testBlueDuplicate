@@ -14,7 +14,7 @@ app.controller('RegCreateAccountCtrl', function ($timeout, $q, $scope, $state, $
     var isLocationEnabled = null;
     var myPopup = null;
     var isPopupOpen = false;
-    $rootScope.bgUrl = "assets/img/logo_small.png";
+    $rootScope.bgUrl = "assets/img/logo_small_old.png";
     $rootScope.position = null;
 
     $scope.isLocationOn = false;

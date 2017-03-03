@@ -139,6 +139,7 @@ div.leaflet-right {
     padding: 0 10px 0 10px !important;;
     height: 40px !important;
     color: #3A5997 !important;
+    border-radius: 0;
 }
 
 .edit-input-textarea {
@@ -146,7 +147,7 @@ div.leaflet-right {
     /*background-color: rgba(97, 137, 197, .7) !important;*/
     margin-bottom: 4px !important;
     border-bottom: 1px solid rgb(221, 221, 221) !important;
-    border-radius: 4px !important;
+    border-radius: 0 !important;
     color: #3A5997 !important;
     padding: 0 10px 0 10px !important;;
 }
@@ -154,25 +155,25 @@ div.leaflet-right {
 .edit-input-textarea:focus {
     border-bottom: 2px solid cornflowerblue !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-txt:focus {
     border-bottom: 2px solid cornflowerblue !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-txt-error {
     border-bottom: 2px solid red !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-txt-error:focus {
     border-bottom: 2px solid red !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-select {

@@ -9,6 +9,9 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     var saveUser=function(user){
         $localStorage[STORAGE.LOGIN_KEY]=user;
     };
+    $scope.goBack= function () {
+        $state.go('home')
+    };
 
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;

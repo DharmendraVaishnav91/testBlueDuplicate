@@ -1,16 +1,27 @@
-<ion-content scroll="true" class="blueno-bg-full no-margin">
+<ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
+    <div class="buttons">
+        <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
+            <i class="ion-android-arrow-back"></i>
+        </button>
+    </div>
+    <h1 class="title">{{'LOGIN' | translate }}</h1>
+    <!--<div class="buttons">-->
+    <!--<button class="button">Right Button</button>-->
+    <!--</div>-->
+</ion-header-bar>
+<ion-content scroll="true" class="blueno-bg-full no-margin has-header">
 
       <div class="center" style=";width: inherit;height: auto;padding-top:25px" >
           <img ng-src="{{bgUrl}}" style="height: 90px;width: 90px;"/>
-          <h3 style="color: white;font-weight: bold;margin-top:0">{{'BLUENUMBER_SMALL'| translate}}</h3>
-          <span style="color:rgba(0,0,0,.6) ; font-size: 14px;">
+          <!--<h3 style="color: white;font-weight: bold;margin-top:0">{{'BLUENUMBER_SMALL'| translate}}</h3>-->
+          <span style="color:rgba(0,0,0,.6) ; font-size: 14px;display: block">
             (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;" class="ion-asterisk"></span>
             <span style="color:rgba(0,0,0,.6)">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
           </span>
 
       </div>
     <form name="loginForm">
-    <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">
+    <label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;margin-top:10px;">
             <span class="input-label label-text " style="color:white">{{'COUNTRY_OF_REGISTRATION' | translate }}
                 <span class="assertive " style="font-size: inherit">* </span>
             </span>
@@ -31,7 +42,7 @@
                max-selected-items="1"
                cancel-label="{{'CANCEL' | translate }}"
                items-clicked-method="clickedMethod(callback)"
-               style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
+               style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 0px;background: white;font-size: 18px !important;"
                placeholder="{{'SEARCH_COUNTRY' | translate }}"
            />
     </label>
@@ -51,7 +62,7 @@
     </label>
         <div class="row" style="margin-top:20px">
             <div class="col col-center center" >
-                <button type="submit" ng-disabled="loginForm.$invalid" class="button" style="width:80%;font-size:x-large;color:#0c60ee" ng-click="doLogin()">
+                <button type="submit" ng-disabled="loginForm.$invalid" class="button" style="width:80%;background-color: #3A5997;font-size:x-large;color:white" ng-click="doLogin()">
                     {{'LOGIN' | translate }}
                 </button>
             </div>
@@ -60,16 +71,16 @@
 
     <div class="row no-padding" style="margin-top: -10px;">
         <div class="col no-padding col-center center" >
-            <button style="font-size:larger;color: white;text-decoration: underline" class="button button-clear" ng-click="forgotPassword()">{{'FORGOT_PASSWORD' | translate }}</button>
+            <button style="font-size:larger;color: #3A5997;text-decoration: underline" class="button button-clear" ng-click="forgotPassword()">{{'FORGOT_PASSWORD' | translate }}</button>
         </div>
     </div>
 
-      <div class="row no-padding" style="margin-top: 0px;">
-          <div class="col no-padding col-center center" >
-              <button style="font-size:larger;color: white;text-decoration: underline" class="button button-clear" ng-click="openRegistration()">{{'SIGN_UP_FOR_BN' | translate }}</button>
+      <!--<div class="row no-padding" style="margin-top: 0px;">-->
+          <!--<div class="col no-padding col-center center" >-->
+              <!--<button style="font-size:larger;color: white;text-decoration: underline" class="button button-clear" ng-click="openRegistration()">{{'SIGN_UP_FOR_BN' | translate }}</button>-->
 
-          </div>
-      </div>
+          <!--</div>-->
+      <!--</div>-->
     <!--<div class="row no-padding" style="margin-top: 10px;">-->
         <!--<div class="col col-center center no-padding" >-->
             <!--<button  class="button button-clear button-outline button-balanced" ng-click="confirmUserAccount()">{{'ACCOUNT_NOT_CONFIRMED' | translate }}</button>-->
