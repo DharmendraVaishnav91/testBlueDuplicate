@@ -12,8 +12,8 @@ app.controller('HomeCtrl', function($scope,$state,$rootScope,utilityService,$win
     $scope.lang={
         selected:"en"
     };
-    $rootScope.bgUrl="assets/img/logo_small.png";
-    $rootScope.bgLargeUrl="assets/img/logo_big.png";
+    $rootScope.bgUrl="assets/img/logo_big.png";
+    $rootScope.bgLargeUrl="assets/img/logo_big_old.png";
     //$cordovaToast.showShortBottom("app version=",$rootScope.appVersion);
 
     var checkCordovaPlugin= function () {

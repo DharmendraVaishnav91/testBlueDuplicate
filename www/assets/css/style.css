@@ -157,25 +157,25 @@ div.leaflet-right {
 .edit-input-textarea:focus {
     border-bottom: 2px solid cornflowerblue !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-txt:focus {
     border-bottom: 2px solid cornflowerblue !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-txt-error {
     border-bottom: 2px solid red !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-txt-error:focus {
     border-bottom: 2px solid red !important;
     transition: .5ms ease all;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .edit-input-select {

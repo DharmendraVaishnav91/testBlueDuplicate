@@ -9,7 +9,9 @@ app.controller('ForgotPasswordCtrl', function($timeout, $q, $scope, $state, $sta
     }).catch(function (error) {
         console.log(error);
     });
-
+    $scope.goBack= function () {
+        $state.go('login');
+    };
     $scope.selectChange = function (item) {
         console.log("Selected item");
         console.log($scope.data.selectedCountry);

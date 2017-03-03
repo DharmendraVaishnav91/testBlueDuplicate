@@ -1,7 +1,11 @@
-app.controller('PasswordResetCtrl',function($timeout, $q, $scope, $state, $stateParams, $ionicPopup, utilityService, loginService, $rootScope, $cordovaToast,$filter,$ionicLoading){
+app.controller('PasswordResetCtrl',function($timeout, $ionicHistory,$q, $scope, $state, $stateParams, $ionicPopup, utilityService, loginService, $rootScope, $cordovaToast,$filter,$ionicLoading){
     $scope.loginData = {};
     $scope.token = $stateParams['token'];
     console.log("in 2nd js file the token is : "+$scope.token);
+
+    $scope.goBack= function () {
+        $ionicHistory.goBack();
+    };
     $scope.goToUpdatePassword = function(){
       console.log($scope.loginData);
       // Todo

@@ -1,4 +1,4 @@
-app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $ionicLoading, $rootScope, $cordovaToast, $filter) {
+app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $ionicLoading, $rootScope, $cordovaToast, $filter,$ionicHistory) {
     // console.log($stateParams.homeData);
     // console.log($stateParams.homeAddress);
     // $scope.data = $stateParams.homeData;
@@ -133,7 +133,8 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
         console.log(selectedCountry);
     };
     $scope.goBack = function () {
-        $state.go('regMobile');
+        //$ionicHistory.goBack();
+        $state.go('regMobile')  ;
     };
     $scope.getUpdatedCountryList = function (query) {
 

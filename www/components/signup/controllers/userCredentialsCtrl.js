@@ -9,7 +9,7 @@ app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $st
     $scope.username = $rootScope.loginData.user.selectedCountry.CountryPhoneCode + "" + $rootScope.loginData.user.mobile;
 
     $scope.goBack = function () {
-        $ionicHistory.goBack();
+       $state.go('selectUserType') ;
     };
 
     $scope.goToConfirmAccount = function () {
