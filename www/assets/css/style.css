@@ -139,6 +139,9 @@ div.leaflet-right {
     padding: 0 10px 0 10px !important;;
     height: 40px !important;
     color: #3A5997 !important;
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0 !important;
 }
 
 .edit-input-textarea {
@@ -146,7 +149,7 @@ div.leaflet-right {
     /*background-color: rgba(97, 137, 197, .7) !important;*/
     margin-bottom: 4px !important;
     border-bottom: 1px solid rgb(221, 221, 221) !important;
-    border-radius: 4px !important;
+    border-radius: 0 !important;
     color: #3A5997 !important;
     padding: 0 10px 0 10px !important;;
 }
