@@ -60,14 +60,14 @@ app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $st
             console.log("Registered successfully with your current location.");
 
             $state.go('verifyAccount');
-           // $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
+            $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
 
 
         }).catch(function (error) {
             var errorMessage = $filter('translate')('SOMETHING_WENT_WRONG');
             // $state.go('accntCreateSuccess');
             if (errorMessage != "") {
-                //$cordovaToast.showLongBottom(errorMessage);
+                $cordovaToast.showLongBottom(errorMessage);
                 console.log(errorMessage);
             }
         });

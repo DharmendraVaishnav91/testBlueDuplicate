@@ -1,6 +1,7 @@
 app.controller('InviteFamilyCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $rootScope, $cordovaToast,userSettingService,$filter,$ionicHistory) {
     console.log($stateParams.inviteFamilyData);
     $scope.data = {};
+    console.log("Invite family controller hi")
     $scope.skipToSuccess = function () {
         $state.go('home');
     };

@@ -6,6 +6,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     // Form data for the login modal
     $scope.loginData = {};
     $rootScope.userMobDetail={};
+    $rootScope.bgUrl="assets/img/logo_big.png";
     var saveUser=function(user){
         $localStorage[STORAGE.LOGIN_KEY]=user;
     };

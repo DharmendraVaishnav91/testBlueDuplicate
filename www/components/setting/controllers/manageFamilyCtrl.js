@@ -60,7 +60,7 @@ userSetting.controller('ManageFamilyCtrl', function($scope,$state,$ionicModal,us
               console.log(response);
              fetchInvitedFamilyMembers();
             $scope.hideInviteFamilyModal();
-            $cordovaToast.showLongBottom($filter('translate')('INVITATION_SENT_SUCCESSFULLY'));
+            $cordovaToast.showLongBottom($filter('translate')('MEMBER_ADDED_SUCCESSFULLY'));
 
         }).catch(function (error) {
               console.log(error);

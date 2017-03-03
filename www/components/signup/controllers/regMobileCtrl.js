@@ -66,7 +66,7 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
             $state.go('addHome');
         }).catch(function (error) {
             console.log(error.error);
-            // $cordovaToast.showLongBottom(error.error);
+             $cordovaToast.showLongBottom(error.error);
             //showErrorAlert(error.error);
             console.log("Username already taken. Try another.");
         });
