@@ -59,7 +59,7 @@ app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $st
             $rootScope.auth_token = response.auth_token;
             console.log("Registered successfully with your current location.");
 
-            $state.go('verifyAccount');
+            $state.go('verifyAccount',{isFromLogin:false});
             $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
 
 

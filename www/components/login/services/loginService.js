@@ -202,13 +202,14 @@ loginService.factory('loginService',function($http,$ionicPopup,$q,$rootScope,uti
       console.log(RPData);
       var deferred = $q.defer();
       var req={
-          url:HttpRoutes.resetPass+""+RPData.token,
+          url:HttpRoutes.resetPass,
           data:RPData.data,
           method:HttpRequestType.PUT,
           headers: {
             'Accept' : 'application/json'
         }
       };
+      req.data.token=RPData.token;
       console.log(req);
       return utilityService.makeHTTPRequest(req,deferred);
     };

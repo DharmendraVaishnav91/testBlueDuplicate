@@ -1,7 +1,7 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$localStorage,userSettingService,$cordovaToast,utilityService,$filter,menuService,$translate,signUpService) {
+app.controller('LoginCtrl', function($ionicModal,$scope,$state,loginService,$rootScope,$localStorage,userSettingService,$cordovaToast,utilityService,$filter,menuService,$translate,signUpService) {
 
     // Form data for the login modal
     $scope.loginData = {};
@@ -14,26 +14,57 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
         $state.go('home')
     };
 
+    $scope.loginData = {
+        selectedCountry:{
+            CountryPhoneCode:"1",
+            CountryCode:"US",
+            CountryName:"United States"
+        }
+    };
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
         console.log(response);
     }).catch(function (error) {
         console.log(error);
     });
+    $ionicModal.fromTemplateUrl('components/common/views/countrySearch.html'
+        , {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+        $scope.countrySearchModal = modal;
+    });
 
-    $scope.getSearchedCountryList=function(query){
-      return $filter('filter')($scope.countryCodeList,query);
-    } ;
+    // $scope.getSearchedCountryList=function(query){
+    //   return $filter('filter')($scope.countryCodeList,query);
+    // } ;
+    $scope.showCountrySearch = function() {
+        console.log("show country search");
+        $scope.countrySearchModal.show();
+    };
+    $scope.hideCountrySearch = function() {
+        $scope.countrySearchModal.hide();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.countrySearchModal.remove();
+    });
+    $scope.selectCountry = function (selectedCountry) {
+        $scope.loginData.selectedCountry=selectedCountry;
+
+        $scope.hideCountrySearch();
+    };
+
 
     $scope.doLogin= function () {
         console.log("Doing login");
         var data={
-            username:$scope.loginData.phoneCode.CountryPhoneCode+""+$scope.loginData.mobile,
+            username:$scope.loginData.selectedCountry.CountryPhoneCode+""+$scope.loginData.mobile,
             password:$scope.loginData.password
         };
         console.log(data);
         //Setting user mobile and country phone code to chec
-        $rootScope.userMobDetail.country_phone_code=$scope.loginData.phoneCode.CountryPhoneCode;
+        $rootScope.userMobDetail.country_phone_code=$scope.loginData.selectedCountry.CountryPhoneCode;
         $rootScope.userMobDetail.mobile=$scope.loginData.mobile;
 
         loginService.doLogin(data).then(function (user){
@@ -84,7 +115,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
         signUpService.requestOTP(requestData).then(function (response) {
             console.log("OTP requested successfully");
             console.log(response);
-            $state.go('verifyAccount',{isFromLogin:true,indirect:false,credential:userCredential});
+            $state.go('verifyAccount',{isFromLogin:true});
             //  $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
         }).catch(function (error) {
             console.log(error);
@@ -95,7 +126,7 @@ app.controller('LoginCtrl', function($scope,$state,loginService,$rootScope,$loca
     };
     $scope.openRegistration= function () {
         $state.go('regCreateAccount');
-    }
+    };
     $scope.forgotPassword = function(){
         $state.go('forgotPassword');
     }

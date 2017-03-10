@@ -254,10 +254,11 @@ input[type="radio"] {
 }
 
 .menu-bg {
-    background-image: url(../img/background_img.png);
+    /*background-image: url(../img/background_img.png);*/
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
+    background-color:#3A5997;
 }
 
 .blueno-bg-full {

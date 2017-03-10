@@ -1,31 +1,14 @@
-<!--<ion-nav-bar class="bar-stable blue-bg no-border" style="border-color:gray;">-->
-<!--<ion-nav-back-button style="color:white"></ion-nav-back-button>-->
-<!--<ion-nav-title>-->
-<!--Create Profile-->
-<!--</ion-nav-title>-->
-<!--<ion-nav-buttons>-->
-
-<!--</ion-nav-buttons>-->
-<!--</ion-nav-bar>-->
-
-    <ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
-        <div class="buttons">
-            <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
-                <i class="ion-android-arrow-back"></i>
-            </button>
-        </div>
-        <h1 class="title">{{'CREATE_PROFILE' | translate }}</h1>
-        <!--<div class="buttons">-->
-        <!--<button class="button">Right Button</button>-->
-        <!--</div>-->
-    </ion-header-bar>
+<ion-header-bar align-title="center" class="" style="background-color:#3A5997 !important;">
+    <div class="buttons">
+        <button class="button button-clear" style="font-size: 30px;color:white" ng-click="goBack()">
+            <i class="ion-android-arrow-back"></i>
+        </button>
+    </div>
+    <h1 class="title">{{'CREATE_PROFILE' | translate }}</h1>
+</ion-header-bar>
 
 <form name="basicInfoForm" ng-submit="goToAddMobile()">
     <ion-content scroll="true" class="blueno-bg-full has-footer">
-        <!--<div class="center" style=";width: inherit;height: auto;padding-top:15px" >-->
-        <!--<h3 style="color: #ffffff;"> {{'CREATE_PROFILE' | translate }}</h3>-->
-
-        <!--</div>-->
         <div class="row">
             <div class="col center">
                 <img ng-src="{{updateImageSrc?updateImageSrc:addPicIcon}}"
@@ -33,7 +16,6 @@
                 <p style="color:  rgba(0,0,0,.6);font-size: larger;text-decoration: underline;"
                    ng-click="changeImage()">{{'CHANGE_PROFILE_PICTURE' | translate}}</p>
             </div>
-
         </div>
 
         <div class="list" ng-style="{'height':(deviceHeight-210)+'px'}"
@@ -51,10 +33,11 @@
                 <input class="edit-input-txt" ng-model="loginData.profile.given_name" name="firstName"
                        ng-required="true" ng-maxlength="50" type="text" ng-minlength="2"/>
 
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.firstName.$error.maxlength" >
+                <span class="validation-font wrap-content" ng-show="basicInfoForm.firstName.$error.maxlength">
                     {{'FIRST_NAME_MAX_LENGTH'| translate}}
                 </span>
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.firstName.$error.required && basicInfoForm.firstName.$touched">
+                <span class="validation-font wrap-content"
+                      ng-show="basicInfoForm.firstName.$error.required && basicInfoForm.firstName.$touched">
                     {{'FIRST_NAME_MIN_LENGTH'| translate}}
                 </span>
             </label>
@@ -65,10 +48,11 @@
                 </span>
                 <input ng-model="loginData.profile.family_name" name="lastName" ng-required="true" type="text"
                        class="edit-input-txt" ng-maxlength="50" ng-minlength=""/>
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.lastName.$error.maxlength" >
+                <span class="validation-font wrap-content" ng-show="basicInfoForm.lastName.$error.maxlength">
                     {{'LAST_NAME_MAX_LENGTH'| translate}}
                 </span>
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.lastName.$error.required && basicInfoForm.lastName.$touched">
+                <span class="validation-font wrap-content"
+                      ng-show="basicInfoForm.lastName.$error.required && basicInfoForm.lastName.$touched">
                     {{'LAST_NAME_MIN_LENGTH'| translate}}
                 </span>
             </label>
@@ -84,7 +68,8 @@
                     <option value="male">{{'MALE' | translate }}</option>
                     <option value="female">{{'FEMALE' | translate }}</option>
                 </select>
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.gender.$error.required && basicInfoForm.gender.$touched">
+                <span class="validation-font wrap-content"
+                      ng-show="basicInfoForm.gender.$error.required && basicInfoForm.gender.$touched">
                     {{'GENDER_IS_REQUIRED'| translate}}
                 </span>
             </label>
@@ -109,7 +94,7 @@
     <ion-footer-bar class="text-center bar-stable blue-bg no-border">
         <div class="button-bar">
             <button ng-disabled="basicInfoForm.$invalid" class="button button-light button-clear bold" type="submit"
-                  >
+            >
                 {{'NEXT' | translate }}
             </button>
         </div>

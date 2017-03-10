@@ -7,7 +7,7 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
   //  $scope.selectedCountry=null;
     $rootScope.loginData.user = {
         selectedCountry:{
-            CountryPhoneCode:1,
+            CountryPhoneCode:"1",
             CountryCode:"US",
             CountryName:"United States"
         }
@@ -15,6 +15,12 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
 
     $ionicNavBarDelegate.align('center');
 
+    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
+        $scope.countryCodeList = response;
+        console.log(response);
+    }).catch(function (error) {
+        console.log(error);
+    });
     $ionicModal.fromTemplateUrl('components/common/views/countrySearch.html'
         , {
         scope: $scope,
@@ -40,12 +46,7 @@ app.controller('RegMobileCtrl', function ($ionicNavBarDelegate, $scope, $state, 
        $scope.hideCountrySearch();
     };
 
-    utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
-        $scope.countryCodeList = response;
-        console.log(response);
-    }).catch(function (error) {
-        console.log(error);
-    });
+
 
     $scope.goBack=function () {
         $state.go('regCreateProfile');

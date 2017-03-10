@@ -34,11 +34,11 @@ var menu=angular.module('app.menu', []);
               }
         };
         $scope.goToGroup = function(){
-            if(true){
+            // if(true){
                 $state.go('app.group.manage');
-            }else{
-                $state.go('app.createGroup') ;
-            }
+            // }else{
+            //     $state.go('app.createGroup') ;
+            // }
         };
         $scope.openSetting=function(){
             $state.go('app.setting');

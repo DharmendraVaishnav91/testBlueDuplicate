@@ -31,26 +31,44 @@
 
                 <div class="row no-padding">
                     <div class="col no-padding col-20">
-                        <div class="" style="color:black;height: 100%;position: relative" ng-click="showCountrySearch()">
-                            <span class="center" style="color:#3A5997;right:3px;width:100%;position: absolute;bottom: 4px;padding-bottom: 7px;border-bottom: 1px solid grey;">{{loginData.user.selectedCountry!=null?loginData.user.selectedCountry.CountryCode:'US'}} <i class="ion-ios-arrow-down"></i></span>
+                        <div class="" style="color:black;height: 100%;" ng-click="showCountrySearch()">
+                            <!--<span class="center" style="color:#3A5997;right:3px;width:100%;bottom: 4px;padding-bottom: 7px;border-bottom: 1px solid grey;">-->
+                            <div class="button button-clear button-small" style="color: black;border-bottom: 1px solid grey;border-radius: 0px;height: 40px;line-height: 40px;font-size: 18px">
+                            {{loginData.user.selectedCountry!=null?loginData.user.selectedCountry.CountryCode:'US'}}
+                                <i class="ion-ios-arrow-down"></i>
+                            </div>
+
+                            <!--</span>-->
                         </div>
                     </div>
                     <div class="col no-padding col-20">
-                        <div class="" style="color:black;height: 100%;position: relative">
-                            <span class="center" style="color:#3A5997;padding-top:7px;position: absolute;bottom: 4px;width:100%;padding-bottom: 7px;border-bottom: 1px solid grey;">+{{loginData.user.selectedCountry!=null?loginData.user.selectedCountry.CountryPhoneCode:'1'}} </span>
+                        <div class="" style="color:black;height: 100%;">
+                            <div class="button button-clear button-small" style="color: black;border-bottom: 1px solid grey;border-radius: 0px;height: 40px;width: 100%;line-height: 40px;font-size: 18px">
+                                +{{loginData.user.selectedCountry!=null?loginData.user.selectedCountry.CountryPhoneCode:'1'}}
+
+                            </div>
+                            <!--<span class="center" style="color:#3A5997;padding-top:7px;bottom: 4px;width:100%;padding-bottom: 7px;border-bottom: 1px solid grey;">-->
+
+                            <!--</span>-->
                         </div>
                     </div>
                     <div class="col no-padding">
 
                         <input class="edit-input-txt " ng-model="loginData.user.mobile" name="mobile" ng-required="true"
-                               style="font-size:18px;width:100%" type="number" ng-minlength="9" ng-maxlength="15" id="mobileNumber" />
+                               style="font-size:18px;width:100%" type="number" ng-minlength="8" ng-maxlength="15" id="mobileNumber" maxlength="15"/>
 
                     </div>
                 </div>
                 <div class="row no-padding">
                     <div class="col no-padding">
                         <span class="assertive validation-font wrap-content"
-                              ng-show="credentialForm.mobile.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>
+                              ng-show="credentialForm.mobile.$error.minlength">
+                            {{'MOBILE_MIN_LENGTH'| translate}}
+                        </span>
+                        <span class="assertive validation-font wrap-content"
+                              ng-show="credentialForm.mobile.$error.maxlength">
+                            {{'MOBILE_MAX_LENGTH'| translate}}
+                        </span>
                     </div>
 
                 </div>

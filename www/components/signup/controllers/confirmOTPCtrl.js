@@ -8,27 +8,29 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
     // };
 
     $scope.isFromLogin=$stateParams['isFromLogin'] ;
-    $scope.indirect=$stateParams['indirect'] ;
-    $scope.isNewCodeRequested=false;
+    // $scope.indirect=$stateParams['indirect'] ;
+    // $scope.isNewCodeRequested=false;
 
     //Fetching country list
-    if($scope.isFromLogin){
-        utilityService.getCountryList().then(function(response){
-            $scope.countryCodeList=response;
-            console.log(response);
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
+    // if($scope.isFromLogin){
+    //     utilityService.getCountryList().then(function(response){
+    //         $scope.countryCodeList=response;
+    //         console.log(response);
+    //     }).catch(function (error) {
+    //         console.log(error);
+    //     });
+    // }
 
-
+    $scope.goBack=function () {
+        $state.go('login');
+    };
     $scope.requestOTP = function () {
         //$scope.isNewCodeRequested=true;
         var requestData={};
-        if($scope.isFromLogin && $scope.indirect){
+        if($scope.isFromLogin){
             requestData = {
-                country_phone_code: $scope.confirm.country,
-                username: ""+$scope.confirm.mobile
+                country_phone_code: $rootScope.userMobDetail.country_phone_code,
+                username: ""+ $rootScope.userMobDetail.mobile
             };
         }else{
             requestData = {
@@ -39,7 +41,7 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
         signUpService.requestOTP(requestData).then(function (response) {
             console.log("OTP requested successfully");
             console.log(response);
-            //  $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
+             $cordovaToast.showLongBottom("An OTP has been sent to your mobile.");
         }).catch(function (error) {
             console.log(error);
         })
@@ -51,11 +53,11 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
 
     $scope.confirmOTP = function (){
         var requestData={};
-        if($scope.isFromLogin && $scope.indirect){
+        if($scope.isFromLogin){
             requestData={
-                country_phone_code: $scope.confirm.country,
+                country_phone_code:$rootScope.userMobDetail.country_phone_code,
                 otp_code: $scope.confirm.code+"",
-                username:""+$scope.confirm.mobile
+                username:""+$rootScope.userMobDetail.mobile
             };
         }else{
 
@@ -71,7 +73,7 @@ app.controller('ConfirmOTPCtrl', function ($stateParams,$timeout, $q, $scope, $s
             $state.go('login');
 
 
-            //$cordovaToast.showShortBottom($filter('translate')('OTP_VERIFIED_SUCCESSFULLY'));
+            $cordovaToast.showShortBottom($filter('translate')('OTP_VERIFIED_SUCCESSFULLY'));
 
             console.log(response);
         }).catch(function (error) {
