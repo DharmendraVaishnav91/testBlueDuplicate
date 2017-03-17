@@ -1,19 +1,11 @@
 app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopup, utilityService, $stateParams, signUpService, $ionicLoading, $rootScope, $cordovaToast, $filter,$ionicHistory) {
-    // console.log($stateParams.homeData);
-    // console.log($stateParams.homeAddress);
-    // $scope.data = $stateParams.homeData;
-    // $rootScope.home = $stateParams.homeAddress;
-    // $scope.isFromSetting = false;
-    //  $scope.countryCodeList = utilityService.countryList();
-    //   $scope.locationWay = "";
+
     $scope.subDivList = "";
+    $scope.data = {};
     $rootScope.position = null;
     $rootScope.addressDataFromCoordinate = {};
-    $scope.data = {};
     $rootScope.home = {};
     $rootScope.loginData.registration_location = {};
-   // $rootScope.loginData.home_location = {};
-    // console.log($scope.data.homeCountry);
 
     utilityService.getCountryList($rootScope.selectedLanguage).then(function (response) {
         $scope.countryCodeList = response;
@@ -143,43 +135,7 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
     $scope.getUpdatedStateList = function (query) {
         return $filter('filter')($scope.subDivList, query);
     };
-    //$scope.goToSelectUserOccupation = function () {
-    //    $state.go('selectUserType');
-    //};
-    // $scope.skipToWork = function () {
-    //     $state.go('addWork', {workData: $scope.data})
-    // };
-    //Change address fields according user choice
-    // $scope.updateLocationFields = function (locationWay) {
-    //     $scope.enableAddressFields = true;
-    //     console.log(locationWay);
-    //     if (locationWay == "current") {
-    //         $rootScope.home.address = angular.copy($rootScope.addressDataFromCoordinate.address);
-    //         $rootScope.home.city = angular.copy($rootScope.addressDataFromCoordinate.city);
-    //         $rootScope.home.postalcode = angular.copy($rootScope.addressDataFromCoordinate.postalcode);
-    //         console.log($rootScope.addressDataFromCoordinate);
-    //         // $scope.changeSubdivision($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-    //         signUpService.fetchStates($rootScope.addressDataFromCoordinate.userCountry.CountryCode).then(function (response) {
-    //             $scope.subDivList = response;
-    //             $scope.data.state = $filter('getById')($scope.subDivList, "SubdivisionCode", $rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
-    //         }).catch(function (error) {
-    //             console.log(error);
-    //         });
-    //         //$rootScope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-    //         //$rootScope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
-    //         //$scope.data.state = $filter('getById')($scope.subDivList,"SubdivisionCode",$rootScope.addressDataFromCoordinate.userState.SubdivisionCode);
-    //         $scope.data.homeCountry = $filter('getById')($scope.countryCodeList, "CountryCode", $rootScope.addressDataFromCoordinate.userCountry.CountryCode); //angular.copy($rootScope.addressDataFromCoordinate.userCountry.CountryCode);
-    //
-    //     } else {
-    //         $rootScope.home.address = "";
-    //         $rootScope.home.city = "";
-    //         $rootScope.home.postalcode = "";
-    //         //$rootScope.home.latitude = "";
-    //         //$rootScope.home.longitude = "";
-    //         $scope.data.state = "";
-    //         $scope.data.homeCountry = "";
-    //     }
-    // };
+
      $scope.goToSelectUserOccupation = function () {
          if ($scope.data.state != undefined && $scope.data.state != null) {
              //$scope.loginData.home.subdivision_code = $scope.data.state.SubdivisionCode;
@@ -189,9 +145,11 @@ app.controller('addHomeCtrl', function ($timeout, $q, $scope, $state, $ionicPopu
          }
          //$scope.loginData.home.country_code=$scope.data.homeCountry.CountryCode;
          $rootScope.home.country_code = $scope.data.homeCountry.CountryCode;
-         //$rootScope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
-         //$rootScope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
+         $rootScope.home.latitude = angular.copy($rootScope.position ? $rootScope.position.coords.latitude : '');
+         $rootScope.home.longitude = angular.copy($rootScope.position ? $rootScope.position.coords.longitude : '');
          $rootScope.home.name = 'Home';
+         console.log("home location display");
+         console.log($rootScope.home);
 
          console.log("Home Location");
          console.log($rootScope.home);

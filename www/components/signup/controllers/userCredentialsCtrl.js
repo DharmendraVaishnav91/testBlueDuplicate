@@ -60,8 +60,16 @@ app.controller('UserCredentialCtrl', function ($ionicNavBarDelegate, $scope, $st
             console.log("Registered successfully with your current location.");
 
             $state.go('verifyAccount',{isFromLogin:false});
-            $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
+           // $cordovaToast.showLongBottom($filter('translate')('REGISTERED_WITH_CURRENT_LOCATION'));
+            signUpService.saveUserHome($rootScope.home).then(function (response) {
+                console.log("User created successfully");
+                $cordovaToast.showLongBottom($filter('translate')('HOME_ADDED_SUCCESSFULLY'));
 
+            }).catch(function (error) {
+                var errorMessage = $filter('translate')('SOMETHING_WENT_WRONG');
+                $cordovaToast.showLongBottom(errorMessage);
+                console.log(error);
+            });
 
         }).catch(function (error) {
             var errorMessage = $filter('translate')('SOMETHING_WENT_WRONG');

@@ -84,7 +84,7 @@
     </ion-content>
     <ion-footer-bar class="text-center bar-stable blue-bg no-border" >
         <div class="button-bar">
-            <button ng-disabled="selectUserTypeForm.$invalid" class="button button-light button-clear bold"
+            <button ng-disabled="selectUserTypeForm.$invalid || loginData.selectedProducts.length==0" class="button button-light button-clear bold"
                     type="submit">
                 {{'NEXT' | translate }}
                 <!--&nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>-->

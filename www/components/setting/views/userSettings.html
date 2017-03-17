@@ -3,180 +3,117 @@
         <button class="button button-icon button-clear ion-navicon" style="color:white" menu-toggle="left">
         </button>
     </ion-nav-buttons>
-    <!--<ion-content scroll="true" style="background-color:#4E5C6E " >-->
     <ion-content class="blueno-bg-full  has-header" scroll="true">
-
         <div class="row no-padding">
             <div class="col center">
                 <img ng-src="{{profileUrl}}" style=" height: 140px;width: 140px;border-radius: 50%;border: 4px solid #3A5997;">
-
-                <p style="color:#3A5997;font-size: large;margin:5px 0 -15px 0">{{::person.givenname1}}&nbsp{{::person.familyname1}}</p><br>
-                <p style="color:#3A5997;font-size: large;margin:5px 0 -15px 0">{{'BLUENUMBER_COLON'|translate}}&nbsp;{{::user.bluenumber }}</p>
+                <p style="color:#3A5997;font-size: large;margin:5px 0 -15px 0">
+                    {{::person.givenname1}}&nbsp{{::person.familyname1}}</p>
+                <br>
+                <p style="color:#3A5997;font-size: large;margin:5px 0 -15px 0">
+                    {{'BLUENUMBER_COLON'|translate}}&nbsp;{{::user.bluenumber}}
+                </p>
                 <p style="color:#3A5997;font-size: large;margin:5px 0 -15px 0; padding-top:20px" ng-if="home!=null">
                     {{home.StreetAddressOne}},&nbsp;{{home.Settlement}}
                 </p>
-                <!--<a style=" text-decoration: underline;-->
-                <!--font-size: larger;color: rgba(255,255,255,.7)" class="positive" ng-click="goToEditAccount()">{{'EDIT_ACCOUNT'-->
-                    <!--| translate }}</a>-->
             </div>
         </div>
-
         <div class="list">
-
             <div class="card" style="padding: 0px !important;margin: 0px !important;margin-top: 86px !important;">
-                <!-- <div class="item item-divider custom-item custom-item-header" style="color:rgba(0,0,0,.6)">
-                    {{'PEOPLE' | translate }}
-                </div> -->
-                <div class="item custom-item no-padding no-margin"
-                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
+                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
                 <div class="item custom-item" style="border:none;padding:0;color:rgba(0,0,0,.6)">
                     <div class="row">
                         <div class="col col-20 col-center">
-                          <a class="icon-circle">
-                            <i class="icon ion-android-person" style="font-size: 35px;color:white"></i>
-                          </a>
+                            <a class="icon-circle">
+                                <i class="icon ion-android-person" style="font-size: 35px;color:white;line-height: 40px"></i>
+                            </a>
                         </div>
                         <div class="col col-30 col-center blue-txt">
                             {{'PROFILE' | translate }}
-                            <!-- <p class="">{{'UPDATE_PROFILE' | translate }}</p> -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
                             <button class="button button-small button-clear" ng-click="goToEditAccount()">
-                              <!-- <p class="white-p">{{'UPDATE_PROFILE' | translate }}</p> -->
                                 <i class="ion-edit white-p" style="color:#3A5997; font-size:20px;"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="item custom-item no-padding no-margin"
-                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
+                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
                 <div class="item custom-item" style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
-                          <a class="icon-circle">
-                            <i class="icon ion-ios-body" style="font-size: 35px;color:white"></i>
-                          </a>
+                            <a class="icon-circle">
+                                <i class="icon ion-ios-body" style="font-size: 35px;color:white;line-height: 40px"></i>
+                            </a>
                         </div>
                         <div class="col col-30 col-center blue-txt">
                             {{'FAMILY' | translate }}
-                            <!-- <p class="white-p">{{'ADD_FAMILY_MEMBER' | translate }}</p> -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
                             <button class="button button-small button-clear" ng-click="goToManageFamily()">
-                              <!-- <p class="white-p">{{'ADD_FAMILY_MEMBER' | translate }}</p> -->
                                 <i class="ion-person-add" style="font-size: 20px; color:#3A5997"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="item custom-item no-padding no-margin"
-                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
+                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
-                <!--<div class="item custom-item no-padding no-margin"-->
-                     <!--style="border:none;height: 1px;padding-right: 8px !important;padding-left:45px !important;">-->
-                    <!--<div class="" style="border:none;background-color: gray;height: inherit;">-->
-                    <!--</div>-->
-                <!--</div>-->
-
-            <!-- </div> -->
-
-            <!--<div class="card" style="background:transparent;">-->
-                <!--<div class="item item-divider custom-item custom-item-header">-->
-                    <!--{{'GROUPS' | translate }}-->
-                <!--</div>-->
-                <!--<div class="item custom-item" style="border:none;padding:0" ng-click="goToManageGroup()">-->
-                    <!--<div class="row">-->
-                        <!--<div class="col col-10">-->
-                            <!--<i class="icon ion-briefcase" style="font-size: 30px"></i>-->
-                        <!--</div>-->
-                        <!--<div class="col">-->
-                            <!--{{'GROUPS' | translate }}-->
-                            <!--<p class="white-p"> {{'ADD_GROUP' | translate }}</p>-->
-                        <!--</div>-->
-                        <!--<div class="col col-10">-->
-                            <!--<button class="button button-small button-clear " style="color:white">-->
-                                <!--<i class="ion-ios-arrow-right" style="font-size: 30px"></i>-->
-                            <!--</button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!-- <div class="card" style="background:transparent;"> -->
-                <!-- <div class="item item-divider custom-item custom-item-header">
-                    {{'PLACES' | translate }}
-                </div> -->
                 <div class="item custom-item" style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
-                          <a class="icon-circle">
-                            <i class="icon ion-ios-home" style="font-size: 35px"></i>
-                          </a>
+                            <a class="icon-circle">
+                                <i class="icon ion-ios-home" style="font-size: 35px;line-height: 40px"></i>
+                            </a>
                         </div>
                         <div class="col col-30 col-center blue-txt">
                             {{'HOME' | translate }}
-                            <!-- <p class="white-p" ng-if="home==null">{{'ADD_HOME' | translate }}</p>
-                             -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
                             <button class="button button-small button-clear" ng-click="editUserHome(home)">
-                              <!-- <p class="white-p" ng-if="home==null">{{'ADD_HOME' | translate }}</p> -->
-                              <!-- <p class="white-p" ng-if="home!=null">
-                                  {{home.StreetAddressOne}},&nbsp;{{home.Settlement}}
-                              </p> -->
                                 <i class="ion-edit" style="font-size: 20px; color:#3A5997"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="item custom-item no-padding no-margin"
-                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
+                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
                 <div class="item custom-item" style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
-                          <a class="icon-circle">
-                            <i class="icon ion-briefcase" style="font-size: 35px"></i>
-                          </a>
+                            <a class="icon-circle">
+                                <i class="icon ion-briefcase" style="font-size: 35px;line-height: 40px"></i>
+                            </a>
                         </div>
                         <div class="col col-30 col-center blue-txt">
                             {{'WORK' | translate }}
-                            <!-- <p class="white-p">{{'ADD_WORK' | translate }}</p> -->
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
                             <button class="button button-small button-clear" ng-click="goToWorkPlaces()">
-                              <!-- <p class="white-p">{{'ADD_WORK' | translate }}</p> -->
                                 <i class="ion-plus" style="font-size: 20px; color:#3A5997"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="item custom-item no-padding no-margin"
-                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
+                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
-            <!-- </div>
-            <div class="card" style="background:transparent;"> -->
-                <!-- <div class="item item-divider custom-item custom-item-header">
-                    {{'THINGS' | translate }}
-                </div> -->
                 <div class="item custom-item " style="border:none;padding:0">
                     <div class="row">
                         <div class="col col-20 col-center">
-                          <a class="icon-circle">
-                            <i class="icon ion-settings" style="font-size: 35px;color: white"></i>
-                          </a>
+                            <a class="icon-circle">
+                                <i class="icon ion-settings" style="font-size: 35px;color: white;line-height: 40px"></i>
+                            </a>
                         </div>
                         <div class="col col-30 col-center blue-txt">
                             {{'THINGS' | translate }}
@@ -184,27 +121,17 @@
                         </div>
                         <div class="col col-50 col-center" style="text-align: -webkit-right;">
                             <button class="button button-small button-clear" ng-click="goToThings()">
-                              <!-- <p class="white-p">{{'ADD_THING' | translate }}</p> -->
+                                <!-- <p class="white-p">{{'ADD_THING' | translate }}</p> -->
                                 <i class="ion-plus" style="font-size: 20px; color:#3A5997"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="item custom-item no-padding no-margin"
-                     style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
+                <div class="item custom-item no-padding no-margin" style="border:none;height: 1px;padding-right: 8px !important;padding-left:8px !important;">
                     <div class="" style="border:none;background-color: rgba(211,211,211,.8);height: inherit;">
                     </div>
                 </div>
             </div>
-
         </div>
-
     </ion-content>
-    <!--<ion-footer-bar class="text-center bar-stable blue-bg" >-->
-    <!--<div  class="button-bar">-->
-    <!--<button type="button" class="button button-clear button-balanced" ng-click="logout()">-->
-    <!--<i class=""></i> {{'SIGN_OUT' | translate }}-->
-    <!--</button>-->
-    <!--</div>-->
-    <!--</ion-footer-bar>-->
 </ion-view>

@@ -1,146 +1,140 @@
-<ion-modal-view >
-    <ion-header-bar class="bar bar-header blue-bg no-border" >
-        <button ng-click="hideThingAddModal()" style="color:white" class="button back-button buttons  button-clear header-item">
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header blue-bg no-border">
+        <button ng-click="hideThingAddModal()" style="color:white"
+                class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
         </button>
-        <h1 class="title" style=" max-width:none;text-align: center !important;" >{{'ADD_THING' | translate }}</h1>
+        <h1 class="title" style=" max-width:none;text-align: center !important;">{{'ADD_THING' | translate }}</h1>
     </ion-header-bar>
     <form name="addThingForm">
-    <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
-        <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
+        <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
+            <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}"
+                 style="overflow: scroll;width: 100%;padding: 0;">
 
-            <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
+                <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
                 <span style="color:rgba(0,0,0,.6); font-size: 14px;">
-                  (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;" class="ion-asterisk"></span>
+                  (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;"
+                         class="ion-asterisk"></span>
                   <span style="color:rgba(0,0,0,.6);font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
                 </span>
-            </div>
-            <label class="item item-input item-stacked-label no-border label-padding"  >
-                    <span class="input-label label-text "  style="color:white">{{'ASSET_NAME' | translate }}
+                </div>
+                <label class="item item-input item-stacked-label no-border label-padding">
+                    <span class="input-label label-text " style="color:white">{{'ASSET_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="text" ng-required="true" name="assetName" class="edit-input-txt" ng-model="thing.assetName"/>
-            </label>
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                    <span class="input-label label-text "  style="color:white">{{'EQUIPMENT_TYPE' | translate }}
+                    <input type="text" ng-required="true" name="assetName" class="edit-input-txt"
+                           ng-model="thing.assetName"/>
+                    <span class="validation-font wrap-content"
+                          ng-show="addThingForm.assetName.$error.required && addThingForm.assetName.$touched">
+                        {{'REQUIRED'| translate}}
+                    </span>
+                </label>
+                <label class="item item-input item-stacked-label no-border label-padding">
+                    <span class="input-label label-text " style="color:white">{{'EQUIPMENT_TYPE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.equipType" ng-required="true"  ng-change="workTypeChange()">
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997"
+                            class="edit-input-txt" ng-model="thing.equipType" ng-required="true" name="assetType"
+                            ng-change="workTypeChange()">
                         <option selected disabled value="">{{'SELECT_THING_TYPE' | translate}}</option>
                         <option ng-repeat="obj in thingsType" value="{{obj.id}}">{{obj.name}}</option>
-                        <!--<option value="Farm or pasture land">Farm or pasture land</option>-->
-                        <!--<option value="Fishing boat">{{'FISHING_BOAT' | translate }}</option>-->
-                        <!--<option value="Fishery">{{'FISHERY' | translate }}</option>-->
-                        <!--<option value="Equipment (agriculture)">{{'EQUIPMENT_AGRICULTURE' | translate }}</option>-->
-                        <!--<option value="Equipment (fishing)">{{'EQUIPMENT_FISHING' | translate }}</option>-->
-                        <!--<option value="Consumer Product">{{'CONSUMER_PRODUCT' | translate }}</option>-->
                     </select>
+                    <span class="validation-font wrap-content"
+                          ng-show="addThingForm.assetType.$error.required && addThingForm.assetType.$touched">
+                        {{'REQUIRED'| translate}}
+                    </span>
                 </label>
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
-                    <span class="input-label label-text "  style="color:white">{{'CROP' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
+                    <span class="input-label label-text " style="color:white">{{'CROP' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.crop" ng-required="true">
-                    <option selected disabled value="">{{'SELECT_CROP' | translate}}</option>
-                    <option ng-repeat="obj in productList | orderBy:'H3Description'" value="{{obj.H3Code}}">{{obj.H3Description}}</option>
-                </select>
-            </label>
-
-            <!--Hectare-->
-
-            <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
-                    <span class="input-label label-text "  style="color:white">{{'HECTARE' | translate }}
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997"
+                            class="edit-input-txt" ng-model="thing.crop" ng-required="true" name="product">
+                        <option selected disabled value="">{{'SELECT_CROP' | translate}}</option>
+                        <option ng-repeat="obj in productList | orderBy:'H3Description'" value="{{obj.H3Code}}">
+                            {{obj.H3Description}}
+                        </option>
+                    </select>
+                    <span class="validation-font wrap-content"
+                          ng-show="addThingForm.product.$error.required && addThingForm.product.$touched">
+                        {{'REQUIRED'| translate}}
+                    </span>
+                </label>
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableCrop">
+                    <span class="input-label label-text " style="color:white">{{'HECTARE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                <input type="number" class="edit-input-txt"  ng-model="thing.hectare" ng-required="true" name="hectares" />
+                    <input type="number" class="edit-input-txt" ng-model="thing.hectare" ng-required="true"
+                           name="hectares"/>
+                    <span class="validation-font wrap-content"
+                          ng-show="addThingForm.hectares.$error.required && addThingForm.hectares.$touched">
+                        {{'REQUIRED'| translate}}
+                    </span>
 
-            </label>
-
-                <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
-                    <!--<span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}-->
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                    <!--</span>-->
-                    <!--<select style="width: 100%" ng-model="thing.equipRelationship" ng-required="true">-->
-                        <!--<option value="Worker">{{'WORKER' | translate }}</option>-->
-                        <!--<option value="Owner">{{'OWNER' | translate }}</option>-->
-                        <!--<option value="Lessor">{{'LESSOR' | translate }}</option>-->
-                    <!--</select>-->
-                <!--</label>-->
-
-
-                <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
-                    <!--<span class="input-label label-text "  style="color:white">{{'LOCATION' | translate }}-->
-                        <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                    <!--</span>-->
-                    <!--&lt;!&ndash;<select style="width: 100%" ng-model="thing.equipWhere" ng-required="true" >&ndash;&gt;-->
-
-                        <!--&lt;!&ndash;<option ng-repeat="obj in myLocations" value="{{obj}}">{{obj.LocationType+"("+obj.LocationName+")"}}</option>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<option value="OtherThingLocation">{{'OTHER' | translate }}</option>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
-                    <!--<select name="location-where" style="width: 100%" ng-model="thing.where" ng-required="true"  ng-change="updateLocationFields(thing.where)">-->
-                        <!--<option ng-repeat="obj in myLocations" value="{{obj}}">-->
-                            <!--{{obj.LocationType+"("+obj.LocationName+")"}}-->
-                        <!--</option>-->
-                        <!--<option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>-->
-                        <!--<option value="manual">{{'ENTER_ADDRESS'|translate}}</option>-->
-                    <!--</select>-->
-                <!--</label>-->
-                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="enableAddressFields">
-                    <span class="input-label label-text "  style="color:white">{{'ADDRESS' | translate }}
+                </label>
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                    <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <input type="text" ng-required="true" class="edit-input-txt" ng-model="thing.address"/>
+                    <input type="text" ng-required="true" class="edit-input-txt" ng-model="thing.address" name="address"/>
+                    <span class="validation-font wrap-content"
+                          ng-show="addThingForm.address.$error.required && addThingForm.address.$touched">
+                        {{'REQUIRED'| translate}}
+                    </span>
                 </label>
 
-                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="enableAddressFields">
-                    <span class="input-label label-text "  style="color:white">{{'CITY' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                    <span class="input-label label-text " style="color:white">{{'CITY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <input type="text" ng-required="true" ng-model="thing.city" class="edit-input-txt"  />
+                    <input type="text" ng-required="true"  ng-pattern="/^[a-zA-Z\s]*$/" ng-model="thing.city" class="edit-input-txt" name="city"/>
+                    <span class="assertive validation-font wrap-content" ng-show="addThingForm.city.$error.pattern && !addThingForm.city.$pristine">
+                      {{'INVALID' | translate}} &nbsp;{{'CITY' | translate}}
+                    </span>
+                        <span class="assertive validation-font wrap-content" ng-show="addThingForm.city.$error.required && !addThingForm.city.$pristine">
+                       {{'REQUIRED' | translate}}
+                    </span>
                 </label>
 
-                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="enableAddressFields">
-                    <span class="input-label label-text "  style="color:white">{{'COUNTRY' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                    <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <!--<select style="width: 100%" ng-model="thing.country" ng-required="true"  ng-options="obj.CountryName for obj in countryCodeList" ng-change="changeSubdivision(thing.country.CountryCode)">-->
-                    <!--</select>-->
-                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.country" ng-required="true"  ng-change="changeSubdivision(thing.country)">
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997"
+                            class="edit-input-txt" ng-model="thing.country" ng-required="true"
+                            ng-change="changeSubdivision(thing.country)">
                         <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
-                    <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
-                            ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}</option>
+                        <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
+                                ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}
+                        </option>
                     </select>
                 </label>
-
-
-                <label class="item item-input item-stacked-label no-border label-padding"  ng-if="enableAddressFields">
-                    <span class="input-label label-text "  style="color:white">{{'STATE' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
+                    <span class="input-label label-text " style="color:white">{{'STATE' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <!--<select style="width: 100%" ng-model="thing.state" ng-required="subDivList.length!=0?true:false"  ng-options="obj.SubdivisionName for obj in subDivList">-->
-                    <!--</select>-->
-                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="thing.state" >
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997"
+                            class="edit-input-txt" ng-model="thing.state">
                         <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
                         <option ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
-                                ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}</option>
+                                ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
+                        </option>
                     </select>
                 </label>
-        </div>
-    </ion-content>
-    <ion-footer-bar class="text-center bar-stable blue-bg no-border" >
-        <div  class="button-bar">
-            <!--<button  ng-disabled="addThingForm.$invalid" ng-disabled="inviteFamilyForm.$invalid" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="createThing()" style="font-size: 20px;">-->
-                <!--{{'SUBMIT' | translate }}-->
-            <!--</button>-->
-            <button  type="button"  class="button  button-light button-clear bold" ng-click="hideThingAddModal()">
-                {{'CANCEL' | translate }}
-            </button> &nbsp;
-            <button ng-disabled="addThingForm.$invalid" class="button  button-light button-clear bold" type="submit"  ng-click="createThing()">
-                {{'SAVE' | translate }}
-            </button>
+            </div>
+        </ion-content>
+        <ion-footer-bar class="text-center bar-stable blue-bg no-border">
+            <div class="button-bar">
+                <button type="button" class="button  button-light button-clear bold" ng-click="hideThingAddModal()">
+                    {{'CANCEL' | translate }}
+                </button>&nbsp;
+                <button ng-disabled="addThingForm.$invalid" class="button  button-light button-clear bold" type="submit"
+                        ng-click="createThing()">
+                    {{'SAVE' | translate }}
+                </button>
 
-        </div>
-    </ion-footer-bar>
+            </div>
+        </ion-footer-bar>
     </form>
 </ion-modal-view>

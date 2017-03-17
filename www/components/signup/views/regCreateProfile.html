@@ -31,14 +31,19 @@
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt" ng-model="loginData.profile.given_name" name="firstName"
-                       ng-required="true" ng-maxlength="50" type="text" ng-minlength="2"/>
+                        type="text" />
 
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.firstName.$error.maxlength">
+                <span class="validation-font wrap-content"
+                      ng-show="basicInfoForm.firstName.$error.maxlength && !basicInfoForm.firstName.$pristine">
                     {{'FIRST_NAME_MAX_LENGTH'| translate}}
                 </span>
                 <span class="validation-font wrap-content"
-                      ng-show="basicInfoForm.firstName.$error.required && basicInfoForm.firstName.$touched">
+                      ng-show="basicInfoForm.firstName.$error.required && !basicInfoForm.firstName.$pristine">
                     {{'FIRST_NAME_MIN_LENGTH'| translate}}
+                </span>
+                <span class="validation-font wrap-content"
+                      ng-show="basicInfoForm.firstName.$error.pattern && !basicInfoForm.firstName.$pristine">
+                   {{'INVALID_FIRST_NAME' | translate}}
                 </span>
             </label>
 
@@ -46,14 +51,19 @@
                 <span class="input-label label-text " style="">{{'LAST_NAME' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input ng-model="loginData.profile.family_name" name="lastName" ng-required="true" type="text"
-                       class="edit-input-txt" ng-maxlength="50" ng-minlength=""/>
-                <span class="validation-font wrap-content" ng-show="basicInfoForm.lastName.$error.maxlength">
+                <input ng-model="loginData.profile.family_name" name="lastName" type="text"
+                       class="edit-input-txt"  ng-required="true" ng-maxlength="50" ng-pattern="/^[a-zA-Z\s]*$/" ng-minlength="2"/>
+                <span class="validation-font wrap-content"
+                      ng-show="basicInfoForm.lastName.$error.maxlength && !basicInfoForm.lastName.$pristine">
                     {{'LAST_NAME_MAX_LENGTH'| translate}}
                 </span>
                 <span class="validation-font wrap-content"
-                      ng-show="basicInfoForm.lastName.$error.required && basicInfoForm.lastName.$touched">
+                      ng-show="basicInfoForm.lastName.$error.required && !basicInfoForm.lastName.$pristine">
                     {{'LAST_NAME_MIN_LENGTH'| translate}}
+                </span>
+                <span class="validation-font wrap-content"
+                      ng-show="basicInfoForm.lastName.$error.pattern && !basicInfoForm.lastName.$pristine">
+                   {{'INVALID_LAST_NAME' | translate}}
                 </span>
             </label>
 
@@ -74,20 +84,6 @@
                 </span>
             </label>
 
-            <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
-            <!--<span class="input-label label-text ">-->
-            <!--{{'OCCUPATION' | translate }}-->
-            <!--<span class="assertive " >* </span>-->
-            <!--</span>-->
-            <!--<select style=""-->
-            <!--class="edit-input-select" ng-model="loginData.user_type" ng-required="true">-->
-            <!--<option disabled value="" selected>{{'SELECT_OCCUPATION' | translate}}</option>-->
-            <!--<option value="Farmer">{{'FARMER' | translate}}</option>-->
-            <!--<option value="Factory Worker">{{'FACTORY_WORKER' | translate }}</option>-->
-            <!--<option value="Fisherman">{{'FISHERMAN' | translate}}</option>-->
-            <!--<option value="Other">{{'OTHER' | translate}}</option>-->
-            <!--</select>-->
-            <!--</label>-->
         </div>
 
     </ion-content>

@@ -418,14 +418,16 @@ option {
     border-bottom: 1px solid rgba(211, 211, 211, .8);
     width: 92%;
 }
-
+.red{
+    color:red;
+}
 .input-label-color {
     color: rgba(255, 255, 255, .6);
 }
 
 .grey-hr-menu-separator {
     border: none;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid white;
     width: 79%;
     /* float: right; */
     margin-left: 51px;

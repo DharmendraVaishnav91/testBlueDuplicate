@@ -79,6 +79,7 @@ app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter
 
                     markers["marker" + val] = {
                         icon:{
+
                         },
                         layer: "india",
                         lng: parseFloat(key.coordinates[0]),
@@ -90,7 +91,7 @@ app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter
                 }else{
                     markers["marker" + val] = {
                         icon:{
-                            iconUrl:"assets/img/user-pin.png",
+                            iconClass:"ion-ios-location-outline",
                             iconSize:[25, 30],
                             iconAnchor:[20, 40]
                         },

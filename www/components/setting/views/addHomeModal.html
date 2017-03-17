@@ -1,4 +1,4 @@
-<ion-modal-view >
+<ion-modal-view>
     <ion-header-bar class="bar bar-header blue-bg no-border">
         <button ng-click="hideEditHomeModal()" style="color:white"
                 class="button back-button buttons  button-clear header-item">
@@ -9,46 +9,19 @@
     </ion-header-bar>
     <form name="addressForm">
         <ion-content scroll="true" class="blueno-bg-full has-footer">
-            <!--<div class="center" style="width: inherit;height: auto;padding-top:15px">-->
-                <!--<h3 style="color: #ffffff;">-->
-                    <!--<i class="ion-home"></i>&nbsp; {{'ADD_HOME' | translate }}-->
-                    <!--&lt;!&ndash;<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>&ndash;&gt;-->
-                <!--</h3>-->
-            <!--</div>-->
             <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}"
                  style="overflow: scroll;width: 100%;padding: 0;">
                 <div class="item  center bg-transparent no-border" style="padding: 10px 0 0 0;">
                     <span style="color:rgba(0,0,0,.6); font-size: 14px;">
-                      (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;" class="ion-asterisk"></span>
+                      (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;"
+                             class="ion-asterisk"></span>
                       <span style="color:rgba(0,0,0,.6);font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
                     </span>
                 </div>
-                <!--<div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;">-->
-                    <!--<div class=" wrap-content" style="color: bisque;font-size: 14px;">-->
-                        <!--{{'OPTIONAL_INFO_ALERT'| translate}}-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--Newly added field which make user to enter manual address-->
-                <!--<label class="item item-input item-stacked-label no-border label-padding">-->
-                <!--<span class="input-label label-text " style="color:white">{{'LOCATION_WHERE' | translate }}-->
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                <!--</span>-->
-                    <!--<select name="location-where" style="width: 100%" ng-model="home.where" ng-required="true"-->
-                            <!--ng-change="updateLocationFields(home.where)">-->
-                        <!--<option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>-->
-                        <!--<option value="manual">{{'ENTER_ADDRESS'|translate}}</option>-->
-                    <!--</select>-->
-                <!--</label>-->
-                <label class="item item-input item-stacked-label no-border label-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                    <!-- <select style="width: 100%" ng-model="newHome.country" ng-required="true"
-                            ng-change="changeSubdivision(newHome.country)" name="country">
-                        <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
-                        <option ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}
-                        </option>
-                    </select> -->
                     <input ion-autocomplete type="text"
                            template-url="components/menu/views/autoCompleteDrop.html"
                            readonly="readonly"
@@ -65,17 +38,12 @@
                            style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
                            placeholder="{{'SEARCH_COUNTRY' | translate }}"
                            items-clicked-method="changeSubdivision(newHome.country.CountryCode)"
-                       />
+                    />
                 </label>
-                <label class="item item-input item-stacked-label no-border label-padding" >
+                <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text " style="color:white">{{'STATE' | translate }}
                     <span class="assertive" style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
-                    <!-- <select style="width: 100%" ng-model="newHome.state" ng-required="true" name="state">
-                        <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
-                        <option  ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
-                        </option>
-                    </select> -->
                     <input ion-autocomplete type="text"
                            template-url="components/menu/views/autoCompleteDrop.html"
                            readonly="readonly"
@@ -91,38 +59,61 @@
                            cancel-label="{{'CANCEL' | translate }}"
                            style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 4px;background: white;font-size: 18px !important;"
                            placeholder="{{'SEARCH_STATE' | translate }}"
-                       />
+                    />
                 </label>
-                </label>
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                <span class="input-label label-text " style="color:white">{{'CITY' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text ">{{'CITY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                    <input class="edit-input-txt" ng-model="newHome.city" name="city" type="text" ng-required="true"/>
+                    <input class="edit-input-txt" ng-model="newHome.city" name="city" ng-required="true"
+                           ng-pattern="/^[a-zA-Z\s]*$/" type="text"/>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="addressForm.city.$error.pattern && !addressForm.city.$pristine">
+                  {{'INVALID' | translate}} &nbsp;{{'CITY' | translate}}
+                </span>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="addressForm.city.$error.required && !addressForm.city.$pristine">
+                   {{'REQUIRED' | translate}}
+                </span>
+
                 </label>
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                <span class="input-label label-text " style="color:white">{{'POSTAL' | translate }}
+
+                <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text ">{{'POSTAL' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                    <input class="edit-input-txt" ng-model="newHome.postalcode" name="postal" type="number" ng-required="true"/>
+                    <input class="edit-input-txt" ng-model="newHome.postalcode" name="postalcode" ng-required="true"
+                           type="text" ng-pattern="/^[0-9]+$/"/>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="addressForm.postalcode.$error.pattern && !addressForm.postalcode.$pristine">
+                    {{'INVALID' | translate}} &nbsp;{{'POSTAL' | translate}}
+                </span>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="addressForm.postalcode.$error.required && !addressForm.postalcode.$pristine">
+                   {{'REQUIRED' | translate}}
+                </span>
+
                 </label>
-                <label class="item item-input item-stacked-label no-border label-padding" >
-                <span class="input-label label-text " style="color:white">{{'ADDRESS' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding">
+                <span class="input-label label-text ">{{'ADDRESS' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                     <input class="edit-input-txt" ng-model="newHome.address" name="address" ng-required="true"
                            type="text"/>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="addressForm.address.$error.required && !addressForm.address.$pristine">
+                   {{'REQUIRED' | translate}}
+                </span>
                 </label>
             </div>
         </ion-content>
         <ion-footer-bar class="text-center bar-stable blue-bg no-border" style="padding:0px !important;">
             <div class="button-bar">
-                <button class="button button-clear button-light bold" type="submit" ng-click="hideEditHomeModal()"
-                        >
+                <button class="button button-clear button-light bold" type="submit" ng-click="hideEditHomeModal()">
                     {{'CANCEL' | translate }} &nbsp;
                 </button>
                 <button ng-disabled="addressForm.$invalid" class="button button-clear button-light bold"
-                        type="submit" ng-click="saveHome()" >
+                        type="submit" ng-click="saveHome()">
                     {{'SAVE' | translate }}
                 </button>
             </div>

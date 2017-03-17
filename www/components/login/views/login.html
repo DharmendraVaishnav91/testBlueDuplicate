@@ -29,32 +29,23 @@
                         *
                     </span>
                 </span>
-
             <div class="row no-padding">
                 <div class="col no-padding col-20">
                     <div class="" style="color:black;height: 100%;" ng-click="showCountrySearch()">
-                        <!--<span class="center" style="color:#3A5997;right:3px;width:100%;bottom: 4px;padding-bottom: 7px;border-bottom: 1px solid grey;">-->
                         <div class="button button-clear button-small" style="color: black;border-bottom: 1px solid grey;border-radius: 0px;height: 40px;line-height: 40px;font-size: 18px">
                             {{loginData.selectedCountry!=null?loginData.selectedCountry.CountryCode:'US'}}
                             <i class="ion-ios-arrow-down"></i>
                         </div>
-
-                        <!--</span>-->
                     </div>
                 </div>
                 <div class="col no-padding col-20">
                     <div class="" style="color:black;height: 100%;">
                         <div class="button button-clear button-small" style="color: black;border-bottom: 1px solid grey;border-radius: 0px;height: 40px;width: 100%;line-height: 40px;font-size: 18px">
-                            +{{loginData.selectedCountry!=null?loginData.selectedCountry.CountryPhoneCode:'1'}}
-
+                            +{{loginData.selectedCountry!=null?loginData.selectedCountry.CountryPhoneCode:1}}
                         </div>
-                        <!--<span class="center" style="color:#3A5997;padding-top:7px;bottom: 4px;width:100%;padding-bottom: 7px;border-bottom: 1px solid grey;">-->
-
-                        <!--</span>-->
                     </div>
                 </div>
                 <div class="col no-padding">
-
                     <input class="edit-input-txt " ng-model="loginData.mobile" name="username" ng-required="true"
                            style="font-size:18px;width:100%" type="number" ng-minlength="9" ng-maxlength="15" id="mobileNumber" placeholder="{{'MOBILE' | translate }}"/>
 
@@ -65,35 +56,8 @@
                         <span class="assertive validation-font wrap-content"
                               ng-show="credentialForm.mobile.$error.minlength || credentialForm.mobile.$error.maxlength">{{'INVALID_MOBILE'| translate}}</span>
                 </div>
-
             </div>
-
         </div>
-    <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;margin-top:10px;">-->
-            <!--<span class="input-label label-text " style="color:white">{{'COUNTRY_OF_REGISTRATION' | translate }}-->
-                <!--<span class="assertive " style="font-size: inherit">* </span>-->
-            <!--</span>-->
-        <!--&lt;!&ndash; <select style="width: 100%;font-size:12px;" ng-model="loginData.phoneCode" ng-required="true">-->
-            <!--<option selected value="" disabled>{{'SELECT_COUNTRY' | translate}}</option>-->
-            <!--<option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}-->
-            <!--</option>-->
-        <!--</select> &ndash;&gt;-->
-        <!--<input ion-autocomplete type="text"-->
-               <!--template-url="components/menu/views/autoCompleteDrop.html"-->
-               <!--readonly="readonly"-->
-               <!--class="ion-autocomplete edit-input-txt"-->
-               <!--autocomplete="off"-->
-               <!--item-method-value-key="countryCodeList"-->
-               <!--items-method="getSearchedCountryList(query)"-->
-               <!--item-view-value-key="CountryName"-->
-               <!--ng-model="loginData.phoneCode"-->
-               <!--max-selected-items="1"-->
-               <!--cancel-label="{{'CANCEL' | translate }}"-->
-               <!--items-clicked-method="clickedMethod(callback)"-->
-               <!--style="padding-left: 11px;display: block;height: 40px !important;outline: none;color:#3A5997 !important;border: none;border-radius: 0px;background: white;font-size: 18px !important;"-->
-               <!--placeholder="{{'SEARCH_COUNTRY' | translate }}"-->
-           <!--/>-->
-    <!--</label>-->
     <label class="item item-input item-stacked-label no-border label-padding">
         <span class="input-label label-text "  style="color:white">{{'PASSWORD' | translate }}
             <span class="assertive " style="font-size: inherit">* </span>

@@ -325,6 +325,7 @@
   "STREET_ADDRESS_ONE": "Street Address One",
   "SUBMIT": "Submit",
   "SUB_TYPE": "Sub Type",
+  "TERMS_CONDITION":"Terms and conditions",
   "TERMS_OF_REGISTRY": "Terms Of Registry Use",
   "TERMS_OF_REGISTRY_1": "1. You are providing data about yourself voluntarily.",
   "TERMS_OF_REGISTRY_2": "2. Your data belongs to you, and you always own your data.",
@@ -385,5 +386,12 @@
   "WORK_PLACE_DETAIL": "Work Place Detail",
   "WORK_PLACE_TYPE": "Work Place Type",
   "WORK_TYPE": "Work Type",
-  "YOUR_BLUENUMBER": "Your bluenumber"
+  "YOUR_BLUENUMBER": "Your bluenumber",
+  "INVALID_EMAIL":"Invalid email address",
+  "INVALID_FIRST_NAME":"Invalid first name",
+  "INVALID_LAST_NAME":"Invalid last name",
+  "INVALID":"Invalid",
+  "REQUIRED":"Required"
+
+
 }

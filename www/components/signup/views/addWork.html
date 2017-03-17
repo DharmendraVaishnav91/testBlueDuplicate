@@ -26,10 +26,6 @@
                 <span class="input-label label-text " style="color:white">{{'PRODUCT' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <!-- <select style="width: 100%;" ng-model="work.crop" ng-required="true" name="crop">
-                    <option selected disabled value="">{{'SELECT_PRODUCT' | translate}}</option>
-                    <option ng-repeat="obj in productList | orderBy:'H3Description'" value="{{obj.H3Code}}">{{obj.H3Description}}</option>
-                </select> -->
                 <input ion-autocomplete type="text"
                        template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
@@ -47,30 +43,6 @@
                        placeholder="{{'SEARCH_PRODUCT' | translate }}"
                    />
             </label>
-            <!--<label class="item item-input item-stacked-label no-border label-padding">-->
-            <!--<span class="input-label label-text "  style="color:white">{{'WORK_PLACE_TYPE' | translate }}-->
-            <!--<span class="assertive " style="font-size: inherit">* </span>-->
-            <!--</span>-->
-
-            <!--<select ng-model="data.type" style="width: 100%;" ng-required="true">-->
-            <!--<option value="{{type.name}}" ng-repeat="type in workTypes">{{type.name}}</option>-->
-            <!--</select>-->
-            <!--</label>-->
-
-            <!--Relationship-->
-
-            <!--<label class="item item-input item-stacked-label no-border label-padding" >-->
-            <!--<span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}-->
-            <!--<span class="assertive " style="font-size: inherit">* </span>-->
-            <!--</span>-->
-            <!--<select style="width: 100%;" ng-model="data.relationship"  ng-required="true">-->
-            <!--<option value="Worker">{{'WORKER' | translate }}</option>-->
-            <!--<option value="Owner">{{'OWNER' | translate }}</option>-->
-            <!--<option value="Lessor">{{'LESSOR' | translate }}</option>-->
-            <!--</select>-->
-            <!--</label>-->
-
-            <!--Address-->
             <!--Newly added field which make user to enter manual address-->
             <label class="item item-input item-stacked-label no-border label-padding">
                 <span class="input-label label-text "  style="color:white">{{'WHERE_YOU_WORK' | translate }}
@@ -109,13 +81,6 @@
                        placeholder="{{'SEARCH_COUNTRY' | translate }}"
                        items-clicked-method="changeSubdivision(data.workCountry.CountryCode)"
                    />
-                <!-- <select style="width: 100%" ng-model="data.workCountry" ng-required="true"
-                        ng-change="changeSubdivision(data.workCountry)" name="country">
-                    <option selected disabled value="">{{'SELECT_COUNTRY' | translate}}</option>
-                    <option ng-selected="obj.CountryCode == addressDataFromCoordinate.userCountry.CountryCode"
-                            ng-repeat="obj in countryCodeList" value="{{ obj.CountryCode }}">{{obj.CountryName}}
-                    </option>
-                </select> -->
             </label>
             <!--State-->
 
@@ -123,12 +88,7 @@
                 <span class="input-label label-text " style="color:white">{{'STATE' | translate }}
                     <span class="assertive " style="font-size: inherit">{{subDivList.length!=0?"*":""}} </span>
                 </span>
-                <!-- <select style="width: 100%" ng-model="data.workState" name="state">
-                    <option selected disabled value="">{{'SELECT_STATE' | translate}}</option>
-                    <option ng-selected="obj.SubdivisionName == addressDataFromCoordinate.userState.SubdivisionName"
-                            ng-repeat="obj in subDivList" value="{{ obj.SubdivisionCode }}">{{obj.SubdivisionName}}
-                    </option>
-                </select> -->
+
                 <input ion-autocomplete type="text"
                        template-url="components/menu/views/autoCompleteDrop.html"
                        readonly="readonly"
@@ -146,8 +106,6 @@
                        placeholder="{{'SEARCH_STATE' | translate }}"
                    />
             </label>
-
-            <!--CIty-->
 
             <label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">
                     <span class="input-label label-text " style="color:white">{{'CITY' | translate }}
@@ -169,20 +127,6 @@
                 <input type="text" ng-required="true" class="edit-input-txt" ng-model="work.address" name="address"/>
             </label>
 
-
-            <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
-            <!--<span class="input-label label-text "  style="color:white">{{'LATITUDE' | translate }}-->
-            <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
-            <!--</span>-->
-            <!--<input class="edit-input-txt" ng-model="work.latitude" name="latitude"   type="number"/>-->
-            <!--</label>-->
-
-            <!--<label class="item item-input item-stacked-label no-border label-padding" ng-if="enableAddressFields">-->
-            <!--<span class="input-label label-text "  style="color:white">{{'LONGITUDE' | translate }}-->
-            <!--&lt;!&ndash;<span class="assertive " style="font-size: inherit">* </span>&ndash;&gt;-->
-            <!--</span>-->
-            <!--<input class="edit-input-txt" ng-model="work.longitude" name="longitude"   type="number"/>-->
-            <!--</label>-->
         </div>
 
 

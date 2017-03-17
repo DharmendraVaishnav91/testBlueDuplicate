@@ -1,13 +1,14 @@
-<ion-modal-view  >
-    <ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;" >
-        <button ng-click="hideInviteFamilyModal()" style="color:white" class="button back-button buttons  button-clear header-item">
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header blue-bg no-border" style="border-color:gray;">
+        <button ng-click="hideInviteFamilyModal()" style="color:white"
+                class="button back-button buttons  button-clear header-item">
             <i class="icon ion-android-arrow-back"></i>
             <span class="back-text"></span>
         </button>
-        <h1 class="title " style="max-width:none;text-align: center" >{{'ADD_FAMILY' | translate}}</h1>
+        <h1 class="title " style="max-width:none;text-align: center">{{'ADD_FAMILY' | translate}}</h1>
     </ion-header-bar>
     <form name="inviteFamilyForm">
-    <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
+        <ion-content scroll="true" class="blueno-bg-full has-footer has-header">
 
             <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="
     overflow: scroll;
@@ -15,7 +16,8 @@
     padding: 0;">
                 <div class="item center bg-transparent no-border" style="padding: 10px 0 0 0;">
                     <span style="color:rgba(0,0,0,.6) ; font-size: 14px;">
-                      (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;" class="ion-asterisk"></span>
+                      (<span style="color:rgba(239,71,58,.8);font-size: 12px;vertical-align: middle;"
+                             class="ion-asterisk"></span>
                       <span style="color:rgba(0,0,0,.6);font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)
                     </span>
                 </div>
@@ -23,35 +25,47 @@
                     <span class="input-label label-text " style="color:white">{{'FIRST_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <input type="text" name="name" ng-required="true" ng-model="family.firstName" class="edit-input-txt"/>
+                    <input type="text" name="firstName" ng-model="family.firstName" class="edit-input-txt"
+                           ng-minlength="2" ng-pattern="/^[a-zA-Z\s]*$/" ng-required="true" ng-maxlength="50"/>
+                    <span class="validation-font wrap-content"
+                          ng-show="inviteFamilyForm.firstName.$error.maxlength && !inviteFamilyForm.firstName.$pristine">
+                        {{'FIRST_NAME_MAX_LENGTH'| translate}}
+                    </span>
+                    <span class="validation-font wrap-content"
+                          ng-show="inviteFamilyForm.firstName.$error.required && !inviteFamilyForm.firstName.$pristine">
+                        {{'FIRST_NAME_MIN_LENGTH'| translate}}
+                    </span>
+                    <span class="validation-font wrap-content"
+                          ng-show="inviteFamilyForm.firstName.$error.pattern && !inviteFamilyForm.firstName.$pristine">
+                    {{'INVALID_FIRST_NAME' | translate}}
+                    </span>
                 </label>
                 <label class="item item-input item-stacked-label no-border label-padding">
                     <span class="input-label label-text " style="color:white">{{'LAST_NAME' | translate }}
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <input type="text" name="name" ng-required="true" ng-model="family.lastName" class="edit-input-txt"/>
+                    <input type="text" name="lastName" ng-model="family.lastName" class="edit-input-txt"
+                           ng-required="true" ng-maxlength="50" ng-pattern="/^[a-zA-Z\s]*$/" ng-minlength="2"/>
+                    <span class="validation-font wrap-content"
+                          ng-show="inviteFamilyForm.lastName.$error.maxlength && !inviteFamilyForm.lastName.$pristine">
+                        {{'LAST_NAME_MAX_LENGTH'| translate}}
+                    </span>
+                    <span class="validation-font wrap-content"
+                          ng-show="inviteFamilyForm.lastName.$error.required && !inviteFamilyForm.lastName.$pristine">
+                        {{'LAST_NAME_MIN_LENGTH'| translate}}
+                    </span>
+                    <span class="validation-font wrap-content"
+                          ng-show="inviteFamilyForm.lastName.$error.pattern && !inviteFamilyForm.lastName.$pristine">
+                        {{'INVALID_LAST_NAME' | translate}}
+                    </span>
                 </label>
-                <!--<label class="item item-input item-stacked-label no-border label-padding" style="padding-right:16px;">-->
-            <!--<span class="input-label label-text " style="color:white">{{'COUNTRY' | translate }}-->
-                <!--<span class="assertive " style="font-size: inherit">* </span>-->
-            <!--</span>-->
-                    <!--<select style="width: 100%;font-size:12px;" ng-model="family.phoneCode" ng-required="true">-->
-                        <!--<option selected value="" disabled>Select country</option>-->
-                        <!--<option ng-repeat="obj in countryCodeList" value="{{obj.CountryPhoneCode}}">{{obj.CountryName}}-->
-                        <!--</option>-->
-                    <!--</select>-->
-                <!--</label>-->
-                <!--<label class="item item-input item-stacked-label no-border label-padding"  >-->
-                <!--<span class="input-label label-text "  style="color:white">{{'MOBILE' | translate }}-->
-                   <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                <!--</span>-->
-                    <!--<input type="number" name="mobile" ng-required="true" class="edit-input-txt"  ng-model="family.mobile"/>-->
-                <!--</label>-->
-                <label class="item item-input item-stacked-label no-border label-padding"  >
-                    <span class="input-label label-text "  style="color:white">{{'RELATIONSHIP' | translate }}
+                <label class="item item-input item-stacked-label no-border label-padding">
+                    <span class="input-label label-text " style="color:white">{{'RELATIONSHIP' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                     </span>
-                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997" class="edit-input-txt" ng-model="family.relationship" name="relationship" ng-required="true">
+                    <select style="background:none;display: inherit;border: none;width: 100%;color:#3A5997"
+                            class="edit-input-txt" ng-model="family.relationship" name="relationship"
+                            ng-required="true">
                         <option value="" selected disabled>{{'SELECT_RELATIONSHIP' | translate}}</option>
                         <option value="Mother">{{'MOTHER' | translate }}</option>
                         <option value="Father" selected="selected">{{'FATHER' | translate }}</option>
@@ -60,24 +74,24 @@
                         <option value="Husband">{{'HUSBAND' | translate }}</option>
                         <option value="Wife">{{'WIFE' | translate }}</option>
                     </select>
+                    <span class="validation-font wrap-content"
+                          ng-show="inviteFamilyForm.relationship.$error.required && inviteFamilyForm.relationship.$touched">
+                        {{'REQUIRED'| translate}}
+                    </span>
                 </label>
             </div>
-    </ion-content>
-    <ion-footer-bar  class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;" >
-        <div  class="button-bar">
-            <button class="button no-border button-light button-clear bold " type="submit"  ng-click="hideInviteFamilyModal()" >
-            {{'CANCEL' | translate }} &nbsp;
-            </button>
-            <button  ng-disabled="inviteFamilyForm.$invalid" class="button no-border button-light button-clear bold" type="submit"  ng-click="sendInviteToFamily()" >
-                {{'SAVE' | translate }}
-            </button>
-            <!--<button ng-if="!isFromSetting" class="button no-border lgt-blue-btn button-small" type="submit"  ng-click="skipToSuccess()" style="font-size: 20px;">-->
-                <!--{{'Next' | translate }} &nbsp;<i class=" ion-arrow-right-b" style="font-size: 20px;"></i>-->
-            <!--</button>-->
-            <!--<button type="button" class="button button-clear button-light bold" ng-click="">-->
-            <!--<{{'Next' | translate }} <i class="ion-arrow-right-b"></i>-->
-            <!--</button>-->
-        </div>
-    </ion-footer-bar>
+        </ion-content>
+        <ion-footer-bar class="text-center bar-stable blue-bg" style="border:none;padding:0px !important;">
+            <div class="button-bar">
+                <button class="button no-border button-light button-clear bold " type="submit"
+                        ng-click="hideInviteFamilyModal()">
+                    {{'CANCEL' | translate }} &nbsp;
+                </button>
+                <button ng-disabled="inviteFamilyForm.$invalid" class="button no-border button-light button-clear bold"
+                        type="submit" ng-click="sendInviteToFamily()">
+                    {{'SAVE' | translate }}
+                </button>
+            </div>
+        </ion-footer-bar>
     </form>
 </ion-modal-view>

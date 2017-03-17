@@ -6,19 +6,10 @@
             </button>
         </div>
         <h1 class="title">{{'ADD_HOME' | translate }}</h1>
-        <!--<div class="buttons">-->
-        <!--<button class="button">Right Button</button>-->
-        <!--</div>-->
     </ion-header-bar>
     <form name="addressForm" ng-submit="goToSelectUserOccupation()">
     <ion-content scroll="true" class="blueno-bg-full has-header has-footer ">
-        <!--<div class="center" style="width: inherit;height: auto;padding-top:15px" >-->
-            <!--<h3 style="color: #ffffff;">-->
-                <!--<i class="ion-home"></i>&nbsp; {{'ADD_HOME' | translate }}-->
-                <!--&lt;!&ndash;<span style="color:white ; font-size: 20px;">(<span style="color:rgba(239,71,58,.8);font-size: 24px;vertical-align: middle;">*</span><span style="color:white;font-size: initial">&nbsp;{{'DENOTES_REQUIRED_FIELDS' | translate}}</span>)</span>&ndash;&gt;-->
-                <!--&lt;!&ndash;<span style="color:white; font-size: 18px">({{'OPTIONAL' | translate}}) </span>&ndash;&gt;-->
-            <!--</h3>-->
-        <!--</div>-->
+
         <div class="center" style=";width: inherit;height: auto;padding-top:15px">
             <!--<h3 style="color: #ffffff;">{{'CREATE_AN_ACCOUNT' | translate }}</h3>-->
             <span style="color: rgba(0,0,0,.6) ; font-size: 14px;">
@@ -27,20 +18,6 @@
             </span>
         </div>
         <div class="list" ng-style="{'height':(deviceHeight-96)+'px'}" style="overflow: scroll;width: 100%;padding: 0;">
-            <!--<div class="item no-border" style="background: transparent;padding: 0px 10px 0px 10px;" >-->
-                <!--<div class=" wrap-content" style="color: bisque;font-size: 14px;">-->
-                    <!--{{'OPTIONAL_INFO_ALERT'| translate}}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<label class="item item-input item-stacked-label no-border label-padding">-->
-                <!--<span class="input-label label-text "  style="color:white">{{'LOCATION_WHERE' | translate }}-->
-                    <!--<span class="assertive " style="font-size: inherit">* </span>-->
-                <!--</span>-->
-                <!--<select name="location-where" style="width: 100%" ng-model="locationWay" ng-required="true"  ng-change="updateLocationFields(locationWay)">                 <option value="" disabled selected>{{'SELECT_ONE' | translate}}</option>-->
-                   <!--<option value="current">{{'MY_CURRENT_LOCATION'|translate}}</option>-->
-                   <!--<option value="manual">{{'ENTER_ADDRESS'|translate}}</option>-->
-                <!--</select>-->
-            <!--</label>-->
             <!--Newly added field which make user to enter manual address-->
             <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text " >{{'COUNTRY' | translate }}
@@ -101,20 +78,37 @@
                 <span class="input-label label-text "  >{{'CITY' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="home.city" name="city" ng-required="true"   type="text"/>
+                <input class="edit-input-txt" ng-model="home.city" name="city" ng-required="true" ng-pattern="/^[a-zA-Z\s]*$/"  type="text"/>
+                <span class="assertive validation-font wrap-content" ng-show="addressForm.city.$error.pattern && !addressForm.city.$pristine">
+                  {{'INVALID' | translate}} &nbsp;{{'CITY' | translate}}
+                </span>
+                <span class="assertive validation-font wrap-content" ng-show="addressForm.city.$error.required && !addressForm.city.$pristine">
+                   {{'REQUIRED' | translate}}
+                </span>
+
             </label>
 
             <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text "  >{{'POSTAL' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
-                <input class="edit-input-txt" ng-model="home.postalcode" name="postalcode"  ng-required="true"  type="number"/>
+                <input class="edit-input-txt" ng-model="home.postalcode" name="postalcode" ng-required="true"  type="text" ng-pattern="/^[0-9]+$/" />
+                <span class="assertive validation-font wrap-content" ng-show="addressForm.postalcode.$error.pattern && !addressForm.postalcode.$pristine">
+                    {{'INVALID' | translate}} &nbsp;{{'POSTAL' | translate}}
+                </span>
+                <span class="assertive validation-font wrap-content" ng-show="addressForm.postalcode.$error.required && !addressForm.postalcode.$pristine">
+                   {{'REQUIRED' | translate}}
+                </span>
+
             </label>
             <label class="item item-input item-stacked-label no-border label-padding" >
                 <span class="input-label label-text " >{{'ADDRESS' | translate }}
                     <span class="assertive " style="font-size: inherit">* </span>
                 </span>
                 <input class="edit-input-txt"  ng-model="home.address" name="address" ng-required="true"  type="text"/>
+                <span class="assertive validation-font wrap-content" ng-show="addressForm.address.$error.required && !addressForm.address.$pristine">
+                   {{'REQUIRED' | translate}}
+                </span>
             </label>
         </div>
     </ion-content>

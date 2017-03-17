@@ -54,7 +54,8 @@ userSetting.controller('WorkEquipmentsCtrl', function($scope,$state,$ionicModal,
         userSettingService.fetchAllThings().then(function (response) {
             console.log("User all groups");
             console.log(response);
-            $scope.things=response;
+            $scope.things=response.data;
+            console.log("things array",$scope.things);
             $scope.thingFind =$scope.things.length != 0;
         }).catch(function (error) {
             console.log(error);

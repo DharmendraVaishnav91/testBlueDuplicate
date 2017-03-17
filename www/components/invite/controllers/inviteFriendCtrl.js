@@ -10,9 +10,37 @@ userSetting.controller('InviteFriendCtrl', function($filter,loginService,$scope,
     $scope.backToInvite= function () {
       $state.go('app.invite');
     };
-    $scope.getSearchedCountryList=function(query){
-      return $filter('filter')($scope.countryCodeList,query);
-    } ;
+    // $scope.getSearchedCountryList=function(query){
+    //   return $filter('filter')($scope.countryCodeList,query);
+    // } ;
+    $ionicModal.fromTemplateUrl('components/common/views/countrySearch.html'
+        , {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+        $scope.countrySearchModal = modal;
+    });
+
+    // $scope.getSearchedCountryList=function(query){
+    //   return $filter('filter')($scope.countryCodeList,query);
+    // } ;
+    $scope.showCountrySearch = function() {
+        console.log("show country search");
+        $scope.countrySearchModal.show();
+    };
+    $scope.hideCountrySearch = function() {
+        $scope.countrySearchModal.hide();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.countrySearchModal.remove();
+    });
+    $scope.selectCountry = function (selectedCountry) {
+        $scope.friend.friendCountry=selectedCountry;
+
+        $scope.hideCountrySearch();
+    };
+
     $scope.inviteFriend = function () {
         console.log("Friend details");
 
