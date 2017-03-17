@@ -148,7 +148,7 @@ div.leaflet-right {
     font-size: 18px !important;
     /*background-color: rgba(97, 137, 197, .7) !important;*/
     margin-bottom: 4px !important;
-    border-bottom: 1px solid rgb(221, 221, 221) !important;
+    border-bottom: 1px solid grey !important;
     border-radius: 0 !important;
     color: #3A5997 !important;
     padding: 0 10px 0 10px !important;;
