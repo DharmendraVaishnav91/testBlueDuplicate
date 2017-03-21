@@ -34,10 +34,13 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input class="edit-input-txt" type="text" name="orgName" ng-required="true" ng-model="org.name"
-                          />
+                          ng-pattern="/^[a-zA-Z0-9\s]+$/"/>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.orgName.$error.required && createOrgForm.orgName.$touched">
+                          ng-show="createOrgForm.orgName.$error.required && !createOrgForm.orgName.$pristine">
                         {{'REQUIRED'| translate}}</span>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="createOrgForm.orgName.$error.pattern && !createOrgForm.orgName.$pristine">
+                        {{'INVALID'| translate}}</span>
                 </label>
 
                 <!-- Description -->
@@ -49,7 +52,7 @@
                               ng-model="org.description1" rows="4" style="padding:10px !important;">
                     </textarea>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.orgDescription.$error.required && createOrgForm.orgDescription.$pristine">
+                          ng-show="createOrgForm.orgDescription.$error.required && !createOrgForm.orgDescription.$pristine">
                          {{'REQUIRED'| translate}}
                     </span>
                 </label>
@@ -62,11 +65,11 @@
                     <input class="edit-input-txt" type="text" name="employeeCount" ng-required="true"
                            ng-model="org.emp_cnt"  ng-pattern="/^[0-9]+$/"/>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.employeeCount.$error.required && createOrgForm.employeeCount.$touched">
+                          ng-show="createOrgForm.employeeCount.$error.required && !createOrgForm.employeeCount.$pristine">
                         {{'REQUIRED'| translate}}</span>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.employeeCount.$error.pattern && createOrgForm.employeeCount.$touched">
-                        {{'REQUIRED'| translate}}</span>
+                          ng-show="createOrgForm.employeeCount.$error.pattern && !createOrgForm.employeeCount.$pristine">
+                        {{'INVALID'| translate}}</span>
                 </label>
 
                 <!-- organization type -->
@@ -82,7 +85,7 @@
                         <option value="LLC">LLC</option>
                     </select>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.orgType.$error.required && createOrgForm.orgType.$touched">
+                          ng-show="createOrgForm.orgType.$error.required && !createOrgForm.orgType.$pristine">
                         {{'REQUIRED'| translate}}
                     </span>
                 </label>
@@ -100,7 +103,7 @@
                         <option value="Proprietary">Proprietary</option>
                     </select>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.ownership.$error.required && createOrgForm.ownership.$touched">
+                          ng-show="createOrgForm.ownership.$error.required && !createOrgForm.ownership.$pristine">
                         {{'REQUIRED'| translate}}
                     </span>
                 </label>
@@ -111,13 +114,13 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input class="edit-input-txt" type="text" name="ceo" ng-required="true" ng-model="org.owner_name"
-                           ng-pattern="/^[a-zA-Z\s]*$/"/>
+                           ng-pattern="/^[a-zA-Z\s]*$/" />
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.ownership.$error.required && createOrgForm.ownership.$touched">
+                          ng-show="createOrgForm.ceo.$error.required && !createOrgForm.ceo.$pristine">
                         {{'REQUIRED'| translate}}
                     </span>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.ownership.$error.pattern && createOrgForm.ownership.$touched">
+                          ng-show="createOrgForm.ceo.$error.pattern && !createOrgForm.ceo.$pristine">
                         {{'INVALID'| translate}}&nbsp;{{"CEO" |translate}}
                     </span>
                 </label>
@@ -128,9 +131,12 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input class="edit-input-txt" type="text" name="website" ng-required="true" ng-model="org.website"
-                           style="font-size:18px;"/>
+                           style="font-size:18px;"
+                           ng-pattern="/^(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i"/>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.website.$error.required && createOrgForm.website.$touched">{{'REQUIRED'| translate}}</span>
+                          ng-show="createOrgForm.website.$error.required && !createOrgForm.website.$pristine">{{'REQUIRED'| translate}}</span>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="createOrgForm.website.$error.pattern && !createOrgForm.website.$pristine">{{'INVALID'| translate}}</span>
                 </label>
 
                 <!-- fb page -->
@@ -139,9 +145,12 @@
                         <span class="assertive " style="font-size: inherit">* </span>
                     </span>
                     <input class="edit-input-txt" type="text" name="fbPage" ng-required="true" ng-model="org.fbPage"
-                           style="font-size:18px;"/>
+                           style="font-size:18px;"
+                           ng-pattern="/^(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/i"/>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.fbPage.$error.required && createOrgForm.fbPage.$touched">{{'REQUIRED'| translate}}</span>
+                          ng-show="createOrgForm.fbPage.$error.required && !createOrgForm.fbPage.$pristine">{{'REQUIRED'| translate}}</span>
+                    <span class="assertive validation-font wrap-content"
+                          ng-show="createOrgForm.fbPage.$error.pattern && !createOrgForm.fbPage.$pristine">{{'INVALID'| translate}}</span>
                 </label>
 
                 <!-- unique identifier -->
@@ -152,7 +161,7 @@
                     <input class="edit-input-txt" type="text" name="uniqueId" ng-required="true"
                            ng-model="org.identifier" style="font-size:18px;"/>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.uniqueId.$error.required && createOrgForm.uniqueId.$touched">
+                          ng-show="createOrgForm.uniqueId.$error.required && !createOrgForm.uniqueId.$pristine">
                         {{'REQUIRED'| translate}}</span>
                 </label>
 
@@ -164,7 +173,7 @@
                     <input class="edit-input-txt" type="text" name="idType" ng-required="true"
                            ng-model="org.identifier_type" style="font-size:18px;"/>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.idType.$error.required && createOrgForm.idType.$touched">
+                          ng-show="createOrgForm.idType.$error.required && !createOrgForm.idType.$pristine">
                         {{'REQUIRED'| translate}}
                     </span>
                 </label>
@@ -181,7 +190,7 @@
                         <option value="manual">{{'ENTER_ADDRESS'|translate}}</option>
                     </select>
                     <span class="assertive validation-font wrap-content"
-                          ng-show="createOrgForm.locationWhere.$error.required && createOrgForm.locationWhere.$touched">{{'REQUIRED'| translate}}</span>
+                          ng-show="createOrgForm.locationWhere.$error.required && !createOrgForm.locationWhere.$pristine">{{'REQUIRED'| translate}}</span>
                 </label>
 
                 <div ng-show="enableAddressFields">
@@ -193,7 +202,7 @@
                         <input class="edit-input-txt" type="text" name="streetAdd" ng-required="true"
                                ng-model="loc.streetAdd" style="font-size:18px;"/>
                         <span class="assertive validation-font wrap-content"
-                              ng-show="createOrgForm.streetAdd.$error.required && createOrgForm.streetAdd.$touched">
+                              ng-show="createOrgForm.streetAdd.$error.required && !createOrgForm.streetAdd.$pristine">
                             {{'REQUIRED'| translate}}
                         </span>
                     </label>
@@ -206,10 +215,10 @@
                         <input class="edit-input-txt" type="text" name="city" ng-required="true" ng-model="loc.city"
                                style="font-size:18px;"/>
                         <span class="assertive validation-font wrap-content"
-                              ng-show="createOrgForm.city.$error.required && createOrgForm.city.$touched">
+                              ng-show="createOrgForm.city.$error.required && !createOrgForm.city.$pristine">
                             {{'REQUIRED'| translate}}</span>
                         <span class="assertive validation-font wrap-content"
-                              ng-show="createOrgForm.city.$error.pattern && createOrgForm.city.$touched">
+                              ng-show="createOrgForm.city.$error.pattern && !createOrgForm.city.$pristine">
                             {{'INVALID'| translate}}&nbsp;{{'CITY'| translate}}</span>
                     </label>
 

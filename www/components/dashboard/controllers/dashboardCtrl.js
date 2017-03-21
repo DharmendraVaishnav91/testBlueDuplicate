@@ -1,9 +1,10 @@
 /**
  * Created by dharmendra on 8/8/16.
  */
-app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state,$ionicPopup) {
+app.controller('DashboardCtrl', function ($ionicLoading,$rootScope,groupService,orgService,$scope,$filter, $ionicModal, $timeout, leafletData, $http, dashboardService, utilityService,signUpService,$actionButton,$state,$ionicPopup) {
 
     //var accessToken = 'pk.eyJ1IjoiYWxleG9yb25hIiwiYSI6ImNpaGgzYjVteDBtbDB2NWtsNjZsZzBsb3IifQ.q8GZHKN_I8Ht01x096fGlw';
+
     $scope.showFilter = false;
     $scope.filter = {};
     var productListFetched=false;
@@ -56,6 +57,7 @@ app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter
     var defaultLat= 38.6280322;
     var defaultLng=26.2408987;
     var loadMap = function (param,lat,lng) {
+        $ionicLoading.show({template: '<ion-spinner icon="circles" class="spinner-dark"></ion-spinner>'});
         markers={};
         angular.extend($scope, {
             center: {
@@ -73,6 +75,8 @@ app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter
             layers: layers
 
         });
+       // $rootScope.$broadcast('loading:show');
+
         dashboardService.fetchMarkers(param).then(function (response) {
             angular.forEach(response, function (key, val) {
                 if(key.user_info==null){
@@ -106,7 +110,9 @@ app.controller('DashboardCtrl', function (groupService,orgService,$scope,$filter
 
 
             });
-        })
+            $ionicLoading.hide();
+
+        });
     };
     var params="" ;
     loadMap(params,defaultLat,defaultLng);
